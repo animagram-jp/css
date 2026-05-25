@@ -3,10 +3,7 @@
   --_padding: calc(20 / 16 * 1rem) calc(16 / 16 * 1rem);
   margin: 0;
   box-sizing: border-box;
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  row-gap: calc(16 / 16 * 1rem);
+  border-collapse: collapse;
   color: var(--color-neutral-solid-gray-800);
   font-weight: normal;
   font-size: calc(16 / 16 * 1rem);
@@ -20,22 +17,20 @@
   line-height: 1.3;
 }
 
-.dads-table__caption {
+.dads-table caption {
   font-weight: bold;
   font-size: calc(17 / 16 * 1rem);
+  text-align: left;
+  margin-bottom: calc(16 / 16 * 1rem);
 }
 
-.dads-table__table {
-  border-collapse: collapse;
-}
-
-.dads-table__table :is(td, th) {
+.dads-table :is(td, th) {
   padding: var(--_padding);
   text-align: left;
   vertical-align: baseline;
 }
 
-.dads-table__table th {
+.dads-table th {
   font-weight: bold;
 }
 
