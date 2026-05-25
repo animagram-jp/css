@@ -1735,76 +1735,73 @@
 <h2>Table</h2>
 
 <!-- 通常 -->
-<div class="dads-table">
-  <table class="dads-table__table">
-    <thead>
-      <tr>
-        <th class="dads-table__col-header" scope="col">ラベル</th>
-        <th class="dads-table__col-header" scope="col">ラベル</th>
-        <th class="dads-table__col-header" scope="col">ラベル</th>
-        <th class="dads-table__col-header" scope="col">ラベル</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td>データ</td>
-        <td>データ</td>
-        <td>データ</td>
-        <td>データ</td>
-      </tr>
-      <tr>
-        <td>データ</td>
-        <td>データ</td>
-        <td>データ</td>
-        <td>データ</td>
-      </tr>
-    </tbody>
-  </table>
-</div>
+<table class="dads-table">
+  <thead>
+    <tr>
+      <th class="dads-table__col-header" scope="col">ラベル</th>
+      <th class="dads-table__col-header" scope="col">ラベル</th>
+      <th class="dads-table__col-header" scope="col">ラベル</th>
+      <th class="dads-table__col-header" scope="col">ラベル</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>データ</td>
+      <td>データ</td>
+      <td>データ</td>
+      <td>データ</td>
+    </tr>
+    <tr>
+      <td>データ</td>
+      <td>データ</td>
+      <td>データ</td>
+      <td>データ</td>
+    </tr>
+  </tbody>
+</table>
 
 <!-- スクロールシャドウ付き -->
-<div class="dads-table" style="margin-top: 2rem; max-width: 400px;">
-  <dads-scroll-shadow style="--scroll-shadow-padding: 0px;">
-    <table class="dads-table__table">
-      <thead>
-        <tr>
-          <th class="dads-table__col-header" scope="col">列1</th>
-          <th class="dads-table__col-header" scope="col">列2</th>
-          <th class="dads-table__col-header" scope="col">列3</th>
-          <th class="dads-table__col-header" scope="col">列4</th>
-          <th class="dads-table__col-header" scope="col">列5</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td>データ1</td>
-          <td>データ2</td>
-          <td>データ3</td>
-          <td>データ4</td>
-          <td>データ5</td>
-        </tr>
-      </tbody>
-    </table>
-  </dads-scroll-shadow>
-</div>
-
-<!-- ストライプ -->
-<div class="dads-table" data-row-stripe style="margin-top: 2rem;">
-  <table class="dads-table__table" data-cell-border="bottom">
+<dads-scroll-shadow style="margin-top: 2rem; max-width: 400px; --scroll-shadow-padding: 0px;">
+  <table class="dads-table">
     <thead>
       <tr>
-        <th class="dads-table__col-header" scope="col">ラベル</th>
-        <th class="dads-table__col-header" scope="col">ラベル</th>
-        <th class="dads-table__col-header" scope="col">ラベル</th>
+        <th class="dads-table__col-header" scope="col">列1</th>
+        <th class="dads-table__col-header" scope="col">列2</th>
+        <th class="dads-table__col-header" scope="col">列3</th>
+        <th class="dads-table__col-header" scope="col">列4</th>
+        <th class="dads-table__col-header" scope="col">列5</th>
+        <th class="dads-table__col-header" scope="col">列6</th>
+        <th class="dads-table__col-header" scope="col">列7</th>
+        <th class="dads-table__col-header" scope="col">列8</th>
       </tr>
     </thead>
     <tbody>
-      <tr><td>データ</td><td>データ</td><td>データ</td></tr>
-      <tr><td>データ</td><td>データ</td><td>データ</td></tr>
-      <tr><td>データ</td><td>データ</td><td>データ</td></tr>
+      <tr>
+        <td>データ1</td>
+        <td>データ2</td>
+        <td>データ3</td>
+        <td>データ4</td>
+        <td>データ5</td>
+      </tr>
     </tbody>
   </table>
-</div>
+</dads-scroll-shadow>
+
+<!-- ストライプ -->
+<table class="dads-table" data-row-stripe data-cell-border="bottom" style="margin-top: 2rem;">
+  <thead>
+    <tr>
+      <th class="dads-table__col-header" scope="col">ラベル</th>
+      <th class="dads-table__col-header" scope="col">ラベル</th>
+      <th class="dads-table__col-header" scope="col">ラベル</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr><td>データ</td><td>データ</td><td>データ</td></tr>
+    <tr><td>データ</td><td>データ</td><td>データ</td></tr>
+    <tr><td>データ</td><td>データ</td><td>データ</td></tr>
+  </tbody>
+</table>
 
 </section>
 
