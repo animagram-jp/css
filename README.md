@@ -20,15 +20,19 @@ Css universal design boilerplate. Works without interference to HTML.
 
 - [DADS(html)](https://github.com/digital-go-jp/design-system-example-components-html)
 
-## Ported from Dads(html)
+## Changes from Dads(html)
 
-Trimmed and cleaned of DADS(html) (2026-05)
-- CSS/JS components only, no build tooling
-- Custom typography applied
-- Single index.html(includes all */example.html) and replace images with gray svg placeholders
-- Class prefix `dads-` retained; `dads-component__child` BEM notation to be eliminated.
+- CSS/JS components only, no build tooling.
+- Custom font-family applied in global.css.
+- Single html and replace images with svg placeholders.
+- Unwrap single element css components.
+- Delete div wrapper in table.css.
 
 ## License
 
+```
 SPDX-License-Identifier: Apache-2.0
 Copyright (c) 2026 Andyou <andyou@animagram.jp>
+```
+
+Also see [Notice](./NOTICE).
