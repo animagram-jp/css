@@ -186,6 +186,11 @@
   --font-family-mono: "Fira Code", "Noto Sans Mono", monospace;
 }
 
+[hidden],
+.hidden {
+  display: none !important;
+}
+
 html {
   scrollbar-gutter: stable;
   font-family: var(--font-family-sans);
