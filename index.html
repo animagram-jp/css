@@ -37,7 +37,7 @@
 <link rel="stylesheet" href="menu-list/menu-list.css">
 <link rel="stylesheet" href="menu-list-box/menu-list-box.css">
 <link rel="stylesheet" href="notification-banner/notification-banner.css">
-<link rel="stylesheet" href="radio/radio.css">
+<link rel="stylesheet" href="radio.css">
 <link rel="stylesheet" href="resource-list/resource-list.css">
 <link rel="stylesheet" href="search-box/search-box.css">
 <link rel="stylesheet" href="select/select.css">
@@ -1439,80 +1439,26 @@
 <!-- サイズ×状態マトリクス: lg / md / sm × 通常・選択済・エラー・無効 -->
 <div style="display: grid; grid-template-columns: repeat(6, auto); gap: 2rem; justify-content: start">
 
-  <label class="dads-radio" data-size="lg">
-    <span class="dads-radio__radio"><input class="dads-radio__input" type="radio" name="lg-1"></span>
-    <span class="dads-radio__label">ラベル</span>
-  </label>
-  <label class="dads-radio" data-size="lg">
-    <span class="dads-radio__radio"><input class="dads-radio__input" type="radio" name="lg-1" checked></span>
-    <span class="dads-radio__label">ラベル</span>
-  </label>
-  <label class="dads-radio" data-size="lg">
-    <span class="dads-radio__radio"><input class="dads-radio__input" type="radio" name="lg-2" aria-invalid="true"></span>
-    <span class="dads-radio__label">ラベル</span>
-  </label>
-  <label class="dads-radio" data-size="lg">
-    <span class="dads-radio__radio"><input class="dads-radio__input" type="radio" name="lg-2" checked aria-invalid="true"></span>
-    <span class="dads-radio__label">ラベル</span>
-  </label>
-  <label class="dads-radio" data-size="lg">
-    <span class="dads-radio__radio"><input class="dads-radio__input" type="radio" name="lg-3" disabled></span>
-    <span class="dads-radio__label">ラベル</span>
-  </label>
-  <label class="dads-radio" data-size="lg">
-    <span class="dads-radio__radio"><input class="dads-radio__input" type="radio" name="lg-3" checked disabled></span>
-    <span class="dads-radio__label">ラベル</span>
-  </label>
+  <label class="dads-radio" data-size="lg"><input class="dads-radio__input" type="radio" name="lg-1">ラベル</label>
+  <label class="dads-radio" data-size="lg"><input class="dads-radio__input" type="radio" name="lg-1" checked>ラベル</label>
+  <label class="dads-radio" data-size="lg"><input class="dads-radio__input" type="radio" name="lg-2" aria-invalid="true">ラベル</label>
+  <label class="dads-radio" data-size="lg"><input class="dads-radio__input" type="radio" name="lg-2" checked aria-invalid="true">ラベル</label>
+  <label class="dads-radio" data-size="lg"><input class="dads-radio__input" type="radio" name="lg-3" disabled>ラベル</label>
+  <label class="dads-radio" data-size="lg"><input class="dads-radio__input" type="radio" name="lg-3" checked disabled>ラベル</label>
 
-  <label class="dads-radio" data-size="md">
-    <span class="dads-radio__radio"><input class="dads-radio__input" type="radio" name="md-1"></span>
-    <span class="dads-radio__label">ラベル</span>
-  </label>
-  <label class="dads-radio" data-size="md">
-    <span class="dads-radio__radio"><input class="dads-radio__input" type="radio" name="md-1" checked></span>
-    <span class="dads-radio__label">ラベル</span>
-  </label>
-  <label class="dads-radio" data-size="md">
-    <span class="dads-radio__radio"><input class="dads-radio__input" type="radio" name="md-2" aria-invalid="true"></span>
-    <span class="dads-radio__label">ラベル</span>
-  </label>
-  <label class="dads-radio" data-size="md">
-    <span class="dads-radio__radio"><input class="dads-radio__input" type="radio" name="md-2" checked aria-invalid="true"></span>
-    <span class="dads-radio__label">ラベル</span>
-  </label>
-  <label class="dads-radio" data-size="md">
-    <span class="dads-radio__radio"><input class="dads-radio__input" type="radio" name="md-3" disabled></span>
-    <span class="dads-radio__label">ラベル</span>
-  </label>
-  <label class="dads-radio" data-size="md">
-    <span class="dads-radio__radio"><input class="dads-radio__input" type="radio" name="md-3" checked disabled></span>
-    <span class="dads-radio__label">ラベル</span>
-  </label>
+  <label class="dads-radio" data-size="md"><input class="dads-radio__input" type="radio" name="md-1">ラベル</label>
+  <label class="dads-radio" data-size="md"><input class="dads-radio__input" type="radio" name="md-1" checked>ラベル</label>
+  <label class="dads-radio" data-size="md"><input class="dads-radio__input" type="radio" name="md-2" aria-invalid="true">ラベル</label>
+  <label class="dads-radio" data-size="md"><input class="dads-radio__input" type="radio" name="md-2" checked aria-invalid="true">ラベル</label>
+  <label class="dads-radio" data-size="md"><input class="dads-radio__input" type="radio" name="md-3" disabled>ラベル</label>
+  <label class="dads-radio" data-size="md"><input class="dads-radio__input" type="radio" name="md-3" checked disabled>ラベル</label>
 
-  <label class="dads-radio" data-size="sm">
-    <span class="dads-radio__radio"><input class="dads-radio__input" type="radio" name="sm-1"></span>
-    <span class="dads-radio__label">ラベル</span>
-  </label>
-  <label class="dads-radio" data-size="sm">
-    <span class="dads-radio__radio"><input class="dads-radio__input" type="radio" name="sm-1" checked></span>
-    <span class="dads-radio__label">ラベル</span>
-  </label>
-  <label class="dads-radio" data-size="sm">
-    <span class="dads-radio__radio"><input class="dads-radio__input" type="radio" name="sm-2" aria-invalid="true"></span>
-    <span class="dads-radio__label">ラベル</span>
-  </label>
-  <label class="dads-radio" data-size="sm">
-    <span class="dads-radio__radio"><input class="dads-radio__input" type="radio" name="sm-2" checked aria-invalid="true"></span>
-    <span class="dads-radio__label">ラベル</span>
-  </label>
-  <label class="dads-radio" data-size="sm">
-    <span class="dads-radio__radio"><input class="dads-radio__input" type="radio" name="sm-3" disabled></span>
-    <span class="dads-radio__label">ラベル</span>
-  </label>
-  <label class="dads-radio" data-size="sm">
-    <span class="dads-radio__radio"><input class="dads-radio__input" type="radio" name="sm-3" checked disabled></span>
-    <span class="dads-radio__label">ラベル</span>
-  </label>
+  <label class="dads-radio" data-size="sm"><input class="dads-radio__input" type="radio" name="sm-1">ラベル</label>
+  <label class="dads-radio" data-size="sm"><input class="dads-radio__input" type="radio" name="sm-1" checked>ラベル</label>
+  <label class="dads-radio" data-size="sm"><input class="dads-radio__input" type="radio" name="sm-2" aria-invalid="true">ラベル</label>
+  <label class="dads-radio" data-size="sm"><input class="dads-radio__input" type="radio" name="sm-2" checked aria-invalid="true">ラベル</label>
+  <label class="dads-radio" data-size="sm"><input class="dads-radio__input" type="radio" name="sm-3" disabled>ラベル</label>
+  <label class="dads-radio" data-size="sm"><input class="dads-radio__input" type="radio" name="sm-3" checked disabled>ラベル</label>
 
 </div>
 

@@ -28,6 +28,7 @@ Css universal design boilerplate. Works without interference to HTML.
 - Unwrap single element css components.
 - Delete div wrapper in table.css.
 - Delete table/scroll-shadow.js
+- Edit radio.css to remove wrapper divs.
 
 ## License
 
