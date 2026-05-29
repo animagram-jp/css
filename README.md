@@ -27,6 +27,7 @@ Css universal design boilerplate. Works without interference to HTML.
 - Single html and replace images with svg placeholders.
 - Unwrap single element css components.
 - Delete div wrapper in table.css.
+- Delete table/scroll-shadow.js
 
 ## License
 
