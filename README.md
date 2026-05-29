@@ -30,6 +30,35 @@ Css universal design boilerplate. Works without interference to HTML.
 - Delete table/scroll-shadow.js
 - Edit radio.css to remove wrapper divs.
 
+## Popup Menu — Shared JS Contract
+
+A single JS module handles open/close, outside-click dismissal, focusout dismissal, and keyboard navigation for all dropdown/popup-menu components. CSS components that expose a popup menu must mark their elements with the following `data-*` attributes so the shared JS can find them without knowing the component name.
+
+| Attribute | Required | Element | Role |
+|---|---|---|---|
+| `data-js-opener` | yes | `<button>` | Toggles the popup; holds `aria-expanded` |
+| `data-js-popup` | yes | popup container | Shown/hidden via `hidden` attribute |
+| `data-js-menu` | yes | `<ul>` inside popup | Receives `keydown` for arrow-key navigation |
+| `data-js-menu-item` | yes | focusable `<a>` / `<button>` inside menu | Navigation target; click closes popup and returns focus to opener |
+
+### Keyboard behavior
+
+| Context | Key | Action |
+|---|---|---|
+| opener focused, menu open | `ArrowDown` | Focus first item |
+| opener focused, menu open | `ArrowUp` | Focus last item |
+| menu focused | `ArrowDown` | Next item (wraps to first) |
+| menu focused | `ArrowUp` | Previous item (wraps to last) |
+| menu focused | `Home` | First item |
+| menu focused | `End` | Last item |
+| anywhere | `Escape` | Close menu, return focus to opener |
+
+### CSS requirements
+
+- The popup container must default to `hidden` in HTML (`<div data-js-popup hidden>`). The shared JS removes/sets the attribute; CSS must not control visibility independently.
+- No CSS rule may show or hide `[data-js-popup]` based on a class toggle — visibility is owned entirely by the `hidden` attribute.
+- `aria-expanded` on the opener is set by JS; CSS may style `[aria-expanded="true"]` for visual open-state feedback (e.g. rotating a chevron icon).
+
 ## License
 
 ```
