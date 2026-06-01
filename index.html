@@ -30,7 +30,7 @@
 <link rel="stylesheet" href="hamburger-menu-button/hamburger-menu-button.css">
 <link rel="stylesheet" href="hamburger-menu-button/hamburger-menu-icon-button.css">
 <link rel="stylesheet" href="heading/heading.css">
-<link rel="stylesheet" href="input-text/input-text.css">
+<link rel="stylesheet" href="input-text.css">
 <link rel="stylesheet" href="language-selector/language-selector.css">
 <link rel="stylesheet" href="link.css">
 <link rel="stylesheet" href="list.css">
@@ -1162,25 +1162,19 @@
 <h2>Input Text</h2>
 
 <!-- 通常 -->
-<span class="dads-input-text">
-  <input class="dads-input-text__input" type="text" data-size="md" placeholder="テキストを入力">
-</span>
+<input class="dads-input-text" type="text" data-size="md" placeholder="テキストを入力">
 
 <!-- エラー -->
-<span class="dads-input-text" style="margin-top:1rem;display:block">
-  <input class="dads-input-text__input" type="text" data-size="md" aria-invalid="true" aria-describedby="input-error">
-  <span id="input-error" class="dads-input-text__error-text">＊エラーテキストが入ります。</span>
-</span>
+<div style="margin-top:1rem">
+  <input class="dads-input-text" type="text" data-size="md" aria-invalid="true" aria-describedby="input-error">
+  <span id="input-error" class="dads-input-text__error">＊エラーテキストが入ります。</span>
+</div>
 
 <!-- 読み取り専用 -->
-<span class="dads-input-text" style="margin-top:1rem;display:block">
-  <input class="dads-input-text__input" type="text" data-size="md" value="読み取り専用の値" readonly>
-</span>
+<input class="dads-input-text" type="text" data-size="md" value="読み取り専用の値" readonly style="margin-top:1rem;display:block">
 
 <!-- 無効 -->
-<span class="dads-input-text" style="margin-top:1rem;display:block">
-  <input class="dads-input-text__input" type="text" data-size="md" value="無効" disabled>
-</span>
+<input class="dads-input-text" type="text" data-size="md" value="無効" disabled style="margin-top:1rem;display:block">
 
 </section>
 
