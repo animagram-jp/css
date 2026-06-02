@@ -4,9 +4,9 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>DADS Components</title>
-<link rel="stylesheet" href="dads-base.css">
+<link rel="stylesheet" href="config.css">
 <link rel="stylesheet" href="accordion/accordion.css">
-<link rel="stylesheet" href="blockquote/blockquote.css">
+<link rel="stylesheet" href="blockquote.css">
 <link rel="stylesheet" href="breadcrumb/breadcrumb.css">
 <link rel="stylesheet" href="card/card-example-1.css">
 <link rel="stylesheet" href="card/card-example-2.css">
@@ -14,14 +14,14 @@
 <link rel="stylesheet" href="card/card-example-4.css">
 <link rel="stylesheet" href="card/card-example-5.css">
 <link rel="stylesheet" href="card/card-example-6.css">
-<link rel="stylesheet" href="button/button.css">
+<link rel="stylesheet" href="button.css">
 <link rel="stylesheet" href="calendar/calendar.css">
 <link rel="stylesheet" href="checkbox/checkbox.css">
-<link rel="stylesheet" href="chip-label/chip-label.css">
+<link rel="stylesheet" href="chip-label.css">
 <link rel="stylesheet" href="date-picker/date-picker.css">
-<link rel="stylesheet" href="description-list/description-list.css">
+<link rel="stylesheet" href="description-list.css">
 <link rel="stylesheet" href="disclosure/disclosure.css">
-<link rel="stylesheet" href="divider/divider.css">
+<link rel="stylesheet" href="divider.css">
 <link rel="stylesheet" href="drawer/drawer.css">
 <link rel="stylesheet" href="emergency-banner/emergency-banner.css">
 <link rel="stylesheet" href="file-upload/file-upload.css">
@@ -30,19 +30,19 @@
 <link rel="stylesheet" href="hamburger-menu-button/hamburger-menu-button.css">
 <link rel="stylesheet" href="hamburger-menu-button/hamburger-menu-icon-button.css">
 <link rel="stylesheet" href="heading/heading.css">
-<link rel="stylesheet" href="input-text/input-text.css">
+<link rel="stylesheet" href="input-text.css">
 <link rel="stylesheet" href="language-selector/language-selector.css">
-<link rel="stylesheet" href="link/link.css">
-<link rel="stylesheet" href="list/list.css">
+<link rel="stylesheet" href="link.css">
+<link rel="stylesheet" href="list.css">
 <link rel="stylesheet" href="menu-list/menu-list.css">
 <link rel="stylesheet" href="menu-list-box/menu-list-box.css">
 <link rel="stylesheet" href="notification-banner/notification-banner.css">
-<link rel="stylesheet" href="radio/radio.css">
+<link rel="stylesheet" href="radio.css">
 <link rel="stylesheet" href="resource-list/resource-list.css">
 <link rel="stylesheet" href="search-box/search-box.css">
 <link rel="stylesheet" href="select/select.css">
 <link rel="stylesheet" href="step-navigation/step-navigation.css">
-<link rel="stylesheet" href="table/table.css">
+<link rel="stylesheet" href="table.css">
 <link rel="stylesheet" href="textarea/textarea.css">
 <link rel="stylesheet" href="utility-link/utility-link.css">
 <link rel="stylesheet" href="carousel/carousel.css">
@@ -52,7 +52,6 @@
 <script type="module" src="file-upload/file-upload.js"></script>
 <script type="module" src="language-selector/language-selector.js"></script>
 <script type="module" src="menu-list-box/menu-list-box.js"></script>
-<script type="module" src="table/scroll-shadow.js"></script>
 <script type="module" src="carousel/carousel.js"></script>
 <script type="module" src="progress-indicator/progress-indicator.js"></script>
 <script type="module" src="textarea/textarea-counter.js"></script>
@@ -1163,25 +1162,19 @@
 <h2>Input Text</h2>
 
 <!-- 通常 -->
-<span class="dads-input-text">
-  <input class="dads-input-text__input" type="text" data-size="md" placeholder="テキストを入力">
-</span>
+<input class="dads-input-text" type="text" data-size="md" placeholder="テキストを入力">
 
 <!-- エラー -->
-<span class="dads-input-text" style="margin-top:1rem;display:block">
-  <input class="dads-input-text__input" type="text" data-size="md" aria-invalid="true" aria-describedby="input-error">
-  <span id="input-error" class="dads-input-text__error-text">＊エラーテキストが入ります。</span>
-</span>
+<div style="margin-top:1rem">
+  <input class="dads-input-text" type="text" data-size="md" aria-invalid="true" aria-describedby="input-error">
+  <span id="input-error" class="dads-input-text__error">＊エラーテキストが入ります。</span>
+</div>
 
 <!-- 読み取り専用 -->
-<span class="dads-input-text" style="margin-top:1rem;display:block">
-  <input class="dads-input-text__input" type="text" data-size="md" value="読み取り専用の値" readonly>
-</span>
+<input class="dads-input-text" type="text" data-size="md" value="読み取り専用の値" readonly style="margin-top:1rem;display:block">
 
 <!-- 無効 -->
-<span class="dads-input-text" style="margin-top:1rem;display:block">
-  <input class="dads-input-text__input" type="text" data-size="md" value="無効" disabled>
-</span>
+<input class="dads-input-text" type="text" data-size="md" value="無効" disabled style="margin-top:1rem;display:block">
 
 </section>
 
@@ -1440,80 +1433,26 @@
 <!-- サイズ×状態マトリクス: lg / md / sm × 通常・選択済・エラー・無効 -->
 <div style="display: grid; grid-template-columns: repeat(6, auto); gap: 2rem; justify-content: start">
 
-  <label class="dads-radio" data-size="lg">
-    <span class="dads-radio__radio"><input class="dads-radio__input" type="radio" name="lg-1"></span>
-    <span class="dads-radio__label">ラベル</span>
-  </label>
-  <label class="dads-radio" data-size="lg">
-    <span class="dads-radio__radio"><input class="dads-radio__input" type="radio" name="lg-1" checked></span>
-    <span class="dads-radio__label">ラベル</span>
-  </label>
-  <label class="dads-radio" data-size="lg">
-    <span class="dads-radio__radio"><input class="dads-radio__input" type="radio" name="lg-2" aria-invalid="true"></span>
-    <span class="dads-radio__label">ラベル</span>
-  </label>
-  <label class="dads-radio" data-size="lg">
-    <span class="dads-radio__radio"><input class="dads-radio__input" type="radio" name="lg-2" checked aria-invalid="true"></span>
-    <span class="dads-radio__label">ラベル</span>
-  </label>
-  <label class="dads-radio" data-size="lg">
-    <span class="dads-radio__radio"><input class="dads-radio__input" type="radio" name="lg-3" disabled></span>
-    <span class="dads-radio__label">ラベル</span>
-  </label>
-  <label class="dads-radio" data-size="lg">
-    <span class="dads-radio__radio"><input class="dads-radio__input" type="radio" name="lg-3" checked disabled></span>
-    <span class="dads-radio__label">ラベル</span>
-  </label>
+  <label class="dads-radio" data-size="lg"><input class="dads-radio__input" type="radio" name="lg-1">ラベル</label>
+  <label class="dads-radio" data-size="lg"><input class="dads-radio__input" type="radio" name="lg-1" checked>ラベル</label>
+  <label class="dads-radio" data-size="lg"><input class="dads-radio__input" type="radio" name="lg-2" aria-invalid="true">ラベル</label>
+  <label class="dads-radio" data-size="lg"><input class="dads-radio__input" type="radio" name="lg-2" checked aria-invalid="true">ラベル</label>
+  <label class="dads-radio" data-size="lg"><input class="dads-radio__input" type="radio" name="lg-3" disabled>ラベル</label>
+  <label class="dads-radio" data-size="lg"><input class="dads-radio__input" type="radio" name="lg-3" checked disabled>ラベル</label>
 
-  <label class="dads-radio" data-size="md">
-    <span class="dads-radio__radio"><input class="dads-radio__input" type="radio" name="md-1"></span>
-    <span class="dads-radio__label">ラベル</span>
-  </label>
-  <label class="dads-radio" data-size="md">
-    <span class="dads-radio__radio"><input class="dads-radio__input" type="radio" name="md-1" checked></span>
-    <span class="dads-radio__label">ラベル</span>
-  </label>
-  <label class="dads-radio" data-size="md">
-    <span class="dads-radio__radio"><input class="dads-radio__input" type="radio" name="md-2" aria-invalid="true"></span>
-    <span class="dads-radio__label">ラベル</span>
-  </label>
-  <label class="dads-radio" data-size="md">
-    <span class="dads-radio__radio"><input class="dads-radio__input" type="radio" name="md-2" checked aria-invalid="true"></span>
-    <span class="dads-radio__label">ラベル</span>
-  </label>
-  <label class="dads-radio" data-size="md">
-    <span class="dads-radio__radio"><input class="dads-radio__input" type="radio" name="md-3" disabled></span>
-    <span class="dads-radio__label">ラベル</span>
-  </label>
-  <label class="dads-radio" data-size="md">
-    <span class="dads-radio__radio"><input class="dads-radio__input" type="radio" name="md-3" checked disabled></span>
-    <span class="dads-radio__label">ラベル</span>
-  </label>
+  <label class="dads-radio" data-size="md"><input class="dads-radio__input" type="radio" name="md-1">ラベル</label>
+  <label class="dads-radio" data-size="md"><input class="dads-radio__input" type="radio" name="md-1" checked>ラベル</label>
+  <label class="dads-radio" data-size="md"><input class="dads-radio__input" type="radio" name="md-2" aria-invalid="true">ラベル</label>
+  <label class="dads-radio" data-size="md"><input class="dads-radio__input" type="radio" name="md-2" checked aria-invalid="true">ラベル</label>
+  <label class="dads-radio" data-size="md"><input class="dads-radio__input" type="radio" name="md-3" disabled>ラベル</label>
+  <label class="dads-radio" data-size="md"><input class="dads-radio__input" type="radio" name="md-3" checked disabled>ラベル</label>
 
-  <label class="dads-radio" data-size="sm">
-    <span class="dads-radio__radio"><input class="dads-radio__input" type="radio" name="sm-1"></span>
-    <span class="dads-radio__label">ラベル</span>
-  </label>
-  <label class="dads-radio" data-size="sm">
-    <span class="dads-radio__radio"><input class="dads-radio__input" type="radio" name="sm-1" checked></span>
-    <span class="dads-radio__label">ラベル</span>
-  </label>
-  <label class="dads-radio" data-size="sm">
-    <span class="dads-radio__radio"><input class="dads-radio__input" type="radio" name="sm-2" aria-invalid="true"></span>
-    <span class="dads-radio__label">ラベル</span>
-  </label>
-  <label class="dads-radio" data-size="sm">
-    <span class="dads-radio__radio"><input class="dads-radio__input" type="radio" name="sm-2" checked aria-invalid="true"></span>
-    <span class="dads-radio__label">ラベル</span>
-  </label>
-  <label class="dads-radio" data-size="sm">
-    <span class="dads-radio__radio"><input class="dads-radio__input" type="radio" name="sm-3" disabled></span>
-    <span class="dads-radio__label">ラベル</span>
-  </label>
-  <label class="dads-radio" data-size="sm">
-    <span class="dads-radio__radio"><input class="dads-radio__input" type="radio" name="sm-3" checked disabled></span>
-    <span class="dads-radio__label">ラベル</span>
-  </label>
+  <label class="dads-radio" data-size="sm"><input class="dads-radio__input" type="radio" name="sm-1">ラベル</label>
+  <label class="dads-radio" data-size="sm"><input class="dads-radio__input" type="radio" name="sm-1" checked>ラベル</label>
+  <label class="dads-radio" data-size="sm"><input class="dads-radio__input" type="radio" name="sm-2" aria-invalid="true">ラベル</label>
+  <label class="dads-radio" data-size="sm"><input class="dads-radio__input" type="radio" name="sm-2" checked aria-invalid="true">ラベル</label>
+  <label class="dads-radio" data-size="sm"><input class="dads-radio__input" type="radio" name="sm-3" disabled>ラベル</label>
+  <label class="dads-radio" data-size="sm"><input class="dads-radio__input" type="radio" name="sm-3" checked disabled>ラベル</label>
 
 </div>
 
@@ -1735,76 +1674,47 @@
 <h2>Table</h2>
 
 <!-- 通常 -->
-<div class="dads-table">
-  <table class="dads-table__table">
-    <thead>
-      <tr>
-        <th class="dads-table__col-header" scope="col">ラベル</th>
-        <th class="dads-table__col-header" scope="col">ラベル</th>
-        <th class="dads-table__col-header" scope="col">ラベル</th>
-        <th class="dads-table__col-header" scope="col">ラベル</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td>データ</td>
-        <td>データ</td>
-        <td>データ</td>
-        <td>データ</td>
-      </tr>
-      <tr>
-        <td>データ</td>
-        <td>データ</td>
-        <td>データ</td>
-        <td>データ</td>
-      </tr>
-    </tbody>
-  </table>
-</div>
+<table class="dads-table">
+  <thead>
+    <tr>
+      <th class="dads-table__col-header" scope="col">ラベル</th>
+      <th class="dads-table__col-header" scope="col">ラベル</th>
+      <th class="dads-table__col-header" scope="col">ラベル</th>
+      <th class="dads-table__col-header" scope="col">ラベル</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>データ</td>
+      <td>データ</td>
+      <td>データ</td>
+      <td>データ</td>
+    </tr>
+    <tr>
+      <td>データ</td>
+      <td>データ</td>
+      <td>データ</td>
+      <td>データ</td>
+    </tr>
+  </tbody>
+</table>
 
-<!-- スクロールシャドウ付き -->
-<div class="dads-table" style="margin-top: 2rem; max-width: 400px;">
-  <dads-scroll-shadow style="--scroll-shadow-padding: 0px;">
-    <table class="dads-table__table">
-      <thead>
-        <tr>
-          <th class="dads-table__col-header" scope="col">列1</th>
-          <th class="dads-table__col-header" scope="col">列2</th>
-          <th class="dads-table__col-header" scope="col">列3</th>
-          <th class="dads-table__col-header" scope="col">列4</th>
-          <th class="dads-table__col-header" scope="col">列5</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td>データ1</td>
-          <td>データ2</td>
-          <td>データ3</td>
-          <td>データ4</td>
-          <td>データ5</td>
-        </tr>
-      </tbody>
-    </table>
-  </dads-scroll-shadow>
-</div>
 
 <!-- ストライプ -->
-<div class="dads-table" data-row-stripe style="margin-top: 2rem;">
-  <table class="dads-table__table" data-cell-border="bottom">
-    <thead>
-      <tr>
-        <th class="dads-table__col-header" scope="col">ラベル</th>
-        <th class="dads-table__col-header" scope="col">ラベル</th>
-        <th class="dads-table__col-header" scope="col">ラベル</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr><td>データ</td><td>データ</td><td>データ</td></tr>
-      <tr><td>データ</td><td>データ</td><td>データ</td></tr>
-      <tr><td>データ</td><td>データ</td><td>データ</td></tr>
-    </tbody>
-  </table>
-</div>
+<table class="dads-table" data-row-stripe data-cell-border="bottom" style="margin-top: 2rem;">
+  <thead>
+    <tr>
+      <th class="dads-table__col-header" scope="col">ラベル</th>
+      <th class="dads-table__col-header" scope="col">ラベル</th>
+      <th class="dads-table__col-header" scope="col">ラベル</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr><td>データ</td><td>データ</td><td>データ</td></tr>
+    <tr><td>データ</td><td>データ</td><td>データ</td></tr>
+    <tr><td>データ</td><td>データ</td><td>データ</td></tr>
+  </tbody>
+</table>
 
 </section>
 
