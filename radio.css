@@ -1,13 +1,14 @@
 .dads-radio {
+  position: relative;
   display: flex;
-  align-items: start;
+  align-items: center;
   gap: var(--_gap);
   width: fit-content;
-}
-
-.dads-radio:has(.dads-radio__label:not(:empty)) {
   padding-top: calc(8 / 16 * 1rem);
   padding-bottom: calc(8 / 16 * 1rem);
+  color: var(--color-neutral-solid-gray-800);
+  font-size: var(--_label-font-size, 1rem);
+  line-height: 1.3;
 }
 
 .dads-radio[data-size="sm"] {
@@ -16,8 +17,6 @@
   --_radio-outer-size: calc(20 / 16 * 1rem);
   --_radio-inner-size: calc(10 / 16 * 1rem);
   --_radio-border-width: calc(2 / 16 * 1rem);
-  --_label-padding-top: 1px;
-  --_label-font-size: calc(16 / 16 * 1rem);
 }
 
 .dads-radio[data-size="md"] {
@@ -26,8 +25,6 @@
   --_radio-outer-size: calc(26 / 16 * 1rem);
   --_radio-inner-size: calc(12 / 16 * 1rem);
   --_radio-border-width: calc(2 / 16 * 1rem);
-  --_label-padding-top: calc(4 / 16 * 1rem);
-  --_label-font-size: calc(16 / 16 * 1rem);
 }
 
 .dads-radio[data-size="lg"] {
@@ -36,26 +33,7 @@
   --_radio-outer-size: calc(36 / 16 * 1rem);
   --_radio-inner-size: calc(16 / 16 * 1rem);
   --_radio-border-width: calc(3 / 16 * 1rem);
-  --_label-padding-top: calc(10 / 16 * 1rem);
   --_label-font-size: calc(17 / 16 * 1rem);
-}
-
-.dads-radio__radio {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-shrink: 0;
-  width: var(--_radio-size);
-  height: var(--_radio-size);
-  border-radius: 50%;
-}
-
-@media (hover: hover) {
-  .dads-radio__radio:has(
-      :not(:focus, :disabled, [aria-disabled="true"]):hover
-    ) {
-    background-color: var(--color-neutral-solid-gray-420);
-  }
 }
 
 .dads-radio__input {
@@ -66,6 +44,7 @@
   --_border-hover-color: var(--color-neutral-black);
 
   position: relative;
+  flex-shrink: 0;
   margin: 0;
   appearance: none;
   width: var(--_radio-outer-size);
@@ -73,6 +52,24 @@
   border-radius: 51%;
   background-color: var(--_base-color);
   border: var(--_radio-border-width) solid var(--_border-color);
+}
+
+@media (hover: hover) {
+  .dads-radio::before {
+    position: absolute;
+    top: 50%;
+    left: calc((var(--_radio-size) - var(--_radio-outer-size)) / -2);
+    transform: translateY(-50%);
+    width: var(--_radio-size);
+    height: var(--_radio-size);
+    border-radius: 50%;
+    content: "";
+    pointer-events: none;
+  }
+
+  .dads-radio:has(.dads-radio__input:not(:focus, :disabled, [aria-disabled="true"]):hover)::before {
+    background-color: var(--color-neutral-solid-gray-420);
+  }
 }
 
 .dads-radio__input:focus {
@@ -147,14 +144,4 @@
     --_border-color: GrayText;
     --_border-hover-color: GrayText;
   }
-}
-
-.dads-radio__label {
-  padding-top: var(--_label-padding-top);
-  color: var(--color-neutral-solid-gray-800);
-  font-weight: normal;
-  font-size: var(--_label-font-size);
-  line-height: 1.3;
-  font-family: var(--font-family-sans);
-  letter-spacing: 0;
 }
