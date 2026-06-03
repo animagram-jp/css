@@ -31,6 +31,8 @@ Css universal design boilerplate. Works without interference to HTML.
 - Edit radio.css to remove wrapper divs.
 - Edit input-text.css to remove wrapper span.
 - Delete language-selector and edit menu-list-box to list-box.
+- Edit form-control-label.css and textarea.css.
+- Change button.css display:flex to inline-flex.
 
 ## Popup Menu — Shared JS Contract
 
