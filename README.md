@@ -30,6 +30,7 @@ Css universal design boilerplate. Works without interference to HTML.
 - Delete table/scroll-shadow.js
 - Edit radio.css to remove wrapper divs.
 - Edit input-text.css to remove wrapper span.
+- Delete language-selector and edit menu-list-box to list-box.
 
 ## Popup Menu — Shared JS Contract
 
