@@ -131,7 +131,7 @@
   margin-top: calc(4 / 16 * 1rem);
 }
 
-.dads-file-upload__remove-button.dads-button[data-size="xs"] {
+.dads-file-upload__remove-button.dads-button[dads-size="xs"] {
   flex-shrink: 0;
   min-width: calc(48 / 16 * 1rem);
   min-height: calc(30 / 16 * 1rem);

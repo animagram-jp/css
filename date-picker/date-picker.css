@@ -27,15 +27,15 @@
   padding: calc(2 / 16 * 1rem) 0 calc(2 / 16 * 1rem) calc(2 / 16 * 1rem);
 }
 
-.dads-date-picker__controls[data-size="sm"] .dads-date-picker__inputs {
+.dads-date-picker__controls[dads-size="sm"] .dads-date-picker__inputs {
   height: calc(40 / 16 * 1rem);
 }
 
-.dads-date-picker__controls[data-size="md"] .dads-date-picker__inputs {
+.dads-date-picker__controls[dads-size="md"] .dads-date-picker__inputs {
   height: calc(48 / 16 * 1rem);
 }
 
-.dads-date-picker__controls[data-size="lg"] .dads-date-picker__inputs {
+.dads-date-picker__controls[dads-size="lg"] .dads-date-picker__inputs {
   height: calc(56 / 16 * 1rem);
 }
 
@@ -148,17 +148,17 @@
   padding-top: calc(12 / 16 * 1rem);
 }
 
-.dads-date-picker__controls[data-size="sm"]
+.dads-date-picker__controls[dads-size="sm"]
   .dads-date-picker__separated-inputs {
   height: calc(40 / 16 * 1rem);
 }
 
-.dads-date-picker__controls[data-size="md"]
+.dads-date-picker__controls[dads-size="md"]
   .dads-date-picker__separated-inputs {
   height: calc(48 / 16 * 1rem);
 }
 
-.dads-date-picker__controls[data-size="lg"]
+.dads-date-picker__controls[dads-size="lg"]
   .dads-date-picker__separated-inputs {
   height: calc(56 / 16 * 1rem);
 }
@@ -260,15 +260,15 @@
   color: var(--color-primitive-blue-900);
 }
 
-.dads-date-picker__controls[data-size="sm"] .dads-date-picker__calendar-button {
+.dads-date-picker__controls[dads-size="sm"] .dads-date-picker__calendar-button {
   height: calc(40 / 16 * 1rem);
 }
 
-.dads-date-picker__controls[data-size="md"] .dads-date-picker__calendar-button {
+.dads-date-picker__controls[dads-size="md"] .dads-date-picker__calendar-button {
   height: calc(48 / 16 * 1rem);
 }
 
-.dads-date-picker__controls[data-size="lg"] .dads-date-picker__calendar-button {
+.dads-date-picker__controls[dads-size="lg"] .dads-date-picker__calendar-button {
   height: calc(56 / 16 * 1rem);
 }
 
