@@ -39,7 +39,7 @@
 <link rel="stylesheet" href="radio.css">
 <link rel="stylesheet" href="resource-list/resource-list.css">
 <link rel="stylesheet" href="search-box/search-box.css">
-<link rel="stylesheet" href="select/select.css">
+<link rel="stylesheet" href="select.css">
 <link rel="stylesheet" href="step-navigation/step-navigation.css">
 <link rel="stylesheet" href="table.css">
 <link rel="stylesheet" href="textarea.css">
@@ -545,9 +545,7 @@
 <dads-calendar class="dads-calendar" role="application" data-js-calendar>
   <div class="dads-u-visually-hidden"><h2 data-js-calendar-heading aria-live="polite"></h2></div>
   <div class="dads-calendar__controls">
-    <div class="dads-select__control">
-      <select class="dads-select__select" data-size="sm" aria-label="年" data-js-year-select></select>
-    </div>
+    <select class="dads-select" data-size="sm" aria-label="年" data-js-year-select></select>
     <div class="dads-calendar__navigation">
       <button class="dads-button dads-calendar__nav-button" data-size="sm" data-type="outline" data-js-prev-month-button>
         <svg width="16" height="16" viewBox="0 0 16 16" role="img" aria-label="前の月">
@@ -587,6 +585,131 @@
     <button class="dads-button" data-size="sm" data-type="outline" data-js-today-button>今日</button>
   </div>
 </dads-calendar>
+
+</section>
+
+
+<!-- ============================================================ -->
+<!-- carousel (画像はSVGプレースホルダーで代替) -->
+<!-- ============================================================ -->
+<section class="example-section example-carousel">
+<h2 style="padding: 0 2rem;">Carousel</h2>
+
+<dads-carousel class="dads-carousel" breakpoint-rem="64" role="region" aria-label="スライドショー" data-js-unit="スライド">
+  <div class="dads-carousel__inner">
+    <div class="dads-carousel__panels">
+      <div class="dads-carousel__panel-set">
+        <p class="dads-carousel__number dads-carousel__panel-number" aria-current="true" aria-hidden="true" data-js-current-number></p>
+        <div class="dads-carousel__main" aria-live="polite" aria-atomic="true">
+          <div class="dads-carousel__main-panel" data-js-main-panel>
+            <a class="dads-carousel__main-link" data-js-main-link>
+              <span class="dads-u-visually-hidden" data-js-main-label>スライド1</span>
+              <div class="dads-carousel__image-container" data-js-main-images>
+                <img src="data:image/svg+xml,%3Csvg width='696' height='392' viewBox='0 0 696 392' xmlns='http://www.w3.org/2000/svg'%3E%3Crect width='696' height='392' fill='%23c8d0d8'/%3E%3Ctext x='50%25' y='50%25' dominant-baseline='middle' text-anchor='middle' fill='%236b7280' font-size='24' font-family='sans-serif'%3ESlide 1%3C/text%3E%3C/svg%3E" alt="スライド1の画像" width="696" height="392" style="display:block;width:100%;height:auto">
+              </div>
+            </a>
+          </div>
+        </div>
+        <p class="dads-carousel__next">
+          <button type="button" data-js-next-button>
+            <span class="dads-carousel__next-image-container" data-js-next-image-container>
+              <img src="data:image/svg+xml,%3Csvg width='696' height='392' viewBox='0 0 696 392' xmlns='http://www.w3.org/2000/svg'%3E%3Crect width='696' height='392' fill='%23b0bec5'/%3E%3Ctext x='50%25' y='50%25' dominant-baseline='middle' text-anchor='middle' fill='%236b7280' font-size='24' font-family='sans-serif'%3ESlide 2%3C/text%3E%3C/svg%3E" alt="" width="696" height="392" style="display:block;width:100%;height:auto">
+            </span>
+            <span class="dads-carousel__next-image-label">次のスライド</span>
+          </button>
+        </p>
+        <div class="dads-carousel__main-bg"><div data-js-main-bg></div></div>
+        <div class="dads-carousel__next-bg"><div data-js-next-bg></div></div>
+      </div>
+    </div>
+    <div class="dads-carousel__controls">
+      <dads-carousel-step-nav>
+        <ul class="dads-carousel__step-nav" role="tablist" aria-label="スライド選択">
+          <li role="presentation">
+            <button class="dads-carousel__step dads-carousel__number" type="button" role="tab">
+              <span class="dads-u-visually-hidden">スライド</span>1
+            </button>
+          </li>
+          <li role="presentation">
+            <button class="dads-carousel__step dads-carousel__number" type="button" role="tab">
+              <span class="dads-u-visually-hidden">スライド</span>2
+            </button>
+          </li>
+          <li role="presentation">
+            <button class="dads-carousel__step dads-carousel__number" type="button" role="tab">
+              <span class="dads-u-visually-hidden">スライド</span>3
+            </button>
+          </li>
+        </ul>
+      </dads-carousel-step-nav>
+      <p class="dads-carousel__page-nav">
+        <button type="button" data-js-prev-slide-button>
+          <svg width="16" height="16" viewBox="0 0 16 16" aria-hidden="true">
+            <path d="m5.27 8 5.33-5.33-.93-.94L3.4 8l6.27 6.27.93-.94L5.27 8Z" fill="currentcolor"></path>
+          </svg>
+          <span class="dads-u-visually-hidden">前のスライド</span>
+        </button>
+        <span data-js-current-slide></span>
+        <button type="button" data-js-next-slide-button>
+          <svg width="16" height="16" viewBox="0 0 16 16" aria-hidden="true">
+            <path d="m6 1.73-.93.94L10.4 8l-5.33 5.33.93.94L12.27 8 6 1.73Z" fill="currentcolor"></path>
+          </svg>
+          <span class="dads-u-visually-hidden">次のスライド</span>
+        </button>
+      </p>
+      <details class="dads-carousel__others dads-disclosure">
+        <summary class="dads-disclosure__summary">
+          <svg class="dads-disclosure__icon" width="24" height="24" viewBox="0 0 24 24" aria-hidden="true">
+            <circle cx="12" cy="12" r="11" fill="currentcolor"/>
+            <circle class="dads-disclosure__icon-circle" cx="12" cy="12" r="8" fill="currentcolor"/>
+            <path class="dads-disclosure__icon-triangle" d="M17 10H7L12 15L17 10Z" fill="Canvas"/>
+          </svg>
+          すべてのスライド
+        </summary>
+        <div class="dads-carousel__others-content dads-disclosure__content">
+          <ul data-js-slide-container>
+            <li class="dads-carousel__panel-set" data-js-slide>
+              <p class="dads-carousel__number dads-carousel__panel-number" aria-hidden="true">1</p>
+              <div class="dads-carousel__main">
+                <a class="dads-carousel__main-link">
+                  <span class="dads-u-visually-hidden">スライド1</span>
+                  <div class="dads-carousel__image-container">
+                    <img src="data:image/svg+xml,%3Csvg width='696' height='392' viewBox='0 0 696 392' xmlns='http://www.w3.org/2000/svg'%3E%3Crect width='696' height='392' fill='%23c8d0d8'/%3E%3Ctext x='50%25' y='50%25' dominant-baseline='middle' text-anchor='middle' fill='%236b7280' font-size='24' font-family='sans-serif'%3ESlide 1%3C/text%3E%3C/svg%3E" alt="スライド1の画像" width="696" height="392" style="display:block;width:100%;height:auto">
+                  </div>
+                </a>
+              </div>
+              <div class="dads-carousel__main-bg"><div data-js-bg-container></div></div>
+            </li>
+            <li class="dads-carousel__panel-set" data-js-slide>
+              <p class="dads-carousel__number dads-carousel__panel-number" aria-hidden="true">2</p>
+              <div class="dads-carousel__main">
+                <a class="dads-carousel__main-link">
+                  <span class="dads-u-visually-hidden">スライド2</span>
+                  <div class="dads-carousel__image-container">
+                    <img src="data:image/svg+xml,%3Csvg width='696' height='392' viewBox='0 0 696 392' xmlns='http://www.w3.org/2000/svg'%3E%3Crect width='696' height='392' fill='%23b0bec5'/%3E%3Ctext x='50%25' y='50%25' dominant-baseline='middle' text-anchor='middle' fill='%236b7280' font-size='24' font-family='sans-serif'%3ESlide 2%3C/text%3E%3C/svg%3E" alt="スライド2の画像" width="696" height="392" style="display:block;width:100%;height:auto">
+                  </div>
+                </a>
+              </div>
+              <div class="dads-carousel__main-bg"><div data-js-bg-container></div></div>
+            </li>
+            <li class="dads-carousel__panel-set" data-js-slide>
+              <p class="dads-carousel__number dads-carousel__panel-number" aria-hidden="true">3</p>
+              <div class="dads-carousel__main">
+                <a class="dads-carousel__main-link">
+                  <span class="dads-u-visually-hidden">スライド3</span>
+                  <div class="dads-carousel__image-container">
+                    <img src="data:image/svg+xml,%3Csvg width='696' height='392' viewBox='0 0 696 392' xmlns='http://www.w3.org/2000/svg'%3E%3Crect width='696' height='392' fill='%2390a4ae'/%3E%3Ctext x='50%25' y='50%25' dominant-baseline='middle' text-anchor='middle' fill='%236b7280' font-size='24' font-family='sans-serif'%3ESlide 3%3C/text%3E%3C/svg%3E" alt="スライド3の画像" width="696" height="392" style="display:block;width:100%;height:auto">
+                  </div>
+                </a>
+              </div>
+              <div class="dads-carousel__main-bg"><div data-js-bg-container></div></div>
+            </li>
+          </ul>
+        </div>
+      </details>
+    </div>
+  </div>
+</dads-carousel>
 
 </section>
 
@@ -729,9 +852,7 @@
       <dads-calendar class="dads-calendar" role="application" data-js-calendar>
         <div class="dads-u-visually-hidden"><h2 data-js-calendar-heading aria-live="polite"></h2></div>
         <div class="dads-calendar__controls">
-          <div class="dads-select__control">
-            <select class="dads-select__select" data-size="sm" aria-label="年" data-js-year-select></select>
-          </div>
+          <select class="dads-select" data-size="sm" aria-label="年" data-js-year-select></select>
           <div class="dads-calendar__navigation">
             <button class="dads-button dads-calendar__nav-button" data-size="sm" data-type="outline" data-js-prev-month-button>
               <svg width="16" height="16" viewBox="0 0 16 16" role="img" aria-label="前の月">
@@ -1341,6 +1462,86 @@
 
 </section>
 
+
+<!-- ============================================================ -->
+<!-- progress-indicator -->
+<!-- ============================================================ -->
+<section class="example-section">
+<h2>Progress Indicator</h2>
+
+<!-- Static -->
+<div style="display: flex; flex-wrap: wrap; gap: 2rem; align-items: center; margin-bottom: 1.5rem;">
+
+  <dads-progress-indicator class="dads-progress-indicator" data-type="stacked" intent="passive" active>
+    <svg class="dads-progress-indicator__static" data-js-indicator width="48" height="48" viewBox="0 0 48 48" fill="none" aria-hidden="true">
+      <path fill="currentcolor" d="M17 15c0 2.5 2.2 7 7 7s7-5 7-7H17ZM15 42h18c0-2-1-4.5-1-4.5L24 34l-8 3.5S15 40 15 42Z"/>
+      <path fill="none" stroke="currentcolor" stroke-width="2" d="M24 24C34.5 24 35.5 6 35.5 4.8V4M24 24C13.5 24 12.5 6 12.5 4.8V4M24 24c7 0 11.5 11.8 11.5 18.3V44M24 24c-7 0-11.5 11.8-11.5 18.3V44M9 4h30M9 44h30"/>
+      <circle cx="24" cy="28" r="1" fill="currentcolor"/>
+      <circle cx="24" cy="31" r="1" fill="currentcolor"/>
+    </svg>
+    <span class="dads-progress-indicator__label" data-js-label>ラベル</span>
+  </dads-progress-indicator>
+
+  <dads-progress-indicator class="dads-progress-indicator" data-type="inlined" intent="passive" active>
+    <svg class="dads-progress-indicator__static" data-js-indicator width="24" height="24" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+      <path fill="currentcolor" d="M9 6c0 1.8 1.1 5 3.5 5S16 7.4 16 6H9ZM8 21h9c0-1-.5-2.2-.5-2.2l-4-1.8-4 1.8S8 20 8 21Z"/>
+      <path fill="none" stroke="currentcolor" d="M4 1.5h17m-17 21h17M6 1.5C6 5.1 7.6 12 12.5 12S18.9 5 19 1.5M19 22.5c.3-3.7-2.2-10.5-6.5-10.5S5.7 18.8 6 22.5"/>
+      <circle cx="12.5" cy="13.5" r=".5" fill="currentcolor"/>
+      <circle cx="12.5" cy="15.5" r=".5" fill="currentcolor"/>
+    </svg>
+    <span class="dads-progress-indicator__label" data-js-label>ラベル</span>
+  </dads-progress-indicator>
+
+</div>
+
+<!-- Linear Fill -->
+<div style="display: flex; flex-wrap: wrap; gap: 2rem; align-items: center; margin-bottom: 1.5rem;">
+
+  <dads-progress-indicator class="dads-progress-indicator" data-type="stacked" intent="passive" value="70" active>
+    <svg class="dads-progress-indicator__linear" data-js-indicator width="240" height="4" viewBox="0 0 240 4" stroke="currentcolor" fill="none" aria-hidden="true">
+      <line class="dads-progress-indicator__track" x1="0" y1="2" x2="240" y2="2" stroke-width="4"></line>
+      <line class="dads-progress-indicator__bar" x1="0" y1="2" x2="240" y2="2" stroke-width="4" pathLength="100"></line>
+      <line class="dads-progress-indicator__border" x1="0" y1="3.5" x2="240" y2="3.5" stroke-width="1"></line>
+    </svg>
+    <span class="dads-progress-indicator__label" data-js-label>ラベル <span class="dads-progress-indicator__percentage" data-js-percentage></span></span>
+  </dads-progress-indicator>
+
+  <dads-progress-indicator class="dads-progress-indicator" data-type="inlined" intent="passive" value="70" active>
+    <svg class="dads-progress-indicator__linear" data-js-indicator width="80" height="4" viewBox="0 0 80 4" stroke="currentcolor" fill="none" aria-hidden="true">
+      <line class="dads-progress-indicator__track" x1="0" y1="2" x2="80" y2="2" stroke-width="4"></line>
+      <line class="dads-progress-indicator__bar" x1="0" y1="2" x2="80" y2="2" stroke-width="4" pathLength="100"></line>
+      <line class="dads-progress-indicator__border" x1="0" y1="3.5" x2="80" y2="3.5" stroke-width="1"></line>
+    </svg>
+    <span class="dads-progress-indicator__label" data-js-label>ラベル <span class="dads-progress-indicator__percentage" data-js-percentage></span></span>
+  </dads-progress-indicator>
+
+</div>
+
+<!-- Spinner Fill -->
+<div style="display: flex; flex-wrap: wrap; gap: 2rem; align-items: center;">
+
+  <dads-progress-indicator class="dads-progress-indicator" data-type="stacked" intent="passive" value="70" active>
+    <svg class="dads-progress-indicator__spinner" data-js-indicator width="48" height="48" viewBox="0 0 48 48" stroke="currentcolor" fill="none" aria-hidden="true">
+      <circle class="dads-progress-indicator__track" cx="24" cy="24" r="22" stroke-width="4"></circle>
+      <g><g><circle class="dads-progress-indicator__bar" cx="24" cy="24" r="22" stroke-width="4" pathLength="100"></circle></g></g>
+      <circle class="dads-progress-indicator__border" cx="24" cy="24" r="23.5" stroke-width="1"></circle>
+    </svg>
+    <span class="dads-progress-indicator__label" data-js-label>ラベル <span class="dads-progress-indicator__percentage" data-js-percentage></span></span>
+  </dads-progress-indicator>
+
+  <dads-progress-indicator class="dads-progress-indicator" data-type="inlined" intent="passive" value="70" active>
+    <svg class="dads-progress-indicator__spinner" data-js-indicator width="24" height="24" viewBox="0 0 24 24" stroke="currentcolor" fill="none" aria-hidden="true">
+      <circle class="dads-progress-indicator__track" cx="12" cy="12" r="8" stroke-width="3"></circle>
+      <g><g><circle class="dads-progress-indicator__bar" cx="12" cy="12" r="8" stroke-width="3" pathLength="100"></circle></g></g>
+      <circle class="dads-progress-indicator__border" cx="12" cy="12" r="9.5" stroke-width="1"></circle>
+    </svg>
+    <span class="dads-progress-indicator__label" data-js-label>ラベル <span class="dads-progress-indicator__percentage" data-js-percentage></span></span>
+  </dads-progress-indicator>
+
+</div>
+
+</section>
+
 <!-- ============================================================ -->
 <!-- radio -->
 <!-- ============================================================ -->
@@ -1476,7 +1677,7 @@
 <h2>Select</h2>
 
 <!-- 通常 -->
-<select class="dads-select__select" data-size="md">
+<select class="dads-select" data-size="md" style="display:block">
   <option value="">選択してください</option>
   <option value="1">選択肢1</option>
   <option value="2">選択肢2</option>
@@ -1484,21 +1685,19 @@
 </select>
 
 <!-- エラー -->
-<div class="dads-select__control" style="margin-top:1rem">
-  <select class="dads-select__select" data-size="md" aria-invalid="true" aria-describedby="select-error">
+  <select class="dads-select" data-size="md" aria-invalid="true" aria-describedby="select-error" style="display:block; margin-top:1rem">
     <option value="">選択してください</option>
     <option value="1">選択肢1</option>
   </select>
-</div>
-<span id="select-error" class="dads-select__error-text">＊エラーテキストが入ります。</span>
+<span id="select-error" class="dads-field-error">＊エラーテキストが入ります。</span>
 
 <!-- 無効 -->
-<select class="dads-select__select" data-size="md" disabled style="margin-top:1rem">
+<select class="dads-select" data-size="md" disabled style="display:block;margin-top:1rem">
   <option value="">選択してください</option>
 </select>
 
 <!-- 複数選択 -->
-<select class="dads-select__select" multiple style="margin-top:1rem">
+<select class="dads-select" multiple style="display:block;margin-top:1rem">
   <option value="1">選択肢1</option>
   <option value="2">選択肢2</option>
   <option value="3">選択肢3</option>
@@ -1684,209 +1883,6 @@
   </a>
 
 </div>
-
-</section>
-
-<!-- ============================================================ -->
-<!-- progress-indicator -->
-<!-- ============================================================ -->
-<section class="example-section">
-<h2>Progress Indicator</h2>
-
-<!-- Static -->
-<div style="display: flex; flex-wrap: wrap; gap: 2rem; align-items: center; margin-bottom: 1.5rem;">
-
-  <dads-progress-indicator class="dads-progress-indicator" data-type="stacked" intent="passive" active>
-    <svg class="dads-progress-indicator__static" data-js-indicator width="48" height="48" viewBox="0 0 48 48" fill="none" aria-hidden="true">
-      <path fill="currentcolor" d="M17 15c0 2.5 2.2 7 7 7s7-5 7-7H17ZM15 42h18c0-2-1-4.5-1-4.5L24 34l-8 3.5S15 40 15 42Z"/>
-      <path fill="none" stroke="currentcolor" stroke-width="2" d="M24 24C34.5 24 35.5 6 35.5 4.8V4M24 24C13.5 24 12.5 6 12.5 4.8V4M24 24c7 0 11.5 11.8 11.5 18.3V44M24 24c-7 0-11.5 11.8-11.5 18.3V44M9 4h30M9 44h30"/>
-      <circle cx="24" cy="28" r="1" fill="currentcolor"/>
-      <circle cx="24" cy="31" r="1" fill="currentcolor"/>
-    </svg>
-    <span class="dads-progress-indicator__label" data-js-label>ラベル</span>
-  </dads-progress-indicator>
-
-  <dads-progress-indicator class="dads-progress-indicator" data-type="inlined" intent="passive" active>
-    <svg class="dads-progress-indicator__static" data-js-indicator width="24" height="24" viewBox="0 0 24 24" fill="none" aria-hidden="true">
-      <path fill="currentcolor" d="M9 6c0 1.8 1.1 5 3.5 5S16 7.4 16 6H9ZM8 21h9c0-1-.5-2.2-.5-2.2l-4-1.8-4 1.8S8 20 8 21Z"/>
-      <path fill="none" stroke="currentcolor" d="M4 1.5h17m-17 21h17M6 1.5C6 5.1 7.6 12 12.5 12S18.9 5 19 1.5M19 22.5c.3-3.7-2.2-10.5-6.5-10.5S5.7 18.8 6 22.5"/>
-      <circle cx="12.5" cy="13.5" r=".5" fill="currentcolor"/>
-      <circle cx="12.5" cy="15.5" r=".5" fill="currentcolor"/>
-    </svg>
-    <span class="dads-progress-indicator__label" data-js-label>ラベル</span>
-  </dads-progress-indicator>
-
-</div>
-
-<!-- Linear Fill -->
-<div style="display: flex; flex-wrap: wrap; gap: 2rem; align-items: center; margin-bottom: 1.5rem;">
-
-  <dads-progress-indicator class="dads-progress-indicator" data-type="stacked" intent="passive" value="70" active>
-    <svg class="dads-progress-indicator__linear" data-js-indicator width="240" height="4" viewBox="0 0 240 4" stroke="currentcolor" fill="none" aria-hidden="true">
-      <line class="dads-progress-indicator__track" x1="0" y1="2" x2="240" y2="2" stroke-width="4"></line>
-      <line class="dads-progress-indicator__bar" x1="0" y1="2" x2="240" y2="2" stroke-width="4" pathLength="100"></line>
-      <line class="dads-progress-indicator__border" x1="0" y1="3.5" x2="240" y2="3.5" stroke-width="1"></line>
-    </svg>
-    <span class="dads-progress-indicator__label" data-js-label>ラベル <span class="dads-progress-indicator__percentage" data-js-percentage></span></span>
-  </dads-progress-indicator>
-
-  <dads-progress-indicator class="dads-progress-indicator" data-type="inlined" intent="passive" value="70" active>
-    <svg class="dads-progress-indicator__linear" data-js-indicator width="80" height="4" viewBox="0 0 80 4" stroke="currentcolor" fill="none" aria-hidden="true">
-      <line class="dads-progress-indicator__track" x1="0" y1="2" x2="80" y2="2" stroke-width="4"></line>
-      <line class="dads-progress-indicator__bar" x1="0" y1="2" x2="80" y2="2" stroke-width="4" pathLength="100"></line>
-      <line class="dads-progress-indicator__border" x1="0" y1="3.5" x2="80" y2="3.5" stroke-width="1"></line>
-    </svg>
-    <span class="dads-progress-indicator__label" data-js-label>ラベル <span class="dads-progress-indicator__percentage" data-js-percentage></span></span>
-  </dads-progress-indicator>
-
-</div>
-
-<!-- Spinner Fill -->
-<div style="display: flex; flex-wrap: wrap; gap: 2rem; align-items: center;">
-
-  <dads-progress-indicator class="dads-progress-indicator" data-type="stacked" intent="passive" value="70" active>
-    <svg class="dads-progress-indicator__spinner" data-js-indicator width="48" height="48" viewBox="0 0 48 48" stroke="currentcolor" fill="none" aria-hidden="true">
-      <circle class="dads-progress-indicator__track" cx="24" cy="24" r="22" stroke-width="4"></circle>
-      <g><g><circle class="dads-progress-indicator__bar" cx="24" cy="24" r="22" stroke-width="4" pathLength="100"></circle></g></g>
-      <circle class="dads-progress-indicator__border" cx="24" cy="24" r="23.5" stroke-width="1"></circle>
-    </svg>
-    <span class="dads-progress-indicator__label" data-js-label>ラベル <span class="dads-progress-indicator__percentage" data-js-percentage></span></span>
-  </dads-progress-indicator>
-
-  <dads-progress-indicator class="dads-progress-indicator" data-type="inlined" intent="passive" value="70" active>
-    <svg class="dads-progress-indicator__spinner" data-js-indicator width="24" height="24" viewBox="0 0 24 24" stroke="currentcolor" fill="none" aria-hidden="true">
-      <circle class="dads-progress-indicator__track" cx="12" cy="12" r="8" stroke-width="3"></circle>
-      <g><g><circle class="dads-progress-indicator__bar" cx="12" cy="12" r="8" stroke-width="3" pathLength="100"></circle></g></g>
-      <circle class="dads-progress-indicator__border" cx="12" cy="12" r="9.5" stroke-width="1"></circle>
-    </svg>
-    <span class="dads-progress-indicator__label" data-js-label>ラベル <span class="dads-progress-indicator__percentage" data-js-percentage></span></span>
-  </dads-progress-indicator>
-
-</div>
-
-</section>
-
-<!-- ============================================================ -->
-<!-- carousel (画像はSVGプレースホルダーで代替) -->
-<!-- ============================================================ -->
-<section class="example-section example-carousel">
-<h2 style="padding: 0 2rem;">Carousel</h2>
-
-<dads-carousel class="dads-carousel" breakpoint-rem="64" role="region" aria-label="スライドショー" data-js-unit="スライド">
-  <div class="dads-carousel__inner">
-    <div class="dads-carousel__panels">
-      <div class="dads-carousel__panel-set">
-        <p class="dads-carousel__number dads-carousel__panel-number" aria-current="true" aria-hidden="true" data-js-current-number></p>
-        <div class="dads-carousel__main" aria-live="polite" aria-atomic="true">
-          <div class="dads-carousel__main-panel" data-js-main-panel>
-            <a class="dads-carousel__main-link" data-js-main-link>
-              <span class="dads-u-visually-hidden" data-js-main-label>スライド1</span>
-              <div class="dads-carousel__image-container" data-js-main-images>
-                <img src="data:image/svg+xml,%3Csvg width='696' height='392' viewBox='0 0 696 392' xmlns='http://www.w3.org/2000/svg'%3E%3Crect width='696' height='392' fill='%23c8d0d8'/%3E%3Ctext x='50%25' y='50%25' dominant-baseline='middle' text-anchor='middle' fill='%236b7280' font-size='24' font-family='sans-serif'%3ESlide 1%3C/text%3E%3C/svg%3E" alt="スライド1の画像" width="696" height="392" style="display:block;width:100%;height:auto">
-              </div>
-            </a>
-          </div>
-        </div>
-        <p class="dads-carousel__next">
-          <button type="button" data-js-next-button>
-            <span class="dads-carousel__next-image-container" data-js-next-image-container>
-              <img src="data:image/svg+xml,%3Csvg width='696' height='392' viewBox='0 0 696 392' xmlns='http://www.w3.org/2000/svg'%3E%3Crect width='696' height='392' fill='%23b0bec5'/%3E%3Ctext x='50%25' y='50%25' dominant-baseline='middle' text-anchor='middle' fill='%236b7280' font-size='24' font-family='sans-serif'%3ESlide 2%3C/text%3E%3C/svg%3E" alt="" width="696" height="392" style="display:block;width:100%;height:auto">
-            </span>
-            <span class="dads-carousel__next-image-label">次のスライド</span>
-          </button>
-        </p>
-        <div class="dads-carousel__main-bg"><div data-js-main-bg></div></div>
-        <div class="dads-carousel__next-bg"><div data-js-next-bg></div></div>
-      </div>
-    </div>
-    <div class="dads-carousel__controls">
-      <dads-carousel-step-nav>
-        <ul class="dads-carousel__step-nav" role="tablist" aria-label="スライド選択">
-          <li role="presentation">
-            <button class="dads-carousel__step dads-carousel__number" type="button" role="tab">
-              <span class="dads-u-visually-hidden">スライド</span>1
-            </button>
-          </li>
-          <li role="presentation">
-            <button class="dads-carousel__step dads-carousel__number" type="button" role="tab">
-              <span class="dads-u-visually-hidden">スライド</span>2
-            </button>
-          </li>
-          <li role="presentation">
-            <button class="dads-carousel__step dads-carousel__number" type="button" role="tab">
-              <span class="dads-u-visually-hidden">スライド</span>3
-            </button>
-          </li>
-        </ul>
-      </dads-carousel-step-nav>
-      <p class="dads-carousel__page-nav">
-        <button type="button" data-js-prev-slide-button>
-          <svg width="16" height="16" viewBox="0 0 16 16" aria-hidden="true">
-            <path d="m5.27 8 5.33-5.33-.93-.94L3.4 8l6.27 6.27.93-.94L5.27 8Z" fill="currentcolor"></path>
-          </svg>
-          <span class="dads-u-visually-hidden">前のスライド</span>
-        </button>
-        <span data-js-current-slide></span>
-        <button type="button" data-js-next-slide-button>
-          <svg width="16" height="16" viewBox="0 0 16 16" aria-hidden="true">
-            <path d="m6 1.73-.93.94L10.4 8l-5.33 5.33.93.94L12.27 8 6 1.73Z" fill="currentcolor"></path>
-          </svg>
-          <span class="dads-u-visually-hidden">次のスライド</span>
-        </button>
-      </p>
-      <details class="dads-carousel__others dads-disclosure">
-        <summary class="dads-disclosure__summary">
-          <svg class="dads-disclosure__icon" width="24" height="24" viewBox="0 0 24 24" aria-hidden="true">
-            <circle cx="12" cy="12" r="11" fill="currentcolor"/>
-            <circle class="dads-disclosure__icon-circle" cx="12" cy="12" r="8" fill="currentcolor"/>
-            <path class="dads-disclosure__icon-triangle" d="M17 10H7L12 15L17 10Z" fill="Canvas"/>
-          </svg>
-          すべてのスライド
-        </summary>
-        <div class="dads-carousel__others-content dads-disclosure__content">
-          <ul data-js-slide-container>
-            <li class="dads-carousel__panel-set" data-js-slide>
-              <p class="dads-carousel__number dads-carousel__panel-number" aria-hidden="true">1</p>
-              <div class="dads-carousel__main">
-                <a class="dads-carousel__main-link">
-                  <span class="dads-u-visually-hidden">スライド1</span>
-                  <div class="dads-carousel__image-container">
-                    <img src="data:image/svg+xml,%3Csvg width='696' height='392' viewBox='0 0 696 392' xmlns='http://www.w3.org/2000/svg'%3E%3Crect width='696' height='392' fill='%23c8d0d8'/%3E%3Ctext x='50%25' y='50%25' dominant-baseline='middle' text-anchor='middle' fill='%236b7280' font-size='24' font-family='sans-serif'%3ESlide 1%3C/text%3E%3C/svg%3E" alt="スライド1の画像" width="696" height="392" style="display:block;width:100%;height:auto">
-                  </div>
-                </a>
-              </div>
-              <div class="dads-carousel__main-bg"><div data-js-bg-container></div></div>
-            </li>
-            <li class="dads-carousel__panel-set" data-js-slide>
-              <p class="dads-carousel__number dads-carousel__panel-number" aria-hidden="true">2</p>
-              <div class="dads-carousel__main">
-                <a class="dads-carousel__main-link">
-                  <span class="dads-u-visually-hidden">スライド2</span>
-                  <div class="dads-carousel__image-container">
-                    <img src="data:image/svg+xml,%3Csvg width='696' height='392' viewBox='0 0 696 392' xmlns='http://www.w3.org/2000/svg'%3E%3Crect width='696' height='392' fill='%23b0bec5'/%3E%3Ctext x='50%25' y='50%25' dominant-baseline='middle' text-anchor='middle' fill='%236b7280' font-size='24' font-family='sans-serif'%3ESlide 2%3C/text%3E%3C/svg%3E" alt="スライド2の画像" width="696" height="392" style="display:block;width:100%;height:auto">
-                  </div>
-                </a>
-              </div>
-              <div class="dads-carousel__main-bg"><div data-js-bg-container></div></div>
-            </li>
-            <li class="dads-carousel__panel-set" data-js-slide>
-              <p class="dads-carousel__number dads-carousel__panel-number" aria-hidden="true">3</p>
-              <div class="dads-carousel__main">
-                <a class="dads-carousel__main-link">
-                  <span class="dads-u-visually-hidden">スライド3</span>
-                  <div class="dads-carousel__image-container">
-                    <img src="data:image/svg+xml,%3Csvg width='696' height='392' viewBox='0 0 696 392' xmlns='http://www.w3.org/2000/svg'%3E%3Crect width='696' height='392' fill='%2390a4ae'/%3E%3Ctext x='50%25' y='50%25' dominant-baseline='middle' text-anchor='middle' fill='%236b7280' font-size='24' font-family='sans-serif'%3ESlide 3%3C/text%3E%3C/svg%3E" alt="スライド3の画像" width="696" height="392" style="display:block;width:100%;height:auto">
-                  </div>
-                </a>
-              </div>
-              <div class="dads-carousel__main-bg"><div data-js-bg-container></div></div>
-            </li>
-          </ul>
-        </div>
-      </details>
-    </div>
-  </div>
-</dads-carousel>
 
 </section>
 
