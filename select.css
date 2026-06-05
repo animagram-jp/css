@@ -18,15 +18,15 @@
 }
 
 .dads-select[dads-size="sm"] {
-  height: calc(40 / 16 * 1rem);
+  height: var(--dads-size-sm-height);
 }
 
 .dads-select[dads-size="md"] {
-  height: calc(48 / 16 * 1rem);
+  height: var(--dads-size-md-height);
 }
 
 .dads-select[dads-size="lg"] {
-  height: calc(56 / 16 * 1rem);
+  height: var(--dads-size-lg-height);
 }
 
 .dads-select:focus-visible {

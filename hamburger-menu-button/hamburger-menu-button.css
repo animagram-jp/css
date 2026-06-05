@@ -1,5 +1,5 @@
 .dads-hamburger-menu-button {
-  display: flex;
+  display: inline-flex;
   align-items: center;
   column-gap: calc(4 / 16 * 1rem);
   width: fit-content;

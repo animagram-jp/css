@@ -56,7 +56,7 @@ button、input-text、select の height は一致しているが、padding・fon
 | `dads-size` | min-height | padding (block) | padding (inline) | font-size | line-height |
 |-------------|------------|-----------------|------------------|-----------|-------------|
 | `xs`        | 1.75rem    | 0.125rem        | 0.5rem           | 0.875rem  | 1           |
-| `sm`        | 2.25rem    | 0.125rem        | 0.75rem          | 1rem      | 1           |
+| `sm`        | 2.5rem     | 0.125rem        | 0.75rem          | 1rem      | 1           |
 | `md`        | 3rem       | 0.5rem          | 1rem             | 1rem      | 1           |
 | `lg`        | 3.5rem     | 0.75rem         | 1rem             | 1rem      | 1           |
 
@@ -72,7 +72,13 @@ padding・font-size・line-height は全サイズ共通。`dads-size` は height
 
 #### input-number
 
-`dads-size` バリアント未定義。全サイズ共通値のみ（padding block: 0.75rem、inline: 1rem、font-size: 1rem、line-height: 1.7）。
+padding・font-size・line-height は全サイズ共通。`dads-size` は height のみ制御。
+
+| `dads-size` | height  | padding (block) | padding (inline) | font-size | line-height |
+|-------------|---------|-----------------|------------------|-----------|-------------|
+| `sm`        | 2.5rem  | 0.75rem         | 1rem             | 1rem      | 1.7         |
+| `md`        | 3rem    | 0.75rem         | 1rem             | 1rem      | 1.7         |
+| `lg`        | 3.5rem  | 0.75rem         | 1rem             | 1rem      | 1.7         |
 
 #### select
 
@@ -96,7 +102,7 @@ padding・font-size・line-height は全サイズ共通。`dads-size` は height
 |-------------|---------------|---------|---------------|-----------------|
 | `sm`        | 1.5rem        | 0.25rem | 0.125rem      | 1rem            |
 | `md`        | 2rem          | 0.5rem  | 0.125rem      | 1rem            |
-| `lg`        | 2.75rem       | 0.5rem  | 0.1875rem     | 1.0625rem       |
+| `lg`        | 2.75rem       | 0.5rem  | 0.1875rem     | 1rem            |
 
 #### radio
 
@@ -106,7 +112,7 @@ checkbox と同様の概念。
 |-------------|------------|------------|---------|---------------|-----------------|
 | `sm`        | 1.25rem    | 0.625rem   | 0.25rem | 0.125rem      | 1rem            |
 | `md`        | 1.625rem   | 0.75rem    | 0.5rem  | 0.125rem      | 1rem            |
-| `lg`        | 2.25rem    | 1rem       | 0.75rem | 0.1875rem     | 1.0625rem       |
+| `lg`        | 2.25rem    | 1rem       | 0.75rem | 0.1875rem     | 1rem            |
 
 ## Popup Menu — Shared JS Contract
 
