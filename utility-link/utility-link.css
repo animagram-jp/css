@@ -1,5 +1,5 @@
 .dads-utility-link:any-link {
-  display: block;
+  display: inline-flex;
   width: fit-content;
   font-weight: normal;
   font-size: calc(16 / 16 * 1rem);

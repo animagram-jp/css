@@ -1,11 +1,11 @@
 .dads-checkbox {
   position: relative;
-  display: flex;
+  display: inline-flex;
   align-items: center;
   gap: var(--_gap);
   width: fit-content;
-  padding-top: calc(8 / 16 * 1rem);
-  padding-bottom: calc(8 / 16 * 1rem);
+  padding-top: var(--_padding-block);
+  padding-bottom: var(--_padding-block);
   color: var(--color-neutral-solid-gray-800);
   font-size: var(--_label-font-size, 1rem);
   line-height: 1.3;
@@ -17,23 +17,31 @@
 .dads-checkbox[dads-size="sm"] {
   --_gap: calc(4 / 16 * 1rem);
   --_checkbox-size: calc(24 / 16 * 1rem);
+  --_checkbox-input-size: calc(20 / 16 * 1rem);
   --_checkbox-border-width: calc(2 / 16 * 1rem);
   --_checkbox-scale: 1;
+  --_label-font-size: 1rem;
+  --_padding-block: calc(9.6 / 16 * 1rem);
 }
 
 .dads-checkbox[dads-size="md"] {
   --_gap: calc(8 / 16 * 1rem);
   --_checkbox-size: calc(32 / 16 * 1rem);
+  --_checkbox-input-size: calc(26 / 16 * 1rem);
   --_checkbox-border-width: calc(2 / 16 * 1rem);
   --_checkbox-scale: calc(20 / 14);
+  --_label-font-size: 1rem;
+  --_padding-block: calc(11 / 16 * 1rem);
 }
 
 .dads-checkbox[dads-size="lg"] {
   --_gap: calc(8 / 16 * 1rem);
   --_checkbox-size: calc(44 / 16 * 1rem);
+  --_checkbox-input-size: calc(36 / 16 * 1rem);
   --_checkbox-border-width: calc(3 / 16 * 1rem);
   --_checkbox-scale: calc(27 / 14);
-  --_label-font-size: calc(17 / 16 * 1rem);
+  --_label-font-size: 1rem;
+  --_padding-block: calc(10 / 16 * 1rem);
 }
 
 @media (hover: hover) {
@@ -66,8 +74,8 @@
   flex-shrink: 0;
   margin: 0;
   appearance: none;
-  width: calc(var(--_checkbox-size) * 0.75);
-  height: calc(var(--_checkbox-size) * 0.75);
+  width: var(--_checkbox-input-size);
+  height: var(--_checkbox-input-size);
   border-radius: calc(2 / 18 * 100%);
   background-color: var(--_base-color);
   background-clip: padding-box;
