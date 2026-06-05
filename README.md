@@ -47,9 +47,7 @@ The `size` attribute (`dads-size="sm"` etc.) controls the physical density of a 
 
 `—` = コンポーネント固有のため共通値なし（下表参照）
 
-### 現状の差異
-
-button、input-text、select の height は一致しているが、padding・font-size・line-height は各コンポーネントで異なる。
+### コンポーネント別詳細
 
 #### button
 
@@ -62,27 +60,27 @@ button、input-text、select の height は一致しているが、padding・fon
 
 #### input-text
 
-padding・font-size・line-height は全サイズ共通。`dads-size` は height のみ制御。
+`dads-size` は height のみ制御。padding・font-size・line-height・width は全サイズ共通。
 
-| `dads-size` | height  | padding (block) | padding (inline) | font-size | line-height |
-|-------------|---------|-----------------|------------------|-----------|-------------|
-| `sm`        | 2.5rem  | 0.75rem         | 1rem             | 1rem      | 1.7         |
-| `md`        | 3rem    | 0.75rem         | 1rem             | 1rem      | 1.7         |
-| `lg`        | 3.5rem  | 0.75rem         | 1rem             | 1rem      | 1.7         |
+| `dads-size` | height  | padding (block) | padding (inline) | font-size | line-height | width  |
+|-------------|---------|-----------------|------------------|-----------|-------------|--------|
+| `sm`        | 2.5rem  | 0.75rem         | 1rem             | 1rem      | 1.7         | 12rem  |
+| `md`        | 3rem    | 0.75rem         | 1rem             | 1rem      | 1.7         | 12rem  |
+| `lg`        | 3.5rem  | 0.75rem         | 1rem             | 1rem      | 1.7         | 12rem  |
 
 #### input-number
 
-padding・font-size・line-height は全サイズ共通。`dads-size` は height のみ制御。
+`dads-size` は height のみ制御。全体幅 `12rem` = ボタン `2rem` + input `flex:1` + ボタン `2rem`。
 
-| `dads-size` | height  | padding (block) | padding (inline) | font-size | line-height |
-|-------------|---------|-----------------|------------------|-----------|-------------|
-| `sm`        | 2.5rem  | 0.75rem         | 1rem             | 1rem      | 1.7         |
-| `md`        | 3rem    | 0.75rem         | 1rem             | 1rem      | 1.7         |
-| `lg`        | 3.5rem  | 0.75rem         | 1rem             | 1rem      | 1.7         |
+| `dads-size` | height  | button width | input        | font-size | line-height | 全体 width |
+|-------------|---------|--------------|--------------|-----------|-------------|------------|
+| `sm`        | 2.5rem  | 2rem         | flex: 1      | 1rem      | 1.7         | 12rem      |
+| `md`        | 3rem    | 2rem         | flex: 1      | 1rem      | 1.7         | 12rem      |
+| `lg`        | 3.5rem  | 2rem         | flex: 1      | 1rem      | 1.7         | 12rem      |
 
 #### select
 
-padding・font-size・line-height は全サイズ共通。`dads-size` は height のみ制御。
+`dads-size` は height のみ制御。padding・line-height は全サイズ共通。
 
 | `dads-size` | height  | padding-inline-start | padding-inline-end | line-height |
 |-------------|---------|----------------------|--------------------|-------------|
@@ -92,27 +90,33 @@ padding・font-size・line-height は全サイズ共通。`dads-size` は height
 
 #### textarea
 
-`dads-size` バリアント未定義。全サイズ共通値のみ（padding: 1rem 四方、font-size: 1rem、line-height: 1.7）。
+`dads-size` は font-size・line-height を制御。padding・width は全サイズ共通。
+
+| `dads-size` | padding (block) | padding (inline) | font-size | line-height | width  |
+|-------------|-----------------|------------------|-----------|-------------|--------|
+| `sm`        | 0.75rem         | 1rem             | 1rem      | 1.5         | 100%   |
+| `md`        | 0.75rem         | 1rem             | 1rem      | 1.6         | 100%   |
+| `lg`        | 0.75rem         | 1rem             | 1rem      | 1.7         | 100%   |
 
 #### checkbox
 
-`dads-size` はチェックボックス本体サイズ・gap・label font-size を制御。height/padding は概念が異なる。
+`dads-size` は行全体の高さ・コントロールサイズ・gap・padding-block を制御。
 
-| `dads-size` | checkbox-size | gap     | border-width  | label font-size |
-|-------------|---------------|---------|---------------|-----------------|
-| `sm`        | 1.5rem        | 0.25rem | 0.125rem      | 1rem            |
-| `md`        | 2rem          | 0.5rem  | 0.125rem      | 1rem            |
-| `lg`        | 2.75rem       | 0.5rem  | 0.1875rem     | 1rem            |
+| `dads-size` | 行高   | input-size | hover-size | gap     | border-width | padding-block | label font-size | line-height |
+|-------------|--------|------------|------------|---------|--------------|---------------|-----------------|-------------|
+| `sm`        | 40px   | 1.25rem    | 1.5rem     | 0.25rem | 0.125rem     | 0.625rem      | 1rem            | 1           |
+| `md`        | 48px   | 1.625rem   | 2rem       | 0.5rem  | 0.125rem     | 0.6875rem     | 1rem            | 1           |
+| `lg`        | 56px   | 2.25rem    | 2.75rem    | 0.5rem  | 0.1875rem    | 0.625rem      | 1rem            | 1           |
 
 #### radio
 
 checkbox と同様の概念。
 
-| `dads-size` | outer-size | inner-size | gap     | border-width  | label font-size |
-|-------------|------------|------------|---------|---------------|-----------------|
-| `sm`        | 1.25rem    | 0.625rem   | 0.25rem | 0.125rem      | 1rem            |
-| `md`        | 1.625rem   | 0.75rem    | 0.5rem  | 0.125rem      | 1rem            |
-| `lg`        | 2.25rem    | 1rem       | 0.75rem | 0.1875rem     | 1rem            |
+| `dads-size` | 行高   | outer-size | inner-size | hover-size | gap     | border-width | padding-block | label font-size | line-height |
+|-------------|--------|------------|------------|------------|---------|--------------|---------------|-----------------|-------------|
+| `sm`        | 40px   | 1.25rem    | 0.625rem   | 1.5rem     | 0.25rem | 0.125rem     | 0.6rem        | 1rem            | 1           |
+| `md`        | 48px   | 1.625rem   | 0.75rem    | 2rem       | 0.5rem  | 0.125rem     | 0.6875rem     | 1rem            | 1           |
+| `lg`        | 56px   | 2.25rem    | 1rem       | 2.75rem    | 0.75rem | 0.1875rem    | 0.625rem      | 1rem            | 1           |
 
 ## Popup Menu — Shared JS Contract
 
