@@ -3,7 +3,7 @@
   font-family: var(--font-family-sans);
 }
 
-.dads-heading[data-size="64"] {
+.dads-heading[dads-size="64"] {
   --_shoulder-size: calc(28 / 16 * 1rem);
   --_shoulder-line-height: 1.5;
   --_shoulder-letter-spacing: 0.01em;
@@ -13,7 +13,7 @@
   letter-spacing: 0;
 }
 
-.dads-heading[data-size="57"] {
+.dads-heading[dads-size="57"] {
   --_shoulder-size: calc(24 / 16 * 1rem);
   --_shoulder-line-height: 1.5;
   --_shoulder-letter-spacing: 0.02em;
@@ -23,7 +23,7 @@
   letter-spacing: 0;
 }
 
-.dads-heading[data-size="45"] {
+.dads-heading[dads-size="45"] {
   --_shoulder-size: calc(22 / 16 * 1rem);
   --_shoulder-line-height: 1.5;
   --_shoulder-letter-spacing: 0.02em;
@@ -33,7 +33,7 @@
   letter-spacing: 0;
 }
 
-.dads-heading[data-size="36"] {
+.dads-heading[dads-size="36"] {
   --_shoulder-size: calc(20 / 16 * 1rem);
   --_shoulder-line-height: 1.5;
   --_shoulder-letter-spacing: 0.02em;
@@ -43,7 +43,7 @@
   letter-spacing: 0.01em;
 }
 
-.dads-heading[data-size="32"] {
+.dads-heading[dads-size="32"] {
   --_shoulder-size: calc(18 / 16 * 1rem);
   --_shoulder-line-height: 1.6;
   --_shoulder-letter-spacing: 0.02em;
@@ -53,7 +53,7 @@
   letter-spacing: 0.01em;
 }
 
-.dads-heading[data-size="28"] {
+.dads-heading[dads-size="28"] {
   --_shoulder-size: calc(16 / 16 * 1rem);
   --_shoulder-line-height: 1.7;
   --_shoulder-letter-spacing: 0.02em;
@@ -63,7 +63,7 @@
   letter-spacing: 0.01em;
 }
 
-.dads-heading[data-size="24"] {
+.dads-heading[dads-size="24"] {
   --_shoulder-size: calc(16 / 16 * 1rem);
   --_shoulder-line-height: 1.7;
   --_shoulder-letter-spacing: 0.02em;
@@ -73,7 +73,7 @@
   letter-spacing: 0.02em;
 }
 
-.dads-heading[data-size="20"] {
+.dads-heading[dads-size="20"] {
   --_shoulder-size: calc(16 / 16 * 1rem);
   --_shoulder-line-height: 1.7;
   --_shoulder-letter-spacing: 0.02em;
@@ -83,7 +83,7 @@
   letter-spacing: 0.02em;
 }
 
-.dads-heading[data-size="18"] {
+.dads-heading[dads-size="18"] {
   --_shoulder-size: calc(16 / 16 * 1rem);
   --_shoulder-line-height: 1.7;
   --_shoulder-letter-spacing: 0.02em;
@@ -93,7 +93,7 @@
   letter-spacing: 0.02em;
 }
 
-.dads-heading[data-size="16"] {
+.dads-heading[dads-size="16"] {
   --_shoulder-size: calc(16 / 16 * 1rem);
   --_shoulder-line-height: 1.7;
   --_shoulder-letter-spacing: 0.02em;

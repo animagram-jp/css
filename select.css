@@ -17,15 +17,15 @@
   appearance: none;
 }
 
-.dads-select[data-size="sm"] {
+.dads-select[dads-size="sm"] {
   height: calc(40 / 16 * 1rem);
 }
 
-.dads-select[data-size="md"] {
+.dads-select[dads-size="md"] {
   height: calc(48 / 16 * 1rem);
 }
 
-.dads-select[data-size="lg"] {
+.dads-select[dads-size="lg"] {
   height: calc(56 / 16 * 1rem);
 }
 
