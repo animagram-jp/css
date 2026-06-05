@@ -58,7 +58,7 @@
   align-items: center;
   justify-content: center;
   flex: 0 0 auto;
-  padding: 0 calc(16 / 16 * 1rem);
+  padding: 0 0.5rem;
   background-color: var(--color-neutral-white);
   color: var(--color-neutral-solid-gray-900);
   cursor: pointer;
