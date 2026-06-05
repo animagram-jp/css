@@ -8,10 +8,22 @@
   border-radius: calc(8 / 16 * 1rem);
   color: var(--color-neutral-solid-gray-900);
   font-weight: normal;
-  font-size: calc(16 / 16 * 1rem);
+  font-size: var(--dads-size-md-font-size);
   line-height: 1.7;
   font-family: var(--font-family-sans);
   letter-spacing: 0.02em;
+}
+
+.dads-input-number[dads-size="sm"] {
+  height: var(--dads-size-sm-height);
+}
+
+.dads-input-number[dads-size="md"] {
+  height: var(--dads-size-md-height);
+}
+
+.dads-input-number[dads-size="lg"] {
+  height: var(--dads-size-lg-height);
 }
 
 .dads-input-number input[type="number"] {

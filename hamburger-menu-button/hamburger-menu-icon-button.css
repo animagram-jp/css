@@ -1,5 +1,5 @@
 .dads-hamburger-menu-icon-button {
-  display: block;
+  display: inline-flex;
   width: fit-content;
   border: 0;
   border-radius: calc(4 / 16 * 1rem);
