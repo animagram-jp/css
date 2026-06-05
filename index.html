@@ -545,14 +545,9 @@
 <dads-calendar class="dads-calendar" role="application" data-js-calendar>
   <div class="dads-u-visually-hidden"><h2 data-js-calendar-heading aria-live="polite"></h2></div>
   <div class="dads-calendar__controls">
-    <span class="dads-select">
-      <span class="dads-select__control">
-        <select class="dads-select__select" data-size="sm" aria-label="年" data-js-year-select></select>
-        <svg class="dads-select__chevron" width="16" height="16" viewBox="0 0 24 24" aria-hidden="true">
-          <path d="M12 17L3 8L4 7L12 15L20 7L21 8L12 17Z" fill="currentcolor"/>
-        </svg>
-      </span>
-    </span>
+    <div class="dads-select__control">
+      <select class="dads-select__select" data-size="sm" aria-label="年" data-js-year-select></select>
+    </div>
     <div class="dads-calendar__navigation">
       <button class="dads-button dads-calendar__nav-button" data-size="sm" data-type="outline" data-js-prev-month-button>
         <svg width="16" height="16" viewBox="0 0 16 16" role="img" aria-label="前の月">
@@ -734,14 +729,9 @@
       <dads-calendar class="dads-calendar" role="application" data-js-calendar>
         <div class="dads-u-visually-hidden"><h2 data-js-calendar-heading aria-live="polite"></h2></div>
         <div class="dads-calendar__controls">
-          <span class="dads-select">
-            <span class="dads-select__control">
-              <select class="dads-select__select" data-size="sm" aria-label="年" data-js-year-select></select>
-              <svg class="dads-select__chevron" width="16" height="16" viewBox="0 0 24 24" aria-hidden="true">
-                <path d="M12 17L3 8L4 7L12 15L20 7L21 8L12 17Z" fill="currentcolor"/>
-              </svg>
-            </span>
-          </span>
+          <div class="dads-select__control">
+            <select class="dads-select__select" data-size="sm" aria-label="年" data-js-year-select></select>
+          </div>
           <div class="dads-calendar__navigation">
             <button class="dads-button dads-calendar__nav-button" data-size="sm" data-type="outline" data-js-prev-month-button>
               <svg width="16" height="16" viewBox="0 0 16 16" role="img" aria-label="前の月">
@@ -1216,13 +1206,13 @@
 <!-- list-box -->
 <!-- ============================================================ -->
 <section class="example-section">
-<h2>Menu Box</h2>
+<h2>List Box</h2>
 
 <ul id="list-box-1" popover="auto" role="listbox" aria-labelledby="list-box-1-trigger" class="list-box">
   <li role="presentation">アイテムから選択してください</li>
-  <li role="option" aria-selected="true"><button lang="en" value="1">リストアイテム1</button></li>
-  <li role="option"><button lang="ja" value="2">リストアイテム2</button></li>
-  <li role="option"><button lang="ch" value="3">リストアイテム3</button></li>
+  <li role="option" aria-selected="true"><button>リストアイテム1</button></li>
+  <li role="option"><button>リストアイテム2</button></li>
+  <li role="option"><button>リストアイテム3</button></li>
 </ul>
 
 <button
@@ -1230,7 +1220,6 @@
   id="list-box-1-trigger"
   popovertarget="list-box-1"
   aria-haspopup="listbox"
-  aria-expanded="false"
   aria-controls="list-box-1"
   class="list-box-trigger">
   現在選択中のリストアイテム
@@ -1487,45 +1476,35 @@
 <h2>Select</h2>
 
 <!-- 通常 -->
-<span class="dads-select">
-  <span class="dads-select__control">
-    <select class="dads-select__select" data-size="md">
-      <option value="">選択してください</option>
-      <option value="1">選択肢1</option>
-      <option value="2">選択肢2</option>
-      <option value="3">選択肢3</option>
-    </select>
-    <svg class="dads-select__chevron" width="16" height="16" viewBox="0 0 24 24" aria-hidden="true">
-      <path d="M12 17L3 8L4 7L12 15L20 7L21 8L12 17Z" fill="currentcolor"/>
-    </svg>
-  </span>
-</span>
+<select class="dads-select__select" data-size="md">
+  <option value="">選択してください</option>
+  <option value="1">選択肢1</option>
+  <option value="2">選択肢2</option>
+  <option value="3">選択肢3</option>
+</select>
 
 <!-- エラー -->
-<span class="dads-select" style="margin-top:1rem;display:block">
-  <span class="dads-select__control">
-    <select class="dads-select__select" data-size="md" aria-invalid="true" aria-describedby="select-error">
-      <option value="">選択してください</option>
-      <option value="1">選択肢1</option>
-    </select>
-    <svg class="dads-select__chevron" width="16" height="16" viewBox="0 0 24 24" aria-hidden="true">
-      <path d="M12 17L3 8L4 7L12 15L20 7L21 8L12 17Z" fill="currentcolor"/>
-    </svg>
-  </span>
-  <span id="select-error" class="dads-select__error-text">＊エラーテキストが入ります。</span>
-</span>
+<div class="dads-select__control" style="margin-top:1rem">
+  <select class="dads-select__select" data-size="md" aria-invalid="true" aria-describedby="select-error">
+    <option value="">選択してください</option>
+    <option value="1">選択肢1</option>
+  </select>
+</div>
+<span id="select-error" class="dads-select__error-text">＊エラーテキストが入ります。</span>
 
 <!-- 無効 -->
-<span class="dads-select" style="margin-top:1rem;display:block">
-  <span class="dads-select__control">
-    <select class="dads-select__select" data-size="md" disabled>
-      <option value="">選択してください</option>
-    </select>
-    <svg class="dads-select__chevron" width="16" height="16" viewBox="0 0 24 24" aria-hidden="true">
-      <path d="M12 17L3 8L4 7L12 15L20 7L21 8L12 17Z" fill="currentcolor"/>
-    </svg>
-  </span>
-</span>
+<select class="dads-select__select" data-size="md" disabled style="margin-top:1rem">
+  <option value="">選択してください</option>
+</select>
+
+<!-- 複数選択 -->
+<select class="dads-select__select" multiple style="margin-top:1rem">
+  <option value="1">選択肢1</option>
+  <option value="2">選択肢2</option>
+  <option value="3">選択肢3</option>
+  <option value="4">選択肢4</option>
+  <option value="5">選択肢5</option>
+</select>
 
 </section>
 
