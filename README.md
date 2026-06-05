@@ -34,6 +34,80 @@ Css universal design boilerplate. Works without interference to HTML.
 - Edit form-control-label.css and textarea.css.
 - Change button.css display:flex to inline-flex.
 
+## `dads-size` — Size Scale
+
+The `size` attribute (`dads-size="sm"` etc.) controls the physical density of a component. The intended shared values per tier are:
+
+| `dads-size` | height | padding (block) | padding (inline) | font-size | line-height |
+|-------------|--------|-----------------|------------------|-----------|-------------|
+| `xs`        | 1.75rem | 0.125rem        | 0.5rem           | 0.875rem  | 1           |
+| `sm`        | 2.5rem  | —               | —                | 1rem      | —           |
+| `md`        | 3rem    | —               | —                | 1rem      | —           |
+| `lg`        | 3.5rem  | —               | —                | 1rem      | —           |
+
+`—` = コンポーネント固有のため共通値なし（下表参照）
+
+### 現状の差異
+
+button、input-text、select の height は一致しているが、padding・font-size・line-height は各コンポーネントで異なる。
+
+#### button
+
+| `dads-size` | min-height | padding (block) | padding (inline) | font-size | line-height |
+|-------------|------------|-----------------|------------------|-----------|-------------|
+| `xs`        | 1.75rem    | 0.125rem        | 0.5rem           | 0.875rem  | 1           |
+| `sm`        | 2.25rem    | 0.125rem        | 0.75rem          | 1rem      | 1           |
+| `md`        | 3rem       | 0.5rem          | 1rem             | 1rem      | 1           |
+| `lg`        | 3.5rem     | 0.75rem         | 1rem             | 1rem      | 1           |
+
+#### input-text
+
+padding・font-size・line-height は全サイズ共通。`dads-size` は height のみ制御。
+
+| `dads-size` | height  | padding (block) | padding (inline) | font-size | line-height |
+|-------------|---------|-----------------|------------------|-----------|-------------|
+| `sm`        | 2.5rem  | 0.75rem         | 1rem             | 1rem      | 1.7         |
+| `md`        | 3rem    | 0.75rem         | 1rem             | 1rem      | 1.7         |
+| `lg`        | 3.5rem  | 0.75rem         | 1rem             | 1rem      | 1.7         |
+
+#### input-number
+
+`dads-size` バリアント未定義。全サイズ共通値のみ（padding block: 0.75rem、inline: 1rem、font-size: 1rem、line-height: 1.7）。
+
+#### select
+
+padding・font-size・line-height は全サイズ共通。`dads-size` は height のみ制御。
+
+| `dads-size` | height  | padding-inline-start | padding-inline-end | line-height |
+|-------------|---------|----------------------|--------------------|-------------|
+| `sm`        | 2.5rem  | 1rem                 | 2.5rem             | 1           |
+| `md`        | 3rem    | 1rem                 | 2.5rem             | 1           |
+| `lg`        | 3.5rem  | 1rem                 | 2.5rem             | 1           |
+
+#### textarea
+
+`dads-size` バリアント未定義。全サイズ共通値のみ（padding: 1rem 四方、font-size: 1rem、line-height: 1.7）。
+
+#### checkbox
+
+`dads-size` はチェックボックス本体サイズ・gap・label font-size を制御。height/padding は概念が異なる。
+
+| `dads-size` | checkbox-size | gap     | border-width  | label font-size |
+|-------------|---------------|---------|---------------|-----------------|
+| `sm`        | 1.5rem        | 0.25rem | 0.125rem      | 1rem            |
+| `md`        | 2rem          | 0.5rem  | 0.125rem      | 1rem            |
+| `lg`        | 2.75rem       | 0.5rem  | 0.1875rem     | 1.0625rem       |
+
+#### radio
+
+checkbox と同様の概念。
+
+| `dads-size` | outer-size | inner-size | gap     | border-width  | label font-size |
+|-------------|------------|------------|---------|---------------|-----------------|
+| `sm`        | 1.25rem    | 0.625rem   | 0.25rem | 0.125rem      | 1rem            |
+| `md`        | 1.625rem   | 0.75rem    | 0.5rem  | 0.125rem      | 1rem            |
+| `lg`        | 2.25rem    | 1rem       | 0.75rem | 0.1875rem     | 1.0625rem       |
+
 ## Popup Menu — Shared JS Contract
 
 A single JS module handles open/close, outside-click dismissal, focusout dismissal, and keyboard navigation for all dropdown/popup-menu components. CSS components that expose a popup menu must mark their elements with the following `data-*` attributes so the shared JS can find them without knowing the component name.
