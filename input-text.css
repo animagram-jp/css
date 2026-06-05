@@ -1,5 +1,6 @@
 .dads-input-text {
   box-sizing: border-box;
+  width: 12rem;
   max-width: 100%;
   border: 1px solid var(--color-neutral-solid-gray-600);
   background-color: var(--color-neutral-white);
