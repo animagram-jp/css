@@ -450,9 +450,7 @@
       <div class="dads-card-example-6__image">
         <span class="dads-card-example-6__checkbox">
           <span class="dads-checkbox" data-size="sm">
-            <span class="dads-checkbox__checkbox">
-              <input id="card-6-checkbox-1" class="dads-checkbox__input" type="checkbox">
-            </span>
+            <input id="card-6-checkbox-1" type="checkbox">
           </span>
         </span>
         <svg class="dads-card-example-6__image-img" width="352" height="235" viewBox="0 0 352 235" aria-hidden="true" style="display:block;width:100%;height:auto"><rect width="352" height="235" fill="#c8d0d8"/><text x="50%" y="50%" dominant-baseline="middle" text-anchor="middle" fill="#6b7280" font-size="16" font-family="sans-serif">352×235</text></svg>
@@ -470,9 +468,7 @@
       <div class="dads-card-example-6__image">
         <span class="dads-card-example-6__checkbox">
           <span class="dads-checkbox" data-size="sm">
-            <span class="dads-checkbox__checkbox">
-              <input id="card-6-checkbox-2" class="dads-checkbox__input" type="checkbox">
-            </span>
+            <input id="card-6-checkbox-2" type="checkbox">
           </span>
         </span>
         <svg class="dads-card-example-6__image-img" width="352" height="235" viewBox="0 0 352 235" aria-hidden="true" style="display:block;width:100%;height:auto"><rect width="352" height="235" fill="#c8d0d8"/><text x="50%" y="50%" dominant-baseline="middle" text-anchor="middle" fill="#6b7280" font-size="16" font-family="sans-serif">352×235</text></svg>
@@ -490,9 +486,7 @@
       <div class="dads-card-example-6__image">
         <span class="dads-card-example-6__checkbox">
           <span class="dads-checkbox" data-size="sm">
-            <span class="dads-checkbox__checkbox">
-              <input id="card-6-checkbox-3" class="dads-checkbox__input" type="checkbox">
-            </span>
+            <input id="card-6-checkbox-3" type="checkbox">
           </span>
         </span>
         <svg class="dads-card-example-6__image-img" width="352" height="235" viewBox="0 0 352 235" aria-hidden="true" style="display:block;width:100%;height:auto"><rect width="352" height="235" fill="#c8d0d8"/><text x="50%" y="50%" dominant-baseline="middle" text-anchor="middle" fill="#6b7280" font-size="16" font-family="sans-serif">352×235</text></svg>
@@ -722,80 +716,26 @@
 <!-- サイズ×状態マトリクス: lg / md / sm × 通常・チェック済・エラー・無効 -->
 <div style="display: grid; grid-template-columns: repeat(6, auto); gap: 2rem; justify-content: start">
 
-  <label class="dads-checkbox" data-size="lg">
-    <span class="dads-checkbox__checkbox"><input class="dads-checkbox__input" type="checkbox"></span>
-    <span class="dads-checkbox__label">ラベル</span>
-  </label>
-  <label class="dads-checkbox" data-size="lg">
-    <span class="dads-checkbox__checkbox"><input class="dads-checkbox__input" type="checkbox" checked></span>
-    <span class="dads-checkbox__label">ラベル</span>
-  </label>
-  <label class="dads-checkbox" data-size="lg">
-    <span class="dads-checkbox__checkbox"><input class="dads-checkbox__input" type="checkbox" aria-invalid="true"></span>
-    <span class="dads-checkbox__label">ラベル</span>
-  </label>
-  <label class="dads-checkbox" data-size="lg">
-    <span class="dads-checkbox__checkbox"><input class="dads-checkbox__input" type="checkbox" checked aria-invalid="true"></span>
-    <span class="dads-checkbox__label">ラベル</span>
-  </label>
-  <label class="dads-checkbox" data-size="lg">
-    <span class="dads-checkbox__checkbox"><input class="dads-checkbox__input" type="checkbox" disabled></span>
-    <span class="dads-checkbox__label">ラベル</span>
-  </label>
-  <label class="dads-checkbox" data-size="lg">
-    <span class="dads-checkbox__checkbox"><input class="dads-checkbox__input" type="checkbox" checked disabled></span>
-    <span class="dads-checkbox__label">ラベル</span>
-  </label>
+  <label class="dads-checkbox" data-size="lg"><input type="checkbox">ラベル</label>
+  <label class="dads-checkbox" data-size="lg"><input type="checkbox" checked>ラベル</label>
+  <label class="dads-checkbox" data-size="lg"><input type="checkbox" aria-invalid="true">ラベル</label>
+  <label class="dads-checkbox" data-size="lg"><input type="checkbox" checked aria-invalid="true">ラベル</label>
+  <label class="dads-checkbox" data-size="lg"><input type="checkbox" disabled>ラベル</label>
+  <label class="dads-checkbox" data-size="lg"><input type="checkbox" checked disabled>ラベル</label>
 
-  <label class="dads-checkbox" data-size="md">
-    <span class="dads-checkbox__checkbox"><input class="dads-checkbox__input" type="checkbox"></span>
-    <span class="dads-checkbox__label">ラベル</span>
-  </label>
-  <label class="dads-checkbox" data-size="md">
-    <span class="dads-checkbox__checkbox"><input class="dads-checkbox__input" type="checkbox" checked></span>
-    <span class="dads-checkbox__label">ラベル</span>
-  </label>
-  <label class="dads-checkbox" data-size="md">
-    <span class="dads-checkbox__checkbox"><input class="dads-checkbox__input" type="checkbox" aria-invalid="true"></span>
-    <span class="dads-checkbox__label">ラベル</span>
-  </label>
-  <label class="dads-checkbox" data-size="md">
-    <span class="dads-checkbox__checkbox"><input class="dads-checkbox__input" type="checkbox" checked aria-invalid="true"></span>
-    <span class="dads-checkbox__label">ラベル</span>
-  </label>
-  <label class="dads-checkbox" data-size="md">
-    <span class="dads-checkbox__checkbox"><input class="dads-checkbox__input" type="checkbox" disabled></span>
-    <span class="dads-checkbox__label">ラベル</span>
-  </label>
-  <label class="dads-checkbox" data-size="md">
-    <span class="dads-checkbox__checkbox"><input class="dads-checkbox__input" type="checkbox" checked disabled></span>
-    <span class="dads-checkbox__label">ラベル</span>
-  </label>
+  <label class="dads-checkbox" data-size="md"><input type="checkbox">ラベル</label>
+  <label class="dads-checkbox" data-size="md"><input type="checkbox" checked>ラベル</label>
+  <label class="dads-checkbox" data-size="md"><input type="checkbox" aria-invalid="true">ラベル</label>
+  <label class="dads-checkbox" data-size="md"><input type="checkbox" checked aria-invalid="true">ラベル</label>
+  <label class="dads-checkbox" data-size="md"><input type="checkbox" disabled>ラベル</label>
+  <label class="dads-checkbox" data-size="md"><input type="checkbox" checked disabled>ラベル</label>
 
-  <label class="dads-checkbox" data-size="sm">
-    <span class="dads-checkbox__checkbox"><input class="dads-checkbox__input" type="checkbox"></span>
-    <span class="dads-checkbox__label">ラベル</span>
-  </label>
-  <label class="dads-checkbox" data-size="sm">
-    <span class="dads-checkbox__checkbox"><input class="dads-checkbox__input" type="checkbox" checked></span>
-    <span class="dads-checkbox__label">ラベル</span>
-  </label>
-  <label class="dads-checkbox" data-size="sm">
-    <span class="dads-checkbox__checkbox"><input class="dads-checkbox__input" type="checkbox" aria-invalid="true"></span>
-    <span class="dads-checkbox__label">ラベル</span>
-  </label>
-  <label class="dads-checkbox" data-size="sm">
-    <span class="dads-checkbox__checkbox"><input class="dads-checkbox__input" type="checkbox" checked aria-invalid="true"></span>
-    <span class="dads-checkbox__label">ラベル</span>
-  </label>
-  <label class="dads-checkbox" data-size="sm">
-    <span class="dads-checkbox__checkbox"><input class="dads-checkbox__input" type="checkbox" disabled></span>
-    <span class="dads-checkbox__label">ラベル</span>
-  </label>
-  <label class="dads-checkbox" data-size="sm">
-    <span class="dads-checkbox__checkbox"><input class="dads-checkbox__input" type="checkbox" checked disabled></span>
-    <span class="dads-checkbox__label">ラベル</span>
-  </label>
+  <label class="dads-checkbox" data-size="sm"><input type="checkbox">ラベル</label>
+  <label class="dads-checkbox" data-size="sm"><input type="checkbox" checked>ラベル</label>
+  <label class="dads-checkbox" data-size="sm"><input type="checkbox" aria-invalid="true">ラベル</label>
+  <label class="dads-checkbox" data-size="sm"><input type="checkbox" checked aria-invalid="true">ラベル</label>
+  <label class="dads-checkbox" data-size="sm"><input type="checkbox" disabled>ラベル</label>
+  <label class="dads-checkbox" data-size="sm"><input type="checkbox" checked disabled>ラベル</label>
 
 </div>
 
@@ -1086,12 +1026,7 @@
           <p id="file-upload-1-selected-files" class="dads-file-upload__select-summary" data-js-select-summary></p>
           <ul id="file-upload-1-error-messages" class="dads-file-upload__error-messages" data-js-error-messages></ul>
           <p class="dads-file-upload__expand-drop-area">
-            <label class="dads-checkbox" data-size="md">
-              <span class="dads-checkbox__checkbox">
-                <input class="dads-checkbox__input" type="checkbox" data-js-expand-drop-area>
-              </span>
-              <span class="dads-checkbox__label">ドラッグ＆ドロップの範囲をこのブラウザウィンドウ全体に広げる</span>
-            </label>
+            <label class="dads-checkbox" data-size="md"><input type="checkbox" data-js-expand-drop-area>ドラッグ＆ドロップの範囲をこのブラウザウィンドウ全体に広げる</label>
           </p>
         </div>
         <p class="dads-file-upload__empty-message" data-js-empty-message>ファイルが選択されていません</p>
@@ -1143,14 +1078,8 @@
     <span class="dads-field-requirement" data-required="false">任意</span>
   </legend>
   <p id="check-support" class="dads-field-support">該当するものをすべて選択してください。</p>
-  <label class="dads-checkbox" data-size="md">
-    <span class="dads-checkbox__checkbox"><input class="dads-checkbox__input" type="checkbox" aria-invalid="true"></span>
-    <span class="dads-checkbox__label">選択肢A</span>
-  </label>
-  <label class="dads-checkbox" data-size="md">
-    <span class="dads-checkbox__checkbox"><input class="dads-checkbox__input" type="checkbox" aria-invalid="true"></span>
-    <span class="dads-checkbox__label">選択肢B</span>
-  </label>
+  <label class="dads-checkbox" data-size="md"><input type="checkbox" aria-invalid="true">選択肢A</label>
+  <label class="dads-checkbox" data-size="md"><input type="checkbox" aria-invalid="true">選択肢B</label>
   <p id="check-error" class="dads-field-error">＊エラーテキストが入ります。</p>
 </fieldset>
 
