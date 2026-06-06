@@ -14,7 +14,7 @@ Css universal design boilerplate. Works without interference to HTML.
 |---------|-----------|------------|-------------|
 | 0.1.0   | Released  | 2026-03-09 | create following DADS(html) |
 | 0.1.1   | Released  | 2026-04-28 | update following DADS(html) |
-| 0.2.0   | Scheduled | 2026-05-31 | rename to css repository |
+| 0.2.0   | Scheduled | 2026-06-06 | rename to css repository |
 
 ## Reference
 
