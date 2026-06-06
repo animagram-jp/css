@@ -16,7 +16,7 @@
 <link rel="stylesheet" href="card/card-example-6.css">
 <link rel="stylesheet" href="button.css">
 <link rel="stylesheet" href="calendar/calendar.css">
-<link rel="stylesheet" href="checkbox/checkbox.css">
+<link rel="stylesheet" href="checkbox.css">
 <link rel="stylesheet" href="chip-label.css">
 <link rel="stylesheet" href="date-picker/date-picker.css">
 <link rel="stylesheet" href="description-list.css">
@@ -25,13 +25,12 @@
 <link rel="stylesheet" href="drawer/drawer.css">
 <link rel="stylesheet" href="emergency-banner/emergency-banner.css">
 <link rel="stylesheet" href="file-upload/file-upload.css">
-<link rel="stylesheet" href="form-control-label.css">
+<link rel="stylesheet" href="field-label.css">
 <link rel="stylesheet" href="global-menu/global-menu.css">
 <link rel="stylesheet" href="hamburger-menu-button/hamburger-menu-button.css">
 <link rel="stylesheet" href="hamburger-menu-button/hamburger-menu-icon-button.css">
 <link rel="stylesheet" href="heading.css">
-<link rel="stylesheet" href="input-number.css">
-<link rel="stylesheet" href="input-text.css">
+<link rel="stylesheet" href="input.css">
 <link rel="stylesheet" href="link.css">
 <link rel="stylesheet" href="list.css">
 <link rel="stylesheet" href="menu-list/menu-list.css">
@@ -88,11 +87,11 @@
 <h3 style="font: bold 1rem/2 sans-serif; margin-top: 1.5rem;">Input Text</h3>
 <div class="size-row">
   <span class="size-label">sm</span>
-  <input class="dads-input-text" type="text" dads-size="sm" placeholder="テキスト">
+  <input class="dads-input" type="text" dads-size="sm" placeholder="テキスト">
   <span class="size-label">md</span>
-  <input class="dads-input-text" type="text" dads-size="md" placeholder="テキスト">
+  <input class="dads-input" type="text" dads-size="md" placeholder="テキスト">
   <span class="size-label">lg</span>
-  <input class="dads-input-text" type="text" dads-size="lg" placeholder="テキスト">
+  <input class="dads-input" type="text" dads-size="lg" placeholder="テキスト">
 </div>
 
 <h3 style="font: bold 1rem/2 sans-serif; margin-top: 1.5rem;">Input Number</h3>
@@ -1157,7 +1156,7 @@
 <!-- form-control-label -->
 <!-- ============================================================ -->
 <section class="example-section">
-<h2>Form Control Label</h2>
+<h2>Field Label</h2>
 
 <!-- 単一入力 (必須) -->
 <label class="dads-field-label" for="name-input">
@@ -1165,6 +1164,9 @@
   <span class="dads-field-requirement" data-required="true">※必須</span>
 </label>
 <p class="dads-field-support">姓と名の間にスペースを入れてください。</p>
+
+<!-- エラー -->
+<p class="dads-field-error" style="margin-top:1rem">＊エラーテキストが入ります。</p>
 
 <!-- 複数選択 (任意) + エラー -->
 <fieldset style="margin-top:2rem; border:0; padding:0" aria-describedby="check-error check-support">
@@ -1405,19 +1407,16 @@
 <h2>Input Text</h2>
 
 <!-- 通常 -->
-<input class="dads-input-text" type="text" dads-size="md" placeholder="テキストを入力">
+<input class="dads-input" type="text" dads-size="md" placeholder="テキストを入力">
 
 <!-- エラー -->
-<div style="margin-top:1rem">
-  <input class="dads-input-text" type="text" dads-size="md" aria-invalid="true" aria-describedby="input-error">
-  <span id="input-error" class="dads-input-text__error">＊エラーテキストが入ります。</span>
-</div>
+<input class="dads-input" type="text" dads-size="md" aria-invalid="true" style="margin-top:1rem;display:block">
 
 <!-- 読み取り専用 -->
-<input class="dads-input-text" type="text" dads-size="md" value="読み取り専用の値" readonly style="margin-top:1rem;display:block">
+<input class="dads-input" type="text" dads-size="md" value="読み取り専用の値" readonly style="margin-top:1rem;display:block">
 
 <!-- 無効 -->
-<input class="dads-input-text" type="text" dads-size="md" value="無効" disabled style="margin-top:1rem;display:block">
+<input class="dads-input" type="text" dads-size="md" value="無効" disabled style="margin-top:1rem;display:block">
 
 </section>
 
@@ -1827,11 +1826,10 @@
 </select>
 
 <!-- エラー -->
-  <select class="dads-select" dads-size="md" aria-invalid="true" aria-describedby="select-error" style="display:block; margin-top:1rem">
-    <option value="">選択してください</option>
-    <option value="1">選択肢1</option>
-  </select>
-<span id="select-error" class="dads-field-error">＊エラーテキストが入ります。</span>
+<select class="dads-select" dads-size="md" aria-invalid="true" style="display:block; margin-top:1rem">
+  <option value="">選択してください</option>
+  <option value="1">選択肢1</option>
+</select>
 
 <!-- 無効 -->
 <select class="dads-select" dads-size="md" disabled style="display:block;margin-top:1rem">
@@ -2107,8 +2105,7 @@
     <textarea class="dads-textarea" placeholder="dads-size: lg" dads-size="lg" style="margin-top:1rem;display:block"></textarea>
 
     <!-- エラー -->
-    <textarea class="dads-textarea" style="margin-top:1rem;display:block" aria-invalid="true" aria-describedby="textarea-error"></textarea>
-    <span id="textarea-error" class="dads-textarea-error">＊エラーテキストが入ります。</span>
+    <textarea class="dads-textarea" style="margin-top:1rem;display:block" aria-invalid="true"></textarea>
 
     <!-- 読み取り専用 -->
     <textarea class="dads-textarea" style="margin-top:1rem;display:block" readonly>読み取り専用の値</textarea>
