@@ -36,6 +36,7 @@ Css universal design boilerplate. Works without interference to HTML.
 - Change button, input, textarea to display:inline-flex.
 - Normalize dads-size (renamed from dada-size) betweeen button, input and textarea.
 - Edit heading to remove wrapper hgroup dependency and rename to class dads-h.
+- Make dads-size="md" fallback when no selecting.
 
 ## `dads-size` — Size Scale
 
