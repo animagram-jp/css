@@ -1965,6 +1965,127 @@
   </tbody>
 </table>
 
+<!-- row-header -->
+<table class="dads-table" data-cell-border="bottom" style="margin-top: 2rem;">
+  <caption>行ヘッダー付き</caption>
+  <thead>
+    <tr>
+      <th class="dads-table__col-header" scope="col">項目</th>
+      <th class="dads-table__col-header" scope="col">値A</th>
+      <th class="dads-table__col-header" scope="col">値B</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th class="dads-table__row-header" scope="row">行1</th>
+      <td>データ</td>
+      <td>データ</td>
+    </tr>
+    <tr>
+      <th class="dads-table__row-header" scope="row">行2</th>
+      <td>データ</td>
+      <td>データ</td>
+    </tr>
+  </tbody>
+</table>
+
+<!-- data-row-hover-highlight -->
+<table class="dads-table" data-row-hover-highlight data-cell-border="bottom" style="margin-top: 2rem;">
+  <caption>ホバーハイライト</caption>
+  <thead>
+    <tr>
+      <th class="dads-table__col-header" scope="col">ラベル</th>
+      <th class="dads-table__col-header" scope="col">ラベル</th>
+      <th class="dads-table__col-header" scope="col">ラベル</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr><td>データ</td><td>データ</td><td>データ</td></tr>
+    <tr><td>データ</td><td>データ</td><td>データ</td></tr>
+    <tr><td>データ</td><td>データ</td><td>データ</td></tr>
+  </tbody>
+</table>
+
+<!-- data-selectable (checkbox) -->
+<table class="dads-table" data-selectable data-cell-border="bottom" style="margin-top: 2rem;">
+  <caption>選択可能（チェックボックス）</caption>
+  <thead>
+    <tr>
+      <th class="dads-table__col-header" scope="col"><input type="checkbox" class="dads-checkbox" dads-size="sm" aria-label="すべて選択"></th>
+      <th class="dads-table__col-header" scope="col">ラベル</th>
+      <th class="dads-table__col-header" scope="col">ラベル</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><input type="checkbox" class="dads-checkbox" dads-size="sm" aria-label="行1を選択"></td>
+      <td>データ</td>
+      <td>データ</td>
+    </tr>
+    <tr>
+      <td><input type="checkbox" class="dads-checkbox" dads-size="sm" aria-label="行2を選択" checked></td>
+      <td>データ</td>
+      <td>データ</td>
+    </tr>
+  </tbody>
+</table>
+
+<!-- sort-header -->
+<table class="dads-table" data-cell-border="bottom" style="margin-top: 2rem;">
+  <caption>ソート（aria-sort 3状態）</caption>
+  <thead>
+    <tr>
+      <th class="dads-table__sort-header" scope="col">
+        <div class="dads-table__sort-inner">
+          <div class="dads-table__sort-label">名前</div>
+          <button class="dads-table__sort-button" type="button" aria-sort="none">名前</button>
+        </div>
+      </th>
+      <th class="dads-table__sort-header" scope="col">
+        <div class="dads-table__sort-inner">
+          <div class="dads-table__sort-label">日付</div>
+          <button class="dads-table__sort-button" type="button" aria-sort="ascending">日付</button>
+        </div>
+      </th>
+      <th class="dads-table__sort-header" scope="col">
+        <div class="dads-table__sort-inner">
+          <div class="dads-table__sort-label">金額</div>
+          <button class="dads-table__sort-button" type="button" aria-sort="descending">金額</button>
+        </div>
+      </th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>山田 太郎</td>
+      <td>2026-06-01</td>
+      <td>¥12,000</td>
+    </tr>
+    <tr>
+      <td>佐藤 花子</td>
+      <td>2026-06-02</td>
+      <td>¥8,500</td>
+    </tr>
+  </tbody>
+</table>
+
+<!-- data-cell-border variants -->
+<table class="dads-table" data-cell-border="" style="margin-top: 2rem;">
+  <caption>全セルボーダー</caption>
+  <thead>
+    <tr>
+      <th class="dads-table__col-header" scope="col">ラベル</th>
+      <th class="dads-table__col-header" scope="col">ラベル</th>
+      <th class="dads-table__col-header" scope="col">ラベル</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr><td>データ</td><td>データ</td><td>データ</td></tr>
+    <tr><td>データ</td><td>データ</td><td>データ</td></tr>
+  </tbody>
+</table>
+
+
 </section>
 
 <!-- ============================================================ -->
