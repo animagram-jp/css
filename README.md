@@ -14,15 +14,15 @@ Css universal design boilerplate. Works without interference to HTML.
 |---------|-----------|------------|-------------|
 | 0.1.0   | Released  | 2026-03-09 | create following DADS(html) |
 | 0.1.1   | Released  | 2026-04-28 | update following DADS(html) |
-| 0.1.2   | Scheduled | 2026-06-06 | rename to css repository |
+| 0.1.2   | Current   | 2026-06-06 | rename to css repository |
 
 ## Reference
 
 - [DADS(html)](https://github.com/digital-go-jp/design-system-example-components-html)
 
-## Changes from Dads(html)
+## Changelog
 
-- CSS/JS components only, no build tooling.
+- CSS/JS components only, no build tooling from Dads(html).
 - Custom font-family applied in global.css.
 - Single html and replace images with svg placeholders.
 - Unwrap single element css components.
