@@ -1,11 +1,11 @@
-.dads-heading__heading {
+.dads-h {
   margin: 0;
   color: var(--color-neutral-solid-gray-800);
   font-family: var(--font-family-sans);
 }
 
-.dads-heading__heading[dads-size="64"],
-hgroup[dads-size="64"] .dads-heading__heading {
+.dads-h[dads-size="64"],
+hgroup[dads-size="64"] .dads-h {
   --_shoulder-size: calc(28 / 16 * 1rem);
   --_shoulder-line-height: 1.5;
   --_shoulder-letter-spacing: 0.01em;
@@ -15,8 +15,8 @@ hgroup[dads-size="64"] .dads-heading__heading {
   letter-spacing: 0;
 }
 
-.dads-heading__heading[dads-size="57"],
-hgroup[dads-size="57"] .dads-heading__heading {
+.dads-h[dads-size="57"],
+hgroup[dads-size="57"] .dads-h {
   --_shoulder-size: calc(24 / 16 * 1rem);
   --_shoulder-line-height: 1.5;
   --_shoulder-letter-spacing: 0.02em;
@@ -26,8 +26,8 @@ hgroup[dads-size="57"] .dads-heading__heading {
   letter-spacing: 0;
 }
 
-.dads-heading__heading[dads-size="45"],
-hgroup[dads-size="45"] .dads-heading__heading {
+.dads-h[dads-size="45"],
+hgroup[dads-size="45"] .dads-h {
   --_shoulder-size: calc(22 / 16 * 1rem);
   --_shoulder-line-height: 1.5;
   --_shoulder-letter-spacing: 0.02em;
@@ -37,8 +37,8 @@ hgroup[dads-size="45"] .dads-heading__heading {
   letter-spacing: 0;
 }
 
-.dads-heading__heading[dads-size="36"],
-hgroup[dads-size="36"] .dads-heading__heading {
+.dads-h[dads-size="36"],
+hgroup[dads-size="36"] .dads-h {
   --_shoulder-size: calc(20 / 16 * 1rem);
   --_shoulder-line-height: 1.5;
   --_shoulder-letter-spacing: 0.02em;
@@ -48,8 +48,8 @@ hgroup[dads-size="36"] .dads-heading__heading {
   letter-spacing: 0.01em;
 }
 
-.dads-heading__heading[dads-size="32"],
-hgroup[dads-size="32"] .dads-heading__heading {
+.dads-h[dads-size="32"],
+hgroup[dads-size="32"] .dads-h {
   --_shoulder-size: calc(18 / 16 * 1rem);
   --_shoulder-line-height: 1.6;
   --_shoulder-letter-spacing: 0.02em;
@@ -59,8 +59,8 @@ hgroup[dads-size="32"] .dads-heading__heading {
   letter-spacing: 0.01em;
 }
 
-.dads-heading__heading[dads-size="28"],
-hgroup[dads-size="28"] .dads-heading__heading {
+.dads-h[dads-size="28"],
+hgroup[dads-size="28"] .dads-h {
   --_shoulder-size: calc(16 / 16 * 1rem);
   --_shoulder-line-height: 1.7;
   --_shoulder-letter-spacing: 0.02em;
@@ -70,8 +70,8 @@ hgroup[dads-size="28"] .dads-heading__heading {
   letter-spacing: 0.01em;
 }
 
-.dads-heading__heading[dads-size="24"],
-hgroup[dads-size="24"] .dads-heading__heading {
+.dads-h[dads-size="24"],
+hgroup[dads-size="24"] .dads-h {
   --_shoulder-size: calc(16 / 16 * 1rem);
   --_shoulder-line-height: 1.7;
   --_shoulder-letter-spacing: 0.02em;
@@ -81,8 +81,8 @@ hgroup[dads-size="24"] .dads-heading__heading {
   letter-spacing: 0.02em;
 }
 
-.dads-heading__heading[dads-size="20"],
-hgroup[dads-size="20"] .dads-heading__heading {
+.dads-h[dads-size="20"],
+hgroup[dads-size="20"] .dads-h {
   --_shoulder-size: calc(16 / 16 * 1rem);
   --_shoulder-line-height: 1.7;
   --_shoulder-letter-spacing: 0.02em;
@@ -92,8 +92,8 @@ hgroup[dads-size="20"] .dads-heading__heading {
   letter-spacing: 0.02em;
 }
 
-.dads-heading__heading[dads-size="18"],
-hgroup[dads-size="18"] .dads-heading__heading {
+.dads-h[dads-size="18"],
+hgroup[dads-size="18"] .dads-h {
   --_shoulder-size: calc(16 / 16 * 1rem);
   --_shoulder-line-height: 1.7;
   --_shoulder-letter-spacing: 0.02em;
@@ -103,8 +103,8 @@ hgroup[dads-size="18"] .dads-heading__heading {
   letter-spacing: 0.02em;
 }
 
-.dads-heading__heading[dads-size="16"],
-hgroup[dads-size="16"] .dads-heading__heading {
+.dads-h[dads-size="16"],
+hgroup[dads-size="16"] .dads-h {
   --_shoulder-size: calc(16 / 16 * 1rem);
   --_shoulder-line-height: 1.7;
   --_shoulder-letter-spacing: 0.02em;
@@ -114,14 +114,14 @@ hgroup[dads-size="16"] .dads-heading__heading {
   letter-spacing: 0.02em;
 }
 
-.dads-heading__heading[data-chip],
-hgroup[data-chip] .dads-heading__heading {
+.dads-h[data-chip],
+hgroup[data-chip] .dads-h {
   position: relative;
   padding-left: calc(1em / 3 + 0.5em);
 }
 
-.dads-heading__heading[data-chip]::before,
-hgroup[data-chip] .dads-heading__heading::before {
+.dads-h[data-chip]::before,
+hgroup[data-chip] .dads-h::before {
   position: absolute;
   top: 0.2em;
   bottom: 0.1em;
@@ -132,54 +132,54 @@ hgroup[data-chip] .dads-heading__heading::before {
 }
 
 @supports (top: 1lh) {
-  .dads-heading__heading[data-chip]::before,
-  hgroup[data-chip] .dads-heading__heading::before {
+  .dads-h[data-chip]::before,
+  hgroup[data-chip] .dads-h::before {
     top: calc(0.5lh - 0.45em);
     bottom: calc(0.5lh - 0.55em);
   }
 }
 
-hgroup[data-chip]:has(.dads-heading__shoulder) .dads-heading__heading::before {
+hgroup[data-chip]:has(.dads-h-shoulder) .dads-h::before {
   top: calc((var(--_shoulder-size) * (var(--_shoulder-line-height) - 1)) / 2);
 }
 
 @media (forced-colors: active) {
-  .dads-heading__heading[data-chip]::before,
-  hgroup[data-chip] .dads-heading__heading::before {
+  .dads-h[data-chip]::before,
+  hgroup[data-chip] .dads-h::before {
     background-color: CanvasText;
   }
 }
 
-.dads-heading__heading[data-rule],
-hgroup[data-rule] .dads-heading__heading {
+.dads-h[data-rule],
+hgroup[data-rule] .dads-h {
   border-bottom: solid var(--color-primitive-blue-900);
 }
 
-.dads-heading__heading[data-rule="8"],
-hgroup[data-rule="8"] .dads-heading__heading {
+.dads-h[data-rule="8"],
+hgroup[data-rule="8"] .dads-h {
   border-bottom-width: calc(8 / 16 * 1rem);
   padding-bottom: calc(32 / 16 * 1rem);
 }
 
-.dads-heading__heading[data-rule="6"],
-hgroup[data-rule="6"] .dads-heading__heading {
+.dads-h[data-rule="6"],
+hgroup[data-rule="6"] .dads-h {
   border-bottom-width: calc(6 / 16 * 1rem);
   padding-bottom: calc(24 / 16 * 1rem);
 }
 
-.dads-heading__heading[data-rule="4"],
-hgroup[data-rule="4"] .dads-heading__heading {
+.dads-h[data-rule="4"],
+hgroup[data-rule="4"] .dads-h {
   border-bottom-width: calc(4 / 16 * 1rem);
   padding-bottom: calc(16 / 16 * 1rem);
 }
 
-.dads-heading__heading[data-rule="2"],
-hgroup[data-rule="2"] .dads-heading__heading {
+.dads-h[data-rule="2"],
+hgroup[data-rule="2"] .dads-h {
   border-bottom-width: calc(2 / 16 * 1rem);
   padding-bottom: calc(8 / 16 * 1rem);
 }
 
-.dads-heading__shoulder {
+.dads-h-shoulder {
   margin: 0;
   color: var(--color-neutral-solid-gray-800);
   font-family: var(--font-family-sans);

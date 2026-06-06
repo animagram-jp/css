@@ -32,7 +32,10 @@ Css universal design boilerplate. Works without interference to HTML.
 - Edit input-text.css to remove wrapper span.
 - Delete language-selector and edit menu-list-box to list-box.
 - Edit form-control-label.css and textarea.css.
-- Change button.css display:flex to inline-flex.
+- Add input-number.
+- Change button, input, textarea to display:inline-flex.
+- Normalize dads-size (renamed from dada-size) betweeen button, input and textarea.
+- Edit heading to remove wrapper hgroup dependency and rename to class dads-h.
 
 ## `dads-size` — Size Scale
 
@@ -45,11 +48,9 @@ The `size` attribute (`dads-size="sm"` etc.) controls the physical density of a 
 | `md`        | 3rem    | —               | —                | 1rem      | —           |
 | `lg`        | 3.5rem  | —               | —                | 1rem      | —           |
 
-`—` = コンポーネント固有のため共通値なし（下表参照）
+`—` = Components unique as below
 
-### コンポーネント別詳細
-
-#### button
+### button
 
 | `dads-size` | min-height | padding (block) | padding (inline) | font-size | line-height |
 |-------------|------------|-----------------|------------------|-----------|-------------|
@@ -58,9 +59,7 @@ The `size` attribute (`dads-size="sm"` etc.) controls the physical density of a 
 | `md`        | 3rem       | 0.5rem          | 1rem             | 1rem      | 1           |
 | `lg`        | 3.5rem     | 0.75rem         | 1rem             | 1rem      | 1           |
 
-#### input-text
-
-`dads-size` は height のみ制御。padding・font-size・line-height・width は全サイズ共通。
+### input-text
 
 | `dads-size` | height  | padding (block) | padding (inline) | font-size | line-height | width  |
 |-------------|---------|-----------------|------------------|-----------|-------------|--------|
@@ -68,9 +67,7 @@ The `size` attribute (`dads-size="sm"` etc.) controls the physical density of a 
 | `md`        | 3rem    | 0.75rem         | 1rem             | 1rem      | 1.7         | 12rem  |
 | `lg`        | 3.5rem  | 0.75rem         | 1rem             | 1rem      | 1.7         | 12rem  |
 
-#### input-number
-
-`dads-size` は height のみ制御。全体幅 `12rem` = ボタン `2rem` + input `flex:1` + ボタン `2rem`。
+### input-number
 
 | `dads-size` | height  | button width | input        | font-size | line-height | 全体 width |
 |-------------|---------|--------------|--------------|-----------|-------------|------------|
@@ -78,9 +75,7 @@ The `size` attribute (`dads-size="sm"` etc.) controls the physical density of a 
 | `md`        | 3rem    | 2rem         | flex: 1      | 1rem      | 1.7         | 12rem      |
 | `lg`        | 3.5rem  | 2rem         | flex: 1      | 1rem      | 1.7         | 12rem      |
 
-#### select
-
-`dads-size` は height のみ制御。padding・line-height は全サイズ共通。
+### select
 
 | `dads-size` | height  | padding-inline-start | padding-inline-end | line-height |
 |-------------|---------|----------------------|--------------------|-------------|
@@ -88,9 +83,7 @@ The `size` attribute (`dads-size="sm"` etc.) controls the physical density of a 
 | `md`        | 3rem    | 1rem                 | 2.5rem             | 1           |
 | `lg`        | 3.5rem  | 1rem                 | 2.5rem             | 1           |
 
-#### textarea
-
-`dads-size` は font-size・line-height を制御。padding・width は全サイズ共通。
+### textarea
 
 | `dads-size` | padding (block) | padding (inline) | font-size | line-height | width  |
 |-------------|-----------------|------------------|-----------|-------------|--------|
@@ -98,9 +91,7 @@ The `size` attribute (`dads-size="sm"` etc.) controls the physical density of a 
 | `md`        | 0.75rem         | 1rem             | 1rem      | 1.6         | 100%   |
 | `lg`        | 0.75rem         | 1rem             | 1rem      | 1.7         | 100%   |
 
-#### checkbox
-
-`dads-size` は行全体の高さ・コントロールサイズ・gap・padding-block を制御。
+### checkbox
 
 | `dads-size` | 行高   | input-size | hover-size | gap     | border-width | padding-block | label font-size | line-height |
 |-------------|--------|------------|------------|---------|--------------|---------------|-----------------|-------------|
@@ -110,42 +101,11 @@ The `size` attribute (`dads-size="sm"` etc.) controls the physical density of a 
 
 #### radio
 
-checkbox と同様の概念。
-
 | `dads-size` | 行高   | outer-size | inner-size | hover-size | gap     | border-width | padding-block | label font-size | line-height |
 |-------------|--------|------------|------------|------------|---------|--------------|---------------|-----------------|-------------|
 | `sm`        | 40px   | 1.25rem    | 0.625rem   | 1.5rem     | 0.25rem | 0.125rem     | 0.6rem        | 1rem            | 1           |
 | `md`        | 48px   | 1.625rem   | 0.75rem    | 2rem       | 0.5rem  | 0.125rem     | 0.6875rem     | 1rem            | 1           |
 | `lg`        | 56px   | 2.25rem    | 1rem       | 2.75rem    | 0.75rem | 0.1875rem    | 0.625rem      | 1rem            | 1           |
-
-## Popup Menu — Shared JS Contract
-
-A single JS module handles open/close, outside-click dismissal, focusout dismissal, and keyboard navigation for all dropdown/popup-menu components. CSS components that expose a popup menu must mark their elements with the following `data-*` attributes so the shared JS can find them without knowing the component name.
-
-| Attribute | Required | Element | Role |
-|---|---|---|---|
-| `data-js-opener` | yes | `<button>` | Toggles the popup; holds `aria-expanded` |
-| `data-js-popup` | yes | popup container | Shown/hidden via `hidden` attribute |
-| `data-js-menu` | yes | `<ul>` inside popup | Receives `keydown` for arrow-key navigation |
-| `data-js-menu-item` | yes | focusable `<a>` / `<button>` inside menu | Navigation target; click closes popup and returns focus to opener |
-
-### Keyboard behavior
-
-| Context | Key | Action |
-|---|---|---|
-| opener focused, menu open | `ArrowDown` | Focus first item |
-| opener focused, menu open | `ArrowUp` | Focus last item |
-| menu focused | `ArrowDown` | Next item (wraps to first) |
-| menu focused | `ArrowUp` | Previous item (wraps to last) |
-| menu focused | `Home` | First item |
-| menu focused | `End` | Last item |
-| anywhere | `Escape` | Close menu, return focus to opener |
-
-### CSS requirements
-
-- The popup container must default to `hidden` in HTML (`<div data-js-popup hidden>`). The shared JS removes/sets the attribute; CSS must not control visibility independently.
-- No CSS rule may show or hide `[data-js-popup]` based on a class toggle — visibility is owned entirely by the `hidden` attribute.
-- `aria-expanded` on the opener is set by JS; CSS may style `[aria-expanded="true"]` for visual open-state feedback (e.g. rotating a chevron icon).
 
 ## License
 
