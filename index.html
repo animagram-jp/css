@@ -1925,10 +1925,10 @@
 <table class="dads-table">
   <thead>
     <tr>
-      <th class="dads-table__col-header" scope="col">ラベル</th>
-      <th class="dads-table__col-header" scope="col">ラベル</th>
-      <th class="dads-table__col-header" scope="col">ラベル</th>
-      <th class="dads-table__col-header" scope="col">ラベル</th>
+      <th scope="col">ラベル</th>
+      <th scope="col">ラベル</th>
+      <th scope="col">ラベル</th>
+      <th scope="col">ラベル</th>
     </tr>
   </thead>
   <tbody>
@@ -1946,16 +1946,15 @@
     </tr>
   </tbody>
 </table>
-
 
 <!-- ストライプ -->
-<table class="dads-table" data-row-stripe data-cell-border="bottom" style="margin-top: 2rem;" dads-type="dense">
+<table class="dads-table" dads-stripe dads-border="bottom" dads-type="dense" style="margin-top: 2rem;">
   <thead>
     <tr>
-      <th class="dads-table__col-header" scope="col">ラベル</th>
-      <th class="dads-table__col-header" scope="col">ラベル</th>
-      <th class="dads-table__col-header" scope="col">ラベル</th>
-      <th class="dads-table__col-header" scope="col">ラベル</th>
+      <th scope="col">ラベル</th>
+      <th scope="col">ラベル</th>
+      <th scope="col">ラベル</th>
+      <th scope="col">ラベル</th>
     </tr>
   </thead>
   <tbody>
@@ -1965,38 +1964,38 @@
   </tbody>
 </table>
 
-<!-- row-header -->
-<table class="dads-table" data-cell-border="bottom" style="margin-top: 2rem;">
+<!-- tbody th (行ヘッダー) -->
+<table class="dads-table" dads-border="bottom" style="margin-top: 2rem;">
   <caption>行ヘッダー付き</caption>
   <thead>
     <tr>
-      <th class="dads-table__col-header" scope="col">項目</th>
-      <th class="dads-table__col-header" scope="col">値A</th>
-      <th class="dads-table__col-header" scope="col">値B</th>
+      <th scope="col">項目</th>
+      <th scope="col">値A</th>
+      <th scope="col">値B</th>
     </tr>
   </thead>
   <tbody>
     <tr>
-      <th class="dads-table__row-header" scope="row">行1</th>
+      <th scope="row">行1</th>
       <td>データ</td>
       <td>データ</td>
     </tr>
     <tr>
-      <th class="dads-table__row-header" scope="row">行2</th>
+      <th scope="row">行2</th>
       <td>データ</td>
       <td>データ</td>
     </tr>
   </tbody>
 </table>
 
-<!-- data-row-hover-highlight -->
-<table class="dads-table" data-row-hover-highlight data-cell-border="bottom" style="margin-top: 2rem;">
+<!-- dads-hover -->
+<table class="dads-table" dads-hover dads-border="bottom" style="margin-top: 2rem;">
   <caption>ホバーハイライト</caption>
   <thead>
     <tr>
-      <th class="dads-table__col-header" scope="col">ラベル</th>
-      <th class="dads-table__col-header" scope="col">ラベル</th>
-      <th class="dads-table__col-header" scope="col">ラベル</th>
+      <th scope="col">ラベル</th>
+      <th scope="col">ラベル</th>
+      <th scope="col">ラベル</th>
     </tr>
   </thead>
   <tbody>
@@ -2006,14 +2005,14 @@
   </tbody>
 </table>
 
-<!-- data-selectable (checkbox) -->
-<table class="dads-table" data-selectable data-cell-border="bottom" style="margin-top: 2rem;">
+<!-- dads-selectable -->
+<table class="dads-table" dads-selectable dads-border="bottom" style="margin-top: 2rem;">
   <caption>選択可能（チェックボックス）</caption>
   <thead>
     <tr>
-      <th class="dads-table__col-header" scope="col"><input type="checkbox" class="dads-checkbox" dads-size="sm" aria-label="すべて選択"></th>
-      <th class="dads-table__col-header" scope="col">ラベル</th>
-      <th class="dads-table__col-header" scope="col">ラベル</th>
+      <th scope="col"><input type="checkbox" class="dads-checkbox" dads-size="sm" aria-label="すべて選択"></th>
+      <th scope="col">ラベル</th>
+      <th scope="col">ラベル</th>
     </tr>
   </thead>
   <tbody>
@@ -2030,30 +2029,30 @@
   </tbody>
 </table>
 
-<!-- sort-header -->
-<table class="dads-table" data-cell-border="bottom" style="margin-top: 2rem;">
+<!-- dads-sort -->
+<table class="dads-table" dads-border="bottom" style="margin-top: 2rem;">
   <caption>ソート（aria-sort: none / ascending / descending）</caption>
   <thead>
     <tr>
-      <th class="dads-table__sort-header" scope="col">
+      <th dads-sort scope="col">
         名前
-        <div class="dads-table__sort-buttons">
-          <button class="dads-table__sort-upper" type="button" aria-label="名前 昇順"></button>
-          <button class="dads-table__sort-lower" type="button" aria-label="名前 降順"></button>
+        <div class="dads-sort">
+          <button class="dads-sort-up" type="button" aria-label="名前 昇順"></button>
+          <button class="dads-sort-down" type="button" aria-label="名前 降順"></button>
         </div>
       </th>
-      <th class="dads-table__sort-header" aria-sort="ascending" scope="col">
+      <th dads-sort aria-sort="ascending" scope="col">
         日付
-        <div class="dads-table__sort-buttons">
-          <button class="dads-table__sort-upper" type="button" aria-label="日付 昇順"></button>
-          <button class="dads-table__sort-lower" type="button" aria-label="日付 降順"></button>
+        <div class="dads-sort">
+          <button class="dads-sort-up" type="button" aria-label="日付 昇順"></button>
+          <button class="dads-sort-down" type="button" aria-label="日付 降順"></button>
         </div>
       </th>
-      <th class="dads-table__sort-header" aria-sort="descending" scope="col">
+      <th dads-sort aria-sort="descending" scope="col">
         金額
-        <div class="dads-table__sort-buttons">
-          <button class="dads-table__sort-upper" type="button" aria-label="金額 昇順"></button>
-          <button class="dads-table__sort-lower" type="button" aria-label="金額 降順"></button>
+        <div class="dads-sort">
+          <button class="dads-sort-up" type="button" aria-label="金額 昇順"></button>
+          <button class="dads-sort-down" type="button" aria-label="金額 降順"></button>
         </div>
       </th>
     </tr>
@@ -2072,14 +2071,14 @@
   </tbody>
 </table>
 
-<!-- data-cell-border variants -->
-<table class="dads-table" data-cell-border="" style="margin-top: 2rem;">
+<!-- dads-border="" (全セル格子) -->
+<table class="dads-table" dads-border="" style="margin-top: 2rem;">
   <caption>全セルボーダー</caption>
   <thead>
     <tr>
-      <th class="dads-table__col-header" scope="col">ラベル</th>
-      <th class="dads-table__col-header" scope="col">ラベル</th>
-      <th class="dads-table__col-header" scope="col">ラベル</th>
+      <th scope="col">ラベル</th>
+      <th scope="col">ラベル</th>
+      <th scope="col">ラベル</th>
     </tr>
   </thead>
   <tbody>
