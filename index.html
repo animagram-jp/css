@@ -2032,25 +2032,28 @@
 
 <!-- sort-header -->
 <table class="dads-table" data-cell-border="bottom" style="margin-top: 2rem;">
-  <caption>ソート（aria-sort 3状態）</caption>
+  <caption>ソート（aria-sort: none / ascending / descending）</caption>
   <thead>
     <tr>
       <th class="dads-table__sort-header" scope="col">
-        <div class="dads-table__sort-inner">
-          <div class="dads-table__sort-label">名前</div>
-          <button class="dads-table__sort-button" type="button" aria-sort="none">名前</button>
+        名前
+        <div class="dads-table__sort-buttons">
+          <button class="dads-table__sort-upper" type="button" aria-label="名前 昇順"></button>
+          <button class="dads-table__sort-lower" type="button" aria-label="名前 降順"></button>
         </div>
       </th>
-      <th class="dads-table__sort-header" scope="col">
-        <div class="dads-table__sort-inner">
-          <div class="dads-table__sort-label">日付</div>
-          <button class="dads-table__sort-button" type="button" aria-sort="ascending">日付</button>
+      <th class="dads-table__sort-header" aria-sort="ascending" scope="col">
+        日付
+        <div class="dads-table__sort-buttons">
+          <button class="dads-table__sort-upper" type="button" aria-label="日付 昇順"></button>
+          <button class="dads-table__sort-lower" type="button" aria-label="日付 降順"></button>
         </div>
       </th>
-      <th class="dads-table__sort-header" scope="col">
-        <div class="dads-table__sort-inner">
-          <div class="dads-table__sort-label">金額</div>
-          <button class="dads-table__sort-button" type="button" aria-sort="descending">金額</button>
+      <th class="dads-table__sort-header" aria-sort="descending" scope="col">
+        金額
+        <div class="dads-table__sort-buttons">
+          <button class="dads-table__sort-upper" type="button" aria-label="金額 昇順"></button>
+          <button class="dads-table__sort-lower" type="button" aria-label="金額 降順"></button>
         </div>
       </th>
     </tr>
