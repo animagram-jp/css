@@ -19,11 +19,11 @@ dads-progress-indicator:not([active]) * {
   animation: none !important;
 }
 
-.dads-progress-indicator[data-type="stacked"] {
+.dads-progress-indicator[dads-type="stacked"] {
   flex-direction: column;
 }
 
-.dads-progress-indicator[data-type="stacked-underlay"] {
+.dads-progress-indicator[dads-type="stacked-underlay"] {
   flex-direction: column;
   margin-right: auto;
   margin-left: auto;
@@ -34,7 +34,7 @@ dads-progress-indicator:not([active]) * {
   background-color: var(--color-neutral-white);
 }
 
-.dads-progress-indicator[data-type="stacked-underlay"]:has(
+.dads-progress-indicator[dads-type="stacked-underlay"]:has(
     .dads-progress-indicator__spinner,
     .dads-progress-indicator__static
   ) {
@@ -43,7 +43,7 @@ dads-progress-indicator:not([active]) * {
   padding: calc(16 / 16 * 1rem);
 }
 
-.dads-progress-indicator[data-type="stacked-underlay"]:has(
+.dads-progress-indicator[dads-type="stacked-underlay"]:has(
     .dads-progress-indicator__linear
   ) {
   padding: calc(24 / 16 * 1rem);
