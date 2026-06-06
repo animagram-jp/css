@@ -13,7 +13,7 @@
 }
 
 .dads-table[dads-type="dense"] {
-  --_padding: calc(12 / 16 * 1rem) 0px;
+  --_padding: calc(12 / 16 * 1rem) 0.1rem;
   line-height: 1.3;
 }
 
@@ -201,9 +201,5 @@
 @media (width >= 40rem) {
   .dads-table {
     --_padding: calc(20 / 16 * 1rem) calc(16 / 16 * 1rem);
-  }
-
-  .dads-table[dads-type="dense"] {
-    --_padding: calc(12 / 16 * 1rem) calc(16 / 16 * 1rem);
   }
 }
