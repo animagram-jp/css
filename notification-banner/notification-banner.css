@@ -46,27 +46,27 @@
   }
 }
 
-.dads-notification-banner[data-type="success"] {
+.dads-notification-banner[dads-type="success"] {
   --_base-color: var(--color-semantic-success-2);
   --_color-chip-color: var(--color-semantic-success-2);
 }
 
-.dads-notification-banner[data-type="error"] {
+.dads-notification-banner[dads-type="error"] {
   --_base-color: var(--color-semantic-error-1);
   --_color-chip-color: var(--color-semantic-error-1);
 }
 
-.dads-notification-banner[data-type="warning"] {
+.dads-notification-banner[dads-type="warning"] {
   --_base-color: var(--color-semantic-warning-yellow-2);
   --_color-chip-color: var(--color-primitive-yellow-400);
 }
 
-.dads-notification-banner[data-type="info-1"] {
+.dads-notification-banner[dads-type="info-1"] {
   --_base-color: var(--color-primitive-blue-900);
   --_color-chip-color: var(--color-primitive-blue-900);
 }
 
-.dads-notification-banner[data-type="info-2"] {
+.dads-notification-banner[dads-type="info-2"] {
   --_base-color: var(--color-neutral-solid-gray-536);
   --_color-chip-color: var(--color-neutral-solid-gray-536);
 }
@@ -238,7 +238,7 @@
   width: auto;
 }
 
-.dads-notification-banner[data-type="success"] .dads-button {
+.dads-notification-banner[dads-type="success"] .dads-button {
   --button-color: var(--color-semantic-success-2);
   --button-hover-color: var(--color-primitive-green-1000);
   --button-active-color: var(--color-primitive-green-1200);
@@ -246,7 +246,7 @@
   --button-outline-active-bg-color: var(--color-primitive-green-300);
 }
 
-.dads-notification-banner[data-type="error"] .dads-button {
+.dads-notification-banner[dads-type="error"] .dads-button {
   --button-color: var(--color-semantic-error-1);
   --button-hover-color: var(--color-primitive-red-1000);
   --button-active-color: var(--color-primitive-red-1200);
@@ -254,7 +254,7 @@
   --button-outline-active-bg-color: var(--color-primitive-red-300);
 }
 
-.dads-notification-banner[data-type="warning"] .dads-button {
+.dads-notification-banner[dads-type="warning"] .dads-button {
   --button-color: var(--color-semantic-warning-yellow-2);
   --button-hover-color: var(--color-primitive-yellow-1000);
   --button-active-color: var(--color-primitive-yellow-1200);
@@ -262,7 +262,7 @@
   --button-outline-active-bg-color: var(--color-primitive-yellow-300);
 }
 
-.dads-notification-banner[data-type="info-1"] .dads-button {
+.dads-notification-banner[dads-type="info-1"] .dads-button {
   --button-color: var(--color-primitive-blue-900);
   --button-hover-color: var(--color-primitive-blue-1000);
   --button-active-color: var(--color-primitive-blue-1200);
@@ -270,7 +270,7 @@
   --button-outline-active-bg-color: var(--color-primitive-blue-300);
 }
 
-.dads-notification-banner[data-type="info-2"] .dads-button {
+.dads-notification-banner[dads-type="info-2"] .dads-button {
   --button-color: var(--color-neutral-solid-gray-800);
   --button-hover-color: var(--color-neutral-solid-gray-900);
   --button-active-color: var(--color-neutral-black);

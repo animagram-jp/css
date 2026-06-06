@@ -65,7 +65,7 @@
   text-decoration: underline;
 }
 
-.dads-file-upload[data-has-error="true"] .dads-button[data-type="outline"] {
+.dads-file-upload[data-has-error="true"] .dads-button[dads-type="outline"] {
   border-color: var(--color-semantic-error-1);
 }
 
