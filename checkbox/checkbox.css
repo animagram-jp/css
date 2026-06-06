@@ -24,6 +24,7 @@
   --_padding-block: calc(10 / 16 * 1rem);
 }
 
+.dads-checkbox:not([dads-size]),
 .dads-checkbox[dads-size="md"] {
   --_gap: calc(8 / 16 * 1rem);
   --_checkbox-size: calc(32 / 16 * 1rem);

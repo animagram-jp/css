@@ -198,7 +198,7 @@ export class DatePicker extends HTMLElement {
   }
 
   get #isConsolidated() {
-    return this.getAttribute("data-type") === "consolidated";
+    return this.getAttribute("dads-type") === "consolidated";
   }
 
   get #yearInput() {
