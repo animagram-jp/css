@@ -18,13 +18,7 @@
   box-shadow: 0 0 0 calc(2 / 16 * 1rem) var(--color-primitive-yellow-300);
 }
 
-.dads-utility-link__lead-icon {
-  display: inline-block;
-  width: calc(16 / 16 * 1rem);
-  height: calc(16 / 16 * 1rem);
-  vertical-align: -0.15em;
-  color: var(--color-neutral-solid-gray-900);
-}
+
 
 .dads-utility-link__label {
   color: var(--color-neutral-solid-gray-800);
@@ -49,10 +43,4 @@
   text-decoration-thickness: calc(1 / 16 * 1rem);
 }
 
-.dads-utility-link__tail-icon {
-  display: inline-block;
-  width: calc(16 / 16 * 1rem);
-  height: calc(16 / 16 * 1rem);
-  vertical-align: -0.15em;
-  color: var(--color-neutral-solid-gray-900);
-}
+
