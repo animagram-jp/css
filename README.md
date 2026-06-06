@@ -37,6 +37,7 @@ Css universal design boilerplate. Works without interference to HTML.
 - Normalize dads-size (renamed from dada-size) betweeen button, input and textarea.
 - Edit heading to remove wrapper hgroup dependency and rename to class dads-h.
 - Make dads-size="md" fallback when no selecting.
+- rename input-text to input and assemble input-number into input.css.
 
 ## `dads-size` — Size Scale
 
@@ -60,7 +61,7 @@ The `size` attribute (`dads-size="sm"` etc.) controls the physical density of a 
 | `md`        | 3rem       | 0.5rem          | 1rem             | 1rem      | 1           |
 | `lg`        | 3.5rem     | 0.75rem         | 1rem             | 1rem      | 1           |
 
-### input-text
+### input
 
 | `dads-size` | height  | padding (block) | padding (inline) | font-size | line-height | width  |
 |-------------|---------|-----------------|------------------|-----------|-------------|--------|
