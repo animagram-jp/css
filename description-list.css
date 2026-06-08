@@ -1,13 +1,16 @@
 .dads-description-list {
   margin-top: calc(16 / 16 * 1rem);
   margin-bottom: calc(16 / 16 * 1rem);
-  display: grid;
-  gap: calc(8 / 16 * 1rem) 0;
   overflow-wrap: anywhere;
 }
 
 .dads-description-list dt {
   font-weight: bold;
+  margin-top: calc(8 / 16 * 1rem);
+}
+
+.dads-description-list dt:first-child {
+  margin-top: 0;
 }
 
 .dads-description-list[data-marker="bullet"] dt {

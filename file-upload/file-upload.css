@@ -208,7 +208,7 @@
   background-color: var(--color-primitive-green-50);
 }
 
-.dads-file-upload__viewport-overlay-message {
+.dads-file-upload__viewport-overlay > div {
   display: flex;
   place-content: center;
   flex-wrap: wrap;
@@ -228,6 +228,6 @@
   pointer-events: none;
 }
 
-.dads-file-upload__viewport-overlay-message span {
+.dads-file-upload__viewport-overlay > div span {
   display: inline-block;
 }
