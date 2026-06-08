@@ -19,12 +19,12 @@
   letter-spacing: 0.02em;
 }
 
-.dads-notification-banner[data-style="standard"] {
+.dads-notification-banner[dads-type="standard"] {
   border-radius: calc(12 / 16 * 1rem);
   border-width: calc(3 / 16 * 1rem);
 }
 
-.dads-notification-banner[data-style="color-chip"] {
+.dads-notification-banner[dads-type="color-chip"] {
   border-width: calc(2 / 16 * 1rem);
   padding-left: calc(24 / 16 * 1rem);
   box-shadow: inset calc(8 / 16 * 1rem) 0 0 0 var(--_color-chip-color);
@@ -40,7 +40,7 @@
     column-gap: calc(24 / 16 * 1rem);
   }
 
-  .dads-notification-banner[data-style="color-chip"] {
+  .dads-notification-banner[dads-type="color-chip"] {
     padding-left: calc(40 / 16 * 1rem);
     box-shadow: inset calc(16 / 16 * 1rem) 0 0 0 var(--_color-chip-color);
   }
