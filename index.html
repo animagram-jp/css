@@ -1073,7 +1073,7 @@
 
 <label id="file-upload-1-label" class="dads-field-label" for="file-upload-1-input">
     参照する画像・ドキュメント
-    <span class="dads-field-requirement" data-required="false">※任意</span>
+    <span class="dads-field-requirement">※任意</span>
   </label>
   <p id="file-upload-1-support-text" class="dads-field-support">
     対応ファイル：PNG/JPEG/GIF形式の画像、Excel/Word/PowerPoint/PDF形式のドキュメント<br>
@@ -1161,7 +1161,7 @@
 <!-- 単一入力 (必須) -->
 <label class="dads-field-label" for="name-input">
   氏名
-  <span class="dads-field-requirement" data-required="true">※必須</span>
+  <span class="dads-field-requirement" dads-required>※必須</span>
 </label>
 <p class="dads-field-support">姓と名の間にスペースを入れてください。</p>
 
@@ -1172,7 +1172,7 @@
 <fieldset style="margin-top:2rem; border:0; padding:0" aria-describedby="check-error check-support">
   <legend class="dads-field-label">
     該当する項目
-    <span class="dads-field-requirement" data-required="false">任意</span>
+    <span class="dads-field-requirement">任意</span>
   </legend>
   <p id="check-support" class="dads-field-support">該当するものをすべて選択してください。</p>
   <label class="dads-checkbox" dads-size="md"><input type="checkbox" aria-invalid="true">選択肢A</label>
@@ -2116,7 +2116,7 @@
     <!-- 文字数カウンター (削除済み) -->
     <label class="dads-field-label" style="margin-top:1rem;" for="counter-textarea">
       ラベル
-      <span class="dads-field-requirement" data-required="true">※必須</span>
+      <span class="dads-field-requirement" dads-required>※必須</span>
     </label>
     <p id="counter-support-text" class="dads-field-support">20文字以内で入力してください</p>
     <textarea id="counter-textarea" class="dads-textarea" aria-describedby="counter-support-text"></textarea>
