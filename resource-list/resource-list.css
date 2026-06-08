@@ -11,12 +11,12 @@
   --_padding-inline: calc(16 / 16 * 1rem);
 }
 
-.dads-resource-list[data-style="list"] {
+.dads-resource-list[dads-type="list"] {
   border: 1px solid transparent;
   border-bottom-color: var(--_border-color);
 }
 
-.dads-resource-list[data-style="frame"] {
+.dads-resource-list[dads-type="frame"] {
   border-radius: calc(16 / 16 * 1rem);
   border: 1px solid var(--_border-color);
 }
@@ -31,11 +31,11 @@
   color: var(--color-neutral-solid-gray-420);
 }
 
-.dads-resource-list[data-style="list"]:has(:disabled) {
+.dads-resource-list[dads-type="list"]:has(:disabled) {
   border-bottom-color: var(--color-neutral-solid-gray-300);
 }
 
-.dads-resource-list[data-style="frame"]:has(:disabled) {
+.dads-resource-list[dads-type="frame"]:has(:disabled) {
   border-color: var(--color-neutral-solid-gray-300);
 }
 
