@@ -148,7 +148,7 @@ export class FileUpload extends HTMLElement {
       () => {
         this.#dragCounter++;
         if (this.#dragCounter === 1) {
-          dropZone.setAttribute("data-dragover", "true");
+          dropZone.setAttribute("dads-dragover", "");
           this.#startDropAnnounce();
         }
       },
@@ -169,7 +169,7 @@ export class FileUpload extends HTMLElement {
       () => {
         this.#dragCounter--;
         if (this.#dragCounter === 0) {
-          dropZone.removeAttribute("data-dragover");
+          dropZone.removeAttribute("dads-dragover");
           this.#stopDropAnnounce();
           this.#announceText(
             this.#getMessage("announce", "dropUnavailable"),
@@ -185,7 +185,7 @@ export class FileUpload extends HTMLElement {
       (e) => {
         e.preventDefault();
         this.#dragCounter = 0;
-        dropZone.removeAttribute("data-dragover");
+        dropZone.removeAttribute("dads-dragover");
         this.#stopDropAnnounce();
 
         const files = Array.from(e.dataTransfer?.files || []);
@@ -487,12 +487,16 @@ export class FileUpload extends HTMLElement {
       this.#fileList.removeAttribute("hidden");
     }
 
-    this.setAttribute("data-multiple", this.#isMultiple ? "true" : "false");
+    if (this.#isMultiple) {
+      this.setAttribute("dads-multiple", "");
+    } else {
+      this.removeAttribute("dads-multiple");
+    }
 
     if (this.errors.length > 0) {
-      this.setAttribute("data-has-error", "true");
+      this.setAttribute("dads-error", "");
     } else {
-      this.removeAttribute("data-has-error");
+      this.removeAttribute("dads-error");
     }
   }
 
@@ -570,7 +574,7 @@ export class FileUpload extends HTMLElement {
     }
 
     if (hasErrors) {
-      li.setAttribute("data-error", "true");
+      li.setAttribute("dads-error", "");
 
       const infoDiv = li.querySelector("[data-js-file-info]");
       if (infoDiv) {
