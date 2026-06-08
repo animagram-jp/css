@@ -56,7 +56,7 @@
   border-color: var(--color-primitive-red-1000);
 }
 
-.dads-date-picker__inputs[dads-disable] {
+.dads-date-picker__inputs[dads-disabled] {
   --_background-color: var(--color-neutral-solid-gray-50);
   border-color: var(--color-neutral-solid-gray-300);
   color: var(--color-neutral-solid-gray-420);
@@ -78,7 +78,7 @@
     }
   }
 
-  .dads-date-picker__inputs[dads-disable] {
+  .dads-date-picker__inputs[dads-disabled] {
     --_background-color: ButtonFace;
     border-color: GrayText;
     color: GrayText;
