@@ -48,15 +48,15 @@
   }
 }
 
-.dads-date-picker__inputs[data-error] {
+.dads-date-picker__inputs[dads-error] {
   border-color: var(--color-semantic-error-1);
 }
 
-.dads-date-picker__inputs[data-error]:focus-within {
+.dads-date-picker__inputs[dads-error]:focus-within {
   border-color: var(--color-primitive-red-1000);
 }
 
-.dads-date-picker__inputs[data-disabled] {
+.dads-date-picker__inputs[dads-disable] {
   --_background-color: var(--color-neutral-solid-gray-50);
   border-color: var(--color-neutral-solid-gray-300);
   color: var(--color-neutral-solid-gray-420);
@@ -78,7 +78,7 @@
     }
   }
 
-  .dads-date-picker__inputs[data-disabled] {
+  .dads-date-picker__inputs[dads-disable] {
     --_background-color: ButtonFace;
     border-color: GrayText;
     color: GrayText;
