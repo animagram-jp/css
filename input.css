@@ -71,6 +71,12 @@
   }
 }
 
+/* search type */
+
+.dads-input[type="search"]::-webkit-search-cancel-button {
+  display: none;
+}
+
 /* input-number */
 
 .dads-input-number {

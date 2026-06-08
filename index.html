@@ -2365,28 +2365,34 @@
 <section class="example-section">
 <h2>Search Box</h2>
 
-<div class="dads-search-box">
-  <div class="dads-search-box__fields">
-    <label class="dads-search-box__select">
-      <span>検索対象</span>
-      <select name="scope">
-        <option value="">すべて</option>
-        <option value="images">画像</option>
-        <option value="files">ファイル</option>
-      </select>
-      <svg width="16" height="16" viewBox="0 0 24 24" aria-hidden="true">
-        <path d="M12 17L3 8L4 7L12 15L20 7L21 8L12 17Z" fill="currentcolor"/>
-      </svg>
-    </label>
-    <label class="dads-search-box__input">
-      <svg width="24" height="24" viewBox="0 0 24 24" aria-hidden="true">
-        <path d="m21 20.5-6-6a7.4 7.4 0 0 0 1.9-5A7.4 7.4 0 0 0 9.5 2 7.5 7.5 0 1 0 14 15.5l6 6 1-1ZM3.5 9.5a6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6 6 6 0 0 1-6-6Z" fill="currentcolor"/>
-      </svg>
-      <span class="dads-u-visually-hidden">検索</span>
-      <input type="search" name="q">
-    </label>
-  </div>
-  <button class="dads-button" type="submit" dads-type="fill" dads-size="lg">検索</button>
+<div style="margin-top:1rem; display: flex;">
+  <label class="dads-search-box">
+    <svg width="24" height="24" viewBox="0 0 24 24" aria-hidden="true">
+      <path d="m21 20.5-6-6a7.4 7.4 0 0 0 1.9-5A7.4 7.4 0 0 0 9.5 2 7.5 7.5 0 1 0 14 15.5l6 6 1-1ZM3.5 9.5a6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6 6 6 0 0 1-6-6Z" fill="currentcolor"/>
+    </svg>
+    <span class="dads-u-visually-hidden">検索</span>
+    <input type="search" name="q" class="dads-input">
+  </label>
+  <span style="display: inline-flex; width: 0.5rem;"></span>
+  <button class="dads-button" type="submit" dads-type="fill">検索</button>
+</div>
+
+<div style="margin-top:1rem; display: flex;">
+  <label class="dads-search-box-scope" dads-size="lg">
+    <span>検索対象</span>
+    <select>
+      <option value="">すべて</option>
+      <option value="images">画像</option>
+      <option value="files">ファイル</option></select>
+    <svg width="16" height="16" viewBox="0 0 24 24" aria-hidden="true">
+      <path d="M12 17L3 8L4 7L12 15L20 7L21 8L12 17Z" fill="currentcolor"/></svg></label>
+  <label class="dads-search-box" dads-size="lg">
+    <svg width="24" height="24" viewBox="0 0 24 24" aria-hidden="true">
+      <path d="m21 20.5-6-6a7.4 7.4 0 0 0 1.9-5A7.4 7.4 0 0 0 9.5 2 7.5 7.5 0 1 0 14 15.5l6 6 1-1ZM3.5 9.5a6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6 6 6 0 0 1-6-6Z" fill="currentcolor"/></svg>
+    <span class="dads-u-visually-hidden">検索</span>
+    <input type="search" name="q" class="dads-input" dads-size="lg"></label>
+    <span style="display: inline-flex; width: 0.5rem;"></span>
+    <button class="dads-button" type="submit" dads-type="fill" dads-size="lg">検索</button>
 </div>
 
 </section>
