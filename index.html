@@ -1195,18 +1195,22 @@
 
 <!-- data-marker="none": マーカーなし (確認画面等の用途) -->
 <dl class="dads-description-list" data-marker="none">
-  <div class="dads-description-list__item">
-    <dt>氏名</dt>
-    <dd>山田 太郎</dd>
-  </div>
-  <div class="dads-description-list__item">
-    <dt>メールアドレス</dt>
-    <dd>taro.yamada@example.com</dd>
-  </div>
-  <div class="dads-description-list__item">
-    <dt>電話番号</dt>
-    <dd>03-0000-0000</dd>
-  </div>
+  <dt>氏名</dt>
+  <dd>山田 太郎</dd>
+  <dt>メールアドレス</dt>
+  <dd>taro.yamada@example.com</dd>
+  <dt>電話番号</dt>
+  <dd>03-0000-0000</dd>
+</dl>
+
+<!-- data-marker="none": マーカーあり -->
+<dl class="dads-description-list" data-marker="bullet">
+  <dt>氏名</dt>
+  <dd>山田 太郎</dd>
+  <dt>メールアドレス</dt>
+  <dd>taro.yamada@example.com</dd>
+  <dt>電話番号</dt>
+  <dd>03-0000-0000</dd>
 </dl>
 
 </section>
@@ -1415,51 +1419,48 @@
       name="file-upload-1"
       multiple
       accept=".png,.jpg,.jpeg,.gif,.xlsx,.xls,.docx,.doc,.pptx,.ppt,.pdf"
-      data-js-input
     >
 
-    <div class="dads-u-visually-hidden" aria-live="polite" data-js-announcer></div>
-    <div class="dads-u-visually-hidden" aria-live="assertive" data-js-announcer-assertive></div>
+    <div class="dads-u-visually-hidden dads-file-upload__announcer" aria-live="polite"></div>
+    <div class="dads-u-visually-hidden dads-file-upload__announcer-assertive" aria-live="assertive"></div>
 
-    <div class="dads-file-upload__drop-area" data-js-drop-area>
+    <div class="dads-file-upload__drop-area">
       <button
         id="file-upload-1-button"
         class="dads-button"
         dads-type="outline"
-        dads-size="md"
         type="button"
         aria-labelledby="file-upload-1-label file-upload-1-button"
         aria-describedby="file-upload-1-selected-files file-upload-1-error-messages file-upload-1-support-text"
-        data-js-select-button
       >
         ファイルを選択
       </button>
       <p class="dads-file-upload__drop-hint">または、このエリア内にドラッグ＆ドロップ</p>
-      <p id="file-upload-1-selected-files" class="dads-file-upload__select-summary" data-js-select-summary></p>
-      <ul id="file-upload-1-error-messages" class="dads-file-upload__error-messages" data-js-error-messages></ul>
-      <label class="dads-checkbox dads-file-upload__expand-drop-area" dads-size="md"><input type="checkbox" data-js-expand-drop-area>ドラッグ＆ドロップの範囲をこのブラウザウィンドウ全体に広げる</label>
+      <p id="file-upload-1-selected-files" class="dads-file-upload__select-summary"></p>
+      <ul id="file-upload-1-error-messages" class="dads-file-upload__error-messages"></ul>
+      <label class="dads-checkbox dads-file-upload__expand-drop-area" dads-size="md"><input type="checkbox">ドラッグ＆ドロップの範囲をこのブラウザウィンドウ全体に広げる</label>
     </div>
-    <p class="dads-file-upload__empty-message" data-js-empty-message>ファイルが選択されていません</p>
-    <ul class="dads-file-upload__file-list" data-js-file-list hidden></ul>
+    <p class="dads-file-upload__empty-message">ファイルが選択されていません</p>
+    <ul class="dads-file-upload__file-list" hidden></ul>
 
-    <div class="dads-file-upload__viewport-overlay" data-js-viewport-overlay hidden>
-      <div class="dads-file-upload__viewport-overlay-message">
-        <span>このエリア内にファイルを</span><span>ドラッグ＆ドロップ</span>
+    <div class="dads-file-upload__viewport-overlay" hidden>
+      <div>
+        <span>ファイルをドラッグ＆ドロップ</span>
       </div>
     </div>
 
-    <template data-js-template>
+    <template class="dads-file-upload__template">
       <li class="dads-file-upload__file-item">
         <div class="dads-file-upload__file-marker"></div>
-        <div class="dads-file-upload__file-info" data-js-file-info>
+        <div class="dads-file-upload__file-info">
           <p>
-            <span class="dads-file-upload__file-name" data-slot="fileName"></span>
+            <span class="dads-file-upload__file-name"></span>
             <span class="dads-file-upload__file-meta">
-              <span data-slot="fileSize"></span>（<span data-slot="fileSizeBytes"></span>バイト）
+              <span class="dads-file-upload__file-size"></span>（<span class="dads-file-upload__file-size-bytes"></span>バイト）
             </span>
           </p>
         </div>
-        <button class="dads-file-upload__remove-button dads-button" dads-type="text" dads-size="xs" type="button" data-js-remove-button>解除</button>
+        <button class="dads-file-upload__remove-button dads-button" dads-type="text" dads-size="xs" type="button">解除</button>
       </li>
     </template>
   </dads-file-upload>
@@ -1482,41 +1483,38 @@
     type="file"
     name="file-upload-2"
     accept=".pdf"
-    data-js-input
   >
-  <div class="dads-u-visually-hidden" aria-live="polite" data-js-announcer></div>
-  <div class="dads-u-visually-hidden" aria-live="assertive" data-js-announcer-assertive></div>
-  <div class="dads-file-upload__drop-area" data-js-drop-area>
+  <div class="dads-u-visually-hidden dads-file-upload__announcer" aria-live="polite"></div>
+  <div class="dads-u-visually-hidden dads-file-upload__announcer-assertive" aria-live="assertive"></div>
+  <div class="dads-file-upload__drop-area">
     <button
       id="file-upload-2-button"
       class="dads-button"
       dads-type="outline"
-      dads-size="md"
       type="button"
       aria-labelledby="file-upload-2-label file-upload-2-button"
       aria-describedby="file-upload-2-error-messages"
-      data-js-select-button
     >
       ファイルを選択
     </button>
     <p class="dads-file-upload__drop-hint">または、このエリア内にドラッグ＆ドロップ</p>
-    <p class="dads-file-upload__select-summary" data-js-select-summary></p>
-    <ul id="file-upload-2-error-messages" class="dads-file-upload__error-messages" data-js-error-messages>
+    <p class="dads-file-upload__select-summary"></p>
+    <ul id="file-upload-2-error-messages" class="dads-file-upload__error-messages">
       <li>PDF形式のファイルを選択してください。</li>
     </ul>
   </div>
-  <p class="dads-file-upload__empty-message" data-js-empty-message>ファイルが選択されていません</p>
-  <ul class="dads-file-upload__file-list" data-js-file-list hidden></ul>
-  <template data-js-template>
+  <p class="dads-file-upload__empty-message">ファイルが選択されていません</p>
+  <ul class="dads-file-upload__file-list" hidden></ul>
+  <template class="dads-file-upload__template">
     <li class="dads-file-upload__file-item">
       <div class="dads-file-upload__file-marker"></div>
-      <div class="dads-file-upload__file-info" data-js-file-info>
+      <div class="dads-file-upload__file-info">
         <p>
-          <span class="dads-file-upload__file-name" data-slot="fileName"></span>
-          <span class="dads-file-upload__file-meta"><span data-slot="fileSize"></span></span>
+          <span class="dads-file-upload__file-name"></span>
+          <span class="dads-file-upload__file-meta"><span class="dads-file-upload__file-size"></span></span>
         </p>
       </div>
-      <button class="dads-file-upload__remove-button dads-button" dads-type="text" dads-size="xs" type="button" data-js-remove-button>解除</button>
+      <button class="dads-file-upload__remove-button dads-button" dads-type="text" dads-size="xs" type="button">解除</button>
     </li>
   </template>
 </dads-file-upload>
