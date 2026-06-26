@@ -64,14 +64,14 @@
   }
 }
 
-.dads-button[dads-type="outline"] {
+.dads-button[dads-type="outlined"] {
   border: 1px solid currentcolor;
   background-color: var(--color-neutral-white);
   color: var(--button-color);
 }
 
 @media (hover: hover) {
-  .dads-button[dads-type="outline"]:hover {
+  .dads-button[dads-type="outlined"]:hover {
     background-color: var(--button-outline-hover-bg-color);
     color: var(--button-hover-color);
     text-decoration: underline;
@@ -79,28 +79,28 @@
   }
 }
 
-.dads-button[dads-type="outline"]:active {
+.dads-button[dads-type="outlined"]:active {
   background-color: var(--button-outline-active-bg-color);
   color: var(--button-active-color);
   text-decoration: underline;
 }
 
-.dads-button[dads-type="outline"]:focus-visible {
+.dads-button[dads-type="outlined"]:focus-visible {
   outline: calc(4 / 16 * 1rem) solid var(--color-neutral-black);
   outline-offset: calc(2 / 16 * 1rem);
   box-shadow: 0 0 0 calc(2 / 16 * 1rem) var(--color-primitive-yellow-300);
 }
 
-.dads-button[dads-type="outline"]:disabled,
-.dads-button[dads-type="outline"][aria-disabled="true"] {
+.dads-button[dads-type="outlined"]:disabled,
+.dads-button[dads-type="outlined"][aria-disabled="true"] {
   background-color: var(--color-neutral-white);
   color: var(--color-neutral-solid-gray-300);
   text-decoration: none;
 }
 
 @media (forced-colors: active) {
-  .dads-button[dads-type="outline"]:disabled,
-  .dads-button[dads-type="outline"][aria-disabled="true"] {
+  .dads-button[dads-type="outlined"]:disabled,
+  .dads-button[dads-type="outlined"][aria-disabled="true"] {
     border-color: GrayText;
     color: GrayText;
   }
