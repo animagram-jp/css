@@ -20,8 +20,9 @@
   color: var(--_text, #000);
 }
 
-.dads-chip-label[dads-type="outline"] {
+.dads-chip-label[dads-type="outlined"] {
   border: 1px solid var(--_non-text, #000);
+  background-color: var(--color-neutral-white, #fff);
   color: var(--_text, #000);
 }
 
