@@ -1,0 +1,50 @@
+name: accessibility-audit
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+jobs:
+    audit:
+        timeout-minutes: 60
+        runs-on: ubuntu-latest
+        steps:
+        - name: git clone
+          run: |
+            git clone --depth 1 --branch "${GITHUB_REF_NAME}" \
+              "https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/${GITHUB_REPOSITORY}.git" .
+
+        - name: Install runner deps
+          run: |
+            npm init -y
+            npm install --no-save @axe-core/playwright@4 playwright@1 glob@11
+            npx playwright install --with-deps chromium
+
+        - name: Run axe over ./examples
+          run: node audit.mjs
+
+        - name: Upload report artifact
+          uses: actions/upload-artifact@v7
+          with:
+            name: accessibility-report
+            path: accessibility-report/
+            if-no-files-found: error
+
+        - name: Upload Pages artifact
+          uses: actions/upload-pages-artifact@v3
+          with:
+            path: accessibility-report/
+
+    deploy-pages:
+        needs: audit
+        runs-on: ubuntu-latest
+        environment:
+            name: github-pages
+            url: ${{ steps.deployment.outputs.page_url }}
+        steps:
+        - id: deployment
+          uses: actions/deploy-pages@v4
