@@ -12,9 +12,9 @@ curl -fsSL -H "Accept: application/vnd.github.raw+json" "https://api.github.com/
 
 ## 要件
 
-本cssの主な使用先である、[appリポジトリ](https://github.com/animagram-jp/app)ではWasmAppを採用し、Wasmの発行するCommand(op, dom_id, arg1, arg2, ...)で全てのDOM操作を実現している。このため、JS前提の表現や、無用なタグのネストはできない。
+本cssリポジトリは、元々UD対応汎用ライブラリとしての[デジタル庁ライブラリ](https://github.com/digital-go-jp/design-system-example-components-html)のクローンだったが、[主要使用先: appリポジトリ](https://github.com/animagram-jp/app)がWasmAppの発行するCommand(op, dom_id, arg1, arg2, ...)で全てのDOM操作を実現している都合、JS前提の状態管理や、無用なタグのネストを改める必要がある。また、UDでありつつ、一般汎用用途に耐えるべく、デザイン性やダークモードなどに対応する。
 
-### 作業例1~4
+### これまでの作業方針例1~4
 
 - 例1: HTML標準パターンに揃える (コミット 447f963)
 
