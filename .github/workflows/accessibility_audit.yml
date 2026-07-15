@@ -12,37 +12,36 @@ jobs:
     audit:
         timeout-minutes: 60
         runs-on: ubuntu-latest
+        permissions:
+            contents: read
         steps:
         - name: "git checkout"
           uses: actions/checkout@v7
-          
-        - name: Install runner deps
+
+        - name: "install runner deps"
           run: |
             npm init -y
             npm install --no-save @axe-core/playwright@4 playwright@1 glob@11
-            npx playwright install --with-deps chromium
 
-        - name: Run axe over ./examples
+        - name: "cache playwright browsers"
+          uses: actions/cache@v6
+          id: playwright-cache
+          with:
+            path: ~/.cache/ms-playwright
+            key: playwright-chromium-${{ runner.os }}-${{ hashFiles('**/package-lock.json') }}
+
+        - name: "install playwright browser"
+          if: steps.playwright-cache.outputs.cache-hit != 'true'
+          run: npx playwright install --with-deps chromium
+
+        - name: "install playwright os deps only (cache hit)"
+          if: steps.playwright-cache.outputs.cache-hit == 'true'
+          run: npx playwright install-deps chromium
+
+        - name: "run axe over ./examples"
           run: node audit.mjs
 
-        - name: Upload report artifact
+        - name: "upload report artifact"
           uses: actions/upload-artifact@v7
           with:
             name: accessibility-report
-            path: accessibility-report/
-            if-no-files-found: error
-
-        - name: Upload Pages artifact
-          uses: actions/upload-pages-artifact@v5
-          with:
-            path: accessibility-report/
-
-    deploy-pages:
-        needs: audit
-        runs-on: ubuntu-latest
-        environment:
-            name: github-pages
-            url: ${{ steps.deployment.outputs.page_url }}
-        steps:
-        - id: deployment
-          uses: actions/deploy-pages@v5
