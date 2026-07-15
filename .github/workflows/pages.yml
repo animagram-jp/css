@@ -2,6 +2,10 @@ name: Deploy to Github Pages
 
 on:
     workflow_dispatch:
+    workflow_run:
+        workflows: ["accessibility-audit"]
+        types:
+            - "completed"
 
 permissions:
     contents: read
@@ -19,10 +23,9 @@ jobs:
             url: ${{ steps.deployment.outputs.page_url }}
         runs-on: ubuntu-latest
         steps:
-            - name: "git clone"
-              run: |
-                git clone --depth 1 --branch "${GITHUB_REF_NAME}" \
-                "https://github.com/${GITHUB_REPOSITORY}.git" .
+            - name: "git checkout"
+              uses: actions/checkout@v7
+              
             - name: "setup Github Pages"
               uses: actions/configure-pages@v6
         
