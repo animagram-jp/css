@@ -13,11 +13,9 @@ jobs:
         timeout-minutes: 60
         runs-on: ubuntu-latest
         steps:
-        - name: git clone
-          run: |
-            git clone --depth 1 --branch "${GITHUB_REF_NAME}" \
-              "https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/${GITHUB_REPOSITORY}.git" .
-
+        - name: "git checkout"
+          uses: actions/checkout@v7
+          
         - name: Install runner deps
           run: |
             npm init -y
