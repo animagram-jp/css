@@ -1,5 +1,3 @@
-// This file includes untranslated text (ja).
-
 # Contributing
 
 - Follow [ORG_CONTRIBUTING.md](./ORG_CONTRIBUTING.md)
