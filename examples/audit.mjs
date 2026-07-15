@@ -5,43 +5,39 @@ import { mkdirSync, writeFileSync } from 'node:fs';
 import { pathToFileURL } from 'node:url';
 import path from 'node:path';
 
-const OUT = 'accessibility-report';
+const OUT = 'audit';
 mkdirSync(OUT, { recursive: true });
 
-// ./examples/ 直下のみ（再帰させたいなら examples/**/*.html に）
 const files = globSync('examples/*.html');
 if (files.length === 0) {
-  console.error('No HTML files under ./examples/');
-  process.exit(1);
+    console.error('No HTML files under ./examples/');
+    process.exit(1);
 }
 
 const TAGS = ['wcag2a', 'wcag2aa', 'wcag21a', 'wcag21aa', 'wcag22aa'];
 
 const browser = await chromium.launch();
 const summary = [];
-let totalViolations = 0;
 
 for (const file of files) {
-  const url = pathToFileURL(path.resolve(file)).href;
-  const page = await browser.newPage();
-  await page.goto(url, { waitUntil: 'load' });
+    const url = pathToFileURL(path.resolve(file)).href;
+    const page = await browser.newPage();
+    await page.goto(url, { waitUntil: 'load' });
 
-  const results = await new AxeBuilder({ page }).withTags(TAGS).analyze();
-  const count = results.violations.reduce((n, v) => n + v.nodes.length, 0);
-  totalViolations += count;
+    const results = await new AxeBuilder({ page }).withTags(TAGS).analyze();
+    const count = results.violations.reduce((n, v) => n + v.nodes.length, 0);
 
-  const base = path.basename(file, '.html');
-  writeFileSync(`${OUT}/${base}.json`, JSON.stringify(results, null, 2));
-  summary.push({ file, violations: results.violations.length, nodes: count });
+    const base = path.basename(file, '.html');
+    writeFileSync(`${OUT}/${base}.json`, JSON.stringify(results, null, 2));
+    summary.push({ file, violations: results.violations.length, nodes: count });
 
-  await page.close();
+    await page.close();
 }
 
 await browser.close();
 
-// 簡易HTMLインデックス（Pages/artifactでそのまま読める）
 const rows = summary.map(s =>
-  `<tr><td><a href="${path.basename(s.file, '.html')}.json">${s.file}</a></td>
+    `<tr><td><a href="${path.basename(s.file, '.html')}.json">${s.file}</a></td>
        <td>${s.violations}</td><td>${s.nodes}</td></tr>`).join('\n');
 writeFileSync(`${OUT}/index.html`, `<!doctype html><meta charset="utf-8">
 <title>accessibility report</title>
@@ -51,8 +47,3 @@ writeFileSync(`${OUT}/index.html`, `<!doctype html><meta charset="utf-8">
 <tr><th>file</th><th>violation rules</th><th>violating nodes</th></tr>
 ${rows}
 </table>`);
-
-console.log(`Done. total violating nodes: ${totalViolations}`);
-// FBだけ欲しくてビルドは落としたくない場合は exit 0 のまま。
-// 違反でCIを赤くしたいなら次行を有効化:
-// if (totalViolations > 0) process.exit(1);
