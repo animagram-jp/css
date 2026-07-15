@@ -1,6 +1,6 @@
 // This file includes untranslated text (ja).
 
-# Contrinbuting
+# Contributing
 
 - Follow [ORG_CONTRIBUTING.md](./ORG_CONTRIBUTING.md)
 
