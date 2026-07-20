@@ -230,6 +230,16 @@ table.tok code {
 .chip { width:22px; height:22px; border:1px solid #999; border-radius:3px; display:inline-block; }
 .rule-list { background:#fff; border:1px solid #d5d9de; padding:12px 12px 12px 30px; margin-top:8px; }
 .rule-list li { margin-bottom:6px; font-size:13px; }
+
+@media (prefers-color-scheme: dark) {
+  body { background: #0f1216; }
+  table.tok { background: #1a1e26; }
+  table.tok th { background: #222630; }
+  table.tok th, table.tok td { border-color: #2e3340; }
+  table.tok code { background: #1e2330; color: var(--ink); }
+  .specimen { background: #1a1e26; border-color: #2e3340; }
+  .rule-list { background: #1a1e26; border-color: #2e3340; }
+}
 </style>
 </head>
 <body>
