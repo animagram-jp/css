@@ -5,12 +5,12 @@ import { mkdirSync, writeFileSync } from 'node:fs';
 import { pathToFileURL } from 'node:url';
 import path from 'node:path';
 
-const OUT = 'audit';
+const OUT = 'docs';
 mkdirSync(OUT, { recursive: true });
 
-const files = globSync('examples/*.html');
+const files = globSync('index.html');
 if (files.length === 0) {
-    console.error('No HTML files under ./examples/');
+    console.error('No HTML files found (expected ./index.html)');
     process.exit(1);
 }
 
@@ -28,7 +28,7 @@ for (const file of files) {
     const count = results.violations.reduce((n, v) => n + v.nodes.length, 0);
 
     const base = path.basename(file, '.html');
-    writeFileSync(`${OUT}/${base}.json`, JSON.stringify(results, null, 2));
+    writeFileSync(`${OUT}/audit-${base}.json`, JSON.stringify(results, null, 2));
     summary.push({ file, violations: results.violations.length, nodes: count });
 
     await page.close();
@@ -37,9 +37,9 @@ for (const file of files) {
 await browser.close();
 
 const rows = summary.map(s =>
-    `<tr><td><a href="${path.basename(s.file, '.html')}.json">${s.file}</a></td>
+    `<tr><td><a href="audit-${path.basename(s.file, '.html')}.json">${s.file}</a></td>
        <td>${s.violations}</td><td>${s.nodes}</td></tr>`).join('\n');
-writeFileSync(`${OUT}/index.html`, `<!doctype html><meta charset="utf-8">
+writeFileSync(`${OUT}/audit.html`, `<!doctype html><meta charset="utf-8">
 <title>accessibility report</title>
 <h1>axe-core report (WCAG 2.2 A/AA)</h1>
 <p>Generated: ${new Date().toISOString()}</p>

@@ -34,7 +34,7 @@ jobs:
               uses: actions/download-artifact@v8
               with:
                 name: accessibility-report
-                path: audit/
+                path: docs/
                 github-token: ${{ secrets.GITHUB_TOKEN }}
                 run-id: ${{ github.event.workflow_run.id }}
                 if-no-artifact-found: warn

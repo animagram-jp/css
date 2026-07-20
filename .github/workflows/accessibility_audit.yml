@@ -38,10 +38,13 @@ jobs:
           if: steps.playwright-cache.outputs.cache-hit == 'true'
           run: npx playwright install-deps chromium
 
-        - name: "run axe over ./examples"
-          run: node audit.mjs
+        - name: "run axe over ./index.html"
+          run: node docs/audit.mjs
 
         - name: "upload report artifact"
           uses: actions/upload-artifact@v7
           with:
             name: accessibility-report
+            path: |
+              docs/audit.html
+              docs/audit-*.json
