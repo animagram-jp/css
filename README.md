@@ -38,6 +38,7 @@ Css universal design boilerplate. Works without interference to HTML.
 - Edit heading to remove wrapper hgroup dependency and rename to class dads-h.
 - Make dads-size="md" fallback when no selecting.
 - rename input-text to input and assemble input-number into input.css.
+- Rework typography utility classes in config.css from physical value naming (`dads-u-dsp-64B-140` etc.) to role-based DTCG-aligned naming (`css-typography-display-1-bold` etc.); add `css/typography.tokens.json` as the DTCG source of truth.
 
 ## `dads-size` — Size Scale
 
@@ -108,6 +109,21 @@ The `size` attribute (`dads-size="sm"` etc.) controls the physical density of a 
 | `sm`        | 40px   | 1.25rem    | 0.625rem   | 1.5rem     | 0.25rem | 0.125rem     | 0.6rem        | 1rem            | 1           |
 | `md`        | 48px   | 1.625rem   | 0.75rem    | 2rem       | 0.5rem  | 0.125rem     | 0.6875rem     | 1rem            | 1           |
 | `lg`        | 56px   | 2.25rem    | 1rem       | 2.75rem    | 0.75rem | 0.1875rem    | 0.625rem      | 1rem            | 1           |
+
+## `css-typography-*` — Typography Scale
+
+Typography utility classes in `config.css` follow a role-based naming: `css-typography-{role}-{step}-{weight}` (`text` role additionally carries a density segment: `css-typography-text-{density}-{step}-{weight}`). The scale is defined as DTCG-format composite tokens in [`css/typography.tokens.json`](./css/typography.tokens.json); the CSS classes below are its flattened output. `step` numbers order each role from largest to smallest and carry no meaning beyond ordering.
+
+| role | density | steps | font-size range | line-height | letter-spacing | notes |
+|------|---------|-------|------------------|-------------|-----------------|-------|
+| `display`  | —        | 1–3 | 64px – 48px | 1.4 (fixed)        | 0            | Largest, most prominent text; formerly `dsp` |
+| `heading`  | —        | 1–9 | 45px – 18px | 1.4 – 1.6 (by step) | 0 – 0.02em   | Section/page headings; formerly `std` (heading usage) |
+| `text`     | `normal` | 1–3 | 17px – 16px | 1.7 – 1.75          | 0.02em       | Body text, labels; formerly `std` (text usage) |
+| `text`     | `dense`  | 1–6 | 17px – 14px | 1.2 – 1.3           | 0            | Tighter line-height variant of `text`; formerly `dns` |
+| `text`     | `oneline`| 1–3 | 17px – 14px | 1 (fixed)           | 0.02em       | Single-line, no wrap; formerly `oln` |
+| `monospace`| —        | 1–3 | 17px – 14px | 1.5 (fixed)         | 0            | `font-family: var(--font-family-mono)`; formerly `mono` |
+
+Each `{role}-{step}` (and `{role}-{density}-{step}`) combination is available in both `-bold` and `-normal` weights.
 
 ## License
 
