@@ -52,10 +52,10 @@ label.dads-search-box-scope {
   flex-shrink: 0;
   color: var(--color-neutral-solid-gray-900);
   font-weight: normal;
-  font-size: var(--dads-size-md-font-size);
-  line-height: 1;
+  font-size: var(--css-typography-text-oneline-2-font-size);
+  line-height: var(--css-typography-text-oneline-2-line-height);
   font-family: var(--font-family-sans);
-  letter-spacing: 0.02em;
+  letter-spacing: var(--css-typography-text-oneline-2-letter-spacing);
 }
 
 label.dads-search-box-scope > span {
@@ -83,24 +83,24 @@ label.dads-search-box-scope > select {
   padding-left: calc(16 / 16 * 1rem);
   color: var(--color-neutral-solid-gray-900);
   font: inherit;
-  font-size: calc(17 / 16 * 1rem);
-  line-height: 1;
-  letter-spacing: 0.02em;
+  font-size: var(--css-typography-text-oneline-1-font-size);
+  line-height: var(--css-typography-text-oneline-1-line-height);
+  letter-spacing: var(--css-typography-text-oneline-1-letter-spacing);
   white-space: nowrap;
   text-overflow: ellipsis;
 }
 
 label.dads-search-box-scope[dads-size="sm"] > select {
-  height: var(--dads-size-sm-height);
+  height: var(--css-size-sm-height);
 }
 
 label.dads-search-box-scope:not([dads-size]) > select,
 label.dads-search-box-scope[dads-size="md"] > select {
-  height: var(--dads-size-md-height);
+  height: var(--css-size-md-height);
 }
 
 label.dads-search-box-scope[dads-size="lg"] > select {
-  height: var(--dads-size-lg-height);
+  height: var(--css-size-lg-height);
 }
 
 @supports (appearance: base-select) {

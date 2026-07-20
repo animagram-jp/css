@@ -6,112 +6,112 @@
 
 .dads-h[dads-size="64"],
 hgroup[dads-size="64"] .dads-h {
-  --_shoulder-size: calc(28 / 16 * 1rem);
-  --_shoulder-line-height: 1.5;
-  --_shoulder-letter-spacing: 0.01em;
+  --_shoulder-size: var(--css-typography-heading-4-font-size);
+  --_shoulder-line-height: var(--css-typography-heading-4-line-height);
+  --_shoulder-letter-spacing: var(--css-typography-heading-4-letter-spacing);
   font-weight: bold;
-  font-size: calc(64 / 16 * 1rem);
-  line-height: 1.4;
-  letter-spacing: 0;
+  font-size: var(--css-typography-display-1-font-size);
+  line-height: var(--css-typography-display-1-line-height);
+  letter-spacing: var(--css-typography-display-1-letter-spacing);
 }
 
 .dads-h[dads-size="57"],
 hgroup[dads-size="57"] .dads-h {
-  --_shoulder-size: calc(24 / 16 * 1rem);
-  --_shoulder-line-height: 1.5;
-  --_shoulder-letter-spacing: 0.02em;
+  --_shoulder-size: var(--css-typography-heading-6-font-size);
+  --_shoulder-line-height: var(--css-typography-heading-6-line-height);
+  --_shoulder-letter-spacing: var(--css-typography-heading-6-letter-spacing);
   font-weight: bold;
-  font-size: calc(57 / 16 * 1rem);
-  line-height: 1.4;
-  letter-spacing: 0;
+  font-size: var(--css-typography-display-2-font-size);
+  line-height: var(--css-typography-display-2-line-height);
+  letter-spacing: var(--css-typography-display-2-letter-spacing);
 }
 
 .dads-h[dads-size="45"],
 hgroup[dads-size="45"] .dads-h {
-  --_shoulder-size: calc(22 / 16 * 1rem);
-  --_shoulder-line-height: 1.5;
-  --_shoulder-letter-spacing: 0.02em;
+  --_shoulder-size: var(--css-typography-heading-7-font-size);
+  --_shoulder-line-height: var(--css-typography-heading-7-line-height);
+  --_shoulder-letter-spacing: var(--css-typography-heading-7-letter-spacing);
   font-weight: bold;
-  font-size: calc(45 / 16 * 1rem);
-  line-height: 1.4;
-  letter-spacing: 0;
+  font-size: var(--css-typography-heading-1-font-size);
+  line-height: var(--css-typography-heading-1-line-height);
+  letter-spacing: var(--css-typography-heading-1-letter-spacing);
 }
 
 .dads-h[dads-size="36"],
 hgroup[dads-size="36"] .dads-h {
-  --_shoulder-size: calc(20 / 16 * 1rem);
-  --_shoulder-line-height: 1.5;
-  --_shoulder-letter-spacing: 0.02em;
+  --_shoulder-size: var(--css-typography-heading-8-font-size);
+  --_shoulder-line-height: var(--css-typography-heading-8-line-height);
+  --_shoulder-letter-spacing: var(--css-typography-heading-8-letter-spacing);
   font-weight: bold;
-  font-size: calc(36 / 16 * 1rem);
-  line-height: 1.4;
-  letter-spacing: 0.01em;
+  font-size: var(--css-typography-heading-2-font-size);
+  line-height: var(--css-typography-heading-2-line-height);
+  letter-spacing: var(--css-typography-heading-2-letter-spacing);
 }
 
 .dads-h[dads-size="32"],
 hgroup[dads-size="32"] .dads-h {
-  --_shoulder-size: calc(18 / 16 * 1rem);
-  --_shoulder-line-height: 1.6;
-  --_shoulder-letter-spacing: 0.02em;
+  --_shoulder-size: var(--css-typography-heading-9-font-size);
+  --_shoulder-line-height: var(--css-typography-heading-9-line-height);
+  --_shoulder-letter-spacing: var(--css-typography-heading-9-letter-spacing);
   font-weight: bold;
-  font-size: calc(32 / 16 * 1rem);
-  line-height: 1.5;
-  letter-spacing: 0.01em;
+  font-size: var(--css-typography-heading-3-font-size);
+  line-height: var(--css-typography-heading-3-line-height);
+  letter-spacing: var(--css-typography-heading-3-letter-spacing);
 }
 
 .dads-h[dads-size="28"],
 hgroup[dads-size="28"] .dads-h {
-  --_shoulder-size: calc(16 / 16 * 1rem);
-  --_shoulder-line-height: 1.7;
-  --_shoulder-letter-spacing: 0.02em;
+  --_shoulder-size: var(--css-typography-text-normal-2-font-size);
+  --_shoulder-line-height: var(--css-typography-text-normal-2-line-height);
+  --_shoulder-letter-spacing: var(--css-typography-text-normal-2-letter-spacing);
   font-weight: bold;
-  font-size: calc(28 / 16 * 1rem);
-  line-height: 1.5;
-  letter-spacing: 0.01em;
+  font-size: var(--css-typography-heading-4-font-size);
+  line-height: var(--css-typography-heading-4-line-height);
+  letter-spacing: var(--css-typography-heading-4-letter-spacing);
 }
 
 .dads-h[dads-size="24"],
 hgroup[dads-size="24"] .dads-h {
-  --_shoulder-size: calc(16 / 16 * 1rem);
-  --_shoulder-line-height: 1.7;
-  --_shoulder-letter-spacing: 0.02em;
+  --_shoulder-size: var(--css-typography-text-normal-2-font-size);
+  --_shoulder-line-height: var(--css-typography-text-normal-2-line-height);
+  --_shoulder-letter-spacing: var(--css-typography-text-normal-2-letter-spacing);
   font-weight: bold;
-  font-size: calc(24 / 16 * 1rem);
-  line-height: 1.5;
-  letter-spacing: 0.02em;
+  font-size: var(--css-typography-heading-6-font-size);
+  line-height: var(--css-typography-heading-6-line-height);
+  letter-spacing: var(--css-typography-heading-6-letter-spacing);
 }
 
 .dads-h[dads-size="20"],
 hgroup[dads-size="20"] .dads-h {
-  --_shoulder-size: calc(16 / 16 * 1rem);
-  --_shoulder-line-height: 1.7;
-  --_shoulder-letter-spacing: 0.02em;
+  --_shoulder-size: var(--css-typography-text-normal-2-font-size);
+  --_shoulder-line-height: var(--css-typography-text-normal-2-line-height);
+  --_shoulder-letter-spacing: var(--css-typography-text-normal-2-letter-spacing);
   font-weight: bold;
-  font-size: calc(20 / 16 * 1rem);
-  line-height: 1.5;
-  letter-spacing: 0.02em;
+  font-size: var(--css-typography-heading-8-font-size);
+  line-height: var(--css-typography-heading-8-line-height);
+  letter-spacing: var(--css-typography-heading-8-letter-spacing);
 }
 
 .dads-h[dads-size="18"],
 hgroup[dads-size="18"] .dads-h {
-  --_shoulder-size: calc(16 / 16 * 1rem);
-  --_shoulder-line-height: 1.7;
-  --_shoulder-letter-spacing: 0.02em;
+  --_shoulder-size: var(--css-typography-text-normal-2-font-size);
+  --_shoulder-line-height: var(--css-typography-text-normal-2-line-height);
+  --_shoulder-letter-spacing: var(--css-typography-text-normal-2-letter-spacing);
   font-weight: bold;
-  font-size: calc(18 / 16 * 1rem);
-  line-height: 1.6;
-  letter-spacing: 0.02em;
+  font-size: var(--css-typography-heading-9-font-size);
+  line-height: var(--css-typography-heading-9-line-height);
+  letter-spacing: var(--css-typography-heading-9-letter-spacing);
 }
 
 .dads-h[dads-size="16"],
 hgroup[dads-size="16"] .dads-h {
-  --_shoulder-size: calc(16 / 16 * 1rem);
-  --_shoulder-line-height: 1.7;
-  --_shoulder-letter-spacing: 0.02em;
+  --_shoulder-size: var(--css-typography-text-normal-2-font-size);
+  --_shoulder-line-height: var(--css-typography-text-normal-2-line-height);
+  --_shoulder-letter-spacing: var(--css-typography-text-normal-2-letter-spacing);
   font-weight: bold;
-  font-size: calc(16 / 16 * 1rem);
-  line-height: 1.7;
-  letter-spacing: 0.02em;
+  font-size: var(--css-typography-text-normal-2-font-size);
+  line-height: var(--css-typography-text-normal-2-line-height);
+  letter-spacing: var(--css-typography-text-normal-2-letter-spacing);
 }
 
 .dads-h[data-chip],

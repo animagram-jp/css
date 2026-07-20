@@ -9,7 +9,7 @@
   border-radius: calc(8 / 16 * 1rem);
   color: var(--color-neutral-solid-gray-900);
   font-weight: normal;
-  font-size: var(--dads-size-md-font-size);
+  font-size: calc(16 / 16 * 1rem);
   line-height: 1.6;
   font-family: var(--font-family-sans);
   letter-spacing: 0.02em;
@@ -17,19 +17,19 @@
 }
 
 .dads-textarea[dads-size="sm"] {
-  font-size: var(--dads-size-sm-font-size);
+  font-size: calc(16 / 16 * 1rem);
   line-height: 1.5;
 }
 
 .dads-textarea:not([dads-size]),
 .dads-textarea[dads-size="md"] {
-  font-size: var(--dads-size-md-font-size);
+  font-size: calc(16 / 16 * 1rem);
   line-height: 1.6;
 }
 
 .dads-textarea[dads-size="lg"] {
-  font-size: var(--dads-size-lg-font-size);
-  line-height: 1.7;
+  font-size: var(--css-typography-text-normal-2-font-size);
+  line-height: var(--css-typography-text-normal-2-line-height);
 }
 
 .dads-textarea:read-only:not(:disabled) {
@@ -78,9 +78,9 @@
   display: block;
   margin-top: calc(8 / 16 * 1rem);
   color: var(--color-neutral-solid-gray-600);
-  font-size: calc(16 / 16 * 1rem);
-  line-height: 1;
-  letter-spacing: 0.02em;
+  font-size: var(--css-typography-text-oneline-2-font-size);
+  line-height: var(--css-typography-text-oneline-2-line-height);
+  letter-spacing: var(--css-typography-text-oneline-2-letter-spacing);
 }
 
 .dads-textarea-counter[data-exceeded] {

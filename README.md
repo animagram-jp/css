@@ -39,60 +39,64 @@ Css universal design boilerplate. Works without interference to HTML.
 - Make dads-size="md" fallback when no selecting.
 - rename input-text to input and assemble input-number into input.css.
 - Rework typography utility classes in config.css from physical value naming (`dads-u-dsp-64B-140` etc.) to role-based DTCG-aligned naming (`css-typography-display-1-bold` etc.); add `css/typography.tokens.json` as the DTCG source of truth.
+- Flatten `css-typography-*` utility classes into per-property `--css-typography-{role}-{step}-{font-size,line-height,letter-spacing}` custom properties; migrate heading.css, button.css, chip-label.css, field-label.css, table.css to reference them.
+- Split `dads-size-*` (which conflated touch-target sizing with typography) into `--css-size-*` (height/padding only) and typography references to `css-typography-text-*`; migrated button, list-box, select, textarea (partial), search-box, input, input-number.
 
 ## `dads-size` — Size Scale
 
-The `size` attribute (`dads-size="sm"` etc.) controls the physical density of a component. The intended shared values per tier are:
+The `size` attribute (`dads-size="sm"` etc.) controls the physical density of a component. `height`/`padding` are pure UI sizing (touch-target scale), tracked independently in `--css-size-*` custom properties — they no longer encode `font-size` or `line-height`. Typography for these components (`font-size`, `line-height`, `letter-spacing`) instead references the `css-typography-*` scale (see below); most components use a single fixed typography step regardless of `dads-size`, since font-size/line-height don't vary by tier except where noted.
 
-| `dads-size` | height | padding (block) | padding (inline) | font-size | line-height |
-|-------------|--------|-----------------|------------------|-----------|-------------|
-| `xs`        | 1.75rem | 0.125rem        | 0.5rem           | 0.875rem  | 1           |
-| `sm`        | 2.5rem  | —               | —                | 1rem      | —           |
-| `md`        | 3rem    | —               | —                | 1rem      | —           |
-| `lg`        | 3.5rem  | —               | —                | 1rem      | —           |
+| `dads-size` | height (`--css-size-*-height`) | padding (block) | padding (inline) |
+|-------------|---------------------------------|------------------|-------------------|
+| `xs`        | 1.75rem | 0.125rem | 0.5rem |
+| `sm`        | 2.5rem  | —        | —      |
+| `md`        | 3rem    | —        | —      |
+| `lg`        | 3.5rem  | —        | —      |
 
 `—` = Components unique as below
 
 ### button
 
-| `dads-size` | min-height | padding (block) | padding (inline) | font-size | line-height |
-|-------------|------------|-----------------|------------------|-----------|-------------|
-| `xs`        | 1.75rem    | 0.125rem        | 0.5rem           | 0.875rem  | 1           |
-| `sm`        | 2.5rem     | 0.125rem        | 0.75rem          | 1rem      | 1           |
-| `md`        | 3rem       | 0.5rem          | 1rem             | 1rem      | 1           |
-| `lg`        | 3.5rem     | 0.75rem         | 1rem             | 1rem      | 1           |
+| `dads-size` | min-height | padding (block) | padding (inline) | typography |
+|-------------|------------|-----------------|------------------|------------|
+| `xs`        | 1.75rem    | 0.125rem        | 0.5rem           | `text-oneline-3` |
+| `sm`        | 2.5rem     | 0.125rem        | 0.75rem          | `text-oneline-2` |
+| `md`        | 3rem       | 0.5rem          | 1rem             | `text-oneline-2` |
+| `lg`        | 3.5rem     | 0.75rem         | 1rem             | `text-oneline-2` |
 
 ### input
 
-| `dads-size` | height  | padding (block) | padding (inline) | font-size | line-height | width  |
-|-------------|---------|-----------------|------------------|-----------|-------------|--------|
-| `sm`        | 2.5rem  | 0.75rem         | 1rem             | 1rem      | 1.7         | 12rem  |
-| `md`        | 3rem    | 0.75rem         | 1rem             | 1rem      | 1.7         | 12rem  |
-| `lg`        | 3.5rem  | 0.75rem         | 1rem             | 1rem      | 1.7         | 12rem  |
+| `dads-size` | height  | padding (block) | padding (inline) | typography | width  |
+|-------------|---------|-----------------|------------------|------------|--------|
+| `sm`        | 2.5rem  | 0.75rem         | 1rem             | `text-normal-2` | 12rem  |
+| `md`        | 3rem    | 0.75rem         | 1rem             | `text-normal-2` | 12rem  |
+| `lg`        | 3.5rem  | 0.75rem         | 1rem             | `text-normal-2` | 12rem  |
 
 ### input-number
 
-| `dads-size` | height  | button width | input        | font-size | line-height | 全体 width |
-|-------------|---------|--------------|--------------|-----------|-------------|------------|
-| `sm`        | 2.5rem  | 2rem         | flex: 1      | 1rem      | 1.7         | 12rem      |
-| `md`        | 3rem    | 2rem         | flex: 1      | 1rem      | 1.7         | 12rem      |
-| `lg`        | 3.5rem  | 2rem         | flex: 1      | 1rem      | 1.7         | 12rem      |
+| `dads-size` | height  | button width | input        | typography | 全体 width |
+|-------------|---------|--------------|--------------|------------|------------|
+| `sm`        | 2.5rem  | 2rem         | flex: 1      | `text-normal-2` | 12rem      |
+| `md`        | 3rem    | 2rem         | flex: 1      | `text-normal-2` | 12rem      |
+| `lg`        | 3.5rem  | 2rem         | flex: 1      | `text-normal-2` | 12rem      |
 
 ### select
 
-| `dads-size` | height  | padding-inline-start | padding-inline-end | line-height |
-|-------------|---------|----------------------|--------------------|-------------|
-| `sm`        | 2.5rem  | 1rem                 | 2.5rem             | 1           |
-| `md`        | 3rem    | 1rem                 | 2.5rem             | 1           |
-| `lg`        | 3.5rem  | 1rem                 | 2.5rem             | 1           |
+| `dads-size` | height  | padding-inline-start | padding-inline-end | typography |
+|-------------|---------|----------------------|--------------------|------------|
+| `sm`        | 2.5rem  | 1rem                 | 2.5rem             | `text-oneline-2` (font-size inherited) |
+| `md`        | 3rem    | 1rem                 | 2.5rem             | `text-oneline-2` (font-size inherited) |
+| `lg`        | 3.5rem  | 1rem                 | 2.5rem             | `text-oneline-2` (font-size inherited) |
 
 ### textarea
 
+`sm`/`md` line-heights (1.5/1.6) predate the typography token scale and have no matching `css-typography-text-*` step yet; they remain hardcoded until a matching step is defined. `lg` matches `text-normal-2` and has been migrated.
+
 | `dads-size` | padding (block) | padding (inline) | font-size | line-height | width  |
 |-------------|-----------------|------------------|-----------|-------------|--------|
-| `sm`        | 0.75rem         | 1rem             | 1rem      | 1.5         | 100%   |
-| `md`        | 0.75rem         | 1rem             | 1rem      | 1.6         | 100%   |
-| `lg`        | 0.75rem         | 1rem             | 1rem      | 1.7         | 100%   |
+| `sm`        | 0.75rem         | 1rem             | 1rem      | 1.5 (hardcoded) | 100%   |
+| `md`        | 0.75rem         | 1rem             | 1rem      | 1.6 (hardcoded) | 100%   |
+| `lg`        | 0.75rem         | 1rem             | 1rem      | `text-normal-2` (1.7) | 100%   |
 
 ### checkbox
 

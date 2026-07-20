@@ -187,19 +187,123 @@
 }
 
 :root {
-  --dads-size-xs-height: 1.75rem;
-  --dads-size-xs-padding-block: 0.125rem;
-  --dads-size-xs-padding-inline: 0.5rem;
-  --dads-size-xs-font-size: 0.875rem;
+  --css-size-xs-height: 1.75rem;
+  --css-size-xs-padding-block: 0.125rem;
+  --css-size-xs-padding-inline: 0.5rem;
 
-  --dads-size-sm-height: 2.5rem;
-  --dads-size-sm-font-size: 1rem;
+  --css-size-sm-height: 2.5rem;
+  --css-size-md-height: 3rem;
+  --css-size-lg-height: 3.5rem;
+}
 
-  --dads-size-md-height: 3rem;
-  --dads-size-md-font-size: 1rem;
+:root {
+  --css-typography-display-1-font-size: calc(64 / 16 * 1rem);
+  --css-typography-display-1-line-height: 1.4;
+  --css-typography-display-1-letter-spacing: 0;
 
-  --dads-size-lg-height: 3.5rem;
-  --dads-size-lg-font-size: 1rem;
+  --css-typography-display-2-font-size: calc(57 / 16 * 1rem);
+  --css-typography-display-2-line-height: 1.4;
+  --css-typography-display-2-letter-spacing: 0;
+
+  --css-typography-display-3-font-size: calc(48 / 16 * 1rem);
+  --css-typography-display-3-line-height: 1.4;
+  --css-typography-display-3-letter-spacing: 0;
+
+  --css-typography-heading-1-font-size: calc(45 / 16 * 1rem);
+  --css-typography-heading-1-line-height: 1.4;
+  --css-typography-heading-1-letter-spacing: 0;
+
+  --css-typography-heading-2-font-size: calc(36 / 16 * 1rem);
+  --css-typography-heading-2-line-height: 1.4;
+  --css-typography-heading-2-letter-spacing: 0.01em;
+
+  --css-typography-heading-3-font-size: calc(32 / 16 * 1rem);
+  --css-typography-heading-3-line-height: 1.5;
+  --css-typography-heading-3-letter-spacing: 0.01em;
+
+  --css-typography-heading-4-font-size: calc(28 / 16 * 1rem);
+  --css-typography-heading-4-line-height: 1.5;
+  --css-typography-heading-4-letter-spacing: 0.01em;
+
+  --css-typography-heading-5-font-size: calc(26 / 16 * 1rem);
+  --css-typography-heading-5-line-height: 1.5;
+  --css-typography-heading-5-letter-spacing: 0.02em;
+
+  --css-typography-heading-6-font-size: calc(24 / 16 * 1rem);
+  --css-typography-heading-6-line-height: 1.5;
+  --css-typography-heading-6-letter-spacing: 0.02em;
+
+  --css-typography-heading-7-font-size: calc(22 / 16 * 1rem);
+  --css-typography-heading-7-line-height: 1.5;
+  --css-typography-heading-7-letter-spacing: 0.02em;
+
+  --css-typography-heading-8-font-size: calc(20 / 16 * 1rem);
+  --css-typography-heading-8-line-height: 1.5;
+  --css-typography-heading-8-letter-spacing: 0.02em;
+
+  --css-typography-heading-9-font-size: calc(18 / 16 * 1rem);
+  --css-typography-heading-9-line-height: 1.6;
+  --css-typography-heading-9-letter-spacing: 0.02em;
+
+  --css-typography-text-normal-1-font-size: calc(17 / 16 * 1rem);
+  --css-typography-text-normal-1-line-height: 1.7;
+  --css-typography-text-normal-1-letter-spacing: 0.02em;
+
+  --css-typography-text-normal-2-font-size: calc(16 / 16 * 1rem);
+  --css-typography-text-normal-2-line-height: 1.7;
+  --css-typography-text-normal-2-letter-spacing: 0.02em;
+
+  --css-typography-text-normal-3-font-size: calc(16 / 16 * 1rem);
+  --css-typography-text-normal-3-line-height: 1.75;
+  --css-typography-text-normal-3-letter-spacing: 0.02em;
+
+  --css-typography-text-dense-1-font-size: calc(17 / 16 * 1rem);
+  --css-typography-text-dense-1-line-height: 1.3;
+  --css-typography-text-dense-1-letter-spacing: 0;
+
+  --css-typography-text-dense-2-font-size: calc(17 / 16 * 1rem);
+  --css-typography-text-dense-2-line-height: 1.2;
+  --css-typography-text-dense-2-letter-spacing: 0;
+
+  --css-typography-text-dense-3-font-size: calc(16 / 16 * 1rem);
+  --css-typography-text-dense-3-line-height: 1.3;
+  --css-typography-text-dense-3-letter-spacing: 0;
+
+  --css-typography-text-dense-4-font-size: calc(16 / 16 * 1rem);
+  --css-typography-text-dense-4-line-height: 1.2;
+  --css-typography-text-dense-4-letter-spacing: 0;
+
+  --css-typography-text-dense-5-font-size: calc(14 / 16 * 1rem);
+  --css-typography-text-dense-5-line-height: 1.3;
+  --css-typography-text-dense-5-letter-spacing: 0;
+
+  --css-typography-text-dense-6-font-size: calc(14 / 16 * 1rem);
+  --css-typography-text-dense-6-line-height: 1.2;
+  --css-typography-text-dense-6-letter-spacing: 0;
+
+  --css-typography-text-oneline-1-font-size: calc(17 / 16 * 1rem);
+  --css-typography-text-oneline-1-line-height: 1;
+  --css-typography-text-oneline-1-letter-spacing: 0.02em;
+
+  --css-typography-text-oneline-2-font-size: calc(16 / 16 * 1rem);
+  --css-typography-text-oneline-2-line-height: 1;
+  --css-typography-text-oneline-2-letter-spacing: 0.02em;
+
+  --css-typography-text-oneline-3-font-size: calc(14 / 16 * 1rem);
+  --css-typography-text-oneline-3-line-height: 1;
+  --css-typography-text-oneline-3-letter-spacing: 0.02em;
+
+  --css-typography-monospace-1-font-size: calc(17 / 16 * 1rem);
+  --css-typography-monospace-1-line-height: 1.5;
+  --css-typography-monospace-1-letter-spacing: 0;
+
+  --css-typography-monospace-2-font-size: calc(16 / 16 * 1rem);
+  --css-typography-monospace-2-line-height: 1.5;
+  --css-typography-monospace-2-letter-spacing: 0;
+
+  --css-typography-monospace-3-font-size: calc(14 / 16 * 1rem);
+  --css-typography-monospace-3-line-height: 1.5;
+  --css-typography-monospace-3-letter-spacing: 0;
 }
 
 *, ::before, ::after {
@@ -293,388 +397,4 @@ body:has(:modal) {
     background-color: var(--color-primitive-yellow-300) !important;
     box-shadow: 0 0 0 calc(2 / 16 * 1rem) var(--color-primitive-yellow-300) !important;
   }
-}
-
-.css-typography-display-1-bold {
-  font-weight: bold !important;
-  font-size: calc(64 / 16 * 1rem) !important;
-  line-height: 1.4 !important;
-  letter-spacing: 0 !important;
-}
-
-.css-typography-display-1-normal {
-  font-weight: normal !important;
-  font-size: calc(64 / 16 * 1rem) !important;
-  line-height: 1.4 !important;
-  letter-spacing: 0 !important;
-}
-
-.css-typography-display-2-bold {
-  font-weight: bold !important;
-  font-size: calc(57 / 16 * 1rem) !important;
-  line-height: 1.4 !important;
-  letter-spacing: 0 !important;
-}
-
-.css-typography-display-2-normal {
-  font-weight: normal !important;
-  font-size: calc(57 / 16 * 1rem) !important;
-  line-height: 1.4 !important;
-  letter-spacing: 0 !important;
-}
-
-.css-typography-display-3-bold {
-  font-weight: bold !important;
-  font-size: calc(48 / 16 * 1rem) !important;
-  line-height: 1.4 !important;
-  letter-spacing: 0 !important;
-}
-
-.css-typography-display-3-normal {
-  font-weight: normal !important;
-  font-size: calc(48 / 16 * 1rem) !important;
-  line-height: 1.4 !important;
-  letter-spacing: 0 !important;
-}
-
-.css-typography-heading-1-bold {
-  font-weight: bold !important;
-  font-size: calc(45 / 16 * 1rem) !important;
-  line-height: 1.4 !important;
-  letter-spacing: 0 !important;
-}
-
-.css-typography-heading-1-normal {
-  font-weight: normal !important;
-  font-size: calc(45 / 16 * 1rem) !important;
-  line-height: 1.4 !important;
-  letter-spacing: 0 !important;
-}
-
-.css-typography-heading-2-bold {
-  font-weight: bold !important;
-  font-size: calc(36 / 16 * 1rem) !important;
-  line-height: 1.4 !important;
-  letter-spacing: 0.01em !important;
-}
-
-.css-typography-heading-2-normal {
-  font-weight: normal !important;
-  font-size: calc(36 / 16 * 1rem) !important;
-  line-height: 1.4 !important;
-  letter-spacing: 0.01em !important;
-}
-
-.css-typography-heading-3-bold {
-  font-weight: bold !important;
-  font-size: calc(32 / 16 * 1rem) !important;
-  line-height: 1.5 !important;
-  letter-spacing: 0.01em !important;
-}
-
-.css-typography-heading-3-normal {
-  font-weight: normal !important;
-  font-size: calc(32 / 16 * 1rem) !important;
-  line-height: 1.5 !important;
-  letter-spacing: 0.01em !important;
-}
-
-.css-typography-heading-4-bold {
-  font-weight: bold !important;
-  font-size: calc(28 / 16 * 1rem) !important;
-  line-height: 1.5 !important;
-  letter-spacing: 0.01em !important;
-}
-
-.css-typography-heading-4-normal {
-  font-weight: normal !important;
-  font-size: calc(28 / 16 * 1rem) !important;
-  line-height: 1.5 !important;
-  letter-spacing: 0.01em !important;
-}
-
-.css-typography-heading-5-bold {
-  font-weight: bold !important;
-  font-size: calc(26 / 16 * 1rem) !important;
-  line-height: 1.5 !important;
-  letter-spacing: 0.02em !important;
-}
-
-.css-typography-heading-5-normal {
-  font-weight: normal !important;
-  font-size: calc(26 / 16 * 1rem) !important;
-  line-height: 1.5 !important;
-  letter-spacing: 0.02em !important;
-}
-
-.css-typography-heading-6-bold {
-  font-weight: bold !important;
-  font-size: calc(24 / 16 * 1rem) !important;
-  line-height: 1.5 !important;
-  letter-spacing: 0.02em !important;
-}
-
-.css-typography-heading-6-normal {
-  font-weight: normal !important;
-  font-size: calc(24 / 16 * 1rem) !important;
-  line-height: 1.5 !important;
-  letter-spacing: 0.02em !important;
-}
-
-.css-typography-heading-7-bold {
-  font-weight: bold !important;
-  font-size: calc(22 / 16 * 1rem) !important;
-  line-height: 1.5 !important;
-  letter-spacing: 0.02em !important;
-}
-
-.css-typography-heading-7-normal {
-  font-weight: normal !important;
-  font-size: calc(22 / 16 * 1rem) !important;
-  line-height: 1.5 !important;
-  letter-spacing: 0.02em !important;
-}
-
-.css-typography-heading-8-bold {
-  font-weight: bold !important;
-  font-size: calc(20 / 16 * 1rem) !important;
-  line-height: 1.5 !important;
-  letter-spacing: 0.02em !important;
-}
-
-.css-typography-heading-8-normal {
-  font-weight: normal !important;
-  font-size: calc(20 / 16 * 1rem) !important;
-  line-height: 1.5 !important;
-  letter-spacing: 0.02em !important;
-}
-
-.css-typography-heading-9-bold {
-  font-weight: bold !important;
-  font-size: calc(18 / 16 * 1rem) !important;
-  line-height: 1.6 !important;
-  letter-spacing: 0.02em !important;
-}
-
-.css-typography-heading-9-normal {
-  font-weight: normal !important;
-  font-size: calc(18 / 16 * 1rem) !important;
-  line-height: 1.6 !important;
-  letter-spacing: 0.02em !important;
-}
-
-.css-typography-text-normal-1-bold {
-  font-weight: bold !important;
-  font-size: calc(17 / 16 * 1rem) !important;
-  line-height: 1.7 !important;
-  letter-spacing: 0.02em !important;
-}
-
-.css-typography-text-normal-1-normal {
-  font-weight: normal !important;
-  font-size: calc(17 / 16 * 1rem) !important;
-  line-height: 1.7 !important;
-  letter-spacing: 0.02em !important;
-}
-
-.css-typography-text-normal-2-bold {
-  font-weight: bold !important;
-  font-size: calc(16 / 16 * 1rem) !important;
-  line-height: 1.7 !important;
-  letter-spacing: 0.02em !important;
-}
-
-.css-typography-text-normal-2-normal {
-  font-weight: normal !important;
-  font-size: calc(16 / 16 * 1rem) !important;
-  line-height: 1.7 !important;
-  letter-spacing: 0.02em !important;
-}
-
-.css-typography-text-normal-3-bold {
-  font-weight: bold !important;
-  font-size: calc(16 / 16 * 1rem) !important;
-  line-height: 1.75 !important;
-  letter-spacing: 0.02em !important;
-}
-
-.css-typography-text-normal-3-normal {
-  font-weight: normal !important;
-  font-size: calc(16 / 16 * 1rem) !important;
-  line-height: 1.75 !important;
-  letter-spacing: 0.02em !important;
-}
-
-.css-typography-text-dense-1-bold {
-  font-weight: bold !important;
-  font-size: calc(17 / 16 * 1rem) !important;
-  line-height: 1.3 !important;
-  letter-spacing: 0 !important;
-}
-
-.css-typography-text-dense-1-normal {
-  font-weight: normal !important;
-  font-size: calc(17 / 16 * 1rem) !important;
-  line-height: 1.3 !important;
-  letter-spacing: 0 !important;
-}
-
-.css-typography-text-dense-2-bold {
-  font-weight: bold !important;
-  font-size: calc(17 / 16 * 1rem) !important;
-  line-height: 1.2 !important;
-  letter-spacing: 0 !important;
-}
-
-.css-typography-text-dense-2-normal {
-  font-weight: normal !important;
-  font-size: calc(17 / 16 * 1rem) !important;
-  line-height: 1.2 !important;
-  letter-spacing: 0 !important;
-}
-
-.css-typography-text-dense-3-bold {
-  font-weight: bold !important;
-  font-size: calc(16 / 16 * 1rem) !important;
-  line-height: 1.3 !important;
-  letter-spacing: 0 !important;
-}
-
-.css-typography-text-dense-3-normal {
-  font-weight: normal !important;
-  font-size: calc(16 / 16 * 1rem) !important;
-  line-height: 1.3 !important;
-  letter-spacing: 0 !important;
-}
-
-.css-typography-text-dense-4-bold {
-  font-weight: bold !important;
-  font-size: calc(16 / 16 * 1rem) !important;
-  line-height: 1.2 !important;
-  letter-spacing: 0 !important;
-}
-
-.css-typography-text-dense-4-normal {
-  font-weight: normal !important;
-  font-size: calc(16 / 16 * 1rem) !important;
-  line-height: 1.2 !important;
-  letter-spacing: 0 !important;
-}
-
-.css-typography-text-dense-5-bold {
-  font-weight: bold !important;
-  font-size: calc(14 / 16 * 1rem) !important;
-  line-height: 1.3 !important;
-  letter-spacing: 0 !important;
-}
-
-.css-typography-text-dense-5-normal {
-  font-weight: normal !important;
-  font-size: calc(14 / 16 * 1rem) !important;
-  line-height: 1.3 !important;
-  letter-spacing: 0 !important;
-}
-
-.css-typography-text-dense-6-bold {
-  font-weight: bold !important;
-  font-size: calc(14 / 16 * 1rem) !important;
-  line-height: 1.2 !important;
-  letter-spacing: 0 !important;
-}
-
-.css-typography-text-dense-6-normal {
-  font-weight: normal !important;
-  font-size: calc(14 / 16 * 1rem) !important;
-  line-height: 1.2 !important;
-  letter-spacing: 0 !important;
-}
-
-.css-typography-text-oneline-1-bold {
-  font-weight: bold !important;
-  font-size: calc(17 / 16 * 1rem) !important;
-  line-height: 1 !important;
-  letter-spacing: 0.02em !important;
-}
-
-.css-typography-text-oneline-1-normal {
-  font-weight: normal !important;
-  font-size: calc(17 / 16 * 1rem) !important;
-  line-height: 1 !important;
-  letter-spacing: 0.02em !important;
-}
-
-.css-typography-text-oneline-2-bold {
-  font-weight: bold !important;
-  font-size: calc(16 / 16 * 1rem) !important;
-  line-height: 1 !important;
-  letter-spacing: 0.02em !important;
-}
-
-.css-typography-text-oneline-2-normal {
-  font-weight: normal !important;
-  font-size: calc(16 / 16 * 1rem) !important;
-  line-height: 1 !important;
-  letter-spacing: 0.02em !important;
-}
-
-.css-typography-text-oneline-3-bold {
-  font-weight: bold !important;
-  font-size: calc(14 / 16 * 1rem) !important;
-  line-height: 1 !important;
-  letter-spacing: 0.02em !important;
-}
-
-.css-typography-text-oneline-3-normal {
-  font-weight: normal !important;
-  font-size: calc(14 / 16 * 1rem) !important;
-  line-height: 1 !important;
-  letter-spacing: 0.02em !important;
-}
-
-.css-typography-monospace-1-bold {
-  font-weight: bold !important;
-  font-size: calc(17 / 16 * 1rem) !important;
-  line-height: 1.5 !important;
-  font-family: var(--font-family-mono) !important;
-  letter-spacing: 0 !important;
-}
-
-.css-typography-monospace-1-normal {
-  font-weight: normal !important;
-  font-size: calc(17 / 16 * 1rem) !important;
-  line-height: 1.5 !important;
-  font-family: var(--font-family-mono) !important;
-  letter-spacing: 0 !important;
-}
-
-.css-typography-monospace-2-bold {
-  font-weight: bold !important;
-  font-size: calc(16 / 16 * 1rem) !important;
-  line-height: 1.5 !important;
-  font-family: var(--font-family-mono) !important;
-  letter-spacing: 0 !important;
-}
-
-.css-typography-monospace-2-normal {
-  font-weight: normal !important;
-  font-size: calc(16 / 16 * 1rem) !important;
-  line-height: 1.5 !important;
-  font-family: var(--font-family-mono) !important;
-  letter-spacing: 0 !important;
-}
-
-.css-typography-monospace-3-bold {
-  font-weight: bold !important;
-  font-size: calc(14 / 16 * 1rem) !important;
-  line-height: 1.5 !important;
-  font-family: var(--font-family-mono) !important;
-  letter-spacing: 0 !important;
-}
-
-.css-typography-monospace-3-normal {
-  font-weight: normal !important;
-  font-size: calc(14 / 16 * 1rem) !important;
-  line-height: 1.5 !important;
-  font-family: var(--font-family-mono) !important;
-  letter-spacing: 0 !important;
 }

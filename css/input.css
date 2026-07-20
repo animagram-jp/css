@@ -11,23 +11,23 @@
   border-radius: calc(8 / 16 * 1rem);
   color: var(--color-neutral-solid-gray-900);
   font-weight: normal;
-  font-size: var(--dads-size-md-font-size);
-  line-height: 1.7;
+  font-size: var(--css-typography-text-normal-2-font-size);
+  line-height: var(--css-typography-text-normal-2-line-height);
   font-family: var(--font-family-sans);
-  letter-spacing: 0.02em;
+  letter-spacing: var(--css-typography-text-normal-2-letter-spacing);
 }
 
 .dads-input[dads-size="sm"] {
-  height: var(--dads-size-sm-height);
+  height: var(--css-size-sm-height);
 }
 
 .dads-input:not([dads-size]),
 .dads-input[dads-size="md"] {
-  height: var(--dads-size-md-height);
+  height: var(--css-size-md-height);
 }
 
 .dads-input[dads-size="lg"] {
-  height: var(--dads-size-lg-height);
+  height: var(--css-size-lg-height);
 }
 
 .dads-input:read-only:not(:disabled) {
@@ -90,23 +90,23 @@
   border-radius: calc(8 / 16 * 1rem);
   color: var(--color-neutral-solid-gray-900);
   font-weight: normal;
-  font-size: var(--dads-size-md-font-size);
-  line-height: 1.7;
+  font-size: var(--css-typography-text-normal-2-font-size);
+  line-height: var(--css-typography-text-normal-2-line-height);
   font-family: var(--font-family-sans);
-  letter-spacing: 0.02em;
+  letter-spacing: var(--css-typography-text-normal-2-letter-spacing);
 }
 
 .dads-input-number[dads-size="sm"] {
-  height: var(--dads-size-sm-height);
+  height: var(--css-size-sm-height);
 }
 
 .dads-input-number:not([dads-size]),
 .dads-input-number[dads-size="md"] {
-  height: var(--dads-size-md-height);
+  height: var(--css-size-md-height);
 }
 
 .dads-input-number[dads-size="lg"] {
-  height: var(--dads-size-lg-height);
+  height: var(--css-size-lg-height);
 }
 
 .dads-input-number input[type="text"] {
@@ -145,7 +145,7 @@
   background-color: var(--color-neutral-white);
   color: var(--color-neutral-solid-gray-900);
   cursor: pointer;
-  font-size: .875rem;
+  font-size: var(--css-typography-text-oneline-3-font-size);
   font-weight: bold;
 }
 

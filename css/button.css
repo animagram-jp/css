@@ -11,10 +11,10 @@
   box-sizing: border-box;
   max-width: 100%;
   font-weight: bold;
-  font-size: calc(16 / 16 * 1rem);
-  line-height: 1;
+  font-size: var(--css-typography-text-oneline-2-font-size);
+  line-height: var(--css-typography-text-oneline-2-line-height);
   font-family: var(--font-family-sans);
-  letter-spacing: 0.02em;
+  letter-spacing: var(--css-typography-text-oneline-2-letter-spacing);
   text-decoration: none;
   text-underline-offset: calc(3 / 16 * 1rem);
 }
@@ -148,21 +148,21 @@
 }
 
 .dads-button[dads-size="lg"] {
-  min-height: var(--dads-size-lg-height);
+  min-height: var(--css-size-lg-height);
   border-radius: calc(8 / 16 * 1rem);
   padding: calc(12 / 16 * 1rem) calc(16 / 16 * 1rem);
 }
 
 .dads-button:not([dads-size]),
 .dads-button[dads-size="md"] {
-  min-height: var(--dads-size-md-height);
+  min-height: var(--css-size-md-height);
   border-radius: calc(8 / 16 * 1rem);
   padding: calc(8 / 16 * 1rem) calc(16 / 16 * 1rem);
 }
 
 .dads-button[dads-size="sm"] {
   position: relative;
-  min-height: var(--dads-size-sm-height);
+  min-height: var(--css-size-sm-height);
   border-radius: calc(6 / 16 * 1rem);
   padding: calc(2 / 16 * 1rem) calc(12 / 16 * 1rem);
 }
@@ -177,10 +177,10 @@
 
 .dads-button[dads-size="xs"] {
   position: relative;
-  min-height: var(--dads-size-xs-height);
+  min-height: var(--css-size-xs-height);
   border-radius: calc(4 / 16 * 1rem);
-  padding: var(--dads-size-xs-padding-block) var(--dads-size-xs-padding-inline);
-  font-size: var(--dads-size-xs-font-size);
+  padding: var(--css-size-xs-padding-block) var(--css-size-xs-padding-inline);
+  font-size: var(--css-typography-text-oneline-3-font-size);
 }
 
 .dads-button[dads-size="xs"]::after {

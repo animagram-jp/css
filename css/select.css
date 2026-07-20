@@ -12,22 +12,22 @@
   padding-left: calc(16 / 16 * 1rem);
   color: var(--color-neutral-solid-gray-800);
   font: inherit;
-  line-height: 1;
+  line-height: var(--css-typography-text-oneline-2-line-height);
   letter-spacing: inherit;
   appearance: none;
 }
 
 .dads-select[dads-size="sm"] {
-  height: var(--dads-size-sm-height);
+  height: var(--css-size-sm-height);
 }
 
 .dads-select:not([dads-size]),
 .dads-select[dads-size="md"] {
-  height: var(--dads-size-md-height);
+  height: var(--css-size-md-height);
 }
 
 .dads-select[dads-size="lg"] {
-  height: var(--dads-size-lg-height);
+  height: var(--css-size-lg-height);
 }
 
 .dads-select:focus-visible {

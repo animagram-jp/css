@@ -3,7 +3,7 @@
   display: inline-flex;
   align-items: center;
   box-sizing: border-box;
-  height: var(--dads-size-md-height);
+  height: var(--css-size-md-height);
   padding-inline-start: calc(16 / 16 * 1rem);
   padding-inline-end: calc(48 / 16 * 1rem);
   border-radius: calc(8 / 16 * 1rem);
@@ -21,7 +21,7 @@
 }
 
 .list-box-trigger[dads-size="sm"] {
-  height: var(--dads-size-sm-height);
+  height: var(--css-size-sm-height);
   padding-inline-end: calc(30 / 16 * 1rem);
   background-position: right calc(8 / 16 * 1rem) center;
   background-size: calc(14 / 16 * 1rem);
@@ -29,11 +29,11 @@
 
 .list-box-trigger:not([dads-size]),
 .list-box-trigger[dads-size="md"] {
-  height: var(--dads-size-md-height);
+  height: var(--css-size-md-height);
 }
 
 .list-box-trigger[dads-size="lg"] {
-  height: var(--dads-size-lg-height);
+  height: var(--css-size-lg-height);
 }
 
 .list-box:popover-open + .list-box-trigger {
@@ -73,9 +73,9 @@
   list-style-type: none;
   color: var(--color-neutral-solid-gray-900);
   font-weight: normal;
-  font-size: var(--dads-size-md-font-size);
-  line-height: 1;
-  letter-spacing: 0.02em;
+  font-size: var(--css-typography-text-oneline-2-font-size);
+  line-height: var(--css-typography-text-oneline-2-line-height);
+  letter-spacing: var(--css-typography-text-oneline-2-letter-spacing);
 }
 
 .list-box [role="option"],
