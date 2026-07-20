@@ -17,11 +17,12 @@ if (files.length === 0) {
 const TAGS = ['wcag2a', 'wcag2aa', 'wcag21a', 'wcag21aa', 'wcag22aa'];
 
 const browser = await chromium.launch();
+const context = await browser.newContext();
 const summary = [];
 
 for (const file of files) {
     const url = pathToFileURL(path.resolve(file)).href;
-    const page = await browser.newPage();
+    const page = await context.newPage();
     await page.goto(url, { waitUntil: 'load' });
 
     const results = await new AxeBuilder({ page }).withTags(TAGS).analyze();
@@ -34,6 +35,7 @@ for (const file of files) {
     await page.close();
 }
 
+await context.close();
 await browser.close();
 
 const rows = summary.map(s =>

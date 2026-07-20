@@ -1,0 +1,13 @@
+{
+  "name": "css",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "audit": "node docs/audit.mjs"
+  },
+  "dependencies": {
+    "@axe-core/playwright": "^4",
+    "glob": "^11",
+    "playwright": "^1"
+  }
+}
