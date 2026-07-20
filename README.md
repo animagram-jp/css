@@ -77,7 +77,7 @@ The `size` attribute (`dads-size="sm"` etc.) controls the physical density of a 
 
 ### input-number
 
-| `dads-size` | height  | button width | input        | typography | 全体 width |
+| `dads-size` | height  | button width | input        | typography | full-length width |
 |-------------|---------|--------------|--------------|------------|------------|
 | `sm`        | 2.5rem  | 2rem         | flex: 1      | `text-normal-2` | 12rem      |
 | `md`        | 3rem    | 2rem         | flex: 1      | `text-normal-2` | 12rem      |
