@@ -14,7 +14,7 @@ curl -fsSL -H "Accept: application/vnd.github.raw+json" "https://api.github.com/
 
 ### これまでの作業方針例1~4
 
-- 例1: HTML標準パターンに揃える (コミット 447f963)
+#### 例1: HTML標準パターンに揃える (コミット 447f963)
 
 **Before(値つきの文字列でtrue/falseを表現)**
 
@@ -44,7 +44,7 @@ curl -fsSL -H "Accept: application/vnd.github.raw+json" "https://api.github.com/
 
 ---
 
-- 例2: BEM記法の専用クラスを廃止し、HTML要素とネイティブ属性を活用する (コミット 8e03a70)
+#### 例2: BEM記法の専用クラスを廃止し、HTML要素とネイティブ属性を活用する (コミット 8e03a70)
 
 **Before(要素の位置や状態ごとにBEM記法クラスを命名)**
 
@@ -104,7 +104,7 @@ curl -fsSL -H "Accept: application/vnd.github.raw+json" "https://api.github.com/
 
 ---
 
-- 例3: デバイスやブラウザによって不安定な要素は避ける
+#### 例3: デバイスやブラウザによって不安定な要素は避ける
 
 **Before(セマンティクス通りにtype="number"を使う)**
 
@@ -126,7 +126,7 @@ curl -fsSL -H "Accept: application/vnd.github.raw+json" "https://api.github.com/
 ```
 ---
 
-- 例4: 設計哲学:意味を持たないラッパー要素は置かず、DOMをフラットに保つ (コミット 997422c)
+#### 例4: 意味を持たないラッパー要素は置かず、DOMをフラットに保つ (コミット 997422c)
 
 **Before(グリッドの各セルをdivでラップしてから中身を置く)**
 
