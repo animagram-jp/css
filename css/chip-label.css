@@ -8,10 +8,10 @@
   border-radius: calc(8 / 16 * 1rem);
   padding: calc(3 / 16 * 1rem) calc(7 / 16 * 1rem);
   font-weight: normal;
-  font-size: var(--css-typography-text-oneline-2-font-size);
-  line-height: var(--css-typography-text-oneline-2-line-height);
+  font-size: var(--css-typography-text-flush-2-font-size);
+  line-height: var(--css-typography-text-flush-2-line-height);
   font-family: var(--font-family-sans);
-  letter-spacing: var(--css-typography-text-oneline-2-letter-spacing);
+  letter-spacing: var(--css-typography-text-flush-2-letter-spacing);
   overflow-wrap: anywhere;
 }
 

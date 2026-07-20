@@ -11,10 +11,10 @@
   box-sizing: border-box;
   max-width: 100%;
   font-weight: bold;
-  font-size: var(--css-typography-text-oneline-2-font-size);
-  line-height: var(--css-typography-text-oneline-2-line-height);
+  font-size: var(--css-typography-text-flush-2-font-size);
+  line-height: var(--css-typography-text-flush-2-line-height);
   font-family: var(--font-family-sans);
-  letter-spacing: var(--css-typography-text-oneline-2-letter-spacing);
+  letter-spacing: var(--css-typography-text-flush-2-letter-spacing);
   text-decoration: none;
   text-underline-offset: calc(3 / 16 * 1rem);
 }
@@ -180,7 +180,7 @@
   min-height: var(--css-size-xs-height);
   border-radius: calc(4 / 16 * 1rem);
   padding: var(--css-size-xs-padding-block) var(--css-size-xs-padding-inline);
-  font-size: var(--css-typography-text-oneline-3-font-size);
+  font-size: var(--css-typography-text-flush-3-font-size);
 }
 
 .dads-button[dads-size="xs"]::after {

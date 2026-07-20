@@ -41,8 +41,9 @@ Css universal design boilerplate. Works without interference to HTML.
 - Rework typography utility classes in config.css from physical value naming (`dads-u-dsp-64B-140` etc.) to role-based DTCG-aligned naming (`css-typography-display-1-bold` etc.); add `css/typography.tokens.json` as the DTCG source of truth.
 - Flatten `css-typography-*` utility classes into per-property `--css-typography-{role}-{step}-{font-size,line-height,letter-spacing}` custom properties; migrate heading.css, button.css, chip-label.css, field-label.css, table.css to reference them.
 - Split `dads-size-*` (which conflated touch-target sizing with typography) into `--css-size-*` (height/padding only) and typography references to `css-typography-text-*`; migrated button, list-box, select, textarea (partial), search-box, input, input-number.
-- Migrate checkbox.css and radio.css label `font-size`/`line-height` to `css-typography-text-oneline-2`; `letter-spacing: 0` kept hardcoded (no matching token step). Also make radio.css's `font-family`/`font-weight`/`letter-spacing` explicit instead of inheriting, matching checkbox.css.
+- Migrate checkbox.css and radio.css label `font-size`/`line-height` to `css-typography-text-flush-2`; `letter-spacing: 0` kept hardcoded (no matching token step). Also make radio.css's `font-family`/`font-weight`/`letter-spacing` explicit instead of inheriting, matching checkbox.css.
 - Rename heading.css's `dads-size` values from physical px numbers (`"64"`, `"45"`, …) to their typography token step names (`"display-1"`, `"heading-1"`, …); update index.html demo markup accordingly. Breaking change for any markup using the old numeric values.
+- Rename typography density steps for clarity and consistency with common leading-scale naming (à la Tailwind's `leading-tight`): `text-dense-*` → `text-tight-*`, `text-oneline-*` → `text-flush-*` (values unchanged).
 
 ## `dads-size` — Size Scale
 
@@ -61,10 +62,10 @@ The `size` attribute (`dads-size="sm"` etc.) controls the physical density of a 
 
 | `dads-size` | min-height | padding (block) | padding (inline) | typography |
 |-------------|------------|-----------------|------------------|------------|
-| `xs`        | 1.75rem    | 0.125rem        | 0.5rem           | `text-oneline-3` |
-| `sm`        | 2.5rem     | 0.125rem        | 0.75rem          | `text-oneline-2` |
-| `md`        | 3rem       | 0.5rem          | 1rem             | `text-oneline-2` |
-| `lg`        | 3.5rem     | 0.75rem         | 1rem             | `text-oneline-2` |
+| `xs`        | 1.75rem    | 0.125rem        | 0.5rem           | `text-flush-3` |
+| `sm`        | 2.5rem     | 0.125rem        | 0.75rem          | `text-flush-2` |
+| `md`        | 3rem       | 0.5rem          | 1rem             | `text-flush-2` |
+| `lg`        | 3.5rem     | 0.75rem         | 1rem             | `text-flush-2` |
 
 ### input
 
@@ -86,9 +87,9 @@ The `size` attribute (`dads-size="sm"` etc.) controls the physical density of a 
 
 | `dads-size` | height  | padding-inline-start | padding-inline-end | typography |
 |-------------|---------|----------------------|--------------------|------------|
-| `sm`        | 2.5rem  | 1rem                 | 2.5rem             | `text-oneline-2` (font-size inherited) |
-| `md`        | 3rem    | 1rem                 | 2.5rem             | `text-oneline-2` (font-size inherited) |
-| `lg`        | 3.5rem  | 1rem                 | 2.5rem             | `text-oneline-2` (font-size inherited) |
+| `sm`        | 2.5rem  | 1rem                 | 2.5rem             | `text-flush-2` (font-size inherited) |
+| `md`        | 3rem    | 1rem                 | 2.5rem             | `text-flush-2` (font-size inherited) |
+| `lg`        | 3.5rem  | 1rem                 | 2.5rem             | `text-flush-2` (font-size inherited) |
 
 ### textarea
 
@@ -102,23 +103,23 @@ The `size` attribute (`dads-size="sm"` etc.) controls the physical density of a 
 
 ### checkbox
 
-Label `font-size`/`line-height` reference `text-oneline-2`; `letter-spacing: 0` remains hardcoded (does not match `text-oneline-2`'s `0.02em`, and no matching step exists).
+Label `font-size`/`line-height` reference `text-flush-2`; `letter-spacing: 0` remains hardcoded (does not match `text-flush-2`'s `0.02em`, and no matching step exists).
 
 | `dads-size` | 行高   | input-size | hover-size | gap     | border-width | padding-block | typography |
 |-------------|--------|------------|------------|---------|--------------|---------------|------------|
-| `sm`        | 40px   | 1.25rem    | 1.5rem     | 0.25rem | 0.125rem     | 0.625rem      | `text-oneline-2` |
-| `md`        | 48px   | 1.625rem   | 2rem       | 0.5rem  | 0.125rem     | 0.6875rem     | `text-oneline-2` |
-| `lg`        | 56px   | 2.25rem    | 2.75rem    | 0.5rem  | 0.1875rem    | 0.625rem      | `text-oneline-2` |
+| `sm`        | 40px   | 1.25rem    | 1.5rem     | 0.25rem | 0.125rem     | 0.625rem      | `text-flush-2` |
+| `md`        | 48px   | 1.625rem   | 2rem       | 0.5rem  | 0.125rem     | 0.6875rem     | `text-flush-2` |
+| `lg`        | 56px   | 2.25rem    | 2.75rem    | 0.5rem  | 0.1875rem    | 0.625rem      | `text-flush-2` |
 
 #### radio
 
-Label `font-size`/`line-height` reference `text-oneline-2`; `letter-spacing: 0` remains hardcoded (does not match `text-oneline-2`'s `0.02em`, and no matching step exists) — `font-family`/`font-weight`/`letter-spacing` are now explicit rather than relying on inheritance, matching checkbox.css.
+Label `font-size`/`line-height` reference `text-flush-2`; `letter-spacing: 0` remains hardcoded (does not match `text-flush-2`'s `0.02em`, and no matching step exists) — `font-family`/`font-weight`/`letter-spacing` are now explicit rather than relying on inheritance, matching checkbox.css.
 
 | `dads-size` | 行高   | outer-size | inner-size | hover-size | gap     | border-width | padding-block | typography |
 |-------------|--------|------------|------------|------------|---------|--------------|---------------|------------|
-| `sm`        | 40px   | 1.25rem    | 0.625rem   | 1.5rem     | 0.25rem | 0.125rem     | 0.6rem        | `text-oneline-2` |
-| `md`        | 48px   | 1.625rem   | 0.75rem    | 2rem       | 0.5rem  | 0.125rem     | 0.6875rem     | `text-oneline-2` |
-| `lg`        | 56px   | 2.25rem    | 1rem       | 2.75rem    | 0.75rem | 0.1875rem    | 0.625rem      | `text-oneline-2` |
+| `sm`        | 40px   | 1.25rem    | 0.625rem   | 1.5rem     | 0.25rem | 0.125rem     | 0.6rem        | `text-flush-2` |
+| `md`        | 48px   | 1.625rem   | 0.75rem    | 2rem       | 0.5rem  | 0.125rem     | 0.6875rem     | `text-flush-2` |
+| `lg`        | 56px   | 2.25rem    | 1rem       | 2.75rem    | 0.75rem | 0.1875rem    | 0.625rem      | `text-flush-2` |
 
 ### heading
 
@@ -146,8 +147,8 @@ Typography utility classes in `config.css` follow a role-based naming: `css-typo
 | `display`  | —        | 1–3 | 64px – 48px | 1.4 (fixed)        | 0            | Largest, most prominent text; formerly `dsp` |
 | `heading`  | —        | 1–9 | 45px – 18px | 1.4 – 1.6 (by step) | 0 – 0.02em   | Section/page headings; formerly `std` (heading usage) |
 | `text`     | `normal` | 1–3 | 17px – 16px | 1.7 – 1.75          | 0.02em       | Body text, labels; formerly `std` (text usage) |
-| `text`     | `dense`  | 1–6 | 17px – 14px | 1.2 – 1.3           | 0            | Tighter line-height variant of `text`; formerly `dns` |
-| `text`     | `oneline`| 1–3 | 17px – 14px | 1 (fixed)           | 0.02em       | Single-line, no wrap; formerly `oln` |
+| `text`     | `tight`  | 1–6 | 17px – 14px | 1.2 – 1.3           | 0            | Tighter line-height variant of `text`; formerly `dns`/`dense` |
+| `text`     | `flush`  | 1–3 | 17px – 14px | 1 (fixed)           | 0.02em       | Line-height flush with the font's natural height, for single-line UI text; formerly `oln`/`oneline` |
 | `monospace`| —        | 1–3 | 17px – 14px | 1.5 (fixed)         | 0            | `font-family: var(--font-family-mono)`; formerly `mono` |
 
 Each `{role}-{step}` (and `{role}-{density}-{step}`) combination is available in both `-bold` and `-normal` weights.

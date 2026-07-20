@@ -78,9 +78,9 @@
   display: block;
   margin-top: calc(8 / 16 * 1rem);
   color: var(--color-neutral-solid-gray-600);
-  font-size: var(--css-typography-text-oneline-2-font-size);
-  line-height: var(--css-typography-text-oneline-2-line-height);
-  letter-spacing: var(--css-typography-text-oneline-2-letter-spacing);
+  font-size: var(--css-typography-text-flush-2-font-size);
+  line-height: var(--css-typography-text-flush-2-line-height);
+  letter-spacing: var(--css-typography-text-flush-2-letter-spacing);
 }
 
 .dads-textarea-counter[data-exceeded] {

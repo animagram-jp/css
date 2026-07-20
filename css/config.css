@@ -257,41 +257,41 @@
   --css-typography-text-normal-3-line-height: 1.75;
   --css-typography-text-normal-3-letter-spacing: 0.02em;
 
-  --css-typography-text-dense-1-font-size: calc(17 / 16 * 1rem);
-  --css-typography-text-dense-1-line-height: 1.3;
-  --css-typography-text-dense-1-letter-spacing: 0;
+  --css-typography-text-tight-1-font-size: calc(17 / 16 * 1rem);
+  --css-typography-text-tight-1-line-height: 1.3;
+  --css-typography-text-tight-1-letter-spacing: 0;
 
-  --css-typography-text-dense-2-font-size: calc(17 / 16 * 1rem);
-  --css-typography-text-dense-2-line-height: 1.2;
-  --css-typography-text-dense-2-letter-spacing: 0;
+  --css-typography-text-tight-2-font-size: calc(17 / 16 * 1rem);
+  --css-typography-text-tight-2-line-height: 1.2;
+  --css-typography-text-tight-2-letter-spacing: 0;
 
-  --css-typography-text-dense-3-font-size: calc(16 / 16 * 1rem);
-  --css-typography-text-dense-3-line-height: 1.3;
-  --css-typography-text-dense-3-letter-spacing: 0;
+  --css-typography-text-tight-3-font-size: calc(16 / 16 * 1rem);
+  --css-typography-text-tight-3-line-height: 1.3;
+  --css-typography-text-tight-3-letter-spacing: 0;
 
-  --css-typography-text-dense-4-font-size: calc(16 / 16 * 1rem);
-  --css-typography-text-dense-4-line-height: 1.2;
-  --css-typography-text-dense-4-letter-spacing: 0;
+  --css-typography-text-tight-4-font-size: calc(16 / 16 * 1rem);
+  --css-typography-text-tight-4-line-height: 1.2;
+  --css-typography-text-tight-4-letter-spacing: 0;
 
-  --css-typography-text-dense-5-font-size: calc(14 / 16 * 1rem);
-  --css-typography-text-dense-5-line-height: 1.3;
-  --css-typography-text-dense-5-letter-spacing: 0;
+  --css-typography-text-tight-5-font-size: calc(14 / 16 * 1rem);
+  --css-typography-text-tight-5-line-height: 1.3;
+  --css-typography-text-tight-5-letter-spacing: 0;
 
-  --css-typography-text-dense-6-font-size: calc(14 / 16 * 1rem);
-  --css-typography-text-dense-6-line-height: 1.2;
-  --css-typography-text-dense-6-letter-spacing: 0;
+  --css-typography-text-tight-6-font-size: calc(14 / 16 * 1rem);
+  --css-typography-text-tight-6-line-height: 1.2;
+  --css-typography-text-tight-6-letter-spacing: 0;
 
-  --css-typography-text-oneline-1-font-size: calc(17 / 16 * 1rem);
-  --css-typography-text-oneline-1-line-height: 1;
-  --css-typography-text-oneline-1-letter-spacing: 0.02em;
+  --css-typography-text-flush-1-font-size: calc(17 / 16 * 1rem);
+  --css-typography-text-flush-1-line-height: 1;
+  --css-typography-text-flush-1-letter-spacing: 0.02em;
 
-  --css-typography-text-oneline-2-font-size: calc(16 / 16 * 1rem);
-  --css-typography-text-oneline-2-line-height: 1;
-  --css-typography-text-oneline-2-letter-spacing: 0.02em;
+  --css-typography-text-flush-2-font-size: calc(16 / 16 * 1rem);
+  --css-typography-text-flush-2-line-height: 1;
+  --css-typography-text-flush-2-letter-spacing: 0.02em;
 
-  --css-typography-text-oneline-3-font-size: calc(14 / 16 * 1rem);
-  --css-typography-text-oneline-3-line-height: 1;
-  --css-typography-text-oneline-3-letter-spacing: 0.02em;
+  --css-typography-text-flush-3-font-size: calc(14 / 16 * 1rem);
+  --css-typography-text-flush-3-line-height: 1;
+  --css-typography-text-flush-3-letter-spacing: 0.02em;
 
   --css-typography-monospace-1-font-size: calc(17 / 16 * 1rem);
   --css-typography-monospace-1-line-height: 1.5;

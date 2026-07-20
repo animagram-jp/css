@@ -33,9 +33,9 @@
   padding: calc(8 / 16 * 1rem);
   color: var(--color-neutral-white);
   font-weight: normal;
-  font-size: var(--css-typography-text-oneline-2-font-size);
-  line-height: var(--css-typography-text-oneline-2-line-height);
-  letter-spacing: var(--css-typography-text-oneline-2-letter-spacing);
+  font-size: var(--css-typography-text-flush-2-font-size);
+  line-height: var(--css-typography-text-flush-2-line-height);
+  letter-spacing: var(--css-typography-text-flush-2-letter-spacing);
 }
 
 .dads-field-support {
@@ -52,8 +52,8 @@
   display: block;
   margin: calc(8 / 16 * 1rem) 0 0 0;
   color: var(--color-semantic-error-1);
-  font-size: var(--css-typography-text-dense-3-font-size);
-  line-height: var(--css-typography-text-dense-3-line-height);
+  font-size: var(--css-typography-text-tight-3-font-size);
+  line-height: var(--css-typography-text-tight-3-line-height);
   font-family: var(--font-family-sans);
-  letter-spacing: var(--css-typography-text-dense-3-letter-spacing);
+  letter-spacing: var(--css-typography-text-tight-3-letter-spacing);
 }

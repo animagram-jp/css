@@ -7,8 +7,8 @@
   padding-top: var(--_padding-block);
   padding-bottom: var(--_padding-block);
   color: var(--color-neutral-solid-gray-800);
-  font-size: var(--_label-font-size, var(--css-typography-text-oneline-2-font-size));
-  line-height: var(--css-typography-text-oneline-2-line-height);
+  font-size: var(--_label-font-size, var(--css-typography-text-flush-2-font-size));
+  line-height: var(--css-typography-text-flush-2-line-height);
   font-family: var(--font-family-sans);
   font-weight: normal;
   letter-spacing: 0;
@@ -20,7 +20,7 @@
   --_checkbox-input-size: calc(20 / 16 * 1rem);
   --_checkbox-border-width: calc(2 / 16 * 1rem);
   --_checkbox-scale: 1;
-  --_label-font-size: var(--css-typography-text-oneline-2-font-size);
+  --_label-font-size: var(--css-typography-text-flush-2-font-size);
   --_padding-block: calc(10 / 16 * 1rem);
 }
 
@@ -31,7 +31,7 @@
   --_checkbox-input-size: calc(26 / 16 * 1rem);
   --_checkbox-border-width: calc(2 / 16 * 1rem);
   --_checkbox-scale: calc(20 / 14);
-  --_label-font-size: var(--css-typography-text-oneline-2-font-size);
+  --_label-font-size: var(--css-typography-text-flush-2-font-size);
   --_padding-block: calc(11 / 16 * 1rem);
 }
 
@@ -41,7 +41,7 @@
   --_checkbox-input-size: calc(36 / 16 * 1rem);
   --_checkbox-border-width: calc(3 / 16 * 1rem);
   --_checkbox-scale: calc(27 / 14);
-  --_label-font-size: var(--css-typography-text-oneline-2-font-size);
+  --_label-font-size: var(--css-typography-text-flush-2-font-size);
   --_padding-block: calc(10 / 16 * 1rem);
 }
 

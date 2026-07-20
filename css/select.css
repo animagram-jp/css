@@ -12,7 +12,7 @@
   padding-left: calc(16 / 16 * 1rem);
   color: var(--color-neutral-solid-gray-800);
   font: inherit;
-  line-height: var(--css-typography-text-oneline-2-line-height);
+  line-height: var(--css-typography-text-flush-2-line-height);
   letter-spacing: inherit;
   appearance: none;
 }

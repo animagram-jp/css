@@ -14,7 +14,7 @@
 
 .dads-table[dads-type="dense"] {
   --_padding: calc(12 / 16 * 1rem) 0.1rem;
-  line-height: var(--css-typography-text-dense-3-line-height);
+  line-height: var(--css-typography-text-tight-3-line-height);
 }
 
 .dads-table caption {

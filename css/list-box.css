@@ -73,9 +73,9 @@
   list-style-type: none;
   color: var(--color-neutral-solid-gray-900);
   font-weight: normal;
-  font-size: var(--css-typography-text-oneline-2-font-size);
-  line-height: var(--css-typography-text-oneline-2-line-height);
-  letter-spacing: var(--css-typography-text-oneline-2-letter-spacing);
+  font-size: var(--css-typography-text-flush-2-font-size);
+  line-height: var(--css-typography-text-flush-2-line-height);
+  letter-spacing: var(--css-typography-text-flush-2-letter-spacing);
 }
 
 .list-box [role="option"],

@@ -145,7 +145,7 @@
   background-color: var(--color-neutral-white);
   color: var(--color-neutral-solid-gray-900);
   cursor: pointer;
-  font-size: var(--css-typography-text-oneline-3-font-size);
+  font-size: var(--css-typography-text-flush-3-font-size);
   font-weight: bold;
 }
 
