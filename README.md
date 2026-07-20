@@ -41,6 +41,8 @@ Css universal design boilerplate. Works without interference to HTML.
 - Rework typography utility classes in config.css from physical value naming (`dads-u-dsp-64B-140` etc.) to role-based DTCG-aligned naming (`css-typography-display-1-bold` etc.); add `css/typography.tokens.json` as the DTCG source of truth.
 - Flatten `css-typography-*` utility classes into per-property `--css-typography-{role}-{step}-{font-size,line-height,letter-spacing}` custom properties; migrate heading.css, button.css, chip-label.css, field-label.css, table.css to reference them.
 - Split `dads-size-*` (which conflated touch-target sizing with typography) into `--css-size-*` (height/padding only) and typography references to `css-typography-text-*`; migrated button, list-box, select, textarea (partial), search-box, input, input-number.
+- Migrate checkbox.css and radio.css label `font-size`/`line-height` to `css-typography-text-oneline-2`; `letter-spacing: 0` kept hardcoded (no matching token step). Also make radio.css's `font-family`/`font-weight`/`letter-spacing` explicit instead of inheriting, matching checkbox.css.
+- Rename heading.css's `dads-size` values from physical px numbers (`"64"`, `"45"`, …) to their typography token step names (`"display-1"`, `"heading-1"`, …); update index.html demo markup accordingly. Breaking change for any markup using the old numeric values.
 
 ## `dads-size` — Size Scale
 
@@ -100,19 +102,40 @@ The `size` attribute (`dads-size="sm"` etc.) controls the physical density of a 
 
 ### checkbox
 
-| `dads-size` | 行高   | input-size | hover-size | gap     | border-width | padding-block | label font-size | line-height |
-|-------------|--------|------------|------------|---------|--------------|---------------|-----------------|-------------|
-| `sm`        | 40px   | 1.25rem    | 1.5rem     | 0.25rem | 0.125rem     | 0.625rem      | 1rem            | 1           |
-| `md`        | 48px   | 1.625rem   | 2rem       | 0.5rem  | 0.125rem     | 0.6875rem     | 1rem            | 1           |
-| `lg`        | 56px   | 2.25rem    | 2.75rem    | 0.5rem  | 0.1875rem    | 0.625rem      | 1rem            | 1           |
+Label `font-size`/`line-height` reference `text-oneline-2`; `letter-spacing: 0` remains hardcoded (does not match `text-oneline-2`'s `0.02em`, and no matching step exists).
+
+| `dads-size` | 行高   | input-size | hover-size | gap     | border-width | padding-block | typography |
+|-------------|--------|------------|------------|---------|--------------|---------------|------------|
+| `sm`        | 40px   | 1.25rem    | 1.5rem     | 0.25rem | 0.125rem     | 0.625rem      | `text-oneline-2` |
+| `md`        | 48px   | 1.625rem   | 2rem       | 0.5rem  | 0.125rem     | 0.6875rem     | `text-oneline-2` |
+| `lg`        | 56px   | 2.25rem    | 2.75rem    | 0.5rem  | 0.1875rem    | 0.625rem      | `text-oneline-2` |
 
 #### radio
 
-| `dads-size` | 行高   | outer-size | inner-size | hover-size | gap     | border-width | padding-block | label font-size | line-height |
-|-------------|--------|------------|------------|------------|---------|--------------|---------------|-----------------|-------------|
-| `sm`        | 40px   | 1.25rem    | 0.625rem   | 1.5rem     | 0.25rem | 0.125rem     | 0.6rem        | 1rem            | 1           |
-| `md`        | 48px   | 1.625rem   | 0.75rem    | 2rem       | 0.5rem  | 0.125rem     | 0.6875rem     | 1rem            | 1           |
-| `lg`        | 56px   | 2.25rem    | 1rem       | 2.75rem    | 0.75rem | 0.1875rem    | 0.625rem      | 1rem            | 1           |
+Label `font-size`/`line-height` reference `text-oneline-2`; `letter-spacing: 0` remains hardcoded (does not match `text-oneline-2`'s `0.02em`, and no matching step exists) — `font-family`/`font-weight`/`letter-spacing` are now explicit rather than relying on inheritance, matching checkbox.css.
+
+| `dads-size` | 行高   | outer-size | inner-size | hover-size | gap     | border-width | padding-block | typography |
+|-------------|--------|------------|------------|------------|---------|--------------|---------------|------------|
+| `sm`        | 40px   | 1.25rem    | 0.625rem   | 1.5rem     | 0.25rem | 0.125rem     | 0.6rem        | `text-oneline-2` |
+| `md`        | 48px   | 1.625rem   | 0.75rem    | 2rem       | 0.5rem  | 0.125rem     | 0.6875rem     | `text-oneline-2` |
+| `lg`        | 56px   | 2.25rem    | 1rem       | 2.75rem    | 0.75rem | 0.1875rem    | 0.625rem      | `text-oneline-2` |
+
+### heading
+
+`heading.css` (`.dads-h`, used via `dads-size="…"` on the element or a wrapping `hgroup`) does not use the `xs`/`sm`/`md`/`lg` tiers above — it exposes the full `css-typography-display-*`/`heading-*`/`text-normal-2` step range directly as `dads-size` values, since headings need finer granularity than other components. The shoulder text (`.dads-h-shoulder` inside an `hgroup`) uses a different, smaller step for each size. Values were physical px numbers (`dads-size="45"`) before the typography token rework; they are now the token step names themselves.
+
+| `dads-size` | heading font-size | shoulder step |
+|-------------|--------------------|----------------|
+| `display-1`     | 64px (`display-1`) | `heading-4` (28px) |
+| `display-2`     | 57px (`display-2`) | `heading-6` (24px) |
+| `heading-1`     | 45px | `heading-7` (22px) |
+| `heading-2`     | 36px | `heading-8` (20px) |
+| `heading-3`     | 32px | `heading-9` (18px) |
+| `heading-4`     | 28px | `text-normal-2` (16px) |
+| `heading-6`     | 24px | `text-normal-2` (16px) |
+| `heading-8`     | 20px | `text-normal-2` (16px) |
+| `heading-9`     | 18px | `text-normal-2` (16px) |
+| `text-normal-2` | 16px | `text-normal-2` (16px) |
 
 ## `css-typography-*` — Typography Scale
 

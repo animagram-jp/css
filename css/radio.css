@@ -7,8 +7,11 @@
   padding-top: var(--_padding-block);
   padding-bottom: var(--_padding-block);
   color: var(--color-neutral-solid-gray-800);
-  font-size: var(--_label-font-size, 1rem);
-  line-height: 1;
+  font-size: var(--_label-font-size, var(--css-typography-text-oneline-2-font-size));
+  line-height: var(--css-typography-text-oneline-2-line-height);
+  font-family: var(--font-family-sans);
+  font-weight: normal;
+  letter-spacing: 0;
 }
 
 .dads-radio[dads-size="sm"] {
@@ -17,7 +20,7 @@
   --_radio-outer-size: calc(20 / 16 * 1rem);
   --_radio-inner-size: calc(10 / 16 * 1rem);
   --_radio-border-width: calc(2 / 16 * 1rem);
-  --_label-font-size: 1rem;
+  --_label-font-size: var(--css-typography-text-oneline-2-font-size);
   --_padding-block: calc(10 / 16 * 1rem);
 }
 
@@ -28,7 +31,7 @@
   --_radio-outer-size: calc(26 / 16 * 1rem);
   --_radio-inner-size: calc(12 / 16 * 1rem);
   --_radio-border-width: calc(2 / 16 * 1rem);
-  --_label-font-size: 1rem;
+  --_label-font-size: var(--css-typography-text-oneline-2-font-size);
   --_padding-block: calc(11 / 16 * 1rem);
 }
 
@@ -38,7 +41,7 @@
   --_radio-outer-size: calc(36 / 16 * 1rem);
   --_radio-inner-size: calc(16 / 16 * 1rem);
   --_radio-border-width: calc(3 / 16 * 1rem);
-  --_label-font-size: 1rem;
+  --_label-font-size: var(--css-typography-text-oneline-2-font-size);
   --_padding-block: calc(10 / 16 * 1rem);
 }
 
