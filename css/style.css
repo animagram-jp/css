@@ -1,0 +1,13 @@
+html {
+    overflow-x: hidden;
+}
+
+body {
+    height: 100%;
+    max-width: 100%;
+    overflow-x: hidden;
+}
+
+section {
+    margin: 2rem 0;
+}

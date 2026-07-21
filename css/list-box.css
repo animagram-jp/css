@@ -67,7 +67,7 @@
   overflow-y: auto;
   border-radius: calc(8 / 16 * 1rem);
   border: 1px solid rgb(var(--rgb-gray));
-  background-color: rgb(var(--rgb-background));
+  background-color: var(--color-background);
   padding: calc(8 / 16 * 1rem) 0;
   box-shadow: var(--elevation-1);
   list-style-type: none;

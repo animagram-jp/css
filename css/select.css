@@ -3,7 +3,7 @@
   box-sizing: border-box;
   border-radius: calc(8 / 16 * 1rem);
   border: 1px solid rgb(var(--rgb-gray));
-  background-color: rgb(var(--rgb-background));
+  background-color: var(--color-background);
   background-image: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'><path d='M12 17L3 8L4 7L12 15L20 7L21 8L12 17Z' fill='%23333333'/></svg>");
   background-repeat: no-repeat;
   background-position: right calc(16 / 16 * 1rem) center;

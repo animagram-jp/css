@@ -64,7 +64,7 @@
 }
 
 .css-checkbox > input {
-  --_base-color: rgb(var(--rgb-background));
+  --_base-color: var(--color-background);
   --_accent-color: var(--color-emphasis);
   --_accent-hover-color: var(--color-emphasis-hover);
   --_border-color: rgb(var(--rgb-gray));

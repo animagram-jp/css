@@ -4,7 +4,7 @@
   width: 100%;
   max-width: 100%;
   border: 1px solid rgb(var(--rgb-gray));
-  background-color: rgb(var(--rgb-background));
+  background-color: var(--color-background);
   padding: calc(12 / 16 * 1rem) calc(16 / 16 * 1rem);
   border-radius: calc(8 / 16 * 1rem);
   color: rgb(var(--rgb-ink));

@@ -6,7 +6,7 @@
   width: 12rem;
   max-width: 100%;
   border: 1px solid rgb(var(--rgb-gray));
-  background-color: rgb(var(--rgb-background));
+  background-color: var(--color-background);
   padding: calc(12 / 16 * 1rem) calc(16 / 16 * 1rem);
   border-radius: calc(8 / 16 * 1rem);
   color: rgb(var(--rgb-ink));
@@ -86,7 +86,7 @@
   width: 12rem;
   max-width: 100%;
   border: 1px solid rgb(var(--rgb-gray));
-  background-color: rgb(var(--rgb-background));
+  background-color: var(--color-background);
   border-radius: calc(8 / 16 * 1rem);
   color: rgb(var(--rgb-ink));
   font-weight: normal;
@@ -142,7 +142,7 @@
   justify-content: center;
   flex: 0 0 auto;
   width: 2rem;
-  background-color: rgb(var(--rgb-background));
+  background-color: var(--color-background);
   color: rgb(var(--rgb-ink));
   cursor: pointer;
   font-size: var(--css-typography-text-flush-3-font-size);

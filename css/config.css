@@ -16,10 +16,9 @@
 
 :root {
     /*
-     * Source: Color Universal Design (CUD) Recommended Color Set ver.3
+     * Source: Color Universal Design Recommended Color Set ver.3
      * CUDO (Color Universal Design Organization)
      * https://cudo.jp/wp-content/uploads/2016/07/CUD%E6%8E%A8%E5%A5%A8%E9%85%8D%E8%89%B2%E3%82%BB%E3%83%83%E3%83%88%E3%82%AC%E3%82%A4%E3%83%89%E3%83%96%E3%83%83%E3%82%AF.pdf
-     *
      * Per-color comments: JPMA color chip no. (Munsell notation), CMYK
      */
 
@@ -50,7 +49,6 @@
     --rgb-black: 0 0 0; /* GN-15 (N1.5), CMYK 50,50,50,100 (or 0,0,0,100) */
 
     color-scheme: light dark;
-
     /*
      * Status colors: for non-text use only — border, icon, background fill.
      * FAQ: text/symbols should always be black or white, never an accent color.
@@ -60,7 +58,7 @@
      * design intent (high-chroma colors for small, eye-catching signage/
      * graph marks). Per the same FAQ, any element using these colors as a
      * border/icon/fill MUST be paired with a solid --rgb-ink (black/white)
-     * outline so it stays legible against --rgb-background regardless of hue.
+     * outline so it stays legible against --color-background regardless of hue.
      */
     --rgb-success: var(--rgb-accent-green);
     --rgb-error: var(--rgb-accent-red);
@@ -72,7 +70,7 @@
      */
     --rgb-ink: var(--rgb-black); /* body text */
     --rgb-border: var(--rgb-black); /* borders — required alongside any base-color fill (low contrast against white); max-contrast since e.g. focus-visible outlines want maximum visibility, not a subtle line */
-    --rgb-background: var(--rgb-white);
+    --color-background: rgb(var(--rgb-white));
     --rgb-emphasis: var(--rgb-accent-blue); /* emphasis — blue reads reliably for P/D-type color vision */
     --color-emphasis: rgb(var(--rgb-emphasis));
     /*
@@ -113,14 +111,14 @@
     :root {
         --rgb-ink: var(--rgb-white);
         --rgb-border: var(--rgb-white);
-        --rgb-background: var(--rgb-black);
+        --color-background: rgb(var(--rgb-black));
         --rgb-emphasis: var(--rgb-accent-sky); /* brighter sky-blue reads better than blue on a dark ground */
         --color-emphasis-fill: rgb(var(--rgb-accent-blue)); /* accent-sky fails 4.5:1 for white text; blue clears it */
     }
 }
 
 :root {
-    --font-family-sans: "IBM Plex Sans", "BIZ UDGothic", "Hiragino Sans", sans-serif;
+    --font-family-sans: "IBM Plex Sans", "BIZ UDGothic", "Noto Sans JP","Hiragino Sans", sans-serif;
     --font-family-mono: "Noto Sans Mono", "Noto Sans JP", monospace;
 
     --css-typography-display-1-font-size: calc(64 / 16 * 1rem);
@@ -246,7 +244,8 @@
 }
 
 *, ::before, ::after {
-  box-sizing: border-box;
+    box-sizing: border-box;
+    line-height: 1.5;
 }
 
 [hidden], .hidden {
@@ -254,7 +253,6 @@
 }
 
 body {
-    --color-background: rgb(var(--rgb-background));
     --color-ink: rgb(var(--rgb-ink));
     margin: 0;
     padding: 24px;

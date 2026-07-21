@@ -75,7 +75,7 @@
 
 .css-button[css-type="outlined"] {
   border: 1px solid currentcolor;
-  background-color: rgb(var(--rgb-background));
+  background-color: var(--color-background);
   color: var(--color-emphasis);
 }
 
@@ -94,7 +94,7 @@
 
 .css-button[css-type="outlined"]:disabled,
 .css-button[css-type="outlined"][aria-disabled="true"] {
-  background-color: rgb(var(--rgb-background));
+  background-color: var(--color-background);
   color: rgb(var(--rgb-gray));
 }
 
