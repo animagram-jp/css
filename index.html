@@ -512,151 +512,8 @@
 
 </section>
 
-<!--
-<!-- ============================================================ --&gt;
-<!-- step-navigation --&gt;
-<!-- ============================================================ --&gt;
-<section>
-<h2>Step Navigation</h2>
-
-<!-- 水平 / data-reached で到達済みステップを表す --&gt;
-<div class="css-step-navigation" data-orientation="horizontal" css-size="md">
-  <p class="css-visually-hidden">全4ステップ中、2ステップ目まで到達済み</p>
-  <ul>
-    <li class="css-step-navigation__step" data-reached>
-      <span class="css-step-navigation__header">
-        <span class="css-visually-hidden">ステップ</span>
-        <span class="css-step-navigation__number">1</span>
-        <span class="css-step-navigation__title">入力</span>
-      </span>
-    </li>
-    <li class="css-step-navigation__step" data-current>
-      <span class="css-step-navigation__header">
-        <span class="css-visually-hidden">ステップ</span>
-        <span class="css-step-navigation__number">2</span>
-        <span class="css-step-navigation__title">確認</span>
-      </span>
-    </li>
-    <li class="css-step-navigation__step">
-      <span class="css-step-navigation__header">
-        <span class="css-visually-hidden">ステップ</span>
-        <span class="css-step-navigation__number">3</span>
-        <span class="css-step-navigation__title">完了</span>
-      </span>
-    </li>
-  </ul>
-</div>
-
-<!-- 垂直 / md --&gt;
-<div class="css-step-navigation" data-orientation="vertical" css-size="md" style="margin-top: 3rem">
-  <p class="css-visually-hidden">全3ステップ中、1ステップ目まで到達済み</p>
-  <ul>
-    <li class="css-step-navigation__step" data-current>
-      <span class="css-step-navigation__header">
-        <span class="css-visually-hidden">ステップ</span>
-        <span class="css-step-navigation__number">1</span>
-        <span class="css-step-navigation__title">申請情報の入力</span>
-      </span>
-      <p class="css-step-navigation__description">必要事項を入力してください。</p>
-    </li>
-    <li class="css-step-navigation__step">
-      <span class="css-step-navigation__header">
-        <span class="css-visually-hidden">ステップ</span>
-        <span class="css-step-navigation__number">2</span>
-        <span class="css-step-navigation__title">内容の確認</span>
-      </span>
-      <p class="css-step-navigation__description">入力内容を確認してください。</p>
-    </li>
-    <li class="css-step-navigation__step">
-      <span class="css-step-navigation__header">
-        <span class="css-visually-hidden">ステップ</span>
-        <span class="css-step-navigation__number">3</span>
-        <span class="css-step-navigation__title">申請完了</span>
-      </span>
-    </li>
-  </ul>
-</div>
-
-<!-- 全 data-state バリエーション（水平 / md） --&gt;
-<h3 style="font: bold 1rem/2 sans-serif; margin: 3rem 0 0.5rem;">data-state 全バリエーション（horizontal / md）</h3>
-<div class="css-step-navigation" data-orientation="horizontal" css-size="md">
-  <p class="css-visually-hidden">ステップ状態のバリエーション</p>
-  <ul>
-    <li class="css-step-navigation__step" data-state="completed" data-first>
-      <span class="css-step-navigation__header">
-        <span class="css-visually-hidden">ステップ</span>
-        <span class="css-step-navigation__number">1</span>
-        <span class="css-step-navigation__title">completed</span>
-      </span>
-    </li>
-    <li class="css-step-navigation__step" data-state="reached">
-      <span class="css-step-navigation__header">
-        <span class="css-visually-hidden">ステップ</span>
-        <span class="css-step-navigation__number">2</span>
-        <span class="css-step-navigation__title">reached</span>
-      </span>
-    </li>
-    <li class="css-step-navigation__step" data-state="editing" aria-current>
-      <span class="css-step-navigation__header">
-        <span class="css-visually-hidden">ステップ</span>
-        <span class="css-step-navigation__number">3</span>
-        <span class="css-step-navigation__title">editing（現在）</span>
-      </span>
-    </li>
-    <li class="css-step-navigation__step" data-state="error">
-      <span class="css-step-navigation__header">
-        <span class="css-visually-hidden">ステップ</span>
-        <span class="css-step-navigation__number">4</span>
-        <span class="css-step-navigation__title">error</span>
-      </span>
-    </li>
-    <li class="css-step-navigation__step" data-state="skipped" data-last>
-      <span class="css-step-navigation__header">
-        <span class="css-visually-hidden">ステップ</span>
-        <span class="css-step-navigation__number">5</span>
-        <span class="css-step-navigation__title">skipped</span>
-      </span>
-    </li>
-  </ul>
-</div>
-
-<!-- sm サイズ（水平） --&gt;
-<h3 style="font: bold 1rem/2 sans-serif; margin: 3rem 0 0.5rem;">horizontal / sm</h3>
-<div class="css-step-navigation" data-orientation="horizontal" css-size="sm">
-  <p class="css-visually-hidden">全3ステップ中、1ステップ目完了</p>
-  <ul>
-    <li class="css-step-navigation__step" data-state="completed" data-first>
-      <span class="css-step-navigation__header">
-        <span class="css-visually-hidden">ステップ</span>
-        <span class="css-step-navigation__number">1</span>
-        <span class="css-step-navigation__title">入力</span>
-      </span>
-    </li>
-    <li class="css-step-navigation__step" data-state="editing" aria-current>
-      <span class="css-step-navigation__header">
-        <span class="css-visually-hidden">ステップ</span>
-        <span class="css-step-navigation__number">2</span>
-        <span class="css-step-navigation__title">確認</span>
-      </span>
-    </li>
-    <li class="css-step-navigation__step" data-last>
-      <span class="css-step-navigation__header">
-        <span class="css-visually-hidden">ステップ</span>
-        <span class="css-step-navigation__number">3</span>
-        <span class="css-step-navigation__title">完了</span>
-      </span>
-    </li>
-  </ul>
-</div>
-
-</section>
--->
-
-<!-- ============================================================ -->
-<!-- table -->
-<!-- ============================================================ -->
-<section>
 <h2>Table</h2>
+<section>
 
 <!-- 通常 -->
 <table class="css-table">
@@ -821,16 +678,7 @@
   </thead>
   <tbody>
     <tr><td>データ</td><td>データ</td><td>データ</td></tr>
-    <tr><td>データ</td><td>データ</td><td>データ</td></tr>
-  </tbody>
-</table>
-
-
-</section>
-
-<!-- ============================================================ -->
-<!-- textarea -->
-<!-- ============================================================ -->
+    <tr><td>データ</td><td>データ</td><td>データ</td></tr></tbody></table></section>
 
 <section>
 
@@ -858,41 +706,4 @@
       <span class="css-field-requirement" css-required>※必須</span>
     </label>
     <p id="counter-support-text" class="css-field-support">20文字以内で入力してください</p>
-    <textarea id="counter-textarea" class="css-textarea" aria-describedby="counter-support-text"></textarea>
-
-  </div>
-</section>
-
-<!--
-<!-- ============================================================ --&gt;
-<!-- utility-link --&gt;
-<!-- ============================================================ --&gt;
-<section>
-<h2>Utility Link</h2>
-
-<div style="display: flex; flex-wrap: wrap; align-items: baseline; gap: 1rem;">
-
-  <a class="css-utility-link" href="#" target="_blank">
-    <svg class="css-utility-link__lead-icon" width="16" height="16" viewBox="0 0 24 24" fill="currentcolor" aria-hidden="true">
-      <path d="M4.6 20.5c-.5-.1-1-.6-1.1-1l16-16c.5.1.9.6 1 1l-16 16Zm-1.1-6.4v-2L12 3.4h2.1L3.5 14.1Zm0-7.4V5.3c0-1 .8-1.8 1.8-1.8h1.4L3.5 6.7Zm13.8 13.8 3.2-3.2v1.4c0 1-.8 1.8-1.8 1.8h-1.4Zm-7.4 0L20.5 9.9v2L12 20.6H9.9Z"/>
-    </svg>
-    <span class="css-utility-link__label">リンクテキスト</span>
-    <svg class="css-utility-link__tail-icon" width="16" height="16" viewBox="0 0 48 48" fill="currentcolor" role="img" aria-label="新規タブで開きます">
-      <path d="M22 6V9H9V39H39V26H42V42H6V6H22ZM42 6V20H39V11.2L21 29L19 27L36.8 9H28V6H42Z"/>
-    </svg>
-  </a>
-
-  <a class="css-utility-link" href="#">
-    <svg class="css-utility-link__lead-icon" width="16" height="16" viewBox="0 0 24 24" fill="currentcolor" aria-hidden="true">
-      <path d="M4.6 20.5c-.5-.1-1-.6-1.1-1l16-16c.5.1.9.6 1 1l-16 16Zm-1.1-6.4v-2L12 3.4h2.1L3.5 14.1Zm0-7.4V5.3c0-1 .8-1.8 1.8-1.8h1.4L3.5 6.7Zm13.8 13.8 3.2-3.2v1.4c0 1-.8 1.8-1.8 1.8h-1.4Zm-7.4 0L20.5 9.9v2L12 20.6H9.9Z"/>
-    </svg>
-    <span class="css-utility-link__label">同一タブリンク</span>
-  </a>
-
-</div>
-
-</section>
--->
-
-</body>
-</html>
+    <textarea id="counter-textarea" class="css-textarea" aria-describedby="counter-support-text"></textarea></div></section></body></html>

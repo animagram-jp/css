@@ -18,7 +18,7 @@ docker run -d --name accessibility-audit \
   tail -f /dev/null
 docker exec accessibility-audit bash -lc "npx --yes playwright install --with-deps chromium && npm ci"
 
-docker exec accessibility-audit node docs/audit-states.mjs
+docker exec accessibility-audit node docs/audit.mjs
 docker exec accessibility-audit chown -R "$(id -u):$(id -g)" docs
 ```
 
