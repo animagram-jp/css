@@ -198,7 +198,7 @@ export class DatePicker extends HTMLElement {
   }
 
   get #isConsolidated() {
-    return this.getAttribute("dads-type") === "consolidated";
+    return this.getAttribute("css-type") === "consolidated";
   }
 
   get #yearInput() {
@@ -230,4 +230,4 @@ export class DatePicker extends HTMLElement {
   }
 }
 
-customElements.define("dads-date-picker", DatePicker);
+customElements.define("css-date-picker", DatePicker);

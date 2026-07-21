@@ -118,7 +118,7 @@ class ProgressIndicator extends HTMLElement {
     const val = this.getAttribute("intent");
     if (val !== "explicit" && val !== "passive") {
       throw new Error(
-        `[dads-progress-indicator] "intent" 属性は必須です。"explicit" または "passive" を指定してください。`,
+        `[css-progress-indicator] "intent" 属性は必須です。"explicit" または "passive" を指定してください。`,
       );
     }
   }
@@ -144,7 +144,7 @@ class ProgressIndicator extends HTMLElement {
 
     const label = this.label;
     if (label) {
-      const labelId = `dads-pi-${crypto.randomUUID()}`;
+      const labelId = `css-pi-${crypto.randomUUID()}`;
       label.id = labelId;
       this.setAttribute("aria-labelledby", labelId);
     }
@@ -270,4 +270,4 @@ class ProgressIndicator extends HTMLElement {
   }
 }
 
-customElements.define("dads-progress-indicator", ProgressIndicator);
+customElements.define("css-progress-indicator", ProgressIndicator);

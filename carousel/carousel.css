@@ -1,9 +1,9 @@
-.dads-carousel {
+.css-carousel {
   container-type: inline-size;
   display: block;
 }
 
-.dads-carousel__inner {
+.css-carousel__inner {
   position: relative;
   z-index: 0;
   box-sizing: border-box;
@@ -17,13 +17,13 @@
 }
 
 @container (min-width: 64rem) {
-  .dads-carousel__inner {
+  .css-carousel__inner {
     padding-right: calc(48 / 16 * 1rem);
     padding-left: calc(48 / 16 * 1rem);
   }
 }
 
-.dads-carousel__heading {
+.css-carousel__heading {
   margin-top: 0;
   margin-bottom: calc(16 / 16 * 1rem);
   font-size: calc(20 / 16 * 1rem);
@@ -33,19 +33,19 @@
 }
 
 @media (min-width: 30rem) {
-  .dads-carousel__heading {
+  .css-carousel__heading {
     font-size: calc(24 / 16 * 1rem);
   }
 }
 
 @media (min-width: 64rem) {
-  .dads-carousel__heading {
+  .css-carousel__heading {
     font-size: calc(32 / 16 * 1rem);
     letter-spacing: 0.01em;
   }
 }
 
-.dads-carousel__number {
+.css-carousel__number {
   margin: 0;
   display: flex;
   justify-content: center;
@@ -65,8 +65,8 @@
   letter-spacing: 0.02em;
 }
 
-.dads-carousel__number[aria-current="true"],
-.dads-carousel__number[aria-selected="true"] {
+.css-carousel__number[aria-current="true"],
+.css-carousel__number[aria-selected="true"] {
   background-color: var(--color-neutral-solid-gray-800);
   color: var(--color-neutral-white);
   box-shadow: 0 0 0 2px var(--color-neutral-white);
@@ -74,13 +74,13 @@
   outline-offset: 2px;
 }
 
-.dads-carousel__panel-set {
+.css-carousel__panel-set {
   display: grid;
   grid-template: "main" auto / auto;
 }
 
 @container (min-width: 64rem) {
-  .dads-carousel__panel-set {
+  .css-carousel__panel-set {
     margin-right: calc(-48 / 16 * 1rem);
     margin-left: calc(-48 / 16 * 1rem);
     grid-template:
@@ -89,7 +89,7 @@
   }
 }
 
-.dads-carousel__panel-set::before {
+.css-carousel__panel-set::before {
   grid-area: number;
   justify-self: center;
   display: none;
@@ -98,20 +98,20 @@
   content: "";
 }
 
-.dads-carousel__panel-number {
+.css-carousel__panel-number {
   grid-area: number;
   justify-self: center;
   display: none;
 }
 
-.dads-carousel__main-bg {
+.css-carousel__main-bg {
   position: relative;
   z-index: -1;
   grid-area: main;
   overflow: clip;
 }
 
-.dads-carousel__main-bg > div {
+.css-carousel__main-bg > div {
   position: absolute;
   inset: -50% 0;
   display: flex;
@@ -121,12 +121,12 @@
   transform: translate3d(0, 0, 0); /* for better performance on Safari */
 }
 
-.dads-carousel__main-bg > div img {
+.css-carousel__main-bg > div img {
   width: auto;
   height: 200%;
 }
 
-.dads-carousel__main-bg > div::after {
+.css-carousel__main-bg > div::after {
   position: absolute;
   inset: 0;
   background-color: var(--color-neutral-white);
@@ -134,23 +134,23 @@
   content: "";
 }
 
-.dads-carousel__main {
+.css-carousel__main {
   grid-area: main;
   position: relative;
   min-width: 0;
 }
 
-.dads-carousel__main-link {
+.css-carousel__main-link {
   display: block;
 }
 
 @media (hover: hover) {
-  .dads-carousel__main-link:any-link:hover:not(:focus-visible) {
+  .css-carousel__main-link:any-link:hover:not(:focus-visible) {
     outline: calc(4 / 16 * 1rem) solid var(--color-primitive-blue-900);
     outline-offset: calc(-2 / 16 * 1rem);
   }
 
-  .dads-carousel__main-link:any-link:hover:not(:focus-visible)::after {
+  .css-carousel__main-link:any-link:hover:not(:focus-visible)::after {
     position: absolute;
     inset: 2px;
     box-shadow: inset 0 0 0 calc(2 / 16 * 1rem) var(--color-neutral-white);
@@ -159,14 +159,14 @@
   }
 }
 
-.dads-carousel__main-link:focus-visible {
+.css-carousel__main-link:focus-visible {
   overflow: hidden;
   outline: calc(4 / 16 * 1rem) solid var(--color-neutral-black);
   outline-offset: calc(-2 / 16 * 1rem);
   border-radius: calc(8 / 16 * 1rem);
 }
 
-.dads-carousel__main-link:focus-visible::after {
+.css-carousel__main-link:focus-visible::after {
   position: absolute;
   inset: 2px;
   box-shadow: inset 0 0 0 calc(2 / 16 * 1rem) var(--color-primitive-yellow-300);
@@ -175,7 +175,7 @@
   content: "";
 }
 
-.dads-carousel__image-container {
+.css-carousel__image-container {
   display: grid;
   place-content: center;
   height: 100%;
@@ -184,14 +184,14 @@
   outline-offset: -2px;
 }
 
-.dads-carousel__image-container img {
+.css-carousel__image-container img {
   display: block;
   width: auto;
   max-width: 100%;
   height: auto;
 }
 
-.dads-carousel__next-bg {
+.css-carousel__next-bg {
   position: relative;
   z-index: -1;
   display: none;
@@ -199,7 +199,7 @@
   overflow: clip;
 }
 
-.dads-carousel__next-bg > div {
+.css-carousel__next-bg > div {
   position: absolute;
   inset: -50% 0;
   display: flex;
@@ -209,13 +209,13 @@
   transform: translate3d(0, 0, 0); /* for better performance on Safari */
 }
 
-.dads-carousel__next-bg > div img {
+.css-carousel__next-bg > div img {
   width: auto;
   height: 200%;
   max-width: none;
 }
 
-.dads-carousel__next-bg > div::after {
+.css-carousel__next-bg > div::after {
   position: absolute;
   inset: 0;
   background-color: var(--color-neutral-white);
@@ -224,12 +224,12 @@
 }
 
 @container (min-width: 64rem) {
-  .dads-carousel__next-bg {
+  .css-carousel__next-bg {
     display: block;
   }
 }
 
-.dads-carousel__next {
+.css-carousel__next {
   grid-area: next;
   margin: 0;
   display: none;
@@ -240,12 +240,12 @@
 }
 
 @container (min-width: 64rem) {
-  .dads-carousel__next {
+  .css-carousel__next {
     display: block;
   }
 }
 
-.dads-carousel__next > button {
+.css-carousel__next > button {
   position: relative;
   border: 1px solid var(--color-neutral-solid-gray-420);
   background-color: var(--color-neutral-white);
@@ -260,13 +260,13 @@
 }
 
 @media (hover: hover) {
-  .dads-carousel__next > button:hover {
+  .css-carousel__next > button:hover {
     outline: calc(4 / 16 * 1rem) solid var(--color-primitive-blue-900);
     outline-offset: -1px;
     text-decoration-thickness: calc(3 / 16 * 1rem);
   }
 
-  .dads-carousel__next > button:hover:not(:focus-visible)::after {
+  .css-carousel__next > button:hover:not(:focus-visible)::after {
     position: absolute;
     inset: 0;
     box-shadow: inset 0 0 0 calc(2 / 16 * 1rem) var(--color-neutral-white);
@@ -275,21 +275,21 @@
   }
 }
 
-.dads-carousel__next > button:focus-visible {
+.css-carousel__next > button:focus-visible {
   outline: calc(4 / 16 * 1rem) solid var(--color-neutral-black);
   outline-offset: calc(2 / 16 * 1rem);
   border-radius: calc(4 / 16 * 1rem);
   box-shadow: 0 0 0 calc(2 / 16 * 1rem) var(--color-primitive-yellow-300);
 }
 
-.dads-carousel__next-image-container img {
+.css-carousel__next-image-container img {
   display: block;
   width: auto;
   max-width: 100%;
   height: auto;
 }
 
-.dads-carousel__next-image-label {
+.css-carousel__next-image-label {
   display: block;
   border-top: 1px solid var(--color-neutral-solid-gray-420);
   padding: calc(16 / 16 * 1rem);
@@ -300,7 +300,7 @@
   text-decoration-thickness: inherit;
 }
 
-.dads-carousel__controls {
+.css-carousel__controls {
   display: flex;
   align-items: center;
   column-gap: calc(20 / 16 * 1rem);
@@ -308,16 +308,16 @@
 }
 
 @container (min-width: 64rem) {
-  .dads-carousel__controls {
+  .css-carousel__controls {
     column-gap: calc(32 / 16 * 1rem);
   }
 }
 
-.dads-carousel__others[open] {
+.css-carousel__others[open] {
   flex: 1;
 }
 
-.dads-carousel__others .dads-disclosure__summary {
+.css-carousel__others .css-disclosure__summary {
   border-radius: calc(8 / 16 * 1rem);
   border: 1px solid var(--color-neutral-solid-gray-600);
   background-color: var(--color-neutral-white) !important;
@@ -325,12 +325,12 @@
   cursor: pointer;
 }
 
-.dads-carousel__others-content.dads-disclosure__content {
+.css-carousel__others-content.css-disclosure__content {
   margin: calc(12 / 16 * 1rem) 0 0;
   padding-left: 0;
 }
 
-.dads-carousel__others-content > ul {
+.css-carousel__others-content > ul {
   display: grid;
   row-gap: calc(24 / 16 * 1rem);
   margin: 0;
@@ -338,17 +338,17 @@
   list-style-type: none;
 }
 
-.dads-carousel dads-carousel-step-nav {
+.css-carousel css-carousel-step-nav {
   display: none;
 }
 
 @container (min-width: 64rem) {
-  .dads-carousel dads-carousel-step-nav {
+  .css-carousel css-carousel-step-nav {
     display: flex;
   }
 }
 
-.dads-carousel__step-nav {
+.css-carousel__step-nav {
   position: relative;
   margin: 0;
   display: flex;
@@ -358,12 +358,12 @@
   list-style-type: none;
 }
 
-.dads-carousel__step-nav > li {
+.css-carousel__step-nav > li {
   position: relative;
   flex-shrink: 0;
 }
 
-.dads-carousel__step-nav > li:not(:last-child)::before {
+.css-carousel__step-nav > li:not(:last-child)::before {
   position: absolute;
   top: 50%;
   left: 100%;
@@ -372,36 +372,36 @@
   content: "";
 }
 
-.dads-carousel__step {
+.css-carousel__step {
   position: relative;
 }
 
-.dads-carousel__step:not([aria-selected="true"]) {
+.css-carousel__step:not([aria-selected="true"]) {
   text-decoration: underline;
   text-decoration-thickness: calc(1 / 16 * 1rem);
   text-underline-offset: calc(3 / 16 * 1rem);
 }
 
-.dads-carousel__step::after {
+.css-carousel__step::after {
   position: absolute;
   inset: calc(-7 / 16 * 1rem);
   content: "";
 }
 
 @media (hover: hover) {
-  .dads-carousel__step:not([aria-selected="true"]):hover {
+  .css-carousel__step:not([aria-selected="true"]):hover {
     text-decoration-thickness: calc(3 / 16 * 1rem);
     cursor: pointer;
   }
 }
 
-.dads-carousel__step:focus-visible {
+.css-carousel__step:focus-visible {
   outline: calc(4 / 16 * 1rem) solid var(--color-neutral-black);
   outline-offset: calc(2 / 16 * 1rem);
   box-shadow: 0 0 0 calc(2 / 16 * 1rem) var(--color-primitive-yellow-300);
 }
 
-.dads-carousel__page-nav {
+.css-carousel__page-nav {
   flex-shrink: 0;
   position: relative;
   margin: 0;
@@ -413,12 +413,12 @@
 }
 
 @container (min-width: 64rem) {
-  .dads-carousel__page-nav {
+  .css-carousel__page-nav {
     display: none;
   }
 }
 
-.dads-carousel__page-nav > button {
+.css-carousel__page-nav > button {
   position: relative;
   display: flex;
   justify-content: center;
@@ -433,7 +433,7 @@
   cursor: pointer;
 }
 
-.dads-carousel__page-nav > button::after {
+.css-carousel__page-nav > button::after {
   position: absolute;
   inset: -100%;
   margin: auto;
@@ -442,57 +442,57 @@
   content: "";
 }
 
-.dads-carousel__page-nav > button:focus-visible {
+.css-carousel__page-nav > button:focus-visible {
   outline: calc(4 / 16 * 1rem) solid var(--color-neutral-black);
   outline-offset: calc(2 / 16 * 1rem);
   box-shadow: 0 0 0 calc(2 / 16 * 1rem) var(--color-primitive-yellow-300);
 }
 
-.dads-carousel__page-nav > span {
+.css-carousel__page-nav > span {
   text-box-trim: trim-both;
   text-box-edge: cap alphabetic;
 }
 
-.dads-carousel__others {
+.css-carousel__others {
   order: -1;
 }
 
 /* 展開中 */
 
 @container (min-width: 64rem) {
-  .dads-carousel:has([open]) .dads-carousel__panel-set::before {
+  .css-carousel:has([open]) .css-carousel__panel-set::before {
     display: block;
   }
 
-  .dads-carousel:has([open]) .dads-carousel__panel-number {
+  .css-carousel:has([open]) .css-carousel__panel-number {
     display: flex;
   }
 
-  .dads-carousel:has([open]) .dads-carousel__next-bg {
+  .css-carousel:has([open]) .css-carousel__next-bg {
     display: none;
   }
 
-  .dads-carousel:has([open]) .dads-carousel__next {
+  .css-carousel:has([open]) .css-carousel__next {
     display: none;
   }
 
-  .dads-carousel:has([open]) dads-carousel-step-nav {
+  .css-carousel:has([open]) css-carousel-step-nav {
     display: none;
   }
 }
 
-.dads-carousel:has([open]) .dads-carousel__controls {
+.css-carousel:has([open]) .css-carousel__controls {
   padding-bottom: calc(56 / 16 * 1rem);
 }
 
-.dads-carousel:has([open]) .dads-carousel__page-nav {
+.css-carousel:has([open]) .css-carousel__page-nav {
   display: none;
 }
 
-.dads-carousel:has([open]) .dads-carousel__expand {
+.css-carousel:has([open]) .css-carousel__expand {
   display: none;
 }
 
-.dads-carousel:has([open]) .dads-carousel__slides {
+.css-carousel:has([open]) .css-carousel__slides {
   display: grid;
 }

@@ -1,4 +1,4 @@
-.dads-card-example-2-list {
+.css-card-example-2-list {
   margin: 0;
   display: grid;
   gap: calc(24 / 16 * 1rem);
@@ -6,11 +6,11 @@
   list-style: none;
 }
 
-.dads-card-example-2-list > li {
+.css-card-example-2-list > li {
   min-width: 0;
 }
 
-.dads-card-example-2 {
+.css-card-example-2 {
   position: relative;
   z-index: 0;
   box-sizing: border-box;
@@ -30,7 +30,7 @@
   overflow-wrap: anywhere;
 }
 
-.dads-card-example-2__main {
+.css-card-example-2__main {
   position: relative;
   grid-area: main;
   display: grid;
@@ -39,14 +39,14 @@
   padding: calc(16 / 16 * 1rem) calc(24 / 16 * 1rem);
 }
 
-.dads-card-example-2__main-header {
+.css-card-example-2__main-header {
   display: flex;
   justify-content: space-between;
   column-gap: calc(16 / 16 * 1rem);
   min-width: 0;
 }
 
-.dads-card-example-2__heading {
+.css-card-example-2__heading {
   margin: 0;
   min-width: 0;
   padding-top: calc(4 / 16 * 1rem);
@@ -57,12 +57,12 @@
   letter-spacing: 0.02em;
 }
 
-.dads-card-example-2__function {
+.css-card-example-2__function {
   margin-right: calc(-24 / 16 * 1rem);
   flex-shrink: 0;
 }
 
-.dads-card-example-2__function > button {
+.css-card-example-2__function > button {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -76,25 +76,25 @@
 }
 
 @media (hover: hover) {
-  .dads-card-example-2__function > button:hover {
+  .css-card-example-2__function > button:hover {
     border-color: var(--color-neutral-black);
     background-color: var(--color-neutral-solid-gray-50);
   }
 }
 
-.dads-card-example-2__function > button:focus-visible {
+.css-card-example-2__function > button:focus-visible {
   outline: calc(4 / 16 * 1rem) solid var(--color-neutral-black);
   outline-offset: calc(2 / 16 * 1rem);
   box-shadow: 0 0 0 calc(2 / 16 * 1rem) var(--color-primitive-yellow-300);
 }
 
-.dads-card-example-2__contents {
+.css-card-example-2__contents {
   margin-top: 0;
   margin-bottom: 0;
   min-width: 0;
 }
 
-.dads-card-example-2__block-link {
+.css-card-example-2__block-link {
   grid-area: 1 / 1 / -1 / -1;
   display: grid;
   grid-template: subgrid / subgrid;
@@ -102,19 +102,19 @@
   text-decoration: inherit;
 }
 
-.dads-card-example-2__divider {
+.css-card-example-2__divider {
   margin-top: calc(8 / 16 * 1rem);
   margin-bottom: calc(8 / 16 * 1rem);
   border-top: 1px solid var(--color-neutral-solid-gray-536);
 }
 
-.dads-card-example-2__links {
+.css-card-example-2__links {
   display: flex;
   column-gap: calc(16 / 16 * 1rem);
   justify-content: end;
 }
 
-.dads-card-example-2__learn-more:any-link {
+.css-card-example-2__learn-more:any-link {
   background: var(--color-primitive-light-blue-900);
   display: flex;
   border: 4px double transparent;
@@ -128,7 +128,7 @@
 }
 
 @media (hover: hover) {
-  .dads-card-example-2__learn-more:hover {
+  .css-card-example-2__learn-more:hover {
     background: var(--color-primitive-light-blue-1000);
     text-decoration: underline;
     text-decoration-thickness: calc(1 / 16 * 1rem);
@@ -136,20 +136,20 @@
   }
 }
 
-.dads-card-example-2__learn-more:focus-visible {
+.css-card-example-2__learn-more:focus-visible {
   outline: calc(4 / 16 * 1rem) solid var(--color-neutral-black);
   outline-offset: calc(2 / 16 * 1rem);
   border-radius: calc(4 / 16 * 1rem);
   box-shadow: 0 0 0 calc(2 / 16 * 1rem) var(--color-primitive-yellow-300);
 }
 
-.dads-card-example-2__image {
+.css-card-example-2__image {
   position: relative;
   grid-area: image;
   border-right: 1px solid var(--color-neutral-solid-gray-420);
 }
 
-.dads-card-example-2__image-img {
+.css-card-example-2__image-img {
   position: absolute;
   inset: 0;
   width: 100%;

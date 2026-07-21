@@ -1,4 +1,4 @@
-.dads-utility-link:any-link {
+.css-utility-link:any-link {
   display: inline-flex;
   width: fit-content;
   font-weight: normal;
@@ -10,7 +10,7 @@
   text-wrap: pretty;
 }
 
-.dads-utility-link:focus-visible {
+.css-utility-link:focus-visible {
   outline: calc(4 / 16 * 1rem) solid var(--color-neutral-black);
   outline-offset: calc(2 / 16 * 1rem);
   border-radius: calc(4 / 16 * 1rem);
@@ -18,25 +18,25 @@
   box-shadow: 0 0 0 calc(2 / 16 * 1rem) var(--color-primitive-yellow-300);
 }
 
-.dads-utility-link__label {
+.css-utility-link__label {
   color: var(--color-neutral-solid-gray-800);
   text-decoration: underline;
   text-decoration-thickness: calc(1 / 16 * 1rem);
   text-underline-offset: calc(3 / 16 * 1rem);
 }
 
-.dads-utility-link:visited .dads-utility-link__label {
+.css-utility-link:visited .css-utility-link__label {
   color: var(--color-neutral-solid-gray-800);
 }
 
 @media (hover: hover) {
-  .dads-utility-link:hover .dads-utility-link__label {
+  .css-utility-link:hover .css-utility-link__label {
     color: var(--color-neutral-solid-gray-800);
     text-decoration-thickness: calc(3 / 16 * 1rem);
   }
 }
 
-.dads-utility-link:active .dads-utility-link__label {
+.css-utility-link:active .css-utility-link__label {
   color: var(--color-neutral-solid-gray-800);
   text-decoration-thickness: calc(1 / 16 * 1rem);
 }

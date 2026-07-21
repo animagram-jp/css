@@ -504,4 +504,4 @@ export class Calendar extends HTMLElement {
   }
 }
 
-customElements.define("dads-calendar", Calendar);
+customElements.define("css-calendar", Calendar);

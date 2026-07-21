@@ -1,4 +1,4 @@
-.dads-card-example-5-list {
+.css-card-example-5-list {
   margin: 0;
   display: flex;
   flex-wrap: wrap;
@@ -7,12 +7,12 @@
   list-style: none;
 }
 
-.dads-card-example-5-list > li {
+.css-card-example-5-list > li {
   display: flex;
   min-width: 0;
 }
 
-.dads-card-example-5 {
+.css-card-example-5 {
   position: relative;
   z-index: 0;
   display: flex;
@@ -32,7 +32,7 @@
   overflow-wrap: anywhere;
 }
 
-.dads-card-example-5__link:any-link {
+.css-card-example-5__link:any-link {
   display: block;
   border-radius: calc((16 - 1) / 16 * 1rem) calc((16 - 1) / 16 * 1rem) 0 0;
   padding-bottom: calc(16 / 16 * 1rem);
@@ -40,25 +40,25 @@
   text-decoration: inherit;
 }
 
-.dads-card-example-5__link:focus-visible {
+.css-card-example-5__link:focus-visible {
   outline: calc(4 / 16 * 1rem) solid var(--color-neutral-black);
   outline-offset: calc(2 / 16 * 1rem);
   box-shadow: 0 0 0 calc(2 / 16 * 1rem) var(--color-primitive-yellow-300);
 }
 
-.dads-card-example-5__heading {
+.css-card-example-5__heading {
   margin: 0;
   font: inherit;
 }
 
-.dads-card-example-5__image-img {
+.css-card-example-5__image-img {
   display: block;
   width: 100%;
   height: auto;
   border-radius: calc((16 - 1) / 16 * 1rem) calc((16 - 1) / 16 * 1rem) 0 0;
 }
 
-.dads-card-example-5__image-label {
+.css-card-example-5__image-label {
   position: absolute;
   top: calc(16 / 16 * 1rem);
   left: calc(16 / 16 * 1rem);
@@ -74,7 +74,7 @@
   padding: calc(8 / 16 * 1rem);
 }
 
-.dads-card-example-5__month {
+.css-card-example-5__month {
   color: var(--color-primitive-cyan-900);
   font-weight: bold;
   font-size: calc(14 / 16 * 1rem);
@@ -82,19 +82,19 @@
   letter-spacing: 0.02em;
 }
 
-.dads-card-example-5__date {
+.css-card-example-5__date {
   font-weight: bold;
   font-size: calc(24 / 16 * 1rem);
   line-height: 1;
   letter-spacing: 0.02em;
 }
 
-.dads-card-example-5__label {
+.css-card-example-5__label {
   margin: calc(16 / 16 * 1rem) calc(24 / 16 * 1rem) calc(8 / 16 * 1rem);
   display: block;
 }
 
-.dads-card-example-5__title {
+.css-card-example-5__title {
   margin: 0 calc(24 / 16 * 1rem);
   display: block;
   color: var(--color-neutral-solid-gray-900);
@@ -108,12 +108,12 @@
 }
 
 @media (hover: hover) {
-  .dads-card-example-5__link:hover .dads-card-example-5__title {
+  .css-card-example-5__link:hover .css-card-example-5__title {
     text-decoration-thickness: calc(3 / 16 * 1rem);
   }
 }
 
-.dads-card-example-5__sub {
+.css-card-example-5__sub {
   flex-grow: 1;
   display: grid;
   grid-template-rows: 1fr auto;
@@ -121,11 +121,11 @@
   padding: 0 calc(24 / 16 * 1rem) calc(16 / 16 * 1rem);
 }
 
-.dads-card-example-5__sub > * {
+.css-card-example-5__sub > * {
   min-width: 0;
 }
 
-.dads-card-example-5__actions {
+.css-card-example-5__actions {
   margin: 0;
   display: flex;
   flex-wrap: wrap;
@@ -136,7 +136,7 @@
   list-style: none;
 }
 
-.dads-card-example-5 .dads-button {
+.css-card-example-5 .css-button {
   --button-color: var(--color-primitive-cyan-900);
   --button-hover-color: var(--color-primitive-cyan-1000);
   --button-active-color: var(--color-primitive-cyan-1200);

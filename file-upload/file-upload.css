@@ -1,4 +1,4 @@
-.dads-file-upload {
+.css-file-upload {
   display: block;
   color: var(--color-neutral-solid-gray-800);
   font-weight: normal;
@@ -9,28 +9,28 @@
   overflow-wrap: anywhere;
 }
 
-.dads-form-control-label .dads-file-upload {
+.css-form-control-label .css-file-upload {
   margin-top: calc(8 / 16 * 1rem);
 }
 
-.dads-file-upload__input:focus-visible {
+.css-file-upload__input:focus-visible {
   outline: calc(4 / 16 * 1rem) solid var(--color-neutral-black);
   outline-offset: calc(2 / 16 * 1rem);
   border-radius: calc(4 / 16 * 1rem);
   box-shadow: 0 0 0 calc(2 / 16 * 1rem) var(--color-primitive-yellow-300);
 }
 
-.dads-file-upload:defined .dads-file-upload__input {
+.css-file-upload:defined .css-file-upload__input {
   display: none;
 }
 
-.dads-file-upload:not(:defined) .dads-file-upload__drop-area,
-.dads-file-upload:not(:defined) .dads-file-upload__empty-message,
-.dads-file-upload:not(:defined) .dads-file-upload__remove-button {
+.css-file-upload:not(:defined) .css-file-upload__drop-area,
+.css-file-upload:not(:defined) .css-file-upload__empty-message,
+.css-file-upload:not(:defined) .css-file-upload__remove-button {
   display: none;
 }
 
-.dads-file-upload__drop-area {
+.css-file-upload__drop-area {
   display: flex;
   flex-wrap: wrap;
   align-items: center;
@@ -41,100 +41,100 @@
   padding: calc(32 / 16 * 1rem);
 }
 
-.dads-file-upload[dads-error] .dads-file-upload__drop-area {
+.css-file-upload[css-error] .css-file-upload__drop-area {
   border-color: var(--color-semantic-error-1);
 }
 
-.dads-file-upload__drop-area[dads-dragover] {
+.css-file-upload__drop-area[css-dragover] {
   outline: 4px solid var(--color-semantic-success-1);
   outline-offset: -4px;
   background-color: var(--color-primitive-green-50);
 }
 
-.dads-file-upload__drop-area[dads-dragover] .dads-button,
-.dads-button[dads-dragover] {
+.css-file-upload__drop-area[css-dragover] .css-button,
+.css-button[css-dragover] {
   background-color: var(--button-outline-active-bg-color);
   color: var(--button-active-color);
   text-decoration: underline;
 }
 
-.dads-file-upload[dads-error] .dads-button[dads-type="outlined"] {
+.css-file-upload[css-error] .css-button[css-type="outlined"] {
   border-color: var(--color-semantic-error-1);
 }
 
-.dads-file-upload__drop-hint {
+.css-file-upload__drop-hint {
   margin: 0;
   width: 0;
   flex-grow: 1;
   min-width: 12em;
 }
 
-.dads-file-upload__drop-area > .dads-button {
+.css-file-upload__drop-area > .css-button {
   flex-shrink: 0;
 }
 
-.dads-file-upload__select-summary,
-.dads-file-upload__error-messages {
+.css-file-upload__select-summary,
+.css-file-upload__error-messages {
   width: 100%;
   margin: 0;
 }
 
-.dads-file-upload__select-summary:empty,
-.dads-file-upload__error-messages:empty {
+.css-file-upload__select-summary:empty,
+.css-file-upload__error-messages:empty {
   display: none;
 }
 
-.dads-file-upload__error-messages {
+.css-file-upload__error-messages {
   padding: 0;
   list-style-type: none;
 }
 
-.dads-file-upload__error-messages > li {
+.css-file-upload__error-messages > li {
   color: var(--color-semantic-error-1);
 }
 
-.dads-file-upload__drop-area .dads-file-upload__error-messages > li {
+.css-file-upload__drop-area .css-file-upload__error-messages > li {
   color: var(--color-semantic-error-2);
 }
 
-.dads-file-upload__expand-drop-area {
+.css-file-upload__expand-drop-area {
   width: 100%;
   margin: calc(32 / 16 * 1rem) 0 calc(-16 / 16 * 1rem) calc(-4 / 16 * 1rem);
 }
 
-.dads-file-upload__empty-message {
+.css-file-upload__empty-message {
   margin: calc(16 / 16 * 1rem) 0 0;
 }
 
-.dads-file-upload__file-list {
+.css-file-upload__file-list {
   margin: calc(16 / 16 * 1rem) 0 0;
   padding: 0;
   list-style-type: none;
   counter-reset: file-item;
 }
 
-.dads-file-upload__file-item {
+.css-file-upload__file-item {
   display: flex;
   align-items: baseline;
   counter-increment: file-item;
 }
 
-.dads-file-upload__remove-button {
+.css-file-upload__remove-button {
   order: -1;
 }
 
-.dads-file-upload__file-item + .dads-file-upload__file-item {
+.css-file-upload__file-item + .css-file-upload__file-item {
   margin-top: calc(4 / 16 * 1rem);
 }
 
-.dads-file-upload__remove-button.dads-button[dads-size="xs"] {
+.css-file-upload__remove-button.css-button[css-size="xs"] {
   flex-shrink: 0;
   min-width: calc(48 / 16 * 1rem);
   min-height: calc(30 / 16 * 1rem);
   font-size: calc(16 / 16 * 1rem);
 }
 
-.dads-file-upload:not([dads-multiple]) .dads-file-upload__file-marker {
+.css-file-upload:not([css-multiple]) .css-file-upload__file-marker {
   display: flex;
   flex-shrink: 0;
   align-self: start;
@@ -144,8 +144,8 @@
   height: calc(30 / 16 * 1rem);
 }
 
-.dads-file-upload:not([dads-multiple])
-  .dads-file-upload__file-marker::before {
+.css-file-upload:not([css-multiple])
+  .css-file-upload__file-marker::before {
   width: calc(6 / 16 * 1rem);
   height: calc(6 / 16 * 1rem);
   border-radius: 50%;
@@ -154,53 +154,53 @@
 }
 
 @media (forced-colors: active) {
-  .dads-file-upload:not([dads-multiple])
-    .dads-file-upload__file-marker::before {
+  .css-file-upload:not([css-multiple])
+    .css-file-upload__file-marker::before {
     background-color: CanvasText;
   }
 }
 
-.dads-file-upload[dads-multiple] .dads-file-upload__file-marker {
+.css-file-upload[css-multiple] .css-file-upload__file-marker {
   width: calc(32 / 16 * 1rem);
 }
 
-.dads-file-upload[dads-multiple] .dads-file-upload__file-marker::before {
+.css-file-upload[css-multiple] .css-file-upload__file-marker::before {
   content: counter(file-item) ".";
 }
 
-.dads-file-upload__file-info {
+.css-file-upload__file-info {
   flex: 1;
   min-width: 0;
 }
 
-.dads-file-upload__file-item[dads-error] .dads-file-upload__file-info {
+.css-file-upload__file-item[css-error] .css-file-upload__file-info {
   border-left: 4px solid var(--color-semantic-error-1);
   padding-left: calc(8 / 16 * 1rem);
   color: var(--color-semantic-error-1);
 }
 
-.dads-file-upload__file-info > p {
+.css-file-upload__file-info > p {
   margin: 0;
 }
 
-.dads-file-upload__file-name {
+.css-file-upload__file-name {
   margin-right: calc(16 / 16 * 1rem);
   font-weight: bold;
 }
 
-.dads-file-upload__file-meta {
+.css-file-upload__file-meta {
   color: var(--color-neutral-solid-gray-600);
 }
 
-.dads-file-upload__file-item[dads-error] .dads-file-upload__file-meta {
+.css-file-upload__file-item[css-error] .css-file-upload__file-meta {
   color: inherit;
 }
 
-.dads-file-upload__file-item input[type="file"] {
+.css-file-upload__file-item input[type="file"] {
   display: none;
 }
 
-.dads-file-upload__viewport-overlay {
+.css-file-upload__viewport-overlay {
   position: fixed;
   inset: 0;
   z-index: 9999;
@@ -208,7 +208,7 @@
   background-color: var(--color-primitive-green-50);
 }
 
-.dads-file-upload__viewport-overlay > div {
+.css-file-upload__viewport-overlay > div {
   display: flex;
   place-content: center;
   flex-wrap: wrap;
@@ -228,6 +228,6 @@
   pointer-events: none;
 }
 
-.dads-file-upload__viewport-overlay > div span {
+.css-file-upload__viewport-overlay > div span {
   display: inline-block;
 }

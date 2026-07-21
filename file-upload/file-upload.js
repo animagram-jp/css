@@ -46,7 +46,7 @@ export class FileUpload extends HTMLElement {
   connectedCallback() {
     this.#abort = new AbortController();
 
-    this.#viewportOverlay = this.querySelector(".dads-file-upload__viewport-overlay");
+    this.#viewportOverlay = this.querySelector(".css-file-upload__viewport-overlay");
     if (this.#viewportOverlay) {
       document.body.appendChild(this.#viewportOverlay);
     }
@@ -148,7 +148,7 @@ export class FileUpload extends HTMLElement {
       () => {
         this.#dragCounter++;
         if (this.#dragCounter === 1) {
-          dropZone.setAttribute("dads-dragover", "");
+          dropZone.setAttribute("css-dragover", "");
           this.#startDropAnnounce();
         }
       },
@@ -169,7 +169,7 @@ export class FileUpload extends HTMLElement {
       () => {
         this.#dragCounter--;
         if (this.#dragCounter === 0) {
-          dropZone.removeAttribute("dads-dragover");
+          dropZone.removeAttribute("css-dragover");
           this.#stopDropAnnounce();
           this.#announceText(
             this.#getMessage("announce", "dropUnavailable"),
@@ -185,7 +185,7 @@ export class FileUpload extends HTMLElement {
       (e) => {
         e.preventDefault();
         this.#dragCounter = 0;
-        dropZone.removeAttribute("dads-dragover");
+        dropZone.removeAttribute("css-dragover");
         this.#stopDropAnnounce();
 
         const files = Array.from(e.dataTransfer?.files || []);
@@ -280,7 +280,7 @@ export class FileUpload extends HTMLElement {
     this.addEventListener(
       "click",
       ({ target }) => {
-        if (!target.closest(".dads-file-upload__remove-button")) return;
+        if (!target.closest(".css-file-upload__remove-button")) return;
 
         const listItem = target.closest("li");
         const fileId = listItem?.dataset.id;
@@ -355,10 +355,10 @@ export class FileUpload extends HTMLElement {
       this.#selectButton.focus();
     } else if (index < this.files.length) {
       const nextFile = this.files[index];
-      nextFile.element.querySelector(".dads-file-upload__remove-button")?.focus();
+      nextFile.element.querySelector(".css-file-upload__remove-button")?.focus();
     } else {
       const lastFile = this.files[this.files.length - 1];
-      lastFile.element.querySelector(".dads-file-upload__remove-button")?.focus();
+      lastFile.element.querySelector(".css-file-upload__remove-button")?.focus();
     }
   }
 
@@ -381,11 +381,11 @@ export class FileUpload extends HTMLElement {
       const fileId = `file-${Math.random().toString(36).slice(-8)}`;
       item.dataset.id = fileId;
 
-      const fileNameEl = item.querySelector(".dads-file-upload__file-name");
-      const fileSizeEl = item.querySelector(".dads-file-upload__file-size-bytes");
+      const fileNameEl = item.querySelector(".css-file-upload__file-name");
+      const fileSizeEl = item.querySelector(".css-file-upload__file-size-bytes");
       const fileSizeText = fileSizeEl?.textContent.trim() ?? "0";
 
-      const removeButton = item.querySelector(".dads-file-upload__remove-button");
+      const removeButton = item.querySelector(".css-file-upload__remove-button");
 
       if (fileNameEl && removeButton) {
         const nameId = `${fileId}-name`;
@@ -488,15 +488,15 @@ export class FileUpload extends HTMLElement {
     }
 
     if (this.#isMultiple) {
-      this.setAttribute("dads-multiple", "");
+      this.setAttribute("css-multiple", "");
     } else {
-      this.removeAttribute("dads-multiple");
+      this.removeAttribute("css-multiple");
     }
 
     if (this.errors.length > 0) {
-      this.setAttribute("dads-error", "");
+      this.setAttribute("css-error", "");
     } else {
-      this.removeAttribute("dads-error");
+      this.removeAttribute("css-error");
     }
   }
 
@@ -548,10 +548,10 @@ export class FileUpload extends HTMLElement {
     const li = clone.firstElementChild;
     li.dataset.id = fileInfo.id;
 
-    const fileNameElement = li.querySelector(".dads-file-upload__file-name");
-    const fileSizeElement = li.querySelector(".dads-file-upload__file-size");
-    const fileSizeBytesElement = li.querySelector(".dads-file-upload__file-size-bytes");
-    const removeButton = li.querySelector(".dads-file-upload__remove-button");
+    const fileNameElement = li.querySelector(".css-file-upload__file-name");
+    const fileSizeElement = li.querySelector(".css-file-upload__file-size");
+    const fileSizeBytesElement = li.querySelector(".css-file-upload__file-size-bytes");
+    const removeButton = li.querySelector(".css-file-upload__remove-button");
 
     if (fileNameElement) fileNameElement.textContent = fileInfo.name;
     if (fileSizeElement) fileSizeElement.textContent = formatSize(fileInfo.size);
@@ -567,9 +567,9 @@ export class FileUpload extends HTMLElement {
     }
 
     if (hasErrors) {
-      li.setAttribute("dads-error", "");
+      li.setAttribute("css-error", "");
 
-      const infoDiv = li.querySelector(".dads-file-upload__file-info");
+      const infoDiv = li.querySelector(".css-file-upload__file-info");
       if (infoDiv) {
         fileInfo.errors.forEach((errorText) => {
           const errorP = document.createElement("p");
@@ -593,47 +593,47 @@ export class FileUpload extends HTMLElement {
   }
 
   get #dropArea() {
-    return this.querySelector(".dads-file-upload__drop-area");
+    return this.querySelector(".css-file-upload__drop-area");
   }
 
   get #fallbackInput() {
-    return this.querySelector(".dads-file-upload__input");
+    return this.querySelector(".css-file-upload__input");
   }
 
   get #selectButton() {
-    return this.querySelector(".dads-file-upload__drop-area > .dads-button");
+    return this.querySelector(".css-file-upload__drop-area > .css-button");
   }
 
   get #emptyMessage() {
-    return this.querySelector(".dads-file-upload__empty-message");
+    return this.querySelector(".css-file-upload__empty-message");
   }
 
   get #fileList() {
-    return this.querySelector(".dads-file-upload__file-list");
+    return this.querySelector(".css-file-upload__file-list");
   }
 
   get #errorMessagesContainer() {
-    return this.querySelector(".dads-file-upload__error-messages");
+    return this.querySelector(".css-file-upload__error-messages");
   }
 
   get #fileItemTemplate() {
-    return this.querySelector(".dads-file-upload__template");
+    return this.querySelector(".css-file-upload__template");
   }
 
   get #expandDropAreaCheckbox() {
-    return this.querySelector(".dads-file-upload__expand-drop-area input[type='checkbox']");
+    return this.querySelector(".css-file-upload__expand-drop-area input[type='checkbox']");
   }
 
   get #announcer() {
-    return this.querySelector(".dads-file-upload__announcer");
+    return this.querySelector(".css-file-upload__announcer");
   }
 
   get #announcerAssertive() {
-    return this.querySelector(".dads-file-upload__announcer-assertive");
+    return this.querySelector(".css-file-upload__announcer-assertive");
   }
 
   get #selectSummary() {
-    return this.querySelector(".dads-file-upload__select-summary");
+    return this.querySelector(".css-file-upload__select-summary");
   }
 
   get #isMultiple() {
@@ -641,7 +641,7 @@ export class FileUpload extends HTMLElement {
   }
 }
 
-customElements.define("dads-file-upload", FileUpload);
+customElements.define("css-file-upload", FileUpload);
 
 /* Utility Functions */
 
