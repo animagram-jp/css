@@ -172,6 +172,8 @@ docker exec accessibility-audit chown -R "$(id -u):$(id -g)" docs
 
 # カラーユニバーサルデザイン推奨配色セット ver.3
 
+- reference: [CUDO](https://cudo.jp/wp-content/uploads/2016/07/CUD%E6%8E%A8%E5%A5%A8%E9%85%8D%E8%89%B2%E3%82%BB%E3%83%83%E3%83%88%E3%82%AC%E3%82%)
+
 ## 組み合わせ例
 
 塗装用・印刷用・画面用マージ済み
