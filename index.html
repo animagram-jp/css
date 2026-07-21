@@ -187,522 +187,405 @@
             <label class="css-checkbox" css-size="md"><input type="checkbox" aria-invalid="true">選択肢B</label>
             <p id="check-error" class="css-field-error">＊エラーテキストが入ります。</p></fieldset></section>
 
-<h2 id="h2-9" aria-label="example usage of heading component" class="css-h">Heading</h2>
-<section aria-labelledby="h2-9">
-
-<style>
-  .heading-row { margin-block: 2rem; }
-  .heading-meta { font: 0.75rem/2 monospace; color: #999; margin-bottom: 0.25rem; }
-</style>
-
-<h3 style="font: bold 1rem/2 sans-serif; margin-top: 1.5rem; margin-bottom: 0.5rem;">Size scale</h3>
-
-<div class="heading-row">
-  <div class="heading-meta">h2.css-h css-size="display-1"</div>
-  <h2 class="css-h" css-size="display-1">見出しテキスト</h2>
-</div>
-
-<div class="heading-row">
-  <div class="heading-meta">h2.css-h css-size="display-2"</div>
-  <h2 class="css-h" css-size="display-2">見出しテキスト</h2>
-</div>
-
-<div class="heading-row">
-  <div class="heading-meta">h2.css-h css-size="heading-1"</div>
-  <h2 class="css-h" css-size="heading-1">見出しテキスト</h2>
-</div>
-
-<div class="heading-row">
-  <div class="heading-meta">h2.css-h css-size="heading-2"</div>
-  <h2 class="css-h" css-size="heading-2">見出しテキスト</h2>
-</div>
-
-<div class="heading-row">
-  <div class="heading-meta">h2.css-h css-size="heading-3"</div>
-  <h2 class="css-h" css-size="heading-3">見出しテキスト</h2>
-</div>
-
-<div class="heading-row">
-  <div class="heading-meta">h2.css-h css-size="heading-4"</div>
-  <h2 class="css-h" css-size="heading-4">見出しテキスト</h2>
-</div>
-
-<div class="heading-row">
-  <div class="heading-meta">h2.css-h css-size="heading-6"</div>
-  <h2 class="css-h" css-size="heading-6">見出しテキスト</h2>
-</div>
-
-<div class="heading-row">
-  <div class="heading-meta">h2.css-h css-size="heading-8"</div>
-  <h2 class="css-h" css-size="heading-8">見出しテキスト</h2>
-</div>
-
-<div class="heading-row">
-  <div class="heading-meta">h2.css-h css-size="heading-9"</div>
-  <h2 class="css-h" css-size="heading-9">見出しテキスト</h2>
-</div>
-
-<div class="heading-row">
-  <div class="heading-meta">h2.css-h css-size="text-normal-2"</div>
-  <h2 class="css-h" css-size="text-normal-2">見出しテキスト</h2>
-</div>
-
-<!-- shoulder — hgroup のみ -->
-<h3 style="font: bold 1rem/2 sans-serif; margin-top: 2rem; margin-bottom: 0.5rem;">shoulder（hgroup 使用）</h3>
-
-<div class="heading-row">
-  <div class="heading-meta">hgroup[css-size="heading-2"] &gt; h2.css-h</div>
-  <hgroup css-size="heading-2">
-    <p class="css-h-shoulder">ショルダーテキスト</p>
-    <h2 class="css-h">見出しテキスト</h2>
-  </hgroup>
-</div>
-
-<!-- data-chip -->
-<h3 style="font: bold 1rem/2 sans-serif; margin-top: 2rem; margin-bottom: 0.5rem;">data-chip</h3>
-
-<div class="heading-row">
-  <div class="heading-meta">h2.css-h css-size="heading-2" data-chip</div>
-  <h2 class="css-h" css-size="heading-2" data-chip>見出しテキスト</h2>
-</div>
-
-<div class="heading-row">
-  <div class="heading-meta">hgroup[css-size="heading-2"][data-chip] &gt; h2.css-h — shoulder あり</div>
-  <hgroup css-size="heading-2" data-chip>
-    <p class="css-h-shoulder">ショルダーテキスト</p>
-    <h2 class="css-h">見出しテキスト</h2>
-  </hgroup>
-</div>
-
-<!-- data-rule -->
-<h3 style="font: bold 1rem/2 sans-serif; margin-top: 2rem; margin-bottom: 0.5rem;">data-rule</h3>
-
-<div class="heading-row">
-  <div class="heading-meta">h2.css-h css-size="heading-2" data-rule="8"</div>
-  <h2 class="css-h" css-size="heading-2" data-rule="8">見出しテキスト</h2>
-</div>
-
-<div class="heading-row">
-  <div class="heading-meta">h2.css-h css-size="heading-2" data-rule="6"</div>
-  <h2 class="css-h" css-size="heading-2" data-rule="6">見出しテキスト</h2>
-</div>
-
-<div class="heading-row">
-  <div class="heading-meta">h2.css-h css-size="heading-2" data-rule="4"</div>
-  <h2 class="css-h" css-size="heading-2" data-rule="4">見出しテキスト</h2>
-</div>
-
-<div class="heading-row">
-  <div class="heading-meta">h2.css-h css-size="heading-2" data-rule="2"</div>
-  <h2 class="css-h" css-size="heading-2" data-rule="2">見出しテキスト</h2>
-</div>
-
-<!-- chip + rule 組み合わせ -->
-<h3 style="font: bold 1rem/2 sans-serif; margin-top: 2rem; margin-bottom: 0.5rem;">data-chip + data-rule</h3>
-
-<div class="heading-row">
-  <div class="heading-meta">h2.css-h css-size="heading-2" data-chip data-rule="4"</div>
-  <h2 class="css-h" css-size="heading-2" data-chip data-rule="4">見出しテキスト</h2>
-</div>
-
-</section>
-
-<!-- ============================================================ -->
-<!-- input-number -->
-<!-- ============================================================ -->
-<h2 id="h2-10" aria-label="example usage of input number component" class="css-h">Input Number</h2>
-<section aria-labelledby="h2-10">
-
-<span class="css-input-number">
-  <button type="button" aria-label="減らす">−</button>
-  <input type="text" inputmode="numeric" min="0" placeholder="0">
-  <button type="button" aria-label="増やす">+</button>
-</span>
-
-</section>
-
-<!-- ============================================================ -->
-<!-- input-text -->
-<!-- ============================================================ -->
-<h2 id="h2-11" aria-label="example usage of input text component" class="css-h">Input Text</h2>
-<section aria-labelledby="h2-11">
-
-<!-- 通常 -->
-<input class="css-input" type="text" css-size="md" placeholder="テキストを入力">
-
-<!-- エラー -->
-<input class="css-input" type="text" css-size="md" aria-invalid="true" style="margin-top:1rem;display:block">
-
-<!-- 読み取り専用 -->
-<input class="css-input" type="text" css-size="md" value="読み取り専用の値" readonly style="margin-top:1rem;display:block">
-
-<!-- 無効 -->
-<input class="css-input" type="text" css-size="md" value="無効" disabled style="margin-top:1rem;display:block">
-
-</section>
-
-
-<!-- ============================================================ -->
-<!-- link -->
-<!-- ============================================================ -->
-<h2 id="h2-12" aria-label="example usage of link component" class="css-h">Link</h2>
-<section aria-labelledby="h2-12">
-
-<a class="css-link" href="#" target="_blank">
-  リンクテキスト
-  <svg class="css-link__icon" width="16" height="16" viewBox="0 0 48 48" role="img" aria-label="新規タブで開きます">
-    <path d="M22 6V9H9V39H39V26H42V42H6V6H22ZM42 6V20H39V11.2L21 29L19 27L36.8 9H28V6H42Z" fill="currentcolor"/>
-  </svg>
-</a>
-
-</section>
-
-<!-- ============================================================ -->
-<!-- list -->
-<!-- ============================================================ -->
-<h2 id="h2-13" aria-label="example usage of list component" class="css-h">List</h2>
-<section aria-labelledby="h2-13">
-
-<!-- 箇条書き -->
-<ul class="css-list" data-spacing="4">
-  <li>項目A</li>
-  <li>項目B（少し長めのテキストサンプルです）</li>
-  <li>
-    ネストあり
-    <ul class="css-list" data-spacing="4">
-      <li>サブ項目1</li>
-      <li><a class="css-link" href="#">サブ項目2（リンク）</a></li>
-    </ul>
-  </li>
-</ul>
-
-<!-- 番号付き -->
-<ul class="css-list" data-marker="number" data-spacing="4" style="margin-top: 2rem">
-  <li><span>1. </span><span>最初の項目</span></li>
-  <li><span>2. </span><span>二番目の項目</span></li>
-  <li><span>3. </span><span>三番目の項目</span></li>
-</ul>
-
-</section>
-
-<!-- ============================================================ -->
-<!-- list-box -->
-<!-- ============================================================ -->
-<h2 id="h2-14" aria-label="example usage of list box component" class="css-h">List Box</h2>
-<section aria-labelledby="h2-14">
-
-<ul id="list-box-1" popover="auto" role="listbox" aria-labelledby="list-box-1-trigger" class="list-box">
-  <li role="presentation">アイテムから選択してください</li>
-  <li role="option" aria-selected="true"><button>リストアイテム1</button></li>
-  <li role="option"><button>リストアイテム2</button></li>
-  <li role="option"><button>リストアイテム3</button></li>
-</ul>
-
-<button
-  type="button"
-  id="list-box-1-trigger"
-  popovertarget="list-box-1"
-  aria-haspopup="listbox"
-  aria-controls="list-box-1"
-  class="list-box-trigger">
-  現在選択中のリストアイテム
-</button>
-
-</section>
-
-<h2 id="h2-15" aria-label="example usage of radio component" class="css-h">Radio</h2>
-<section aria-labelledby="h2-15">
-
-<!-- サイズ×状態マトリクス: lg / md / sm × 通常・選択済・エラー・無効 -->
-<div style="display: grid; grid-template-columns: repeat(6, auto); gap: 2rem; justify-content: start">
-
-  <label class="css-radio" css-size="lg"><input type="radio" name="lg-1">ラベル</label>
-  <label class="css-radio" css-size="lg"><input type="radio" name="lg-1" checked>ラベル</label>
-  <label class="css-radio" css-size="lg"><input type="radio" name="lg-2" aria-invalid="true">ラベル</label>
-  <label class="css-radio" css-size="lg"><input type="radio" name="lg-2" checked aria-invalid="true">ラベル</label>
-  <label class="css-radio" css-size="lg"><input type="radio" name="lg-3" disabled>ラベル</label>
-  <label class="css-radio" css-size="lg"><input type="radio" name="lg-3" checked disabled>ラベル</label>
-
-  <label class="css-radio" css-size="md"><input type="radio" name="md-1">ラベル</label>
-  <label class="css-radio" css-size="md"><input type="radio" name="md-1" checked>ラベル</label>
-  <label class="css-radio" css-size="md"><input type="radio" name="md-2" aria-invalid="true">ラベル</label>
-  <label class="css-radio" css-size="md"><input type="radio" name="md-2" checked aria-invalid="true">ラベル</label>
-  <label class="css-radio" css-size="md"><input type="radio" name="md-3" disabled>ラベル</label>
-  <label class="css-radio" css-size="md"><input type="radio" name="md-3" checked disabled>ラベル</label>
-
-  <label class="css-radio" css-size="sm"><input type="radio" name="sm-1">ラベル</label>
-  <label class="css-radio" css-size="sm"><input type="radio" name="sm-1" checked>ラベル</label>
-  <label class="css-radio" css-size="sm"><input type="radio" name="sm-2" aria-invalid="true">ラベル</label>
-  <label class="css-radio" css-size="sm"><input type="radio" name="sm-2" checked aria-invalid="true">ラベル</label>
-  <label class="css-radio" css-size="sm"><input type="radio" name="sm-3" disabled>ラベル</label>
-  <label class="css-radio" css-size="sm"><input type="radio" name="sm-3" checked disabled>ラベル</label>
-
-</div>
-
-</section>
-
-<h2 id="h2-16" aria-label="example usage of search box component" class="css-h">Search Box</h2>
-<section aria-labelledby="h2-16">
-
-<div style="margin-top:1rem; display: flex;">
-  <label class="css-search-box">
-    <svg width="24" height="24" viewBox="0 0 24 24" aria-hidden="true">
-      <path d="m21 20.5-6-6a7.4 7.4 0 0 0 1.9-5A7.4 7.4 0 0 0 9.5 2 7.5 7.5 0 1 0 14 15.5l6 6 1-1ZM3.5 9.5a6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6 6 6 0 0 1-6-6Z" fill="currentcolor"/>
-    </svg>
-    <span class="css-visually-hidden">検索</span>
-    <input type="search" name="q" class="css-input">
-  </label>
-  <span style="display: inline-flex; width: 0.5rem;"></span>
-  <button class="css-button" type="submit" css-type="fill">検索</button>
-</div>
-
-<div style="margin-top:1rem; display: flex;">
-  <label class="css-search-box-scope" css-size="lg">
-    <span>検索対象</span>
-    <select>
-      <option value="">すべて</option>
-      <option value="images">画像</option>
-      <option value="files">ファイル</option></select>
-    <svg width="16" height="16" viewBox="0 0 24 24" aria-hidden="true">
-      <path d="M12 17L3 8L4 7L12 15L20 7L21 8L12 17Z" fill="currentcolor"/></svg></label>
-  <label class="css-search-box" css-size="lg">
-    <svg width="24" height="24" viewBox="0 0 24 24" aria-hidden="true">
-      <path d="m21 20.5-6-6a7.4 7.4 0 0 0 1.9-5A7.4 7.4 0 0 0 9.5 2 7.5 7.5 0 1 0 14 15.5l6 6 1-1ZM3.5 9.5a6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6 6 6 0 0 1-6-6Z" fill="currentcolor"/></svg>
-    <span class="css-visually-hidden">検索</span>
-    <input type="search" name="q" class="css-input" css-size="lg"></label>
-    <span style="display: inline-flex; width: 0.5rem;"></span>
-    <button class="css-button" type="submit" css-type="fill" css-size="lg">検索</button>
-</div>
-
-</section>
-
-<!-- ============================================================ -->
-<!-- select -->
-<!-- ============================================================ -->
-<h2 id="h2-17" aria-label="example usage of select component" class="css-h">Select</h2>
-<section aria-labelledby="h2-17">
-
-<!-- 通常 -->
-<select class="css-select" css-size="md" style="display:block">
-  <option value="">選択してください</option>
-  <option value="1">選択肢1</option>
-  <option value="2">選択肢2</option>
-  <option value="3">選択肢3</option>
-</select>
-
-<!-- エラー -->
-<select class="css-select" css-size="md" aria-invalid="true" style="display:block; margin-top:1rem">
-  <option value="">選択してください</option>
-  <option value="1">選択肢1</option>
-</select>
-
-<!-- 無効 -->
-<select class="css-select" css-size="md" disabled style="display:block;margin-top:1rem">
-  <option value="">選択してください</option>
-</select>
-
-<!-- 複数選択 -->
-<select class="css-select" multiple style="display:block;margin-top:1rem">
-  <option value="1">選択肢1</option>
-  <option value="2">選択肢2</option>
-  <option value="3">選択肢3</option>
-  <option value="4">選択肢4</option>
-  <option value="5">選択肢5</option>
-</select>
-
-</section>
-
-<h2 id="h2-18" aria-label="example usage of table component" class="css-h">Table</h2>
-<section aria-labelledby="h2-18">
-
-<!-- 通常 -->
-<table class="css-table">
-  <thead>
-    <tr>
-      <th scope="col">ラベル</th>
-      <th scope="col">ラベル</th>
-      <th scope="col">ラベル</th>
-      <th scope="col">ラベル</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td>データ</td>
-      <td>データ</td>
-      <td>データ</td>
-      <td>データ</td>
-    </tr>
-    <tr>
-      <td>データ</td>
-      <td>データ</td>
-      <td>データ</td>
-      <td>データ</td>
-    </tr>
-  </tbody>
-</table>
-
-<!-- ストライプ・デンス -->
-<table class="css-table" css-stripe css-border="bottom" css-type="dense" style="margin-top: 2rem;">
-  <caption>ストライプ・デンスタイプ</caption>
-  <thead>
-    <tr>
-      <th scope="col">ラベル</th>
-      <th scope="col">ラベル</th>
-      <th scope="col">ラベル</th>
-      <th scope="col">ラベル</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr><td>データ</td><td>データ</td><td>データ</td><td>データ</td></tr>
-    <tr><td>データ</td><td>データ</td><td>データ</td><td>データ</td></tr>
-    <tr><td>データ</td><td>データ</td><td>データ</td><td>データ</td></tr>
-  </tbody>
-</table>
-
-<!-- tbody th (行ヘッダー) -->
-<table class="css-table" css-border="bottom" style="margin-top: 2rem;">
-  <caption>行ヘッダー付き</caption>
-  <thead>
-    <tr>
-      <th scope="col">項目</th>
-      <th scope="col">値A</th>
-      <th scope="col">値B</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th scope="row">行1</th>
-      <td>データ</td>
-      <td>データ</td>
-    </tr>
-    <tr>
-      <th scope="row">行2</th>
-      <td>データ</td>
-      <td>データ</td>
-    </tr>
-  </tbody>
-</table>
-
-<!-- css-hover -->
-<table class="css-table" css-hover css-border="bottom" style="margin-top: 2rem;">
-  <caption>ホバーハイライト</caption>
-  <thead>
-    <tr>
-      <th scope="col">ラベル</th>
-      <th scope="col">ラベル</th>
-      <th scope="col">ラベル</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr><td>データ</td><td>データ</td><td>データ</td></tr>
-    <tr><td>データ</td><td>データ</td><td>データ</td></tr>
-    <tr><td>データ</td><td>データ</td><td>データ</td></tr>
-  </tbody>
-</table>
-
-<!-- css-selectable -->
-<table class="css-table" css-selectable css-border="bottom" style="margin-top: 2rem;">
-  <caption>選択可能（チェックボックス）</caption>
-  <thead>
-    <tr>
-      <th scope="col"><input type="checkbox" class="css-checkbox" css-size="sm" aria-label="すべて選択"></th>
-      <th scope="col">ラベル</th>
-      <th scope="col">ラベル</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td><input type="checkbox" class="css-checkbox" css-size="sm" aria-label="行1を選択"></td>
-      <td>データ</td>
-      <td>データ</td>
-    </tr>
-    <tr>
-      <td><input type="checkbox" class="css-checkbox" css-size="sm" aria-label="行2を選択" checked></td>
-      <td>データ</td>
-      <td>データ</td>
-    </tr>
-  </tbody>
-</table>
-
-<!-- css-sort -->
-<table class="css-table" css-border="bottom" style="margin-top: 2rem;">
-  <caption>ソート（aria-sort: none / ascending / descending）</caption>
-  <thead>
-    <tr>
-      <th css-sort scope="col">
-        名前
-        <div class="css-sort">
-          <button class="css-sort-up" type="button" aria-label="名前 昇順"></button>
-          <button class="css-sort-down" type="button" aria-label="名前 降順"></button>
-        </div>
-      </th>
-      <th css-sort aria-sort="ascending" scope="col">
-        日付
-        <div class="css-sort">
-          <button class="css-sort-up" type="button" aria-label="日付 昇順"></button>
-          <button class="css-sort-down" type="button" aria-label="日付 降順"></button>
-        </div>
-      </th>
-      <th css-sort aria-sort="descending" scope="col">
-        金額
-        <div class="css-sort">
-          <button class="css-sort-up" type="button" aria-label="金額 昇順"></button>
-          <button class="css-sort-down" type="button" aria-label="金額 降順"></button>
-        </div>
-      </th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td>山田 太郎</td>
-      <td>2026-06-01</td>
-      <td>¥12,000</td>
-    </tr>
-    <tr>
-      <td>佐藤 花子</td>
-      <td>2026-06-02</td>
-      <td>¥8,500</td>
-    </tr>
-  </tbody>
-</table>
-
-<!-- css-border="" (全セル格子) -->
-<table class="css-table" css-border="" style="margin-top: 2rem;">
-  <caption>全セルボーダー</caption>
-  <thead>
-    <tr>
-      <th scope="col">ラベル</th>
-      <th scope="col">ラベル</th>
-      <th scope="col">ラベル</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr><td>データ</td><td>データ</td><td>データ</td></tr>
-    <tr><td>データ</td><td>データ</td><td>データ</td></tr></tbody></table></section>
-
-<h2 id="h2-19" aria-label="example usage of textarea component" class="css-h">Textarea</h2>
-<section aria-labelledby="h2-19">
-
-  <div style="width:16rem">
-
-    <!-- 通常 -->
-    <textarea class="css-textarea" placeholder="css-size: sm" css-size="sm" style="margin-top:1rem;display:block"></textarea>
-    <textarea class="css-textarea" placeholder="css-size: md" css-size="md" style="margin-top:1rem;display:block"></textarea>
-    <textarea class="css-textarea" placeholder="css-size: lg" css-size="lg" style="margin-top:1rem;display:block"></textarea>
-
-    <!-- エラー -->
-    <textarea class="css-textarea" style="margin-top:1rem;display:block" aria-invalid="true"></textarea>
-
-    <!-- 読み取り専用 -->
-    <textarea class="css-textarea" style="margin-top:1rem;display:block" readonly>読み取り専用の値</textarea>
-
-    <!-- 無効 -->
-    <textarea class="css-textarea" style="margin-top:1rem;display:block" disabled>無効</textarea>
-
-    <!-- 文字数カウンター (削除済み) -->
-    <label class="css-field-label" style="margin-top:1rem;" for="counter-textarea">
-      ラベル
-      <span class="css-field-requirement" css-required>※必須</span>
-    </label>
-    <p id="counter-support-text" class="css-field-support">20文字以内で入力してください</p>
-    <textarea id="counter-textarea" class="css-textarea" aria-describedby="counter-support-text"></textarea></div></section></body></html>
+    <h2 id="h2-9" aria-label="example usage of heading component" class="css-h">Heading</h2>
+    <section aria-labelledby="h2-9">
+        <style>
+            .heading-row { margin-block: 2rem; }
+            .heading-meta { font: 0.75rem/2 monospace; color: #999; margin-bottom: 0.25rem; }</style>
+
+        <h3 style="font: bold 1rem/2 sans-serif; margin-top: 1.5rem; margin-bottom: 0.5rem;">Size scale</h3>
+
+        <div class="heading-row">
+            <div class="heading-meta">h2.css-h css-size="display-1"</div>
+            <h2 class="css-h" css-size="display-1">見出しテキスト</h2></div>
+
+        <div class="heading-row">
+            <div class="heading-meta">h2.css-h css-size="display-2"</div>
+            <h2 class="css-h" css-size="display-2">見出しテキスト</h2></div>
+
+        <div class="heading-row">
+            <div class="heading-meta">h2.css-h css-size="heading-1"</div>
+            <h2 class="css-h" css-size="heading-1">見出しテキスト</h2></div>
+
+        <div class="heading-row">
+            <div class="heading-meta">h2.css-h css-size="heading-2"</div>
+            <h2 class="css-h" css-size="heading-2">見出しテキスト</h2></div>
+
+        <div class="heading-row">
+            <div class="heading-meta">h2.css-h css-size="heading-3"</div>
+            <h2 class="css-h" css-size="heading-3">見出しテキスト</h2></div>
+
+        <div class="heading-row">
+            <div class="heading-meta">h2.css-h css-size="heading-4"</div>
+            <h2 class="css-h" css-size="heading-4">見出しテキスト</h2></div>
+
+        <div class="heading-row">
+            <div class="heading-meta">h2.css-h css-size="heading-6"</div>
+            <h2 class="css-h" css-size="heading-6">見出しテキスト</h2></div>
+
+        <div class="heading-row">
+            <div class="heading-meta">h2.css-h css-size="heading-8"</div>
+            <h2 class="css-h" css-size="heading-8">見出しテキスト</h2></div>
+
+        <div class="heading-row">
+            <div class="heading-meta">h2.css-h css-size="heading-9"</div>
+            <h2 class="css-h" css-size="heading-9">見出しテキスト</h2></div>
+
+        <div class="heading-row">
+            <div class="heading-meta">h2.css-h css-size="text-normal-2"</div>
+            <h2 class="css-h" css-size="text-normal-2">見出しテキスト</h2></div>
+
+        <!-- shoulder — hgroup のみ -->
+        <h3 style="font: bold 1rem/2 sans-serif; margin-top: 2rem; margin-bottom: 0.5rem;">shoulder（hgroup 使用）</h3>
+
+        <div class="heading-row">
+            <div class="heading-meta">hgroup[css-size="heading-2"] &gt; h2.css-h</div>
+            <hgroup css-size="heading-2">
+                <p class="css-h-shoulder">ショルダーテキスト</p>
+                <h2 class="css-h">見出しテキスト</h2></hgroup></div>
+
+        <!-- data-chip -->
+        <h3 style="font: bold 1rem/2 sans-serif; margin-top: 2rem; margin-bottom: 0.5rem;">data-chip</h3>
+
+        <div class="heading-row">
+            <div class="heading-meta">h2.css-h css-size="heading-2" data-chip</div>
+            <h2 class="css-h" css-size="heading-2" data-chip>見出しテキスト</h2></div>
+
+        <div class="heading-row">
+            <div class="heading-meta">hgroup[css-size="heading-2"][data-chip] &gt; h2.css-h — shoulder あり</div>
+            <hgroup css-size="heading-2" data-chip>
+                <p class="css-h-shoulder">ショルダーテキスト</p>
+                <h2 class="css-h">見出しテキスト</h2></hgroup></div>
+
+        <!-- data-rule -->
+        <h3 style="font: bold 1rem/2 sans-serif; margin-top: 2rem; margin-bottom: 0.5rem;">data-rule</h3>
+
+        <div class="heading-row">
+            <div class="heading-meta">h2.css-h css-size="heading-2" data-rule="8"</div>
+            <h2 class="css-h" css-size="heading-2" data-rule="8">見出しテキスト</h2></div>
+
+        <div class="heading-row">
+            <div class="heading-meta">h2.css-h css-size="heading-2" data-rule="6"</div>
+            <h2 class="css-h" css-size="heading-2" data-rule="6">見出しテキスト</h2></div>
+
+        <div class="heading-row">
+            <div class="heading-meta">h2.css-h css-size="heading-2" data-rule="4"</div>
+            <h2 class="css-h" css-size="heading-2" data-rule="4">見出しテキスト</h2></div>
+
+        <div class="heading-row">
+            <div class="heading-meta">h2.css-h css-size="heading-2" data-rule="2"</div>
+            <h2 class="css-h" css-size="heading-2" data-rule="2">見出しテキスト</h2></div>
+
+        <!-- chip + rule 組み合わせ -->
+        <h3 style="font: bold 1rem/2 sans-serif; margin-top: 2rem; margin-bottom: 0.5rem;">data-chip + data-rule</h3>
+
+        <div class="heading-row">
+            <div class="heading-meta">h2.css-h css-size="heading-2" data-chip data-rule="4"</div>
+            <h2 class="css-h" css-size="heading-2" data-chip data-rule="4">見出しテキスト</h2></div></section>
+
+    <!-- ============================================================ -->
+    <!-- input-number -->
+    <!-- ============================================================ -->
+    <h2 id="h2-10" aria-label="example usage of input number component" class="css-h">Input Number</h2>
+    <section aria-labelledby="h2-10">
+        <span class="css-input-number">
+            <button type="button" aria-label="減らす">−</button>
+            <input type="text" inputmode="numeric" min="0" placeholder="0">
+            <button type="button" aria-label="増やす">+</button></span></section>
+
+    <!-- ============================================================ -->
+    <!-- input-text -->
+    <!-- ============================================================ -->
+    <h2 id="h2-11" aria-label="example usage of input text component" class="css-h">Input Text</h2>
+    <section aria-labelledby="h2-11">
+        <!-- 通常 -->
+        <input class="css-input" type="text" css-size="md" placeholder="テキストを入力">
+
+        <!-- エラー -->
+        <input class="css-input" type="text" css-size="md" aria-invalid="true" style="margin-top:1rem;display:block">
+
+        <!-- 読み取り専用 -->
+        <input class="css-input" type="text" css-size="md" value="読み取り専用の値" readonly style="margin-top:1rem;display:block">
+
+        <!-- 無効 -->
+        <input class="css-input" type="text" css-size="md" value="無効" disabled style="margin-top:1rem;display:block"></section>
+
+    <!-- ============================================================ -->
+    <!-- link -->
+    <!-- ============================================================ -->
+    <h2 id="h2-12" aria-label="example usage of link component" class="css-h">Link</h2>
+    <section aria-labelledby="h2-12">
+        <a class="css-link" href="#" target="_blank">
+            リンクテキスト
+            <svg class="css-link__icon" width="16" height="16" viewBox="0 0 48 48" role="img" aria-label="新規タブで開きます">
+                <path d="M22 6V9H9V39H39V26H42V42H6V6H22ZM42 6V20H39V11.2L21 29L19 27L36.8 9H28V6H42Z" fill="currentcolor"/></svg></a></section>
+
+    <!-- ============================================================ -->
+    <!-- list -->
+    <!-- ============================================================ -->
+    <h2 id="h2-13" aria-label="example usage of list component" class="css-h">List</h2>
+    <section aria-labelledby="h2-13">
+        <!-- 箇条書き -->
+        <ul class="css-list" data-spacing="4">
+            <li>項目A</li>
+            <li>項目B（少し長めのテキストサンプルです）</li>
+            <li>
+                ネストあり
+                <ul class="css-list" data-spacing="4">
+                    <li>サブ項目1</li>
+                    <li><a class="css-link" href="#">サブ項目2（リンク）</a></li></ul></li></ul>
+
+        <!-- 番号付き -->
+        <ul class="css-list" data-marker="number" data-spacing="4" style="margin-top: 2rem">
+            <li><span>1. </span><span>最初の項目</span></li>
+            <li><span>2. </span><span>二番目の項目</span></li>
+            <li><span>3. </span><span>三番目の項目</span></li></ul></section>
+
+    <!-- ============================================================ -->
+    <!-- list-box -->
+    <!-- ============================================================ -->
+    <h2 id="h2-14" aria-label="example usage of list box component" class="css-h">List Box</h2>
+    <section aria-labelledby="h2-14">
+        <ul id="list-box-1" popover="auto" role="listbox" aria-labelledby="list-box-1-trigger" class="list-box">
+            <li role="presentation">アイテムから選択してください</li>
+            <li role="option" aria-selected="true"><button>リストアイテム1</button></li>
+            <li role="option"><button>リストアイテム2</button></li>
+            <li role="option"><button>リストアイテム3</button></li></ul>
+
+        <button type="button" id="list-box-1-trigger" popovertarget="list-box-1" aria-haspopup="listbox" aria-controls="list-box-1" class="list-box-trigger">
+            現在選択中のリストアイテム</button></section>
+
+    <h2 id="h2-15" aria-label="example usage of radio component" class="css-h">Radio</h2>
+    <section aria-labelledby="h2-15">
+        <!-- サイズ×状態マトリクス: lg / md / sm × 通常・選択済・エラー・無効 -->
+        <div style="display: grid; grid-template-columns: repeat(6, auto); gap: 2rem; justify-content: start">
+            <label class="css-radio" css-size="lg"><input type="radio" name="lg-1">ラベル</label>
+            <label class="css-radio" css-size="lg"><input type="radio" name="lg-1" checked>ラベル</label>
+            <label class="css-radio" css-size="lg"><input type="radio" name="lg-2" aria-invalid="true">ラベル</label>
+            <label class="css-radio" css-size="lg"><input type="radio" name="lg-2" checked aria-invalid="true">ラベル</label>
+            <label class="css-radio" css-size="lg"><input type="radio" name="lg-3" disabled>ラベル</label>
+            <label class="css-radio" css-size="lg"><input type="radio" name="lg-3" checked disabled>ラベル</label>
+
+            <label class="css-radio" css-size="md"><input type="radio" name="md-1">ラベル</label>
+            <label class="css-radio" css-size="md"><input type="radio" name="md-1" checked>ラベル</label>
+            <label class="css-radio" css-size="md"><input type="radio" name="md-2" aria-invalid="true">ラベル</label>
+            <label class="css-radio" css-size="md"><input type="radio" name="md-2" checked aria-invalid="true">ラベル</label>
+            <label class="css-radio" css-size="md"><input type="radio" name="md-3" disabled>ラベル</label>
+            <label class="css-radio" css-size="md"><input type="radio" name="md-3" checked disabled>ラベル</label>
+
+            <label class="css-radio" css-size="sm"><input type="radio" name="sm-1">ラベル</label>
+            <label class="css-radio" css-size="sm"><input type="radio" name="sm-1" checked>ラベル</label>
+            <label class="css-radio" css-size="sm"><input type="radio" name="sm-2" aria-invalid="true">ラベル</label>
+            <label class="css-radio" css-size="sm"><input type="radio" name="sm-2" checked aria-invalid="true">ラベル</label>
+            <label class="css-radio" css-size="sm"><input type="radio" name="sm-3" disabled>ラベル</label>
+            <label class="css-radio" css-size="sm"><input type="radio" name="sm-3" checked disabled>ラベル</label></div></section>
+
+    <h2 id="h2-16" aria-label="example usage of search box component" class="css-h">Search Box</h2>
+    <section aria-labelledby="h2-16">
+        <div style="margin-top:1rem; display: flex;">
+            <label class="css-search-box">
+                <svg width="24" height="24" viewBox="0 0 24 24" aria-hidden="true">
+                    <path d="m21 20.5-6-6a7.4 7.4 0 0 0 1.9-5A7.4 7.4 0 0 0 9.5 2 7.5 7.5 0 1 0 14 15.5l6 6 1-1ZM3.5 9.5a6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6 6 6 0 0 1-6-6Z" fill="currentcolor"/></svg>
+                <span class="css-visually-hidden">検索</span>
+                <input type="search" name="q" class="css-input"></label>
+            <span style="display: inline-flex; width: 0.5rem;"></span>
+            <button class="css-button" type="submit" css-type="fill">検索</button></div>
+
+        <div style="margin-top:1rem; display: flex;">
+            <label class="css-search-box-scope" css-size="lg">
+                <span>検索対象</span>
+                <select>
+                    <option value="">すべて</option>
+                    <option value="images">画像</option>
+                    <option value="files">ファイル</option></select>
+                <svg width="16" height="16" viewBox="0 0 24 24" aria-hidden="true">
+                    <path d="M12 17L3 8L4 7L12 15L20 7L21 8L12 17Z" fill="currentcolor"/></svg></label>
+            <label class="css-search-box" css-size="lg">
+                <svg width="24" height="24" viewBox="0 0 24 24" aria-hidden="true">
+                    <path d="m21 20.5-6-6a7.4 7.4 0 0 0 1.9-5A7.4 7.4 0 0 0 9.5 2 7.5 7.5 0 1 0 14 15.5l6 6 1-1ZM3.5 9.5a6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6 6 6 0 0 1-6-6Z" fill="currentcolor"/></svg>
+                <span class="css-visually-hidden">検索</span>
+                <input type="search" name="q" class="css-input" css-size="lg"></label>
+            <span style="display: inline-flex; width: 0.5rem;"></span>
+            <button class="css-button" type="submit" css-type="fill" css-size="lg">検索</button></div></section>
+
+    <!-- ============================================================ -->
+    <!-- select -->
+    <!-- ============================================================ -->
+    <h2 id="h2-17" aria-label="example usage of select component" class="css-h">Select</h2>
+    <section aria-labelledby="h2-17">
+        <!-- 通常 -->
+        <select class="css-select" css-size="md" style="display:block">
+            <option value="">選択してください</option>
+            <option value="1">選択肢1</option>
+            <option value="2">選択肢2</option>
+            <option value="3">選択肢3</option></select>
+
+        <!-- エラー -->
+        <select class="css-select" css-size="md" aria-invalid="true" style="display:block; margin-top:1rem">
+            <option value="">選択してください</option>
+            <option value="1">選択肢1</option></select>
+
+        <!-- 無効 -->
+        <select class="css-select" css-size="md" disabled style="display:block;margin-top:1rem">
+            <option value="">選択してください</option></select>
+
+        <!-- 複数選択 -->
+        <select class="css-select" multiple style="display:block;margin-top:1rem">
+            <option value="1">選択肢1</option>
+            <option value="2">選択肢2</option>
+            <option value="3">選択肢3</option>
+            <option value="4">選択肢4</option>
+            <option value="5">選択肢5</option></select></section>
+
+    <h2 id="h2-18" aria-label="example usage of table component" class="css-h">Table</h2>
+    <section aria-labelledby="h2-18">
+        <!-- 通常 -->
+        <table class="css-table">
+            <thead>
+                <tr>
+                    <th scope="col">ラベル</th>
+                    <th scope="col">ラベル</th>
+                    <th scope="col">ラベル</th>
+                    <th scope="col">ラベル</th></tr></thead>
+            <tbody>
+                <tr>
+                    <td>データ</td>
+                    <td>データ</td>
+                    <td>データ</td>
+                    <td>データ</td></tr>
+                <tr>
+                    <td>データ</td>
+                    <td>データ</td>
+                    <td>データ</td>
+                    <td>データ</td></tr></tbody></table>
+
+        <!-- ストライプ・デンス -->
+        <table class="css-table" css-stripe css-border="bottom" css-type="dense" style="margin-top: 2rem;">
+            <caption>ストライプ・デンスタイプ</caption>
+            <thead>
+                <tr>
+                    <th scope="col">ラベル</th>
+                    <th scope="col">ラベル</th>
+                    <th scope="col">ラベル</th>
+                    <th scope="col">ラベル</th></tr></thead>
+            <tbody>
+                <tr><td>データ</td><td>データ</td><td>データ</td><td>データ</td></tr>
+                <tr><td>データ</td><td>データ</td><td>データ</td><td>データ</td></tr>
+                <tr><td>データ</td><td>データ</td><td>データ</td><td>データ</td></tr></tbody></table>
+
+        <!-- tbody th (行ヘッダー) -->
+        <table class="css-table" css-border="bottom" style="margin-top: 2rem;">
+            <caption>行ヘッダー付き</caption>
+            <thead>
+                <tr>
+                    <th scope="col">項目</th>
+                    <th scope="col">値A</th>
+                    <th scope="col">値B</th></tr></thead>
+            <tbody>
+                <tr>
+                    <th scope="row">行1</th>
+                    <td>データ</td>
+                    <td>データ</td></tr>
+                <tr>
+                    <th scope="row">行2</th>
+                    <td>データ</td>
+                    <td>データ</td></tr></tbody></table>
+
+        <!-- css-hover -->
+        <table class="css-table" css-hover css-border="bottom" style="margin-top: 2rem;">
+            <caption>ホバーハイライト</caption>
+            <thead>
+                <tr>
+                    <th scope="col">ラベル</th>
+                    <th scope="col">ラベル</th>
+                    <th scope="col">ラベル</th></tr></thead>
+            <tbody>
+                <tr><td>データ</td><td>データ</td><td>データ</td></tr>
+                <tr><td>データ</td><td>データ</td><td>データ</td></tr>
+                <tr><td>データ</td><td>データ</td><td>データ</td></tr></tbody></table>
+
+        <!-- css-selectable -->
+        <table class="css-table" css-selectable css-border="bottom" style="margin-top: 2rem;">
+            <caption>選択可能（チェックボックス）</caption>
+            <thead>
+                <tr>
+                    <th scope="col"><input type="checkbox" class="css-checkbox" css-size="sm" aria-label="すべて選択"></th>
+                    <th scope="col">ラベル</th>
+                    <th scope="col">ラベル</th></tr></thead>
+            <tbody>
+                <tr>
+                    <td><input type="checkbox" class="css-checkbox" css-size="sm" aria-label="行1を選択"></td>
+                    <td>データ</td>
+                    <td>データ</td></tr>
+                <tr>
+                    <td><input type="checkbox" class="css-checkbox" css-size="sm" aria-label="行2を選択" checked></td>
+                    <td>データ</td>
+                    <td>データ</td></tr></tbody></table>
+
+        <!-- css-sort -->
+        <table class="css-table" css-border="bottom" style="margin-top: 2rem;">
+            <caption>ソート（aria-sort: none / ascending / descending）</caption>
+            <thead>
+                <tr>
+                    <th css-sort scope="col">
+                        名前
+                        <div class="css-sort">
+                            <button class="css-sort-up" type="button" aria-label="名前 昇順"></button>
+                            <button class="css-sort-down" type="button" aria-label="名前 降順"></button></div></th>
+                    <th css-sort aria-sort="ascending" scope="col">
+                        日付
+                        <div class="css-sort">
+                            <button class="css-sort-up" type="button" aria-label="日付 昇順"></button>
+                            <button class="css-sort-down" type="button" aria-label="日付 降順"></button></div></th>
+                    <th css-sort aria-sort="descending" scope="col">
+                        金額
+                        <div class="css-sort">
+                            <button class="css-sort-up" type="button" aria-label="金額 昇順"></button>
+                            <button class="css-sort-down" type="button" aria-label="金額 降順"></button></div></th></tr></thead>
+            <tbody>
+                <tr>
+                    <td>山田 太郎</td>
+                    <td>2026-06-01</td>
+                    <td>¥12,000</td></tr>
+                <tr>
+                    <td>佐藤 花子</td>
+                    <td>2026-06-02</td>
+                    <td>¥8,500</td></tr></tbody></table>
+
+        <!-- css-border="" (全セル格子) -->
+        <table class="css-table" css-border="" style="margin-top: 2rem;">
+            <caption>全セルボーダー</caption>
+            <thead>
+                <tr>
+                    <th scope="col">ラベル</th>
+                    <th scope="col">ラベル</th>
+                    <th scope="col">ラベル</th></tr></thead>
+            <tbody>
+                <tr><td>データ</td><td>データ</td><td>データ</td></tr>
+                <tr><td>データ</td><td>データ</td><td>データ</td></tr></tbody></table></section>
+
+    <h2 id="h2-19" aria-label="example usage of textarea component" class="css-h">Textarea</h2>
+    <section aria-labelledby="h2-19">
+        <div style="width:16rem">
+            <!-- 通常 -->
+            <textarea class="css-textarea" placeholder="css-size: sm" css-size="sm" style="margin-top:1rem;display:block"></textarea>
+            <textarea class="css-textarea" placeholder="css-size: md" css-size="md" style="margin-top:1rem;display:block"></textarea>
+            <textarea class="css-textarea" placeholder="css-size: lg" css-size="lg" style="margin-top:1rem;display:block"></textarea>
+
+            <!-- エラー -->
+            <textarea class="css-textarea" style="margin-top:1rem;display:block" aria-invalid="true"></textarea>
+
+            <!-- 読み取り専用 -->
+            <textarea class="css-textarea" style="margin-top:1rem;display:block" readonly>読み取り専用の値</textarea>
+
+            <!-- 無効 -->
+            <textarea class="css-textarea" style="margin-top:1rem;display:block" disabled>無効</textarea>
+
+            <!-- 文字数カウンター (削除済み) -->
+            <label class="css-field-label" style="margin-top:1rem;" for="counter-textarea">
+                ラベル
+                <span class="css-field-requirement" css-required>※必須</span></label>
+            <p id="counter-support-text" class="css-field-support">20文字以内で入力してください</p>
+            <textarea id="counter-textarea" class="css-textarea" aria-describedby="counter-support-text"></textarea></div></section></body>
+
+</html>
