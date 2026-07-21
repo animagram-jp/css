@@ -1,4 +1,4 @@
-.dads-card-example-6-list {
+.css-card-example-6-list {
   margin: 0;
   display: flex;
   flex-wrap: wrap;
@@ -7,12 +7,12 @@
   list-style: none;
 }
 
-.dads-card-example-6-list > li {
+.css-card-example-6-list > li {
   display: flex;
   min-width: 0;
 }
 
-.dads-card-example-6 {
+.css-card-example-6 {
   position: relative;
   z-index: 0;
   box-sizing: border-box;
@@ -34,16 +34,16 @@
   overflow-wrap: anywhere;
 }
 
-.dads-card-example-6:has(:checked) {
+.css-card-example-6:has(:checked) {
   background-color: var(--color-primitive-blue-50);
 }
 
-.dads-card-example-6__main {
+.css-card-example-6__main {
   grid-area: main;
   padding: calc(16 / 16 * 1rem) calc(24 / 16 * 1rem);
 }
 
-.dads-card-example-6__heading {
+.css-card-example-6__heading {
   margin: 0;
   color: var(--color-neutral-solid-gray-900);
   font-weight: bold;
@@ -52,25 +52,25 @@
   letter-spacing: 0.02em;
 }
 
-.dads-card-example-6__heading label::before {
+.css-card-example-6__heading label::before {
   position: absolute;
   inset: 0;
   z-index: 1;
   content: "";
 }
 
-.dads-card-example-6__contents {
+.css-card-example-6__contents {
   margin: calc(16 / 16 * 1rem) 0 0;
 }
 
-.dads-card-example-6__image {
+.css-card-example-6__image {
   position: relative;
   grid-area: image;
   min-width: 0;
   border-bottom: 1px solid var(--color-neutral-solid-gray-420);
 }
 
-.dads-card-example-6__checkbox {
+.css-card-example-6__checkbox {
   position: absolute;
   top: calc(16 / 16 * 1rem);
   right: calc(16 / 16 * 1rem);
@@ -85,7 +85,7 @@
   border: 1px solid var(--color-neutral-solid-gray-420);
 }
 
-.dads-card-example-6__image-img {
+.css-card-example-6__image-img {
   display: block;
   width: 100%;
   height: auto;

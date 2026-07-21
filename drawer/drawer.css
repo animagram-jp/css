@@ -1,4 +1,4 @@
-.dads-drawer {
+.css-drawer {
   margin: unset;
   max-width: 100%;
   max-height: unset;
@@ -18,46 +18,46 @@
   letter-spacing: 0.02em;
 }
 
-.dads-drawer[data-placement="right"] {
+.css-drawer[data-placement="right"] {
   left: auto;
   border-left: 1px solid transparent;
 }
 
-.dads-drawer[data-placement="left"] {
+.css-drawer[data-placement="left"] {
   right: auto;
   border-right: 1px solid transparent;
 }
 
-.dads-drawer[open] {
+.css-drawer[open] {
   display: grid;
   grid-template: "header" auto "body" 1fr / 1fr;
 }
 
-.dads-drawer::backdrop {
+.css-drawer::backdrop {
   background-color: var(--color-neutral-opacity-gray-100);
 }
 
 @media (forced-colors: active) {
-  .dads-drawer::backdrop {
+  .css-drawer::backdrop {
     background-color: #000b;
   }
 }
 
-.dads-drawer__header {
+.css-drawer__header {
   display: flex;
   grid-area: header;
   padding: calc(20 / 16 * 1rem) calc(16 / 16 * 1rem);
 }
 
-.dads-drawer[data-placement="right"] .dads-drawer__header {
+.css-drawer[data-placement="right"] .css-drawer__header {
   justify-content: end;
 }
 
-.dads-drawer[data-placement="left"] .dads-drawer__header {
+.css-drawer[data-placement="left"] .css-drawer__header {
   justify-content: start;
 }
 
-.dads-drawer__body {
+.css-drawer__body {
   grid-area: body;
   overflow: auto;
   overscroll-behavior: contain;

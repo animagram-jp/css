@@ -1,4 +1,4 @@
-.dads-resource-list {
+.css-resource-list {
   display: flex;
   align-items: center;
   background: var(--color-neutral-white);
@@ -11,35 +11,35 @@
   --_padding-inline: calc(16 / 16 * 1rem);
 }
 
-.dads-resource-list[dads-type="list"] {
+.css-resource-list[css-type="list"] {
   border: 1px solid transparent;
   border-bottom-color: var(--_border-color);
 }
 
-.dads-resource-list[dads-type="frame"] {
+.css-resource-list[css-type="frame"] {
   border-radius: calc(16 / 16 * 1rem);
   border: 1px solid var(--_border-color);
 }
 
-.dads-resource-list:has(:checked:enabled) {
+.css-resource-list:has(:checked:enabled) {
   background: var(--color-primitive-blue-50);
   --_border-color: var(--color-neutral-solid-gray-500);
 }
 
-.dads-resource-list[data-interaction="whole"]:has(:disabled) {
+.css-resource-list[data-interaction="whole"]:has(:disabled) {
   background: var(--color-neutral-solid-gray-50);
   color: var(--color-neutral-solid-gray-420);
 }
 
-.dads-resource-list[dads-type="list"]:has(:disabled) {
+.css-resource-list[css-type="list"]:has(:disabled) {
   border-bottom-color: var(--color-neutral-solid-gray-300);
 }
 
-.dads-resource-list[dads-type="frame"]:has(:disabled) {
+.css-resource-list[css-type="frame"]:has(:disabled) {
   border-color: var(--color-neutral-solid-gray-300);
 }
 
-.dads-resource-list__body {
+.css-resource-list__body {
   position: relative;
   z-index: 0;
   display: flex;
@@ -53,32 +53,32 @@
   text-decoration: none;
 }
 
-.dads-resource-list__body:not(:last-child) {
+.css-resource-list__body:not(:last-child) {
   border-top-right-radius: 0;
   border-bottom-right-radius: 0;
 }
 
 @media (hover: hover) {
-  .dads-resource-list__body:any-link:hover,
-  .dads-resource-list[data-interaction="whole"]
-    .dads-resource-list__body:has(:enabled):hover:not(:focus-visible) {
+  .css-resource-list__body:any-link:hover,
+  .css-resource-list[data-interaction="whole"]
+    .css-resource-list__body:has(:enabled):hover:not(:focus-visible) {
     outline: calc(2 / 16 * 1rem) solid var(--color-neutral-black);
     background: var(--color-neutral-solid-gray-50);
   }
 }
 
-.dads-resource-list__body:any-link:focus-visible {
+.css-resource-list__body:any-link:focus-visible {
   outline: calc(4 / 16 * 1rem) solid var(--color-neutral-black);
   outline-offset: calc(2 / 16 * 1rem);
   box-shadow: 0 0 0 calc(2 / 16 * 1rem) var(--color-primitive-yellow-300);
 }
 
-.dads-resource-list__body > * {
+.css-resource-list__body > * {
   flex-shrink: 0;
 }
 
-.dads-resource-list__body .dads-checkbox,
-.dads-resource-list__body .dads-radio {
+.css-resource-list__body .css-checkbox,
+.css-resource-list__body .css-radio {
   align-self: stretch;
   margin: calc(-1 * var(--_padding-block)) calc(-1 * var(--_padding-block));
   margin-right: 0;
@@ -87,7 +87,7 @@
   align-items: center;
 }
 
-.dads-resource-list__contents {
+.css-resource-list__contents {
   width: 0;
   display: flex;
   flex-grow: 1;
@@ -100,19 +100,19 @@
   letter-spacing: 0;
 }
 
-.dads-resource-list__contents > * {
+.css-resource-list__contents > * {
   max-width: 100%;
 }
 
-.dads-resource-list__label {
+.css-resource-list__label {
   order: -1;
 }
 
-.dads-resource-list__label > * {
+.css-resource-list__label > * {
   margin: 0;
 }
 
-.dads-resource-list__title {
+.css-resource-list__title {
   margin: 0;
   color: var(--color-neutral-solid-gray-900);
   font-weight: bold;
@@ -120,21 +120,21 @@
   line-height: 1.5;
   letter-spacing: 0.02em;
 }
-.dads-resource-list[data-interaction="whole"]:has(:disabled)
-  .dads-resource-list__title {
+.css-resource-list[data-interaction="whole"]:has(:disabled)
+  .css-resource-list__title {
   color: inherit;
 }
 
-.dads-resource-list__body:any-link .dads-resource-list__title,
-.dads-resource-list__title a {
+.css-resource-list__body:any-link .css-resource-list__title,
+.css-resource-list__title a {
   color: var(--color-primitive-blue-1000);
   text-decoration: underline;
   text-decoration-thickness: calc(1 / 16 * 1rem);
   text-underline-offset: calc(3 / 16 * 1rem);
 }
 
-.dads-resource-list__title a,
-.dads-resource-list__title label {
+.css-resource-list__title a,
+.css-resource-list__title label {
   isolation: isolate;
   margin-top: calc(-8 / 16 * 1rem);
   margin-bottom: calc(-8 / 16 * 1rem);
@@ -143,8 +143,8 @@
   padding-bottom: calc(8 / 16 * 1rem);
 }
 
-.dads-resource-list[data-interaction="whole"]
-  .dads-resource-list__title
+.css-resource-list[data-interaction="whole"]
+  .css-resource-list__title
   label::before {
   position: absolute;
   inset: 0;
@@ -154,20 +154,20 @@
 }
 
 @media (hover: hover) {
-  .dads-resource-list__body:any-link:hover .dads-resource-list__title,
-  .dads-resource-list__title a:hover {
+  .css-resource-list__body:any-link:hover .css-resource-list__title,
+  .css-resource-list__title a:hover {
     color: var(--color-primitive-blue-900);
     text-decoration-thickness: calc(3 / 16 * 1rem);
   }
 }
 
-.dads-resource-list__body:any-link:active .dads-resource-list__title,
-.dads-resource-list__title a:active {
+.css-resource-list__body:any-link:active .css-resource-list__title,
+.css-resource-list__title a:active {
   color: var(--color-primitive-orange-800);
   text-decoration-thickness: calc(1 / 16 * 1rem);
 }
 
-.dads-resource-list__title a:focus-visible {
+.css-resource-list__title a:focus-visible {
   margin-top: 0;
   margin-bottom: 0;
   outline: calc(4 / 16 * 1rem) solid var(--color-neutral-black);
@@ -179,11 +179,11 @@
   box-shadow: 0 0 0 calc(2 / 16 * 1rem) var(--color-primitive-yellow-300);
 }
 
-.dads-resource-list__support > * {
+.css-resource-list__support > * {
   margin: 0;
 }
 
-.dads-resource-list__sub {
+.css-resource-list__sub {
   flex-shrink: 0;
   font-weight: normal;
   font-size: calc(16 / 16 * 1rem);
@@ -191,18 +191,18 @@
   letter-spacing: 0;
 }
 
-.dads-resource-list__sub > * {
+.css-resource-list__sub > * {
   margin: 0;
 }
 
-.dads-resource-list__action {
+.css-resource-list__action {
   flex-shrink: 0;
   align-self: stretch;
   border-top-right-radius: inherit;
   border-bottom-right-radius: inherit;
 }
 
-.dads-resource-list__action-button {
+.css-resource-list__action-button {
   width: calc(44 / 16 * 1rem);
   height: 100%;
   display: flex;
@@ -216,14 +216,14 @@
 }
 
 @media (hover: hover) {
-  .dads-resource-list__action-button:enabled:hover {
+  .css-resource-list__action-button:enabled:hover {
     outline: calc(2 / 16 * 1rem) solid var(--color-neutral-black);
     outline-offset: calc(-1 / 16 * 1rem);
     background: var(--color-neutral-solid-gray-50);
   }
 }
 
-.dads-resource-list__action-button:focus-visible {
+.css-resource-list__action-button:focus-visible {
   outline: calc(4 / 16 * 1rem) solid var(--color-neutral-black);
   outline-offset: calc(-3 / 16 * 1rem);
   background: var(--color-primitive-yellow-300);

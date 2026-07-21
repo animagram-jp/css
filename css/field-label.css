@@ -1,8 +1,8 @@
-.dads-field-label {
+.css-field-label {
   display: block;
   margin: 0 0 calc(8 / 16 * 1rem) 0;
   padding: 0;
-  color: var(--color-neutral-solid-gray-800);
+  color: rgb(var(--rgb-ink));
   font-weight: bold;
   font-size: var(--css-typography-text-normal-2-font-size);
   line-height: var(--css-typography-text-normal-2-line-height);
@@ -10,48 +10,48 @@
   letter-spacing: var(--css-typography-text-normal-2-letter-spacing);
 }
 
-.dads-field-requirement {
+.css-field-requirement {
   margin-left: calc(4 / 16 * 1rem);
   font-weight: normal;
   font-size: var(--css-typography-text-normal-2-font-size);
 }
 
-.dads-field-requirement[dads-required] {
-  color: var(--color-semantic-error-1);
+.css-field-requirement[css-required] {
+  color: rgb(var(--rgb-accent-red));
 }
 
-.dads-field-requirement::before {
+.css-field-requirement::before {
   content: " ";
 }
 
-.dads-field-status {
+.css-field-status {
   margin-left: calc(4 / 16 * 1rem);
   display: inline-block;
   outline: 1px solid transparent;
   border-radius: calc(8 / 16 * 1rem);
-  background-color: var(--color-neutral-solid-gray-536);
+  background-color: rgb(var(--rgb-gray));
   padding: calc(8 / 16 * 1rem);
-  color: var(--color-neutral-white);
+  color: rgb(var(--rgb-white));
   font-weight: normal;
   font-size: var(--css-typography-text-flush-2-font-size);
   line-height: var(--css-typography-text-flush-2-line-height);
   letter-spacing: var(--css-typography-text-flush-2-letter-spacing);
 }
 
-.dads-field-support {
+.css-field-support {
   display: block;
   margin: 0 0 calc(8 / 16 * 1rem) 0;
-  color: var(--color-neutral-solid-gray-600);
+  color: rgb(var(--rgb-gray));
   font-size: var(--css-typography-text-normal-2-font-size);
   line-height: var(--css-typography-text-normal-2-line-height);
   font-family: var(--font-family-sans);
   letter-spacing: var(--css-typography-text-normal-2-letter-spacing);
 }
 
-.dads-field-error {
+.css-field-error {
   display: block;
   margin: calc(8 / 16 * 1rem) 0 0 0;
-  color: var(--color-semantic-error-1);
+  color: rgb(var(--rgb-accent-red));
   font-size: var(--css-typography-text-tight-3-font-size);
   line-height: var(--css-typography-text-tight-3-line-height);
   font-family: var(--font-family-sans);

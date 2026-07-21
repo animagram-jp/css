@@ -1,4 +1,4 @@
-.dads-notification-banner {
+.css-notification-banner {
   --_base-color: var(--color-primitive-blue-900);
   --_color-chip-color: var(--color-primitive-blue-900);
   display: grid;
@@ -19,19 +19,19 @@
   letter-spacing: 0.02em;
 }
 
-.dads-notification-banner[dads-type="standard"] {
+.css-notification-banner[css-type="standard"] {
   border-radius: calc(12 / 16 * 1rem);
   border-width: calc(3 / 16 * 1rem);
 }
 
-.dads-notification-banner[dads-type="color-chip"] {
+.css-notification-banner[css-type="color-chip"] {
   border-width: calc(2 / 16 * 1rem);
   padding-left: calc(24 / 16 * 1rem);
   box-shadow: inset calc(8 / 16 * 1rem) 0 0 0 var(--_color-chip-color);
 }
 
 @media (min-width: 48rem) {
-  .dads-notification-banner {
+  .css-notification-banner {
     grid-template-columns: calc(36 / 16 * 1rem) 1fr auto;
     padding-top: calc(24 / 16 * 1rem);
     padding-right: calc(24 / 16 * 1rem);
@@ -40,38 +40,38 @@
     column-gap: calc(24 / 16 * 1rem);
   }
 
-  .dads-notification-banner[dads-type="color-chip"] {
+  .css-notification-banner[css-type="color-chip"] {
     padding-left: calc(40 / 16 * 1rem);
     box-shadow: inset calc(16 / 16 * 1rem) 0 0 0 var(--_color-chip-color);
   }
 }
 
-.dads-notification-banner[dads-type="success"] {
+.css-notification-banner[css-type="success"] {
   --_base-color: var(--color-semantic-success-2);
   --_color-chip-color: var(--color-semantic-success-2);
 }
 
-.dads-notification-banner[dads-type="error"] {
+.css-notification-banner[css-type="error"] {
   --_base-color: var(--color-semantic-error-1);
   --_color-chip-color: var(--color-semantic-error-1);
 }
 
-.dads-notification-banner[dads-type="warning"] {
+.css-notification-banner[css-type="warning"] {
   --_base-color: var(--color-semantic-warning-yellow-2);
   --_color-chip-color: var(--color-primitive-yellow-400);
 }
 
-.dads-notification-banner[dads-type="info-1"] {
+.css-notification-banner[css-type="info-1"] {
   --_base-color: var(--color-primitive-blue-900);
   --_color-chip-color: var(--color-primitive-blue-900);
 }
 
-.dads-notification-banner[dads-type="info-2"] {
+.css-notification-banner[css-type="info-2"] {
   --_base-color: var(--color-neutral-solid-gray-536);
   --_color-chip-color: var(--color-neutral-solid-gray-536);
 }
 
-.dads-notification-banner__icon {
+.css-notification-banner__icon {
   justify-self: center;
   width: calc(28 / 16 * 1rem);
   height: calc(28 / 16 * 1rem);
@@ -82,7 +82,7 @@
 }
 
 @media (min-width: 48rem) {
-  .dads-notification-banner__icon {
+  .css-notification-banner__icon {
     margin-top: calc(-4 / 16 * 1rem);
     margin-bottom: calc(-4 / 16 * 1rem);
     width: calc(44 / 16 * 1rem);
@@ -92,12 +92,12 @@
 }
 
 @media (forced-colors: active) {
-  .dads-notification-banner__icon {
+  .css-notification-banner__icon {
     color: currentcolor;
   }
 }
 
-.dads-notification-banner__heading {
+.css-notification-banner__heading {
   grid-column: span 2;
   margin-top: 0;
   margin-bottom: 0;
@@ -106,7 +106,7 @@
   gap: inherit;
 }
 
-.dads-notification-banner__heading-text {
+.css-notification-banner__heading-text {
   padding-top: calc(3 / 16 * 1rem);
   color: var(--color-neutral-solid-gray-900);
   font-weight: bold;
@@ -116,14 +116,14 @@
 }
 
 @media (min-width: 48rem) {
-  .dads-notification-banner__heading-text {
+  .css-notification-banner__heading-text {
     padding-top: calc(2 / 16 * 1rem);
     font-size: calc(20 / 16 * 1rem);
     line-height: 1.5;
   }
 }
 
-.dads-notification-banner__close {
+.css-notification-banner__close {
   margin-right: calc(-12 / 16 * 1rem);
   display: flex;
   align-self: start;
@@ -143,7 +143,7 @@
 }
 
 @media (hover: hover) {
-  .dads-notification-banner__close:hover {
+  .css-notification-banner__close:hover {
     background-color: var(--color-neutral-solid-gray-50);
     text-decoration: underline;
     text-decoration-thickness: calc(1 / 16 * 1rem);
@@ -151,20 +151,20 @@
   }
 }
 
-.dads-notification-banner__close:focus-visible {
+.css-notification-banner__close:focus-visible {
   outline: calc(4 / 16 * 1rem) solid var(--color-neutral-black);
   outline-offset: calc(2 / 16 * 1rem);
   background-color: var(--color-primitive-yellow-300);
   box-shadow: 0 0 0 calc(2 / 16 * 1rem) var(--color-primitive-yellow-300);
 }
 
-.dads-notification-banner__close-icon {
+.css-notification-banner__close-icon {
   margin-top: calc(2 / 16 * 1rem);
   width: calc(24 / 16 * 1rem);
   height: calc(24 / 16 * 1rem);
 }
 
-.dads-notification-banner__mobile-close {
+.css-notification-banner__mobile-close {
   margin-top: calc(4 / 16 * 1rem);
   border: 0;
   border-radius: calc(4 / 16 * 1rem);
@@ -175,26 +175,26 @@
 }
 
 @media (hover: hover) {
-  .dads-notification-banner__mobile-close:hover {
+  .css-notification-banner__mobile-close:hover {
     outline: 1px solid;
     background-color: var(--color-neutral-solid-gray-50);
   }
 }
 
-.dads-notification-banner__mobile-close:focus-visible {
+.css-notification-banner__mobile-close:focus-visible {
   outline: calc(4 / 16 * 1rem) solid var(--color-neutral-black);
   outline-offset: calc(2 / 16 * 1rem);
   background-color: var(--color-primitive-yellow-300);
   box-shadow: 0 0 0 calc(2 / 16 * 1rem) var(--color-primitive-yellow-300);
 }
 
-.dads-notification-banner__mobile-close-icon {
+.css-notification-banner__mobile-close-icon {
   display: block;
   width: calc(44 / 16 * 1rem);
   height: calc(44 / 16 * 1rem);
 }
 
-.dads-notification-banner__body {
+.css-notification-banner__body {
   margin-top: calc(-4 / 16 * 1rem);
   display: grid;
   row-gap: calc(8 / 16 * 1rem);
@@ -203,22 +203,22 @@
 }
 
 @media (min-width: 48rem) {
-  .dads-notification-banner__body {
+  .css-notification-banner__body {
     margin-top: 0;
     grid-column: 2 / 4;
   }
 }
 
-.dads-notification-banner__body > * {
+.css-notification-banner__body > * {
   margin-top: 0;
   margin-bottom: 0;
 }
 
-.dads-notification-banner__timestamp time {
+.css-notification-banner__timestamp time {
   text-autospace: normal;
 }
 
-.dads-notification-banner__actions {
+.css-notification-banner__actions {
   margin-bottom: calc(-8 / 16 * 1rem);
   display: grid;
   gap: calc(8 / 16 * 1rem);
@@ -226,7 +226,7 @@
 }
 
 @media (min-width: 48rem) {
-  .dads-notification-banner__actions {
+  .css-notification-banner__actions {
     grid-auto-flow: column;
     gap: calc(16 / 16 * 1rem);
     grid-column: 2 / 4;
@@ -234,11 +234,11 @@
   }
 }
 
-.dads-notification-banner .dads-button {
+.css-notification-banner .css-button {
   width: auto;
 }
 
-.dads-notification-banner[dads-type="success"] .dads-button {
+.css-notification-banner[css-type="success"] .css-button {
   --button-color: var(--color-semantic-success-2);
   --button-hover-color: var(--color-primitive-green-1000);
   --button-active-color: var(--color-primitive-green-1200);
@@ -246,7 +246,7 @@
   --button-outline-active-bg-color: var(--color-primitive-green-300);
 }
 
-.dads-notification-banner[dads-type="error"] .dads-button {
+.css-notification-banner[css-type="error"] .css-button {
   --button-color: var(--color-semantic-error-1);
   --button-hover-color: var(--color-primitive-red-1000);
   --button-active-color: var(--color-primitive-red-1200);
@@ -254,7 +254,7 @@
   --button-outline-active-bg-color: var(--color-primitive-red-300);
 }
 
-.dads-notification-banner[dads-type="warning"] .dads-button {
+.css-notification-banner[css-type="warning"] .css-button {
   --button-color: var(--color-semantic-warning-yellow-2);
   --button-hover-color: var(--color-primitive-yellow-1000);
   --button-active-color: var(--color-primitive-yellow-1200);
@@ -262,7 +262,7 @@
   --button-outline-active-bg-color: var(--color-primitive-yellow-300);
 }
 
-.dads-notification-banner[dads-type="info-1"] .dads-button {
+.css-notification-banner[css-type="info-1"] .css-button {
   --button-color: var(--color-primitive-blue-900);
   --button-hover-color: var(--color-primitive-blue-1000);
   --button-active-color: var(--color-primitive-blue-1200);
@@ -270,7 +270,7 @@
   --button-outline-active-bg-color: var(--color-primitive-blue-300);
 }
 
-.dads-notification-banner[dads-type="info-2"] .dads-button {
+.css-notification-banner[css-type="info-2"] .css-button {
   --button-color: var(--color-neutral-solid-gray-800);
   --button-hover-color: var(--color-neutral-solid-gray-900);
   --button-active-color: var(--color-neutral-black);

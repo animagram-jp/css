@@ -212,7 +212,7 @@ export class Carousel extends HTMLElement {
   }
 
   get #stepNav() {
-    return this.querySelector("dads-carousel-step-nav");
+    return this.querySelector("css-carousel-step-nav");
   }
 
   get #prevSlideButton() {
@@ -350,5 +350,5 @@ class WidthObserver extends EventTarget {
   }
 }
 
-customElements.define("dads-carousel", Carousel);
-customElements.define("dads-carousel-step-nav", CarouselStepNav);
+customElements.define("css-carousel", Carousel);
+customElements.define("css-carousel-step-nav", CarouselStepNav);
