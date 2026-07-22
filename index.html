@@ -116,21 +116,20 @@
 
     <h2 id="h2-8" aria-label="example usage of field label component" class="css-h">Field Label</h2>
     <section aria-labelledby="h2-8">
-        <label class="css-field-label" for="name-input">
+        <label class="css-field-label" for="section-8_input">
             氏名
-            <span class="css-field-requirement" css-required>※必須</span></label>
+            <span class="css-field-requirement">必須</span></label>
         <p class="css-field-support">姓と名の間にスペースを入れてください。</p>
-        <input id="section-8_input" class="css-input" inputmode="text">
-        <p class="css-field-error" style="margin-top:1rem">＊エラーテキストが入ります。</p>
+        <input id="section-8_input" class="css-input" inputmode="text" aria-invalid="true">
+        <p class="css-field-error" style="margin-top:1rem">エラーテキストが入ります。</p>
 
-        <fieldset style="margin-top:2rem; border:0; padding:0" aria-describedby="check-error check-support">
+        <fieldset style="margin-top:2rem; border:0; padding:0">
             <legend class="css-field-label">
             該当する項目
             <span class="css-field-requirement">任意</span></legend>
-            <p id="check-support" class="css-field-support">該当するものをすべて選択してください。</p>
-            <label class="css-checkbox" css-size="md"><input type="checkbox" aria-invalid="true">選択肢A</label>
-            <label class="css-checkbox" css-size="md"><input type="checkbox" aria-invalid="true">選択肢B</label>
-            <p id="check-error" class="css-field-error">＊エラーテキストが入ります。</p></fieldset></section>
+            <p class="css-field-support">該当するものをすべて選択してください。</p>
+            <label class="css-checkbox" css-size="md"><input type="checkbox">選択肢A</label>
+            <label class="css-checkbox" css-size="md"><input type="checkbox">選択肢B</label></fieldset></section>
 
     <h2 id="h2-9" aria-label="example usage of heading component" class="css-h">Heading</h2>
     <section aria-labelledby="h2-9">
@@ -529,7 +528,7 @@
             <!-- 文字数カウンター (削除済み) -->
             <label class="css-field-label" style="margin-top:1rem;" for="counter-textarea">
                 ラベル
-                <span class="css-field-requirement" css-required>※必須</span></label>
+                <span class="css-field-requirement">必須</span></label>
             <p id="counter-support-text" class="css-field-support">20文字以内で入力してください</p>
             <textarea id="counter-textarea" class="css-textarea" aria-describedby="counter-support-text"></textarea></div></section></body>
 

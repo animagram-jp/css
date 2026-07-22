@@ -105,6 +105,15 @@
      */
     --alpha-highlight-weak: 8%;
     --alpha-highlight-strong: 16%;
+
+    /*
+     * --color-muted: de-emphasized text (support/helper copy) that still
+     * meets AA (4.5:1) against --color-background. Derived from --rgb-ink
+     * via color-mix so it inverts automatically in dark mode, unlike a fixed
+     * gray primitive.
+     */
+    --ratio-muted: 55%;
+    --color-muted: color-mix(in srgb, rgb(var(--rgb-ink)) var(--ratio-muted), var(--color-background));
 }
 
 @media (prefers-color-scheme: dark) {
