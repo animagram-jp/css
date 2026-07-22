@@ -7,7 +7,7 @@
   padding-inline-start: calc(16 / 16 * 1rem);
   padding-inline-end: calc(48 / 16 * 1rem);
   border-radius: calc(8 / 16 * 1rem);
-  border: 1px solid rgb(var(--rgb-gray));
+  border: 1px solid var(--color-muted);
   background-color: transparent;
   background-image: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'><path d='M12 17L3 8L4 7L12 15L20 7L21 8L12 17Z' fill='%23333333'/></svg>");
   background-repeat: no-repeat;
@@ -52,8 +52,8 @@
 .list-box-trigger:focus-visible {
   outline: calc(4 / 16 * 1rem) solid rgb(var(--rgb-border));
   outline-offset: calc(2 / 16 * 1rem);
-  background-color: rgb(var(--rgb-accent-yellow));
-  box-shadow: 0 0 0 calc(2 / 16 * 1rem) rgb(var(--rgb-accent-yellow));
+  background-color: rgb(var(--rgb-focus));
+  box-shadow: 0 0 0 calc(2 / 16 * 1rem) rgb(var(--rgb-focus));
 }
 
 .list-box {
@@ -66,7 +66,7 @@
   max-height: calc((8 + 44 * 6.5) / 16 * 1rem);
   overflow-y: auto;
   border-radius: calc(8 / 16 * 1rem);
-  border: 1px solid rgb(var(--rgb-gray));
+  border: 1px solid var(--color-muted);
   background-color: var(--color-background);
   padding: calc(8 / 16 * 1rem) 0;
   box-shadow: var(--elevation-1);
@@ -122,5 +122,5 @@
   z-index: 1;
   outline: calc(4 / 16 * 1rem) solid rgb(var(--rgb-border));
   outline-offset: calc(2 / 16 * 1rem);
-  background-color: rgb(var(--rgb-accent-yellow));
+  background-color: rgb(var(--rgb-focus));
 }

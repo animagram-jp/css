@@ -1,5 +1,5 @@
 .css-table {
-  --_border-color: rgb(var(--rgb-gray));
+  --_border-color: var(--color-muted);
   --_padding: calc(20 / 16 * 1rem) 0.5rem;
   margin: 0;
   box-sizing: border-box;
@@ -35,13 +35,13 @@
 }
 
 .css-table thead th {
-  --_border-color: rgb(var(--rgb-gray));
+  --_border-color: var(--color-muted);
   background-color: rgb(var(--rgb-light-gray) / 0.3);
   color: rgb(var(--rgb-ink));
 }
 
 .css-table tbody th {
-  --_border-color: rgb(var(--rgb-gray));
+  --_border-color: var(--color-muted);
   background-color: rgb(var(--rgb-light-gray) / 0.3);
   color: rgb(var(--rgb-ink));
 }
@@ -49,7 +49,7 @@
 /* Stripe */
 
 .css-table[css-stripe] {
-  --_border-color: rgb(var(--rgb-gray));
+  --_border-color: var(--color-muted);
 }
 
 .css-table[css-stripe] tr:nth-child(even) {
@@ -59,7 +59,7 @@
 /* Hover highlight */
 
 .css-table[css-hover] {
-  --_border-color: rgb(var(--rgb-gray));
+  --_border-color: var(--color-muted);
 }
 
 @media (hover: hover) {
@@ -71,7 +71,7 @@
 /* With checkbox */
 
 .css-table[css-selectable] {
-  --_border-color: rgb(var(--rgb-gray));
+  --_border-color: var(--color-muted);
 }
 
 .css-table[css-selectable] tr:has(:checked) {
@@ -101,7 +101,7 @@
 /* Sort */
 
 .css-table th[css-sort] {
-  --_border-color: rgb(var(--rgb-gray));
+  --_border-color: var(--color-muted);
   background-color: rgb(var(--rgb-light-gray) / 0.3);
   padding: calc(12 / 16 * 1rem) calc(16 / 16 * 1rem);
   color: rgb(var(--rgb-ink));
@@ -127,7 +127,7 @@
   border: 0;
   background-color: transparent;
   padding: 0;
-  color: rgb(var(--rgb-gray));
+  color: var(--color-muted);
   cursor: pointer;
 }
 
@@ -163,8 +163,8 @@
   outline: calc(4 / 16 * 1rem) solid rgb(var(--rgb-border));
   outline-offset: calc(2 / 16 * 1rem);
   border-radius: calc(2 / 16 * 1rem);
-  background-color: rgb(var(--rgb-accent-yellow));
-  box-shadow: 0 0 0 calc(2 / 16 * 1rem) rgb(var(--rgb-accent-yellow));
+  background-color: rgb(var(--rgb-focus));
+  box-shadow: 0 0 0 calc(2 / 16 * 1rem) rgb(var(--rgb-focus));
 }
 
 /* Utilities */

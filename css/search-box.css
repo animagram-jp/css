@@ -18,7 +18,7 @@ label.css-search-box > svg {
   margin: auto 0;
   width: calc(24 / 16 * 1rem);
   height: calc(24 / 16 * 1rem);
-  color: rgb(var(--rgb-gray));
+  color: var(--color-muted);
   pointer-events: none;
 }
 
@@ -62,7 +62,7 @@ label.css-search-box-scope > span {
   position: absolute;
   top: calc(50% - 1.25rem);
   left: calc(17 / 16 * 1rem);
-  color: rgb(var(--rgb-gray));
+  color: var(--color-muted);
   pointer-events: none;
   z-index: 2;
 }
@@ -75,7 +75,7 @@ label.css-search-box-scope > select {
   box-sizing: border-box;
   width: calc(160 / 16 * 1rem);
   border-radius: calc(8 / 16 * 1rem) 0 0 calc(8 / 16 * 1rem);
-  border: 1px solid rgb(var(--rgb-gray));
+  border: 1px solid var(--color-muted);
   background-color: rgb(var(--rgb-light-gray) / 0.3);
   padding-top: calc(20 / 16 * 1rem);
   padding-right: calc(40 / 16 * 1rem);
@@ -114,7 +114,7 @@ label.css-search-box-scope[css-size="lg"] > select {
 
   label.css-search-box-scope > select::picker(select) {
     appearance: base-select;
-    border: 1px solid rgb(var(--rgb-gray));
+    border: 1px solid var(--color-muted);
     box-shadow: var(--elevation-1);
     padding: calc(16 / 16 * 1rem) 0;
   }
@@ -139,7 +139,7 @@ label.css-search-box-scope > select:focus-visible {
   z-index: 1;
   outline: calc(4 / 16 * 1rem) solid rgb(var(--rgb-border));
   outline-offset: calc(2 / 16 * 1rem);
-  box-shadow: 0 0 0 calc(2 / 16 * 1rem) rgb(var(--rgb-accent-yellow));
+  box-shadow: 0 0 0 calc(2 / 16 * 1rem) rgb(var(--rgb-focus));
 }
 
 @media (hover: hover) {
@@ -191,9 +191,9 @@ label.css-search-box-scope option:focus-visible {
 }
 
 label.css-search-box-scope option:not(:checked):focus-visible {
-  background-color: rgb(var(--rgb-accent-yellow));
+  background-color: rgb(var(--rgb-focus));
 }
 
 label.css-search-box-scope option:checked:focus-visible {
-  box-shadow: inset 0 0 0 calc(6 / 16 * 1rem) rgb(var(--rgb-accent-yellow));
+  box-shadow: inset 0 0 0 calc(6 / 16 * 1rem) rgb(var(--rgb-focus));
 }

@@ -311,7 +311,7 @@ body:has(:modal) {
   outline: calc(4 / 16 * 1rem) solid rgb(var(--rgb-border));
   outline-offset: calc(2 / 16 * 1rem);
   border-radius: calc(4 / 16 * 1rem);
-  box-shadow: 0 0 0 calc(2 / 16 * 1rem) rgb(var(--rgb-accent-yellow));
+  box-shadow: 0 0 0 calc(2 / 16 * 1rem) rgb(var(--rgb-focus));
 }
 
 .css-visually-hidden {
@@ -328,8 +328,8 @@ body:has(:modal) {
   outline: calc(4 / 16 * 1rem) solid rgb(var(--rgb-border)) !important;
   outline-offset: calc(2 / 16 * 1rem) !important;
   border-radius: calc(4 / 16 * 1rem) !important;
-  background-color: rgb(var(--rgb-accent-yellow)) !important;
-  box-shadow: 0 0 0 calc(2 / 16 * 1rem) rgb(var(--rgb-accent-yellow)) !important;
+  background-color: rgb(var(--rgb-focus)) !important;
+  box-shadow: 0 0 0 calc(2 / 16 * 1rem) rgb(var(--rgb-focus)) !important;
 }
 
 @supports selector(:has(*)) {
@@ -338,8 +338,8 @@ body:has(:modal) {
     outline: calc(4 / 16 * 1rem) solid rgb(var(--rgb-border)) !important;
     outline-offset: calc(2 / 16 * 1rem) !important;
     border-radius: calc(4 / 16 * 1rem) !important;
-    background-color: rgb(var(--rgb-accent-yellow)) !important;
-    box-shadow: 0 0 0 calc(2 / 16 * 1rem) rgb(var(--rgb-accent-yellow)) !important;
+    background-color: rgb(var(--rgb-focus)) !important;
+    box-shadow: 0 0 0 calc(2 / 16 * 1rem) rgb(var(--rgb-focus)) !important;
   }
 }
 
@@ -348,7 +348,7 @@ body:has(:modal) {
     outline: calc(4 / 16 * 1rem) solid rgb(var(--rgb-border)) !important;
     outline-offset: calc(2 / 16 * 1rem) !important;
     border-radius: calc(4 / 16 * 1rem) !important;
-    background-color: rgb(var(--rgb-accent-yellow)) !important;
-    box-shadow: 0 0 0 calc(2 / 16 * 1rem) rgb(var(--rgb-accent-yellow)) !important;
+    background-color: rgb(var(--rgb-focus)) !important;
+    box-shadow: 0 0 0 calc(2 / 16 * 1rem) rgb(var(--rgb-focus)) !important;
   }
 }

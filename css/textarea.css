@@ -3,7 +3,7 @@
   box-sizing: border-box;
   width: 100%;
   max-width: 100%;
-  border: 1px solid rgb(var(--rgb-gray));
+  border: 1px solid var(--color-muted);
   background-color: var(--color-background);
   padding: calc(12 / 16 * 1rem) calc(16 / 16 * 1rem);
   border-radius: calc(8 / 16 * 1rem);
@@ -39,7 +39,7 @@
 .css-textarea:focus-visible {
   outline: calc(4 / 16 * 1rem) solid rgb(var(--rgb-border));
   outline-offset: calc(2 / 16 * 1rem);
-  box-shadow: 0 0 0 calc(2 / 16 * 1rem) rgb(var(--rgb-accent-yellow));
+  box-shadow: 0 0 0 calc(2 / 16 * 1rem) rgb(var(--rgb-focus));
 }
 
 @media (hover: hover) {
@@ -49,12 +49,12 @@
 }
 
 .css-textarea:is(:user-invalid, [aria-invalid="true"]) {
-  border-color: rgb(var(--rgb-accent-red));
+  border-color: rgb(var(--rgb-error));
 }
 
 @media (hover: hover) {
   .css-textarea:is(:user-invalid, [aria-invalid="true"]):hover {
-    border-color: rgb(var(--rgb-accent-red));
+    border-color: rgb(var(--rgb-error));
   }
 }
 
@@ -62,7 +62,7 @@
 .css-textarea:is(:disabled, [aria-disabled="true"]):hover {
   border-color: rgb(var(--rgb-light-gray));
   background-color: rgb(var(--rgb-light-gray) / 0.3);
-  color: rgb(var(--rgb-gray));
+  color: var(--color-muted);
   resize: none;
 }
 
@@ -77,12 +77,12 @@
 .css-textarea-counter {
   display: block;
   margin-top: calc(8 / 16 * 1rem);
-  color: rgb(var(--rgb-gray));
+  color: var(--color-muted);
   font-size: var(--css-typography-text-flush-2-font-size);
   line-height: var(--css-typography-text-flush-2-line-height);
   letter-spacing: var(--css-typography-text-flush-2-letter-spacing);
 }
 
 .css-textarea-counter[data-exceeded] {
-  color: rgb(var(--rgb-accent-red));
+  color: rgb(var(--rgb-error));
 }

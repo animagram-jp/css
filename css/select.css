@@ -2,7 +2,7 @@
   vertical-align: middle;
   box-sizing: border-box;
   border-radius: calc(8 / 16 * 1rem);
-  border: 1px solid rgb(var(--rgb-gray));
+  border: 1px solid var(--color-muted);
   background-color: var(--color-background);
   background-image: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'><path d='M12 17L3 8L4 7L12 15L20 7L21 8L12 17Z' fill='%23333333'/></svg>");
   background-repeat: no-repeat;
@@ -33,7 +33,7 @@
 .css-select:focus-visible {
   outline: calc(4 / 16 * 1rem) solid rgb(var(--rgb-border));
   outline-offset: calc(2 / 16 * 1rem);
-  box-shadow: 0 0 0 calc(2 / 16 * 1rem) rgb(var(--rgb-accent-yellow));
+  box-shadow: 0 0 0 calc(2 / 16 * 1rem) rgb(var(--rgb-focus));
 }
 
 @media (hover: hover) {
@@ -43,12 +43,12 @@
 }
 
 .css-select:is(:user-invalid, [aria-invalid="true"]) {
-  border-color: rgb(var(--rgb-accent-red));
+  border-color: rgb(var(--rgb-error));
 }
 
 @media (hover: hover) {
   .css-select:is(:user-invalid, [aria-invalid="true"]):hover {
-    border-color: rgb(var(--rgb-accent-red));
+    border-color: rgb(var(--rgb-error));
   }
 }
 
@@ -57,7 +57,7 @@
   border: 1px solid rgb(var(--rgb-light-gray));
   background-color: rgb(var(--rgb-light-gray) / 0.3);
   background-image: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'><path d='M12 17L3 8L4 7L12 15L20 7L21 8L12 17Z' fill='%23949494'/></svg>");
-  color: rgb(var(--rgb-gray));
+  color: var(--color-muted);
 }
 
 @media (forced-colors: active) {
