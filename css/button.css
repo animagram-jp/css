@@ -33,7 +33,7 @@
  * color the ring can sit legibly on top of otherwise.
  */
 .css-button:focus-visible {
-  outline: calc(4 / 16 * 1rem) solid var(--color-border);
+  outline: calc(2 / 16 * 1rem) solid var(--color-border);
   outline-offset: calc(2 / 16 * 1rem);
   box-shadow: 0 0 0 calc(2 / 16 * 1rem) rgb(var(--rgb-focus));
 }
@@ -118,7 +118,7 @@
 
 .css-button[css-type="text"]:focus-visible {
   background-color: rgb(var(--rgb-focus));
-  color: rgb(var(--rgb-black)); /* yellow is light in both schemes; black clears 4.5:1, the emphasis colors don't */
+  color: rgb(var(--rgb-black));
 }
 
 .css-button[css-type="text"]:disabled,

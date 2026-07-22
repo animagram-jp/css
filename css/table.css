@@ -160,7 +160,7 @@
 }
 
 :is(.css-sort-up, .css-sort-down):focus-visible {
-  outline: calc(4 / 16 * 1rem) solid rgb(var(--rgb-border));
+  outline: calc(2 / 16 * 1rem) solid rgb(var(--rgb-border));
   outline-offset: calc(2 / 16 * 1rem);
   border-radius: calc(2 / 16 * 1rem);
   background-color: rgb(var(--rgb-focus));

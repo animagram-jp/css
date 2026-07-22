@@ -30,12 +30,6 @@
   height: var(--css-size-lg-height);
 }
 
-.css-select:focus-visible {
-  outline: calc(4 / 16 * 1rem) solid rgb(var(--rgb-border));
-  outline-offset: calc(2 / 16 * 1rem);
-  box-shadow: 0 0 0 calc(2 / 16 * 1rem) rgb(var(--rgb-focus));
-}
-
 @media (hover: hover) {
   .css-select:hover {
     border-color: rgb(var(--rgb-border));

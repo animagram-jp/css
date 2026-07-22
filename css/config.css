@@ -308,7 +308,7 @@ body:has(:modal) {
 }
 
 :focus-visible {
-  outline: calc(4 / 16 * 1rem) solid rgb(var(--rgb-border));
+  outline: calc(2 / 16 * 1rem) solid rgb(var(--rgb-border));
   outline-offset: calc(2 / 16 * 1rem);
   border-radius: calc(4 / 16 * 1rem);
   box-shadow: 0 0 0 calc(2 / 16 * 1rem) rgb(var(--rgb-focus));
@@ -325,7 +325,7 @@ body:has(:modal) {
 }
 
 :where(.css-focus-outline):focus-visible {
-  outline: calc(4 / 16 * 1rem) solid rgb(var(--rgb-border)) !important;
+  outline: calc(2 / 16 * 1rem) solid rgb(var(--rgb-border)) !important;
   outline-offset: calc(2 / 16 * 1rem) !important;
   border-radius: calc(4 / 16 * 1rem) !important;
   background-color: rgb(var(--rgb-focus)) !important;
@@ -335,7 +335,7 @@ body:has(:modal) {
 @supports selector(:has(*)) {
   :where(.css-focus-within-outline):focus-visible,
   :where(.css-focus-within-outline):has(:focus-visible) {
-    outline: calc(4 / 16 * 1rem) solid rgb(var(--rgb-border)) !important;
+    outline: calc(2 / 16 * 1rem) solid rgb(var(--rgb-border)) !important;
     outline-offset: calc(2 / 16 * 1rem) !important;
     border-radius: calc(4 / 16 * 1rem) !important;
     background-color: rgb(var(--rgb-focus)) !important;
@@ -345,7 +345,7 @@ body:has(:modal) {
 
 @supports not selector(:has(*)) {
   :where(.css-focus-within-outline):focus-within {
-    outline: calc(4 / 16 * 1rem) solid rgb(var(--rgb-border)) !important;
+    outline: calc(2 / 16 * 1rem) solid rgb(var(--rgb-border)) !important;
     outline-offset: calc(2 / 16 * 1rem) !important;
     border-radius: calc(4 / 16 * 1rem) !important;
     background-color: rgb(var(--rgb-focus)) !important;

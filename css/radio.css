@@ -82,7 +82,7 @@
 }
 
 .css-radio > input:focus {
-  outline: calc(4 / 16 * 1rem) solid rgb(var(--rgb-border));
+  outline: calc(2 / 16 * 1rem) solid rgb(var(--rgb-border));
   outline-offset: calc(2 / 16 * 1rem);
   box-shadow: 0 0 0 calc(2 / 16 * 1rem) rgb(var(--rgb-focus));
 }
