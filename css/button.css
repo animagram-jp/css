@@ -35,7 +35,7 @@
 .css-button:focus-visible {
   outline: calc(4 / 16 * 1rem) solid var(--color-border);
   outline-offset: calc(2 / 16 * 1rem);
-  box-shadow: 0 0 0 calc(2 / 16 * 1rem) rgb(var(--rgb-accent-yellow));
+  box-shadow: 0 0 0 calc(2 / 16 * 1rem) rgb(var(--rgb-focus));
 }
 
 /* disabled, high-contrast mode: border/text collapse to the UA's GrayText
@@ -95,7 +95,7 @@
 .css-button[css-type="outlined"]:disabled,
 .css-button[css-type="outlined"][aria-disabled="true"] {
   background-color: var(--color-background);
-  color: rgb(var(--rgb-gray));
+  color: var(--color-muted);
 }
 
 .css-button[css-type="text"] {
@@ -117,14 +117,14 @@
 }
 
 .css-button[css-type="text"]:focus-visible {
-  background-color: rgb(var(--rgb-accent-yellow));
+  background-color: rgb(var(--rgb-focus));
   color: rgb(var(--rgb-black)); /* yellow is light in both schemes; black clears 4.5:1, the emphasis colors don't */
 }
 
 .css-button[css-type="text"]:disabled,
 .css-button[css-type="text"][aria-disabled="true"] {
   background-color: transparent;
-  color: rgb(var(--rgb-gray));
+  color: var(--color-muted);
   text-decoration-thickness: revert;
 }
 

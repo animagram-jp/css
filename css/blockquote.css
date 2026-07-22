@@ -1,6 +1,6 @@
 .css-blockquote {
   margin: 0 calc(40 / 16 * 1rem);
-  border-left: 8px solid rgb(var(--rgb-gray));
+  border-left: 8px solid var(--color-muted);
   padding-top: calc(8 / 16 * 1rem);
   padding-right: calc(16 / 16 * 1rem);
   padding-bottom: calc(8 / 16 * 1rem);

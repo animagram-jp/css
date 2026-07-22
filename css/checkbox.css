@@ -59,7 +59,7 @@
   }
 
   .css-checkbox:has(> input:not(:focus, :disabled, [aria-disabled="true"]):hover)::before {
-    background-color: rgb(var(--rgb-gray) / var(--alpha-highlight-weak));
+    background-color: rgb(var(--rgb-ink) / var(--alpha-highlight-weak));
   }
 }
 
@@ -67,7 +67,7 @@
   --_base-color: var(--color-background);
   --_accent-color: var(--color-emphasis);
   --_accent-hover-color: var(--color-emphasis-hover);
-  --_border-color: rgb(var(--rgb-gray));
+  --_border-color: var(--color-muted);
   --_border-hover-color: rgb(var(--rgb-border));
   --_check-color: rgb(var(--rgb-white));
 
@@ -86,7 +86,7 @@
 .css-checkbox > input:focus {
   outline: calc(4 / 16 * 1rem) solid rgb(var(--rgb-border));
   outline-offset: calc(2 / 16 * 1rem);
-  box-shadow: 0 0 0 calc(2 / 16 * 1rem) rgb(var(--rgb-accent-yellow));
+  box-shadow: 0 0 0 calc(2 / 16 * 1rem) rgb(var(--rgb-focus));
 }
 
 @media (hover: hover) {
@@ -133,10 +133,10 @@
 }
 
 .css-checkbox > input[aria-invalid="true"] {
-  --_accent-color: rgb(var(--rgb-accent-red));
-  --_accent-hover-color: rgb(var(--rgb-accent-red));
-  --_border-color: rgb(var(--rgb-accent-red));
-  --_border-hover-color: rgb(var(--rgb-accent-red));
+  --_accent-color: rgb(var(--rgb-error));
+  --_accent-hover-color: rgb(var(--rgb-error));
+  --_border-color: rgb(var(--rgb-error));
+  --_border-hover-color: rgb(var(--rgb-error));
 }
 
 .css-checkbox > input:is(:disabled, [aria-disabled="true"]) {
