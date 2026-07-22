@@ -1,13 +1,11 @@
 .css-chip-label {
-  display: inline-grid;
+  display: inline-flex;
   grid-template-columns: auto auto;
   align-items: baseline;
   align-content: center;
-  box-sizing: border-box;
   min-height: calc(32 / 16 * 1rem);
   border-radius: calc(8 / 16 * 1rem);
   padding: calc(3 / 16 * 1rem) calc(7 / 16 * 1rem);
-  font-weight: normal;
   font-size: var(--css-typography-text-flush-2-font-size);
   line-height: var(--css-typography-text-flush-2-line-height);
   font-family: var(--font-family-sans);
@@ -17,89 +15,17 @@
 
 .css-chip-label[css-type="text"] {
   padding: calc(4 / 16 * 1rem) calc(8 / 16 * 1rem);
-  color: rgb(var(--_hue, 0 0 0));
+  color: var(--color-emphasis);
 }
 
 .css-chip-label[css-type="outlined"] {
-  border: 1px solid rgb(var(--_hue, 0 0 0));
+  border: 1px solid var(--color-emphasis);
   background-color: var(--color-background);
-  color: rgb(var(--_hue, 0 0 0));
-}
-
-.css-chip-label[css-type="filled-outline"] {
-  border: 1px solid rgb(var(--_hue, 0 0 0));
-  background-color: rgb(var(--_hue, 0 0 0) / 12%);
-  color: rgb(var(--_hue, 0 0 0));
+  color: var(--color-emphasis);
 }
 
 .css-chip-label[css-type="fill"] {
   border: 1px solid transparent;
-  background-color: rgb(var(--_hue, 0 0 0));
+  background-color: var(--color-emphasis-fill);
   color: rgb(var(--rgb-white));
-}
-
-/*
- * Each color variant sets just one hue (--_hue). filled-outline/outlined
- * derive their background/text shades from it via alpha, rather than each
- * variant carrying its own set of pre-picked shades.
- */
-.css-chip-label[data-color="gray"] {
-  --_hue: var(--rgb-gray);
-}
-
-.css-chip-label[data-color="blue"] {
-  --_hue: var(--rgb-accent-blue);
-}
-
-.css-chip-label[data-color="light-blue"] {
-  --_hue: var(--rgb-accent-sky);
-}
-
-.css-chip-label[data-color="cyan"] {
-  --_hue: var(--rgb-base-light-sky);
-}
-
-.css-chip-label[data-color="green"] {
-  --_hue: var(--rgb-accent-green);
-}
-
-.css-chip-label[data-color="lime"] {
-  --_hue: var(--rgb-base-light-yellow-green);
-}
-
-.css-chip-label[data-color="yellow"] {
-  --_hue: var(--rgb-accent-yellow);
-}
-
-.css-chip-label[data-color="orange"] {
-  --_hue: var(--rgb-accent-orange);
-}
-
-.css-chip-label[data-color="red"] {
-  --_hue: var(--rgb-accent-red);
-}
-
-.css-chip-label[data-color="purple"] {
-  --_hue: var(--rgb-accent-purple);
-}
-
-.css-chip-label__icon {
-  --_icon-size: calc(24 / 16 * 1rem);
-  --_offset: calc((var(--_icon-size) - 1cap) / 2);
-  position: relative;
-  top: var(--_offset);
-  margin-top: calc(-1 * var(--_offset));
-  margin-right: calc(4 / 16 * 1rem);
-  margin-bottom: var(--_offset);
-  flex-shrink: 0;
-}
-
-@media (forced-colors: active) {
-  .css-chip-label__icon {
-    fill: CanvasText;
-  }
-}
-
-.css-chip-label[css-type="filled-outline"] .css-chip-label__icon {
-  color: rgb(var(--_hue, 0 0 0));
 }
