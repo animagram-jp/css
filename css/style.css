@@ -11,3 +11,8 @@ body {
 section {
     margin: 2rem 0;
 }
+
+/* .css-list の項目間隔は --_gap で利用側から上書きする */
+.css-list {
+    --_gap: 0.25rem;
+}

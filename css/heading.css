@@ -114,14 +114,14 @@ hgroup[css-size="text-normal-2"] .css-h {
   letter-spacing: var(--css-typography-text-normal-2-letter-spacing);
 }
 
-.css-h[data-chip],
-hgroup[data-chip] .css-h {
+.css-h[css-chip],
+hgroup[css-chip] .css-h {
   position: relative;
   padding-left: calc(1em / 3 + 0.5em);
 }
 
-.css-h[data-chip]::before,
-hgroup[data-chip] .css-h::before {
+.css-h[css-chip]::before,
+hgroup[css-chip] .css-h::before {
   position: absolute;
   top: 0.2em;
   bottom: 0.1em;
@@ -132,49 +132,49 @@ hgroup[data-chip] .css-h::before {
 }
 
 @supports (top: 1lh) {
-  .css-h[data-chip]::before,
-  hgroup[data-chip] .css-h::before {
+  .css-h[css-chip]::before,
+  hgroup[css-chip] .css-h::before {
     top: calc(0.5lh - 0.45em);
     bottom: calc(0.5lh - 0.55em);
   }
 }
 
-hgroup[data-chip]:has(.css-h-shoulder) .css-h::before {
+hgroup[css-chip]:has(.css-h-shoulder) .css-h::before {
   top: calc((var(--_shoulder-size) * (var(--_shoulder-line-height) - 1)) / 2);
 }
 
 @media (forced-colors: active) {
-  .css-h[data-chip]::before,
-  hgroup[data-chip] .css-h::before {
+  .css-h[css-chip]::before,
+  hgroup[css-chip] .css-h::before {
     background-color: CanvasText;
   }
 }
 
-.css-h[data-rule],
-hgroup[data-rule] .css-h {
+.css-h[css-rule],
+hgroup[css-rule] .css-h {
   border-bottom: solid var(--color-emphasis);
 }
 
-.css-h[data-rule="8"],
-hgroup[data-rule="8"] .css-h {
+.css-h[css-rule="8"],
+hgroup[css-rule="8"] .css-h {
   border-bottom-width: calc(8 / 16 * 1rem);
   padding-bottom: calc(20 / 16 * 1rem);
 }
 
-.css-h[data-rule="6"],
-hgroup[data-rule="6"] .css-h {
+.css-h[css-rule="6"],
+hgroup[css-rule="6"] .css-h {
   border-bottom-width: calc(6 / 16 * 1rem);
   padding-bottom: calc(16 / 16 * 1rem);
 }
 
-.css-h[data-rule="4"],
-hgroup[data-rule="4"] .css-h {
+.css-h[css-rule="4"],
+hgroup[css-rule="4"] .css-h {
   border-bottom-width: calc(4 / 16 * 1rem);
   padding-bottom: calc(12 / 16 * 1rem);
 }
 
-.css-h[data-rule="2"],
-hgroup[data-rule="2"] .css-h {
+.css-h[css-rule="2"],
+hgroup[css-rule="2"] .css-h {
   border-bottom-width: calc(2 / 16 * 1rem);
   padding-bottom: calc(8 / 16 * 1rem);
 }

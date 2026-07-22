@@ -2,6 +2,7 @@
     --_size: 1rem;
     --_stripe: 2px;
     --_gap: 3px;
+    --_stroke: 2px;
     align-items: center;
 }
 
@@ -22,4 +23,33 @@
         transparent var(--_stripe),
         transparent calc(var(--_stripe) + var(--_gap))
     );
+}
+
+/* external-link: 四角の枠 + 右上に飛び出す矢印(矢じり+シャフト) */
+.css-icon[icon-type="external-link"] {
+    position: relative;
+    display: inline-flex;
+}
+
+.css-icon[icon-type="external-link"]::before {
+    content: "";
+    display: inline-block;
+    box-sizing: border-box;
+    width: calc(var(--_size) * 0.7);
+    height: calc(var(--_size) * 0.7);
+    margin-top: calc(var(--_size) * 0.3);
+    border: var(--_stroke) solid currentcolor;
+}
+
+.css-icon[icon-type="external-link"]::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    right: 0.5rem;
+    width: calc(var(--_size) * 0.6);
+    height: calc(var(--_size) * 0.6);
+    background:
+        linear-gradient(currentcolor, currentcolor) top right / 100% var(--_stroke) no-repeat,
+        linear-gradient(currentcolor, currentcolor) top right / var(--_stroke) 100% no-repeat,
+        linear-gradient(315deg, currentcolor, currentcolor calc(var(--_stroke) * 1.42), transparent 0) top right / 100% 100% no-repeat;
 }

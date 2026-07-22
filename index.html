@@ -188,44 +188,44 @@
                 <p class="css-h-shoulder">ショルダーテキスト</p>
                 <h2 class="css-h">見出しテキスト</h2></hgroup></div>
 
-        <!-- data-chip -->
-        <h3 style="font: bold 1rem/2 sans-serif; margin-top: 2rem; margin-bottom: 0.5rem;">data-chip</h3>
+        <!-- css-chip -->
+        <h3 style="font: bold 1rem/2 sans-serif; margin-top: 2rem; margin-bottom: 0.5rem;">css-chip</h3>
 
         <div class="heading-row">
-            <div class="heading-meta">h2.css-h css-size="heading-2" data-chip</div>
-            <h2 class="css-h" css-size="heading-2" data-chip>見出しテキスト</h2></div>
+            <div class="heading-meta">h2.css-h css-size="heading-2" css-chip</div>
+            <h2 class="css-h" css-size="heading-2" css-chip>見出しテキスト</h2></div>
 
         <div class="heading-row">
-            <div class="heading-meta">hgroup[css-size="heading-2"][data-chip] &gt; h2.css-h — shoulder あり</div>
-            <hgroup css-size="heading-2" data-chip>
+            <div class="heading-meta">hgroup[css-size="heading-2"][css-chip] &gt; h2.css-h — shoulder あり</div>
+            <hgroup css-size="heading-2" css-chip>
                 <p class="css-h-shoulder">ショルダーテキスト</p>
                 <h2 class="css-h">見出しテキスト</h2></hgroup></div>
 
-        <!-- data-rule -->
-        <h3 style="font: bold 1rem/2 sans-serif; margin-top: 2rem; margin-bottom: 0.5rem;">data-rule</h3>
+        <!-- css-rule -->
+        <h3 style="font: bold 1rem/2 sans-serif; margin-top: 2rem; margin-bottom: 0.5rem;">css-rule</h3>
 
         <div class="heading-row">
-            <div class="heading-meta">h2.css-h css-size="heading-2" data-rule="8"</div>
-            <h2 class="css-h" css-size="heading-2" data-rule="8">見出しテキスト</h2></div>
+            <div class="heading-meta">h2.css-h css-size="heading-2" css-rule="8"</div>
+            <h2 class="css-h" css-size="heading-2" css-rule="8">見出しテキスト</h2></div>
 
         <div class="heading-row">
-            <div class="heading-meta">h2.css-h css-size="heading-2" data-rule="6"</div>
-            <h2 class="css-h" css-size="heading-2" data-rule="6">見出しテキスト</h2></div>
+            <div class="heading-meta">h2.css-h css-size="heading-2" css-rule="6"</div>
+            <h2 class="css-h" css-size="heading-2" css-rule="6">見出しテキスト</h2></div>
 
         <div class="heading-row">
-            <div class="heading-meta">h2.css-h css-size="heading-2" data-rule="4"</div>
-            <h2 class="css-h" css-size="heading-2" data-rule="4">見出しテキスト</h2></div>
+            <div class="heading-meta">h2.css-h css-size="heading-2" css-rule="4"</div>
+            <h2 class="css-h" css-size="heading-2" css-rule="4">見出しテキスト</h2></div>
 
         <div class="heading-row">
-            <div class="heading-meta">h2.css-h css-size="heading-2" data-rule="2"</div>
-            <h2 class="css-h" css-size="heading-2" data-rule="2">見出しテキスト</h2></div>
+            <div class="heading-meta">h2.css-h css-size="heading-2" css-rule="2"</div>
+            <h2 class="css-h" css-size="heading-2" css-rule="2">見出しテキスト</h2></div>
 
         <!-- chip + rule 組み合わせ -->
-        <h3 style="font: bold 1rem/2 sans-serif; margin-top: 2rem; margin-bottom: 0.5rem;">data-chip + data-rule</h3>
+        <h3 style="font: bold 1rem/2 sans-serif; margin-top: 2rem; margin-bottom: 0.5rem;">css-chip + css-rule</h3>
 
         <div class="heading-row">
-            <div class="heading-meta">h2.css-h css-size="heading-2" data-chip data-rule="4"</div>
-            <h2 class="css-h" css-size="heading-2" data-chip data-rule="4">見出しテキスト</h2></div></section>
+            <div class="heading-meta">h2.css-h css-size="heading-2" css-chip css-rule="4"</div>
+            <h2 class="css-h" css-size="heading-2" css-chip css-rule="4">見出しテキスト</h2></div></section>
 
     <!-- ============================================================ -->
     <!-- input-number -->
@@ -254,15 +254,15 @@
         <!-- 無効 -->
         <input class="css-input" type="text" css-size="md" value="無効" disabled style="margin-top:1rem;display:block"></section>
 
-    <!-- ============================================================ -->
-    <!-- link -->
-    <!-- ============================================================ -->
     <h2 id="h2-12" aria-label="example usage of link component" class="css-h">Link</h2>
     <section aria-labelledby="h2-12">
         <a class="css-link" href="#" target="_blank">
             リンクテキスト
+            <!-- svg直書き版（参考として保持）
             <svg class="css-link__icon" width="16" height="16" viewBox="0 0 48 48" role="img" aria-label="新規タブで開きます">
-                <path d="M22 6V9H9V39H39V26H42V42H6V6H22ZM42 6V20H39V11.2L21 29L19 27L36.8 9H28V6H42Z" fill="currentcolor"/></svg></a></section>
+                <path d="M22 6V9H9V39H39V26H42V42H6V6H22ZM42 6V20H39V11.2L21 29L19 27L36.8 9H28V6H42Z" fill="currentcolor"/></svg>
+            -->
+            <span class="css-icon" icon-type="external-link" style="--_size:0.875rem" role="img" aria-label="新規タブで開きます"></span></a></section>
 
     <!-- ============================================================ -->
     <!-- list -->
@@ -270,20 +270,20 @@
     <h2 id="h2-13" aria-label="example usage of list component" class="css-h">List</h2>
     <section aria-labelledby="h2-13">
         <!-- 箇条書き -->
-        <ul class="css-list" data-spacing="4">
+        <ul class="css-list">
             <li>項目A</li>
             <li>項目B（少し長めのテキストサンプルです）</li>
             <li>
                 ネストあり
-                <ul class="css-list" data-spacing="4">
+                <ul class="css-list">
                     <li>サブ項目1</li>
                     <li><a class="css-link" href="#">サブ項目2（リンク）</a></li></ul></li></ul>
 
         <!-- 番号付き -->
-        <ul class="css-list" data-marker="number" data-spacing="4" style="margin-top: 2rem">
+        <ol class="css-list" style="margin-top: 2rem">
             <li><span>1. </span><span>最初の項目</span></li>
             <li><span>2. </span><span>二番目の項目</span></li>
-            <li><span>3. </span><span>三番目の項目</span></li></ul></section>
+            <li><span>3. </span><span>三番目の項目</span></li></ol></section>
 
     <!-- ============================================================ -->
     <!-- list-box -->

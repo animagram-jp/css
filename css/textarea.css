@@ -77,6 +77,6 @@
   letter-spacing: var(--css-typography-text-flush-2-letter-spacing);
 }
 
-.css-textarea-counter[data-exceeded] {
+.css-textarea-counter[css-exceeded] {
   color: rgb(var(--rgb-error));
 }
