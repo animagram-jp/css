@@ -1,3 +1,6 @@
+/* Reference: https://github.com/yuto-hasegawa/sashimi-ui/blob/main/src/css/key-value.css
+ * 
+*/
 .css-description-list:where(dl) {
     display: grid;
     grid-template-columns: auto 1fr;
