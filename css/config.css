@@ -62,7 +62,7 @@
      */
     --rgb-success: var(--rgb-accent-green);
     --rgb-error: var(--rgb-accent-red);
-    --rgb-warning: var(--rgb-accent-yellow);
+    --rgb-focus: var(--rgb-accent-yellow);
 
     /*
      * Semantic layer: components reference only these role tokens.
