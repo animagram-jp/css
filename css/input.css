@@ -64,14 +64,9 @@
     color: GrayText;
   }
 }
-
-/* search type */
-
 .css-input[type="search"]::-webkit-search-cancel-button {
   display: none;
 }
-
-/* input-number */
 
 .css-input-number {
   display: inline-flex;

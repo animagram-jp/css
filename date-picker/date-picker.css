@@ -27,7 +27,7 @@
 }
 
 .css-date-picker__controls[css-size="sm"] .css-date-picker__inputs {
-  height: calc(40 / 16 * 1rem);
+  height: 2.5rem;
 }
 
 .css-date-picker__controls[css-size="md"] .css-date-picker__inputs {
@@ -149,7 +149,7 @@
 
 .css-date-picker__controls[css-size="sm"]
   .css-date-picker__separated-inputs {
-  height: calc(40 / 16 * 1rem);
+  height: 2.5rem;
 }
 
 .css-date-picker__controls[css-size="md"]
@@ -260,7 +260,7 @@
 }
 
 .css-date-picker__controls[css-size="sm"] .css-date-picker__calendar-button {
-  height: calc(40 / 16 * 1rem);
+  height: 2.5rem;
 }
 
 .css-date-picker__controls[css-size="md"] .css-date-picker__calendar-button {

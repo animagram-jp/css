@@ -9,10 +9,10 @@
         linear-gradient(135deg, rgb(var(--rgb-ink)) 50%, transparent 50%);
     background-repeat: no-repeat;
     background-position:
-        calc(100% - 20px) calc(50% - 1px),
-        calc(100% - 14px) calc(50% - 1px);
+        calc(100% - 1.5rem) 50%,
+        calc(100% - 1rem) 50%;
     background-size: 0.5rem 0.5rem;
-    padding-right: calc(40 / 16 * 1rem);
+    padding-right: 2.5rem;
     padding-left: 1rem;
     color: rgb(var(--rgb-ink));
     font: inherit;

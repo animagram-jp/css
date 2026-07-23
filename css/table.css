@@ -83,7 +83,7 @@
   .css-table th:has(.css-checkbox:only-child, .css-radio:only-child) {
     position: relative;
     box-sizing: border-box;
-    width: calc(40 / 16 * 1rem);
+    width: 2.5rem;
     padding: 0;
   }
 

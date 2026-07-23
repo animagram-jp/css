@@ -41,7 +41,7 @@
   }
 
   .css-notification-banner[css-type="color-chip"] {
-    padding-left: calc(40 / 16 * 1rem);
+    padding-left: 2.5rem;
     box-shadow: inset 1rem 0 0 0 var(--_color-chip-color);
   }
 }
