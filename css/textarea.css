@@ -5,11 +5,11 @@
   max-width: 100%;
   border: 1px solid var(--color-muted);
   background-color: var(--color-background);
-  padding: calc(12 / 16 * 1rem) calc(16 / 16 * 1rem);
+  padding: calc(12 / 16 * 1rem) 1rem;
   border-radius: 0.5rem;
   color: rgb(var(--rgb-ink));
   font-weight: normal;
-  font-size: calc(16 / 16 * 1rem);
+  font-size: 1rem;
   line-height: 1.6;
   font-family: var(--font-family-sans);
   letter-spacing: 0.02em;
@@ -17,13 +17,13 @@
 }
 
 .css-textarea[css-size="sm"] {
-  font-size: calc(16 / 16 * 1rem);
+  font-size: 1rem;
   line-height: 1.5;
 }
 
 .css-textarea:not([css-size]),
 .css-textarea[css-size="md"] {
-  font-size: calc(16 / 16 * 1rem);
+  font-size: 1rem;
   line-height: 1.6;
 }
 

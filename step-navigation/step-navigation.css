@@ -1,7 +1,7 @@
 .css-step-navigation {
   color: var(--color-neutral-solid-gray-800);
   font-weight: normal;
-  font-size: calc(16 / 16 * 1rem);
+  font-size: 1rem;
   font-family: var(--font-family-sans);
   line-height: 1.7;
   letter-spacing: 0.02em;
@@ -20,7 +20,7 @@
   --_number-size: 2rem;
   --_number-margin: calc(3 / 16 * 1rem);
   --_outline-width: calc(1 / 16 * 1rem);
-  --_title-margin: calc(16 / 16 * 1rem);
+  --_title-margin: 1rem;
   --_description-margin: 0.25rem;
 }
 
@@ -105,7 +105,7 @@
 .css-step-navigation[css-size="sm"] .css-step-navigation__number {
   margin: calc(3 / 16 * 1rem);
   border-width: 1px;
-  font-size: calc(16 / 16 * 1rem);
+  font-size: 1rem;
 }
 
 .css-step-navigation__step[data-state="reached"]
@@ -225,7 +225,7 @@
 
 .css-step-navigation[css-size="sm"] .css-step-navigation__title {
   font-weight: bold;
-  font-size: calc(16 / 16 * 1rem);
+  font-size: 1rem;
   line-height: 1.7;
   letter-spacing: 0.02em;
 }
@@ -255,7 +255,7 @@
   .css-step-navigation__step {
   width: calc(var(--_step-width, 320) / 16 * 1rem);
   min-width: calc(var(--_step-min-width, 160) / 16 * 1rem);
-  padding: 0 calc(16 / 16 * 1rem);
+  padding: 0 1rem;
 }
 
 .css-step-navigation[data-orientation="vertical"] .css-step-navigation__step {
@@ -311,7 +311,7 @@
   position: relative;
   display: flex;
   align-items: baseline;
-  column-gap: calc(16 / 16 * 1rem);
+  column-gap: 1rem;
   text-align: left;
 }
 
@@ -351,6 +351,6 @@
     var(--_number-size) +
     var(--_number-margin) +
     var(--_number-margin) +
-    calc(16 / 16 * 1rem)
+    1rem
   );
 }

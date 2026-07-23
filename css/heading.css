@@ -164,7 +164,7 @@ hgroup[css-rule="8"] .css-h {
 .css-h[css-rule="6"],
 hgroup[css-rule="6"] .css-h {
   border-bottom-width: calc(6 / 16 * 1rem);
-  padding-bottom: calc(16 / 16 * 1rem);
+  padding-bottom: 1rem;
 }
 
 .css-h[css-rule="4"],

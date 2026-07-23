@@ -39,7 +39,7 @@
   --_gap: calc(12 / 16 * 1rem);
   --_radio-size: calc(44 / 16 * 1rem);
   --_radio-outer-size: calc(36 / 16 * 1rem);
-  --_radio-inner-size: calc(16 / 16 * 1rem);
+  --_radio-inner-size: 1rem;
   --_radio-border-width: calc(3 / 16 * 1rem);
   --_label-font-size: var(--css-typography-text-flush-2-font-size);
   --_padding-block: calc(10 / 16 * 1rem);

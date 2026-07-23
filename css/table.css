@@ -21,7 +21,7 @@
   font-weight: bold;
   font-size: var(--css-typography-text-normal-1-font-size);
   text-align: left;
-  margin-bottom: calc(16 / 16 * 1rem);
+  margin-bottom: 1rem;
 }
 
 .css-table :is(td, th) {
@@ -103,7 +103,7 @@
 .css-table th[css-sort] {
   --_border-color: var(--color-muted);
   background-color: rgb(var(--rgb-light-gray) / 0.3);
-  padding: calc(12 / 16 * 1rem) calc(16 / 16 * 1rem);
+  padding: calc(12 / 16 * 1rem) 1rem;
   color: rgb(var(--rgb-ink));
   white-space: nowrap;
 }
@@ -200,6 +200,6 @@
 
 @media (width >= 40rem) {
   .css-table {
-    --_padding: calc(20 / 16 * 1rem) calc(16 / 16 * 1rem);
+    --_padding: calc(20 / 16 * 1rem) 1rem;
   }
 }

@@ -5,7 +5,7 @@
   align-items: center;
   box-sizing: border-box;
   height: var(--css-size-md-height);
-  padding-inline-start: calc(16 / 16 * 1rem);
+  padding-inline-start: 1rem;
   padding-inline-end: 3rem;
   border-radius: 0.5rem;
   border: 1px solid var(--color-muted);
@@ -21,7 +21,7 @@
   content: "";
   position: absolute;
   top: 0;
-  right: calc(16 / 16 * 1rem);
+  right: 1rem;
   bottom: 0;
   margin: auto 0;
   width: calc(10 / 16 * 1rem);
@@ -101,7 +101,7 @@
   box-sizing: border-box;
   width: 100%;
   min-height: calc(44 / 16 * 1rem);
-  padding: calc(10 / 16 * 1rem) calc(16 / 16 * 1rem);
+  padding: calc(10 / 16 * 1rem) 1rem;
   color: inherit;
   font: inherit;
   letter-spacing: inherit;

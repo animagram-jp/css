@@ -16,7 +16,7 @@
     calc(var(--_icon-size) + 0.75rem);
   color: var(--color-neutral-solid-gray-800);
   font-weight: normal;
-  font-size: calc(16 / 16 * 1rem);
+  font-size: 1rem;
   line-height: 1.7;
   font-family: var(--font-family-sans);
   letter-spacing: 0.02em;
@@ -33,7 +33,7 @@
 
 @media (min-width: 48rem) {
   .css-accordion__summary {
-    padding: calc(16 / 16 * 1rem) calc(16 / 16 * 1rem) calc(16 / 16 * 1rem)
+    padding: 1rem 1rem 1rem
       calc(var(--_icon-size) + calc(20 / 16 * 1rem));
     font-size: calc(18 / 16 * 1rem);
     line-height: 1.6;
@@ -90,8 +90,8 @@
 
 .css-accordion__icon-svg {
   margin-top: 0.125rem;
-  width: calc(16 / 16 * 1rem);
-  height: calc(16 / 16 * 1rem);
+  width: 1rem;
+  height: 1rem;
   pointer-events: none;
 }
 
@@ -108,13 +108,13 @@
 }
 
 .css-accordion__content {
-  padding: calc(16 / 16 * 1rem) 0.5rem calc(16 / 16 * 1rem)
+  padding: 1rem 0.5rem 1rem
     calc(var(--_icon-size) + 0.75rem);
 }
 
 @media (min-width: 48rem) {
   .css-accordion__content {
-    padding: 1.5rem calc(16 / 16 * 1rem) 1.5rem
+    padding: 1.5rem 1rem 1.5rem
       calc(var(--_icon-size) + 1.25rem);
   }
 }

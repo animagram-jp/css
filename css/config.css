@@ -182,11 +182,11 @@
     --css-typography-text-normal-1-line-height: 1.7;
     --css-typography-text-normal-1-letter-spacing: 0.02em;
 
-    --css-typography-text-normal-2-font-size: calc(16 / 16 * 1rem);
+    --css-typography-text-normal-2-font-size: 1rem;
     --css-typography-text-normal-2-line-height: 1.7;
     --css-typography-text-normal-2-letter-spacing: 0.02em;
 
-    --css-typography-text-normal-3-font-size: calc(16 / 16 * 1rem);
+    --css-typography-text-normal-3-font-size: 1rem;
     --css-typography-text-normal-3-line-height: 1.75;
     --css-typography-text-normal-3-letter-spacing: 0.02em;
 
@@ -198,11 +198,11 @@
     --css-typography-text-tight-2-line-height: 1.2;
     --css-typography-text-tight-2-letter-spacing: 0;
 
-    --css-typography-text-tight-3-font-size: calc(16 / 16 * 1rem);
+    --css-typography-text-tight-3-font-size: 1rem;
     --css-typography-text-tight-3-line-height: 1.3;
     --css-typography-text-tight-3-letter-spacing: 0;
 
-    --css-typography-text-tight-4-font-size: calc(16 / 16 * 1rem);
+    --css-typography-text-tight-4-font-size: 1rem;
     --css-typography-text-tight-4-line-height: 1.2;
     --css-typography-text-tight-4-letter-spacing: 0;
 
@@ -218,7 +218,7 @@
     --css-typography-text-flush-1-line-height: 1;
     --css-typography-text-flush-1-letter-spacing: 0.02em;
 
-    --css-typography-text-flush-2-font-size: calc(16 / 16 * 1rem);
+    --css-typography-text-flush-2-font-size: 1rem;
     --css-typography-text-flush-2-line-height: 1;
     --css-typography-text-flush-2-letter-spacing: 0.02em;
 
@@ -230,7 +230,7 @@
     --css-typography-monospace-1-line-height: 1.5;
     --css-typography-monospace-1-letter-spacing: 0;
 
-    --css-typography-monospace-2-font-size: calc(16 / 16 * 1rem);
+    --css-typography-monospace-2-font-size: 1rem;
     --css-typography-monospace-2-line-height: 1.5;
     --css-typography-monospace-2-letter-spacing: 0;
 

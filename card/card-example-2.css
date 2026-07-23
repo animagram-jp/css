@@ -23,7 +23,7 @@
   background-color: var(--color-neutral-white);
   color: var(--color-neutral-solid-gray-800);
   font-weight: normal;
-  font-size: calc(16 / 16 * 1rem);
+  font-size: 1rem;
   font-family: var(--font-family-sans);
   line-height: 1.7;
   letter-spacing: 0.02em;
@@ -34,15 +34,15 @@
   position: relative;
   grid-area: main;
   display: grid;
-  row-gap: calc(16 / 16 * 1rem);
+  row-gap: 1rem;
   min-width: 0;
-  padding: calc(16 / 16 * 1rem) 1.5rem;
+  padding: 1rem 1.5rem;
 }
 
 .css-card-example-2__main-header {
   display: flex;
   justify-content: space-between;
-  column-gap: calc(16 / 16 * 1rem);
+  column-gap: 1rem;
   min-width: 0;
 }
 
@@ -110,7 +110,7 @@
 
 .css-card-example-2__links {
   display: flex;
-  column-gap: calc(16 / 16 * 1rem);
+  column-gap: 1rem;
   justify-content: end;
 }
 
@@ -121,7 +121,7 @@
   padding: calc(6 / 16 * 1rem) 0.5rem;
   color: var(--color-neutral-white);
   font-weight: normal;
-  font-size: calc(16 / 16 * 1rem);
+  font-size: 1rem;
   line-height: 1;
   letter-spacing: 0.02em;
   text-decoration: none;

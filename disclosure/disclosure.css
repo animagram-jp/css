@@ -63,7 +63,7 @@
 
 .css-disclosure__content {
   padding-left: 2rem;
-  margin: calc(16 / 16 * 1rem) 0;
+  margin: 1rem 0;
 }
 
 .css-disclosure__back-link:any-link {

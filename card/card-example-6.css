@@ -23,11 +23,11 @@
   grid-template-rows: auto 1fr;
   width: 354px;
   max-width: 100%;
-  border-radius: calc(16 / 16 * 1rem);
+  border-radius: 1rem;
   border: 1px solid var(--color-neutral-solid-gray-420);
   color: var(--color-neutral-solid-gray-800);
   font-weight: normal;
-  font-size: calc(16 / 16 * 1rem);
+  font-size: 1rem;
   font-family: var(--font-family-sans);
   line-height: 1.7;
   letter-spacing: 0.02em;
@@ -40,7 +40,7 @@
 
 .css-card-example-6__main {
   grid-area: main;
-  padding: calc(16 / 16 * 1rem) 1.5rem;
+  padding: 1rem 1.5rem;
 }
 
 .css-card-example-6__heading {
@@ -60,7 +60,7 @@
 }
 
 .css-card-example-6__contents {
-  margin: calc(16 / 16 * 1rem) 0 0;
+  margin: 1rem 0 0;
 }
 
 .css-card-example-6__image {
@@ -72,8 +72,8 @@
 
 .css-card-example-6__checkbox {
   position: absolute;
-  top: calc(16 / 16 * 1rem);
-  right: calc(16 / 16 * 1rem);
+  top: 1rem;
+  right: 1rem;
   display: flex;
   align-items: center;
   justify-content: center;

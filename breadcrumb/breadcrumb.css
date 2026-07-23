@@ -3,7 +3,7 @@
   column-gap: 0.25rem;
   color: var(--color-neutral-solid-gray-800);
   font-weight: normal;
-  font-size: calc(16 / 16 * 1rem);
+  font-size: 1rem;
   line-height: 1.7;
   font-family: var(--font-family-sans);
   letter-spacing: 0.02em;
@@ -58,8 +58,8 @@
 .css-breadcrumb__link-icon {
   display: inline-block;
   vertical-align: -0.15em;
-  width: calc(16 / 16 * 1rem);
-  height: calc(16 / 16 * 1rem);
+  width: 1rem;
+  height: 1rem;
 }
 
 .css-breadcrumb__separator::before,

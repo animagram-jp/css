@@ -13,7 +13,7 @@ label.css-search-box > svg {
   position: absolute;
   top: 0;
   bottom: 0;
-  left: calc(16 / 16 * 1rem);
+  left: 1rem;
   z-index: 1;
   margin: auto 0;
   width: 1.5rem;
@@ -80,7 +80,7 @@ label.css-search-box-scope > select {
   padding-top: calc(20 / 16 * 1rem);
   padding-right: calc(40 / 16 * 1rem);
   padding-bottom: 0;
-  padding-left: calc(16 / 16 * 1rem);
+  padding-left: 1rem;
   color: rgb(var(--rgb-ink));
   font: inherit;
   font-size: var(--css-typography-text-flush-1-font-size);
@@ -122,7 +122,7 @@ label.css-search-box-scope[css-size="lg"] > select {
     appearance: base-select;
     border: 1px solid var(--color-muted);
     box-shadow: var(--elevation-1);
-    padding: calc(16 / 16 * 1rem) 0;
+    padding: 1rem 0;
   }
 }
 
@@ -130,7 +130,7 @@ label.css-search-box-scope::after {
   content: "";
   position: absolute;
   top: 0;
-  right: calc(16 / 16 * 1rem);
+  right: 1rem;
   bottom: 0;
   z-index: 1;
   margin: auto 0;
@@ -165,7 +165,7 @@ label.css-search-box-scope option {
   align-items: center;
   box-sizing: border-box;
   min-height: calc(44 / 16 * 1rem);
-  padding: calc(10 / 16 * 1rem) calc(16 / 16 * 1rem);
+  padding: calc(10 / 16 * 1rem) 1rem;
   color: rgb(var(--rgb-ink));
 }
 

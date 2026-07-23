@@ -7,7 +7,7 @@
   max-width: 100%;
   border: 1px solid var(--color-muted);
   background-color: var(--color-background);
-  padding: calc(12 / 16 * 1rem) calc(16 / 16 * 1rem);
+  padding: calc(12 / 16 * 1rem) 1rem;
   border-radius: 0.5rem;
   color: rgb(var(--rgb-ink));
   font-weight: normal;

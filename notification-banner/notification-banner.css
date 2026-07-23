@@ -7,13 +7,13 @@
   border: solid var(--_base-color);
   background-color: var(--color-neutral-white);
   padding-top: 0.5rem;
-  padding-right: calc(16 / 16 * 1rem);
+  padding-right: 1rem;
   padding-bottom: 1.5rem;
-  padding-left: calc(16 / 16 * 1rem);
-  gap: calc(16 / 16 * 1rem);
+  padding-left: 1rem;
+  gap: 1rem;
   color: var(--color-neutral-solid-gray-800);
   font-weight: normal;
-  font-size: calc(16 / 16 * 1rem);
+  font-size: 1rem;
   line-height: 1.7;
   font-family: var(--font-family-sans);
   letter-spacing: 0.02em;
@@ -42,7 +42,7 @@
 
   .css-notification-banner[css-type="color-chip"] {
     padding-left: calc(40 / 16 * 1rem);
-    box-shadow: inset calc(16 / 16 * 1rem) 0 0 0 var(--_color-chip-color);
+    box-shadow: inset 1rem 0 0 0 var(--_color-chip-color);
   }
 }
 
@@ -228,7 +228,7 @@
 @media (min-width: 48rem) {
   .css-notification-banner__actions {
     grid-auto-flow: column;
-    gap: calc(16 / 16 * 1rem);
+    gap: 1rem;
     grid-column: 2 / 4;
     justify-content: end;
   }

@@ -10,7 +10,7 @@
   max-width: calc(1024 / 16 * 1rem);
   color: var(--color-neutral-solid-gray-800);
   font-weight: normal;
-  font-size: calc(16 / 16 * 1rem);
+  font-size: 1rem;
   line-height: 1.7;
   font-family: var(--font-family-sans);
   letter-spacing: 0.02em;
@@ -25,7 +25,7 @@
 
 .css-carousel__heading {
   margin-top: 0;
-  margin-bottom: calc(16 / 16 * 1rem);
+  margin-bottom: 1rem;
   font-size: calc(20 / 16 * 1rem);
   line-height: 1.5;
   font-weight: bold;
@@ -60,7 +60,7 @@
   color: var(--color-neutral-solid-gray-800);
   font: inherit;
   font-weight: bold;
-  font-size: calc(16 / 16 * 1rem);
+  font-size: 1rem;
   line-height: 1;
   letter-spacing: 0.02em;
 }
@@ -292,9 +292,9 @@
 .css-carousel__next-image-label {
   display: block;
   border-top: 1px solid var(--color-neutral-solid-gray-420);
-  padding: calc(16 / 16 * 1rem);
+  padding: 1rem;
   font-weight: bold;
-  font-size: calc(16 / 16 * 1rem);
+  font-size: 1rem;
   line-height: 1.7;
   letter-spacing: 0.02em;
   text-decoration-thickness: inherit;
@@ -353,7 +353,7 @@
   margin: 0;
   display: flex;
   justify-content: end;
-  column-gap: calc(16 / 16 * 1rem);
+  column-gap: 1rem;
   padding: 0;
   list-style-type: none;
 }
@@ -367,7 +367,7 @@
   position: absolute;
   top: 50%;
   left: 100%;
-  width: calc(16 / 16 * 1rem);
+  width: 1rem;
   border-bottom: 1px solid var(--color-neutral-solid-gray-800);
   content: "";
 }

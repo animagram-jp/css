@@ -12,7 +12,7 @@
   padding: 0;
   color: var(--color-neutral-solid-gray-800);
   font-weight: normal;
-  font-size: calc(16 / 16 * 1rem);
+  font-size: 1rem;
   line-height: 1.7;
   font-family: var(--font-family-sans);
   letter-spacing: 0.02em;
@@ -46,7 +46,7 @@
 .css-drawer__header {
   display: flex;
   grid-area: header;
-  padding: calc(20 / 16 * 1rem) calc(16 / 16 * 1rem);
+  padding: calc(20 / 16 * 1rem) 1rem;
 }
 
 .css-drawer[data-placement="right"] .css-drawer__header {

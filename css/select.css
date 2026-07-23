@@ -13,15 +13,13 @@
         calc(100% - 14px) calc(50% - 1px);
     background-size: 0.5rem 0.5rem;
     padding-right: calc(40 / 16 * 1rem);
-    padding-left: calc(16 / 16 * 1rem);
+    padding-left: 1rem;
     color: rgb(var(--rgb-ink));
     font: inherit;
     line-height: var(--css-typography-text-flush-2-line-height);
     letter-spacing: inherit;
     appearance: none;
 }
-
-
 
 .css-select[css-size="sm"] {
   height: var(--css-size-sm-height);
@@ -89,7 +87,7 @@
 }
 
 .css-select[multiple] option {
-  padding: calc(6 / 16 * 1rem) calc(16 / 16 * 1rem);
+  padding: calc(6 / 16 * 1rem) 1rem;
   border-radius: 0.25rem;
 }
 

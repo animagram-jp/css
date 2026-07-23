@@ -131,14 +131,14 @@
 .css-button[css-size="lg"] {
   min-height: var(--css-size-lg-height);
   border-radius: 0.5rem;
-  padding: calc(12 / 16 * 1rem) calc(16 / 16 * 1rem);
+  padding: calc(12 / 16 * 1rem) 1rem;
 }
 
 .css-button:not([css-size]),
 .css-button[css-size="md"] {
   min-height: var(--css-size-md-height);
   border-radius: 0.5rem;
-  padding: 0.5rem calc(16 / 16 * 1rem);
+  padding: 0.5rem 1rem;
 }
 
 /*
