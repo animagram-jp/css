@@ -2,7 +2,7 @@
   display: inline-flex;
   width: fit-content;
   border: 0;
-  border-radius: calc(4 / 16 * 1rem);
+  border-radius: 0.25rem;
   background: transparent;
   padding: 0;
   color: var(--color-neutral-black);
@@ -17,10 +17,10 @@
 }
 
 .css-hamburger-menu-icon-button:focus-visible {
-  outline: calc(4 / 16 * 1rem) solid var(--color-neutral-black);
-  outline-offset: calc(2 / 16 * 1rem);
+  outline: 0.25rem solid var(--color-neutral-black);
+  outline-offset: 0.125rem;
   background-color: var(--color-primitive-yellow-300);
-  box-shadow: 0 0 0 calc(2 / 16 * 1rem) var(--color-primitive-yellow-300);
+  box-shadow: 0 0 0 0.125rem var(--color-primitive-yellow-300);
 }
 
 .css-hamburger-menu-icon-button__icon {

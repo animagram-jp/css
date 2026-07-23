@@ -16,7 +16,7 @@
 .css-menu-list__item:any-link {
   display: flex;
   align-items: center;
-  column-gap: calc(8 / 16 * 1rem);
+  column-gap: 0.5rem;
   box-sizing: border-box;
   width: -webkit-fill-available;
   width: -moz-available;
@@ -52,11 +52,11 @@
 }
 
 .css-menu-list__item[css-type="standard"][css-size="md"] {
-  border-radius: calc(8 / 16 * 1rem);
+  border-radius: 0.5rem;
 }
 
 .css-menu-list__item[css-type="standard"][css-size="sm"] {
-  border-radius: calc(4 / 16 * 1rem);
+  border-radius: 0.25rem;
 }
 
 .css-menu-list__item[css-type="box"] {
@@ -99,13 +99,13 @@
 }
 
 .css-menu-list__item[css-type="standard"]:focus-visible {
-  outline: calc(4 / 16 * 1rem) solid var(--color-neutral-black);
-  outline-offset: calc(2 / 16 * 1rem);
-  box-shadow: 0 0 0 calc(2 / 16 * 1rem) var(--color-primitive-yellow-300);
+  outline: 0.25rem solid var(--color-neutral-black);
+  outline-offset: 0.125rem;
+  box-shadow: 0 0 0 0.125rem var(--color-primitive-yellow-300);
 }
 
 .css-menu-list__item[css-type="box"]:focus-visible {
-  outline: calc(4 / 16 * 1rem) solid var(--color-neutral-black);
+  outline: 0.25rem solid var(--color-neutral-black);
   outline-offset: calc(-4 / 16 * 1rem);
   box-shadow: inset 0 0 0 calc(6 / 16 * 1rem) var(--color-primitive-yellow-300);
 }
@@ -128,7 +128,7 @@
 }
 
 .css-menu-list__end-icon {
-  margin-top: calc(2 / 16 * 1rem);
+  margin-top: 0.125rem;
   margin-right: calc(-4 / 16 * 1rem);
   margin-left: auto;
   flex-shrink: 0;

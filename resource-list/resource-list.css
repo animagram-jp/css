@@ -62,15 +62,15 @@
   .css-resource-list__body:any-link:hover,
   .css-resource-list[data-interaction="whole"]
     .css-resource-list__body:has(:enabled):hover:not(:focus-visible) {
-    outline: calc(2 / 16 * 1rem) solid var(--color-neutral-black);
+    outline: 0.125rem solid var(--color-neutral-black);
     background: var(--color-neutral-solid-gray-50);
   }
 }
 
 .css-resource-list__body:any-link:focus-visible {
-  outline: calc(4 / 16 * 1rem) solid var(--color-neutral-black);
-  outline-offset: calc(2 / 16 * 1rem);
-  box-shadow: 0 0 0 calc(2 / 16 * 1rem) var(--color-primitive-yellow-300);
+  outline: 0.25rem solid var(--color-neutral-black);
+  outline-offset: 0.125rem;
+  box-shadow: 0 0 0 0.125rem var(--color-primitive-yellow-300);
 }
 
 .css-resource-list__body > * {
@@ -93,7 +93,7 @@
   flex-grow: 1;
   flex-shrink: 1;
   flex-direction: column;
-  gap: calc(4 / 16 * 1rem);
+  gap: 0.25rem;
   font-weight: normal;
   font-size: calc(16 / 16 * 1rem);
   line-height: 1.3;
@@ -139,8 +139,8 @@
   margin-top: calc(-8 / 16 * 1rem);
   margin-bottom: calc(-8 / 16 * 1rem);
   display: block;
-  padding-top: calc(8 / 16 * 1rem);
-  padding-bottom: calc(8 / 16 * 1rem);
+  padding-top: 0.5rem;
+  padding-bottom: 0.5rem;
 }
 
 .css-resource-list[data-interaction="whole"]
@@ -170,13 +170,13 @@
 .css-resource-list__title a:focus-visible {
   margin-top: 0;
   margin-bottom: 0;
-  outline: calc(4 / 16 * 1rem) solid var(--color-neutral-black);
-  outline-offset: calc(2 / 16 * 1rem);
-  border-radius: calc(4 / 16 * 1rem);
+  outline: 0.25rem solid var(--color-neutral-black);
+  outline-offset: 0.125rem;
+  border-radius: 0.25rem;
   background-color: var(--color-primitive-yellow-300);
   padding-top: 0;
   padding-bottom: 0;
-  box-shadow: 0 0 0 calc(2 / 16 * 1rem) var(--color-primitive-yellow-300);
+  box-shadow: 0 0 0 0.125rem var(--color-primitive-yellow-300);
 }
 
 .css-resource-list__support > * {
@@ -217,14 +217,14 @@
 
 @media (hover: hover) {
   .css-resource-list__action-button:enabled:hover {
-    outline: calc(2 / 16 * 1rem) solid var(--color-neutral-black);
+    outline: 0.125rem solid var(--color-neutral-black);
     outline-offset: calc(-1 / 16 * 1rem);
     background: var(--color-neutral-solid-gray-50);
   }
 }
 
 .css-resource-list__action-button:focus-visible {
-  outline: calc(4 / 16 * 1rem) solid var(--color-neutral-black);
+  outline: 0.25rem solid var(--color-neutral-black);
   outline-offset: calc(-3 / 16 * 1rem);
   background: var(--color-primitive-yellow-300);
   box-shadow: none;

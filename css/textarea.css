@@ -6,7 +6,7 @@
   border: 1px solid var(--color-muted);
   background-color: var(--color-background);
   padding: calc(12 / 16 * 1rem) calc(16 / 16 * 1rem);
-  border-radius: calc(8 / 16 * 1rem);
+  border-radius: 0.5rem;
   color: rgb(var(--rgb-ink));
   font-weight: normal;
   font-size: calc(16 / 16 * 1rem);
@@ -70,7 +70,7 @@
 
 .css-textarea-counter {
   display: block;
-  margin-top: calc(8 / 16 * 1rem);
+  margin-top: 0.5rem;
   color: var(--color-muted);
   font-size: var(--css-typography-text-flush-2-font-size);
   line-height: var(--css-typography-text-flush-2-line-height);

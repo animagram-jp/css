@@ -1,21 +1,27 @@
 .css-select {
-  vertical-align: middle;
-  box-sizing: border-box;
-  border-radius: calc(8 / 16 * 1rem);
-  border: 1px solid var(--color-muted);
-  background-color: var(--color-background);
-  background-image: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'><path d='M12 18 3 9 5 7 12 14 19 7 21 9Z' fill='%23333333'/></svg>");
-  background-repeat: no-repeat;
-  background-position: right calc(16 / 16 * 1rem) center;
-  background-size: calc(16 / 16 * 1rem);
-  padding-right: calc(40 / 16 * 1rem);
-  padding-left: calc(16 / 16 * 1rem);
-  color: rgb(var(--rgb-ink));
-  font: inherit;
-  line-height: var(--css-typography-text-flush-2-line-height);
-  letter-spacing: inherit;
-  appearance: none;
+    vertical-align: middle;
+    box-sizing: border-box;
+    border-radius: 0.5rem;
+    border: 1px solid var(--color-muted);
+    background-color: var(--color-background);
+    background-image:
+        linear-gradient(45deg,  transparent 50%, rgb(var(--rgb-ink)) 50%),
+        linear-gradient(135deg, rgb(var(--rgb-ink)) 50%, transparent 50%);
+    background-repeat: no-repeat;
+    background-position:
+        calc(100% - 20px) calc(50% - 1px),
+        calc(100% - 14px) calc(50% - 1px);
+    background-size: 0.5rem 0.5rem;
+    padding-right: calc(40 / 16 * 1rem);
+    padding-left: calc(16 / 16 * 1rem);
+    color: rgb(var(--rgb-ink));
+    font: inherit;
+    line-height: var(--css-typography-text-flush-2-line-height);
+    letter-spacing: inherit;
+    appearance: none;
 }
+
+
 
 .css-select[css-size="sm"] {
   height: var(--css-size-sm-height);
@@ -70,19 +76,21 @@
 }
 
 .css-select:open {
-  background-image: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'><path d='M12 6 21 15 19 17 12 10 5 17 3 15Z' fill='%23333333'/></svg>");
+    background-image:
+        linear-gradient(135deg,  transparent 50%, rgb(var(--rgb-ink)) 50%),
+        linear-gradient(45deg, rgb(var(--rgb-ink)) 50%, transparent 50%);
 }
 
 .css-select[multiple] {
   appearance: auto;
   background-image: none;
-  padding: calc(4 / 16 * 1rem) 0;
+  padding: 0.25rem 0;
   height: auto;
 }
 
 .css-select[multiple] option {
   padding: calc(6 / 16 * 1rem) calc(16 / 16 * 1rem);
-  border-radius: calc(4 / 16 * 1rem);
+  border-radius: 0.25rem;
 }
 
 .css-select[multiple] option:checked {

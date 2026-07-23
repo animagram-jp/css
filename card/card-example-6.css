@@ -2,7 +2,7 @@
   margin: 0;
   display: flex;
   flex-wrap: wrap;
-  gap: calc(24 / 16 * 1rem);
+  gap: 1.5rem;
   padding: 0;
   list-style: none;
 }
@@ -40,7 +40,7 @@
 
 .css-card-example-6__main {
   grid-area: main;
-  padding: calc(16 / 16 * 1rem) calc(24 / 16 * 1rem);
+  padding: calc(16 / 16 * 1rem) 1.5rem;
 }
 
 .css-card-example-6__heading {
@@ -78,8 +78,8 @@
   align-items: center;
   justify-content: center;
   box-sizing: border-box;
-  width: calc(48 / 16 * 1rem);
-  height: calc(48 / 16 * 1rem);
+  width: 3rem;
+  height: 3rem;
   background-color: var(--color-neutral-white);
   border-radius: calc(6 / 16 * 1rem);
   border: 1px solid var(--color-neutral-solid-gray-420);

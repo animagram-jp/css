@@ -117,12 +117,12 @@
   display: inline-flex;
   flex-direction: column;
   vertical-align: middle;
-  margin-inline-start: calc(4 / 16 * 1rem);
+  margin-inline-start: 0.25rem;
 }
 
 :is(.css-sort-up, .css-sort-down) {
   display: block;
-  width: calc(24 / 16 * 1rem);
+  width: 1.5rem;
   height: calc(12 / 16 * 1rem);
   border: 0;
   background-color: transparent;
@@ -160,11 +160,11 @@
 }
 
 :is(.css-sort-up, .css-sort-down):focus-visible {
-  outline: calc(2 / 16 * 1rem) solid rgb(var(--rgb-border));
-  outline-offset: calc(2 / 16 * 1rem);
-  border-radius: calc(2 / 16 * 1rem);
+  outline: 0.125rem solid rgb(var(--rgb-border));
+  outline-offset: 0.125rem;
+  border-radius: 0.125rem;
   background-color: rgb(var(--rgb-focus));
-  box-shadow: 0 0 0 calc(2 / 16 * 1rem) rgb(var(--rgb-focus));
+  box-shadow: 0 0 0 0.125rem rgb(var(--rgb-focus));
 }
 
 /* Utilities */

@@ -18,8 +18,8 @@
 
 @container (min-width: 64rem) {
   .css-carousel__inner {
-    padding-right: calc(48 / 16 * 1rem);
-    padding-left: calc(48 / 16 * 1rem);
+    padding-right: 3rem;
+    padding-left: 3rem;
   }
 }
 
@@ -34,13 +34,13 @@
 
 @media (min-width: 30rem) {
   .css-carousel__heading {
-    font-size: calc(24 / 16 * 1rem);
+    font-size: 1.5rem;
   }
 }
 
 @media (min-width: 64rem) {
   .css-carousel__heading {
-    font-size: calc(32 / 16 * 1rem);
+    font-size: 2rem;
     letter-spacing: 0.01em;
   }
 }
@@ -51,12 +51,12 @@
   justify-content: center;
   align-items: center;
   box-sizing: border-box;
-  width: calc(32 / 16 * 1rem);
-  height: calc(32 / 16 * 1rem);
+  width: 2rem;
+  height: 2rem;
   border: 1px solid var(--color-neutral-solid-gray-800);
   border-radius: 50%;
   background-color: var(--color-neutral-white);
-  padding: 0 0 calc(2 / 16 * 1rem);
+  padding: 0 0 0.125rem;
   color: var(--color-neutral-solid-gray-800);
   font: inherit;
   font-weight: bold;
@@ -85,7 +85,7 @@
     margin-left: calc(-48 / 16 * 1rem);
     grid-template:
       "number main next ." auto /
-      calc(48 / 16 * 1rem) 3fr 1fr calc(48 / 16 * 1rem);
+      3rem 3fr 1fr 3rem;
   }
 }
 
@@ -146,14 +146,14 @@
 
 @media (hover: hover) {
   .css-carousel__main-link:any-link:hover:not(:focus-visible) {
-    outline: calc(4 / 16 * 1rem) solid var(--color-primitive-blue-900);
+    outline: 0.25rem solid var(--color-primitive-blue-900);
     outline-offset: calc(-2 / 16 * 1rem);
   }
 
   .css-carousel__main-link:any-link:hover:not(:focus-visible)::after {
     position: absolute;
     inset: 2px;
-    box-shadow: inset 0 0 0 calc(2 / 16 * 1rem) var(--color-neutral-white);
+    box-shadow: inset 0 0 0 0.125rem var(--color-neutral-white);
     pointer-events: none;
     content: "";
   }
@@ -161,15 +161,15 @@
 
 .css-carousel__main-link:focus-visible {
   overflow: hidden;
-  outline: calc(4 / 16 * 1rem) solid var(--color-neutral-black);
+  outline: 0.25rem solid var(--color-neutral-black);
   outline-offset: calc(-2 / 16 * 1rem);
-  border-radius: calc(8 / 16 * 1rem);
+  border-radius: 0.5rem;
 }
 
 .css-carousel__main-link:focus-visible::after {
   position: absolute;
   inset: 2px;
-  box-shadow: inset 0 0 0 calc(2 / 16 * 1rem) var(--color-primitive-yellow-300);
+  box-shadow: inset 0 0 0 0.125rem var(--color-primitive-yellow-300);
   border-radius: calc(6 / 16 * 1rem);
   pointer-events: none;
   content: "";
@@ -236,7 +236,7 @@
   min-width: 0;
   border: 1px solid var(--color-neutral-solid-gray-420);
   border-left-width: 0;
-  padding: calc(24 / 16 * 1rem);
+  padding: 1.5rem;
 }
 
 @container (min-width: 64rem) {
@@ -261,7 +261,7 @@
 
 @media (hover: hover) {
   .css-carousel__next > button:hover {
-    outline: calc(4 / 16 * 1rem) solid var(--color-primitive-blue-900);
+    outline: 0.25rem solid var(--color-primitive-blue-900);
     outline-offset: -1px;
     text-decoration-thickness: calc(3 / 16 * 1rem);
   }
@@ -269,17 +269,17 @@
   .css-carousel__next > button:hover:not(:focus-visible)::after {
     position: absolute;
     inset: 0;
-    box-shadow: inset 0 0 0 calc(2 / 16 * 1rem) var(--color-neutral-white);
+    box-shadow: inset 0 0 0 0.125rem var(--color-neutral-white);
     pointer-events: none;
     content: "";
   }
 }
 
 .css-carousel__next > button:focus-visible {
-  outline: calc(4 / 16 * 1rem) solid var(--color-neutral-black);
-  outline-offset: calc(2 / 16 * 1rem);
-  border-radius: calc(4 / 16 * 1rem);
-  box-shadow: 0 0 0 calc(2 / 16 * 1rem) var(--color-primitive-yellow-300);
+  outline: 0.25rem solid var(--color-neutral-black);
+  outline-offset: 0.125rem;
+  border-radius: 0.25rem;
+  box-shadow: 0 0 0 0.125rem var(--color-primitive-yellow-300);
 }
 
 .css-carousel__next-image-container img {
@@ -309,7 +309,7 @@
 
 @container (min-width: 64rem) {
   .css-carousel__controls {
-    column-gap: calc(32 / 16 * 1rem);
+    column-gap: 2rem;
   }
 }
 
@@ -318,10 +318,10 @@
 }
 
 .css-carousel__others .css-disclosure__summary {
-  border-radius: calc(8 / 16 * 1rem);
+  border-radius: 0.5rem;
   border: 1px solid var(--color-neutral-solid-gray-600);
   background-color: var(--color-neutral-white) !important;
-  padding: calc(8 / 16 * 1rem) calc(12 / 16 * 1rem);
+  padding: 0.5rem calc(12 / 16 * 1rem);
   cursor: pointer;
 }
 
@@ -332,7 +332,7 @@
 
 .css-carousel__others-content > ul {
   display: grid;
-  row-gap: calc(24 / 16 * 1rem);
+  row-gap: 1.5rem;
   margin: 0;
   padding: 0;
   list-style-type: none;
@@ -396,9 +396,9 @@
 }
 
 .css-carousel__step:focus-visible {
-  outline: calc(4 / 16 * 1rem) solid var(--color-neutral-black);
-  outline-offset: calc(2 / 16 * 1rem);
-  box-shadow: 0 0 0 calc(2 / 16 * 1rem) var(--color-primitive-yellow-300);
+  outline: 0.25rem solid var(--color-neutral-black);
+  outline-offset: 0.125rem;
+  box-shadow: 0 0 0 0.125rem var(--color-primitive-yellow-300);
 }
 
 .css-carousel__page-nav {
@@ -423,8 +423,8 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  width: calc(24 / 16 * 1rem);
-  height: calc(24 / 16 * 1rem);
+  width: 1.5rem;
+  height: 1.5rem;
   border: 1px solid var(--color-primitive-blue-1000);
   border-radius: 50%;
   background-color: var(--color-neutral-white);
@@ -443,9 +443,9 @@
 }
 
 .css-carousel__page-nav > button:focus-visible {
-  outline: calc(4 / 16 * 1rem) solid var(--color-neutral-black);
-  outline-offset: calc(2 / 16 * 1rem);
-  box-shadow: 0 0 0 calc(2 / 16 * 1rem) var(--color-primitive-yellow-300);
+  outline: 0.25rem solid var(--color-neutral-black);
+  outline-offset: 0.125rem;
+  box-shadow: 0 0 0 0.125rem var(--color-primitive-yellow-300);
 }
 
 .css-carousel__page-nav > span {

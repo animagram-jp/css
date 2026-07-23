@@ -16,8 +16,8 @@ label.css-search-box > svg {
   left: calc(16 / 16 * 1rem);
   z-index: 1;
   margin: auto 0;
-  width: calc(24 / 16 * 1rem);
-  height: calc(24 / 16 * 1rem);
+  width: 1.5rem;
+  height: 1.5rem;
   color: var(--color-muted);
   pointer-events: none;
 }
@@ -31,7 +31,7 @@ label.css-search-box > svg {
 label.css-search-box > .css-input {
   flex-grow: 1;
   width: 8rem;
-  padding-left: calc(48 / 16 * 1rem);
+  padding-left: 3rem;
 }
 
 /* when preceded by css-search-box-scope, remove left rounding and collapse border */
@@ -74,7 +74,7 @@ label.css-search-box-scope > select {
   overflow: hidden;
   box-sizing: border-box;
   width: calc(160 / 16 * 1rem);
-  border-radius: calc(8 / 16 * 1rem) 0 0 calc(8 / 16 * 1rem);
+  border-radius: 0.5rem 0 0 0.5rem;
   border: 1px solid var(--color-muted);
   background-color: rgb(var(--rgb-light-gray) / 0.3);
   padding-top: calc(20 / 16 * 1rem);
@@ -95,9 +95,9 @@ label.css-search-box-scope[css-size="sm"] > select {
 }
 
 label.css-search-box-scope[css-size="sm"]::after {
-  right: calc(8 / 16 * 1rem);
-  width: calc(8 / 16 * 1rem);
-  height: calc(8 / 16 * 1rem);
+  right: 0.5rem;
+  width: 0.5rem;
+  height: 0.5rem;
 }
 
 label.css-search-box-scope:not([css-size]) > select,
@@ -136,22 +136,22 @@ label.css-search-box-scope::after {
   margin: auto 0;
   width: calc(10 / 16 * 1rem);
   height: calc(10 / 16 * 1rem);
-  border-right: calc(2 / 16 * 1rem) solid currentcolor;
-  border-bottom: calc(2 / 16 * 1rem) solid currentcolor;
+  border-right: 0.125rem solid currentcolor;
+  border-bottom: 0.125rem solid currentcolor;
   transform: translateY(calc(-2 / 16 * 1rem)) rotate(45deg);
   pointer-events: none;
 }
 
 label.css-search-box-scope:has(> select:open)::after {
-  transform: translateY(calc(2 / 16 * 1rem)) rotate(225deg);
+  transform: translateY(0.125rem) rotate(225deg);
 }
 
 label.css-search-box-scope > select:focus-visible {
   position: relative;
   z-index: 1;
-  outline: calc(2 / 16 * 1rem) solid rgb(var(--rgb-border));
-  outline-offset: calc(2 / 16 * 1rem);
-  box-shadow: 0 0 0 calc(2 / 16 * 1rem) rgb(var(--rgb-focus));
+  outline: 0.125rem solid rgb(var(--rgb-border));
+  outline-offset: 0.125rem;
+  box-shadow: 0 0 0 0.125rem rgb(var(--rgb-focus));
 }
 
 @media (hover: hover) {
@@ -197,7 +197,7 @@ label.css-search-box-scope option:checked {
 
 label.css-search-box-scope option:focus-visible {
   border-radius: 0;
-  outline: calc(4 / 16 * 1rem) solid rgb(var(--rgb-border));
+  outline: 0.25rem solid rgb(var(--rgb-border));
   outline-offset: calc(-4 / 16 * 1rem);
   box-shadow: none;
 }

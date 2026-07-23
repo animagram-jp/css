@@ -2,7 +2,7 @@
   margin: 0;
   display: flex;
   flex-wrap: wrap;
-  gap: calc(24 / 16 * 1rem);
+  gap: 1.5rem;
   padding: 0;
   list-style: none;
 }
@@ -41,9 +41,9 @@
 }
 
 .css-card-example-5__link:focus-visible {
-  outline: calc(4 / 16 * 1rem) solid var(--color-neutral-black);
-  outline-offset: calc(2 / 16 * 1rem);
-  box-shadow: 0 0 0 calc(2 / 16 * 1rem) var(--color-primitive-yellow-300);
+  outline: 0.25rem solid var(--color-neutral-black);
+  outline-offset: 0.125rem;
+  box-shadow: 0 0 0 0.125rem var(--color-primitive-yellow-300);
 }
 
 .css-card-example-5__heading {
@@ -67,11 +67,11 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  row-gap: calc(4 / 16 * 1rem);
+  row-gap: 0.25rem;
   width: calc(58 / 16 * 1rem);
-  border-radius: calc(8 / 16 * 1rem);
+  border-radius: 0.5rem;
   background-color: var(--color-neutral-white);
-  padding: calc(8 / 16 * 1rem);
+  padding: 0.5rem;
 }
 
 .css-card-example-5__month {
@@ -84,18 +84,18 @@
 
 .css-card-example-5__date {
   font-weight: bold;
-  font-size: calc(24 / 16 * 1rem);
+  font-size: 1.5rem;
   line-height: 1;
   letter-spacing: 0.02em;
 }
 
 .css-card-example-5__label {
-  margin: calc(16 / 16 * 1rem) calc(24 / 16 * 1rem) calc(8 / 16 * 1rem);
+  margin: calc(16 / 16 * 1rem) 1.5rem 0.5rem;
   display: block;
 }
 
 .css-card-example-5__title {
-  margin: 0 calc(24 / 16 * 1rem);
+  margin: 0 1.5rem;
   display: block;
   color: var(--color-neutral-solid-gray-900);
   font-weight: bold;
@@ -117,8 +117,8 @@
   flex-grow: 1;
   display: grid;
   grid-template-rows: 1fr auto;
-  gap: calc(32 / 16 * 1rem);
-  padding: 0 calc(24 / 16 * 1rem) calc(16 / 16 * 1rem);
+  gap: 2rem;
+  padding: 0 1.5rem calc(16 / 16 * 1rem);
 }
 
 .css-card-example-5__sub > * {

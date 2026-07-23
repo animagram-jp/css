@@ -15,22 +15,22 @@
 }
 
 .css-radio[css-size="sm"] {
-  --_gap: calc(4 / 16 * 1rem);
-  --_radio-size: calc(24 / 16 * 1rem);
+  --_gap: 0.25rem;
+  --_radio-size: 1.5rem;
   --_radio-outer-size: calc(20 / 16 * 1rem);
   --_radio-inner-size: calc(10 / 16 * 1rem);
-  --_radio-border-width: calc(2 / 16 * 1rem);
+  --_radio-border-width: 0.125rem;
   --_label-font-size: var(--css-typography-text-flush-2-font-size);
   --_padding-block: calc(10 / 16 * 1rem);
 }
 
 .css-radio:not([css-size]),
 .css-radio[css-size="md"] {
-  --_gap: calc(8 / 16 * 1rem);
-  --_radio-size: calc(32 / 16 * 1rem);
+  --_gap: 0.5rem;
+  --_radio-size: 2rem;
   --_radio-outer-size: calc(26 / 16 * 1rem);
   --_radio-inner-size: calc(12 / 16 * 1rem);
-  --_radio-border-width: calc(2 / 16 * 1rem);
+  --_radio-border-width: 0.125rem;
   --_label-font-size: var(--css-typography-text-flush-2-font-size);
   --_padding-block: calc(11 / 16 * 1rem);
 }
@@ -82,9 +82,9 @@
 }
 
 .css-radio > input:focus {
-  outline: calc(2 / 16 * 1rem) solid rgb(var(--rgb-border));
-  outline-offset: calc(2 / 16 * 1rem);
-  box-shadow: 0 0 0 calc(2 / 16 * 1rem) rgb(var(--rgb-focus));
+  outline: 0.125rem solid rgb(var(--rgb-border));
+  outline-offset: 0.125rem;
+  box-shadow: 0 0 0 0.125rem rgb(var(--rgb-focus));
 }
 
 @media (hover: hover) {

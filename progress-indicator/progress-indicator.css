@@ -1,6 +1,6 @@
 .css-progress-indicator {
   display: flex;
-  gap: calc(16 / 16 * 1rem) calc(8 / 16 * 1rem);
+  gap: 1rem 0.5rem;
   justify-content: center;
   align-items: center;
   color: var(--color-neutral-solid-gray-900);
@@ -46,7 +46,7 @@ css-progress-indicator:not([active]) * {
 .css-progress-indicator[css-type="stacked-underlay"]:has(
     .css-progress-indicator__linear
   ) {
-  padding: calc(24 / 16 * 1rem);
+  padding: 1.5rem;
 }
 
 .css-progress-indicator__track {

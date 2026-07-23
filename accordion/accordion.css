@@ -5,14 +5,14 @@
 
 @media (min-width: 48rem) {
   .css-accordion {
-    --_icon-size: calc(32 / 16 * 1rem);
+    --_icon-size: 2rem;
   }
 }
 
 .css-accordion__summary {
   position: relative;
   display: block;
-  padding: calc(8 / 16 * 1rem) calc(8 / 16 * 1rem) calc(8 / 16 * 1rem)
+  padding: 0.5rem 0.5rem 0.5rem
     calc(var(--_icon-size) + 0.75rem);
   color: var(--color-neutral-solid-gray-800);
   font-weight: normal;
@@ -47,17 +47,17 @@
 }
 
 .css-accordion__summary:focus-visible {
-  outline: calc(4 / 16 * 1rem) solid var(--color-neutral-black);
-  outline-offset: calc(2 / 16 * 1rem);
-  border-radius: calc(4 / 16 * 1rem);
+  outline: 0.25rem solid var(--color-neutral-black);
+  outline-offset: 0.125rem;
+  border-radius: 0.25rem;
   background-color: var(--color-primitive-yellow-300);
-  box-shadow: 0 0 0 calc(2 / 16 * 1rem) var(--color-primitive-yellow-300);
+  box-shadow: 0 0 0 0.125rem var(--color-primitive-yellow-300);
 }
 
 .css-accordion__icon {
   position: absolute;
-  top: calc(8 / 16 * 1rem);
-  left: calc(2 / 16 * 1rem);
+  top: 0.5rem;
+  left: 0.125rem;
   margin-top: calc((1lh - var(--_icon-size)) / 2);
   display: inline-flex;
   align-items: center;
@@ -84,12 +84,12 @@
 
 @media (hover: hover) {
   .css-accordion__summary:hover .css-accordion__icon {
-    outline: calc(2 / 16 * 1rem) solid currentcolor;
+    outline: 0.125rem solid currentcolor;
   }
 }
 
 .css-accordion__icon-svg {
-  margin-top: calc(2 / 16 * 1rem);
+  margin-top: 0.125rem;
   width: calc(16 / 16 * 1rem);
   height: calc(16 / 16 * 1rem);
   pointer-events: none;
@@ -108,13 +108,13 @@
 }
 
 .css-accordion__content {
-  padding: calc(16 / 16 * 1rem) calc(8 / 16 * 1rem) calc(16 / 16 * 1rem)
+  padding: calc(16 / 16 * 1rem) 0.5rem calc(16 / 16 * 1rem)
     calc(var(--_icon-size) + 0.75rem);
 }
 
 @media (min-width: 48rem) {
   .css-accordion__content {
-    padding: calc(24 / 16 * 1rem) calc(16 / 16 * 1rem) calc(24 / 16 * 1rem)
+    padding: 1.5rem calc(16 / 16 * 1rem) 1.5rem
       calc(var(--_icon-size) + 1.25rem);
   }
 }
@@ -144,11 +144,11 @@
 }
 
 .css-accordion__back-link:focus-visible {
-  outline: calc(4 / 16 * 1rem) solid var(--color-neutral-black);
-  outline-offset: calc(2 / 16 * 1rem);
-  border-radius: calc(4 / 16 * 1rem);
+  outline: 0.25rem solid var(--color-neutral-black);
+  outline-offset: 0.125rem;
+  border-radius: 0.25rem;
   background-color: var(--color-primitive-yellow-300);
-  box-shadow: 0 0 0 calc(2 / 16 * 1rem) var(--color-primitive-yellow-300);
+  box-shadow: 0 0 0 0.125rem var(--color-primitive-yellow-300);
 }
 
 .css-accordion__back-link-icon {

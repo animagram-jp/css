@@ -6,8 +6,8 @@
   box-sizing: border-box;
   height: var(--css-size-md-height);
   padding-inline-start: calc(16 / 16 * 1rem);
-  padding-inline-end: calc(48 / 16 * 1rem);
-  border-radius: calc(8 / 16 * 1rem);
+  padding-inline-end: 3rem;
+  border-radius: 0.5rem;
   border: 1px solid var(--color-muted);
   background-color: transparent;
   color: rgb(var(--rgb-ink));
@@ -26,8 +26,8 @@
   margin: auto 0;
   width: calc(10 / 16 * 1rem);
   height: calc(10 / 16 * 1rem);
-  border-right: calc(2 / 16 * 1rem) solid currentcolor;
-  border-bottom: calc(2 / 16 * 1rem) solid currentcolor;
+  border-right: 0.125rem solid currentcolor;
+  border-bottom: 0.125rem solid currentcolor;
   transform: translateY(calc(-2 / 16 * 1rem)) rotate(45deg);
 }
 
@@ -37,9 +37,9 @@
 }
 
 .list-box-trigger[css-size="sm"]::after {
-  right: calc(8 / 16 * 1rem);
-  width: calc(8 / 16 * 1rem);
-  height: calc(8 / 16 * 1rem);
+  right: 0.5rem;
+  width: 0.5rem;
+  height: 0.5rem;
 }
 
 .list-box-trigger:not([css-size]),
@@ -52,7 +52,7 @@
 }
 
 .list-box:popover-open + .list-box-trigger::after {
-  transform: translateY(calc(2 / 16 * 1rem)) rotate(225deg);
+  transform: translateY(0.125rem) rotate(225deg);
 }
 
 @media (hover: hover) {
@@ -65,25 +65,25 @@
 }
 
 .list-box-trigger:focus-visible {
-  outline: calc(2 / 16 * 1rem) solid rgb(var(--rgb-border));
-  outline-offset: calc(2 / 16 * 1rem);
+  outline: 0.125rem solid rgb(var(--rgb-border));
+  outline-offset: 0.125rem;
   background-color: rgb(var(--rgb-focus));
-  box-shadow: 0 0 0 calc(2 / 16 * 1rem) rgb(var(--rgb-focus));
+  box-shadow: 0 0 0 0.125rem rgb(var(--rgb-focus));
 }
 
 .list-box {
   position-anchor: --list-box-trigger;
   position-area: block-end span-inline-start;
   margin: 0;
-  margin-block-start: calc(4 / 16 * 1rem);
+  margin-block-start: 0.25rem;
   box-sizing: border-box;
   width: max-content;
   max-height: calc((8 + 44 * 6.5) / 16 * 1rem);
   overflow-y: auto;
-  border-radius: calc(8 / 16 * 1rem);
+  border-radius: 0.5rem;
   border: 1px solid var(--color-muted);
   background-color: var(--color-background);
-  padding: calc(8 / 16 * 1rem) 0;
+  padding: 0.5rem 0;
   box-shadow: var(--elevation-1);
   list-style-type: none;
   color: rgb(var(--rgb-ink));
@@ -97,7 +97,7 @@
 .list-box [role="presentation"] {
   display: flex;
   align-items: center;
-  column-gap: calc(8 / 16 * 1rem);
+  column-gap: 0.5rem;
   box-sizing: border-box;
   width: 100%;
   min-height: calc(44 / 16 * 1rem);
@@ -135,7 +135,7 @@
 .list-box [role="option"] button:focus-visible {
   position: relative;
   z-index: 1;
-  outline: calc(2 / 16 * 1rem) solid rgb(var(--rgb-border));
-  outline-offset: calc(2 / 16 * 1rem);
+  outline: 0.125rem solid rgb(var(--rgb-border));
+  outline-offset: 0.125rem;
   background-color: rgb(var(--rgb-focus));
 }

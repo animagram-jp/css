@@ -13,7 +13,7 @@
 
 .css-calendar__controls {
   display: flex;
-  column-gap: calc(8 / 16 * 1rem);
+  column-gap: 0.5rem;
   padding: calc(16 / 16 * 1rem);
 }
 
@@ -43,15 +43,15 @@
 
 .css-calendar__table {
   margin-right: calc(12 / 16 * 1rem);
-  margin-bottom: calc(8 / 16 * 1rem);
+  margin-bottom: 0.5rem;
   margin-left: calc(12 / 16 * 1rem);
   width: auto;
   border-collapse: collapse;
 }
 
 .css-calendar__header-cell {
-  width: calc(48 / 16 * 1rem);
-  height: calc(48 / 16 * 1rem);
+  width: 3rem;
+  height: 3rem;
   padding: 0;
   color: var(--color-neutral-solid-gray-700);
   font-weight: bold;
@@ -64,7 +64,7 @@
 }
 
 .css-calendar__date {
-  margin: calc(4 / 16 * 1rem);
+  margin: 0.25rem;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -89,10 +89,10 @@
 }
 
 .css-calendar__date:focus-visible {
-  outline: calc(4 / 16 * 1rem) solid var(--color-neutral-black);
-  outline-offset: calc(2 / 16 * 1rem);
+  outline: 0.25rem solid var(--color-neutral-black);
+  outline-offset: 0.125rem;
   background-color: var(--color-primitive-yellow-300);
-  box-shadow: 0 0 0 calc(2 / 16 * 1rem) var(--color-primitive-yellow-300);
+  box-shadow: 0 0 0 0.125rem var(--color-primitive-yellow-300);
 }
 
 .css-calendar__date[data-selected] {

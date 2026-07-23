@@ -1,6 +1,6 @@
 .css-breadcrumb {
   display: flex;
-  column-gap: calc(4 / 16 * 1rem);
+  column-gap: 0.25rem;
   color: var(--color-neutral-solid-gray-800);
   font-weight: normal;
   font-size: calc(16 / 16 * 1rem);
@@ -48,11 +48,11 @@
 }
 
 .css-breadcrumb__link:focus-visible {
-  outline: calc(4 / 16 * 1rem) solid var(--color-neutral-black);
-  outline-offset: calc(2 / 16 * 1rem);
-  border-radius: calc(4 / 16 * 1rem);
+  outline: 0.25rem solid var(--color-neutral-black);
+  outline-offset: 0.125rem;
+  border-radius: 0.25rem;
   background-color: var(--color-primitive-yellow-300);
-  box-shadow: 0 0 0 calc(2 / 16 * 1rem) var(--color-primitive-yellow-300);
+  box-shadow: 0 0 0 0.125rem var(--color-primitive-yellow-300);
 }
 
 .css-breadcrumb__link-icon {

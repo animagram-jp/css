@@ -10,18 +10,18 @@
 
 .css-step-navigation[css-size="md"] {
   --_number-size: calc(44 / 16 * 1rem);
-  --_number-margin: calc(4 / 16 * 1rem);
-  --_outline-width: calc(2 / 16 * 1rem);
-  --_title-margin: calc(24 / 16 * 1rem);
-  --_description-margin: calc(8 / 16 * 1rem);
+  --_number-margin: 0.25rem;
+  --_outline-width: 0.125rem;
+  --_title-margin: 1.5rem;
+  --_description-margin: 0.5rem;
 }
 
 .css-step-navigation[css-size="sm"] {
-  --_number-size: calc(32 / 16 * 1rem);
+  --_number-size: 2rem;
   --_number-margin: calc(3 / 16 * 1rem);
   --_outline-width: calc(1 / 16 * 1rem);
   --_title-margin: calc(16 / 16 * 1rem);
-  --_description-margin: calc(4 / 16 * 1rem);
+  --_description-margin: 0.25rem;
 }
 
 .css-step-navigation > ul {
@@ -85,7 +85,7 @@
   position: relative;
   display: grid;
   place-content: center;
-  margin: calc(4 / 16 * 1rem);
+  margin: 0.25rem;
   box-sizing: border-box;
   width: fit-content;
   height: var(--_number-size);
@@ -93,7 +93,7 @@
   border: 2px solid;
   border-radius: 50%;
   background-color: var(--color-neutral-white);
-  padding: 0 calc(2 / 16 * 1rem) calc(2 / 16 * 1rem);
+  padding: 0 0.125rem 0.125rem;
   font-weight: bold;
   font-size: calc(20 / 16 * 1rem);
   line-height: 1.5;
@@ -132,8 +132,8 @@
 
 .css-step-navigation__step[aria-current] .css-step-navigation__number {
   outline: var(--_outline-width) solid var(--color-neutral-solid-gray-800);
-  outline-offset: calc(2 / 16 * 1rem);
-  box-shadow: 0 0 0 calc(2 / 16 * 1rem) var(--color-neutral-white);
+  outline-offset: 0.125rem;
+  box-shadow: 0 0 0 0.125rem var(--color-neutral-white);
 }
 
 @media (forced-colors: active) {
@@ -170,9 +170,9 @@
 }
 
 .css-step-navigation__header:focus-visible .css-step-navigation__number {
-  outline: calc(4 / 16 * 1rem) solid var(--color-neutral-black);
-  outline-offset: calc(2 / 16 * 1rem);
-  box-shadow: 0 0 0 calc(2 / 16 * 1rem) var(--color-primitive-yellow-300);
+  outline: 0.25rem solid var(--color-neutral-black);
+  outline-offset: 0.125rem;
+  box-shadow: 0 0 0 0.125rem var(--color-primitive-yellow-300);
 }
 
 .css-step-navigation__state-icon {
@@ -185,7 +185,7 @@
 
 .css-step-navigation[css-size="sm"] .css-step-navigation__state-icon {
   top: calc(-9 / 16 * 1rem);
-  left: calc(50% + calc(4 / 16 * 1rem));
+  left: calc(50% + 0.25rem);
 }
 
 .css-step-navigation__state-icon > svg {
@@ -202,7 +202,7 @@
 
 .css-step-navigation__state-label {
   position: absolute;
-  inset: calc(100% + calc(8 / 16 * 1rem)) -100% 0;
+  inset: calc(100% + 0.5rem) -100% 0;
   margin: 0 auto;
   width: 4em;
   height: 1.2em;
@@ -260,7 +260,7 @@
 
 .css-step-navigation[data-orientation="vertical"] .css-step-navigation__step {
   flex: 1;
-  padding-bottom: calc(24 / 16 * 1rem);
+  padding-bottom: 1.5rem;
 }
 
 .css-step-navigation[data-orientation="vertical"]
@@ -288,7 +288,7 @@
   .css-step-navigation__step::before {
   left: calc(var(--_number-size) / 2 + var(--_number-margin));
   top: 0;
-  height: calc(32 / 16 * 1rem);
+  height: 2rem;
   border-right: 1px solid;
 }
 
@@ -296,7 +296,7 @@
   .css-step-navigation__step::after {
   left: calc(var(--_number-size) / 2 + var(--_number-margin));
   bottom: 0;
-  height: calc(100% - calc(32 / 16 * 1rem));
+  height: calc(100% - 2rem);
   border-right: 1px solid;
 }
 

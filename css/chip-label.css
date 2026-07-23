@@ -4,7 +4,7 @@
   grid-template-columns: auto auto;
   align-items: baseline;
   align-content: center;
-  border-radius: calc(8 / 16 * 1rem);
+  border-radius: 0.5rem;
   padding: 0.5rem 0.5rem;
   font-size: var(--css-typography-text-flush-2-font-size);
   line-height: var(--css-typography-text-flush-2-line-height);

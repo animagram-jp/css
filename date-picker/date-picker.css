@@ -20,10 +20,10 @@
 
   display: inline-flex;
   box-sizing: border-box;
-  border-radius: calc(8 / 16 * 1rem);
+  border-radius: 0.5rem;
   border: 1px solid var(--color-neutral-solid-gray-600);
   background-color: var(--_background-color);
-  padding: calc(2 / 16 * 1rem) 0 calc(2 / 16 * 1rem) calc(2 / 16 * 1rem);
+  padding: 0.125rem 0 0.125rem 0.125rem;
 }
 
 .css-date-picker__controls[css-size="sm"] .css-date-picker__inputs {
@@ -31,7 +31,7 @@
 }
 
 .css-date-picker__controls[css-size="md"] .css-date-picker__inputs {
-  height: calc(48 / 16 * 1rem);
+  height: 3rem;
 }
 
 .css-date-picker__controls[css-size="lg"] .css-date-picker__inputs {
@@ -111,15 +111,15 @@
   z-index: 1;
   align-self: center;
   background-color: var(--_background-color);
-  padding: calc(4 / 16 * 1rem);
+  padding: 0.25rem;
   line-height: 1;
 }
 
 .css-date-picker__input {
   margin-right: calc(-4 / 16 * 1rem);
   box-sizing: border-box;
-  width: calc(64 / 16 * 1rem);
-  border-radius: calc(8 / 16 * 1rem);
+  width: 4rem;
+  border-radius: 0.5rem;
   border: 1px solid transparent;
   background-color: transparent;
   padding-right: calc(12 / 16 * 1rem);
@@ -130,10 +130,10 @@
 }
 
 .css-date-picker__input:focus {
-  outline: calc(4 / 16 * 1rem) solid var(--color-neutral-black);
-  outline-offset: calc(2 / 16 * 1rem);
+  outline: 0.25rem solid var(--color-neutral-black);
+  outline-offset: 0.125rem;
   border: 1px solid var(--color-neutral-solid-gray-600);
-  box-shadow: 0 0 0 calc(2 / 16 * 1rem) var(--color-primitive-yellow-300);
+  box-shadow: 0 0 0 0.125rem var(--color-primitive-yellow-300);
 }
 
 :is(.css-date-picker__month, .css-date-picker__day) .css-date-picker__input {
@@ -154,7 +154,7 @@
 
 .css-date-picker__controls[css-size="md"]
   .css-date-picker__separated-inputs {
-  height: calc(48 / 16 * 1rem);
+  height: 3rem;
 }
 
 .css-date-picker__controls[css-size="lg"]
@@ -175,9 +175,9 @@
   left: 0;
   margin: 0 auto;
   box-sizing: border-box;
-  width: calc(24 / 16 * 1rem);
+  width: 1.5rem;
   background-color: var(--color-neutral-white);
-  padding: calc(4 / 16 * 1rem);
+  padding: 0.25rem;
   line-height: 1;
 }
 
@@ -195,7 +195,7 @@
   box-sizing: border-box;
   width: calc(72 / 16 * 1rem);
   height: 100%;
-  border-radius: calc(8 / 16 * 1rem);
+  border-radius: 0.5rem;
   border: 1px solid var(--color-neutral-solid-gray-600);
   background-color: var(--color-neutral-white);
   color: inherit;
@@ -223,9 +223,9 @@
 }
 
 .css-date-picker__separated-input:focus-visible {
-  outline: calc(4 / 16 * 1rem) solid var(--color-neutral-black);
-  outline-offset: calc(2 / 16 * 1rem);
-  box-shadow: 0 0 0 calc(2 / 16 * 1rem) var(--color-primitive-yellow-300);
+  outline: 0.25rem solid var(--color-neutral-black);
+  outline-offset: 0.125rem;
+  box-shadow: 0 0 0 0.125rem var(--color-primitive-yellow-300);
 }
 
 .css-date-picker__separated-input:disabled {
@@ -250,7 +250,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  column-gap: calc(4 / 16 * 1rem);
+  column-gap: 0.25rem;
   border-radius: calc(6 / 16 * 1rem);
   border: 1px solid;
   background-color: var(--color-neutral-white);
@@ -264,7 +264,7 @@
 }
 
 .css-date-picker__controls[css-size="md"] .css-date-picker__calendar-button {
-  height: calc(48 / 16 * 1rem);
+  height: 3rem;
 }
 
 .css-date-picker__controls[css-size="lg"] .css-date-picker__calendar-button {
@@ -280,10 +280,10 @@
 }
 
 .css-date-picker__calendar-button:focus-visible {
-  outline: calc(4 / 16 * 1rem) solid var(--color-neutral-black);
-  outline-offset: calc(2 / 16 * 1rem);
-  border-radius: calc(4 / 16 * 1rem);
-  box-shadow: 0 0 0 calc(2 / 16 * 1rem) var(--color-primitive-yellow-300);
+  outline: 0.25rem solid var(--color-neutral-black);
+  outline-offset: 0.125rem;
+  border-radius: 0.25rem;
+  box-shadow: 0 0 0 0.125rem var(--color-primitive-yellow-300);
 }
 
 .css-date-picker__calendar-button:disabled {
@@ -301,8 +301,8 @@
 }
 
 .css-date-picker__calendar-icon {
-  width: calc(24 / 16 * 1rem);
-  height: calc(24 / 16 * 1rem);
+  width: 1.5rem;
+  height: 1.5rem;
 }
 
 .css-date-picker__calendar-chevron {
@@ -326,14 +326,14 @@
   top: 100%;
   left: 0;
   z-index: 1;
-  border-radius: calc(8 / 16 * 1rem);
+  border-radius: 0.5rem;
   border: 1px solid var(--color-neutral-solid-gray-420);
   background-color: var(--color-neutral-white);
   box-shadow: var(--elevation-1);
 }
 
 .css-date-picker__error-text {
-  margin: calc(8 / 16 * 1rem) 0 0 0;
+  margin: 0.5rem 0 0 0;
   color: var(--color-semantic-error-1);
   line-height: 1.7;
 }

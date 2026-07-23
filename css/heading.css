@@ -157,7 +157,7 @@ hgroup[css-rule] .css-h {
 
 .css-h[css-rule="8"],
 hgroup[css-rule="8"] .css-h {
-  border-bottom-width: calc(8 / 16 * 1rem);
+  border-bottom-width: 0.5rem;
   padding-bottom: calc(20 / 16 * 1rem);
 }
 
@@ -169,14 +169,14 @@ hgroup[css-rule="6"] .css-h {
 
 .css-h[css-rule="4"],
 hgroup[css-rule="4"] .css-h {
-  border-bottom-width: calc(4 / 16 * 1rem);
+  border-bottom-width: 0.25rem;
   padding-bottom: calc(12 / 16 * 1rem);
 }
 
 .css-h[css-rule="2"],
 hgroup[css-rule="2"] .css-h {
-  border-bottom-width: calc(2 / 16 * 1rem);
-  padding-bottom: calc(8 / 16 * 1rem);
+  border-bottom-width: 0.125rem;
+  padding-bottom: 0.5rem;
 }
 
 .css-h-shoulder {

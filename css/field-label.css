@@ -11,7 +11,7 @@
 }
 
 .css-field-requirement {
-  margin-left: calc(4 / 16 * 1rem);
+  margin-left: 0.25rem;
   font-weight: normal;
   color: var(--color-emphasis);
   font-size: var(--css-typography-text-normal-2-font-size);

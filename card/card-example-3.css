@@ -2,7 +2,7 @@
   margin: 0;
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(auto, 354px));
-  gap: calc(32 / 16 * 1rem) calc(24 / 16 * 1rem);
+  gap: 2rem 1.5rem;
   padding: 0;
   list-style: none;
 }
@@ -38,7 +38,7 @@
   align-content: start;
   row-gap: calc(16 / 16 * 1rem);
   min-width: 0;
-  padding: calc(16 / 16 * 1rem) calc(24 / 16 * 1rem);
+  padding: calc(16 / 16 * 1rem) 1.5rem;
   padding-bottom: 0;
 }
 
@@ -57,7 +57,7 @@
 .css-card-example-3__heading {
   display: flex;
   flex-direction: column;
-  row-gap: calc(8 / 16 * 1rem);
+  row-gap: 0.5rem;
   min-width: 0;
   font-weight: normal;
   font-size: calc(16 / 16 * 1rem);
@@ -99,7 +99,7 @@
   display: grid;
   gap: calc(16 / 16 * 1rem);
   min-width: 0;
-  padding: calc(16 / 16 * 1rem) calc(24 / 16 * 1rem);
+  padding: calc(16 / 16 * 1rem) 1.5rem;
 }
 
 .css-card-example-3__sub > * {
