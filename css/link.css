@@ -29,3 +29,9 @@
   box-shadow: 0 0 0 calc(2 / 16 * 1rem) rgb(var(--rgb-focus));
 }
 
+.css-link__icon {
+  flex-shrink: 0;
+  vertical-align: -0.15em;
+  margin-left: calc(4 / 16 * 1rem);
+}
+

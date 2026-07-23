@@ -94,6 +94,12 @@ label.css-search-box-scope[css-size="sm"] > select {
   height: var(--css-size-sm-height);
 }
 
+label.css-search-box-scope[css-size="sm"]::after {
+  right: calc(8 / 16 * 1rem);
+  width: calc(8 / 16 * 1rem);
+  height: calc(8 / 16 * 1rem);
+}
+
 label.css-search-box-scope:not([css-size]) > select,
 label.css-search-box-scope[css-size="md"] > select {
   height: var(--css-size-md-height);
@@ -120,18 +126,24 @@ label.css-search-box-scope[css-size="lg"] > select {
   }
 }
 
-label.css-search-box-scope > svg {
+label.css-search-box-scope::after {
+  content: "";
   position: absolute;
   top: 0;
   right: calc(16 / 16 * 1rem);
   bottom: 0;
   z-index: 1;
   margin: auto 0;
-  display: flex;
-  align-items: center;
-  width: calc(16 / 16 * 1rem);
-  height: calc(16 / 16 * 1rem);
+  width: calc(10 / 16 * 1rem);
+  height: calc(10 / 16 * 1rem);
+  border-right: calc(2 / 16 * 1rem) solid currentcolor;
+  border-bottom: calc(2 / 16 * 1rem) solid currentcolor;
+  transform: translateY(calc(-2 / 16 * 1rem)) rotate(45deg);
   pointer-events: none;
+}
+
+label.css-search-box-scope:has(> select:open)::after {
+  transform: translateY(calc(2 / 16 * 1rem)) rotate(225deg);
 }
 
 label.css-search-box-scope > select:focus-visible {

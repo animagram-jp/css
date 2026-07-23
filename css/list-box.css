@@ -1,5 +1,6 @@
 .list-box-trigger {
   anchor-name: --list-box-trigger;
+  position: relative;
   display: inline-flex;
   align-items: center;
   box-sizing: border-box;
@@ -9,10 +10,6 @@
   border-radius: calc(8 / 16 * 1rem);
   border: 1px solid var(--color-muted);
   background-color: transparent;
-  background-image: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'><path d='M12 17L3 8L4 7L12 15L20 7L21 8L12 17Z' fill='%23333333'/></svg>");
-  background-repeat: no-repeat;
-  background-position: right calc(16 / 16 * 1rem) center;
-  background-size: calc(16 / 16 * 1rem);
   color: rgb(var(--rgb-ink));
   font: inherit;
   line-height: 1;
@@ -20,11 +17,29 @@
   cursor: pointer;
 }
 
+.list-box-trigger::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  right: calc(16 / 16 * 1rem);
+  bottom: 0;
+  margin: auto 0;
+  width: calc(10 / 16 * 1rem);
+  height: calc(10 / 16 * 1rem);
+  border-right: calc(2 / 16 * 1rem) solid currentcolor;
+  border-bottom: calc(2 / 16 * 1rem) solid currentcolor;
+  transform: translateY(calc(-2 / 16 * 1rem)) rotate(45deg);
+}
+
 .list-box-trigger[css-size="sm"] {
   height: var(--css-size-sm-height);
   padding-inline-end: calc(30 / 16 * 1rem);
-  background-position: right calc(8 / 16 * 1rem) center;
-  background-size: calc(14 / 16 * 1rem);
+}
+
+.list-box-trigger[css-size="sm"]::after {
+  right: calc(8 / 16 * 1rem);
+  width: calc(8 / 16 * 1rem);
+  height: calc(8 / 16 * 1rem);
 }
 
 .list-box-trigger:not([css-size]),
@@ -36,8 +51,8 @@
   height: var(--css-size-lg-height);
 }
 
-.list-box:popover-open + .list-box-trigger {
-  background-image: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'><path d='M12 7L21 16L20 17L12 9L4 17L3 16L12 7Z' fill='%23333333'/></svg>");
+.list-box:popover-open + .list-box-trigger::after {
+  transform: translateY(calc(2 / 16 * 1rem)) rotate(225deg);
 }
 
 @media (hover: hover) {
