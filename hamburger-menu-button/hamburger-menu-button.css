@@ -6,8 +6,8 @@
   border: 0;
   border-radius: calc(6 / 16 * 1rem);
   background: transparent;
-  padding: 0.25rem calc(12 / 16 * 1rem) calc(6 / 16 * 1rem)
-    calc(12 / 16 * 1rem);
+  padding: 0.25rem 0.75rem calc(6 / 16 * 1rem)
+    0.75rem;
   color: var(--color-neutral-solid-gray-800);
   font-weight: normal;
   font-size: 1rem;

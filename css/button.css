@@ -131,7 +131,7 @@
 .css-button[css-size="lg"] {
   min-height: var(--css-size-lg-height);
   border-radius: 0.5rem;
-  padding: calc(12 / 16 * 1rem) 1rem;
+  padding: 0.75rem 1rem;
 }
 
 .css-button:not([css-size]),
@@ -163,7 +163,7 @@
 .css-button[css-size="sm"] {
   min-height: var(--css-size-sm-height);
   border-radius: calc(6 / 16 * 1rem);
-  padding: 0.125rem calc(12 / 16 * 1rem);
+  padding: 0.125rem 0.75rem;
 }
 
 .css-button[css-size="xs"] {

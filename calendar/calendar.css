@@ -42,9 +42,9 @@
 }
 
 .css-calendar__table {
-  margin-right: calc(12 / 16 * 1rem);
+  margin-right: 0.75rem;
   margin-bottom: 0.5rem;
-  margin-left: calc(12 / 16 * 1rem);
+  margin-left: 0.75rem;
   width: auto;
   border-collapse: collapse;
 }

@@ -122,7 +122,7 @@
   border-radius: 0.5rem;
   border: 1px solid transparent;
   background-color: transparent;
-  padding-right: calc(12 / 16 * 1rem);
+  padding-right: 0.75rem;
   color: inherit;
   text-align: right;
   font: inherit;
@@ -144,7 +144,7 @@
   display: inline flex;
   column-gap: 1rem;
   box-sizing: content-box;
-  padding-top: calc(12 / 16 * 1rem);
+  padding-top: 0.75rem;
 }
 
 .css-date-picker__controls[css-size="sm"]
@@ -254,8 +254,8 @@
   border-radius: calc(6 / 16 * 1rem);
   border: 1px solid;
   background-color: var(--color-neutral-white);
-  padding-right: calc(12 / 16 * 1rem);
-  padding-left: calc(12 / 16 * 1rem);
+  padding-right: 0.75rem;
+  padding-left: 0.75rem;
   color: var(--color-primitive-blue-900);
 }
 
