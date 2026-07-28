@@ -50,11 +50,12 @@
   left: calc(100% - 29px);
 }
 
+/* todo: replace to invalid selector */
 .css-toggle:where(input[type="checkbox"]):where(.error) {
-  border: 1px solid var(--sui-color-error);
+  border: 1px solid var(--color-error);
 }
 .css-toggle:where(input[type="checkbox"]):where(.error):checked {
-  background-color: var(--sui-color-error);
+  background-color: var(--color-error);
 }
 
 .css-toggle:where(input[type="checkbox"]):disabled {
