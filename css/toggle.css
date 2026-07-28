@@ -1,86 +1,108 @@
 /* toggle: input widget that allows users to choose one of two values: on or off.  */
 
-/*  <label class="switch">
+/*  <label class="css-toggle">
         <input type="checkbox" role="switch"></label> */
 
-.css-toggle {
-  display: inline-block;
-}
+@layer css.components {
 
-.css-toggle input {
-    appearance: none;
-    width: 12rem;
-    max-width: 100%;
-    border: 1px solid var(--color-muted);
-    background-color: var(--color-background);
-    padding: 0.75rem 1rem;
-    border-radius: 0.5rem;
-    color: rgb(var(--rgb-ink));
-    font-weight: normal;
-    font-size: var(--css-typography-text-normal-2-font-size);
-    line-height: var(--css-typography-text-normal-2-line-height);
-    font-family: var(--font-family-sans);
-    letter-spacing: var(--css-typography-text-normal-2-letter-spacing);
+    .css-toggle[css-size="sm"] {
+        --_height: var(--css-size-sm-height);
+        --_border-width: 0.125rem;
+    }
 
-    display: relative;
-    width: 6rem;
-    height: var(--css-size-md-height);
-    margin: 0;
-    align-items: center;
-    vertical-align: middle;
-    border-radius: 0.5rem;
-    cursor: pointer;
-    transition: background-color 150ms ease;
-}
+    .css-toggle:not([css-size]),
+    .css-toggle[css-size="md"] {
+        --_height: var(--css-size-md-height);
+        --_border-width: 0.125rem;
+    }
 
-.css-toggle input:checked {
-  background: var(--color-emphasis-active);
-}
+    .css-toggle[css-size="lg"] {
+        --_height: var(--css-size-lg-height);
+        --_border-width: 0.1875rem;
+    }
 
-.css-toggle input::before {
-  content: "";
-  position: absolute;
-  top: 2px;
-  left: 2px;
-  width: 22px;
-  height: 22px;
-  background: var(--color-background);
-  border-radius: 50%;
-  box-shadow: 0 1px 3px var(--elevation-1);
-  transition: transform 150ms ease;
-}
+    /* label: lays out an optional leading <span> alongside the track */
+    .css-toggle {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.5rem;
+        vertical-align: middle;
+        cursor: pointer;
+    }
 
-.css-toggle input:checked::before {
-  transform: translateX(30px);
-}
+    .css-toggle[css-type="label-above"] {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 0.25rem;
+    }
 
-.css-toggle input::after {
-  content: "OFF";
-  position: absolute;
-  right: 6px;
-  top: 50%;
-  transform: translateY(-50%);
-  font-size: 10px;
-  font-weight: bold;
-  color: var(--color-muted);
-}
+    /* track: the input itself is the track; its ::after is the thumb */
+    .css-toggle input[type="checkbox"] {
+        --_padding: calc(var(--_border-width) * 2);
+        --_thumb-size: calc(var(--_height) - var(--_padding) * 2);
+        --_travel: var(--_thumb-size);
 
-.css-toggle input:checked::after {
-  content: "ON";
-  right: auto;
-  left: 6px;
-  color: var(--color-emphasis-active);
-}
+        appearance: none;
+        position: relative;
+        flex-shrink: 0;
+        width: calc(var(--_padding) * 2 + var(--_thumb-size) + var(--_travel));
+        height: var(--_height);
+        margin: 0;
+        border: var(--_border-width) solid var(--color-ink);
+        border-radius: calc(var(--_height) / 2);
+        background-color: var(--color-muted);
+        cursor: pointer;
+        transition: background-color 150ms ease;
+    }
 
-.css-toggle input:focus-visible {
-  outline: 2px solid rgb(var(--rgb-focus));
-  outline-offset: 2px;
-}
+    .css-toggle input:checked {
+        background: var(--color-emphasis-active);
+    }
 
-.css-toggle[css-type="nonforwarding-label"] {
-    pointer-events: none;
-}
+    /* thumb */
+    .css-toggle input[type="checkbox"]::after {
+        content: "OFF";
+        position: absolute;
+        top: 50%;
+        left: var(--_padding);
+        translate: 0 -50%;
+        width: var(--_thumb-size);
+        height: var(--_thumb-size);
+        border: var(--_border-width) solid var(--color-ink);
+        border-radius: 50%;
+        background: var(--color-background);
+        box-shadow: var(--elevation-1);
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        font-size: calc(var(--_thumb-size) * 0.35);
+        font-weight: bold;
+        color: var(--color-muted);
+        transition: transform 150ms ease;
+    }
 
-.css-toggle[css-type="nonforwarding-label"] input[type="checkbox"] {
-    pointer-events: auto;
+    .css-toggle input:checked::after {
+        content: "ON";
+        transform: translateX(var(--_travel));
+        color: var(--color-emphasis-active);
+    }
+
+    .css-toggle input:focus-visible {
+        outline: 0.125rem solid rgb(var(--rgb-focus));
+        outline-offset: 0.125rem;
+    }
+
+    /* nonforwarding-label: only the thumb itself is clickable, not the rest of the track */
+    .css-toggle[css-type="nonforwarding-label"] {
+        pointer-events: none;
+    }
+
+    .css-toggle[css-type="nonforwarding-label"] input[type="checkbox"] {
+        pointer-events: none;
+    }
+
+    .css-toggle[css-type="nonforwarding-label"] input[type="checkbox"]::after {
+        pointer-events: auto;
+    }
+
 }
