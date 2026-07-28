@@ -25,9 +25,27 @@
     <link rel="stylesheet" href="css/toggle.css">
     <link rel="stylesheet" href="css/style.css"></head>
 <body>
-    <hgroup id="header_hgroup">
-        <h1 class="dads-h" dads-size="32">css library</h1>
-        <p>Css universal design boilerplate. Works without interference to HTML.</p></hgroup>
+    <header>
+        <hgroup id="header_hgroup">
+            <h1 class="dads-h" dads-size="32">css library</h1>
+            <p>Css universal design boilerplate. Works without interference to HTML.</p></hgroup>
+
+        <label css-size="sm">
+            <span>Dark mode</span>
+            <input type="checkbox" role="switch" id="theme-toggle"></label></header>
+
+    <script>
+        (() => {
+            const root = document.documentElement;
+            const toggle = document.getElementById("theme-toggle");
+
+            toggle.checked = window.matchMedia("(prefers-color-scheme: dark)").matches;
+
+            toggle.addEventListener("change", () => {
+                root.setAttribute("data-theme", toggle.checked ? "dark" : "light");
+            });
+        })();
+    </script>
 
     <h2 id="h2-1" aria-label="WCAG 2.2 auto-generated report link" class="css-h">WCAG 2.2 Report</h2>
     <p aria-labelledby="h2-1">
@@ -522,14 +540,14 @@
 
     <h2 id="h2-20" aria-label="example usage of toggle" class="css-h">Toggle</h2>
     <section aria-labelledby="h2-20">
-        <label class="css-toggle">
-            <span>ラベルテキスト</span>
+        <label>
+            <span>label text</span>
             <input type="checkbox" role="switch" aria-checked="false"></label>
-        <label class="css-toggle" css-type="nonforwarding-label" css-size="sm">
-            <span>Non forwarding label</span>
+        <label css-type="thumb-only" css-size="sm">
+            <span>thumb only clickable</span>
             <input type="checkbox" role="switch" aria-checked="false"></label>
-        <label class="css-toggle" css-type="label-above">
-            <span>ラベルテキスト</span>
+        <label css-type="label-above" css-size="lg">
+            <span>label text</span>
             <input type="checkbox" role="switch"></label></section>
 
 </body></html>
