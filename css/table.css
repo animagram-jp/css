@@ -114,7 +114,7 @@
 }
 
 .css-sort {
-  display: inline-flex;
+  display: inline flex;
   flex-direction: column;
   vertical-align: middle;
   margin-inline-start: 0.25rem;

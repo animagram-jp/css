@@ -5,7 +5,7 @@
     --color-wash-hover: rgb(var(--rgb-ink) / var(--alpha-highlight-weak));
     --color-wash-active: rgb(var(--rgb-ink) / var(--alpha-highlight-strong));
     --color-border: rgb(var(--rgb-border));
-    display: inline-flex;
+    display: inline flex;
     align-items: center;
     justify-content: center;
     column-gap: 0.25rem;

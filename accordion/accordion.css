@@ -59,7 +59,7 @@
   top: 0.5rem;
   left: 0.125rem;
   margin-top: calc((1lh - var(--_icon-size)) / 2);
-  display: inline-flex;
+  display: inline flex;
   align-items: center;
   justify-content: center;
   box-sizing: border-box;

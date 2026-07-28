@@ -69,7 +69,7 @@
 }
 
 .css-input-number {
-  display: inline-flex;
+  display: inline flex;
   align-items: stretch;
   box-sizing: border-box;
   width: 12rem;
