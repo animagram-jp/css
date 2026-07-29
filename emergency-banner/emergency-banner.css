@@ -70,7 +70,7 @@
   .css-emergency-banner__action {
     display: flex;
     justify-content: center;
-    padding-top: calc(12 / 16 * 1rem);
+    padding-top: 0.75rem;
     padding-bottom: 0.25rem;
   }
 }
@@ -82,7 +82,7 @@
   box-sizing: border-box;
   width: 100%;
   border: 2px solid transparent;
-  border-radius: calc(12 / 16 * 1rem);
+  border-radius: 0.75rem;
   background-color: var(--color-semantic-error-1);
   padding: calc(18 / 16 * 1rem);
   color: var(--color-neutral-white);
@@ -131,7 +131,7 @@
 @media (min-width: 48rem) {
   .css-emergency-banner__button::after {
     border-width: 4px;
-    border-radius: calc(12 / 16 * 1rem);
+    border-radius: 0.75rem;
   }
 }
 

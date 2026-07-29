@@ -14,7 +14,7 @@ curl -fsSL -H "Accept: application/vnd.github.raw+json" "https://api.github.com/
 docker run -d --name accessibility-audit \
   -v .:/work \
   -w /work \
-  node:lts-bookworm-slim \
+  node:lts-slim \
   tail -f /dev/null
 docker exec accessibility-audit bash -lc "npx --yes playwright install --with-deps chromium && npm ci"
 

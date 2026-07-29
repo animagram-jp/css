@@ -71,8 +71,8 @@
   display: inline-block;
   margin-right: calc(1 / 16 * 1rem);
   margin-left: calc(1 / 16 * 1rem);
-  width: calc(12 / 16 * 1rem);
-  height: calc(12 / 16 * 1rem);
+  width: 0.75rem;
+  height: 0.75rem;
   vertical-align: middle;
   color: var(--color-neutral-solid-gray-900);
 }

@@ -20,7 +20,7 @@
 }
 
 .css-notification-banner[css-type="standard"] {
-  border-radius: calc(12 / 16 * 1rem);
+  border-radius: 0.75rem;
   border-width: calc(3 / 16 * 1rem);
 }
 
@@ -133,9 +133,9 @@
   border-radius: 0.5rem;
   border: 0;
   padding-top: 0.25rem;
-  padding-right: calc(12 / 16 * 1rem);
+  padding-right: 0.75rem;
   padding-bottom: calc(6 / 16 * 1rem);
-  padding-left: calc(12 / 16 * 1rem);
+  padding-left: 0.75rem;
   color: var(--color-neutral-solid-gray-900);
   font: inherit;
   line-height: 1;
