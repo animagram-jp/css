@@ -2,48 +2,16 @@
 
 Css universal design boilerplate. Works without interference to HTML.
 
-- CSS drives appearance; HTML structure is not dictated by CSS.
-- Single-element components: one class on a semantic or just select block/inline element, no wrappers.
-- Multi-element components: composed from semantic tags only (`table > th`, `details > summary`, etc.), no div wrappers required by CSS.
-- div-based layouts must be rewritten to use semantic elements (`article`, `section`, `figure`, etc.)
-- JS that holds state belongs to WAM (Web Application Module) layer; CSS-only components must render correctly without JS.
+- Universal Design (variants included) based on [digital government jp design system](https://github.com/digital-go-jp/design-system-example-components-html), WCAG 2.2, ARIA APG.
+- No div wrappers required by CSS.
+- Uses semantic elements (`article`, `section`, `figure`, etc.)
+- Render correctly without JS.
 
 ## Version
 
 | Version | Status    | Date       | Description |
 |---------|-----------|------------|-------------|
-| 0.1.0   | Released  | 2026-03-09 | create following DADS(html) |
-| 0.1.1   | Released  | 2026-04-28 | update following DADS(html) |
-| 0.1.2   | Current   | 2026-06-06 | rename to css repository |
-
-## Reference
-
-- [DADS(html)](https://github.com/digital-go-jp/design-system-example-components-html)
-
-## Changelog
-
-- CSS/JS components only, no build tooling from Dads(html).
-- Custom font-family applied in global.css.
-- Single html and replace images with svg placeholders.
-- Unwrap single element css components.
-- Delete div wrapper in table.css.
-- Delete table/scroll-shadow.js
-- Edit radio.css to remove wrapper divs.
-- Edit input-text.css to remove wrapper span.
-- Delete language-selector and edit menu-list-box to list-box.
-- Edit form-control-label.css and textarea.css.
-- Add input-number.
-- Change button, input, textarea to display:inline-flex.
-- Normalize dads-size (renamed from dada-size) betweeen button, input and textarea.
-- Edit heading to remove wrapper hgroup dependency and rename to class dads-h.
-- Make dads-size="md" fallback when no selecting.
-- rename input-text to input and assemble input-number into input.css.
-- Rework typography utility classes in config.css from physical value naming (`dads-u-dsp-64B-140` etc.) to role-based DTCG-aligned naming (`css-typography-display-1-bold` etc.); add `css/typography.tokens.json` as the DTCG source of truth.
-- Flatten `css-typography-*` utility classes into per-property `--css-typography-{role}-{step}-{font-size,line-height,letter-spacing}` custom properties; migrate heading.css, button.css, chip-label.css, field-label.css, table.css to reference them.
-- Split `dads-size-*` (which conflated touch-target sizing with typography) into `--css-size-*` (height/padding only) and typography references to `css-typography-text-*`; migrated button, list-box, select, textarea (partial), search-box, input, input-number.
-- Migrate checkbox.css and radio.css label `font-size`/`line-height` to `css-typography-text-flush-2`; `letter-spacing: 0` kept hardcoded (no matching token step). Also make radio.css's `font-family`/`font-weight`/`letter-spacing` explicit instead of inheriting, matching checkbox.css.
-- Rename heading.css's `dads-size` values from physical px numbers (`"64"`, `"45"`, …) to their typography token step names (`"display-1"`, `"heading-1"`, …); update index.html demo markup accordingly. Breaking change for any markup using the old numeric values.
-- Rename typography density steps for clarity and consistency with common leading-scale naming (à la Tailwind's `leading-tight`): `text-dense-*` → `text-tight-*`, `text-oneline-*` → `text-flush-*` (values unchanged).
+| 0.1.0   | Scheduled | 2026-08-31 | 1st release |
 
 ## `css-size` — Size Scale
 
