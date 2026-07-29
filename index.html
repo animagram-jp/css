@@ -10,6 +10,7 @@
     <link rel="stylesheet" href="css/checkbox.css">
     <link rel="stylesheet" href="css/chip-label.css">
     <link rel="stylesheet" href="css/description_list.css">
+    <link rel="stylesheet" href="css/disclosure.css">
     <link rel="stylesheet" href="css/field-label.css">
     <link rel="stylesheet" href="css/heading.css">
     <link rel="stylesheet" href="css/horizontal_rule.css">
@@ -123,6 +124,13 @@
             <dd>taro.yamada@example.com</dd>
             <dt>電話番号</dt>
             <dd>03-0000-0000</dd></dl></section>
+
+    <h2 id="h2-7" aria-label="example usage of disclosure" class="css-h">Disclosure</h2>
+    <section aria-labelledby="h2-7">
+        <details class="css-disclosure">
+            <summary>
+                <h2>disclosure heading</h2></summary>
+                <p>これはダミーテキストです。ダミーテキストは、デザインやレイアウトの作成時に使用される仮の文章です。</p></details></section>
 
     <h2 id="h2-7" aria-label="example usage of hr" class="css-h">Horizontal Rule</h2>
     <section aria-labelledby="h2-7">
@@ -542,10 +550,10 @@
     <section aria-labelledby="h2-20">
         <label>
             <span>label text</span>
-            <input type="checkbox" role="switch" aria-checked="false"></label>
+            <input type="checkbox" role="switch"></label>
         <label css-type="thumb-only" css-size="sm">
             <span>thumb only clickable</span>
-            <input type="checkbox" role="switch" aria-checked="false"></label>
+            <input type="checkbox" role="switch"></label>
         <label css-type="label-above" css-size="lg">
             <span>label text</span>
             <input type="checkbox" role="switch"></label></section>

@@ -152,12 +152,3 @@ Typography utility classes in `config.css` follow a role-based naming: `css-typo
 | `monospace`| —        | 1–3 | 17px – 14px | 1.5 (fixed)         | 0            | `font-family: var(--font-family-mono)`; formerly `mono` |
 
 Each `{role}-{step}` (and `{role}-{density}-{step}`) combination is available in both `-bold` and `-normal` weights.
-
-## License
-
-```
-SPDX-License-Identifier: Apache-2.0
-Copyright (c) 2026 Andyou <andyou@animagram.jp>
-```
-
-Also see [Notice](./NOTICE).
