@@ -58,7 +58,7 @@
   text-decoration: underline;
 }
 
-.css-file-upload[css-error] .css-button[css-type="outlined"] {
+.css-file-upload[css-error] .css-button[css-type="outline"] {
   border-color: var(--color-semantic-error-1);
 }
 

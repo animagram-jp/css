@@ -80,7 +80,7 @@
     --color-emphasis-fill-active: color-mix(in srgb, var(--color-emphasis-fill) var(--ratio-emphasis-active), black);
 
     /*
-     * Hover/active highlight for outlined/text variants: a translucent wash
+     * Hover/active highlight for outline/text variants: a translucent wash
      * of --rgb-ink over the button's own background, not a tint of
      * --rgb-emphasis. An emphasis-colored wash sits too close in luminance to
      * the emphasis-colored text once darkened toward a dark background, and
