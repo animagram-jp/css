@@ -1,4 +1,4 @@
-.css-breadcrumb {
+.breadcrumb {
   display: flex;
   column-gap: 0.25rem;
   color: var(--color-neutral-solid-gray-800);
@@ -9,26 +9,26 @@
   letter-spacing: 0.02em;
 }
 
-.css-breadcrumb__label {
+.breadcrumb__label {
   flex-shrink: 0;
 }
 
-.css-breadcrumb__label::after {
+.breadcrumb__label::after {
   content: "：";
 }
 
-.css-breadcrumb__list {
+.breadcrumb__list {
   list-style-type: "";
   margin: 0;
   padding: 0;
 }
 
-.css-breadcrumb__item {
+.breadcrumb__item {
   display: inline;
   overflow-wrap: break-word;
 }
 
-.css-breadcrumb__link:any-link {
+.breadcrumb__link:any-link {
   color: var(--color-primitive-blue-1000);
   text-decoration: underline;
   text-decoration-thickness: calc(1 / 16 * 1rem);
@@ -36,18 +36,18 @@
 }
 
 @media (hover: hover) {
-  .css-breadcrumb__link:hover {
+  .breadcrumb__link:hover {
     color: var(--color-primitive-blue-900);
     text-decoration-thickness: calc(3 / 16 * 1rem);
   }
 }
 
-.css-breadcrumb__link:active {
+.breadcrumb__link:active {
   color: var(--color-primitive-orange-800);
   text-decoration-thickness: calc(1 / 16 * 1rem);
 }
 
-.css-breadcrumb__link:focus-visible {
+.breadcrumb__link:focus-visible {
   outline: 0.25rem solid var(--color-neutral-black);
   outline-offset: 0.125rem;
   border-radius: 0.25rem;
@@ -55,19 +55,19 @@
   box-shadow: 0 0 0 0.125rem var(--color-primitive-yellow-300);
 }
 
-.css-breadcrumb__link-icon {
+.breadcrumb__link-icon {
   display: inline-block;
   vertical-align: -0.15em;
   width: 1rem;
   height: 1rem;
 }
 
-.css-breadcrumb__separator::before,
-.css-breadcrumb__separator::after {
+.breadcrumb__separator::before,
+.breadcrumb__separator::after {
   content: " ";
 }
 
-.css-breadcrumb__separator-icon {
+.breadcrumb__separator-icon {
   display: inline-block;
   margin-right: calc(1 / 16 * 1rem);
   margin-left: calc(1 / 16 * 1rem);

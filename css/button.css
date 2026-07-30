@@ -1,4 +1,6 @@
-.css-button {
+@layer css.components {
+
+.button {
     /*
     * To overwrite these tags, define --color-emphasize, ...
     */
@@ -12,27 +14,27 @@
     box-sizing: border-box;
     max-width: 100%;
     font-weight: bold;
-    font-size: var(--css-typography-text-flush-2-font-size);
-    line-height: var(--css-typography-text-flush-2-line-height);
+    font-size: var(--typography-text-flush-2-font-size);
+    line-height: var(--typography-text-flush-2-line-height);
     font-family: var(--font-family-sans);
-    letter-spacing: var(--css-typography-text-flush-2-letter-spacing);
+    letter-spacing: var(--typography-text-flush-2-letter-spacing);
     text-decoration: none;
     text-underline-offset: calc(3 / 16 * 1rem);
 }
 
-.css-button:disabled,
-.css-button[aria-disabled="true"] {
+.button:disabled,
+.button[aria-disabled="true"] {
   cursor: default;
   text-decoration: none;
 }
 
 /*
  * focus-visible ring is identical across all three types: same outline +
- * box-shadow, type-independent. Only css-type="text" adds its own background
+ * box-shadow, type-independent. Only data-type="text" adds its own background
  * (below) since its normal-state background is transparent, not a surface
  * color the ring can sit legibly on top of otherwise.
  */
-.css-button:focus-visible {
+.button:focus-visible {
   outline: 0.125rem solid var(--color-border);
   outline-offset: 0.125rem;
   box-shadow: 0 0 0 0.125rem rgb(var(--rgb-focus));
@@ -41,64 +43,64 @@
 /* disabled, high-contrast mode: border/text collapse to the UA's GrayText
  * across all three types identically. */
 @media (forced-colors: active) {
-  .css-button:disabled,
-  .css-button[aria-disabled="true"] {
+  .button:disabled,
+  .button[aria-disabled="true"] {
     border-color: GrayText;
     color: GrayText;
   }
 }
 
-.css-button[css-type="fill"] {
+.button[data-type="fill"] {
   border: 4px double transparent;
   background-color: var(--color-emphasis-fill);
   color: rgb(var(--rgb-white));
 }
 
 @media (hover: hover) {
-  .css-button[css-type="fill"]:hover {
+  .button[data-type="fill"]:hover {
     background-color: var(--color-emphasis-fill-hover);
     text-decoration: underline;
     text-decoration-thickness: calc(1 / 16 * 1rem);
   }
 }
 
-.css-button[css-type="fill"]:active {
+.button[data-type="fill"]:active {
   background-color: var(--color-emphasis-fill-active);
   text-decoration: underline;
 }
 
-.css-button[css-type="fill"]:disabled,
-.css-button[css-type="fill"][aria-disabled="true"] {
+.button[data-type="fill"]:disabled,
+.button[data-type="fill"][aria-disabled="true"] {
   background-color: rgb(var(--rgb-light-gray));
   color: rgb(var(--rgb-white));
 }
 
-.css-button[css-type="outline"] {
+.button[data-type="outline"] {
   border: 1px solid currentcolor;
   background-color: var(--color-background);
   color: var(--color-emphasis);
 }
 
 @media (hover: hover) {
-  .css-button[css-type="outline"]:hover {
+  .button[data-type="outline"]:hover {
     background-color: var(--color-wash-hover);
     text-decoration: underline;
     text-decoration-thickness: calc(1 / 16 * 1rem);
   }
 }
 
-.css-button[css-type="outline"]:active {
+.button[data-type="outline"]:active {
   background-color: var(--color-wash-active);
   text-decoration: underline;
 }
 
-.css-button[css-type="outline"]:disabled,
-.css-button[css-type="outline"][aria-disabled="true"] {
+.button[data-type="outline"]:disabled,
+.button[data-type="outline"][aria-disabled="true"] {
   background-color: var(--color-background);
   color: var(--color-muted);
 }
 
-.css-button[css-type="text"] {
+.button[data-type="text"] {
   border: 0;
   background-color: transparent;
   color: var(--color-emphasis);
@@ -106,37 +108,37 @@
 }
 
 @media (hover: hover) {
-  .css-button[css-type="text"]:hover {
+  .button[data-type="text"]:hover {
     background-color: var(--color-wash-hover);
     text-decoration-thickness: calc(3 / 16 * 1rem);
   }
 }
 
-.css-button[css-type="text"]:active {
+.button[data-type="text"]:active {
   background-color: var(--color-wash-active);
 }
 
-.css-button[css-type="text"]:focus-visible {
+.button[data-type="text"]:focus-visible {
   background-color: rgb(var(--rgb-focus));
   color: rgb(var(--rgb-black));
 }
 
-.css-button[css-type="text"]:disabled,
-.css-button[css-type="text"][aria-disabled="true"] {
+.button[data-type="text"]:disabled,
+.button[data-type="text"][aria-disabled="true"] {
   background-color: transparent;
   color: var(--color-muted);
   text-decoration-thickness: revert;
 }
 
-.css-button[css-size="lg"] {
-  min-height: var(--css-size-lg-height);
+.button[data-size="lg"] {
+  min-height: var(--size-lg-height);
   border-radius: 0.5rem;
   padding: 0.75rem 1rem;
 }
 
-.css-button:not([css-size]),
-.css-button[css-size="md"] {
-  min-height: var(--css-size-md-height);
+.button:not([data-size]),
+.button[data-size="md"] {
+  min-height: var(--size-md-height);
   border-radius: 0.5rem;
   padding: 0.5rem 1rem;
 }
@@ -146,13 +148,13 @@
  * get a same-size invisible ::after to pad the hit area back out without
  * affecting layout.
  */
-.css-button[css-size="sm"],
-.css-button[css-size="xs"] {
+.button[data-size="sm"],
+.button[data-size="xs"] {
   position: relative;
 }
 
-.css-button[css-size="sm"]::after,
-.css-button[css-size="xs"]::after {
+.button[data-size="sm"]::after,
+.button[data-size="xs"]::after {
   content: "";
   position: absolute;
   inset: 0;
@@ -160,19 +162,21 @@
   height: calc(44 / 16 * 1rem);
 }
 
-.css-button[css-size="sm"] {
-  min-height: var(--css-size-sm-height);
+.button[data-size="sm"] {
+  min-height: var(--size-sm-height);
   border-radius: calc(6 / 16 * 1rem);
   padding: 0.125rem 0.75rem;
 }
 
-.css-button[css-size="xs"] {
-  min-height: var(--css-size-xs-height);
+.button[data-size="xs"] {
+  min-height: var(--size-xs-height);
   border-radius: 0.25rem;
-  padding: var(--css-size-xs-padding-block) var(--css-size-xs-padding-inline);
-  font-size: var(--css-typography-text-flush-3-font-size);
+  padding: var(--size-xs-padding-block) var(--size-xs-padding-inline);
+  font-size: var(--typography-text-flush-3-font-size);
 }
 
-.css-button__icon {
+.button__icon {
   flex-shrink: 0;
+}
+
 }

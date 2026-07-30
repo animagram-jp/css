@@ -1,4 +1,6 @@
-.css-select {
+@layer css.components {
+
+.select {
     vertical-align: middle;
     box-sizing: border-box;
     border-radius: 0.5rem;
@@ -16,42 +18,42 @@
     padding-left: 1rem;
     color: rgb(var(--rgb-ink));
     font: inherit;
-    line-height: var(--css-typography-text-flush-2-line-height);
+    line-height: var(--typography-text-flush-2-line-height);
     letter-spacing: inherit;
     appearance: none;
 }
 
-.css-select[css-size="sm"] {
-  height: var(--css-size-sm-height);
+.select[data-size="sm"] {
+  height: var(--size-sm-height);
 }
 
-.css-select:not([css-size]),
-.css-select[css-size="md"] {
-  height: var(--css-size-md-height);
+.select:not([data-size]),
+.select[data-size="md"] {
+  height: var(--size-md-height);
 }
 
-.css-select[css-size="lg"] {
-  height: var(--css-size-lg-height);
+.select[data-size="lg"] {
+  height: var(--size-lg-height);
 }
 
 @media (hover: hover) {
-  .css-select:hover {
+  .select:hover {
     border-color: rgb(var(--rgb-border));
   }
 }
 
-.css-select:is(:user-invalid, [aria-invalid="true"]) {
+.select:is(:user-invalid, [aria-invalid="true"]) {
   border-color: rgb(var(--rgb-error));
 }
 
 @media (hover: hover) {
-  .css-select:is(:user-invalid, [aria-invalid="true"]):hover {
+  .select:is(:user-invalid, [aria-invalid="true"]):hover {
     border-color: rgb(var(--rgb-error));
   }
 }
 
-.css-select:is(:disabled, [aria-disabled="true"]),
-.css-select:is(:disabled, [aria-disabled="true"]):hover {
+.select:is(:disabled, [aria-disabled="true"]),
+.select:is(:disabled, [aria-disabled="true"]):hover {
   border: 1px solid rgb(var(--rgb-light-gray));
   background-color: rgb(var(--rgb-light-gray) / 0.3);
   background-image: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'><path d='M12 6 21 15 19 17 12 10 5 17 3 15Z' fill='%23949494'/></svg>");
@@ -59,38 +61,40 @@
 }
 
 @media (forced-colors: active) {
-  .css-select {
+  .select {
     color: ButtonText;
     border-color: ButtonText;
     background-image: none;
   }
 
-  .css-select:is(:disabled, [aria-disabled="true"]),
-  .css-select:is(:disabled, [aria-disabled="true"]):hover {
+  .select:is(:disabled, [aria-disabled="true"]),
+  .select:is(:disabled, [aria-disabled="true"]):hover {
     border-color: GrayText;
     color: GrayText;
     background-image: none;
   }
 }
 
-.css-select:open {
+.select:open {
     background-image:
         linear-gradient(135deg,  transparent 50%, rgb(var(--rgb-ink)) 50%),
         linear-gradient(45deg, rgb(var(--rgb-ink)) 50%, transparent 50%);
 }
 
-.css-select[multiple] {
+.select[multiple] {
   appearance: auto;
   background-image: none;
   padding: 0.25rem 0;
   height: auto;
 }
 
-.css-select[multiple] option {
+.select[multiple] option {
   padding: calc(6 / 16 * 1rem) 1rem;
   border-radius: 0.25rem;
 }
 
-.css-select[multiple] option:checked {
+.select[multiple] option:checked {
   background: rgb(var(--rgb-emphasis) / 15%);
+}
+
 }

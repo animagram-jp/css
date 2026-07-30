@@ -1,4 +1,4 @@
-.css-progress-indicator {
+.progress-indicator {
   display: flex;
   gap: 1rem 0.5rem;
   justify-content: center;
@@ -11,19 +11,19 @@
   letter-spacing: 0.02em;
 }
 
-css-progress-indicator:not([active]) {
+progress-indicator:not([active]) {
   display: none;
 }
 
-css-progress-indicator:not([active]) * {
+progress-indicator:not([active]) * {
   animation: none !important;
 }
 
-.css-progress-indicator[css-type="stacked"] {
+.progress-indicator[data-type="stacked"] {
   flex-direction: column;
 }
 
-.css-progress-indicator[css-type="stacked-underlay"] {
+.progress-indicator[data-type="stacked-underlay"] {
   flex-direction: column;
   margin-right: auto;
   margin-left: auto;
@@ -34,57 +34,57 @@ css-progress-indicator:not([active]) * {
   background-color: var(--color-neutral-white);
 }
 
-.css-progress-indicator[css-type="stacked-underlay"]:has(
-    .css-progress-indicator__spinner,
-    .css-progress-indicator__static
+.progress-indicator[data-type="stacked-underlay"]:has(
+    .progress-indicator__spinner,
+    .progress-indicator__static
   ) {
   min-width: calc(128 / 16 * 1rem);
   min-height: calc(128 / 16 * 1rem);
   padding: 1rem;
 }
 
-.css-progress-indicator[css-type="stacked-underlay"]:has(
-    .css-progress-indicator__linear
+.progress-indicator[data-type="stacked-underlay"]:has(
+    .progress-indicator__linear
   ) {
   padding: 1.5rem;
 }
 
-.css-progress-indicator__track {
+.progress-indicator__track {
   stroke: currentcolor;
   color: var(--color-primitive-blue-100);
 }
 
-.css-progress-indicator__bar {
+.progress-indicator__bar {
   color: var(--color-primitive-blue-1200);
   stroke-dashoffset: calc(100 - clamp(0, var(--value, 35), 100));
 }
 
-.css-progress-indicator__border {
+.progress-indicator__border {
   color: var(--color-primitive-blue-1200);
 }
 
 /* Spinner type */
 
-.css-progress-indicator__spinner g {
+.progress-indicator__spinner g {
   transform-origin: center;
 }
 
-.css-progress-indicator__spinner .css-progress-indicator__bar {
+.progress-indicator__spinner .progress-indicator__bar {
   stroke-dasharray: 100;
   transform: rotate(-90deg);
   transform-origin: center;
 }
 
-.css-progress-indicator__spinner[data-indeterminate] g {
+.progress-indicator__spinner[data-indeterminate] g {
   animation: css-spinner-rotate 13s linear infinite;
 }
 
-.css-progress-indicator__spinner[data-indeterminate] g > g {
+.progress-indicator__spinner[data-indeterminate] g > g {
   animation: css-spinner-group-rotate 2.5s linear infinite;
 }
 
-.css-progress-indicator__spinner[data-indeterminate]
-  .css-progress-indicator__bar {
+.progress-indicator__spinner[data-indeterminate]
+  .progress-indicator__bar {
   animation:
     css-spinner-bar-rotate 2.5s cubic-bezier(0.4, 0, 0.3, 1) infinite,
     css-spinner-bar-dash 2.5s cubic-bezier(0.4, 0, 0.3, 1) infinite;
@@ -144,19 +144,19 @@ css-progress-indicator:not([active]) * {
 
 /* Linear type */
 
-.css-progress-indicator__linear .css-progress-indicator__bar {
+.progress-indicator__linear .progress-indicator__bar {
   stroke-dasharray: 100;
 }
 
-.css-progress-indicator__linear[data-indeterminate]
-  .css-progress-indicator__bar {
+.progress-indicator__linear[data-indeterminate]
+  .progress-indicator__bar {
   stroke-dasharray: 35 65;
   animation: css-linear-rotate 4s linear infinite;
 }
 
 /* Static type */
 
-.css-progress-indicator__static {
+.progress-indicator__static {
   color: var(--color-primitive-blue-1200);
 }
 
@@ -170,17 +170,17 @@ css-progress-indicator:not([active]) * {
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .css-progress-indicator__spinner,
-  .css-progress-indicator__spinner *,
-  .css-progress-indicator__linear,
-  .css-progress-indicator__linear * {
+  .progress-indicator__spinner,
+  .progress-indicator__spinner *,
+  .progress-indicator__linear,
+  .progress-indicator__linear * {
     animation: none !important;
   }
 }
 
 /* Percentage display */
 
-.css-progress-indicator__percentage span {
+.progress-indicator__percentage span {
   display: inline-block;
   min-width: 2ch;
   text-align: right;
@@ -189,16 +189,16 @@ css-progress-indicator:not([active]) * {
 }
 
 @media (forced-colors: active) {
-  .css-progress-indicator__track {
+  .progress-indicator__track {
     color: Canvas;
   }
 
-  .css-progress-indicator__bar,
-  .css-progress-indicator__border {
+  .progress-indicator__bar,
+  .progress-indicator__border {
     color: CanvasText;
   }
 
-  .css-progress-indicator__static {
+  .progress-indicator__static {
     color: CanvasText;
   }
 }

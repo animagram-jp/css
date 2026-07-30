@@ -1,4 +1,6 @@
-.css-table {
+@layer css.components {
+
+.table {
   --_border-color: var(--color-muted);
   --_padding: calc(20 / 16 * 1rem) 0.5rem;
   margin: 0;
@@ -6,41 +8,41 @@
   border-collapse: collapse;
   color: rgb(var(--rgb-ink));
   font-weight: normal;
-  font-size: var(--css-typography-text-normal-2-font-size);
-  line-height: var(--css-typography-text-normal-2-line-height);
+  font-size: var(--typography-text-normal-2-font-size);
+  line-height: var(--typography-text-normal-2-line-height);
   font-family: var(--font-family-sans);
-  letter-spacing: var(--css-typography-text-normal-2-letter-spacing);
+  letter-spacing: var(--typography-text-normal-2-letter-spacing);
 }
 
-.css-table[css-type="dense"] {
+.table[data-type="dense"] {
   --_padding: 0.75rem 0.1rem;
-  line-height: var(--css-typography-text-tight-3-line-height);
+  line-height: var(--typography-text-tight-3-line-height);
 }
 
-.css-table caption {
+.table caption {
   font-weight: bold;
-  font-size: var(--css-typography-text-normal-1-font-size);
+  font-size: var(--typography-text-normal-1-font-size);
   text-align: left;
   margin-bottom: 1rem;
 }
 
-.css-table :is(td, th) {
+.table :is(td, th) {
   padding: var(--_padding);
   text-align: left;
   vertical-align: baseline;
 }
 
-.css-table th {
+.table th {
   font-weight: bold;
 }
 
-.css-table thead th {
+.table thead th {
   --_border-color: var(--color-muted);
   background-color: rgb(var(--rgb-light-gray) / 0.3);
   color: rgb(var(--rgb-ink));
 }
 
-.css-table tbody th {
+.table tbody th {
   --_border-color: var(--color-muted);
   background-color: rgb(var(--rgb-light-gray) / 0.3);
   color: rgb(var(--rgb-ink));
@@ -48,47 +50,47 @@
 
 /* Stripe */
 
-.css-table[css-stripe] {
+.table[data-stripe] {
   --_border-color: var(--color-muted);
 }
 
-.css-table[css-stripe] tr:nth-child(even) {
+.table[data-stripe] tr:nth-child(even) {
   background-color: rgb(var(--rgb-light-gray) / 0.2);
 }
 
 /* Hover highlight */
 
-.css-table[css-hover] {
+.table[data-hover] {
   --_border-color: var(--color-muted);
 }
 
 @media (hover: hover) {
-  .css-table[css-hover] tr:hover {
+  .table[data-hover] tr:hover {
     background-color: rgb(var(--rgb-emphasis) / 8%);
   }
 }
 
 /* With checkbox */
 
-.css-table[css-selectable] {
+.table[data-selectable] {
   --_border-color: var(--color-muted);
 }
 
-.css-table[css-selectable] tr:has(:checked) {
+.table[data-selectable] tr:has(:checked) {
   background-color: rgb(var(--rgb-emphasis) / 15%);
 }
 
 @supports (selector(:has(.x))) {
-  .css-table td:has(.css-checkbox:only-child, .css-radio:only-child),
-  .css-table th:has(.css-checkbox:only-child, .css-radio:only-child) {
+  .table td:has(.checkbox:only-child, .radio:only-child),
+  .table th:has(.checkbox:only-child, .radio:only-child) {
     position: relative;
     box-sizing: border-box;
     width: 2.5rem;
     padding: 0;
   }
 
-  .css-table td > :is(.css-checkbox:only-child, .css-radio:only-child),
-  .css-table th > :is(.css-checkbox:only-child, .css-radio:only-child) {
+  .table td > :is(.checkbox:only-child, .radio:only-child),
+  .table th > :is(.checkbox:only-child, .radio:only-child) {
     position: absolute;
     inset: 0;
     display: grid;
@@ -100,7 +102,7 @@
 
 /* Sort */
 
-.css-table th[css-sort] {
+.table th[data-sort] {
   --_border-color: var(--color-muted);
   background-color: rgb(var(--rgb-light-gray) / 0.3);
   padding: 0.75rem 1rem;
@@ -108,19 +110,19 @@
   white-space: nowrap;
 }
 
-.css-table[css-type="dense"] th[css-sort] {
+.table[data-type="dense"] th[data-sort] {
   padding-top: 0;
   padding-bottom: 0;
 }
 
-.css-sort {
+.sort {
   display: inline flex;
   flex-direction: column;
   vertical-align: middle;
   margin-inline-start: 0.25rem;
 }
 
-:is(.css-sort-up, .css-sort-down) {
+:is(.sort-up, .sort-down) {
   display: block;
   width: 1.5rem;
   height: 0.75rem;
@@ -131,7 +133,7 @@
   cursor: pointer;
 }
 
-:is(.css-sort-up, .css-sort-down)::after {
+:is(.sort-up, .sort-down)::after {
   content: "";
   display: block;
   width: 100%;
@@ -142,24 +144,24 @@
   mask-size: contain;
 }
 
-.css-sort-up::after {
+.sort-up::after {
   mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 12'%3E%3Cpath d='M2 10l10-9 10 9H2z'/%3E%3C/svg%3E");
 }
 
-.css-sort-down::after {
+.sort-down::after {
   mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 12'%3E%3Cpath d='M2 2l10 9 10-9H2z'/%3E%3C/svg%3E");
 }
 
-.css-table th[css-sort][aria-sort="ascending"] .css-sort-up,
-.css-table th[css-sort][aria-sort="descending"] .css-sort-down {
+.table th[data-sort][aria-sort="ascending"] .sort-up,
+.table th[data-sort][aria-sort="descending"] .sort-down {
   color: rgb(var(--rgb-ink));
 }
 
-:is(.css-sort-up, .css-sort-down):hover {
+:is(.sort-up, .sort-down):hover {
   color: rgb(var(--rgb-ink));
 }
 
-:is(.css-sort-up, .css-sort-down):focus-visible {
+:is(.sort-up, .sort-down):focus-visible {
   outline: 0.125rem solid rgb(var(--rgb-border));
   outline-offset: 0.125rem;
   border-radius: 0.125rem;
@@ -169,37 +171,39 @@
 
 /* Utilities */
 
-.css-table[css-border=""] :where(td, th) {
+.table[data-border=""] :where(td, th) {
   border: 1px solid var(--_border-color);
 }
 
-.css-table[css-border~="top"] :where(td, th) {
+.table[data-border~="top"] :where(td, th) {
   border-top: 1px solid var(--_border-color);
 }
 
-.css-table[css-border~="right"] :where(td, th) {
+.table[data-border~="right"] :where(td, th) {
   border-right: 1px solid var(--_border-color);
 }
 
-.css-table[css-border~="bottom"] :where(td, th) {
+.table[data-border~="bottom"] :where(td, th) {
   border-bottom: 1px solid var(--_border-color);
 }
 
-.css-table[css-border~="left"] :where(td, th) {
+.table[data-border~="left"] :where(td, th) {
   border-left: 1px solid var(--_border-color);
 }
 
-/* Header cell's black border should take precedence over [css-border] */
-.css-table thead tr:last-of-type th {
+/* Header cell's black border should take precedence over [data-border] */
+.table thead tr:last-of-type th {
   border-bottom: 1px solid rgb(var(--rgb-border));
 }
 
-.css-table tbody th:last-of-type {
+.table tbody th:last-of-type {
   border-right: 1px solid rgb(var(--rgb-border));
 }
 
 @media (width >= 40rem) {
-  .css-table {
+  .table {
     --_padding: calc(20 / 16 * 1rem) 1rem;
   }
+}
+
 }

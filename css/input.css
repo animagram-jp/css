@@ -1,4 +1,6 @@
-.css-input {
+@layer css.components {
+
+.input {
     appearance: none;
     width: 12rem;
     max-width: 100%;
@@ -8,64 +10,64 @@
     border-radius: 0.5rem;
     color: rgb(var(--rgb-ink));
     font-weight: normal;
-    font-size: var(--css-typography-text-normal-2-font-size);
-    line-height: var(--css-typography-text-normal-2-line-height);
+    font-size: var(--typography-text-normal-2-font-size);
+    line-height: var(--typography-text-normal-2-line-height);
     font-family: var(--font-family-sans);
-    letter-spacing: var(--css-typography-text-normal-2-letter-spacing);
+    letter-spacing: var(--typography-text-normal-2-letter-spacing);
 }
 
-.css-input[css-size="sm"] {
-  height: var(--css-size-sm-height);
+.input[data-size="sm"] {
+  height: var(--size-sm-height);
 }
 
-.css-input:not([css-size]),
-.css-input[css-size="md"] {
-  height: var(--css-size-md-height);
+.input:not([data-size]),
+.input[data-size="md"] {
+  height: var(--size-md-height);
 }
 
-.css-input[css-size="lg"] {
-  height: var(--css-size-lg-height);
+.input[data-size="lg"] {
+  height: var(--size-lg-height);
 }
 
-.css-input:read-only:not(:disabled) {
+.input:read-only:not(:disabled) {
   border-style: dashed;
 }
 
 @media (hover: hover) {
-  .css-input:not(:read-only):hover {
+  .input:not(:read-only):hover {
     border-color: rgb(var(--rgb-border));
   }
 }
 
-.css-input:is(:user-invalid, [aria-invalid="true"]) {
+.input:is(:user-invalid, [aria-invalid="true"]) {
   border-color: rgb(var(--rgb-error));
 }
 
 @media (hover: hover) {
-  .css-input:is(:user-invalid, [aria-invalid="true"]):hover {
+  .input:is(:user-invalid, [aria-invalid="true"]):hover {
     border-color: rgb(var(--rgb-error));
   }
 }
 
-.css-input:is(:disabled, [aria-disabled="true"]),
-.css-input:is(:disabled, [aria-disabled="true"]):hover {
+.input:is(:disabled, [aria-disabled="true"]),
+.input:is(:disabled, [aria-disabled="true"]):hover {
   border-color: rgb(var(--rgb-light-gray));
   background-color: rgb(var(--rgb-light-gray) / 0.3);
   color: var(--color-muted);
 }
 
 @media (forced-colors: active) {
-  .css-input[aria-disabled="true"],
-  .css-input[aria-disabled="true"]:hover {
+  .input[aria-disabled="true"],
+  .input[aria-disabled="true"]:hover {
     border-color: GrayText;
     color: GrayText;
   }
 }
-.css-input[type="search"]::-webkit-search-cancel-button {
+.input[type="search"]::-webkit-search-cancel-button {
   display: none;
 }
 
-.css-input-number {
+.input-number {
   display: inline flex;
   align-items: stretch;
   box-sizing: border-box;
@@ -76,26 +78,26 @@
   border-radius: 0.5rem;
   color: rgb(var(--rgb-ink));
   font-weight: normal;
-  font-size: var(--css-typography-text-normal-2-font-size);
-  line-height: var(--css-typography-text-normal-2-line-height);
+  font-size: var(--typography-text-normal-2-font-size);
+  line-height: var(--typography-text-normal-2-line-height);
   font-family: var(--font-family-sans);
-  letter-spacing: var(--css-typography-text-normal-2-letter-spacing);
+  letter-spacing: var(--typography-text-normal-2-letter-spacing);
 }
 
-.css-input-number[css-size="sm"] {
-  height: var(--css-size-sm-height);
+.input-number[data-size="sm"] {
+  height: var(--size-sm-height);
 }
 
-.css-input-number:not([css-size]),
-.css-input-number[css-size="md"] {
-  height: var(--css-size-md-height);
+.input-number:not([data-size]),
+.input-number[data-size="md"] {
+  height: var(--size-md-height);
 }
 
-.css-input-number[css-size="lg"] {
-  height: var(--css-size-lg-height);
+.input-number[data-size="lg"] {
+  height: var(--size-lg-height);
 }
 
-.css-input-number input[type="text"] {
+.input-number input[type="text"] {
   appearance: none;
   -webkit-appearance: none;
   box-sizing: border-box;
@@ -110,17 +112,17 @@
   text-align: center;
 }
 
-.css-input-number input[type="text"]:focus-visible {
+.input-number input[type="text"]:focus-visible {
   outline: none;
 }
 
-.css-input-number:focus-within {
+.input-number:focus-within {
   outline: 0.125rem solid rgb(var(--rgb-border));
   outline-offset: 0.125rem;
   box-shadow: 0 0 0 0.125rem rgb(var(--rgb-focus));
 }
 
-.css-input-number button {
+.input-number button {
   all: unset;
   box-sizing: border-box;
   display: flex;
@@ -131,35 +133,35 @@
   background-color: var(--color-background);
   color: rgb(var(--rgb-ink));
   cursor: pointer;
-  font-size: var(--css-typography-text-flush-3-font-size);
+  font-size: var(--typography-text-flush-3-font-size);
   font-weight: bold;
 }
 
-.css-input-number[css-size="sm"] button {
+.input-number[data-size="sm"] button {
   width: 1.5rem;
 }
 
-.css-input-number[css-size="lg"] button {
+.input-number[data-size="lg"] button {
   width: 2.5rem;
 }
 
-.css-input-number button:first-child {
+.input-number button:first-child {
   border-radius: 0.5rem 0 0 0.5rem;
   border-right: 1px solid var(--color-muted);
 }
 
-.css-input-number button:last-child {
+.input-number button:last-child {
   border-radius: 0 0.5rem 0.5rem 0;
   border-left: 1px solid var(--color-muted);
 }
 
 @media (hover: hover) {
-  .css-input-number button:hover {
+  .input-number button:hover {
     background-color: rgb(var(--rgb-light-gray) / 0.3);
   }
 }
 
-.css-input-number button:focus-visible {
+.input-number button:focus-visible {
   outline: 0.125rem solid rgb(var(--rgb-border));
   outline-offset: 0.125rem;
   background-color: rgb(var(--rgb-focus));
@@ -167,7 +169,9 @@
 }
 
 @media (hover: hover) {
-  .css-input-number:not(:focus-within):hover {
+  .input-number:not(:focus-within):hover {
     border-color: rgb(var(--rgb-border));
   }
+}
+
 }

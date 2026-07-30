@@ -1,3 +1,5 @@
+@layer css.config {
+
 :root {
     /*
      * Source: Color Universal Design Recommended Color Set ver.3
@@ -114,121 +116,121 @@
     --font-family-sans: "IBM Plex Sans", "BIZ UDGothic", "Noto Sans JP","Hiragino Sans", sans-serif;
     --font-family-mono: "Noto Sans Mono", "Noto Sans JP", monospace;
 
-    --css-typography-display-1-font-size: 4rem;
-    --css-typography-display-1-line-height: 1.4;
-    --css-typography-display-1-letter-spacing: 0;
+    --typography-display-1-font-size: 4rem;
+    --typography-display-1-line-height: 1.4;
+    --typography-display-1-letter-spacing: 0;
 
-    --css-typography-display-2-font-size: calc(57 / 16 * 1rem);
-    --css-typography-display-2-line-height: 1.4;
-    --css-typography-display-2-letter-spacing: 0;
+    --typography-display-2-font-size: calc(57 / 16 * 1rem);
+    --typography-display-2-line-height: 1.4;
+    --typography-display-2-letter-spacing: 0;
 
-    --css-typography-display-3-font-size: 3rem;
-    --css-typography-display-3-line-height: 1.4;
-    --css-typography-display-3-letter-spacing: 0;
+    --typography-display-3-font-size: 3rem;
+    --typography-display-3-line-height: 1.4;
+    --typography-display-3-letter-spacing: 0;
 
-    --css-typography-heading-1-font-size: calc(45 / 16 * 1rem);
-    --css-typography-heading-1-line-height: 1.4;
-    --css-typography-heading-1-letter-spacing: 0;
+    --typography-heading-1-font-size: calc(45 / 16 * 1rem);
+    --typography-heading-1-line-height: 1.4;
+    --typography-heading-1-letter-spacing: 0;
 
-    --css-typography-heading-2-font-size: calc(36 / 16 * 1rem);
-    --css-typography-heading-2-line-height: 1.4;
-    --css-typography-heading-2-letter-spacing: 0.01em;
+    --typography-heading-2-font-size: calc(36 / 16 * 1rem);
+    --typography-heading-2-line-height: 1.4;
+    --typography-heading-2-letter-spacing: 0.01em;
 
-    --css-typography-heading-3-font-size: 2rem;
-    --css-typography-heading-3-line-height: 1.5;
-    --css-typography-heading-3-letter-spacing: 0.01em;
+    --typography-heading-3-font-size: 2rem;
+    --typography-heading-3-line-height: 1.5;
+    --typography-heading-3-letter-spacing: 0.01em;
 
-    --css-typography-heading-4-font-size: calc(28 / 16 * 1rem);
-    --css-typography-heading-4-line-height: 1.5;
-    --css-typography-heading-4-letter-spacing: 0.01em;
+    --typography-heading-4-font-size: calc(28 / 16 * 1rem);
+    --typography-heading-4-line-height: 1.5;
+    --typography-heading-4-letter-spacing: 0.01em;
 
-    --css-typography-heading-5-font-size: calc(26 / 16 * 1rem);
-    --css-typography-heading-5-line-height: 1.5;
-    --css-typography-heading-5-letter-spacing: 0.02em;
+    --typography-heading-5-font-size: calc(26 / 16 * 1rem);
+    --typography-heading-5-line-height: 1.5;
+    --typography-heading-5-letter-spacing: 0.02em;
 
-    --css-typography-heading-6-font-size: 1.5rem;
-    --css-typography-heading-6-line-height: 1.5;
-    --css-typography-heading-6-letter-spacing: 0.02em;
+    --typography-heading-6-font-size: 1.5rem;
+    --typography-heading-6-line-height: 1.5;
+    --typography-heading-6-letter-spacing: 0.02em;
 
-    --css-typography-heading-7-font-size: calc(22 / 16 * 1rem);
-    --css-typography-heading-7-line-height: 1.5;
-    --css-typography-heading-7-letter-spacing: 0.02em;
+    --typography-heading-7-font-size: calc(22 / 16 * 1rem);
+    --typography-heading-7-line-height: 1.5;
+    --typography-heading-7-letter-spacing: 0.02em;
 
-    --css-typography-heading-8-font-size: calc(20 / 16 * 1rem);
-    --css-typography-heading-8-line-height: 1.5;
-    --css-typography-heading-8-letter-spacing: 0.02em;
+    --typography-heading-8-font-size: calc(20 / 16 * 1rem);
+    --typography-heading-8-line-height: 1.5;
+    --typography-heading-8-letter-spacing: 0.02em;
 
-    --css-typography-heading-9-font-size: calc(18 / 16 * 1rem);
-    --css-typography-heading-9-line-height: 1.6;
-    --css-typography-heading-9-letter-spacing: 0.02em;
+    --typography-heading-9-font-size: calc(18 / 16 * 1rem);
+    --typography-heading-9-line-height: 1.6;
+    --typography-heading-9-letter-spacing: 0.02em;
 
-    --css-typography-text-normal-1-font-size: calc(17 / 16 * 1rem);
-    --css-typography-text-normal-1-line-height: 1.7;
-    --css-typography-text-normal-1-letter-spacing: 0.02em;
+    --typography-text-normal-1-font-size: calc(17 / 16 * 1rem);
+    --typography-text-normal-1-line-height: 1.7;
+    --typography-text-normal-1-letter-spacing: 0.02em;
 
-    --css-typography-text-normal-2-font-size: 1rem;
-    --css-typography-text-normal-2-line-height: 1.7;
-    --css-typography-text-normal-2-letter-spacing: 0.02em;
+    --typography-text-normal-2-font-size: 1rem;
+    --typography-text-normal-2-line-height: 1.7;
+    --typography-text-normal-2-letter-spacing: 0.02em;
 
-    --css-typography-text-normal-3-font-size: 1rem;
-    --css-typography-text-normal-3-line-height: 1.75;
-    --css-typography-text-normal-3-letter-spacing: 0.02em;
+    --typography-text-normal-3-font-size: 1rem;
+    --typography-text-normal-3-line-height: 1.75;
+    --typography-text-normal-3-letter-spacing: 0.02em;
 
-    --css-typography-text-tight-1-font-size: calc(17 / 16 * 1rem);
-    --css-typography-text-tight-1-line-height: 1.3;
-    --css-typography-text-tight-1-letter-spacing: 0;
+    --typography-text-tight-1-font-size: calc(17 / 16 * 1rem);
+    --typography-text-tight-1-line-height: 1.3;
+    --typography-text-tight-1-letter-spacing: 0;
 
-    --css-typography-text-tight-2-font-size: calc(17 / 16 * 1rem);
-    --css-typography-text-tight-2-line-height: 1.2;
-    --css-typography-text-tight-2-letter-spacing: 0;
+    --typography-text-tight-2-font-size: calc(17 / 16 * 1rem);
+    --typography-text-tight-2-line-height: 1.2;
+    --typography-text-tight-2-letter-spacing: 0;
 
-    --css-typography-text-tight-3-font-size: 1rem;
-    --css-typography-text-tight-3-line-height: 1.3;
-    --css-typography-text-tight-3-letter-spacing: 0;
+    --typography-text-tight-3-font-size: 1rem;
+    --typography-text-tight-3-line-height: 1.3;
+    --typography-text-tight-3-letter-spacing: 0;
 
-    --css-typography-text-tight-4-font-size: 1rem;
-    --css-typography-text-tight-4-line-height: 1.2;
-    --css-typography-text-tight-4-letter-spacing: 0;
+    --typography-text-tight-4-font-size: 1rem;
+    --typography-text-tight-4-line-height: 1.2;
+    --typography-text-tight-4-letter-spacing: 0;
 
-    --css-typography-text-tight-5-font-size: calc(14 / 16 * 1rem);
-    --css-typography-text-tight-5-line-height: 1.3;
-    --css-typography-text-tight-5-letter-spacing: 0;
+    --typography-text-tight-5-font-size: calc(14 / 16 * 1rem);
+    --typography-text-tight-5-line-height: 1.3;
+    --typography-text-tight-5-letter-spacing: 0;
 
-    --css-typography-text-tight-6-font-size: calc(14 / 16 * 1rem);
-    --css-typography-text-tight-6-line-height: 1.2;
-    --css-typography-text-tight-6-letter-spacing: 0;
+    --typography-text-tight-6-font-size: calc(14 / 16 * 1rem);
+    --typography-text-tight-6-line-height: 1.2;
+    --typography-text-tight-6-letter-spacing: 0;
 
-    --css-typography-text-flush-1-font-size: calc(17 / 16 * 1rem);
-    --css-typography-text-flush-1-line-height: 1;
-    --css-typography-text-flush-1-letter-spacing: 0.02em;
+    --typography-text-flush-1-font-size: calc(17 / 16 * 1rem);
+    --typography-text-flush-1-line-height: 1;
+    --typography-text-flush-1-letter-spacing: 0.02em;
 
-    --css-typography-text-flush-2-font-size: 1rem;
-    --css-typography-text-flush-2-line-height: 1;
-    --css-typography-text-flush-2-letter-spacing: 0.02em;
+    --typography-text-flush-2-font-size: 1rem;
+    --typography-text-flush-2-line-height: 1;
+    --typography-text-flush-2-letter-spacing: 0.02em;
 
-    --css-typography-text-flush-3-font-size: calc(14 / 16 * 1rem);
-    --css-typography-text-flush-3-line-height: 1;
-    --css-typography-text-flush-3-letter-spacing: 0.02em;
+    --typography-text-flush-3-font-size: calc(14 / 16 * 1rem);
+    --typography-text-flush-3-line-height: 1;
+    --typography-text-flush-3-letter-spacing: 0.02em;
 
-    --css-typography-monospace-1-font-size: calc(17 / 16 * 1rem);
-    --css-typography-monospace-1-line-height: 1.5;
-    --css-typography-monospace-1-letter-spacing: 0;
+    --typography-monospace-1-font-size: calc(17 / 16 * 1rem);
+    --typography-monospace-1-line-height: 1.5;
+    --typography-monospace-1-letter-spacing: 0;
 
-    --css-typography-monospace-2-font-size: 1rem;
-    --css-typography-monospace-2-line-height: 1.5;
-    --css-typography-monospace-2-letter-spacing: 0;
+    --typography-monospace-2-font-size: 1rem;
+    --typography-monospace-2-line-height: 1.5;
+    --typography-monospace-2-letter-spacing: 0;
 
-    --css-typography-monospace-3-font-size: calc(14 / 16 * 1rem);
-    --css-typography-monospace-3-line-height: 1.5;
-    --css-typography-monospace-3-letter-spacing: 0;
+    --typography-monospace-3-font-size: calc(14 / 16 * 1rem);
+    --typography-monospace-3-line-height: 1.5;
+    --typography-monospace-3-letter-spacing: 0;
 
-    --css-size-xs-height: 1.75rem;
-    --css-size-xs-padding-block: 0.125rem;
-    --css-size-xs-padding-inline: 0.5rem;
+    --size-xs-height: 1.75rem;
+    --size-xs-padding-block: 0.125rem;
+    --size-xs-padding-inline: 0.5rem;
 
-    --css-size-sm-height: 2.5rem;
-    --css-size-md-height: 3rem;
-    --css-size-lg-height: 3.5rem;
+    --size-sm-height: 2.5rem;
+    --size-md-height: 3rem;
+    --size-lg-height: 3.5rem;
 
     --elevation-1:
         0 2px 8px 1px rgb(var(--rgb-black) / 0.1), 0 1px 5px 0 rgb(var(--rgb-black) / 0.3);
@@ -303,7 +305,7 @@ body:has(:modal) {
   box-shadow: 0 0 0 0.125rem rgb(var(--rgb-focus));
 }
 
-.css-visually-hidden {
+.visually-hidden {
   clip: rect(0 0 0 0) !important;
   clip-path: inset(50%) !important;
   height: 1px !important;
@@ -313,7 +315,7 @@ body:has(:modal) {
   width: 1px !important;
 }
 
-:where(.css-focus-outline):focus-visible {
+:where(.focus-outline):focus-visible {
   outline: 0.125rem solid rgb(var(--rgb-border)) !important;
   outline-offset: 0.125rem !important;
   border-radius: 0.25rem !important;
@@ -322,8 +324,8 @@ body:has(:modal) {
 }
 
 @supports selector(:has(*)) {
-  :where(.css-focus-within-outline):focus-visible,
-  :where(.css-focus-within-outline):has(:focus-visible) {
+  :where(.focus-within-outline):focus-visible,
+  :where(.focus-within-outline):has(:focus-visible) {
     outline: 0.125rem solid rgb(var(--rgb-border)) !important;
     outline-offset: 0.125rem !important;
     border-radius: 0.25rem !important;
@@ -333,11 +335,13 @@ body:has(:modal) {
 }
 
 @supports not selector(:has(*)) {
-  :where(.css-focus-within-outline):focus-within {
+  :where(.focus-within-outline):focus-within {
     outline: 0.125rem solid rgb(var(--rgb-border)) !important;
     outline-offset: 0.125rem !important;
     border-radius: 0.25rem !important;
     background-color: rgb(var(--rgb-focus)) !important;
     box-shadow: 0 0 0 0.125rem rgb(var(--rgb-focus)) !important;
   }
+}
+
 }

@@ -13,11 +13,11 @@ Css universal design boilerplate. Works without interference to HTML.
 |---------|-----------|------------|-------------|
 | 0.1.0   | Scheduled | 2026-08-31 | 1st release |
 
-## `css-size` — Size Scale
+## `data-size` — Size Scale
 
-The `size` attribute (`css-size="sm"` etc.) controls the physical density of a component. `height`/`padding` are pure UI sizing (touch-target scale), tracked independently in `--css-size-*` custom properties — they no longer encode `font-size` or `line-height`. Typography for these components (`font-size`, `line-height`, `letter-spacing`) instead references the `css-typography-*` scale (see below); most components use a single fixed typography step regardless of `css-size`, since font-size/line-height don't vary by tier except where noted.
+The `size` attribute (`data-size="sm"` etc.) controls the physical density of a component. `height`/`padding` are pure UI sizing (touch-target scale), tracked independently in `--size-*` custom properties — they no longer encode `font-size` or `line-height`. Typography for these components (`font-size`, `line-height`, `letter-spacing`) instead references the `typography-*` scale (see below); most components use a single fixed typography step regardless of `data-size`, since font-size/line-height don't vary by tier except where noted.
 
-| `css-size` | height (`--css-size-*-height`) | padding (block) | padding (inline) |
+| `data-size` | height (`--size-*-height`) | padding (block) | padding (inline) |
 |-------------|---------------------------------|------------------|-------------------|
 | `xs`        | 1.75rem | 0.125rem | 0.5rem |
 | `sm`        | 2.5rem  | —        | —      |
@@ -28,7 +28,7 @@ The `size` attribute (`css-size="sm"` etc.) controls the physical density of a c
 
 ### button
 
-| `css-size` | min-height | padding (block) | padding (inline) | typography |
+| `data-size` | min-height | padding (block) | padding (inline) | typography |
 |-------------|------------|-----------------|------------------|------------|
 | `xs`        | 1.75rem    | 0.125rem        | 0.5rem           | `text-flush-3` |
 | `sm`        | 2.5rem     | 0.125rem        | 0.75rem          | `text-flush-2` |
@@ -37,7 +37,7 @@ The `size` attribute (`css-size="sm"` etc.) controls the physical density of a c
 
 ### input
 
-| `css-size` | height  | padding (block) | padding (inline) | typography | width  |
+| `data-size` | height  | padding (block) | padding (inline) | typography | width  |
 |-------------|---------|-----------------|------------------|------------|--------|
 | `sm`        | 2.5rem  | 0.75rem         | 1rem             | `text-normal-2` | 12rem  |
 | `md`        | 3rem    | 0.75rem         | 1rem             | `text-normal-2` | 12rem  |
@@ -45,7 +45,7 @@ The `size` attribute (`css-size="sm"` etc.) controls the physical density of a c
 
 ### input-number
 
-| `css-size` | height  | button width | input        | typography | full-length width |
+| `data-size` | height  | button width | input        | typography | full-length width |
 |-------------|---------|--------------|--------------|------------|------------|
 | `sm`        | 2.5rem  | 2rem         | flex: 1      | `text-normal-2` | 12rem      |
 | `md`        | 3rem    | 2rem         | flex: 1      | `text-normal-2` | 12rem      |
@@ -53,7 +53,7 @@ The `size` attribute (`css-size="sm"` etc.) controls the physical density of a c
 
 ### select
 
-| `css-size` | height  | padding-inline-start | padding-inline-end | typography |
+| `data-size` | height  | padding-inline-start | padding-inline-end | typography |
 |-------------|---------|----------------------|--------------------|------------|
 | `sm`        | 2.5rem  | 1rem                 | 2.5rem             | `text-flush-2` (font-size inherited) |
 | `md`        | 3rem    | 1rem                 | 2.5rem             | `text-flush-2` (font-size inherited) |
@@ -61,9 +61,9 @@ The `size` attribute (`css-size="sm"` etc.) controls the physical density of a c
 
 ### textarea
 
-`sm`/`md` line-heights (1.5/1.6) predate the typography token scale and have no matching `css-typography-text-*` step yet; they remain hardcoded until a matching step is defined. `lg` matches `text-normal-2` and has been migrated.
+`sm`/`md` line-heights (1.5/1.6) predate the typography token scale and have no matching `typography-text-*` step yet; they remain hardcoded until a matching step is defined. `lg` matches `text-normal-2` and has been migrated.
 
-| `css-size` | padding (block) | padding (inline) | font-size | line-height | width  |
+| `data-size` | padding (block) | padding (inline) | font-size | line-height | width  |
 |-------------|-----------------|------------------|-----------|-------------|--------|
 | `sm`        | 0.75rem         | 1rem             | 1rem      | 1.5 (hardcoded) | 100%   |
 | `md`        | 0.75rem         | 1rem             | 1rem      | 1.6 (hardcoded) | 100%   |
@@ -73,7 +73,7 @@ The `size` attribute (`css-size="sm"` etc.) controls the physical density of a c
 
 Label `font-size`/`line-height` reference `text-flush-2`; `letter-spacing: 0` remains hardcoded (does not match `text-flush-2`'s `0.02em`, and no matching step exists).
 
-| `css-size` | 行高   | input-size | hover-size | gap     | border-width | padding-block | typography |
+| `data-size` | 行高   | input-size | hover-size | gap     | border-width | padding-block | typography |
 |-------------|--------|------------|------------|---------|--------------|---------------|------------|
 | `sm`        | 40px   | 1.25rem    | 1.5rem     | 0.25rem | 0.125rem     | 0.625rem      | `text-flush-2` |
 | `md`        | 48px   | 1.625rem   | 2rem       | 0.5rem  | 0.125rem     | 0.6875rem     | `text-flush-2` |
@@ -83,7 +83,7 @@ Label `font-size`/`line-height` reference `text-flush-2`; `letter-spacing: 0` re
 
 Label `font-size`/`line-height` reference `text-flush-2`; `letter-spacing: 0` remains hardcoded (does not match `text-flush-2`'s `0.02em`, and no matching step exists) — `font-family`/`font-weight`/`letter-spacing` are now explicit rather than relying on inheritance, matching checkbox.css.
 
-| `css-size` | 行高   | outer-size | inner-size | hover-size | gap     | border-width | padding-block | typography |
+| `data-size` | 行高   | outer-size | inner-size | hover-size | gap     | border-width | padding-block | typography |
 |-------------|--------|------------|------------|------------|---------|--------------|---------------|------------|
 | `sm`        | 40px   | 1.25rem    | 0.625rem   | 1.5rem     | 0.25rem | 0.125rem     | 0.6rem        | `text-flush-2` |
 | `md`        | 48px   | 1.625rem   | 0.75rem    | 2rem       | 0.5rem  | 0.125rem     | 0.6875rem     | `text-flush-2` |
@@ -91,9 +91,9 @@ Label `font-size`/`line-height` reference `text-flush-2`; `letter-spacing: 0` re
 
 ### heading
 
-`heading.css` (`.css-h`, used via `css-size="…"` on the element or a wrapping `hgroup`) does not use the `xs`/`sm`/`md`/`lg` tiers above — it exposes the full `css-typography-display-*`/`heading-*`/`text-normal-2` step range directly as `css-size` values, since headings need finer granularity than other components. The shoulder text (`.css-h-shoulder` inside an `hgroup`) uses a different, smaller step for each size. Values were physical px numbers (`css-size="45"`) before the typography token rework; they are now the token step names themselves.
+`heading.css` (`.h`, used via `data-size="…"` on the element or a wrapping `hgroup`) does not use the `xs`/`sm`/`md`/`lg` tiers above — it exposes the full `typography-display-*`/`heading-*`/`text-normal-2` step range directly as `data-size` values, since headings need finer granularity than other components. The shoulder text (`.h-shoulder` inside an `hgroup`) uses a different, smaller step for each size. Values were physical px numbers (`data-size="45"`) before the typography token rework; they are now the token step names themselves.
 
-| `css-size` | heading font-size | shoulder step |
+| `data-size` | heading font-size | shoulder step |
 |-------------|--------------------|----------------|
 | `display-1`     | 64px (`display-1`) | `heading-4` (28px) |
 | `display-2`     | 57px (`display-2`) | `heading-6` (24px) |
@@ -106,9 +106,9 @@ Label `font-size`/`line-height` reference `text-flush-2`; `letter-spacing: 0` re
 | `heading-9`     | 18px | `text-normal-2` (16px) |
 | `text-normal-2` | 16px | `text-normal-2` (16px) |
 
-## `css-typography-*` — Typography Scale
+## `typography-*` — Typography Scale
 
-Typography utility classes in `config.css` follow a role-based naming: `css-typography-{role}-{step}-{weight}` (`text` role additionally carries a density segment: `css-typography-text-{density}-{step}-{weight}`). The scale is defined as DTCG-format composite tokens in [`css/typography.tokens.json`](./css/typography.tokens.json); the CSS classes below are its flattened output. `step` numbers order each role from largest to smallest and carry no meaning beyond ordering.
+Typography utility classes in `config.css` follow a role-based naming: `typography-{role}-{step}-{weight}` (`text` role additionally carries a density segment: `typography-text-{density}-{step}-{weight}`). The scale is defined as DTCG-format composite tokens in [`css/typography.tokens.json`](./css/typography.tokens.json); the CSS classes below are its flattened output. `step` numbers order each role from largest to smallest and carry no meaning beyond ordering.
 
 | role | density | steps | font-size range | line-height | letter-spacing | notes |
 |------|---------|-------|------------------|-------------|-----------------|-------|

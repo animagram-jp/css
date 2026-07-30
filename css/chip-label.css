@@ -1,4 +1,6 @@
-.css-chip-label {
+@layer css.components {
+
+.chip-label {
   display: inline flex;
   vertical-align: middle;
   grid-template-columns: auto auto;
@@ -6,25 +8,27 @@
   align-content: center;
   border-radius: 0.5rem;
   padding: 0.5rem 0.5rem;
-  font-size: var(--css-typography-text-flush-2-font-size);
-  line-height: var(--css-typography-text-flush-2-line-height);
+  font-size: var(--typography-text-flush-2-font-size);
+  line-height: var(--typography-text-flush-2-line-height);
   font-family: var(--font-family-sans);
-  letter-spacing: var(--css-typography-text-flush-2-letter-spacing);
+  letter-spacing: var(--typography-text-flush-2-letter-spacing);
   overflow-wrap: anywhere;
 }
 
-.css-chip-label[css-type="text"] {
+.chip-label[data-type="text"] {
   color: var(--color-emphasis);
 }
 
-.css-chip-label[css-type="outline"] {
+.chip-label[data-type="outline"] {
   border: 1px solid var(--color-emphasis);
   background-color: var(--color-background);
   color: var(--color-emphasis);
 }
 
-.css-chip-label[css-type="fill"] {
+.chip-label[data-type="fill"] {
   border: 1px solid transparent;
   background-color: var(--color-emphasis-fill);
   color: rgb(var(--rgb-ink));
+}
+
 }

@@ -1,4 +1,6 @@
-.css-blockquote {
+@layer css.components {
+
+.blockquote {
   margin: 0 2.5rem;
   border-left: 8px solid var(--color-muted);
   padding-top: 0.5rem;
@@ -7,10 +9,12 @@
   padding-left: 1.5rem;
 }
 
-.css-blockquote > *:first-child {
+.blockquote > *:first-child {
   margin-top: 0 !important;
 }
 
-.css-blockquote > *:last-child {
+.blockquote > *:last-child {
   margin-bottom: 0 !important;
+}
+
 }
