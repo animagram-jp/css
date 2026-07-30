@@ -250,6 +250,12 @@ html {
   font-family: var(--font-family-sans);
 }
 
+@media print {
+    html {
+        font-size: 14pt
+    }
+}
+
 html:has(:modal) {
   overflow: clip;
   scrollbar-gutter: auto;
