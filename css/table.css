@@ -1,3 +1,5 @@
+@layer css.components {
+
 .css-table {
   --_border-color: var(--color-muted);
   --_padding: calc(20 / 16 * 1rem) 0.5rem;
@@ -202,4 +204,6 @@
   .css-table {
     --_padding: calc(20 / 16 * 1rem) 1rem;
   }
+}
+
 }

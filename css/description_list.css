@@ -1,6 +1,9 @@
 /* Reference: https://github.com/yuto-hasegawa/sashimi-ui/blob/main/src/css/key-value.css
  * 
 */
+
+@layer css.components {
+
 .css-description-list:where(dl) {
     display: grid;
     grid-template-columns: auto 1fr;
@@ -13,4 +16,6 @@
 .css-description-list:where(dl) dd {
     margin: 0;
     justify-self: end;
+}
+
 }

@@ -1,3 +1,5 @@
+@layer css.components {
+
 .css-select {
     vertical-align: middle;
     box-sizing: border-box;
@@ -93,4 +95,6 @@
 
 .css-select[multiple] option:checked {
   background: rgb(var(--rgb-emphasis) / 15%);
+}
+
 }

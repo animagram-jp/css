@@ -1,3 +1,5 @@
+@layer css.config {
+
 :root {
     /*
      * Source: Color Universal Design Recommended Color Set ver.3
@@ -340,4 +342,6 @@ body:has(:modal) {
     background-color: rgb(var(--rgb-focus)) !important;
     box-shadow: 0 0 0 0.125rem rgb(var(--rgb-focus)) !important;
   }
+}
+
 }

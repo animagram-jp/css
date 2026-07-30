@@ -6,6 +6,8 @@
         <p>これはダミーテキストです。ダミーテキストは、デザインやレイアウトの作成時に使用される仮の文章です。</p>
     </details> */
 
+@layer css.components {
+
 .css-disclosure {
   --_icon-size: calc(20 / 16 * 1rem);
   border-bottom: 1px solid var(--color-border);
@@ -87,4 +89,6 @@
 
 .css-disclosure[open]>summary::before {
   transform: translateY(calc(2 / 16 * 1rem)) rotate(225deg);
+}
+
 }

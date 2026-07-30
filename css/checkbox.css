@@ -1,3 +1,5 @@
+@layer css.components {
+
 .css-checkbox {
   position: relative;
   display: inline flex;
@@ -164,4 +166,6 @@
     --_border-hover-color: GrayText;
     --_check-color: Canvas;
   }
+}
+
 }

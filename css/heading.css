@@ -1,3 +1,5 @@
+@layer css.components {
+
 .css-h {
   margin: 0;
   color: rgb(var(--rgb-ink));
@@ -187,4 +189,6 @@ hgroup[data-rule="2"] .css-h {
   font-size: var(--_shoulder-size);
   line-height: var(--_shoulder-line-height);
   letter-spacing: var(--_shoulder-letter-spacing);
+}
+
 }

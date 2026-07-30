@@ -1,3 +1,5 @@
+@layer css.components {
+
 .css-textarea {
   display: inline flex;
   box-sizing: border-box;
@@ -79,4 +81,6 @@
 
 .css-textarea-counter[data-exceeded] {
   color: rgb(var(--rgb-error));
+}
+
 }
