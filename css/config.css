@@ -245,14 +245,6 @@
   display: none !important;
 }
 
-body {
-    --color-ink: rgb(var(--rgb-ink));
-    margin: 0;
-    padding: 24px;
-    background: var(--color-background);
-    color: var(--color-ink);
-}
-
 html {
   scrollbar-gutter: stable;
   font-family: var(--font-family-sans);
@@ -261,6 +253,13 @@ html {
 html:has(:modal) {
   overflow: clip;
   scrollbar-gutter: auto;
+}
+
+body {
+    --color-ink: rgb(var(--rgb-ink));
+    margin: 0;
+    background: var(--color-background);
+    color: var(--color-ink);
 }
 
 body:has(:modal) {
