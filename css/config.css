@@ -254,7 +254,7 @@ html {
 
 @media print {
     html {
-        font-size: 14pt
+        font-size: 14pt;
     }
 }
 
