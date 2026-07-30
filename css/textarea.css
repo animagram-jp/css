@@ -30,8 +30,8 @@
 }
 
 .textarea[data-size="lg"] {
-  font-size: var(--css-typography-text-normal-2-font-size);
-  line-height: var(--css-typography-text-normal-2-line-height);
+  font-size: var(--typography-text-normal-2-font-size);
+  line-height: var(--typography-text-normal-2-line-height);
 }
 
 .textarea:read-only:not(:disabled) {
@@ -74,9 +74,9 @@
   display: block;
   margin-top: 0.5rem;
   color: var(--color-muted);
-  font-size: var(--css-typography-text-flush-2-font-size);
-  line-height: var(--css-typography-text-flush-2-line-height);
-  letter-spacing: var(--css-typography-text-flush-2-letter-spacing);
+  font-size: var(--typography-text-flush-2-font-size);
+  line-height: var(--typography-text-flush-2-line-height);
+  letter-spacing: var(--typography-text-flush-2-letter-spacing);
 }
 
 .textarea-counter[data-exceeded] {

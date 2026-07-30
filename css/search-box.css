@@ -54,10 +54,10 @@ label.search-box-scope {
   flex-shrink: 0;
   color: rgb(var(--rgb-ink));
   font-weight: normal;
-  font-size: var(--css-typography-text-flush-2-font-size);
-  line-height: var(--css-typography-text-flush-2-line-height);
+  font-size: var(--typography-text-flush-2-font-size);
+  line-height: var(--typography-text-flush-2-line-height);
   font-family: var(--font-family-sans);
-  letter-spacing: var(--css-typography-text-flush-2-letter-spacing);
+  letter-spacing: var(--typography-text-flush-2-letter-spacing);
 }
 
 label.search-box-scope > span {
@@ -85,15 +85,15 @@ label.search-box-scope > select {
   padding-left: 1rem;
   color: rgb(var(--rgb-ink));
   font: inherit;
-  font-size: var(--css-typography-text-flush-1-font-size);
-  line-height: var(--css-typography-text-flush-1-line-height);
-  letter-spacing: var(--css-typography-text-flush-1-letter-spacing);
+  font-size: var(--typography-text-flush-1-font-size);
+  line-height: var(--typography-text-flush-1-line-height);
+  letter-spacing: var(--typography-text-flush-1-letter-spacing);
   white-space: nowrap;
   text-overflow: ellipsis;
 }
 
 label.search-box-scope[data-size="sm"] > select {
-  height: var(--css-size-sm-height);
+  height: var(--size-sm-height);
 }
 
 label.search-box-scope[data-size="sm"]::after {
@@ -104,11 +104,11 @@ label.search-box-scope[data-size="sm"]::after {
 
 label.search-box-scope:not([data-size]) > select,
 label.search-box-scope[data-size="md"] > select {
-  height: var(--css-size-md-height);
+  height: var(--size-md-height);
 }
 
 label.search-box-scope[data-size="lg"] > select {
-  height: var(--css-size-lg-height);
+  height: var(--size-lg-height);
 }
 
 @supports (appearance: base-select) {

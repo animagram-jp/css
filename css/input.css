@@ -10,23 +10,23 @@
     border-radius: 0.5rem;
     color: rgb(var(--rgb-ink));
     font-weight: normal;
-    font-size: var(--css-typography-text-normal-2-font-size);
-    line-height: var(--css-typography-text-normal-2-line-height);
+    font-size: var(--typography-text-normal-2-font-size);
+    line-height: var(--typography-text-normal-2-line-height);
     font-family: var(--font-family-sans);
-    letter-spacing: var(--css-typography-text-normal-2-letter-spacing);
+    letter-spacing: var(--typography-text-normal-2-letter-spacing);
 }
 
 .input[data-size="sm"] {
-  height: var(--css-size-sm-height);
+  height: var(--size-sm-height);
 }
 
 .input:not([data-size]),
 .input[data-size="md"] {
-  height: var(--css-size-md-height);
+  height: var(--size-md-height);
 }
 
 .input[data-size="lg"] {
-  height: var(--css-size-lg-height);
+  height: var(--size-lg-height);
 }
 
 .input:read-only:not(:disabled) {
@@ -78,23 +78,23 @@
   border-radius: 0.5rem;
   color: rgb(var(--rgb-ink));
   font-weight: normal;
-  font-size: var(--css-typography-text-normal-2-font-size);
-  line-height: var(--css-typography-text-normal-2-line-height);
+  font-size: var(--typography-text-normal-2-font-size);
+  line-height: var(--typography-text-normal-2-line-height);
   font-family: var(--font-family-sans);
-  letter-spacing: var(--css-typography-text-normal-2-letter-spacing);
+  letter-spacing: var(--typography-text-normal-2-letter-spacing);
 }
 
 .input-number[data-size="sm"] {
-  height: var(--css-size-sm-height);
+  height: var(--size-sm-height);
 }
 
 .input-number:not([data-size]),
 .input-number[data-size="md"] {
-  height: var(--css-size-md-height);
+  height: var(--size-md-height);
 }
 
 .input-number[data-size="lg"] {
-  height: var(--css-size-lg-height);
+  height: var(--size-lg-height);
 }
 
 .input-number input[type="text"] {
@@ -133,7 +133,7 @@
   background-color: var(--color-background);
   color: rgb(var(--rgb-ink));
   cursor: pointer;
-  font-size: var(--css-typography-text-flush-3-font-size);
+  font-size: var(--typography-text-flush-3-font-size);
   font-weight: bold;
 }
 

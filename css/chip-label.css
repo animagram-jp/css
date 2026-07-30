@@ -8,10 +8,10 @@
   align-content: center;
   border-radius: 0.5rem;
   padding: 0.5rem 0.5rem;
-  font-size: var(--css-typography-text-flush-2-font-size);
-  line-height: var(--css-typography-text-flush-2-line-height);
+  font-size: var(--typography-text-flush-2-font-size);
+  line-height: var(--typography-text-flush-2-line-height);
   font-family: var(--font-family-sans);
-  letter-spacing: var(--css-typography-text-flush-2-letter-spacing);
+  letter-spacing: var(--typography-text-flush-2-letter-spacing);
   overflow-wrap: anywhere;
 }
 

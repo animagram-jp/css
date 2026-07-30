@@ -15,9 +15,9 @@ Css universal design boilerplate. Works without interference to HTML.
 
 ## `data-size` — Size Scale
 
-The `size` attribute (`data-size="sm"` etc.) controls the physical density of a component. `height`/`padding` are pure UI sizing (touch-target scale), tracked independently in `--css-size-*` custom properties — they no longer encode `font-size` or `line-height`. Typography for these components (`font-size`, `line-height`, `letter-spacing`) instead references the `css-typography-*` scale (see below); most components use a single fixed typography step regardless of `data-size`, since font-size/line-height don't vary by tier except where noted.
+The `size` attribute (`data-size="sm"` etc.) controls the physical density of a component. `height`/`padding` are pure UI sizing (touch-target scale), tracked independently in `--size-*` custom properties — they no longer encode `font-size` or `line-height`. Typography for these components (`font-size`, `line-height`, `letter-spacing`) instead references the `typography-*` scale (see below); most components use a single fixed typography step regardless of `data-size`, since font-size/line-height don't vary by tier except where noted.
 
-| `data-size` | height (`--css-size-*-height`) | padding (block) | padding (inline) |
+| `data-size` | height (`--size-*-height`) | padding (block) | padding (inline) |
 |-------------|---------------------------------|------------------|-------------------|
 | `xs`        | 1.75rem | 0.125rem | 0.5rem |
 | `sm`        | 2.5rem  | —        | —      |
@@ -61,7 +61,7 @@ The `size` attribute (`data-size="sm"` etc.) controls the physical density of a 
 
 ### textarea
 
-`sm`/`md` line-heights (1.5/1.6) predate the typography token scale and have no matching `css-typography-text-*` step yet; they remain hardcoded until a matching step is defined. `lg` matches `text-normal-2` and has been migrated.
+`sm`/`md` line-heights (1.5/1.6) predate the typography token scale and have no matching `typography-text-*` step yet; they remain hardcoded until a matching step is defined. `lg` matches `text-normal-2` and has been migrated.
 
 | `data-size` | padding (block) | padding (inline) | font-size | line-height | width  |
 |-------------|-----------------|------------------|-----------|-------------|--------|
@@ -91,7 +91,7 @@ Label `font-size`/`line-height` reference `text-flush-2`; `letter-spacing: 0` re
 
 ### heading
 
-`heading.css` (`.h`, used via `data-size="…"` on the element or a wrapping `hgroup`) does not use the `xs`/`sm`/`md`/`lg` tiers above — it exposes the full `css-typography-display-*`/`heading-*`/`text-normal-2` step range directly as `data-size` values, since headings need finer granularity than other components. The shoulder text (`.h-shoulder` inside an `hgroup`) uses a different, smaller step for each size. Values were physical px numbers (`data-size="45"`) before the typography token rework; they are now the token step names themselves.
+`heading.css` (`.h`, used via `data-size="…"` on the element or a wrapping `hgroup`) does not use the `xs`/`sm`/`md`/`lg` tiers above — it exposes the full `typography-display-*`/`heading-*`/`text-normal-2` step range directly as `data-size` values, since headings need finer granularity than other components. The shoulder text (`.h-shoulder` inside an `hgroup`) uses a different, smaller step for each size. Values were physical px numbers (`data-size="45"`) before the typography token rework; they are now the token step names themselves.
 
 | `data-size` | heading font-size | shoulder step |
 |-------------|--------------------|----------------|
@@ -106,9 +106,9 @@ Label `font-size`/`line-height` reference `text-flush-2`; `letter-spacing: 0` re
 | `heading-9`     | 18px | `text-normal-2` (16px) |
 | `text-normal-2` | 16px | `text-normal-2` (16px) |
 
-## `css-typography-*` — Typography Scale
+## `typography-*` — Typography Scale
 
-Typography utility classes in `config.css` follow a role-based naming: `css-typography-{role}-{step}-{weight}` (`text` role additionally carries a density segment: `css-typography-text-{density}-{step}-{weight}`). The scale is defined as DTCG-format composite tokens in [`css/typography.tokens.json`](./css/typography.tokens.json); the CSS classes below are its flattened output. `step` numbers order each role from largest to smallest and carry no meaning beyond ordering.
+Typography utility classes in `config.css` follow a role-based naming: `typography-{role}-{step}-{weight}` (`text` role additionally carries a density segment: `typography-text-{density}-{step}-{weight}`). The scale is defined as DTCG-format composite tokens in [`css/typography.tokens.json`](./css/typography.tokens.json); the CSS classes below are its flattened output. `step` numbers order each role from largest to smallest and carry no meaning beyond ordering.
 
 | role | density | steps | font-size range | line-height | letter-spacing | notes |
 |------|---------|-------|------------------|-------------|-----------------|-------|
