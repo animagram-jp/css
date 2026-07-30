@@ -11,12 +11,12 @@
   --_padding-inline: 1rem;
 }
 
-.css-resource-list[css-type="list"] {
+.css-resource-list[data-type="list"] {
   border: 1px solid transparent;
   border-bottom-color: var(--_border-color);
 }
 
-.css-resource-list[css-type="frame"] {
+.css-resource-list[data-type="frame"] {
   border-radius: 1rem;
   border: 1px solid var(--_border-color);
 }
@@ -31,11 +31,11 @@
   color: var(--color-neutral-solid-gray-420);
 }
 
-.css-resource-list[css-type="list"]:has(:disabled) {
+.css-resource-list[data-type="list"]:has(:disabled) {
   border-bottom-color: var(--color-neutral-solid-gray-300);
 }
 
-.css-resource-list[css-type="frame"]:has(:disabled) {
+.css-resource-list[data-type="frame"]:has(:disabled) {
   border-color: var(--color-neutral-solid-gray-300);
 }
 

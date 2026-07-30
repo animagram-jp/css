@@ -19,12 +19,12 @@
   letter-spacing: 0.02em;
 }
 
-.css-notification-banner[css-type="standard"] {
+.css-notification-banner[data-type="standard"] {
   border-radius: 0.75rem;
   border-width: calc(3 / 16 * 1rem);
 }
 
-.css-notification-banner[css-type="color-chip"] {
+.css-notification-banner[data-type="color-chip"] {
   border-width: 0.125rem;
   padding-left: 1.5rem;
   box-shadow: inset 0.5rem 0 0 0 var(--_color-chip-color);
@@ -40,33 +40,33 @@
     column-gap: 1.5rem;
   }
 
-  .css-notification-banner[css-type="color-chip"] {
+  .css-notification-banner[data-type="color-chip"] {
     padding-left: 2.5rem;
     box-shadow: inset 1rem 0 0 0 var(--_color-chip-color);
   }
 }
 
-.css-notification-banner[css-type="success"] {
+.css-notification-banner[data-type="success"] {
   --_base-color: var(--color-semantic-success-2);
   --_color-chip-color: var(--color-semantic-success-2);
 }
 
-.css-notification-banner[css-type="error"] {
+.css-notification-banner[data-type="error"] {
   --_base-color: var(--color-semantic-error-1);
   --_color-chip-color: var(--color-semantic-error-1);
 }
 
-.css-notification-banner[css-type="warning"] {
+.css-notification-banner[data-type="warning"] {
   --_base-color: var(--color-semantic-warning-yellow-2);
   --_color-chip-color: var(--color-primitive-yellow-400);
 }
 
-.css-notification-banner[css-type="info-1"] {
+.css-notification-banner[data-type="info-1"] {
   --_base-color: var(--color-primitive-blue-900);
   --_color-chip-color: var(--color-primitive-blue-900);
 }
 
-.css-notification-banner[css-type="info-2"] {
+.css-notification-banner[data-type="info-2"] {
   --_base-color: var(--color-neutral-solid-gray-536);
   --_color-chip-color: var(--color-neutral-solid-gray-536);
 }
@@ -238,7 +238,7 @@
   width: auto;
 }
 
-.css-notification-banner[css-type="success"] .css-button {
+.css-notification-banner[data-type="success"] .css-button {
   --button-color: var(--color-semantic-success-2);
   --button-hover-color: var(--color-primitive-green-1000);
   --button-active-color: var(--color-primitive-green-1200);
@@ -246,7 +246,7 @@
   --button-outline-active-bg-color: var(--color-primitive-green-300);
 }
 
-.css-notification-banner[css-type="error"] .css-button {
+.css-notification-banner[data-type="error"] .css-button {
   --button-color: var(--color-semantic-error-1);
   --button-hover-color: var(--color-primitive-red-1000);
   --button-active-color: var(--color-primitive-red-1200);
@@ -254,7 +254,7 @@
   --button-outline-active-bg-color: var(--color-primitive-red-300);
 }
 
-.css-notification-banner[css-type="warning"] .css-button {
+.css-notification-banner[data-type="warning"] .css-button {
   --button-color: var(--color-semantic-warning-yellow-2);
   --button-hover-color: var(--color-primitive-yellow-1000);
   --button-active-color: var(--color-primitive-yellow-1200);
@@ -262,7 +262,7 @@
   --button-outline-active-bg-color: var(--color-primitive-yellow-300);
 }
 
-.css-notification-banner[css-type="info-1"] .css-button {
+.css-notification-banner[data-type="info-1"] .css-button {
   --button-color: var(--color-primitive-blue-900);
   --button-hover-color: var(--color-primitive-blue-1000);
   --button-active-color: var(--color-primitive-blue-1200);
@@ -270,7 +270,7 @@
   --button-outline-active-bg-color: var(--color-primitive-blue-300);
 }
 
-.css-notification-banner[css-type="info-2"] .css-button {
+.css-notification-banner[data-type="info-2"] .css-button {
   --button-color: var(--color-neutral-solid-gray-800);
   --button-hover-color: var(--color-neutral-solid-gray-900);
   --button-active-color: var(--color-neutral-black);

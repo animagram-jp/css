@@ -14,7 +14,7 @@
   letter-spacing: 0;
 }
 
-.css-checkbox[css-size="sm"] {
+.css-checkbox[data-size="sm"] {
   --_gap: 0.25rem;
   --_checkbox-size: 1.5rem;
   --_checkbox-input-size: calc(20 / 16 * 1rem);
@@ -24,8 +24,8 @@
   --_padding-block: calc(10 / 16 * 1rem);
 }
 
-.css-checkbox:not([css-size]),
-.css-checkbox[css-size="md"] {
+.css-checkbox:not([data-size]),
+.css-checkbox[data-size="md"] {
   --_gap: 0.5rem;
   --_checkbox-size: 2rem;
   --_checkbox-input-size: calc(26 / 16 * 1rem);
@@ -35,7 +35,7 @@
   --_padding-block: calc(11 / 16 * 1rem);
 }
 
-.css-checkbox[css-size="lg"] {
+.css-checkbox[data-size="lg"] {
   --_gap: 0.5rem;
   --_checkbox-size: calc(44 / 16 * 1rem);
   --_checkbox-input-size: calc(36 / 16 * 1rem);

@@ -14,7 +14,7 @@
   letter-spacing: 0;
 }
 
-.css-radio[css-size="sm"] {
+.css-radio[data-size="sm"] {
   --_gap: 0.25rem;
   --_radio-size: 1.5rem;
   --_radio-outer-size: calc(20 / 16 * 1rem);
@@ -24,8 +24,8 @@
   --_padding-block: calc(10 / 16 * 1rem);
 }
 
-.css-radio:not([css-size]),
-.css-radio[css-size="md"] {
+.css-radio:not([data-size]),
+.css-radio[data-size="md"] {
   --_gap: 0.5rem;
   --_radio-size: 2rem;
   --_radio-outer-size: calc(26 / 16 * 1rem);
@@ -35,7 +35,7 @@
   --_padding-block: calc(11 / 16 * 1rem);
 }
 
-.css-radio[css-size="lg"] {
+.css-radio[data-size="lg"] {
   --_gap: 0.75rem;
   --_radio-size: calc(44 / 16 * 1rem);
   --_radio-outer-size: calc(36 / 16 * 1rem);

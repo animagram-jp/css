@@ -1,23 +1,23 @@
 /* toggle: input widget that allows users to choose one of two values: on or off.  */
 
-/*  <label css-type="thumb-only" css-size="md">
+/*  <label data-type="thumb-only" data-size="md">
         <span>label text</span>
         <input type="checkbox" role="switch"></label> */
 
 @layer css.components {
 
-    label:has(> input[type="checkbox"][role="switch"])[css-size="sm"] {
+    label:has(> input[type="checkbox"][role="switch"])[data-size="sm"] {
         --_height: var(--css-size-sm-height);
         --_border-width: 0.125rem;
     }
 
-    label:has(> input[type="checkbox"][role="switch"]):not([css-size]),
-    label:has(> input[type="checkbox"][role="switch"])[css-size="md"] {
+    label:has(> input[type="checkbox"][role="switch"]):not([data-size]),
+    label:has(> input[type="checkbox"][role="switch"])[data-size="md"] {
         --_height: var(--css-size-md-height);
         --_border-width: 0.125rem;
     }
 
-    label:has(> input[type="checkbox"][role="switch"])[css-size="lg"] {
+    label:has(> input[type="checkbox"][role="switch"])[data-size="lg"] {
         --_height: var(--css-size-lg-height);
         --_border-width: 0.1875rem;
     }
@@ -31,7 +31,7 @@
         cursor: pointer;
     }
 
-    label:has(> input[type="checkbox"][role="switch"])[css-type="label-above"] {
+    label:has(> input[type="checkbox"][role="switch"])[data-type="label-above"] {
         flex-direction: column;
         align-items: flex-start;
         gap: 0.25rem;
@@ -94,15 +94,15 @@
     }
 
     /* thumb-only: track background/label are inert, only the thumb responds to clicks */
-    label:has(> input[type="checkbox"][role="switch"])[css-type="thumb-only"] {
+    label:has(> input[type="checkbox"][role="switch"])[data-type="thumb-only"] {
         pointer-events: none;
     }
 
-    label:has(> input[type="checkbox"][role="switch"])[css-type="thumb-only"] > input[type="checkbox"] {
+    label:has(> input[type="checkbox"][role="switch"])[data-type="thumb-only"] > input[type="checkbox"] {
         pointer-events: none;
     }
 
-    label:has(> input[type="checkbox"][role="switch"])[css-type="thumb-only"] > input[type="checkbox"]::after {
+    label:has(> input[type="checkbox"][role="switch"])[data-type="thumb-only"] > input[type="checkbox"]::after {
         pointer-events: auto;
     }
 

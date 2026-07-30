@@ -5,22 +5,22 @@
   opacity: 1;
 }
 
-.css-hr[css-type="dashed"] {
+.css-hr[data-type="dashed"] {
   border-top-style: dashed;
 }
 
-.css-hr[css-width="1"] {
+.css-hr[data-width="1"] {
   border-top-width: 1px;
 }
 
-.css-hr[css-width="2"] {
+.css-hr[data-width="2"] {
   border-top-width: 2px;
 }
 
-.css-hr[css-width="3"] {
+.css-hr[data-width="3"] {
   border-top-width: 3px;
 }
 
-.css-hr[css-width="4"] {
+.css-hr[data-width="4"] {
   border-top-width: 4px;
 }

@@ -19,11 +19,11 @@ css-progress-indicator:not([active]) * {
   animation: none !important;
 }
 
-.css-progress-indicator[css-type="stacked"] {
+.css-progress-indicator[data-type="stacked"] {
   flex-direction: column;
 }
 
-.css-progress-indicator[css-type="stacked-underlay"] {
+.css-progress-indicator[data-type="stacked-underlay"] {
   flex-direction: column;
   margin-right: auto;
   margin-left: auto;
@@ -34,7 +34,7 @@ css-progress-indicator:not([active]) * {
   background-color: var(--color-neutral-white);
 }
 
-.css-progress-indicator[css-type="stacked-underlay"]:has(
+.css-progress-indicator[data-type="stacked-underlay"]:has(
     .css-progress-indicator__spinner,
     .css-progress-indicator__static
   ) {
@@ -43,7 +43,7 @@ css-progress-indicator:not([active]) * {
   padding: 1rem;
 }
 
-.css-progress-indicator[css-type="stacked-underlay"]:has(
+.css-progress-indicator[data-type="stacked-underlay"]:has(
     .css-progress-indicator__linear
   ) {
   padding: 1.5rem;

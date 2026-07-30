@@ -12,7 +12,7 @@
   letter-spacing: var(--css-typography-text-normal-2-letter-spacing);
 }
 
-.css-table[css-type="dense"] {
+.css-table[data-type="dense"] {
   --_padding: 0.75rem 0.1rem;
   line-height: var(--css-typography-text-tight-3-line-height);
 }
@@ -48,33 +48,33 @@
 
 /* Stripe */
 
-.css-table[css-stripe] {
+.css-table[data-stripe] {
   --_border-color: var(--color-muted);
 }
 
-.css-table[css-stripe] tr:nth-child(even) {
+.css-table[data-stripe] tr:nth-child(even) {
   background-color: rgb(var(--rgb-light-gray) / 0.2);
 }
 
 /* Hover highlight */
 
-.css-table[css-hover] {
+.css-table[data-hover] {
   --_border-color: var(--color-muted);
 }
 
 @media (hover: hover) {
-  .css-table[css-hover] tr:hover {
+  .css-table[data-hover] tr:hover {
     background-color: rgb(var(--rgb-emphasis) / 8%);
   }
 }
 
 /* With checkbox */
 
-.css-table[css-selectable] {
+.css-table[data-selectable] {
   --_border-color: var(--color-muted);
 }
 
-.css-table[css-selectable] tr:has(:checked) {
+.css-table[data-selectable] tr:has(:checked) {
   background-color: rgb(var(--rgb-emphasis) / 15%);
 }
 
@@ -100,7 +100,7 @@
 
 /* Sort */
 
-.css-table th[css-sort] {
+.css-table th[data-sort] {
   --_border-color: var(--color-muted);
   background-color: rgb(var(--rgb-light-gray) / 0.3);
   padding: 0.75rem 1rem;
@@ -108,7 +108,7 @@
   white-space: nowrap;
 }
 
-.css-table[css-type="dense"] th[css-sort] {
+.css-table[data-type="dense"] th[data-sort] {
   padding-top: 0;
   padding-bottom: 0;
 }
@@ -150,8 +150,8 @@
   mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 12'%3E%3Cpath d='M2 2l10 9 10-9H2z'/%3E%3C/svg%3E");
 }
 
-.css-table th[css-sort][aria-sort="ascending"] .css-sort-up,
-.css-table th[css-sort][aria-sort="descending"] .css-sort-down {
+.css-table th[data-sort][aria-sort="ascending"] .css-sort-up,
+.css-table th[data-sort][aria-sort="descending"] .css-sort-down {
   color: rgb(var(--rgb-ink));
 }
 
@@ -169,27 +169,27 @@
 
 /* Utilities */
 
-.css-table[css-border=""] :where(td, th) {
+.css-table[data-border=""] :where(td, th) {
   border: 1px solid var(--_border-color);
 }
 
-.css-table[css-border~="top"] :where(td, th) {
+.css-table[data-border~="top"] :where(td, th) {
   border-top: 1px solid var(--_border-color);
 }
 
-.css-table[css-border~="right"] :where(td, th) {
+.css-table[data-border~="right"] :where(td, th) {
   border-right: 1px solid var(--_border-color);
 }
 
-.css-table[css-border~="bottom"] :where(td, th) {
+.css-table[data-border~="bottom"] :where(td, th) {
   border-bottom: 1px solid var(--_border-color);
 }
 
-.css-table[css-border~="left"] :where(td, th) {
+.css-table[data-border~="left"] :where(td, th) {
   border-left: 1px solid var(--_border-color);
 }
 
-/* Header cell's black border should take precedence over [css-border] */
+/* Header cell's black border should take precedence over [data-border] */
 .css-table thead tr:last-of-type th {
   border-bottom: 1px solid rgb(var(--rgb-border));
 }

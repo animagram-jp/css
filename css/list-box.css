@@ -31,23 +31,23 @@
   transform: translateY(calc(-2 / 16 * 1rem)) rotate(45deg);
 }
 
-.list-box-trigger[css-size="sm"] {
+.list-box-trigger[data-size="sm"] {
   height: var(--css-size-sm-height);
   padding-inline-end: calc(30 / 16 * 1rem);
 }
 
-.list-box-trigger[css-size="sm"]::after {
+.list-box-trigger[data-size="sm"]::after {
   right: 0.5rem;
   width: 0.5rem;
   height: 0.5rem;
 }
 
-.list-box-trigger:not([css-size]),
-.list-box-trigger[css-size="md"] {
+.list-box-trigger:not([data-size]),
+.list-box-trigger[data-size="md"] {
   height: var(--css-size-md-height);
 }
 
-.list-box-trigger[css-size="lg"] {
+.list-box-trigger[data-size="lg"] {
   height: var(--css-size-lg-height);
 }
 

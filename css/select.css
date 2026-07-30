@@ -21,16 +21,16 @@
     appearance: none;
 }
 
-.css-select[css-size="sm"] {
+.css-select[data-size="sm"] {
   height: var(--css-size-sm-height);
 }
 
-.css-select:not([css-size]),
-.css-select[css-size="md"] {
+.css-select:not([data-size]),
+.css-select[data-size="md"] {
   height: var(--css-size-md-height);
 }
 
-.css-select[css-size="lg"] {
+.css-select[data-size="lg"] {
   height: var(--css-size-lg-height);
 }
 

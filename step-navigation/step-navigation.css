@@ -8,7 +8,7 @@
   overflow-wrap: anywhere;
 }
 
-.css-step-navigation[css-size="md"] {
+.css-step-navigation[data-size="md"] {
   --_number-size: calc(44 / 16 * 1rem);
   --_number-margin: 0.25rem;
   --_outline-width: 0.125rem;
@@ -16,7 +16,7 @@
   --_description-margin: 0.5rem;
 }
 
-.css-step-navigation[css-size="sm"] {
+.css-step-navigation[data-size="sm"] {
   --_number-size: 2rem;
   --_number-margin: calc(3 / 16 * 1rem);
   --_outline-width: calc(1 / 16 * 1rem);
@@ -102,7 +102,7 @@
   text-decoration-thickness: inherit;
 }
 
-.css-step-navigation[css-size="sm"] .css-step-navigation__number {
+.css-step-navigation[data-size="sm"] .css-step-navigation__number {
   margin: calc(3 / 16 * 1rem);
   border-width: 1px;
   font-size: 1rem;
@@ -183,7 +183,7 @@
   background-color: var(--color-neutral-white);
 }
 
-.css-step-navigation[css-size="sm"] .css-step-navigation__state-icon {
+.css-step-navigation[data-size="sm"] .css-step-navigation__state-icon {
   top: calc(-9 / 16 * 1rem);
   left: calc(50% + 0.25rem);
 }
@@ -193,7 +193,7 @@
   max-width: none;
 }
 
-.css-step-navigation[css-size="sm"]
+.css-step-navigation[data-size="sm"]
   .css-step-navigation__state-icon
   > svg {
   width: calc(20 / 16 * 1rem);
@@ -223,7 +223,7 @@
   text-decoration-thickness: inherit;
 }
 
-.css-step-navigation[css-size="sm"] .css-step-navigation__title {
+.css-step-navigation[data-size="sm"] .css-step-navigation__title {
   font-weight: bold;
   font-size: 1rem;
   line-height: 1.7;

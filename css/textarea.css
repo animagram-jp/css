@@ -16,18 +16,18 @@
   resize: vertical;
 }
 
-.css-textarea[css-size="sm"] {
+.css-textarea[data-size="sm"] {
   font-size: 1rem;
   line-height: 1.5;
 }
 
-.css-textarea:not([css-size]),
-.css-textarea[css-size="md"] {
+.css-textarea:not([data-size]),
+.css-textarea[data-size="md"] {
   font-size: 1rem;
   line-height: 1.6;
 }
 
-.css-textarea[css-size="lg"] {
+.css-textarea[data-size="lg"] {
   font-size: var(--css-typography-text-normal-2-font-size);
   line-height: var(--css-typography-text-normal-2-line-height);
 }
@@ -77,6 +77,6 @@
   letter-spacing: var(--css-typography-text-flush-2-letter-spacing);
 }
 
-.css-textarea-counter[css-exceeded] {
+.css-textarea-counter[data-exceeded] {
   color: rgb(var(--rgb-error));
 }

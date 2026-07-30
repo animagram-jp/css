@@ -90,22 +90,22 @@ label.css-search-box-scope > select {
   text-overflow: ellipsis;
 }
 
-label.css-search-box-scope[css-size="sm"] > select {
+label.css-search-box-scope[data-size="sm"] > select {
   height: var(--css-size-sm-height);
 }
 
-label.css-search-box-scope[css-size="sm"]::after {
+label.css-search-box-scope[data-size="sm"]::after {
   right: 0.5rem;
   width: 0.5rem;
   height: 0.5rem;
 }
 
-label.css-search-box-scope:not([css-size]) > select,
-label.css-search-box-scope[css-size="md"] > select {
+label.css-search-box-scope:not([data-size]) > select,
+label.css-search-box-scope[data-size="md"] > select {
   height: var(--css-size-md-height);
 }
 
-label.css-search-box-scope[css-size="lg"] > select {
+label.css-search-box-scope[data-size="lg"] > select {
   height: var(--css-size-lg-height);
 }
 
