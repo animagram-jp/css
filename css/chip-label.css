@@ -1,6 +1,6 @@
 @layer css.components {
 
-.css-chip-label {
+.chip-label {
   display: inline flex;
   vertical-align: middle;
   grid-template-columns: auto auto;
@@ -15,17 +15,17 @@
   overflow-wrap: anywhere;
 }
 
-.css-chip-label[data-type="text"] {
+.chip-label[data-type="text"] {
   color: var(--color-emphasis);
 }
 
-.css-chip-label[data-type="outline"] {
+.chip-label[data-type="outline"] {
   border: 1px solid var(--color-emphasis);
   background-color: var(--color-background);
   color: var(--color-emphasis);
 }
 
-.css-chip-label[data-type="fill"] {
+.chip-label[data-type="fill"] {
   border: 1px solid transparent;
   background-color: var(--color-emphasis-fill);
   color: rgb(var(--rgb-ink));

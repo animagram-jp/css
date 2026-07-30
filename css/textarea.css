@@ -1,6 +1,6 @@
 @layer css.components {
 
-.css-textarea {
+.textarea {
   display: inline flex;
   box-sizing: border-box;
   width: 100%;
@@ -18,44 +18,44 @@
   resize: vertical;
 }
 
-.css-textarea[data-size="sm"] {
+.textarea[data-size="sm"] {
   font-size: 1rem;
   line-height: 1.5;
 }
 
-.css-textarea:not([data-size]),
-.css-textarea[data-size="md"] {
+.textarea:not([data-size]),
+.textarea[data-size="md"] {
   font-size: 1rem;
   line-height: 1.6;
 }
 
-.css-textarea[data-size="lg"] {
+.textarea[data-size="lg"] {
   font-size: var(--css-typography-text-normal-2-font-size);
   line-height: var(--css-typography-text-normal-2-line-height);
 }
 
-.css-textarea:read-only:not(:disabled) {
+.textarea:read-only:not(:disabled) {
   border-style: dashed;
 }
 
 @media (hover: hover) {
-  .css-textarea:not(:read-only):hover {
+  .textarea:not(:read-only):hover {
     border-color: rgb(var(--rgb-border));
   }
 }
 
-.css-textarea:is(:user-invalid, [aria-invalid="true"]) {
+.textarea:is(:user-invalid, [aria-invalid="true"]) {
   border-color: rgb(var(--rgb-error));
 }
 
 @media (hover: hover) {
-  .css-textarea:is(:user-invalid, [aria-invalid="true"]):hover {
+  .textarea:is(:user-invalid, [aria-invalid="true"]):hover {
     border-color: rgb(var(--rgb-error));
   }
 }
 
-.css-textarea:is(:disabled, [aria-disabled="true"]),
-.css-textarea:is(:disabled, [aria-disabled="true"]):hover {
+.textarea:is(:disabled, [aria-disabled="true"]),
+.textarea:is(:disabled, [aria-disabled="true"]):hover {
   border-color: rgb(var(--rgb-light-gray));
   background-color: rgb(var(--rgb-light-gray) / 0.3);
   color: var(--color-muted);
@@ -63,14 +63,14 @@
 }
 
 @media (forced-colors: active) {
-  .css-textarea[aria-disabled="true"],
-  .css-textarea[aria-disabled="true"]:hover {
+  .textarea[aria-disabled="true"],
+  .textarea[aria-disabled="true"]:hover {
     border-color: GrayText;
     color: GrayText;
   }
 }
 
-.css-textarea-counter {
+.textarea-counter {
   display: block;
   margin-top: 0.5rem;
   color: var(--color-muted);
@@ -79,7 +79,7 @@
   letter-spacing: var(--css-typography-text-flush-2-letter-spacing);
 }
 
-.css-textarea-counter[data-exceeded] {
+.textarea-counter[data-exceeded] {
   color: rgb(var(--rgb-error));
 }
 

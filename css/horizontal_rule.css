@@ -1,29 +1,29 @@
 @layer css.components {
 
-.css-hr {
+.hr {
   margin: 0;
   border: 0;
   border-top: 1px solid var(--color-emphasis);
   opacity: 1;
 }
 
-.css-hr[data-type="dashed"] {
+.hr[data-type="dashed"] {
   border-top-style: dashed;
 }
 
-.css-hr[data-width="1"] {
+.hr[data-width="1"] {
   border-top-width: 1px;
 }
 
-.css-hr[data-width="2"] {
+.hr[data-width="2"] {
   border-top-width: 2px;
 }
 
-.css-hr[data-width="3"] {
+.hr[data-width="3"] {
   border-top-width: 3px;
 }
 
-.css-hr[data-width="4"] {
+.hr[data-width="4"] {
   border-top-width: 4px;
 }
 

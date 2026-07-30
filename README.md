@@ -91,7 +91,7 @@ Label `font-size`/`line-height` reference `text-flush-2`; `letter-spacing: 0` re
 
 ### heading
 
-`heading.css` (`.css-h`, used via `data-size="…"` on the element or a wrapping `hgroup`) does not use the `xs`/`sm`/`md`/`lg` tiers above — it exposes the full `css-typography-display-*`/`heading-*`/`text-normal-2` step range directly as `data-size` values, since headings need finer granularity than other components. The shoulder text (`.css-h-shoulder` inside an `hgroup`) uses a different, smaller step for each size. Values were physical px numbers (`data-size="45"`) before the typography token rework; they are now the token step names themselves.
+`heading.css` (`.h`, used via `data-size="…"` on the element or a wrapping `hgroup`) does not use the `xs`/`sm`/`md`/`lg` tiers above — it exposes the full `css-typography-display-*`/`heading-*`/`text-normal-2` step range directly as `data-size` values, since headings need finer granularity than other components. The shoulder text (`.h-shoulder` inside an `hgroup`) uses a different, smaller step for each size. Values were physical px numbers (`data-size="45"`) before the typography token rework; they are now the token step names themselves.
 
 | `data-size` | heading font-size | shoulder step |
 |-------------|--------------------|----------------|

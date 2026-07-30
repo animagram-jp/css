@@ -1,6 +1,6 @@
 @layer css.components {
 
-.css-field-label {
+.field-label {
   display: block;
   margin: 0 0 0.5rem 0;
   padding: 0;
@@ -12,14 +12,14 @@
   letter-spacing: var(--css-typography-text-normal-2-letter-spacing);
 }
 
-.css-field-requirement {
+.field-requirement {
   margin-left: 0.25rem;
   font-weight: normal;
   color: var(--color-emphasis);
   font-size: var(--css-typography-text-normal-2-font-size);
 }
 
-.css-field-support {
+.field-support {
   display: block;
   margin: 0 0 0.5rem 0;
   color: var(--color-muted);
@@ -29,7 +29,7 @@
   letter-spacing: var(--css-typography-text-normal-2-letter-spacing);
 }
 
-.css-field-error {
+.field-error {
   display: block;
   margin: 0.5rem 0 0 0;
   color: rgb(var(--rgb-error));

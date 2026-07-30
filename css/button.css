@@ -1,6 +1,6 @@
 @layer css.components {
 
-.css-button {
+.button {
     /*
     * To overwrite these tags, define --color-emphasize, ...
     */
@@ -22,8 +22,8 @@
     text-underline-offset: calc(3 / 16 * 1rem);
 }
 
-.css-button:disabled,
-.css-button[aria-disabled="true"] {
+.button:disabled,
+.button[aria-disabled="true"] {
   cursor: default;
   text-decoration: none;
 }
@@ -34,7 +34,7 @@
  * (below) since its normal-state background is transparent, not a surface
  * color the ring can sit legibly on top of otherwise.
  */
-.css-button:focus-visible {
+.button:focus-visible {
   outline: 0.125rem solid var(--color-border);
   outline-offset: 0.125rem;
   box-shadow: 0 0 0 0.125rem rgb(var(--rgb-focus));
@@ -43,64 +43,64 @@
 /* disabled, high-contrast mode: border/text collapse to the UA's GrayText
  * across all three types identically. */
 @media (forced-colors: active) {
-  .css-button:disabled,
-  .css-button[aria-disabled="true"] {
+  .button:disabled,
+  .button[aria-disabled="true"] {
     border-color: GrayText;
     color: GrayText;
   }
 }
 
-.css-button[data-type="fill"] {
+.button[data-type="fill"] {
   border: 4px double transparent;
   background-color: var(--color-emphasis-fill);
   color: rgb(var(--rgb-white));
 }
 
 @media (hover: hover) {
-  .css-button[data-type="fill"]:hover {
+  .button[data-type="fill"]:hover {
     background-color: var(--color-emphasis-fill-hover);
     text-decoration: underline;
     text-decoration-thickness: calc(1 / 16 * 1rem);
   }
 }
 
-.css-button[data-type="fill"]:active {
+.button[data-type="fill"]:active {
   background-color: var(--color-emphasis-fill-active);
   text-decoration: underline;
 }
 
-.css-button[data-type="fill"]:disabled,
-.css-button[data-type="fill"][aria-disabled="true"] {
+.button[data-type="fill"]:disabled,
+.button[data-type="fill"][aria-disabled="true"] {
   background-color: rgb(var(--rgb-light-gray));
   color: rgb(var(--rgb-white));
 }
 
-.css-button[data-type="outline"] {
+.button[data-type="outline"] {
   border: 1px solid currentcolor;
   background-color: var(--color-background);
   color: var(--color-emphasis);
 }
 
 @media (hover: hover) {
-  .css-button[data-type="outline"]:hover {
+  .button[data-type="outline"]:hover {
     background-color: var(--color-wash-hover);
     text-decoration: underline;
     text-decoration-thickness: calc(1 / 16 * 1rem);
   }
 }
 
-.css-button[data-type="outline"]:active {
+.button[data-type="outline"]:active {
   background-color: var(--color-wash-active);
   text-decoration: underline;
 }
 
-.css-button[data-type="outline"]:disabled,
-.css-button[data-type="outline"][aria-disabled="true"] {
+.button[data-type="outline"]:disabled,
+.button[data-type="outline"][aria-disabled="true"] {
   background-color: var(--color-background);
   color: var(--color-muted);
 }
 
-.css-button[data-type="text"] {
+.button[data-type="text"] {
   border: 0;
   background-color: transparent;
   color: var(--color-emphasis);
@@ -108,36 +108,36 @@
 }
 
 @media (hover: hover) {
-  .css-button[data-type="text"]:hover {
+  .button[data-type="text"]:hover {
     background-color: var(--color-wash-hover);
     text-decoration-thickness: calc(3 / 16 * 1rem);
   }
 }
 
-.css-button[data-type="text"]:active {
+.button[data-type="text"]:active {
   background-color: var(--color-wash-active);
 }
 
-.css-button[data-type="text"]:focus-visible {
+.button[data-type="text"]:focus-visible {
   background-color: rgb(var(--rgb-focus));
   color: rgb(var(--rgb-black));
 }
 
-.css-button[data-type="text"]:disabled,
-.css-button[data-type="text"][aria-disabled="true"] {
+.button[data-type="text"]:disabled,
+.button[data-type="text"][aria-disabled="true"] {
   background-color: transparent;
   color: var(--color-muted);
   text-decoration-thickness: revert;
 }
 
-.css-button[data-size="lg"] {
+.button[data-size="lg"] {
   min-height: var(--css-size-lg-height);
   border-radius: 0.5rem;
   padding: 0.75rem 1rem;
 }
 
-.css-button:not([data-size]),
-.css-button[data-size="md"] {
+.button:not([data-size]),
+.button[data-size="md"] {
   min-height: var(--css-size-md-height);
   border-radius: 0.5rem;
   padding: 0.5rem 1rem;
@@ -148,13 +148,13 @@
  * get a same-size invisible ::after to pad the hit area back out without
  * affecting layout.
  */
-.css-button[data-size="sm"],
-.css-button[data-size="xs"] {
+.button[data-size="sm"],
+.button[data-size="xs"] {
   position: relative;
 }
 
-.css-button[data-size="sm"]::after,
-.css-button[data-size="xs"]::after {
+.button[data-size="sm"]::after,
+.button[data-size="xs"]::after {
   content: "";
   position: absolute;
   inset: 0;
@@ -162,20 +162,20 @@
   height: calc(44 / 16 * 1rem);
 }
 
-.css-button[data-size="sm"] {
+.button[data-size="sm"] {
   min-height: var(--css-size-sm-height);
   border-radius: calc(6 / 16 * 1rem);
   padding: 0.125rem 0.75rem;
 }
 
-.css-button[data-size="xs"] {
+.button[data-size="xs"] {
   min-height: var(--css-size-xs-height);
   border-radius: 0.25rem;
   padding: var(--css-size-xs-padding-block) var(--css-size-xs-padding-inline);
   font-size: var(--css-typography-text-flush-3-font-size);
 }
 
-.css-button__icon {
+.button__icon {
   flex-shrink: 0;
 }
 

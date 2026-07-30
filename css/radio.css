@@ -1,6 +1,6 @@
 @layer css.components {
 
-.css-radio {
+.radio {
   position: relative;
   display: inline flex;
   align-items: center;
@@ -16,7 +16,7 @@
   letter-spacing: 0;
 }
 
-.css-radio[data-size="sm"] {
+.radio[data-size="sm"] {
   --_gap: 0.25rem;
   --_radio-size: 1.5rem;
   --_radio-outer-size: calc(20 / 16 * 1rem);
@@ -26,8 +26,8 @@
   --_padding-block: calc(10 / 16 * 1rem);
 }
 
-.css-radio:not([data-size]),
-.css-radio[data-size="md"] {
+.radio:not([data-size]),
+.radio[data-size="md"] {
   --_gap: 0.5rem;
   --_radio-size: 2rem;
   --_radio-outer-size: calc(26 / 16 * 1rem);
@@ -37,7 +37,7 @@
   --_padding-block: calc(11 / 16 * 1rem);
 }
 
-.css-radio[data-size="lg"] {
+.radio[data-size="lg"] {
   --_gap: 0.75rem;
   --_radio-size: calc(44 / 16 * 1rem);
   --_radio-outer-size: calc(36 / 16 * 1rem);
@@ -47,7 +47,7 @@
   --_padding-block: calc(10 / 16 * 1rem);
 }
 
-.css-radio > input {
+.radio > input {
   --_base-color: var(--color-background);
   --_accent-color: var(--color-emphasis);
   --_accent-hover-color: var(--color-emphasis-hover);
@@ -66,7 +66,7 @@
 }
 
 @media (hover: hover) {
-  .css-radio::before {
+  .radio::before {
     position: absolute;
     top: 50%;
     left: calc((var(--_radio-size) - var(--_radio-outer-size)) / -2);
@@ -78,34 +78,34 @@
     pointer-events: none;
   }
 
-  .css-radio:has(> input:not(:focus, :disabled, [aria-disabled="true"]):hover)::before {
+  .radio:has(> input:not(:focus, :disabled, [aria-disabled="true"]):hover)::before {
     background-color: rgb(var(--rgb-ink) / var(--alpha-highlight-weak));
   }
 }
 
-.css-radio > input:focus {
+.radio > input:focus {
   outline: 0.125rem solid rgb(var(--rgb-border));
   outline-offset: 0.125rem;
   box-shadow: 0 0 0 0.125rem rgb(var(--rgb-focus));
 }
 
 @media (hover: hover) {
-  .css-radio > input:not(:disabled, [aria-disabled="true"]):hover {
+  .radio > input:not(:disabled, [aria-disabled="true"]):hover {
     border-color: var(--_border-hover-color);
   }
 }
 
-.css-radio > input:checked {
+.radio > input:checked {
   border-color: var(--_accent-color);
 }
 
 @media (hover: hover) {
-  .css-radio > input:checked:not(:disabled, [aria-disabled="true"]):hover {
+  .radio > input:checked:not(:disabled, [aria-disabled="true"]):hover {
     border-color: var(--_accent-hover-color);
   }
 }
 
-.css-radio > input:checked::before {
+.radio > input:checked::before {
   position: absolute;
   inset: 0;
   margin: auto;
@@ -117,7 +117,7 @@
 }
 
 @media (hover: hover) {
-  .css-radio > input:checked:not(
+  .radio > input:checked:not(
       :disabled,
       [aria-disabled="true"]
     ):hover::before {
@@ -125,14 +125,14 @@
   }
 }
 
-.css-radio > input[aria-invalid="true"] {
+.radio > input[aria-invalid="true"] {
   --_accent-color: rgb(var(--rgb-error));
   --_accent-hover-color: rgb(var(--rgb-error));
   --_border-color: rgb(var(--rgb-error));
   --_border-hover-color: rgb(var(--rgb-error));
 }
 
-.css-radio > input:is(:disabled, [aria-disabled="true"]) {
+.radio > input:is(:disabled, [aria-disabled="true"]) {
   --_base-color: rgb(var(--rgb-light-gray) / 0.3);
   --_accent-color: rgb(var(--rgb-light-gray));
   --_accent-hover-color: rgb(var(--rgb-light-gray));
@@ -141,15 +141,15 @@
 }
 
 @media (forced-colors: active) {
-  .css-radio > input,
-  .css-radio > input[aria-invalid="true"] {
+  .radio > input,
+  .radio > input[aria-invalid="true"] {
     --_accent-color: Highlight;
     --_accent-hover-color: Highlight;
     --_border-color: ButtonText;
     --_border-hover-color: ButtonText;
   }
 
-  .css-radio > input:is(:disabled, [aria-disabled="true"]) {
+  .radio > input:is(:disabled, [aria-disabled="true"]) {
     --_accent-color: GrayText;
     --_accent-hover-color: GrayText;
     --_border-color: GrayText;

@@ -1,4 +1,4 @@
-.css-global-menu {
+.global-menu {
   margin: 0;
   display: flex;
   align-items: stretch;
@@ -13,14 +13,14 @@
   letter-spacing: 0;
 }
 
-.css-global-menu__item {
+.global-menu__item {
   display: flex;
   align-items: stretch;
   position: relative;
 }
 
-.css-global-menu__item-inner,
-.css-global-menu__item-inner:any-link {
+.global-menu__item-inner,
+.global-menu__item-inner:any-link {
   position: relative;
   display: flex;
   align-items: center;
@@ -36,13 +36,13 @@
   cursor: pointer;
 }
 
-.css-global-menu__front-icon {
+.global-menu__front-icon {
   flex-shrink: 0;
   width: 1.5rem;
   height: 1.5rem;
 }
 
-.css-global-menu__chevron {
+.global-menu__chevron {
   margin-top: 0.25rem;
   box-sizing: content-box;
   flex-shrink: 0;
@@ -51,11 +51,11 @@
 }
 
 @media (hover: hover) {
-  .css-global-menu__item-inner:hover {
+  .global-menu__item-inner:hover {
     background-color: var(--color-neutral-solid-gray-50);
   }
 
-  .css-global-menu__item-inner:hover::after {
+  .global-menu__item-inner:hover::after {
     position: absolute;
     right: 0;
     bottom: 0;
@@ -65,12 +65,12 @@
   }
 }
 
-.css-global-menu__item-inner[aria-current] {
+.global-menu__item-inner[aria-current] {
   background-color: var(--color-neutral-white);
   color: var(--color-primitive-blue-1000);
 }
 
-.css-global-menu__item-inner[aria-current]::after {
+.global-menu__item-inner[aria-current]::after {
   position: absolute;
   right: 0;
   bottom: 0;
@@ -80,7 +80,7 @@
 }
 
 @media (hover: hover) {
-  .css-global-menu__item-inner[aria-current]:hover {
+  .global-menu__item-inner[aria-current]:hover {
     color: var(--color-primitive-blue-900);
     text-decoration: underline;
     text-decoration-thickness: calc(1 / 16 * 1rem);
@@ -88,7 +88,7 @@
   }
 }
 
-.css-global-menu__item-inner:focus-visible {
+.global-menu__item-inner:focus-visible {
   outline: 0.25rem solid var(--color-neutral-black);
   outline-offset: 0.125rem;
   border-radius: 0.25rem;
@@ -96,10 +96,10 @@
   box-shadow: 0 0 0 0.125rem var(--color-primitive-yellow-300);
 }
 
-.css-global-menu__item-inner[aria-current]:focus-visible {
+.global-menu__item-inner[aria-current]:focus-visible {
   background-color: var(--color-neutral-white);
 }
 
-.css-global-menu__item-inner[aria-expanded="true"] .css-global-menu__chevron {
+.global-menu__item-inner[aria-expanded="true"] .global-menu__chevron {
   transform: rotate(180deg);
 }

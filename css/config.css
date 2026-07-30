@@ -305,7 +305,7 @@ body:has(:modal) {
   box-shadow: 0 0 0 0.125rem rgb(var(--rgb-focus));
 }
 
-.css-visually-hidden {
+.visually-hidden {
   clip: rect(0 0 0 0) !important;
   clip-path: inset(50%) !important;
   height: 1px !important;
@@ -315,7 +315,7 @@ body:has(:modal) {
   width: 1px !important;
 }
 
-:where(.css-focus-outline):focus-visible {
+:where(.focus-outline):focus-visible {
   outline: 0.125rem solid rgb(var(--rgb-border)) !important;
   outline-offset: 0.125rem !important;
   border-radius: 0.25rem !important;
@@ -324,8 +324,8 @@ body:has(:modal) {
 }
 
 @supports selector(:has(*)) {
-  :where(.css-focus-within-outline):focus-visible,
-  :where(.css-focus-within-outline):has(:focus-visible) {
+  :where(.focus-within-outline):focus-visible,
+  :where(.focus-within-outline):has(:focus-visible) {
     outline: 0.125rem solid rgb(var(--rgb-border)) !important;
     outline-offset: 0.125rem !important;
     border-radius: 0.25rem !important;
@@ -335,7 +335,7 @@ body:has(:modal) {
 }
 
 @supports not selector(:has(*)) {
-  :where(.css-focus-within-outline):focus-within {
+  :where(.focus-within-outline):focus-within {
     outline: 0.125rem solid rgb(var(--rgb-border)) !important;
     outline-offset: 0.125rem !important;
     border-radius: 0.25rem !important;

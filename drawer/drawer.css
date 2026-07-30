@@ -1,4 +1,4 @@
-.css-drawer {
+.drawer {
   margin: unset;
   max-width: 100%;
   max-height: unset;
@@ -18,46 +18,46 @@
   letter-spacing: 0.02em;
 }
 
-.css-drawer[data-placement="right"] {
+.drawer[data-placement="right"] {
   left: auto;
   border-left: 1px solid transparent;
 }
 
-.css-drawer[data-placement="left"] {
+.drawer[data-placement="left"] {
   right: auto;
   border-right: 1px solid transparent;
 }
 
-.css-drawer[open] {
+.drawer[open] {
   display: grid;
   grid-template: "header" auto "body" 1fr / 1fr;
 }
 
-.css-drawer::backdrop {
+.drawer::backdrop {
   background-color: var(--color-neutral-opacity-gray-100);
 }
 
 @media (forced-colors: active) {
-  .css-drawer::backdrop {
+  .drawer::backdrop {
     background-color: #000b;
   }
 }
 
-.css-drawer__header {
+.drawer__header {
   display: flex;
   grid-area: header;
   padding: calc(20 / 16 * 1rem) 1rem;
 }
 
-.css-drawer[data-placement="right"] .css-drawer__header {
+.drawer[data-placement="right"] .drawer__header {
   justify-content: end;
 }
 
-.css-drawer[data-placement="left"] .css-drawer__header {
+.drawer[data-placement="left"] .drawer__header {
   justify-content: start;
 }
 
-.css-drawer__body {
+.drawer__body {
   grid-area: body;
   overflow: auto;
   overscroll-behavior: contain;

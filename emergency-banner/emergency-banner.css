@@ -1,4 +1,4 @@
-.css-emergency-banner {
+.emergency-banner {
   display: grid;
   row-gap: 0.5rem;
   border: 6px solid var(--color-semantic-warning-orange-1);
@@ -13,18 +13,18 @@
 }
 
 @media (min-width: 48rem) {
-  .css-emergency-banner {
+  .emergency-banner {
     row-gap: 1rem;
     padding: calc(26 / 16 * 1rem);
   }
 }
 
-.css-emergency-banner__header {
+.emergency-banner__header {
   display: grid;
   row-gap: 0.5rem;
 }
 
-.css-emergency-banner__heading {
+.emergency-banner__heading {
   margin-top: 0;
   margin-bottom: 0;
   font-weight: bold;
@@ -34,40 +34,40 @@
 }
 
 @media (min-width: 48rem) {
-  .css-emergency-banner__heading {
+  .emergency-banner__heading {
     font-size: 1.5rem;
   }
 }
 
-.css-emergency-banner__timestamp {
+.emergency-banner__timestamp {
   display: block;
   text-autospace: normal;
 }
 
-.css-emergency-banner__body {
+.emergency-banner__body {
   display: grid;
   row-gap: 0.5rem;
 }
 
-.css-emergency-banner__body > * {
+.emergency-banner__body > * {
   margin-top: 0;
   margin-bottom: 0;
 }
 
 @media (min-width: 48rem) {
-  .css-emergency-banner__body {
+  .emergency-banner__body {
     row-gap: 1rem;
     font-size: var(--font-size-20);
     line-height: var(--line-height-150);
   }
 }
 
-.css-emergency-banner__action {
+.emergency-banner__action {
   padding-top: 0.5rem;
 }
 
 @media (min-width: 48rem) {
-  .css-emergency-banner__action {
+  .emergency-banner__action {
     display: flex;
     justify-content: center;
     padding-top: 0.75rem;
@@ -75,8 +75,8 @@
   }
 }
 
-.css-emergency-banner__button,
-.css-emergency-banner__button:any-link {
+.emergency-banner__button,
+.emergency-banner__button:any-link {
   position: relative;
   display: block;
   box-sizing: border-box;
@@ -95,8 +95,8 @@
 }
 
 @media (min-width: 48rem) {
-  .css-emergency-banner__button,
-  .css-emergency-banner__button:any-link {
+  .emergency-banner__button,
+  .emergency-banner__button:any-link {
     width: fit-content;
     min-width: 50%;
     border-width: 4px;
@@ -106,7 +106,7 @@
 }
 
 @media (hover: hover) {
-  .css-emergency-banner__button:hover {
+  .emergency-banner__button:hover {
     background-color: var(--color-semantic-error-2);
     text-decoration: underline;
     text-decoration-thickness: calc(1 / 16 * 1rem);
@@ -114,13 +114,13 @@
   }
 }
 
-.css-emergency-banner__button:focus-visible {
+.emergency-banner__button:focus-visible {
   outline: 0.25rem solid var(--color-neutral-black);
   outline-offset: 0.125rem;
   box-shadow: 0 0 0 0.125rem var(--color-primitive-yellow-300);
 }
 
-.css-emergency-banner__button::after {
+.emergency-banner__button::after {
   position: absolute;
   inset: 0;
   border: 2px solid var(--color-neutral-white);
@@ -129,31 +129,31 @@
 }
 
 @media (min-width: 48rem) {
-  .css-emergency-banner__button::after {
+  .emergency-banner__button::after {
     border-width: 4px;
     border-radius: 0.75rem;
   }
 }
 
 @media (forced-colors: active) {
-  .css-emergency-banner__button::after {
+  .emergency-banner__button::after {
     inset: 0.25rem;
     border-width: 2px;
     border-radius: 0.5rem;
   }
 }
 
-.css-emergency-banner__button-icon {
+.emergency-banner__button-icon {
   display: inline-block;
   fill: currentcolor;
   vertical-align: -0.15em;
 }
 
-.css-emergency-banner__button-icon::before {
+.emergency-banner__button-icon::before {
   content: " ";
 }
 
-.css-emergency-banner__button-icon-glyph {
+.emergency-banner__button-icon-glyph {
   display: block;
   width: 1rem;
   height: 1rem;

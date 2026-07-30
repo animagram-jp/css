@@ -1,18 +1,18 @@
 @layer css.components {
 
-.css-icon {
+.icon {
     --_size: 1rem;
     --_stripe: 2px;
     --_gap: 3px;
     align-items: center;
 }
 
-.css-icon::before {
+.icon::before {
     position: relative;
     margin-right: 0.5rem;
 }
 
-.css-icon[icon-type="hatch"]::before {
+.icon[icon-type="hatch"]::before {
     content: "";
     display: inline-block;
     width: var(--_size);

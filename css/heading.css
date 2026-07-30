@@ -1,13 +1,13 @@
 @layer css.components {
 
-.css-h {
+.h {
   margin: 0;
   color: rgb(var(--rgb-ink));
   font-family: var(--font-family-sans);
 }
 
-.css-h[data-size="display-1"],
-hgroup[data-size="display-1"] .css-h {
+.h[data-size="display-1"],
+hgroup[data-size="display-1"] .h {
   --_shoulder-size: var(--css-typography-heading-4-font-size);
   --_shoulder-line-height: var(--css-typography-heading-4-line-height);
   --_shoulder-letter-spacing: var(--css-typography-heading-4-letter-spacing);
@@ -17,8 +17,8 @@ hgroup[data-size="display-1"] .css-h {
   letter-spacing: var(--css-typography-display-1-letter-spacing);
 }
 
-.css-h[data-size="display-2"],
-hgroup[data-size="display-2"] .css-h {
+.h[data-size="display-2"],
+hgroup[data-size="display-2"] .h {
   --_shoulder-size: var(--css-typography-heading-6-font-size);
   --_shoulder-line-height: var(--css-typography-heading-6-line-height);
   --_shoulder-letter-spacing: var(--css-typography-heading-6-letter-spacing);
@@ -28,8 +28,8 @@ hgroup[data-size="display-2"] .css-h {
   letter-spacing: var(--css-typography-display-2-letter-spacing);
 }
 
-.css-h[data-size="heading-1"],
-hgroup[data-size="heading-1"] .css-h {
+.h[data-size="heading-1"],
+hgroup[data-size="heading-1"] .h {
   --_shoulder-size: var(--css-typography-heading-7-font-size);
   --_shoulder-line-height: var(--css-typography-heading-7-line-height);
   --_shoulder-letter-spacing: var(--css-typography-heading-7-letter-spacing);
@@ -39,8 +39,8 @@ hgroup[data-size="heading-1"] .css-h {
   letter-spacing: var(--css-typography-heading-1-letter-spacing);
 }
 
-.css-h[data-size="heading-2"],
-hgroup[data-size="heading-2"] .css-h {
+.h[data-size="heading-2"],
+hgroup[data-size="heading-2"] .h {
   --_shoulder-size: var(--css-typography-heading-8-font-size);
   --_shoulder-line-height: var(--css-typography-heading-8-line-height);
   --_shoulder-letter-spacing: var(--css-typography-heading-8-letter-spacing);
@@ -50,8 +50,8 @@ hgroup[data-size="heading-2"] .css-h {
   letter-spacing: var(--css-typography-heading-2-letter-spacing);
 }
 
-.css-h[data-size="heading-3"],
-hgroup[data-size="heading-3"] .css-h {
+.h[data-size="heading-3"],
+hgroup[data-size="heading-3"] .h {
   --_shoulder-size: var(--css-typography-heading-9-font-size);
   --_shoulder-line-height: var(--css-typography-heading-9-line-height);
   --_shoulder-letter-spacing: var(--css-typography-heading-9-letter-spacing);
@@ -61,8 +61,8 @@ hgroup[data-size="heading-3"] .css-h {
   letter-spacing: var(--css-typography-heading-3-letter-spacing);
 }
 
-.css-h[data-size="heading-4"],
-hgroup[data-size="heading-4"] .css-h {
+.h[data-size="heading-4"],
+hgroup[data-size="heading-4"] .h {
   --_shoulder-size: var(--css-typography-text-normal-2-font-size);
   --_shoulder-line-height: var(--css-typography-text-normal-2-line-height);
   --_shoulder-letter-spacing: var(--css-typography-text-normal-2-letter-spacing);
@@ -72,8 +72,8 @@ hgroup[data-size="heading-4"] .css-h {
   letter-spacing: var(--css-typography-heading-4-letter-spacing);
 }
 
-.css-h[data-size="heading-6"],
-hgroup[data-size="heading-6"] .css-h {
+.h[data-size="heading-6"],
+hgroup[data-size="heading-6"] .h {
   --_shoulder-size: var(--css-typography-text-normal-2-font-size);
   --_shoulder-line-height: var(--css-typography-text-normal-2-line-height);
   --_shoulder-letter-spacing: var(--css-typography-text-normal-2-letter-spacing);
@@ -83,8 +83,8 @@ hgroup[data-size="heading-6"] .css-h {
   letter-spacing: var(--css-typography-heading-6-letter-spacing);
 }
 
-.css-h[data-size="heading-8"],
-hgroup[data-size="heading-8"] .css-h {
+.h[data-size="heading-8"],
+hgroup[data-size="heading-8"] .h {
   --_shoulder-size: var(--css-typography-text-normal-2-font-size);
   --_shoulder-line-height: var(--css-typography-text-normal-2-line-height);
   --_shoulder-letter-spacing: var(--css-typography-text-normal-2-letter-spacing);
@@ -94,8 +94,8 @@ hgroup[data-size="heading-8"] .css-h {
   letter-spacing: var(--css-typography-heading-8-letter-spacing);
 }
 
-.css-h[data-size="heading-9"],
-hgroup[data-size="heading-9"] .css-h {
+.h[data-size="heading-9"],
+hgroup[data-size="heading-9"] .h {
   --_shoulder-size: var(--css-typography-text-normal-2-font-size);
   --_shoulder-line-height: var(--css-typography-text-normal-2-line-height);
   --_shoulder-letter-spacing: var(--css-typography-text-normal-2-letter-spacing);
@@ -105,8 +105,8 @@ hgroup[data-size="heading-9"] .css-h {
   letter-spacing: var(--css-typography-heading-9-letter-spacing);
 }
 
-.css-h[data-size="text-normal-2"],
-hgroup[data-size="text-normal-2"] .css-h {
+.h[data-size="text-normal-2"],
+hgroup[data-size="text-normal-2"] .h {
   --_shoulder-size: var(--css-typography-text-normal-2-font-size);
   --_shoulder-line-height: var(--css-typography-text-normal-2-line-height);
   --_shoulder-letter-spacing: var(--css-typography-text-normal-2-letter-spacing);
@@ -116,14 +116,14 @@ hgroup[data-size="text-normal-2"] .css-h {
   letter-spacing: var(--css-typography-text-normal-2-letter-spacing);
 }
 
-.css-h[data-chip],
-hgroup[data-chip] .css-h {
+.h[data-chip],
+hgroup[data-chip] .h {
   position: relative;
   padding-left: calc(1em / 3 + 0.5em);
 }
 
-.css-h[data-chip]::before,
-hgroup[data-chip] .css-h::before {
+.h[data-chip]::before,
+hgroup[data-chip] .h::before {
   position: absolute;
   top: 0.2em;
   bottom: 0.1em;
@@ -134,54 +134,54 @@ hgroup[data-chip] .css-h::before {
 }
 
 @supports (top: 1lh) {
-  .css-h[data-chip]::before,
-  hgroup[data-chip] .css-h::before {
+  .h[data-chip]::before,
+  hgroup[data-chip] .h::before {
     top: calc(0.5lh - 0.45em);
     bottom: calc(0.5lh - 0.55em);
   }
 }
 
-hgroup[data-chip]:has(.css-h-shoulder) .css-h::before {
+hgroup[data-chip]:has(.h-shoulder) .h::before {
   top: calc((var(--_shoulder-size) * (var(--_shoulder-line-height) - 1)) / 2);
 }
 
 @media (forced-colors: active) {
-  .css-h[data-chip]::before,
-  hgroup[data-chip] .css-h::before {
+  .h[data-chip]::before,
+  hgroup[data-chip] .h::before {
     background-color: CanvasText;
   }
 }
 
-.css-h[data-rule],
-hgroup[data-rule] .css-h {
+.h[data-rule],
+hgroup[data-rule] .h {
   border-bottom: solid var(--color-emphasis);
 }
 
-.css-h[data-rule="8"],
-hgroup[data-rule="8"] .css-h {
+.h[data-rule="8"],
+hgroup[data-rule="8"] .h {
   border-bottom-width: 0.5rem;
   padding-bottom: calc(20 / 16 * 1rem);
 }
 
-.css-h[data-rule="6"],
-hgroup[data-rule="6"] .css-h {
+.h[data-rule="6"],
+hgroup[data-rule="6"] .h {
   border-bottom-width: calc(6 / 16 * 1rem);
   padding-bottom: 1rem;
 }
 
-.css-h[data-rule="4"],
-hgroup[data-rule="4"] .css-h {
+.h[data-rule="4"],
+hgroup[data-rule="4"] .h {
   border-bottom-width: 0.25rem;
   padding-bottom: 0.75rem;
 }
 
-.css-h[data-rule="2"],
-hgroup[data-rule="2"] .css-h {
+.h[data-rule="2"],
+hgroup[data-rule="2"] .h {
   border-bottom-width: 0.125rem;
   padding-bottom: 0.5rem;
 }
 
-.css-h-shoulder {
+.h-shoulder {
   margin: 0;
   color: rgb(var(--rgb-ink));
   font-family: var(--font-family-sans);
