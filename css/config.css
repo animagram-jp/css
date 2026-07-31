@@ -113,15 +113,20 @@
 }
 
 :root {
-    --sm-font-size: 0.85rem;
-    --md-font-size: 1rem;
-    --lg-font-size: 1.15rem;
+    --sm-box-height:          2.5rem;
+    --sm-font-size:           0.85rem;
     --sm-font-letter-spacing: 0.02em;
+    --sm-font-line-height:    1.5rem;
+
+    --md-box-height:          3rem;
+    --md-font-size:           1rem;
     --md-font-letter-spacing: 0;
+    --md-font-line-height:    1.5rem;
+
+    --lg-box-height:          3.5rem;
+    --lg-font-size:           1.15rem;
     --lg-font-letter-spacing: 0;
-    --sm-font-line-height: 1.5rem;
-    --md-font-line-height: 1.5rem;
-    --lg-font-line-height: 1.725rem;
+    --lg-font-line-height:    1.725rem;
     
     --font-family-sans: "IBM Plex Sans", "BIZ UDGothic", "Noto Sans JP","Hiragino Sans", sans-serif;
     --font-family-mono: "Noto Sans Mono", "Noto Sans JP", monospace;
