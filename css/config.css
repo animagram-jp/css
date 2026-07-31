@@ -113,6 +113,8 @@
 }
 
 :root {
+    --font-size-minimum: 0.85rem;
+    --font-size-entry: 1.15rem;
     --font-family-sans: "IBM Plex Sans", "BIZ UDGothic", "Noto Sans JP","Hiragino Sans", sans-serif;
     --font-family-mono: "Noto Sans Mono", "Noto Sans JP", monospace;
 
