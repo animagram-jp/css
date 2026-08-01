@@ -1,3 +1,8 @@
+/* <figure>
+      <blockquote>
+          <p>Text</p></blockquote>
+      <figcaption>Soseki Natsume. 1914. <cite>Kokoro</cite>. Iwanami Shoten, Tokyo, Japan.</figcaption></figure> */
+
 @layer css.components {
 
     blockquote {
@@ -15,6 +20,10 @@
 
     blockquote > *:last-child {
         margin-bottom: 0 !important;
+    }
+
+    cite {
+        font-style: normal;
     }
 
 }
