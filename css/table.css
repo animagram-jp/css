@@ -81,20 +81,19 @@
     }
 
     @supports (selector(:has(.x))) {
-        table :is(td, th):has(> label:has(> input:is([type="checkbox"]:not([role="switch"]), [type="radio"])):only-child) {
+        table :is(td, th):has(> label:only-child > input:is([type="checkbox"]:not([role="switch"]), [type="radio"])) {
             position: relative;
             box-sizing: border-box;
             width: 2.5rem;
             padding: 0;
         }
 
-        table :is(td, th) > label:has(> input:is([type="checkbox"]:not([role="switch"]), [type="radio"])):only-child {
+        table :is(td, th) > label:only-child:has(> input:is([type="checkbox"]:not([role="switch"]), [type="radio"])) {
             position: absolute;
-            inset: 0;
-            display: grid;
-            justify-content: center;
-            width: auto;
-            padding-top: calc(10 / 16 * 1rem);
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: fit-content;
         }
     }
 
