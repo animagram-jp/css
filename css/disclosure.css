@@ -2,8 +2,8 @@
 
 /* <details>
         <summary>outline text</summary>
-        <p>これはダミーテキストです。ダミーテキストは、デザインやレイアウトの作成時に使用される仮の文章です。</p>
-    </details> */
+        <block>Some example content appears here.</block></details>
+*/
 
 @layer css.components {
 
