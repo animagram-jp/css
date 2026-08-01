@@ -8,9 +8,6 @@
 
     :is(h1, h2, h3, h4, h5, h6)[data-size="md"],
     hgroup[data-size="md"] > :is(h1, h2, h3, h4, h5, h6) {
-        --shoulder-size: var(--md-font-size);
-        --shoulder-line-height: var(--md-line-height);
-        --shoulder-letter-spacing: var(--md-letter-spacing);
         font-weight: bold;
         font-size: var(--md-font-size);
         line-height: var(--md-line-height);
@@ -43,7 +40,7 @@
     }
 
     hgroup[data-chip]:has(> p) > :is(h1, h2, h3, h4, h5, h6)::before {
-        top: calc((var(--shoulder-size) * (var(--shoulder-line-height) - 1)) / 2);
+        top: calc((var(--sm-font-size) * (var(--sm-line-height) - 1)) / 2);
     }
 
     @media (forced-colors: active) {
@@ -87,9 +84,8 @@
         color: rgb(var(--rgb-ink));
         font-family: var(--font-family-sans);
         font-weight: bold;
-        font-size: var(--shoulder-size);
-        line-height: var(--shoulder-line-height);
-        letter-spacing: var(--shoulder-letter-spacing);
+        font-size: var(--sm-font-size);
+        line-height: var(--sm-line-height);
+        letter-spacing: var(--sm-letter-spacing);
     }
-
 }
