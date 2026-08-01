@@ -1,6 +1,9 @@
-/* <span data-input-number>
+/*
+    <input type="text">
+
+    <span data-input-number>
         <button></button>
-        <input type="text">
+        <input type="text" inputmode="numeric">
         <button></button></span> */
 
 @layer css.components {
