@@ -107,12 +107,12 @@
 
         --lg-box-height: 3.5rem;
         --lg-font-size: 1.15rem;
-        --lg-font-letter-spacing: 0;
+        --lg-letter-spacing: 0;
         --lg-line-height: 1.725rem;
 
         --xl-box-height: ;
         --xl-font-size: 1.5rem;
-        --xl-font-letter-spacing: 0;
+        --xl-letter-spacing: 0;
         --xl-line-height: 2.25rem;
 
         --2xl-box-height: ;
@@ -164,6 +164,8 @@
         * without needing a separate darken ratio.
         */
         --color-emphasis-fill: rgb(var(--rgb-emphasis-fill));
+        --color-focus: rgb(var(--rgb-focus));
+        --color-border: rgb(var(--rgb-border));
 
         /*
         * --ratio-emphasis-*: color-mix ratios of --color-emphasis(-fill) against

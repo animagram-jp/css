@@ -7,19 +7,19 @@
 @layer css.components {
 
     label:has(> input[type="checkbox"][role="switch"])[data-size="sm"] {
-        --_height: var(--sm-box-height);
-        --_border-width: 0.125rem;
+        --height: var(--sm-box-height);
+        --border-width: 0.125rem;
     }
 
     label:has(> input[type="checkbox"][role="switch"]):not([data-size]),
     label:has(> input[type="checkbox"][role="switch"])[data-size="md"] {
-        --_height: var(--md-box-height);
-        --_border-width: 0.125rem;
+        --height: var(--md-box-height);
+        --border-width: 0.125rem;
     }
 
     label:has(> input[type="checkbox"][role="switch"])[data-size="lg"] {
-        --_height: var(--lg-box-height);
-        --_border-width: 0.1875rem;
+        --height: var(--lg-box-height);
+        --border-width: 0.1875rem;
     }
 
     /* label: lays out an optional leading <span> alongside the track */
@@ -39,18 +39,17 @@
 
     /* track: the input itself is the track; its ::after is the thumb */
     label:has(> input[type="checkbox"][role="switch"]) > input[type="checkbox"] {
-        --_padding: calc(var(--_border-width) * 2);
-        --_thumb-size: calc(var(--_height) - var(--_padding) * 2);
-        --_travel: var(--_thumb-size);
+        --padding: calc(var(--border-width) * 2);
+        --thumb-size: calc(var(--height) - var(--padding) * 2);
 
         appearance: none;
         position: relative;
         flex-shrink: 0;
-        width: calc(var(--_padding) * 2 + var(--_thumb-size) + var(--_travel));
-        height: var(--_height);
+        width: calc(var(--padding) * 2 + var(--thumb-size) * 2);
+        height: var(--height);
         margin: 0;
-        border: var(--_border-width) solid var(--color-ink);
-        border-radius: calc(var(--_height) / 2);
+        border: var(--border-width) solid var(--color-ink);
+        border-radius: calc(var(--height) / 2);
         background-color: var(--color-muted);
         cursor: pointer;
         transition: background-color 150ms ease;
@@ -65,18 +64,18 @@
         content: "OFF";
         position: absolute;
         top: 50%;
-        left: var(--_padding);
+        left: var(--padding);
         translate: 0 -50%;
-        width: var(--_thumb-size);
-        height: var(--_thumb-size);
-        border: var(--_border-width) solid var(--color-ink);
+        width: var(--thumb-size);
+        height: var(--thumb-size);
+        border: var(--border-width) solid var(--color-ink);
         border-radius: 50%;
         background: var(--color-background);
         box-shadow: var(--elevation-1);
         display: inline-flex;
         align-items: center;
         justify-content: center;
-        font-size: calc(var(--_thumb-size) * 0.35);
+        font-size: calc(var(--thumb-size) * 0.35);
         font-weight: bold;
         color: var(--color-muted);
         transition: transform 150ms ease;
@@ -84,7 +83,7 @@
 
     label:has(> input[type="checkbox"][role="switch"]) > input[type="checkbox"]:checked::after {
         content: "ON";
-        transform: translateX(var(--_travel));
+        transform: translateX(var(--thumb-size));
         color: rgb(var(--rgb-ink));
     }
 
