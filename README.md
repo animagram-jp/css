@@ -19,7 +19,8 @@ Css universal design boilerplate. Works without interference to HTML.
 | `xs`        | 1.75rem | 0.125rem | 0.5rem |
 | `sm`        | 2.5rem  | —        | —      |
 | `md`        | 3rem    | —        | —      |
-| `lg`        | `
+| `lg`        | 3.5rem  | 
+| `xl    |
 
 `—` = Components unique as below
 
