@@ -89,6 +89,12 @@
         }
     }
 
+    *,
+    ::before,
+    ::after {
+        box-sizing: border-box;
+    }
+
     :root {
         --xs-box-height: 1.75rem;
         --xs-font-size: 0.85rem;
@@ -127,12 +133,6 @@
             0 2px 8px 1px rgb(var(--rgb-black) / 0.1), 0 1px 5px 0 rgb(var(--rgb-black) / 0.3);
         --elevation-2:
             0 2px 12px 2px rgb(var(--rgb-black) / 0.1), 0 1px 6px 0 rgb(var(--rgb-black) / 0.3);
-    }
-
-    *,
-    ::before,
-    ::after {
-        box-sizing: border-box;
     }
 
     html {
