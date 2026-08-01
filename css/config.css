@@ -153,7 +153,7 @@
 
     body {
         --color-ink: rgb(var(--rgb-ink));
-        --color-background: rgb(var(--rgb-white));
+        --color-background: rgb(var(--rgb-background));
         --color-emphasis: rgb(var(--rgb-emphasis));
 
         /*
@@ -163,7 +163,7 @@
         * (measured 1.8:1) — overridden to blue below, which clears it (6.56:1)
         * without needing a separate darken ratio.
         */
-        --color-emphasis-fill: rgb(var(--color-emphasis-fill));
+        --color-emphasis-fill: rgb(var(--rgb-emphasis-fill));
 
         /*
         * --ratio-emphasis-*: color-mix ratios of --color-emphasis(-fill) against
