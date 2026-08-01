@@ -1,194 +1,95 @@
 @layer css.components {
 
-.h {
-  margin: 0;
-  color: rgb(var(--rgb-ink));
-  font-family: var(--font-family-sans);
-}
+    .h {
+        margin: 0;
+        color: rgb(var(--rgb-ink));
+        font-family: var(--font-family-sans);
+    }
 
-.h[data-size="display-1"],
-hgroup[data-size="display-1"] .h {
-  --_shoulder-size: var(--typography-heading-4-font-size);
-  --_shoulder-line-height: var(--typography-heading-4-line-height);
-  --_shoulder-letter-spacing: var(--typography-heading-4-letter-spacing);
-  font-weight: bold;
-  font-size: var(--typography-display-1-font-size);
-  line-height: var(--typography-display-1-line-height);
-  letter-spacing: var(--typography-display-1-letter-spacing);
-}
+    .h[data-size="md"],
+        hgroup[data-size="md"] .h {
+        --_shoulder-size: var(--md-font-size);
+        --_shoulder-line-height: var(--md-line-height);
+        --_shoulder-letter-spacing: var(--md-letter-spacing);
+        font-weight: bold;
+        font-size: var(--md-font-size);
+        line-height: var(--md-line-height);
+        letter-spacing: var(--md-letter-spacing);
+    }
 
-.h[data-size="display-2"],
-hgroup[data-size="display-2"] .h {
-  --_shoulder-size: var(--typography-heading-6-font-size);
-  --_shoulder-line-height: var(--typography-heading-6-line-height);
-  --_shoulder-letter-spacing: var(--typography-heading-6-letter-spacing);
-  font-weight: bold;
-  font-size: var(--typography-display-2-font-size);
-  line-height: var(--typography-display-2-line-height);
-  letter-spacing: var(--typography-display-2-letter-spacing);
-}
+    .h[data-chip],
+        hgroup[data-chip] .h {
+        position: relative;
+        padding-left: calc(1em / 3 + 0.5em);
+    }
 
-.h[data-size="heading-1"],
-hgroup[data-size="heading-1"] .h {
-  --_shoulder-size: var(--typography-heading-7-font-size);
-  --_shoulder-line-height: var(--typography-heading-7-line-height);
-  --_shoulder-letter-spacing: var(--typography-heading-7-letter-spacing);
-  font-weight: bold;
-  font-size: var(--typography-heading-1-font-size);
-  line-height: var(--typography-heading-1-line-height);
-  letter-spacing: var(--typography-heading-1-letter-spacing);
-}
+    .h[data-chip]::before,
+        hgroup[data-chip] .h::before {
+        position: absolute;
+        top: 0.2em;
+        bottom: 0.1em;
+        left: 0;
+        width: calc(1em / 3);
+        background-color: var(--color-emphasis);
+        content: "";
+    }
 
-.h[data-size="heading-2"],
-hgroup[data-size="heading-2"] .h {
-  --_shoulder-size: var(--typography-heading-8-font-size);
-  --_shoulder-line-height: var(--typography-heading-8-line-height);
-  --_shoulder-letter-spacing: var(--typography-heading-8-letter-spacing);
-  font-weight: bold;
-  font-size: var(--typography-heading-2-font-size);
-  line-height: var(--typography-heading-2-line-height);
-  letter-spacing: var(--typography-heading-2-letter-spacing);
-}
+    @supports (top: 1lh) {
+        .h[data-chip]::before,
+        hgroup[data-chip] .h::before {
+            top: calc(0.5lh - 0.45em);
+            bottom: calc(0.5lh - 0.55em);
+        }
+    }
 
-.h[data-size="heading-3"],
-hgroup[data-size="heading-3"] .h {
-  --_shoulder-size: var(--typography-heading-9-font-size);
-  --_shoulder-line-height: var(--typography-heading-9-line-height);
-  --_shoulder-letter-spacing: var(--typography-heading-9-letter-spacing);
-  font-weight: bold;
-  font-size: var(--typography-heading-3-font-size);
-  line-height: var(--typography-heading-3-line-height);
-  letter-spacing: var(--typography-heading-3-letter-spacing);
-}
+    hgroup[data-chip]:has(.h-shoulder) .h::before {
+        top: calc((var(--_shoulder-size) * (var(--_shoulder-line-height) - 1)) / 2);
+    }
 
-.h[data-size="heading-4"],
-hgroup[data-size="heading-4"] .h {
-  --_shoulder-size: var(--typography-text-normal-2-font-size);
-  --_shoulder-line-height: var(--typography-text-normal-2-line-height);
-  --_shoulder-letter-spacing: var(--typography-text-normal-2-letter-spacing);
-  font-weight: bold;
-  font-size: var(--typography-heading-4-font-size);
-  line-height: var(--typography-heading-4-line-height);
-  letter-spacing: var(--typography-heading-4-letter-spacing);
-}
+    @media (forced-colors: active) {
+        .h[data-chip]::before,
+        hgroup[data-chip] .h::before {
+            background-color: CanvasText;
+        }
+    }
 
-.h[data-size="heading-6"],
-hgroup[data-size="heading-6"] .h {
-  --_shoulder-size: var(--typography-text-normal-2-font-size);
-  --_shoulder-line-height: var(--typography-text-normal-2-line-height);
-  --_shoulder-letter-spacing: var(--typography-text-normal-2-letter-spacing);
-  font-weight: bold;
-  font-size: var(--typography-heading-6-font-size);
-  line-height: var(--typography-heading-6-line-height);
-  letter-spacing: var(--typography-heading-6-letter-spacing);
-}
+    .h[data-rule],
+    hgroup[data-rule] .h {
+        border-bottom: solid var(--color-emphasis);
+    }
 
-.h[data-size="heading-8"],
-hgroup[data-size="heading-8"] .h {
-  --_shoulder-size: var(--typography-text-normal-2-font-size);
-  --_shoulder-line-height: var(--typography-text-normal-2-line-height);
-  --_shoulder-letter-spacing: var(--typography-text-normal-2-letter-spacing);
-  font-weight: bold;
-  font-size: var(--typography-heading-8-font-size);
-  line-height: var(--typography-heading-8-line-height);
-  letter-spacing: var(--typography-heading-8-letter-spacing);
-}
+    .h[data-rule="8"],
+    hgroup[data-rule="8"] .h {
+        border-bottom-width: 0.5rem;
+        padding-bottom: calc(20 / 16 * 1rem);
+    }
 
-.h[data-size="heading-9"],
-hgroup[data-size="heading-9"] .h {
-  --_shoulder-size: var(--typography-text-normal-2-font-size);
-  --_shoulder-line-height: var(--typography-text-normal-2-line-height);
-  --_shoulder-letter-spacing: var(--typography-text-normal-2-letter-spacing);
-  font-weight: bold;
-  font-size: var(--typography-heading-9-font-size);
-  line-height: var(--typography-heading-9-line-height);
-  letter-spacing: var(--typography-heading-9-letter-spacing);
-}
+    .h[data-rule="6"],
+    hgroup[data-rule="6"] .h {
+        border-bottom-width: calc(6 / 16 * 1rem);
+        padding-bottom: 1rem;
+    }
 
-.h[data-size="text-normal-2"],
-hgroup[data-size="text-normal-2"] .h {
-  --_shoulder-size: var(--typography-text-normal-2-font-size);
-  --_shoulder-line-height: var(--typography-text-normal-2-line-height);
-  --_shoulder-letter-spacing: var(--typography-text-normal-2-letter-spacing);
-  font-weight: bold;
-  font-size: var(--typography-text-normal-2-font-size);
-  line-height: var(--typography-text-normal-2-line-height);
-  letter-spacing: var(--typography-text-normal-2-letter-spacing);
-}
+    .h[data-rule="4"],
+    hgroup[data-rule="4"] .h {
+        border-bottom-width: 0.25rem;
+        padding-bottom: 0.75rem;
+    }
 
-.h[data-chip],
-hgroup[data-chip] .h {
-  position: relative;
-  padding-left: calc(1em / 3 + 0.5em);
-}
+    .h[data-rule="2"],
+    hgroup[data-rule="2"] .h {
+        border-bottom-width: 0.125rem;
+        padding-bottom: 0.5rem;
+    }
 
-.h[data-chip]::before,
-hgroup[data-chip] .h::before {
-  position: absolute;
-  top: 0.2em;
-  bottom: 0.1em;
-  left: 0;
-  width: calc(1em / 3);
-  background-color: var(--color-emphasis);
-  content: "";
-}
-
-@supports (top: 1lh) {
-  .h[data-chip]::before,
-  hgroup[data-chip] .h::before {
-    top: calc(0.5lh - 0.45em);
-    bottom: calc(0.5lh - 0.55em);
-  }
-}
-
-hgroup[data-chip]:has(.h-shoulder) .h::before {
-  top: calc((var(--_shoulder-size) * (var(--_shoulder-line-height) - 1)) / 2);
-}
-
-@media (forced-colors: active) {
-  .h[data-chip]::before,
-  hgroup[data-chip] .h::before {
-    background-color: CanvasText;
-  }
-}
-
-.h[data-rule],
-hgroup[data-rule] .h {
-  border-bottom: solid var(--color-emphasis);
-}
-
-.h[data-rule="8"],
-hgroup[data-rule="8"] .h {
-  border-bottom-width: 0.5rem;
-  padding-bottom: calc(20 / 16 * 1rem);
-}
-
-.h[data-rule="6"],
-hgroup[data-rule="6"] .h {
-  border-bottom-width: calc(6 / 16 * 1rem);
-  padding-bottom: 1rem;
-}
-
-.h[data-rule="4"],
-hgroup[data-rule="4"] .h {
-  border-bottom-width: 0.25rem;
-  padding-bottom: 0.75rem;
-}
-
-.h[data-rule="2"],
-hgroup[data-rule="2"] .h {
-  border-bottom-width: 0.125rem;
-  padding-bottom: 0.5rem;
-}
-
-.h-shoulder {
-  margin: 0;
-  color: rgb(var(--rgb-ink));
-  font-family: var(--font-family-sans);
-  font-weight: bold;
-  font-size: var(--_shoulder-size);
-  line-height: var(--_shoulder-line-height);
-  letter-spacing: var(--_shoulder-letter-spacing);
-}
+    .h-shoulder {
+        margin: 0;
+        color: rgb(var(--rgb-ink));
+        font-family: var(--font-family-sans);
+        font-weight: bold;
+        font-size: var(--_shoulder-size);
+        line-height: var(--_shoulder-line-height);
+        letter-spacing: var(--_shoulder-letter-spacing);
+    }
 
 }

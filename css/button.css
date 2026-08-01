@@ -14,10 +14,10 @@
     box-sizing: border-box;
     max-width: 100%;
     font-weight: bold;
-    font-size: var(--typography-text-flush-2-font-size);
-    line-height: var(--typography-text-flush-2-line-height);
+    font-size: var(--md-font-size);
+    line-height: var(--md-line-height);
     font-family: var(--font-family-sans);
-    letter-spacing: var(--typography-text-flush-2-letter-spacing);
+    letter-spacing: var(--md-letter-spacing);
     text-decoration: none;
     text-underline-offset: calc(3 / 16 * 1rem);
 }
@@ -131,14 +131,14 @@
 }
 
 .button[data-size="lg"] {
-  min-height: var(--size-lg-height);
+  min-height: var(--lg-box-height);
   border-radius: 0.5rem;
   padding: 0.75rem 1rem;
 }
 
 .button:not([data-size]),
 .button[data-size="md"] {
-  min-height: var(--size-md-height);
+  min-height: var(--md-box-height);
   border-radius: 0.5rem;
   padding: 0.5rem 1rem;
 }
@@ -163,16 +163,16 @@
 }
 
 .button[data-size="sm"] {
-  min-height: var(--size-sm-height);
+  min-height: var(--sm-box-height);
   border-radius: calc(6 / 16 * 1rem);
   padding: 0.125rem 0.75rem;
 }
 
 .button[data-size="xs"] {
-  min-height: var(--size-xs-height);
+  min-height: var(--xs-box-height);
   border-radius: 0.25rem;
-  padding: var(--size-xs-padding-block) var(--size-xs-padding-inline);
-  font-size: var(--typography-text-flush-3-font-size);
+  padding: var(--xs-padding-block) var(--xs-padding-inline);
+  font-size: var(--sm-font-size);
 }
 
 .button__icon {

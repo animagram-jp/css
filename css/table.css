@@ -8,20 +8,20 @@
   border-collapse: collapse;
   color: rgb(var(--rgb-ink));
   font-weight: normal;
-  font-size: var(--typography-text-normal-2-font-size);
-  line-height: var(--typography-text-normal-2-line-height);
+  font-size: var(--md-font-size);
+  line-height: var(--md-line-height);
   font-family: var(--font-family-sans);
-  letter-spacing: var(--typography-text-normal-2-letter-spacing);
+  letter-spacing: var(--md-letter-spacing);
 }
 
 .table[data-type="dense"] {
   --_padding: 0.75rem 0.1rem;
-  line-height: var(--typography-text-tight-3-line-height);
+  line-height: var(--md-line-height);
 }
 
 .table caption {
   font-weight: bold;
-  font-size: var(--typography-text-normal-1-font-size);
+  font-size: var(--md-font-size);
   text-align: left;
   margin-bottom: 1rem;
 }

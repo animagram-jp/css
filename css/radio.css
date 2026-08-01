@@ -9,8 +9,8 @@
   padding-top: var(--_padding-block);
   padding-bottom: var(--_padding-block);
   color: rgb(var(--rgb-ink));
-  font-size: var(--_label-font-size, var(--typography-text-flush-2-font-size));
-  line-height: var(--typography-text-flush-2-line-height);
+  font-size: var(--_label-font-size, var(--md-font-size));
+  line-height: var(--md-line-height);
   font-family: var(--font-family-sans);
   font-weight: normal;
   letter-spacing: 0;
@@ -22,7 +22,7 @@
   --_radio-outer-size: calc(20 / 16 * 1rem);
   --_radio-inner-size: calc(10 / 16 * 1rem);
   --_radio-border-width: 0.125rem;
-  --_label-font-size: var(--typography-text-flush-2-font-size);
+  --_label-font-size: var(--md-font-size);
   --_padding-block: calc(10 / 16 * 1rem);
 }
 
@@ -33,7 +33,7 @@
   --_radio-outer-size: calc(26 / 16 * 1rem);
   --_radio-inner-size: 0.75rem;
   --_radio-border-width: 0.125rem;
-  --_label-font-size: var(--typography-text-flush-2-font-size);
+  --_label-font-size: var(--md-font-size);
   --_padding-block: calc(11 / 16 * 1rem);
 }
 
@@ -43,7 +43,7 @@
   --_radio-outer-size: calc(36 / 16 * 1rem);
   --_radio-inner-size: 1rem;
   --_radio-border-width: calc(3 / 16 * 1rem);
-  --_label-font-size: var(--typography-text-flush-2-font-size);
+  --_label-font-size: var(--md-font-size);
   --_padding-block: calc(10 / 16 * 1rem);
 }
 

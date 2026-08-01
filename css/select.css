@@ -18,22 +18,22 @@
     padding-left: 1rem;
     color: rgb(var(--rgb-ink));
     font: inherit;
-    line-height: var(--typography-text-flush-2-line-height);
+    line-height: var(--md-line-height);
     letter-spacing: inherit;
     appearance: none;
 }
 
 .select[data-size="sm"] {
-  height: var(--size-sm-height);
+  height: var(--sm-box-height);
 }
 
 .select:not([data-size]),
 .select[data-size="md"] {
-  height: var(--size-md-height);
+  height: var(--md-box-height);
 }
 
 .select[data-size="lg"] {
-  height: var(--size-lg-height);
+  height: var(--lg-box-height);
 }
 
 @media (hover: hover) {
