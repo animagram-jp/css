@@ -2,11 +2,8 @@
 
     input:not([type="checkbox"], [type="radio"], [data-input-number] input) {
         appearance: none;
-        width: 12rem;
-        max-width: 100%;
         border: 1px solid var(--color-muted);
         background-color: var(--color-background);
-        padding: 0.75rem 1rem;
         border-radius: 0.5rem;
         color: rgb(var(--rgb-ink));
         font-weight: normal;
@@ -16,17 +13,23 @@
         letter-spacing: var(--md-letter-spacing);
     }
 
-    input[data-size="sm"]:not([type="checkbox"], [type="radio"], [data-input-number] input) {
-        height: var(--sm-box-height);
+    input[data-size="lg"]:not([type="checkbox"], [type="radio"], [data-input-number] input) {
+        height: var(--lg-box-height);
+        padding-block: calc((var(--lg-box-height) - var(--lg-line-height)) / 2);
+        padding-inline: 1rem;
     }
 
     input:not([data-size], [type="checkbox"], [type="radio"], [data-input-number] input),
     input[data-size="md"]:not([type="checkbox"], [type="radio"], [data-input-number] input) {
         height: var(--md-box-height);
+        padding-block: calc((var(--md-box-height) - var(--md-line-height)) / 2);
+        padding-inline: 1rem;
     }
 
-    input[data-size="lg"]:not([type="checkbox"], [type="radio"], [data-input-number] input) {
-        height: var(--lg-box-height);
+    input[data-size="sm"]:not([type="checkbox"], [type="radio"], [data-input-number] input) {
+        height: var(--sm-box-height);
+        padding-block: calc((var(--sm-box-height) - var(--sm-line-height)) / 2);
+        padding-inline: 0.75rem;
     }
 
     input:read-only:not([type="checkbox"], [type="radio"], :disabled, [data-input-number] input) {
@@ -72,8 +75,6 @@
         display: inline flex;
         align-items: stretch;
         box-sizing: border-box;
-        width: 12rem;
-        max-width: 100%;
         border: 1px solid var(--color-muted);
         background-color: var(--color-background);
         border-radius: 0.5rem;
@@ -85,8 +86,8 @@
         letter-spacing: var(--md-letter-spacing);
     }
 
-    [data-input-number][data-size="sm"] {
-        height: var(--sm-box-height);
+    [data-input-number][data-size="lg"] {
+        height: var(--lg-box-height);
     }
 
     [data-input-number]:not([data-size]),
@@ -94,13 +95,12 @@
         height: var(--md-box-height);
     }
 
-    [data-input-number][data-size="lg"] {
-        height: var(--lg-box-height);
+    [data-input-number][data-size="sm"] {
+        height: var(--sm-box-height);
     }
 
     [data-input-number] input[type="text"] {
         appearance: none;
-        -webkit-appearance: none;
         box-sizing: border-box;
         border: none;
         background: transparent;
@@ -138,12 +138,12 @@
         font-weight: bold;
     }
 
-    [data-input-number][data-size="sm"] button {
-        width: 1.5rem;
-    }
-
     [data-input-number][data-size="lg"] button {
         width: 2.5rem;
+    }
+
+    [data-input-number][data-size="sm"] button {
+        width: 1.5rem;
     }
 
     [data-input-number] button:first-child {

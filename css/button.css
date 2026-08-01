@@ -8,7 +8,6 @@
         font-family: var(--font-family-sans);
         font-weight: bold;
         justify-content: center;
-        max-width: 100%;
         text-decoration: none;
     }
 
@@ -17,7 +16,6 @@
         font-size: var(--md-font-size);
         letter-spacing: var(--md-letter-spacing);
         line-height: var(--md-line-height);
-        padding: calc((var(--md-box-height) - var(--md-line-height)) / 2);
         text-underline-offset: 0.25rem;
     }
 
@@ -134,14 +132,16 @@
     button[data-size="lg"] {
         min-height: var(--lg-box-height);
         border-radius: 0.5rem;
-        padding: 0.75rem 1rem;
+        padding-block: calc((var(--lg-box-height) - var(--lg-line-height)) / 2);
+        padding-inline: 1rem;
     }
 
     button:not([data-size]),
     button[data-size="md"] {
         min-height: var(--md-box-height);
         border-radius: 0.5rem;
-        padding: 0.5rem 1rem;
+        padding-block: calc((var(--md-box-height) - var(--md-line-height)) / 2);
+        padding-inline: 1rem;
     }
 
     /*
@@ -166,13 +166,15 @@
     button[data-size="sm"] {
         min-height: var(--sm-box-height);
         border-radius: calc(6 / 16 * 1rem);
-        padding: 0.125rem 0.75rem;
+        padding-block: calc((var(--sm-box-height) - var(--sm-line-height)) / 2);
+        padding-inline: 0.75rem;
     }
 
     button[data-size="xs"] {
         min-height: var(--xs-box-height);
         border-radius: 0.25rem;
-        padding: var(--xs-padding-block) var(--xs-padding-inline);
+        padding-block: calc((var(--xs-box-height) - var(--sm-line-height)) / 2);
+        padding-inline: 0.5rem;
         font-size: var(--sm-font-size);
     }
 

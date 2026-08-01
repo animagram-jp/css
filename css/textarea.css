@@ -3,35 +3,37 @@
     textarea {
         display: inline flex;
         box-sizing: border-box;
-        width: 100%;
-        max-width: 100%;
+        height: auto;
         border: 1px solid var(--color-muted);
         background-color: var(--color-background);
-        padding: 0.75rem 1rem;
         border-radius: 0.5rem;
         color: rgb(var(--rgb-ink));
         font-weight: normal;
-        font-size: 1rem;
-        line-height: 1.6;
         font-family: var(--font-family-sans);
         letter-spacing: 0.02em;
         resize: vertical;
     }
 
-    textarea[data-size="sm"] {
-        font-size: 1rem;
-        line-height: 1.5;
+    textarea[data-size="lg"] {
+        font-size: var(--lg-font-size);
+        line-height: var(--lg-line-height);
+        padding-block: calc((var(--lg-box-height) - var(--lg-line-height)) / 2);
+        padding-inline: 1rem;
     }
 
     textarea:not([data-size]),
     textarea[data-size="md"] {
-        font-size: 1rem;
-        line-height: 1.6;
-    }
-
-    textarea[data-size="lg"] {
         font-size: var(--md-font-size);
         line-height: var(--md-line-height);
+        padding-block: calc((var(--md-box-height) - var(--md-line-height)) / 2);
+        padding-inline: 1rem;
+    }
+
+    textarea[data-size="sm"] {
+        font-size: var(--sm-font-size);
+        line-height: var(--sm-line-height);
+        padding-block: calc((var(--sm-box-height) - var(--sm-line-height)) / 2);
+        padding-inline: 0.75rem;
     }
 
     textarea:read-only:not(:disabled) {

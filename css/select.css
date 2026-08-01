@@ -15,7 +15,6 @@
             calc(100% - 1rem) 50%;
         background-size: 0.5rem 0.5rem;
         padding-right: 2.5rem;
-        padding-left: 1rem;
         color: rgb(var(--rgb-ink));
         font: inherit;
         line-height: var(--md-line-height);
@@ -23,17 +22,20 @@
         appearance: none;
     }
 
-    select[data-size="sm"]:not([data-search-box-scope] select) {
-        height: var(--sm-box-height);
+    select[data-size="lg"]:not([data-search-box-scope] select) {
+        height: var(--lg-box-height);
+        padding-left: 1rem;
     }
 
     select:not([data-size], [data-search-box-scope] select),
     select[data-size="md"]:not([data-search-box-scope] select) {
         height: var(--md-box-height);
+        padding-left: 1rem;
     }
 
-    select[data-size="lg"]:not([data-search-box-scope] select) {
-        height: var(--lg-box-height);
+    select[data-size="sm"]:not([data-search-box-scope] select) {
+        height: var(--sm-box-height);
+        padding-left: 0.75rem;
     }
 
     @media (hover: hover) {
