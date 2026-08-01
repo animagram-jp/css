@@ -1,54 +1,58 @@
 @layer css.components {
 
-.button {
+    button {
+        --color-border: rgb(var(--rgb-border));
+        --color-wash-hover: rgb(var(--rgb-ink) / var(--alpha-highlight-weak));
+        --color-wash-active: rgb(var(--rgb-ink) / var(--alpha-highlight-strong));
+        align-items: center;
+        display: inline flex;
+        font-family: var(--font-family-sans);
+        font-weight: bold;
+        justify-content: center;
+        max-width: 100%;
+        text-decoration: none;
+    }
+
+    button:not([data-size]),
+    button[data-size="md"] {
+        font-size: var(--md-font-size);
+        letter-spacing: var(--md-letter-spacing);
+        line-height: var(--md-line-height);
+        padding: calc((var(--md-box-height) - var(--md-line-height)) / 2);
+        text-underline-offset: 0.25rem;
+    }
+
+    button:disabled,
+    button:disabled:hover,
+    button[aria-disabled="true"],
+    button[aria-disabled="true"]:hover {
+        cursor: default;
+        text-decoration: none!important;
+    }
+
+    /* disabled, high-contrast mode: border/text collapse to the UA's GrayText
+    * across all three types identically. */
+    @media (forced-colors: active) {
+        .button:disabled,
+        .button[aria-disabled="true"] {
+            border-color: GrayText;
+            color: GrayText;
+        }
+    }
+
     /*
-    * To overwrite these tags, define --color-emphasize, ...
+    * focus-visible ring is identical across all three types: same outline +
+    * box-shadow, type-independent. Only data-type="text" adds its own background
+    * (below) since its normal-state background is transparent, not a surface
+    * color the ring can sit legibly on top of otherwise.
     */
-    --color-wash-hover: rgb(var(--rgb-ink) / var(--alpha-highlight-weak));
-    --color-wash-active: rgb(var(--rgb-ink) / var(--alpha-highlight-strong));
-    --color-border: rgb(var(--rgb-border));
-    display: inline flex;
-    align-items: center;
-    justify-content: center;
-    column-gap: 0.25rem;
-    box-sizing: border-box;
-    max-width: 100%;
-    font-weight: bold;
-    font-size: var(--md-font-size);
-    line-height: var(--md-line-height);
-    font-family: var(--font-family-sans);
-    letter-spacing: var(--md-letter-spacing);
-    text-decoration: none;
-    text-underline-offset: calc(3 / 16 * 1rem);
-}
+    .button:focus-visible {
+        outline: 0.125rem solid var(--color-border);
+        outline-offset: 0.125rem;
+        box-shadow: 0 0 0 0.125rem var(--color-focus);
+    }
 
-.button:disabled,
-.button[aria-disabled="true"] {
-  cursor: default;
-  text-decoration: none;
-}
 
-/*
- * focus-visible ring is identical across all three types: same outline +
- * box-shadow, type-independent. Only data-type="text" adds its own background
- * (below) since its normal-state background is transparent, not a surface
- * color the ring can sit legibly on top of otherwise.
- */
-.button:focus-visible {
-  outline: 0.125rem solid var(--color-border);
-  outline-offset: 0.125rem;
-  box-shadow: 0 0 0 0.125rem rgb(var(--rgb-focus));
-}
-
-/* disabled, high-contrast mode: border/text collapse to the UA's GrayText
- * across all three types identically. */
-@media (forced-colors: active) {
-  .button:disabled,
-  .button[aria-disabled="true"] {
-    border-color: GrayText;
-    color: GrayText;
-  }
-}
 
 .button[data-type="fill"] {
   border: 4px double transparent;
