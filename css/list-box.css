@@ -59,7 +59,7 @@
 
     @media (hover: hover) {
         button[aria-haspopup="listbox"]:hover {
-            background-color: rgb(var(--rgb-light-gray));
+            background-color: rgb(var(--rgb-light-gray) / 0.3);
             border-color: rgb(var(--rgb-border));
             text-decoration: underline;
             text-underline-offset: calc(3 / 16 * 1rem);
@@ -70,6 +70,7 @@
         outline: 0.125rem solid rgb(var(--rgb-border));
         outline-offset: 0.125rem;
         background-color: rgb(var(--rgb-focus));
+        color: rgb(var(--rgb-black));
         box-shadow: 0 0 0 0.125rem rgb(var(--rgb-focus));
     }
 
@@ -129,7 +130,7 @@
 
     @media (hover: hover) {
         [role="listbox"] [role="option"]:hover {
-            background-color: rgb(var(--rgb-light-gray));
+            background-color: rgb(var(--rgb-light-gray) / 0.3);
         }
     }
 
@@ -140,6 +141,7 @@
         outline: 0.125rem solid rgb(var(--rgb-border));
         outline-offset: 0.125rem;
         background-color: rgb(var(--rgb-focus));
+        color: rgb(var(--rgb-black));
     }
 
 }
