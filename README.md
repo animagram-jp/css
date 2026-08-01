@@ -3,8 +3,7 @@
 Css universal design boilerplate. Works without interference to HTML.
 
 - Universal Design (variants included) based on [digital government jp design system](https://github.com/digital-go-jp/design-system-example-components-html), WCAG 2.2, ARIA APG.
-- No div wrappers required by CSS.
-- Uses semantic elements (`article`, `section`, `figure`, etc.)
+- Requires to html only semantic and also structural tag's structure and a few anonymous elements.
 - Render correctly without JS.
 
 ## Version
@@ -20,7 +19,7 @@ Css universal design boilerplate. Works without interference to HTML.
 | `xs`        | 1.75rem | 0.125rem | 0.5rem |
 | `sm`        | 2.5rem  | —        | —      |
 | `md`        | 3rem    | —        | —      |
-| `lg`        | 3.5rem  | —        | —      |
+| `lg`        | `
 
 `—` = Components unique as below
 
