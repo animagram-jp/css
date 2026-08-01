@@ -6,7 +6,7 @@ import path from 'node:path';
 
 // Audits index.html under BOTH color schemes, across:
 //   - static state (the normal/disabled markup already in the page)
-//   - :hover / :active / :focus-visible on every enabled .css-button
+//   - :hover / :active / :focus-visible on every enabled button
 // axe-core only ever inspects what's currently rendered, so pseudo-classes
 // and prefers-color-scheme both need to be triggered live via Playwright —
 // neither is visible to a plain static scan.
@@ -34,18 +34,20 @@ for (const scheme of SCHEMES) {
     const staticResults = await new AxeBuilder({ page }).withTags(TAGS).analyze();
     allResults.push({ scheme, state: 'static', label: '(all)', results: staticResults });
 
-    const buttons = await page.$$('.css-button:not([disabled])');
+    const allButtons = await page.$$('button:not([disabled])');
+    const visibility = await Promise.all(allButtons.map(b => b.isVisible()));
+    const buttons = allButtons.filter((_, i) => visibility[i]);
     console.log(`[${scheme}] found ${buttons.length} enabled buttons`);
 
     for (let i = 0; i < buttons.length; i++) {
         const handle = buttons[i];
         const label = await handle.evaluate(el =>
-            `${el.getAttribute('css-type')}/${el.getAttribute('css-size') || 'md'}`);
+            `${el.getAttribute('data-type')}/${el.getAttribute('data-size') || 'md'}`);
 
         // hover
         await handle.hover();
         let results = await new AxeBuilder({ page }).withTags(TAGS)
-            .include('.css-button:not([disabled])')
+            .include('button:not([disabled])')
             .analyze();
         allResults.push({ scheme, state: 'hover', label, index: i, results });
 
@@ -53,7 +55,7 @@ for (const scheme of SCHEMES) {
         await handle.hover();
         await page.mouse.down();
         results = await new AxeBuilder({ page }).withTags(TAGS)
-            .include('.css-button:not([disabled])')
+            .include('button:not([disabled])')
             .analyze();
         allResults.push({ scheme, state: 'active', label, index: i, results });
         await page.mouse.up();
@@ -63,7 +65,7 @@ for (const scheme of SCHEMES) {
         await page.keyboard.press('Tab'); // best-effort; explicit focus() below is the reliable path
         await handle.evaluate(el => el.focus());
         results = await new AxeBuilder({ page }).withTags(TAGS)
-            .include('.css-button:not([disabled])')
+            .include('button:not([disabled])')
             .analyze();
         allResults.push({ scheme, state: 'focus-visible', label, index: i, results });
         await handle.evaluate(el => el.blur());

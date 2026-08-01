@@ -5,4 +5,4 @@
 node_modules
 
 docs/
-!docs/audit.mjs
+!/docs/audit.mjs

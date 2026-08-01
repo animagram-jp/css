@@ -28,7 +28,7 @@
     [data-chip-label][data-type="fill"] {
         border: 1px solid transparent;
         background-color: var(--color-emphasis-fill);
-        color: rgb(var(--rgb-ink));
+        color: rgb(var(--rgb-white));
     }
 
 }
