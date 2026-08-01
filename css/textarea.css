@@ -1,86 +1,86 @@
 @layer css.components {
 
-.textarea {
-  display: inline flex;
-  box-sizing: border-box;
-  width: 100%;
-  max-width: 100%;
-  border: 1px solid var(--color-muted);
-  background-color: var(--color-background);
-  padding: 0.75rem 1rem;
-  border-radius: 0.5rem;
-  color: rgb(var(--rgb-ink));
-  font-weight: normal;
-  font-size: 1rem;
-  line-height: 1.6;
-  font-family: var(--font-family-sans);
-  letter-spacing: 0.02em;
-  resize: vertical;
-}
+    textarea {
+        display: inline flex;
+        box-sizing: border-box;
+        width: 100%;
+        max-width: 100%;
+        border: 1px solid var(--color-muted);
+        background-color: var(--color-background);
+        padding: 0.75rem 1rem;
+        border-radius: 0.5rem;
+        color: rgb(var(--rgb-ink));
+        font-weight: normal;
+        font-size: 1rem;
+        line-height: 1.6;
+        font-family: var(--font-family-sans);
+        letter-spacing: 0.02em;
+        resize: vertical;
+    }
 
-.textarea[data-size="sm"] {
-  font-size: 1rem;
-  line-height: 1.5;
-}
+    textarea[data-size="sm"] {
+        font-size: 1rem;
+        line-height: 1.5;
+    }
 
-.textarea:not([data-size]),
-.textarea[data-size="md"] {
-  font-size: 1rem;
-  line-height: 1.6;
-}
+    textarea:not([data-size]),
+    textarea[data-size="md"] {
+        font-size: 1rem;
+        line-height: 1.6;
+    }
 
-.textarea[data-size="lg"] {
-  font-size: var(--md-font-size);
-  line-height: var(--md-line-height);
-}
+    textarea[data-size="lg"] {
+        font-size: var(--md-font-size);
+        line-height: var(--md-line-height);
+    }
 
-.textarea:read-only:not(:disabled) {
-  border-style: dashed;
-}
+    textarea:read-only:not(:disabled) {
+        border-style: dashed;
+    }
 
-@media (hover: hover) {
-  .textarea:not(:read-only):hover {
-    border-color: rgb(var(--rgb-border));
-  }
-}
+    @media (hover: hover) {
+        textarea:not(:read-only):hover {
+            border-color: rgb(var(--rgb-border));
+        }
+    }
 
-.textarea:is(:user-invalid, [aria-invalid="true"]) {
-  border-color: rgb(var(--rgb-error));
-}
+    textarea:is(:user-invalid, [aria-invalid="true"]) {
+        border-color: rgb(var(--rgb-error));
+    }
 
-@media (hover: hover) {
-  .textarea:is(:user-invalid, [aria-invalid="true"]):hover {
-    border-color: rgb(var(--rgb-error));
-  }
-}
+    @media (hover: hover) {
+        textarea:is(:user-invalid, [aria-invalid="true"]):hover {
+            border-color: rgb(var(--rgb-error));
+        }
+    }
 
-.textarea:is(:disabled, [aria-disabled="true"]),
-.textarea:is(:disabled, [aria-disabled="true"]):hover {
-  border-color: rgb(var(--rgb-light-gray));
-  background-color: rgb(var(--rgb-light-gray) / 0.3);
-  color: var(--color-muted);
-  resize: none;
-}
+    textarea:is(:disabled, [aria-disabled="true"]),
+    textarea:is(:disabled, [aria-disabled="true"]):hover {
+        border-color: rgb(var(--rgb-light-gray));
+        background-color: rgb(var(--rgb-light-gray) / 0.3);
+        color: var(--color-muted);
+        resize: none;
+    }
 
-@media (forced-colors: active) {
-  .textarea[aria-disabled="true"],
-  .textarea[aria-disabled="true"]:hover {
-    border-color: GrayText;
-    color: GrayText;
-  }
-}
+    @media (forced-colors: active) {
+        textarea[aria-disabled="true"],
+        textarea[aria-disabled="true"]:hover {
+            border-color: GrayText;
+            color: GrayText;
+        }
+    }
 
-.textarea-counter {
-  display: block;
-  margin-top: 0.5rem;
-  color: var(--color-muted);
-  font-size: var(--md-font-size);
-  line-height: var(--md-line-height);
-  letter-spacing: var(--md-letter-spacing);
-}
+    [data-textarea-counter] {
+        display: block;
+        margin-top: 0.5rem;
+        color: var(--color-muted);
+        font-size: var(--md-font-size);
+        line-height: var(--md-line-height);
+        letter-spacing: var(--md-letter-spacing);
+    }
 
-.textarea-counter[data-exceeded] {
-  color: rgb(var(--rgb-error));
-}
+    [data-textarea-counter][data-exceeded] {
+        color: rgb(var(--rgb-error));
+    }
 
 }

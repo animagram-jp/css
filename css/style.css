@@ -28,7 +28,7 @@ section {
     margin: 2rem 0;
 }
 
-/* .list の項目間隔は --_gap で利用側から上書きする */
-.list {
-    --_gap: 0.25rem;
+/* ul/ol の項目間隔は --gap で利用側から上書きする */
+:is(ul, ol) {
+    --gap: 0.25rem;
 }

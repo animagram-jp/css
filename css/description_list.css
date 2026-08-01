@@ -4,7 +4,7 @@
 
 @layer css.components {
 
-    .description-list:where(dl) {
+    dl {
         display: grid;
         grid-template-columns: auto 1fr;
         column-gap: 0.5rem;
@@ -13,7 +13,7 @@
         overflow-wrap: anywhere;
     }
 
-    .description-list:where(dl) dd {
+    dl dd {
         margin: 0;
         justify-self: end;
     }

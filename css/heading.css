@@ -1,30 +1,30 @@
 @layer css.components {
 
-    .h {
+    :is(h1, h2, h3, h4, h5, h6) {
         margin: 0;
         color: rgb(var(--rgb-ink));
         font-family: var(--font-family-sans);
     }
 
-    .h[data-size="md"],
-        hgroup[data-size="md"] .h {
-        --_shoulder-size: var(--md-font-size);
-        --_shoulder-line-height: var(--md-line-height);
-        --_shoulder-letter-spacing: var(--md-letter-spacing);
+    :is(h1, h2, h3, h4, h5, h6)[data-size="md"],
+    hgroup[data-size="md"] > :is(h1, h2, h3, h4, h5, h6) {
+        --shoulder-size: var(--md-font-size);
+        --shoulder-line-height: var(--md-line-height);
+        --shoulder-letter-spacing: var(--md-letter-spacing);
         font-weight: bold;
         font-size: var(--md-font-size);
         line-height: var(--md-line-height);
         letter-spacing: var(--md-letter-spacing);
     }
 
-    .h[data-chip],
-        hgroup[data-chip] .h {
+    :is(h1, h2, h3, h4, h5, h6)[data-chip],
+    hgroup[data-chip] > :is(h1, h2, h3, h4, h5, h6) {
         position: relative;
         padding-left: calc(1em / 3 + 0.5em);
     }
 
-    .h[data-chip]::before,
-        hgroup[data-chip] .h::before {
+    :is(h1, h2, h3, h4, h5, h6)[data-chip]::before,
+    hgroup[data-chip] > :is(h1, h2, h3, h4, h5, h6)::before {
         position: absolute;
         top: 0.2em;
         bottom: 0.1em;
@@ -35,61 +35,61 @@
     }
 
     @supports (top: 1lh) {
-        .h[data-chip]::before,
-        hgroup[data-chip] .h::before {
+        :is(h1, h2, h3, h4, h5, h6)[data-chip]::before,
+        hgroup[data-chip] > :is(h1, h2, h3, h4, h5, h6)::before {
             top: calc(0.5lh - 0.45em);
             bottom: calc(0.5lh - 0.55em);
         }
     }
 
-    hgroup[data-chip]:has(.h-shoulder) .h::before {
-        top: calc((var(--_shoulder-size) * (var(--_shoulder-line-height) - 1)) / 2);
+    hgroup[data-chip]:has(> p) > :is(h1, h2, h3, h4, h5, h6)::before {
+        top: calc((var(--shoulder-size) * (var(--shoulder-line-height) - 1)) / 2);
     }
 
     @media (forced-colors: active) {
-        .h[data-chip]::before,
-        hgroup[data-chip] .h::before {
+        :is(h1, h2, h3, h4, h5, h6)[data-chip]::before,
+        hgroup[data-chip] > :is(h1, h2, h3, h4, h5, h6)::before {
             background-color: CanvasText;
         }
     }
 
-    .h[data-rule],
-    hgroup[data-rule] .h {
+    :is(h1, h2, h3, h4, h5, h6)[data-rule],
+    hgroup[data-rule] > :is(h1, h2, h3, h4, h5, h6) {
         border-bottom: solid var(--color-emphasis);
     }
 
-    .h[data-rule="8"],
-    hgroup[data-rule="8"] .h {
+    :is(h1, h2, h3, h4, h5, h6)[data-rule="8"],
+    hgroup[data-rule="8"] > :is(h1, h2, h3, h4, h5, h6) {
         border-bottom-width: 0.5rem;
         padding-bottom: calc(20 / 16 * 1rem);
     }
 
-    .h[data-rule="6"],
-    hgroup[data-rule="6"] .h {
+    :is(h1, h2, h3, h4, h5, h6)[data-rule="6"],
+    hgroup[data-rule="6"] > :is(h1, h2, h3, h4, h5, h6) {
         border-bottom-width: calc(6 / 16 * 1rem);
         padding-bottom: 1rem;
     }
 
-    .h[data-rule="4"],
-    hgroup[data-rule="4"] .h {
+    :is(h1, h2, h3, h4, h5, h6)[data-rule="4"],
+    hgroup[data-rule="4"] > :is(h1, h2, h3, h4, h5, h6) {
         border-bottom-width: 0.25rem;
         padding-bottom: 0.75rem;
     }
 
-    .h[data-rule="2"],
-    hgroup[data-rule="2"] .h {
+    :is(h1, h2, h3, h4, h5, h6)[data-rule="2"],
+    hgroup[data-rule="2"] > :is(h1, h2, h3, h4, h5, h6) {
         border-bottom-width: 0.125rem;
         padding-bottom: 0.5rem;
     }
 
-    .h-shoulder {
+    hgroup > p {
         margin: 0;
         color: rgb(var(--rgb-ink));
         font-family: var(--font-family-sans);
         font-weight: bold;
-        font-size: var(--_shoulder-size);
-        line-height: var(--_shoulder-line-height);
-        letter-spacing: var(--_shoulder-letter-spacing);
+        font-size: var(--shoulder-size);
+        line-height: var(--shoulder-line-height);
+        letter-spacing: var(--shoulder-letter-spacing);
     }
 
 }

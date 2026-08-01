@@ -1,51 +1,51 @@
 @layer css.components {
 
-.list {
-  --_gap: 0;
-  margin-top: 0;
-  margin-bottom: 0;
-  padding-left: 2rem;
-  list-style-type: revert;
-}
+    :is(ul, ol) {
+        --gap: 0;
+        margin-top: 0;
+        margin-bottom: 0;
+        padding-left: 2rem;
+        list-style-type: revert;
+    }
 
-.list > li {
-  padding-top: var(--_gap);
-  padding-bottom: var(--_gap);
-}
+    :is(ul, ol) > li {
+        padding-top: var(--gap);
+        padding-bottom: var(--gap);
+    }
 
-ol.list {
-  display: grid;
-  grid-template-columns: minmax(2rem, auto) 1fr;
-  padding-left: 0;
-  list-style-type: none;
-}
+    ol {
+        display: grid;
+        grid-template-columns: minmax(2rem, auto) 1fr;
+        padding-left: 0;
+        list-style-type: none;
+    }
 
-ol.list > li,
-ol.list > li > a {
-  display: grid;
-  grid-column: 1 / -1;
-  grid-template-columns: inherit;
-  align-items: baseline;
-}
+    ol > li,
+    ol > li > a {
+        display: grid;
+        grid-column: 1 / -1;
+        grid-template-columns: inherit;
+        align-items: baseline;
+    }
 
-ol.list > li > a > span {
-  text-decoration-thickness: inherit;
-}
+    ol > li > a > span {
+        text-decoration-thickness: inherit;
+    }
 
-ol.list > li > :not(a, span) {
-  grid-column: 2;
-}
+    ol > li > :not(a, span) {
+        grid-column: 2;
+    }
 
-@supports (grid-template-columns: subgrid) {
-  ol.list > li,
-  ol.list > li > a {
-    grid-template-columns: subgrid;
-  }
-}
+    @supports (grid-template-columns: subgrid) {
+        ol > li,
+        ol > li > a {
+            grid-template-columns: subgrid;
+        }
+    }
 
-.list .list {
-  margin-top: var(--_gap);
-  margin-bottom: calc(-1 * var(--_gap));
-}
+    :is(ul, ol) :is(ul, ol) {
+        margin-top: var(--gap);
+        margin-bottom: calc(-1 * var(--gap));
+    }
 
 }
