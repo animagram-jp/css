@@ -15,8 +15,6 @@ Css universal design boilerplate. Works without interference to HTML.
 
 ## Size Scale (data-size attribute)
 
-The `size` attribute (`data-size="sm"` etc.) controls the physical density of a component. `height`/`padding` are pure UI sizing (touch-target scale), tracked independently in `--size-*` custom properties — they no longer encode `font-size` or `line-height`. Typography for these components (`font-size`, `line-height`, `letter-spacing`) instead references the `typography-*` scale (see below); most components use a single fixed typography step regardless of `data-size`, since font-size/line-height don't vary by tier except where noted.
-
 | `data-size` | box height | padding (block) | padding (inline) |
 |-------------|------------|-----------------|------------------|
 | `xs`        | 1.75rem | 0.125rem | 0.5rem |
