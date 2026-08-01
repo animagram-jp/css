@@ -1,14 +1,14 @@
 /* toggle: input widget that allows users to choose one of two values: on or off.  */
 
-/*  <label data-type="thumb-only" data-size="md">
-        <span>label text</span>
+/* <label>
+        <span>inline</span>
         <input type="checkbox" role="switch"></label> */
 
 @layer css.components {
 
-    label:has(> input[type="checkbox"][role="switch"])[data-size="sm"] {
-        --height: var(--sm-box-height);
-        --border-width: 0.125rem;
+    label:has(> input[type="checkbox"][role="switch"])[data-size="lg"] {
+        --height: var(--lg-box-height);
+        --border-width: 0.1875rem;
     }
 
     label:has(> input[type="checkbox"][role="switch"]):not([data-size]),
@@ -17,9 +17,14 @@
         --border-width: 0.125rem;
     }
 
-    label:has(> input[type="checkbox"][role="switch"])[data-size="lg"] {
-        --height: var(--lg-box-height);
-        --border-width: 0.1875rem;
+    label:has(> input[type="checkbox"][role="switch"])[data-size="sm"] {
+        --height: var(--sm-box-height);
+        --border-width: 0.125rem;
+    }
+
+    label:has(> input[type="checkbox"][role="switch"])[data-size="xs"] {
+        --height: var(--xs-box-height);
+        --border-width: 0.125rem;
     }
 
     /* label: lays out an optional leading <span> alongside the track */

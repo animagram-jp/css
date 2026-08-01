@@ -1,3 +1,7 @@
+/* <label>
+        <input type="radio">
+        inline</label> */
+
 @layer css.components {
 
     label:has(> input[type="radio"]) {

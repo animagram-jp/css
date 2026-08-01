@@ -1,3 +1,8 @@
+/* <span data-input-number>
+        <button></button>
+        <input type="text">
+        <button></button></span> */
+
 @layer css.components {
 
     input:not([type="checkbox"], [type="radio"], [data-input-number] input) {

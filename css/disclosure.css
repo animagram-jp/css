@@ -1,9 +1,8 @@
 /* Disclosure: interactive headings that function as controls that enable users to reveal or hide their contents */
 
 /* <details>
-        <summary>outline text</summary>
-        <block>Some example content appears here.</block></details>
-*/
+        <summary>inline</summary>
+        block</details> */
 
 @layer css.components {
 

@@ -1,3 +1,6 @@
+/* <textarea></textarea>
+    <span data-textarea-counter></span> */
+
 @layer css.components {
 
     textarea {

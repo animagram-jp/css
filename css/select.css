@@ -1,3 +1,6 @@
+/* <select multiple>
+        <option></option></select> */
+
 @layer css.components {
 
     select:not([data-search-box-scope] select) {

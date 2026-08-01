@@ -1,3 +1,7 @@
+/* <hgroup>
+        <p>block</p>
+        <h1>block</h1></hgroup> */
+
 @layer css.components {
 
     :is(h1, h2, h3, h4, h5, h6) {
