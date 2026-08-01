@@ -4,5 +4,6 @@
 
 node_modules
 
-docs/
-!/docs/audit.mjs
+examples/*
+!/examples/audit.mjs
+!/examples/style.css

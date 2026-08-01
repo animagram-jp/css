@@ -25,25 +25,25 @@ jobs:
         steps:
             - name: "git checkout"
               uses: actions/checkout@v7
-              
+
             - name: "setup Github Pages"
               uses: actions/configure-pages@v6
-              
+
             - name: "download accessibility-report artifact"
               if: ${{ github.event_name == 'workflow_run' }}
               uses: actions/download-artifact@v8
               with:
                 name: accessibility-report
-                path: docs/
+                path: examples/
                 github-token: ${{ secrets.GITHUB_TOKEN }}
                 run-id: ${{ github.event.workflow_run.id }}
                 if-no-artifact-found: warn
-        
+
             - name: "upload artifact as Github Pages"
               uses: actions/upload-pages-artifact@v5
               with:
                 path: '.'
-            
+
             - name: "deploy to GitHub Pages"
               id: "deployment"
               uses: actions/deploy-pages@v5

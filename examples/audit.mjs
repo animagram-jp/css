@@ -10,7 +10,7 @@ import path from 'node:path';
 // axe-core only ever inspects what's currently rendered, so pseudo-classes
 // and prefers-color-scheme both need to be triggered live via Playwright —
 // neither is visible to a plain static scan.
-const OUT = 'docs';
+const OUT = 'examples';
 mkdirSync(OUT, { recursive: true });
 
 const TAGS = ['wcag2a', 'wcag2aa', 'wcag21a', 'wcag21aa', 'wcag22aa'];
@@ -170,4 +170,4 @@ section { margin-bottom: 56px; }
 ${detailSections || '<p style="color:var(--ok);font-weight:bold;margin-top:24px">✓ No violations found in any scheme/state combination.</p>'}
 `);
 
-console.log('done: docs/audit.html, docs/audit.json');
+console.log('done: examples/audit.html, examples/audit.json');
