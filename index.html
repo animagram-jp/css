@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="css/blockquote.css">
     <link rel="stylesheet" href="css/button.css">
     <link rel="stylesheet" href="css/checkbox.css">
-    <link rel="stylesheet" href="css/chip-label.css">
+    <link rel="stylesheet" href="css/badge.css">
     <link rel="stylesheet" href="css/description_list.css">
     <link rel="stylesheet" href="css/disclosure.css">
     <link rel="stylesheet" href="css/field-label.css">
@@ -133,16 +133,17 @@
                     <label data-size="sm"><input type="checkbox" disabled>ラベル</label>
                     <label data-size="sm"><input type="checkbox" checked disabled>ラベル</label></div></div></section>
 
-        <h2 id="main_h2-5" aria-label="example usage of chip label">Chip Label</h2>
+        <h2 id="main_h2-5" aria-label="example usage of badge">Badge</h2>
         <section aria-labelledby="main_h2-5">
             <h3>text, outline, fill (with hatch icon)</h3>
             <div style="display: flex; flex-wrap: wrap; gap: 0.5rem; margin: 1rem 0;">
-                <span data-chip-label data-type="text" icon-type="hatch">
-                    tag</span>
-                <span data-chip-label data-type="outline" icon-type="hatch">
-                    tag</span>
-                <span data-chip-label data-type="fill" icon-type="hatch">
-                    tag</span></div></section>
+                <span class="badge" data-size="2xl">tag</span>
+                <span class="badge"  data-type="fill" data-size="xl">tag</span>
+                <span class="badge" data-type="text" data-size="lg">tag</span>
+                <span class="badge">tag</span>
+                <span class="badge" data-type="fill" data-icon="hatch" data-size="sm">tag</span>
+                <span class="badge" data-icon="hatch" data-size="xs">tag</span>
+                </div></section>
 
         <h2 id="main_h2-6" aria-label="example usage of description list">Description List</h2>
         <section aria-labelledby="main_h2-6">
