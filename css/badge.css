@@ -1,5 +1,5 @@
 /*
-    <inline class="badge" data-type="outline", icon-type="hatch" data-size="md"></inline>
+    <inline class="badge" data-type="outline", data-icon="hatch" data-size="md"></inline>
 */
 
 @layer css.components {
@@ -79,6 +79,7 @@
         color: var(--color-emphasis);
     }
 
+    .badge:not([data-type]),
     .badge[data-type="outline"] {
         border: 1px solid var(--color-emphasis);
         background-color: var(--color-background);

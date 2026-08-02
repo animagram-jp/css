@@ -5,10 +5,10 @@
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <title>css examples</title>
     <link rel="stylesheet" href="css/config.css">
+    <link rel="stylesheet" href="css/badge.css">
     <link rel="stylesheet" href="css/blockquote.css">
     <link rel="stylesheet" href="css/button.css">
     <link rel="stylesheet" href="css/checkbox.css">
-    <link rel="stylesheet" href="css/badge.css">
     <link rel="stylesheet" href="css/description_list.css">
     <link rel="stylesheet" href="css/disclosure.css">
     <link rel="stylesheet" href="css/field-label.css">
@@ -53,51 +53,81 @@
         <p aria-labelledby="main_h2-1">
             <a href="./examples/audit.html">WCAG 2.2 auto-generated report</a></p>
 
-        <h2 id="main_h2-2" aria-label="example usage of blackquote">Blockquote</h2>
+        <h2 id="main_h2-2" aria-label="example usage of badge">Badge</h2>
         <section aria-labelledby="main_h2-2">
+
+            <div class="demo-row">
+                <div class="demo-meta">badge[data-type="fill" data-size="2xl,xl,lg,(md),sm,xs" × data-icon="hatch"]</div>
+                <span class="badge" data-type="fill" data-size="2xl">tag</span>
+                <span class="badge" data-type="fill" data-size="xl">tag</span>
+                <span class="badge" data-type="fill" data-size="lg">tag</span>
+                <span class="badge" data-type="fill">tag</span>
+                <span class="badge" data-type="fill" data-size="sm">tag</span>
+                <span class="badge" data-type="fill" data-size="xs">tag</span>
+                <span class="badge" data-type="fill" data-icon="hatch">tag</span></div>
+
+            <div class="demo-row">
+                <div class="demo-meta">badge[(data-type="outline") data-size="2xl,xl,lg,(md),sm,xs" × data-icon="hatch"]</div>
+                <span class="badge" data-size="2xl">tag</span>
+                <span class="badge" data-size="xl">tag</span>
+                <span class="badge" data-size="lg">tag</span>
+                <span class="badge">tag</span>
+                <span class="badge" data-size="sm">tag</span>
+                <span class="badge" data-size="xs">tag</span>
+                <span class="badge" data-icon="hatch">tag</span></div>
+
+            <div class="demo-row">
+                <div class="demo-meta">badge[data-type="text" data-size="2xl,xl,lg,(md),sm,xs" × data-icon="hatch"]</div>
+                <span class="badge" data-type="text" data-size="2xl">tag</span>
+                <span class="badge" data-type="text" data-size="xl">tag</span>
+                <span class="badge" data-type="text" data-size="lg">tag</span>
+                <span class="badge" data-type="text">tag</span>
+                <span class="badge" data-type="text" data-size="sm">tag</span>
+                <span class="badge" data-type="text" data-size="xs">tag</span>
+                <span class="badge" data-type="text" data-icon="hatch">tag</span></div></section>
+
+        <h2 id="main_h2-3" aria-label="example usage of blackquote">Blockquote</h2>
+        <section aria-labelledby="main_h2-3">
             <figure>
                 <blockquote>
                     <p>『男でも女でもない、あるいは男でもあり女でもある共通の主語は、「人類」だ。「人類」という主語で語れる本当に大事なこと、すべての人に共通する本質的なことだけを、考えて、語るようにしようじゃないか。』</p></blockquote>
                 <figcaption>はじめに 14歳のきみへ — 池田晶子. <cite>14歳の君へ どう考えどう生きるか</cite>.</figcaption></figure></section>
 
-        <h2 id="main_h2-3" aria-label="example usage of button">Button</h2>
-        <section aria-labelledby="main_h2-3">
-            <style>
-                .button-row { margin-block: 1.5rem; display: flex; flex-wrap: wrap; gap: 1rem; align-items: center; }
-                .button-meta { font: 0.75rem/2 monospace; color: var(--color-muted); width: 100%; }</style>
+        <h2 id="main_h2-4" aria-label="example usage of button">Button</h2>
+        <section aria-labelledby="main_h2-4">
 
-            <div class="button-row">
-                <div class="button-meta">data-type="fill" × data-size</div>
+            <div class="demo-row">
+                <div class="demo-meta">button[data-type="fill" data-size="lg,(md),sm,xs"  × disabled]</div>
                 <button data-size="lg" data-type="fill">ボタン</button>
-                <button data-size="md" data-type="fill">ボタン</button>
+                <button data-type="fill">ボタン</button>
                 <button data-size="sm" data-type="fill">ボタン</button>
                 <button data-size="xs" data-type="fill">ボタン</button>
-                <button data-size="lg" data-type="fill" disabled>ボタン</button></div>
+                <button data-type="fill" disabled>ボタン</button></div>
 
-            <div class="button-row">
-                <div class="button-meta">data-type="outline" × data-size</div>
+            <div class="demo-row">
+                <div class="demo-meta">button[data-type="outline" data-size="lg,(md),sm,xs"  × disabled]</div>
                 <button data-size="lg" data-type="outline">ボタン</button>
-                <button data-size="md" data-type="outline">ボタン</button>
+                <button data-type="outline">ボタン</button>
                 <button data-size="sm" data-type="outline">ボタン</button>
                 <button data-size="xs" data-type="outline">ボタン</button>
-                <button data-size="lg" data-type="outline" disabled>ボタン</button></div>
+                <button data-type="outline" disabled>ボタン</button></div>
 
-            <div class="button-row">
-                <div class="button-meta">data-type="text" × data-size</div>
+            <div class="demo-row">
+                <div class="demo-meta">button[data-type="text" data-size="lg,(md),sm,xs"  × disabled]</div>
                 <button data-size="lg" data-type="text">ボタン</button>
-                <button data-size="md" data-type="text">ボタン</button>
+                <button data-type="text">ボタン</button>
                 <button data-size="sm" data-type="text">ボタン</button>
                 <button data-size="xs" data-type="text">ボタン</button>
-                <button data-size="lg" data-type="text" disabled>ボタン</button></div>
+                <button data-type="text" disabled>ボタン</button></div>
 
-            <div class="button-row">
-                <div class="button-meta">button > inline, svg</div>
+            <div class="demo-row">
+                <div class="demo-meta">button > inline, svg</div>
                 <button data-size="lg" data-type="fill">
                     ボタン
                     <svg width="16" height="16" viewBox="0 0 48 48" role="img" aria-label="新規タブで開きます"><use href="svg/icons.svg#css-icon-external-link"></use></svg></button></div></section>
 
-        <h2 id="main_h2-4" aria-label="example usage of checkbox">Checkbox</h2>
-        <section aria-labelledby="main_h2-4">
+        <h2 id="main_h2-5" aria-label="example usage of checkbox">Checkbox</h2>
+        <section aria-labelledby="main_h2-5">
             <style>
                 .checkbox-row { margin-block: 1.5rem; }
                 .checkbox-meta { font: 0.75rem/2 monospace; color: var(--color-muted); margin-bottom: 0.25rem; }
@@ -132,18 +162,6 @@
                     <label data-size="sm"><input type="checkbox" checked aria-invalid="true">ラベル</label>
                     <label data-size="sm"><input type="checkbox" disabled>ラベル</label>
                     <label data-size="sm"><input type="checkbox" checked disabled>ラベル</label></div></div></section>
-
-        <h2 id="main_h2-5" aria-label="example usage of badge">Badge</h2>
-        <section aria-labelledby="main_h2-5">
-            <h3>text, outline, fill (with hatch icon)</h3>
-            <div style="display: flex; flex-wrap: wrap; gap: 0.5rem; margin: 1rem 0;">
-                <span class="badge" data-size="2xl">tag</span>
-                <span class="badge"  data-type="fill" data-size="xl">tag</span>
-                <span class="badge" data-type="text" data-size="lg">tag</span>
-                <span class="badge">tag</span>
-                <span class="badge" data-type="fill" data-icon="hatch" data-size="sm">tag</span>
-                <span class="badge" data-icon="hatch" data-size="xs">tag</span>
-                </div></section>
 
         <h2 id="main_h2-6" aria-label="example usage of description list">Description List</h2>
         <section aria-labelledby="main_h2-6">

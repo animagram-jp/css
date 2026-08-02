@@ -138,6 +138,9 @@
         border-radius: 0.5rem;
         padding-block: calc((var(--lg-box-height) - var(--lg-line-height)) / 2);
         padding-inline: 1rem;
+        font-size: var(--lg-font-size);
+        line-height: var(--lg-line-height);
+        letter-spacing: var(--lg-letter-spacing);
     }
 
     button:not([data-size]),

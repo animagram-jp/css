@@ -127,7 +127,7 @@
         --2xl-line-height: 3rem;
 
         --font-family-sans: "IBM Plex Sans", "BIZ UDGothic", "Noto Sans JP", "Hiragino Sans", sans-serif;
-        --font-family-mono: "Noto Sans Mono", "Noto Sans JP", monospace;
+        --font-family-monospace: "Noto Sans Mono", "Noto Sans JP", monospace;
 
         --elevation-1:
             0 2px 8px 1px rgb(var(--rgb-black) / 0.1), 0 1px 5px 0 rgb(var(--rgb-black) / 0.3);
