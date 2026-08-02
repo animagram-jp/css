@@ -105,12 +105,12 @@
                 <button data-type="fill" disabled>ボタン</button></div>
 
             <div class="demo-row">
-                <div class="demo-meta">button[data-type="outline" data-size="lg,(md),sm,xs"  × disabled]</div>
-                <button data-size="lg" data-type="outline">ボタン</button>
-                <button data-type="outline">ボタン</button>
-                <button data-size="sm" data-type="outline">ボタン</button>
-                <button data-size="xs" data-type="outline">ボタン</button>
-                <button data-type="outline" disabled>ボタン</button></div>
+                <div class="demo-meta">button[(data-type="outline") data-size="lg,(md),sm,xs"  × disabled]</div>
+                <button data-size="lg">ボタン</button>
+                <button>ボタン</button>
+                <button data-size="sm">ボタン</button>
+                <button data-size="xs">ボタン</button>
+                <button disabled>ボタン</button></div>
 
             <div class="demo-row">
                 <div class="demo-meta">button[data-type="text" data-size="lg,(md),sm,xs"  × disabled]</div>
@@ -121,10 +121,10 @@
                 <button data-type="text" disabled>ボタン</button></div>
 
             <div class="demo-row">
-                <div class="demo-meta">button > inline, svg</div>
-                <button data-size="lg" data-type="fill">
-                    ボタン
-                    <svg width="16" height="16" viewBox="0 0 48 48" role="img" aria-label="新規タブで開きます"><use href="svg/icons.svg#css-icon-external-link"></use></svg></button></div></section>
+                <div class="demo-meta">button > svg > use</div>
+                <button>ボタン
+                    <svg width="16" height="16" viewBox="0 0 48 48" role="img" aria-label="新規タブで開きます">
+                        <use href="svg/icons.svg#icon-external-link"></use></svg></button></div></section>
 
         <h2 id="main_h2-5" aria-label="example usage of checkbox">Checkbox</h2>
         <section aria-labelledby="main_h2-5">
@@ -317,7 +317,7 @@
             <a href="#" target="_blank">
                 リンクテキスト
                 <svg class="link__icon" width="16" height="16" viewBox="0 0 48 48" role="img" aria-label="新規タブで開きます">
-                    <use href="svg/icons.svg#css-icon-external-link"></use></svg></a></section>
+                    <use href="svg/icons.svg#icon-external-link"></use></svg></a></section>
 
         <h2 id="main_h2-14" aria-label="example usage of list">List</h2>
         <section aria-labelledby="main_h2-14">
@@ -390,7 +390,7 @@
             <div style="margin-top:1rem; display: flex;">
                 <label data-search-box>
                     <svg width="24" height="24" viewBox="0 0 24 24" aria-hidden="true">
-                        <use href="svg/icons.svg#css-icon-search"></use></svg>
+                        <use href="svg/icons.svg#icon-search"></use></svg>
                     <span class="visually-hidden">検索</span>
                     <input type="search" name="q"></label>
                 <span style="display: inline flex; width: 0.5rem;"></span>
@@ -405,7 +405,7 @@
                         <option value="files">ファイル</option></select></label>
                 <label data-search-box data-size="lg">
                     <svg width="24" height="24" viewBox="0 0 24 24" aria-hidden="true">
-                        <use href="svg/icons.svg#css-icon-search"></use></svg>
+                        <use href="svg/icons.svg#icon-search"></use></svg>
                     <span class="visually-hidden">検索</span>
                     <input type="search" name="q" data-size="lg"></label>
                 <span style="display: inline flex; width: 0.5rem;"></span>

@@ -78,6 +78,7 @@
         color: rgb(var(--rgb-white));
     }
 
+    button:not([data-type]),
     button[data-type="outline"] {
         border: 1px solid currentcolor;
         background-color: var(--color-background);
@@ -85,6 +86,7 @@
     }
 
     @media (hover: hover) {
+        button:not([data-type]):hover,
         button[data-type="outline"]:hover {
             background-color: var(--color-wash-hover);
             text-decoration: underline;
@@ -92,11 +94,14 @@
         }
     }
 
+    button:not([data-type]):active,
     button[data-type="outline"]:active {
         background-color: var(--color-wash-active);
         text-decoration: underline;
     }
 
+    button:not([data-type]):disabled,
+    button:not([data-type])[aria-disabled="true"],
     button[data-type="outline"]:disabled,
     button[data-type="outline"][aria-disabled="true"] {
         background-color: var(--color-background);
