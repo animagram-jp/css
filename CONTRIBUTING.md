@@ -11,31 +11,21 @@ curl -fsSL -H "Accept: application/vnd.github.raw+json" "https://api.github.com/
 ## Commands
 
 ```bash
-# WCAG 2.2 A+AA 監査出力コマンド
-docker run -d --name accessibility-audit \
-  -v .:/work \
-  -w /work \
-  node:lts-slim \
-  tail -f /dev/null
+# Audit by axe-core (WCAG 2.2 A+AA)
+docker run -d --name accessibility-audit -v .:/work -w /work node:lts-slim tail -f /dev/null
 docker exec accessibility-audit bash -lc "npx --yes playwright install --with-deps chromium && npm ci"
-
 docker exec accessibility-audit node docs/audit.mjs
 ```
 
-
-## 要件
-
-本cssリポジトリは、元々UD対応汎用ライブラリとしての[デジタル庁ライブラリ](https://github.com/digital-go-jp/design-system-example-components-html)のクローンだったが、[主要使用先: appリポジトリ](https://github.com/animagram-jp/app)がWasmAppの発行するCommand(op, dom_id, arg1, arg2, ...)で全てのDOM操作を実現している都合、JS前提の状態管理や、無用なタグのネストを改める必要がある。また、UDでありつつ、一般汎用用途に耐えるべく、デザイン性やダークモードなどに対応する。
-
 ---
 
-# カラーユニバーサルデザイン推奨配色セット ver.3
+# Color System
 
 - [CUDO: Color Universal Design Recommended Color Set ver.3](https://cudo.jp/wp-content/uploads/2016/07/CUD%E6%8E%A8%E5%A5%A8%E9%85%8D%E8%89%B2%E3%82%BB%E3%83%83%E3%83%88%E3%82%AC%E3%82%A4%E3%83%89%E3%83%96%E3%83%83%E3%82%AF.pdf)
 
 ## 組み合わせ例
 
-塗装用・印刷用・画面用マージ済み
+塗装用・印刷用・画面用統合版
 
 ### Good
 
@@ -103,8 +93,8 @@ docker exec accessibility-audit node docs/audit.mjs
 - 見分けにくい色同士を使いたい場合、同色のハッチングにより見分けやすさが向上する。
 - グラデーションは全体で無く周辺部だけに留めるなど、ベタ塗りの色面積をなるべく確保するとよい。
 
----
-
 ## Memo
 
 - 3:1をギリギリ満たす最小限のグレー: ライト: 148,148,148、ダーク: 100,100,100
+
+---

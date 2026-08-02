@@ -2,10 +2,11 @@
 
 Css universal design boilerplate. Works without interference to HTML.
 
-- Universal Design (variants included) based on [digital government jp design system](https://github.com/digital-go-jp/design-system-example-components-html), WCAG 2.2, ARIA APG.
+- Universal Design (variants included) based on [digital government jp design system](https://github.com/digital-go-jp/design-system-example-components-html), [CUDO: Color Universal Design Recommended Color Set ver.3](https://cudo.jp/wp-content/uploads/2016/07/CUD%E6%8E%A8%E5%A5%A8%E9%85%8D%E8%89%B2%E3%82%BB%E3%83%83%E3%83%88%E3%82%AC%E3%82%A4%E3%83%89%E3%83%96%E3%83%83%E3%82%AF.pdf), WCAG 2.2, ARIA APG, IEC60447:1993(Man-machine-interface Principle).
 - Requires to html only semantic and also structural tag's structure and minimum anonymous elements.
 - Render correctly without JS.
 - Each component's CSS file starts with an HTML comment showing its expected HTML structure.
+- All CSS Property is described in order of dependencies, and then, alphabetical.
 
 ## Version
 
@@ -49,4 +50,4 @@ Every component below reuses these same column names — a component either cons
     - `heading`: `padding-block: 0`
 - **`padding-inline`**, component has of its own (an icon, a stepper button, a dropdown arrow) is a component-local decision, so hardcoded in `rem`, not unified across components.
 - **`width`** is left unset (auto / content-driven) everywhere. Nothing hardcodes a fixed width or `100%`; give an element a width via the surrounding markup (a wrapping `style`/class) when one is needed.
-- **`data-size` fallback**: omitting `data-size` defaults to `md` everywhere, with one exception — `heading` (`h1`–`h6`, or via a wrapping `hgroup`) defaults by element instead: `h1`→`2xl`, `h2`→`xl`, `h3`→`lg`, `h4`/`h5`/`h6`→`md`.
+- **`data-size` fallback**: omitting `data-size` defaults to `md` everywhere. Only `heading` (`h1`–`h6`, or via a wrapping `hgroup`) defaults by element: `h1`→`2xl`, `h2`→`xl`, `h3`→`lg`, `h4`/`h5`/`h6`→`md`.
