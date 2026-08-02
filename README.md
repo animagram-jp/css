@@ -43,7 +43,7 @@ Every component below reuses these same column names — a component either cons
 - **`padding-block`**, wherever a component consumes a `box-height`, is derived as `calc((var(--{size}-box-height) - var(--{size}-line-height)) / 2)` — this centers the line box inside the scale's box-height regardless of component. How `box-height` itself is applied differs by component's native sizing behavior:
     - `button`: `min-height` (grows with content)
     - `input(text, number)`, `select`, `toggle`: `height` (fixed)
-    - `checkbox`, `radio`: not consumed directly; box-height is the row height the scale reserves for input+label, kept aligned to it by convention rather than `var()` reference
+    - `checkbox`, `radio`: label is box-height, input is line-height.
     - `textarea`: `height: auto; resize: vertical`(grows with content). `box-height` is only ever read to derive `padding-block`
     - `disclosure`(`summary`): `height: auto`(grows with content). Same rule as textarea.
     - `heading`: `padding-block: 0`

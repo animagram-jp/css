@@ -134,34 +134,52 @@
                 .checkbox-grid { display: grid; grid-template-columns: repeat(6, auto); gap: 2rem; justify-content: start; }</style>
 
             <div class="checkbox-row">
-                <div class="checkbox-meta">data-size="lg" × (checked, aria-invalid, disabled)</div>
+                <div class="checkbox-meta">label[data-size="2xl"] > input[aria-invalid="true", disabled]</div>
+                <div class="checkbox-grid">
+                    <label data-size="2xl"><input type="checkbox">ラベル</label>
+                    <label data-size="2xl"><input type="checkbox" aria-invalid="true">ラベル</label>
+                    <label data-size="2xl"><input type="checkbox" disabled>ラベル</label>
+                    <label data-size="2xl"><input type="checkbox" checked disabled>ラベル</label></div></div>
+
+            <div class="checkbox-row">
+                <div class="checkbox-meta">label[data-size="xl"] > input[aria-invalid="true", disabled]</div>
+                <div class="checkbox-grid">
+                    <label data-size="xl"><input type="checkbox">ラベル</label>
+                    <label data-size="xl"><input type="checkbox" aria-invalid="true">ラベル</label>
+                    <label data-size="xl"><input type="checkbox" disabled>ラベル</label>
+                    <label data-size="xl"><input type="checkbox" checked disabled>ラベル</label></div></div>
+
+            <div class="checkbox-row">
+                <div class="checkbox-meta">label[data-size="lg"] > input[aria-invalid="true", disabled]</div>
                 <div class="checkbox-grid">
                     <label data-size="lg"><input type="checkbox">ラベル</label>
-                    <label data-size="lg"><input type="checkbox" checked>ラベル</label>
                     <label data-size="lg"><input type="checkbox" aria-invalid="true">ラベル</label>
-                    <label data-size="lg"><input type="checkbox" checked aria-invalid="true">ラベル</label>
                     <label data-size="lg"><input type="checkbox" disabled>ラベル</label>
                     <label data-size="lg"><input type="checkbox" checked disabled>ラベル</label></div></div>
 
             <div class="checkbox-row">
-                <div class="checkbox-meta">data-size 未指定(md) × (checked, aria-invalid, disabled)</div>
+                <div class="checkbox-meta">label([data-size="md"]) > input[aria-invalid="true", disabled]</div>
                 <div class="checkbox-grid">
                     <label><input type="checkbox">ラベル</label>
-                    <label><input type="checkbox" checked>ラベル</label>
                     <label><input type="checkbox" aria-invalid="true">ラベル</label>
-                    <label><input type="checkbox" checked aria-invalid="true">ラベル</label>
                     <label><input type="checkbox" disabled>ラベル</label>
                     <label><input type="checkbox" checked disabled>ラベル</label></div></div>
 
             <div class="checkbox-row">
-                <div class="checkbox-meta">data-size="sm" × (checked, aria-invalid, disabled)</div>
+                <div class="checkbox-meta">label[data-size="sm"] > input[aria-invalid="true", disabled]</div>
                 <div class="checkbox-grid">
                     <label data-size="sm"><input type="checkbox">ラベル</label>
-                    <label data-size="sm"><input type="checkbox" checked>ラベル</label>
                     <label data-size="sm"><input type="checkbox" aria-invalid="true">ラベル</label>
-                    <label data-size="sm"><input type="checkbox" checked aria-invalid="true">ラベル</label>
                     <label data-size="sm"><input type="checkbox" disabled>ラベル</label>
-                    <label data-size="sm"><input type="checkbox" checked disabled>ラベル</label></div></div></section>
+                    <label data-size="sm"><input type="checkbox" checked disabled>ラベル</label></div></div>
+
+            <div class="checkbox-row">
+                <div class="checkbox-meta">label[data-size="xs"] > input[aria-invalid="true", disabled]</div>
+                <div class="checkbox-grid">
+                    <label data-size="xs"><input type="checkbox">ラベル</label>
+                    <label data-size="xs"><input type="checkbox" aria-invalid="true">ラベル</label>
+                    <label data-size="xs"><input type="checkbox" disabled>ラベル</label>
+                    <label data-size="xs"><input type="checkbox" checked disabled>ラベル</label></div></div></section>
 
         <h2 id="main_h2-6" aria-label="example usage of description list">Description List</h2>
         <section aria-labelledby="main_h2-6">
@@ -356,7 +374,27 @@
                 .radio-grid { display: grid; grid-template-columns: repeat(6, auto); gap: 2rem; justify-content: start; }</style>
 
             <div class="radio-row">
-                <div class="radio-meta">data-size="lg" × (checked, aria-invalid, disabled)</div>
+                <div class="radio-meta">label[data-size="2xl"] > input[checked, aria-invalid="true", disabled]</div>
+                <div class="radio-grid">
+                    <label data-size="2xl"><input type="radio" name="2xl-1">ラベル</label>
+                    <label data-size="2xl"><input type="radio" name="2xl-1" checked>ラベル</label>
+                    <label data-size="2xl"><input type="radio" name="2xl-2" aria-invalid="true">ラベル</label>
+                    <label data-size="2xl"><input type="radio" name="2xl-2" checked aria-invalid="true">ラベル</label>
+                    <label data-size="2xl"><input type="radio" name="2xl-3" disabled>ラベル</label>
+                    <label data-size="2xl"><input type="radio" name="2xl-3" checked disabled>ラベル</label></div></div>
+
+            <div class="radio-row">
+                <div class="radio-meta">label[data-size="xl"] > input[checked, aria-invalid="true", disabled]</div>
+                <div class="radio-grid">
+                    <label data-size="xl"><input type="radio" name="xl-1">ラベル</label>
+                    <label data-size="xl"><input type="radio" name="xl-1" checked>ラベル</label>
+                    <label data-size="xl"><input type="radio" name="xl-2" aria-invalid="true">ラベル</label>
+                    <label data-size="xl"><input type="radio" name="xl-2" checked aria-invalid="true">ラベル</label>
+                    <label data-size="xl"><input type="radio" name="xl-3" disabled>ラベル</label>
+                    <label data-size="xl"><input type="radio" name="xl-3" checked disabled>ラベル</label></div></div>
+
+            <div class="radio-row">
+                <div class="radio-meta">label[data-size="lg"] > input[checked, aria-invalid="true", disabled]</div>
                 <div class="radio-grid">
                     <label data-size="lg"><input type="radio" name="lg-1">ラベル</label>
                     <label data-size="lg"><input type="radio" name="lg-1" checked>ラベル</label>
@@ -366,7 +404,7 @@
                     <label data-size="lg"><input type="radio" name="lg-3" checked disabled>ラベル</label></div></div>
 
             <div class="radio-row">
-                <div class="radio-meta">data-size 未指定(md) × (checked, aria-invalid, disabled)</div>
+                <div class="radio-meta">label([data-size="md"]) > input[checked, aria-invalid="true", disabled]</div>
                 <div class="radio-grid">
                     <label><input type="radio" name="md-1">ラベル</label>
                     <label><input type="radio" name="md-1" checked>ラベル</label>
@@ -376,14 +414,24 @@
                     <label><input type="radio" name="md-3" checked disabled>ラベル</label></div></div>
 
             <div class="radio-row">
-                <div class="radio-meta">data-size="sm" × (checked, aria-invalid, disabled)</div>
+                <div class="radio-meta">label[data-size="sm"] > input[checked, aria-invalid="true", disabled]</div>
                 <div class="radio-grid">
                     <label data-size="sm"><input type="radio" name="sm-1">ラベル</label>
                     <label data-size="sm"><input type="radio" name="sm-1" checked>ラベル</label>
                     <label data-size="sm"><input type="radio" name="sm-2" aria-invalid="true">ラベル</label>
                     <label data-size="sm"><input type="radio" name="sm-2" checked aria-invalid="true">ラベル</label>
                     <label data-size="sm"><input type="radio" name="sm-3" disabled>ラベル</label>
-                    <label data-size="sm"><input type="radio" name="sm-3" checked disabled>ラベル</label></div></div></section>
+                    <label data-size="sm"><input type="radio" name="sm-3" checked disabled>ラベル</label></div></div>
+
+            <div class="radio-row">
+                <div class="radio-meta">label[data-size="xs"] > input[checked, aria-invalid="true", disabled]</div>
+                <div class="radio-grid">
+                    <label data-size="xs"><input type="radio" name="xs-1">ラベル</label>
+                    <label data-size="xs"><input type="radio" name="xs-1" checked>ラベル</label>
+                    <label data-size="xs"><input type="radio" name="xs-2" aria-invalid="true">ラベル</label>
+                    <label data-size="xs"><input type="radio" name="xs-2" checked aria-invalid="true">ラベル</label>
+                    <label data-size="xs"><input type="radio" name="xs-3" disabled>ラベル</label>
+                    <label data-size="xs"><input type="radio" name="xs-3" checked disabled>ラベル</label></div></div></section>
 
         <h2 id="main_h2-17" aria-label="example usage of search box">Search Box</h2>
         <section aria-labelledby="main_h2-17">
