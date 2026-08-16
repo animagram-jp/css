@@ -1,4 +1,4 @@
-/* <button>
+/*  <button>
         inline
         <svg></svg></button> */
 
@@ -177,7 +177,7 @@
 
     button[data-size="sm"] {
         min-height: var(--sm-box-height);
-        border-radius: calc(6 / 16 * 1rem);
+        border-radius: 0.375rem;
         padding-block: calc((var(--sm-box-height) - var(--sm-line-height)) / 2);
         padding-inline: 0.75rem;
     }
