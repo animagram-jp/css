@@ -18,7 +18,13 @@
         font-weight: normal;
         list-style: none;
         padding-right: 0;
+        padding-left: 2.25rem;
         position: relative;
+    }
+
+    details:not([data-type]) > summary,
+    details[data-type="rule"] > summary {
+        border-bottom: 1px solid var(--color-border);
     }
 
     details[data-size="xs"] > summary {
@@ -26,14 +32,12 @@
         letter-spacing: var(--xs-letter-spacing);
         line-height: var(--xs-line-height);
         padding-block: calc((var(--xs-box-height) - var(--xs-line-height)) / 2);
-        padding-left: calc(var(--xs-font-size) + 0.75rem);
     }
     details[data-size="sm"] > summary {
         font-size: var(--sm-font-size);
         letter-spacing: var(--sm-letter-spacing);
         line-height: var(--sm-line-height);
         padding-block: calc((var(--sm-box-height) - var(--sm-line-height)) / 2);
-        padding-left: calc(var(--sm-font-size) + 0.75rem);
     }
     details:not([data-size]) > summary,
     details[data-size="md"] > summary {
@@ -41,28 +45,24 @@
         letter-spacing: var(--md-letter-spacing);
         line-height: var(--md-line-height);
         padding-block: calc((var(--md-box-height) - var(--md-line-height)) / 2);
-        padding-left: calc(var(--md-font-size) + 0.75rem);
     }
     details[data-size="lg"] > summary {
         font-size: var(--lg-font-size);
         letter-spacing: var(--lg-letter-spacing);
-        line-height: 1.6;
+        line-height: var(--lg-line-height);
         padding-block: calc((var(--lg-box-height) - var(--lg-line-height)) / 2);
-        padding-left: calc(var(--lg-font-size) + 0.75rem);
     }
     details[data-size="xl"] > summary {
         font-size: var(--xl-font-size);
         letter-spacing: var(--xl-letter-spacing);
         line-height: var(--xl-line-height);
         padding-block: calc((var(--xl-box-height) - var(--xl-line-height)) / 2);
-        padding-left: calc(var(--xl-font-size) + 0.75rem);
     }
     details[data-size="2xl"] > summary {
         font-size: var(--2xl-font-size);
         letter-spacing: var(--2xl-letter-spacing);
         line-height: var(--2xl-line-height);
         padding-block: calc((var(--2xl-box-height) - var(--2xl-line-height)) / 2);
-        padding-left: calc(var(--2xl-font-size) + 0.75rem);
     }
 
     details > summary::before {
@@ -73,31 +73,12 @@
         content: "";
         display: inline block;
         height: 0.625rem;
+        left: calc((2.25rem - 0.625rem) / 2);
         margin: auto 0;
         position: absolute;
         top: 0;
         transform: translateY(-0.125rem) rotate(45deg);
         width:  0.625rem;
-    }
-
-    details[data-size="xs"] > summary::before {
-        left: calc((var(--xs-font-size) - 0.625rem) / 2);
-    }
-    details[data-size="sm"] > summary::before {
-        left: calc((var(--sm-font-size) - 0.625rem) / 2);
-    }
-    details:not([data-size]) > summary::before,
-    details[data-size="md"] > summary::before {
-        left: calc((var(--md-font-size) - 0.625rem) / 2);
-    }
-    details[data-size="lg"] > summary::before {
-        left: calc((var(--lg-font-size) - 0.625rem) / 2);
-    }
-    details[data-size="xl"] > summary::before {
-        left: calc((var(--xl-font-size) - 0.625rem) / 2);
-    }
-    details[data-size="2xl"] > summary::before {
-        left: calc((var(--2xl-font-size) - 0.625rem) / 2);
     }
 
     details[open] > summary::before {
