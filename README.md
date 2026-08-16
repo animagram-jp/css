@@ -101,12 +101,15 @@ Every component below reuses these same column names — a component either cons
 
 ### data-type
 
-| Selector | Name | Value | Specification |
+| Selector  | Name        | Value     | Specification |
 |-|-|-|-|
-| `button` | `data-type` | `fill`    | |
-|          |             | `outline` | |
-|          |             | `text`    | |
-| `hr`     | `data-type` | `dash`    | |
+| `button`  | `data-type` | `fill`    | |
+|           |             | `outline` | |
+|           |             | `text`    | |
+| `hr`      | `data-type` | `dash`    | |
+| `details` | `data-type` | `fill`    | |
+|           |             | `outline` | |
+|           |             | `rule`    | |
 
 ### Preference
 
