@@ -130,9 +130,9 @@
         --font-family-monospace: "Noto Sans Mono", "Noto Sans JP", monospace;
 
         --elevation-1:
-            0 2px 8px 1px rgb(var(--rgb-black) / 0.1), 0 1px 5px 0 rgb(var(--rgb-black) / 0.3);
+            0 2px 8px 0.125rem rgb(var(--rgb-black) / 0.1), 0 0.125rem 5px 0 rgb(var(--rgb-black) / 0.3);
         --elevation-2:
-            0 2px 12px 2px rgb(var(--rgb-black) / 0.1), 0 1px 6px 0 rgb(var(--rgb-black) / 0.3);
+            0 2px 12px 2px rgb(var(--rgb-black) / 0.1), 0 0.125rem 6px 0 rgb(var(--rgb-black) / 0.3);
     }
 
     html {
@@ -228,48 +228,53 @@
     }
 
     :focus-visible {
-        outline: 0.125rem solid var(--color-border);
-        outline-offset: 0.125rem;
+        outline: none;
         border-radius: 0.25rem;
-        box-shadow: 0 0 0 0.125rem var(--color-focus);
+        box-shadow:
+            inset 0 0 0 0.125rem var(--color-background),
+            inset 0 0 0 0.1875rem var(--color-focus);
     }
 
     .visually-hidden {
         clip: rect(0 0 0 0) !important;
         clip-path: inset(50%) !important;
-        height: 1px !important;
+        height: 0.125rem !important;
         overflow: hidden !important;
         position: absolute !important;
         white-space: nowrap !important;
-        width: 1px !important;
+        width: 0.125rem !important;
     }
 
     :where(.focus-outline):focus-visible {
-        outline: 0.125rem solid var(--color-border) !important;
-        outline-offset: 0.125rem !important;
+        outline: none !important;
         border-radius: 0.25rem !important;
         background-color: var(--color-focus) !important;
-        box-shadow: 0 0 0 0.125rem var(--color-focus) !important;
+        color: rgb(var(--rgb-black)) !important;
+        box-shadow:
+            inset 0 0 0 0.125rem var(--color-background),
+            inset 0 0 0 0.1875rem var(--color-focus) !important;
     }
 
     @supports selector(:has(*)) {
         :where(.focus-within-outline):focus-visible,
         :where(.focus-within-outline):has(:focus-visible) {
-            outline: 0.125rem solid var(--color-border) !important;
-            outline-offset: 0.125rem !important;
+            outline: none !important;
             border-radius: 0.25rem !important;
             background-color: var(--color-focus) !important;
-            box-shadow: 0 0 0 0.125rem var(--color-focus) !important;
+            box-shadow:
+                inset 0 0 0 0.125rem var(--color-background),
+                inset 0 0 0 0.1875rem var(--color-focus) !important;
         }
     }
 
     @supports not selector(:has(*)) {
         :where(.focus-within-outline):focus-within {
-            outline: 0.125rem solid var(--color-border) !important;
-            outline-offset: 0.125rem !important;
+            outline: none !important;
             border-radius: 0.25rem !important;
             background-color: var(--color-focus) !important;
-            box-shadow: 0 0 0 0.125rem var(--color-focus) !important;
+            box-shadow:
+                inset 0 0 0 0.125rem var(--color-background),
+                inset 0 0 0 0.1875rem var(--color-focus) !important;
         }
     }
 

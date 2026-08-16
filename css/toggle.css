@@ -92,8 +92,10 @@
     }
 
     label:has(> input[type="checkbox"][role="switch"]) > input[type="checkbox"]:focus-visible {
-        outline: 0.125rem solid rgb(var(--rgb-focus));
-        outline-offset: 0.125rem;
+        outline: none;
+        box-shadow:
+            inset 0 0 0 0.125rem var(--color-background),
+            inset 0 0 0 0.1875rem var(--color-focus);
     }
 
     /* knob-only: track background/label are inert, only the knob responds to clicks */

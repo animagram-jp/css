@@ -131,9 +131,10 @@
     }
 
     label > input[type="radio"]:focus {
-        outline: 0.125rem solid rgb(var(--rgb-border));
-        outline-offset: 0.125rem;
-        box-shadow: 0 0 0 0.125rem rgb(var(--rgb-focus));
+        outline: none;
+        box-shadow:
+            inset 0 0 0 0.125rem var(--color-background),
+            inset 0 0 0 0.1875rem var(--color-focus);
     }
 
     @media (hover: hover) {

@@ -7,7 +7,7 @@
         vertical-align: middle;
         box-sizing: border-box;
         border-radius: 0.5rem;
-        border: 1px solid var(--color-muted);
+        border: 0.125rem solid var(--color-muted);
         background-color: var(--color-background);
         background-image:
             linear-gradient(45deg,  transparent 50%, rgb(var(--rgb-ink)) 50%),
@@ -59,7 +59,7 @@
 
     select:not([data-search-box-scope] select):is(:disabled, [aria-disabled="true"]),
     select:not([data-search-box-scope] select):is(:disabled, [aria-disabled="true"]):hover {
-        border: 1px solid rgb(var(--rgb-light-gray));
+        border: 0.125rem solid rgb(var(--rgb-light-gray));
         background-color: rgb(var(--rgb-light-gray) / 0.3);
         background-image: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'><path d='M12 6 21 15 19 17 12 10 5 17 3 15Z' fill='%23949494'/></svg>");
         color: var(--color-muted);

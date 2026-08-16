@@ -77,7 +77,7 @@
         box-sizing: border-box;
         width: calc(160 / 16 * 1rem);
         border-radius: 0.5rem 0 0 0.5rem;
-        border: 1px solid var(--color-muted);
+        border: 0.125rem solid var(--color-muted);
         background-color: rgb(var(--rgb-light-gray) / 0.3);
         padding-top: calc(20 / 16 * 1rem);
         padding-right: 2.5rem;
@@ -122,7 +122,7 @@
 
         label[data-search-box-scope] > select::picker(select) {
             appearance: base-select;
-            border: 1px solid var(--color-muted);
+            border: 0.125rem solid var(--color-muted);
             box-shadow: var(--elevation-1);
             padding: 1rem 0;
         }
@@ -151,9 +151,10 @@
     label[data-search-box-scope] > select:focus-visible {
         position: relative;
         z-index: 1;
-        outline: 0.125rem solid rgb(var(--rgb-border));
-        outline-offset: 0.125rem;
-        box-shadow: 0 0 0 0.125rem rgb(var(--rgb-focus));
+        outline: none;
+        box-shadow:
+            inset 0 0 0 0.125rem var(--color-background),
+            inset 0 0 0 0.1875rem var(--color-focus);
     }
 
     @media (hover: hover) {
@@ -199,17 +200,19 @@
 
     label[data-search-box-scope] option:focus-visible {
         border-radius: 0;
-        outline: 0.25rem solid rgb(var(--rgb-border));
+        outline: 0.25rem solid var(--color-background);
         outline-offset: calc(-4 / 16 * 1rem);
         box-shadow: none;
     }
 
     label[data-search-box-scope] option:not(:checked):focus-visible {
-        background-color: rgb(var(--rgb-focus));
+        background-color: var(--color-focus);
+        color: rgb(var(--rgb-black));
     }
 
     label[data-search-box-scope] option:checked:focus-visible {
-        box-shadow: inset 0 0 0 calc(6 / 16 * 1rem) rgb(var(--rgb-focus));
+        color: rgb(var(--rgb-black));
+        box-shadow: inset 0 0 0 calc(6 / 16 * 1rem) var(--color-focus);
     }
 
 }

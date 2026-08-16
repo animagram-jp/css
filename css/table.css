@@ -159,42 +159,44 @@
     }
 
     button[data-sort-direction]:focus-visible {
-        outline: 0.125rem solid rgb(var(--rgb-border));
-        outline-offset: 0.125rem;
+        outline: none;
         border-radius: 0.125rem;
-        background-color: rgb(var(--rgb-focus));
-        box-shadow: 0 0 0 0.125rem rgb(var(--rgb-focus));
+        background-color: var(--color-focus);
+        color: rgb(var(--rgb-black));
+        box-shadow:
+            inset 0 0 0 0.125rem var(--color-background),
+            inset 0 0 0 0.1875rem var(--color-focus);
     }
 
     /* Utilities */
 
     table[data-border=""] :where(td, th) {
-        border: 1px solid var(--border-color);
+        border: 0.125rem solid var(--border-color);
     }
 
     table[data-border~="top"] :where(td, th) {
-        border-top: 1px solid var(--border-color);
+        border-top: 0.125rem solid var(--border-color);
     }
 
     table[data-border~="right"] :where(td, th) {
-        border-right: 1px solid var(--border-color);
+        border-right: 0.125rem solid var(--border-color);
     }
 
     table[data-border~="bottom"] :where(td, th) {
-        border-bottom: 1px solid var(--border-color);
+        border-bottom: 0.125rem solid var(--border-color);
     }
 
     table[data-border~="left"] :where(td, th) {
-        border-left: 1px solid var(--border-color);
+        border-left: 0.125rem solid var(--border-color);
     }
 
     /* Header cell's black border should take precedence over [data-border] */
     table thead tr:last-of-type th {
-        border-bottom: 1px solid rgb(var(--rgb-border));
+        border-bottom: 0.125rem solid rgb(var(--rgb-border));
     }
 
     table tbody th:last-of-type {
-        border-right: 1px solid rgb(var(--rgb-border));
+        border-right: 0.125rem solid rgb(var(--rgb-border));
     }
 
     @media (width >= 40rem) {

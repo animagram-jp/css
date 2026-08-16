@@ -81,13 +81,13 @@
 
     .badge:not([data-type]),
     .badge[data-type="outline"] {
-        border: 1px solid var(--color-emphasis);
+        border: 0.125rem solid var(--color-emphasis);
         background-color: var(--color-background);
         color: var(--color-emphasis);
     }
 
     .badge[data-type="fill"] {
-        border: 1px solid transparent;
+        border: 0.125rem solid transparent;
         background-color: var(--color-emphasis-fill);
         color: rgb(var(--rgb-white));
     }

@@ -7,7 +7,7 @@
         display: inline flex;
         box-sizing: border-box;
         height: auto;
-        border: 1px solid var(--color-muted);
+        border: 0.125rem solid var(--color-muted);
         background-color: var(--color-background);
         border-radius: 0.5rem;
         color: rgb(var(--rgb-ink));

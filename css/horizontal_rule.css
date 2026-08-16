@@ -3,7 +3,7 @@
     hr {
         margin: 0;
         border: 0;
-        border-top: 1px solid var(--color-emphasis);
+        border-top: 0.125rem solid var(--color-emphasis);
         opacity: 1;
     }
 
@@ -12,7 +12,7 @@
     }
 
     hr[data-width="1"] {
-        border-top-width: 1px;
+        border-top-width: 0.125rem;
     }
 
     hr[data-width="2"] {

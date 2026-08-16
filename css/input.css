@@ -10,7 +10,7 @@
 
     input:not([type="checkbox"], [type="radio"], [data-input-number] input) {
         appearance: none;
-        border: 1px solid var(--color-muted);
+        border: 0.125rem solid var(--color-muted);
         background-color: var(--color-background);
         border-radius: 0.5rem;
         color: rgb(var(--rgb-ink));
@@ -46,7 +46,7 @@
 
     @media (hover: hover) {
         input:not([type="checkbox"], [type="radio"], :read-only, [data-input-number] input):hover {
-            border-color: rgb(var(--rgb-border));
+            border-color: var(--color-border);
         }
     }
 
@@ -83,7 +83,7 @@
         display: inline flex;
         align-items: stretch;
         box-sizing: border-box;
-        border: 1px solid var(--color-muted);
+        border: 0.125rem solid var(--color-muted);
         background-color: var(--color-background);
         border-radius: 0.5rem;
         color: rgb(var(--rgb-ink));
@@ -126,9 +126,10 @@
     }
 
     [data-input-number]:focus-within {
-        outline: 0.125rem solid rgb(var(--rgb-border));
-        outline-offset: 0.125rem;
-        box-shadow: 0 0 0 0.125rem rgb(var(--rgb-focus));
+        outline: none;
+        box-shadow:
+            inset 0 0 0 0.125rem var(--color-background),
+            inset 0 0 0 0.1875rem var(--color-focus);
     }
 
     [data-input-number] button {
@@ -156,12 +157,12 @@
 
     [data-input-number] button:first-child {
         border-radius: 0.5rem 0 0 0.5rem;
-        border-right: 1px solid var(--color-muted);
+        border-right: 0.125rem solid var(--color-muted);
     }
 
     [data-input-number] button:last-child {
         border-radius: 0 0.5rem 0.5rem 0;
-        border-left: 1px solid var(--color-muted);
+        border-left: 0.125rem solid var(--color-muted);
     }
 
     @media (hover: hover) {
@@ -171,15 +172,17 @@
     }
 
     [data-input-number] button:focus-visible {
-        outline: 0.125rem solid rgb(var(--rgb-border));
-        outline-offset: 0.125rem;
-        background-color: rgb(var(--rgb-focus));
-        box-shadow: 0 0 0 0.125rem rgb(var(--rgb-focus));
+        outline: none;
+        background-color: var(--color-focus);
+        color: rgb(var(--rgb-black));
+        box-shadow:
+            inset 0 0 0 0.125rem var(--color-background),
+            inset 0 0 0 0.1875rem var(--color-focus);
     }
 
     @media (hover: hover) {
         [data-input-number]:not(:focus-within):hover {
-            border-color: rgb(var(--rgb-border));
+            border-color: var(--color-border);
         }
     }
 
