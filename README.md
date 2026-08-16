@@ -81,20 +81,12 @@ Every component below reuses these same column names — a component either cons
 
 | `data-size`   | box-height | font-size | letter-spacing | line-height |
 |---------------|------------|-----------|----------------|-------------|
-| `xs`          | 1.75rem | 0.85rem | 0.02rem | 1.5rem |
-| `sm`          | 2.5rem  | 0.85rem | 0.02em  | 1.5rem |
-| `md`(default) | 3rem    | 1rem    | 0       | 1.5rem |
-| `lg`          | 3.5rem  | 1.15rem | 0       | 1.725rem |
-| `xl`          | 4rem    | 1.5rem  | 0       | 2.25rem |
-| `2xl`         | 4.75rem | 2rem    | 0       | 3rem   |
-
-| typography | font size | letter spacing | line height |
-|-|-|-|-|
-| medium (md)     | 1rem    | 0      | 1.5rem |
-| minimum (xs,sm) | 0.85rem | 0.02em | 1.5rem |
-| entry (lg)      | 1.15rem | 0      | 1.725rem |
-| heading 1 (xl)  | 1.5rem  | 0      | 2.25rem |
-| heading 2 (2xl) | 2rem    | 0      | 3rem |
+| `xs`          | 1.75rem    | 0.85rem | 0.02rem | 1.5rem |
+| `sm`          | 2.5rem     | 0.85rem | 0.02rem | 1.5rem |
+| `md`(default) | 3rem       | 1rem    | 0       | 1.5rem |
+| `lg`          | 3.5rem     | 1.15rem | 0       | 1.725rem |
+| `xl`          | 4rem       | 1.5rem  | 0       | 2.25rem |
+| `2xl`         | 4.75rem    | 2rem    | 0       | 3rem   |
 
 - **`data-size` fallback**: omitting `data-size` defaults to `md` everywhere. Only `heading` (`h1`–`h6`, or via a wrapping `hgroup`) defaults by element: `h1`→`2xl`, `h2`→`xl`, `h3`→`lg`, `h4`/`h5`/`h6`→`md`.
 - **`padding-block`**, wherever a component consumes a `box-height`, is derived as `calc((var(--{size}-box-height) - var(--{size}-line-height)) / 2)` — this centers the line box inside the scale's box-height regardless of component. How `box-height` itself is applied differs by component's native sizing behavior:

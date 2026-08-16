@@ -6,6 +6,10 @@
 
 @layer css.components {
 
+    details > * {
+        padding-left: 2.25rem;
+    }
+
     details > summary {
         --color-wash-hover: rgb(var(--rgb-ink) / var(--alpha-highlight-weak));
         --color-wash-active: rgb(var(--rgb-ink) / var(--alpha-highlight-strong));
@@ -16,7 +20,6 @@
         font-weight: normal;
         list-style: none;
         padding-right: 0;
-        padding-left: 2.25rem;
         position: relative;
     }
 
