@@ -24,11 +24,19 @@ body {
     overflow-x: hidden;
 }
 
+body>header {
+    padding-top: 0.5rem;
+}
+
+body>header, main, aside, body>footer {
+    max-width: 60rem;
+    margin: 0 auto;
+}
+
 section {
     margin: 2rem 0;
 }
 
-/* ul/ol の項目間隔は --gap で利用側から上書きする */
 :is(ul, ol) {
     --gap: 0.25rem;
 }
