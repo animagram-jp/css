@@ -28,8 +28,7 @@ Css universal design boilerplate. Works without interference to HTML.
         --rgb-error
         --rgb-focus
 
-        --rgb-emphasis /* theme color */
-
+        --rgb-emphasis /* emphasis color */
     }
 
     @media (prefers-color-scheme: dark) {
