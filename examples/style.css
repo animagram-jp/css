@@ -1,9 +1,9 @@
 :root[data-theme="dark"] {
     --rgb-ink: var(--rgb-white);
     --rgb-border: var(--rgb-white);
-    --rgb-background: rgb(var(--rgb-black));
+    --rgb-background: var(--rgb-black);
     --rgb-emphasis: var(--rgb-accent-sky);
-    --rgb-emphasis-fill: rgb(var(--rgb-accent-blue));
+    --rgb-emphasis-fill: var(--rgb-accent-blue);
 }
 
 :root[data-theme="light"] {
