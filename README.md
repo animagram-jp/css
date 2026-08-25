@@ -60,32 +60,45 @@ Every component below reuses these same column names — a component either cons
 @layer css.config {
     :root {
         /* ... */
-        --md-box-height: 3rem; /* border-box height  */
-        --md-font-size: 1rem;
+        --md-border-radius:  0.5rem;
+        --md-border-width:   0.125rem;
+        --md-box-height:     3rem;
+        --md-font-size:      1rem;
         --md-letter-spacing: 0;
-        --md-line-height: 1.5rem;
+        --md-line-height:    1.5rem;
         /* ... */
     }
 }
 
 @layer css.component {
-    button:not([data-size]),
-    button[data-size="md"],
-    input:not([data-size]),
-    input[data-size="md"] {
-        padding-block: calc((var(--md-box-height) - var(--md-line-height)) / 2);
+    :is(button, input, select, textarea):not([data-size]),
+    [data-size="md"] {
+        border-radius:  var(--md-border-radius);
+        border-width:   var(--md-border-width);
+        font-size:      var(--md-font-size);
+        letter-spacing: var(--md-letter-spacing);
+        line-height:    var(--md-line-height);
+        padding-block: calc(((var(--md-box-height) - var(--md-line-height)) / 2) - var(--md-border-width));
     }
 }
 ```
 
-| `data-size`   | box-height | font-size | letter-spacing | line-height |
-|---------------|------------|-----------|----------------|-------------|
-| `xs`          | 1.75rem    | 0.85rem | 0.02rem | 1.5rem |
-| `sm`          | 2.5rem     | 0.85rem | 0.02rem | 1.5rem |
-| `md`(default) | 3rem       | 1rem    | 0       | 1.5rem |
-| `lg`          | 3.5rem     | 1.15rem | 0       | 1.725rem |
-| `xl`          | 4rem       | 1.5rem  | 0       | 2.25rem |
-| `2xl`         | 4.75rem    | 2rem    | 0       | 3rem   |
+| `data-size`   | box-height | Typography |
+|-|-|-|
+| `xs`          | 1.75rem    | small     |
+| `sm`          | 2.5rem     | small     |
+| `md`(default) | 3rem       | medium    |
+| `lg`          | 3.5rem     | large     |
+| `xl`          | 4rem       | heading 2 |
+| `2xl`         | 4.75rem    | heading 1 |
+
+| Typography  | font-size | letter-spacing | line-height |
+|-|-|-|-|
+| small     | 0.85rem | 0.02rem | 1.5rem      |
+| medium    | 1rem    | 0       | 1.5rem      |
+| large     | 1.15rem | 0       | 1.725rem    |
+| heading 2 | 1.5rem  | 0       | 2.25rem     |
+| heading 1 | 2rem    | 0       | 3rem        |
 
 - **`data-size` fallback**: omitting `data-size` defaults to `md` everywhere. Only `heading` (`h1`–`h6`, or via a wrapping `hgroup`) defaults by element: `h1`→`2xl`, `h2`→`xl`, `h3`→`lg`, `h4`/`h5`/`h6`→`md`.
 - **`padding-block`**, wherever a component consumes a `box-height`, is derived as `calc((var(--{size}-box-height) - var(--{size}-line-height)) / 2)` — this centers the line box inside the scale's box-height regardless of component. How `box-height` itself is applied differs by component's native sizing behavior:
