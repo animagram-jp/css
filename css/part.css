@@ -1,0 +1,186 @@
+@layer css.part {
+
+    *[data-style="rule-indent"] {
+        margin:         0;
+        padding-left:   1.5rem;
+        position:       relative;
+        outline:        0.125rem solid transparent;
+        outline-offset: 0.125rem;
+    }
+    *[data-style="rule-indent"]::before {
+        background-color: var(--color-emphasis);
+        bottom:           0;
+        content:          "";
+        left:             0;
+        position:         absolute;
+        top:              0;
+        width:            0.5rem;
+    }
+
+    /* forced-colors */
+
+    @media (forced-colors: active) {
+        *[data-style="rule-indent"]::before {
+            background-color: CanvasText;
+        }
+    }
+
+    /* [data-size] todo inline, block */
+
+    /* [aria-orientation] todo */
+
+    [aria-orientation="horizontal"] {}
+    [aria-orientation="vertical"] {}
+
+    /* code todo */
+
+    code {
+
+    }
+
+    /* cite */
+
+    cite {
+        font-style: italic;
+    }
+
+    :lang(ja), :lang(zh), :lang(ko) {
+        cite {
+            font-style: normal;
+        }
+    }
+
+    /*  <figure >
+            <blockquote>Block contents</blockquote>
+            <figcaption>Author. YYYY. <cite>Title</cite>. Publisher, Location.</figcaption></figure> */
+    figure > * {
+        margin: 0;
+        padding: 0;
+    }
+
+    /* step button (forward/backward) (e.g., +-) */
+    /*
+        <label>
+            <button type="button" data-action="decrement">−</button>
+            <input type="text" inputmode="numeric" pattern="[0-9]*" role="spinbutton">
+            <button type="button" data-action="increment">＋</button></label>
+
+        <fieldset>
+            <legend class="visually-hidden"></legend>
+            <button type="button" data-action="decrement">−</button>
+            <input type="text" inputmode="numeric" role="spinbutton">
+            <button type="button" data-action="increment">＋</button>
+    */
+    label:has(input[inputmode="numeric"]) > *:first-child {
+        /* todo */
+    }
+
+    label:has(input[inputmode="numeric"]) > *:nth-child(3) {
+        /* todo */
+    }
+
+    /* step button (forward/backward) [data-axis="block"] */
+    /*
+        <label>
+            <input type="text" inputmode="numeric" pattern="[0-9]*" role="spinbutton">
+            <button type="button" data-action="decrement">−</button>
+            <button type="button" data-action="increment">＋</button></label>
+     */
+    label:has(input[inputmode="numeric"]) > *:nth-child(2) {
+        /* todo */
+    }
+    label:has(input[inputmode="numeric"]) > *:nth-child(3) {
+
+    }
+
+    /* data-icon */
+
+    [data-icon] {
+        align-items: center;
+    }
+
+    [data-icon]::before {
+        position: relative;
+        margin-right: 0.5rem;
+    }
+
+    [data-icon="hatch"]::before {
+        content: "";
+        display: inline-block;
+        width: 1rem;
+        height: 1rem;
+        background-image: repeating-linear-gradient(
+            -45deg,
+            currentcolor 0,
+            currentcolor 0.125rem,
+            transparent 0.125rem,
+            transparent 0.25rem
+        );
+    }
+
+    /* Reference: https://github.com/yuto-hasegawa/sashimi-ui/blob/main/src/css/key-value.css */
+
+    dl {
+        display: grid;
+        grid-template-columns: auto 1fr;
+        column-gap: 0.5rem;
+        row-gap: 0.5rem;
+        list-style: none;
+        overflow-wrap: anywhere;
+    }
+
+    dl dd {
+        margin: 0;
+        justify-self: end;
+    }
+
+    /* list */
+
+        :is(ul, ol) {
+        --gap: 0;
+        margin-top: 0;
+        margin-bottom: 0;
+        padding-left: 2rem;
+        list-style-type: revert;
+    }
+
+    :is(ul, ol) > li {
+        padding-top: var(--gap);
+        padding-bottom: var(--gap);
+    }
+
+    ol {
+        display: grid;
+        grid-template-columns: minmax(2rem, auto) 1fr;
+        padding-left: 0;
+        list-style-type: none;
+    }
+
+    ol > li,
+    ol > li > a {
+        display: grid;
+        grid-column: 1 / -1;
+        grid-template-columns: inherit;
+        align-items: baseline;
+    }
+
+    ol > li > a > span {
+        text-decoration-thickness: inherit;
+    }
+
+    ol > li > :not(a, span) {
+        grid-column: 2;
+    }
+
+    @supports (grid-template-columns: subgrid) {
+        ol > li,
+        ol > li > a {
+            grid-template-columns: subgrid;
+        }
+    }
+
+    :is(ul, ol) :is(ul, ol) {
+        margin-top: var(--gap);
+        margin-bottom: calc(-1 * var(--gap));
+    }
+}

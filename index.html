@@ -4,684 +4,850 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <title>css examples</title>
-    <link rel="stylesheet" href="css/config.css">
-    <link rel="stylesheet" href="css/badge.css">
-    <link rel="stylesheet" href="css/blockquote.css">
-    <link rel="stylesheet" href="css/button.css">
-    <link rel="stylesheet" href="css/checkbox.css">
-    <link rel="stylesheet" href="css/description_list.css">
-    <link rel="stylesheet" href="css/disclosure.css">
-    <link rel="stylesheet" href="css/field-label.css">
-    <link rel="stylesheet" href="css/heading.css">
-    <link rel="stylesheet" href="css/horizontal_rule.css">
-    <link rel="stylesheet" href="css/icon.css">
+    <link rel="stylesheet" href="css/base.css">
+    <link rel="stylesheet" href="css/part.css">
     <link rel="stylesheet" href="css/input.css">
-    <link rel="stylesheet" href="css/list.css">
-    <link rel="stylesheet" href="css/list-box.css">
-    <link rel="stylesheet" href="css/radio.css">
-    <link rel="stylesheet" href="css/search-box.css">
-    <link rel="stylesheet" href="css/select.css">
-    <link rel="stylesheet" href="css/table.css">
-    <link rel="stylesheet" href="css/textarea.css">
+    <link rel="stylesheet" href="css/button.css">
     <link rel="stylesheet" href="css/toggle.css">
-    <link rel="stylesheet" href="examples/style.css"></head>
+    <link rel="stylesheet" href="css/checkbox.css">
+    <link rel="stylesheet" href="css/radio.css">
+    <link rel="stylesheet" href="css/heading.css">
+    <link rel="stylesheet" href="css/search.css">
+    <link rel="stylesheet" href="css/table.css">
+    <link rel="stylesheet" href="css/slider.css">
+    <link rel="stylesheet" href="css/step.css">
+    <link rel="stylesheet" href="css/error.css">
+    <link rel="stylesheet" href="css/style.css">
+    <script src="js/style.js" defer></script></head>
 <body>
     <header>
-        <hgroup id="header_hgroup">
+        <hgroup data-axis="inline" data-style="rule-indent">
             <h1>css library</h1>
-            <p>Css universal design boilerplate. Works without interference to HTML.</p></hgroup>
+            <p>Universal design CSS library.</p></hgroup>
+        <label>
+            <span>Darkmode</span>
+            <input id="theme-toggle" type="checkbox" role="switch"></label>
+    </header>
 
-        <label data-size="sm">
-            <span>Dark mode</span>
-            <input type="checkbox" role="switch" id="theme-toggle"></label></header>
+    <section data-style="rule-indent">
+        <h2>input, select, textarea</h2>
+        <section data-style="rule-indent">
+            <input type="text">
+            <input type="email">
+            <input type="password">
+            <input type="search">
+            <input type="url">
+            <input type="tel">
+            <select value="a">
+                <option>1</option>
+                <option>2</option></select>
+            <textarea></textarea></section>
+        <section data-style="rule-indent">
+            <h3>[data-size]</h3>
+            <input type="text" data-size="xs">
+            <input type="text" data-size="sm">
+            <input type="text" data-size="md">
+            <input type="text" data-size="lg">
+            <input type="text" data-size="xl">
+            <textarea type="text" data-size="2xl"></textarea></section>
+        <section data-style="rule-indent">
+            <h3>:user-invalid, [aria-invalid="true"]</h3>
+            <input type="text" aria-invalid="true">
+            <select aria-invalid="true">
+                <option>1</option>
+                <option>2</option></select>
+            <textarea aria-invalid="true"></textarea></section></section>
 
-    <script>
-        (() => {
-            const root = document.documentElement;
-            const toggle = document.getElementById("theme-toggle");
-
-            toggle.checked = window.matchMedia("(prefers-color-scheme: dark)").matches;
-
-            toggle.addEventListener("change", () => {
-                root.setAttribute("data-theme", toggle.checked ? "dark" : "light");
-            });
-        })();
-    </script>
-
-    <main>
-        <h2 id="main_h2-1" aria-label="WCAG 2.2 auto-generated report link">WCAG 2.2 Report</h2>
-        <p aria-labelledby="main_h2-1">
-            <a href="./examples/audit.html">WCAG 2.2 auto-generated report</a></p>
-
-        <h2 id="main_h2-2" aria-label="example usage of badge">Badge</h2>
-        <section aria-labelledby="main_h2-2">
-
-            <div class="demo-row">
-                <div class="demo-meta">badge[data-type="fill" data-size="2xl,xl,lg,(md),sm,xs" × data-icon="hatch"]</div>
-                <span class="badge" data-type="fill" data-size="2xl">tag</span>
-                <span class="badge" data-type="fill" data-size="xl">tag</span>
-                <span class="badge" data-type="fill" data-size="lg">tag</span>
-                <span class="badge" data-type="fill">tag</span>
-                <span class="badge" data-type="fill" data-size="sm">tag</span>
-                <span class="badge" data-type="fill" data-size="xs">tag</span>
-                <span class="badge" data-type="fill" data-icon="hatch">tag</span></div>
-
-            <div class="demo-row">
-                <div class="demo-meta">badge[(data-type="outline") data-size="2xl,xl,lg,(md),sm,xs" × data-icon="hatch"]</div>
-                <span class="badge" data-size="2xl">tag</span>
-                <span class="badge" data-size="xl">tag</span>
-                <span class="badge" data-size="lg">tag</span>
-                <span class="badge">tag</span>
-                <span class="badge" data-size="sm">tag</span>
-                <span class="badge" data-size="xs">tag</span>
-                <span class="badge" data-icon="hatch">tag</span></div>
-
-            <div class="demo-row">
-                <div class="demo-meta">badge[data-type="text" data-size="2xl,xl,lg,(md),sm,xs" × data-icon="hatch"]</div>
-                <span class="badge" data-type="text" data-size="2xl">tag</span>
-                <span class="badge" data-type="text" data-size="xl">tag</span>
-                <span class="badge" data-type="text" data-size="lg">tag</span>
-                <span class="badge" data-type="text">tag</span>
-                <span class="badge" data-type="text" data-size="sm">tag</span>
-                <span class="badge" data-type="text" data-size="xs">tag</span>
-                <span class="badge" data-type="text" data-icon="hatch">tag</span></div></section>
-
-        <h2 id="main_h2-3" aria-label="example usage of blackquote">Blockquote</h2>
-        <section aria-labelledby="main_h2-3">
-            <figure>
-                <blockquote>
-                    <p>"I will cast the dark shadows of human life over you without reserve. But you must not be afraid."</p></blockquote>
-                <figcaption>Soseki Natsume. 1914. <cite>Kokoro</cite>. Iwanami Shoten, Tokyo, Japan. Translated by Andyou, 2026.</figcaption></figure></section>
-
-        <h2 id="main_h2-4" aria-label="example usage of button">Button</h2>
-        <section aria-labelledby="main_h2-4">
-
-            <div class="demo-row">
-                <div class="demo-meta">button[data-type="fill" data-size="lg,(md),sm,xs"  × disabled]</div>
-                <button data-size="lg" data-type="fill">ボタン</button>
-                <button data-type="fill">ボタン</button>
-                <button data-size="sm" data-type="fill">ボタン</button>
-                <button data-size="xs" data-type="fill">ボタン</button>
-                <button data-type="fill" disabled>ボタン</button></div>
-
-            <div class="demo-row">
-                <div class="demo-meta">button[(data-type="outline") data-size="lg,(md),sm,xs"  × disabled]</div>
-                <button data-size="lg">ボタン</button>
-                <button>ボタン</button>
-                <button data-size="sm">ボタン</button>
-                <button data-size="xs">ボタン</button>
-                <button disabled>ボタン</button></div>
-
-            <div class="demo-row">
-                <div class="demo-meta">button[data-type="text" data-size="lg,(md),sm,xs"  × disabled]</div>
-                <button data-size="lg" data-type="text">ボタン</button>
-                <button data-type="text">ボタン</button>
-                <button data-size="sm" data-type="text">ボタン</button>
-                <button data-size="xs" data-type="text">ボタン</button>
-                <button data-type="text" disabled>ボタン</button></div>
-
-            <div class="demo-row">
-                <div class="demo-meta">button > svg > use[#icon-external-link]</div>
-                <button>ボタン
-                    <svg width="16" height="16" viewBox="0 0 48 48" role="img" aria-label="新規タブで開きます">
-                        <use href="svg/icons.svg#icon-external-link"></use></svg></button></div></section>
-
-        <h2 id="main_h2-5" aria-label="example usage of checkbox">Checkbox</h2>
-        <section aria-labelledby="main_h2-5">
-            <style>
-                .checkbox-row { margin-block: 1.5rem; }
-                .checkbox-meta { font: 0.75rem/2 monospace; color: var(--color-muted); margin-bottom: 0.25rem; }
-                .checkbox-grid { display: grid; grid-template-columns: repeat(6, auto); gap: 2rem; justify-content: start; }</style>
-
-            <div class="checkbox-row">
-                <div class="checkbox-meta">label[data-size="2xl"] > input[aria-invalid="true", disabled]</div>
-                <div class="checkbox-grid">
-                    <label data-size="2xl"><input type="checkbox">ラベル</label>
-                    <label data-size="2xl"><input type="checkbox" aria-invalid="true">ラベル</label>
-                    <label data-size="2xl"><input type="checkbox" disabled>ラベル</label>
-                    <label data-size="2xl"><input type="checkbox" checked disabled>ラベル</label></div></div>
-
-            <div class="checkbox-row">
-                <div class="checkbox-meta">label[data-size="xl"] > input[aria-invalid="true", disabled]</div>
-                <div class="checkbox-grid">
-                    <label data-size="xl"><input type="checkbox">ラベル</label>
-                    <label data-size="xl"><input type="checkbox" aria-invalid="true">ラベル</label>
-                    <label data-size="xl"><input type="checkbox" disabled>ラベル</label>
-                    <label data-size="xl"><input type="checkbox" checked disabled>ラベル</label></div></div>
-
-            <div class="checkbox-row">
-                <div class="checkbox-meta">label[data-size="lg"] > input[aria-invalid="true", disabled]</div>
-                <div class="checkbox-grid">
-                    <label data-size="lg"><input type="checkbox">ラベル</label>
-                    <label data-size="lg"><input type="checkbox" aria-invalid="true">ラベル</label>
-                    <label data-size="lg"><input type="checkbox" disabled>ラベル</label>
-                    <label data-size="lg"><input type="checkbox" checked disabled>ラベル</label></div></div>
-
-            <div class="checkbox-row">
-                <div class="checkbox-meta">label([data-size="md"]) > input[aria-invalid="true", disabled]</div>
-                <div class="checkbox-grid">
-                    <label><input type="checkbox">ラベル</label>
-                    <label><input type="checkbox" aria-invalid="true">ラベル</label>
-                    <label><input type="checkbox" disabled>ラベル</label>
-                    <label><input type="checkbox" checked disabled>ラベル</label></div></div>
-
-            <div class="checkbox-row">
-                <div class="checkbox-meta">label[data-size="sm"] > input[aria-invalid="true", disabled]</div>
-                <div class="checkbox-grid">
-                    <label data-size="sm"><input type="checkbox">ラベル</label>
-                    <label data-size="sm"><input type="checkbox" aria-invalid="true">ラベル</label>
-                    <label data-size="sm"><input type="checkbox" disabled>ラベル</label>
-                    <label data-size="sm"><input type="checkbox" checked disabled>ラベル</label></div></div>
-
-            <div class="checkbox-row">
-                <div class="checkbox-meta">label[data-size="xs"] > input[aria-invalid="true", disabled]</div>
-                <div class="checkbox-grid">
-                    <label data-size="xs"><input type="checkbox">ラベル</label>
-                    <label data-size="xs"><input type="checkbox" aria-invalid="true">ラベル</label>
-                    <label data-size="xs"><input type="checkbox" disabled>ラベル</label>
-                    <label data-size="xs"><input type="checkbox" checked disabled>ラベル</label></div></div></section>
-
-        <h2 id="main_h2-6" aria-label="example usage of description list">Description List</h2>
-        <section aria-labelledby="main_h2-6">
-            <dl>
-                <dt>氏名</dt>
-                <dd>山田 太郎</dd>
-                <dt>メールアドレス</dt>
-                <dd>taro.yamada@example.com</dd>
-                <dt>電話番号</dt>
-                <dd>03-0000-0000</dd></dl></section>
-
-        <h2 id="main_h2-7" aria-label="example usage of disclosure">Disclosure</h2>
-        <section aria-labelledby="main_h2-7">
-            <details data-size="2xl">
-                <summary>details[data-size="2xl"] > summary, block</summary>
-                <p>Some example content appears here.</p></details>
-            <details data-size="xl">
-                <summary>details[data-size="xl"] > summary, block</summary>
-                <p>Some example content appears here.</p></details>
-            <details data-size="lg">
-                <summary>details[data-size="lg"] > summary, block</summary>
-                <p>Some example content appears here.</p></details>
+    <section data-style="rule-indent">
+        <h2>button, a, details > summary</h2>
+        <section data-style="rule-indent">
+            <button type="button">Button</button>
+            <button type="submit">Button</button>
+            <button type="cancel">Button</button>
+            <a href="#">Anchor</a>
             <details>
-                <summary>details > summary, block</summary>
-                <p>Some example content appears here.</p></details>
-            <details data-size="sm">
-                <summary>details[data-size="sm"] > summary, block</summary>
-                <p>Some example content appears here.</p></details>
-            <details data-size="xs">
-                <summary>details[data-size="xs"] > summary, block</summary>
-                <p>Some example content appears here.</p></details>
-            <details data-type="fill">
-                <summary>details[data-type="fill"] > summary, block</summary>
-                <p>Some example content appears here.</p></details>
-            <details data-size="2xl" data-type="outline">
-                <summary>details[data-size="2xl"][data-type="outline"] > summary, block</summary>
-                <p>Some example content appears here.</p></details>
-            <details data-axis="inline">
-                <summary>details[data-axis="inline"] > summary, block</summary>
-                <p>Some example content appears here.</p></details></section>
-
-        <h2 id="main_h2-8" aria-label="example usage of hr">Horizontal Rule</h2>
-        <section aria-labelledby="main_h2-8">
-        <div style="display: flex; flex-direction: column; row-gap: 2rem">
-            <hr>
-            <hr data-type="dashed" data-width="2">
-            <hr data-width="3">
-            <hr data-type="dashed" data-width="4"></div></section>
-
-        <h2 id="main_h2-9" aria-label="example usage of field label">Field Label</h2>
-        <section aria-labelledby="main_h2-9">
-            <label for="main_section-9_input">
-                氏名
-                <span data-requirement>必須</span></label>
-            <p data-type="support">姓と名の間にスペースを入れてください。</p>
-            <input id="main_section-9_input" inputmode="text" aria-invalid="true">
-            <p data-type="error" style="margin-top:1rem">エラーテキストが入ります。</p>
-
-            <fieldset style="margin-top:2rem; border:0; padding:0">
-                <legend>
-                該当する項目
-                <span data-requirement>任意</span></legend>
-                <p data-type="support">該当するものをすべて選択してください。</p>
-                <label data-size="md"><input type="checkbox">選択肢A</label>
-                <label data-size="md"><input type="checkbox">選択肢B</label></fieldset></section>
-
-        <h2 id="main_h2-10" aria-label="example usage of heading">Heading</h2>
-        <section aria-labelledby="main_h2-10">
-            <style>
-                .heading-row { margin-block: 2rem; }
-                .heading-meta { font: 0.75rem/2 monospace; color: var(--color-muted); margin-bottom: 0.25rem; }</style>
-
-            <div class="heading-row">
-                <div class="heading-meta">h2[data-size="2xl"]</div>
-                <h2 data-size="2xl">見出しテキスト</h2></div>
-
-            <div class="heading-row">
-                <div class="heading-meta">hgroup[data-size="xl"] > p, h2</div>
-                <hgroup data-size="xl">
-                    <p>ショルダーテキスト</p>
-                    <h2>見出しテキスト</h2></hgroup></div>
-
-            <div class="heading-row">
-                <div class="heading-meta">h2[data-size="lg"][data-chip]</div>
-                <h2 data-size="lg" data-chip>見出しテキスト</h2></div>
-
-            <div class="heading-row">
-                <div class="heading-meta">hgroup[data-size="md"][data-chip] > p, h2</div>
-                <hgroup data-size="md" data-chip>
-                    <p>ショルダーテキスト</p>
-                    <h2>見出しテキスト</h2></hgroup></div>
-
-            <div class="heading-row">
-                <div class="heading-meta">h2[data-size="2xl"][data-chip]</div>
-                <h2 data-size="2xl" data-chip>見出しテキスト</h2></div>
-
-            <div class="heading-row">
-                <div class="heading-meta">hgroup[data-size="xl"][data-chip] > p, h2</div>
-                <hgroup data-size="xl" data-chip>
-                    <p>ショルダーテキスト</p>
-                    <h2>見出しテキスト</h2></hgroup></div>
-
-            <div class="heading-row">
-                <div class="heading-meta">h2[data-size="lg"][data-chip][data-rule]</div>
-                <h2 data-size="lg" data-chip data-rule>見出しテキスト</h2></div>
-
-            <div class="heading-row">
-                <div class="heading-meta">hgroup[data-size="xl"][data-chip][data-rule] > p, h2</div>
-                <hgroup data-size="md" data-chip data-rule>
-                    <p>ショルダーテキスト</p>
-                    <h2>見出しテキスト</h2></hgroup></div></section>
-
-        <h2 id="main_h2-11" aria-label="example usage of input number">Input Number</h2>
-        <section aria-labelledby="main_h2-11">
-            <style>
-                .input-number-list { display: flex; flex-direction: column; row-gap: 1rem; align-items: start; }
-                .input-number-meta { font: 0.75rem/2 monospace; color: var(--color-muted); }</style>
-
-            <div class="input-number-meta">data-size="lg" / "md"(未指定) / "sm"</div>
-
-            <div class="input-number-list">
-                <span data-input-number data-size="lg">
-                    <button type="button" aria-label="減らす">−</button>
-                    <input type="text" inputmode="numeric" min="0" placeholder="0">
-                    <button type="button" aria-label="増やす">+</button></span>
-
-                <span data-input-number>
-                    <button type="button" aria-label="減らす">−</button>
-                    <input type="text" inputmode="numeric" min="0" placeholder="0">
-                    <button type="button" aria-label="増やす">+</button></span>
-
-                <span data-input-number data-size="sm">
-                    <button type="button" aria-label="減らす">−</button>
-                    <input type="text" inputmode="numeric" min="0" placeholder="0">
-                    <button type="button" aria-label="増やす">+</button></span></div></section>
-
-        <h2 id="main_h2-12" aria-label="example usage of input text">Input Text</h2>
-        <section aria-labelledby="main_h2-12">
-            <style>
-                .input-row { margin-top: 1rem; display: block; }
-                .input-meta { font: 0.75rem/2 monospace; color: var(--color-muted); }</style>
-
-            <div class="input-meta">data-size="lg" / "md"(未指定) / "sm" × (通常, エラー, 読み取り専用, 無効)</div>
-
-            <input type="text" data-size="lg" placeholder="data-size: lg" aria-label="data-size: lg" class="input-row">
-            <input type="text" data-size="lg" aria-invalid="true" aria-label="data-size: lg, エラー" class="input-row">
-            <input type="text" data-size="lg" value="読み取り専用の値" readonly aria-label="data-size: lg, 読み取り専用" class="input-row">
-            <input type="text" data-size="lg" value="無効" disabled aria-label="data-size: lg, 無効" class="input-row">
-
-            <input type="text" placeholder="data-size: 未指定(md)" aria-label="data-size: 未指定(md)" class="input-row">
-            <input type="text" aria-invalid="true" aria-label="data-size: 未指定(md), エラー" class="input-row">
-            <input type="text" value="読み取り専用の値" readonly aria-label="data-size: 未指定(md), 読み取り専用" class="input-row">
-            <input type="text" value="無効" disabled aria-label="data-size: 未指定(md), 無効" class="input-row">
-
-            <input type="text" data-size="sm" placeholder="data-size: sm" aria-label="data-size: sm" class="input-row">
-            <input type="text" data-size="sm" aria-invalid="true" aria-label="data-size: sm, エラー" class="input-row">
-            <input type="text" data-size="sm" value="読み取り専用の値" readonly aria-label="data-size: sm, 読み取り専用" class="input-row">
-            <input type="text" data-size="sm" value="無効" disabled aria-label="data-size: sm, 無効" class="input-row"></section>
-
-        <h2 id="main_h2-13" aria-label="example usage of link">Link</h2>
-        <section aria-labelledby="main_h2-13">
-            <a href="#" target="_blank">
-                リンクテキスト
-                <svg class="link__icon" width="16" height="16" viewBox="0 0 48 48" role="img" aria-label="新規タブで開きます">
-                    <use href="svg/icons.svg#icon-external-link"></use></svg></a></section>
-
-        <h2 id="main_h2-14" aria-label="example usage of list">List</h2>
-        <section aria-labelledby="main_h2-14">
-            <!-- 箇条書き -->
-            <ul>
-                <li>項目A</li>
-                <li>項目B（少し長めのテキストサンプルです）</li>
-                <li>
-                    ネストあり
-                    <ul>
-                        <li>サブ項目1</li>
-                        <li><a href="#">サブ項目2（リンク）</a></li></ul></li></ul>
-
-            <!-- 番号付き -->
-            <ol style="margin-top: 2rem">
-                <li><span>1. </span><span>最初の項目</span></li>
-                <li><span>2. </span><span>二番目の項目</span></li>
-                <li><span>3. </span><span>三番目の項目</span></li></ol></section>
-
-        <h2 id="main_h2-15" aria-label="example usage of list box">List Box</h2>
-        <section aria-labelledby="main_h2-15">
-            <ul id="list-box-1" popover="auto" role="listbox" aria-labelledby="list-box-1-trigger">
-                <li role="presentation">アイテムから選択してください</li>
-                <li role="option" aria-selected="true"><button>リストアイテム1</button></li>
-                <li role="option"><button>リストアイテム2</button></li>
-                <li role="option"><button>リストアイテム3</button></li></ul>
-
-            <button type="button" id="list-box-1-trigger" popovertarget="list-box-1" aria-haspopup="listbox" aria-controls="list-box-1">
-                現在選択中のリストアイテム</button></section>
-
-        <h2 id="main_h2-16" aria-label="example usage of radio">Radio</h2>
-        <section aria-labelledby="main_h2-16">
-            <style>
-                .radio-row { margin-block: 1.5rem; }
-                .radio-meta { font: 0.75rem/2 monospace; color: var(--color-muted); margin-bottom: 0.25rem; }
-                .radio-grid { display: grid; grid-template-columns: repeat(6, auto); gap: 2rem; justify-content: start; }</style>
-
-            <div class="radio-row">
-                <div class="radio-meta">label[data-size="2xl"] > input[checked, aria-invalid="true", disabled]</div>
-                <div class="radio-grid">
-                    <label data-size="2xl"><input type="radio" name="2xl-1">ラベル</label>
-                    <label data-size="2xl"><input type="radio" name="2xl-1" checked>ラベル</label>
-                    <label data-size="2xl"><input type="radio" name="2xl-2" aria-invalid="true">ラベル</label>
-                    <label data-size="2xl"><input type="radio" name="2xl-2" checked aria-invalid="true">ラベル</label>
-                    <label data-size="2xl"><input type="radio" name="2xl-3" disabled>ラベル</label>
-                    <label data-size="2xl"><input type="radio" name="2xl-3" checked disabled>ラベル</label></div></div>
-
-            <div class="radio-row">
-                <div class="radio-meta">label[data-size="xl"] > input[checked, aria-invalid="true", disabled]</div>
-                <div class="radio-grid">
-                    <label data-size="xl"><input type="radio" name="xl-1">ラベル</label>
-                    <label data-size="xl"><input type="radio" name="xl-1" checked>ラベル</label>
-                    <label data-size="xl"><input type="radio" name="xl-2" aria-invalid="true">ラベル</label>
-                    <label data-size="xl"><input type="radio" name="xl-2" checked aria-invalid="true">ラベル</label>
-                    <label data-size="xl"><input type="radio" name="xl-3" disabled>ラベル</label>
-                    <label data-size="xl"><input type="radio" name="xl-3" checked disabled>ラベル</label></div></div>
-
-            <div class="radio-row">
-                <div class="radio-meta">label[data-size="lg"] > input[checked, aria-invalid="true", disabled]</div>
-                <div class="radio-grid">
-                    <label data-size="lg"><input type="radio" name="lg-1">ラベル</label>
-                    <label data-size="lg"><input type="radio" name="lg-1" checked>ラベル</label>
-                    <label data-size="lg"><input type="radio" name="lg-2" aria-invalid="true">ラベル</label>
-                    <label data-size="lg"><input type="radio" name="lg-2" checked aria-invalid="true">ラベル</label>
-                    <label data-size="lg"><input type="radio" name="lg-3" disabled>ラベル</label>
-                    <label data-size="lg"><input type="radio" name="lg-3" checked disabled>ラベル</label></div></div>
-
-            <div class="radio-row">
-                <div class="radio-meta">label([data-size="md"]) > input[checked, aria-invalid="true", disabled]</div>
-                <div class="radio-grid">
-                    <label><input type="radio" name="md-1">ラベル</label>
-                    <label><input type="radio" name="md-1" checked>ラベル</label>
-                    <label><input type="radio" name="md-2" aria-invalid="true">ラベル</label>
-                    <label><input type="radio" name="md-2" checked aria-invalid="true">ラベル</label>
-                    <label><input type="radio" name="md-3" disabled>ラベル</label>
-                    <label><input type="radio" name="md-3" checked disabled>ラベル</label></div></div>
-
-            <div class="radio-row">
-                <div class="radio-meta">label[data-size="sm"] > input[checked, aria-invalid="true", disabled]</div>
-                <div class="radio-grid">
-                    <label data-size="sm"><input type="radio" name="sm-1">ラベル</label>
-                    <label data-size="sm"><input type="radio" name="sm-1" checked>ラベル</label>
-                    <label data-size="sm"><input type="radio" name="sm-2" aria-invalid="true">ラベル</label>
-                    <label data-size="sm"><input type="radio" name="sm-2" checked aria-invalid="true">ラベル</label>
-                    <label data-size="sm"><input type="radio" name="sm-3" disabled>ラベル</label>
-                    <label data-size="sm"><input type="radio" name="sm-3" checked disabled>ラベル</label></div></div>
-
-            <div class="radio-row">
-                <div class="radio-meta">label[data-size="xs"] > input[checked, aria-invalid="true", disabled]</div>
-                <div class="radio-grid">
-                    <label data-size="xs"><input type="radio" name="xs-1">ラベル</label>
-                    <label data-size="xs"><input type="radio" name="xs-1" checked>ラベル</label>
-                    <label data-size="xs"><input type="radio" name="xs-2" aria-invalid="true">ラベル</label>
-                    <label data-size="xs"><input type="radio" name="xs-2" checked aria-invalid="true">ラベル</label>
-                    <label data-size="xs"><input type="radio" name="xs-3" disabled>ラベル</label>
-                    <label data-size="xs"><input type="radio" name="xs-3" checked disabled>ラベル</label></div></div></section>
-
-        <h2 id="main_h2-17" aria-label="example usage of search box">Search Box</h2>
-        <section aria-labelledby="main_h2-17">
-            <div style="margin-top:1rem; display: flex;">
-                <label data-search-box>
-                    <svg width="24" height="24" viewBox="0 0 24 24" aria-hidden="true">
-                        <use href="svg/icons.svg#icon-search"></use></svg>
-                    <span class="visually-hidden">検索</span>
-                    <input type="search" name="q"></label>
-                <span style="display: inline flex; width: 0.5rem;"></span>
-                <button type="submit" data-type="fill">検索</button></div>
-
-            <div style="margin-top:1rem; display: flex;">
-                <label data-search-box-scope data-size="lg">
-                    <span>検索対象</span>
-                    <select>
-                        <option value="">すべて</option>
-                        <option value="images">画像</option>
-                        <option value="files">ファイル</option></select></label>
-                <label data-search-box data-size="lg">
-                    <svg width="24" height="24" viewBox="0 0 24 24" aria-hidden="true">
-                        <use href="svg/icons.svg#icon-search"></use></svg>
-                    <span class="visually-hidden">検索</span>
-                    <input type="search" name="q" data-size="lg"></label>
-                <span style="display: inline flex; width: 0.5rem;"></span>
-                <button type="submit" data-type="fill" data-size="lg">検索</button></div></section>
-
-        <h2 id="main_h2-18" aria-label="example usage of select">Select</h2>
-        <section aria-labelledby="main_h2-18">
-            <style>
-                .select-row { margin-top: 1rem; display: block; }
-                .select-meta { font: 0.75rem/2 monospace; color: var(--color-muted); }</style>
-
-            <div class="select-meta">data-size="lg" / "md"(未指定) / "sm" × (通常, エラー, 無効)</div>
-
-            <select data-size="lg" aria-label="data-size: lg" class="select-row">
-                <option value="">選択してください</option>
-                <option value="1">選択肢1</option></select>
-            <select data-size="lg" aria-invalid="true" aria-label="data-size: lg, エラー" class="select-row">
-                <option value="">選択してください</option>
-                <option value="1">選択肢1</option></select>
-            <select data-size="lg" disabled aria-label="data-size: lg, 無効" class="select-row">
-                <option value="">選択してください</option></select>
-
-            <select aria-label="data-size: 未指定(md)" class="select-row">
-                <option value="">選択してください</option>
-                <option value="1">選択肢1</option></select>
-            <select aria-invalid="true" aria-label="data-size: 未指定(md), エラー" class="select-row">
-                <option value="">選択してください</option>
-                <option value="1">選択肢1</option></select>
-            <select disabled aria-label="data-size: 未指定(md), 無効" class="select-row">
-                <option value="">選択してください</option></select>
-
-            <select data-size="sm" aria-label="data-size: sm" class="select-row">
-                <option value="">選択してください</option>
-                <option value="1">選択肢1</option></select>
-            <select data-size="sm" aria-invalid="true" aria-label="data-size: sm, エラー" class="select-row">
-                <option value="">選択してください</option>
-                <option value="1">選択肢1</option></select>
-            <select data-size="sm" disabled aria-label="data-size: sm, 無効" class="select-row">
-                <option value="">選択してください</option></select>
-
-            <div class="select-meta">select[multiple]</div>
-            <select multiple aria-label="複数選択" class="select-row">
-                <option value="1">選択肢1</option>
-                <option value="2">選択肢2</option>
-                <option value="3">選択肢3</option>
-                <option value="4">選択肢4</option>
-                <option value="5">選択肢5</option></select></section>
-
-        <h2 id="main_h2-19" aria-label="example usage of table">Table</h2>
-        <section aria-labelledby="main_h2-19">
-            <!-- 通常 -->
-            <table>
-                <thead>
-                    <tr>
-                        <th scope="col">ラベル</th>
-                        <th scope="col">ラベル</th>
-                        <th scope="col">ラベル</th>
-                        <th scope="col">ラベル</th></tr></thead>
-                <tbody>
-                    <tr>
-                        <td>データ</td>
-                        <td>データ</td>
-                        <td>データ</td>
-                        <td>データ</td></tr>
-                    <tr>
-                        <td>データ</td>
-                        <td>データ</td>
-                        <td>データ</td>
-                        <td>データ</td></tr></tbody></table>
-
-            <!-- ストライプ・デンス -->
-            <table data-stripe data-border="bottom" data-type="dense" style="margin-top: 2rem;">
-                <caption>ストライプ・デンスタイプ</caption>
-                <thead>
-                    <tr>
-                        <th scope="col">ラベル</th>
-                        <th scope="col">ラベル</th>
-                        <th scope="col">ラベル</th>
-                        <th scope="col">ラベル</th></tr></thead>
-                <tbody>
-                    <tr><td>データ</td><td>データ</td><td>データ</td><td>データ</td></tr>
-                    <tr><td>データ</td><td>データ</td><td>データ</td><td>データ</td></tr>
-                    <tr><td>データ</td><td>データ</td><td>データ</td><td>データ</td></tr></tbody></table>
-
-            <!-- tbody th (行ヘッダー) -->
-            <table data-border="bottom" style="margin-top: 2rem;">
-                <caption>行ヘッダー付き</caption>
-                <thead>
-                    <tr>
-                        <th scope="col">項目</th>
-                        <th scope="col">値A</th>
-                        <th scope="col">値B</th></tr></thead>
-                <tbody>
-                    <tr>
-                        <th scope="row">行1</th>
-                        <td>データ</td>
-                        <td>データ</td></tr>
-                    <tr>
-                        <th scope="row">行2</th>
-                        <td>データ</td>
-                        <td>データ</td></tr></tbody></table>
-
-            <!-- data-hover -->
-            <table data-hover data-border="bottom" style="margin-top: 2rem;">
-                <caption>ホバーハイライト</caption>
-                <thead>
-                    <tr>
-                        <th scope="col">ラベル</th>
-                        <th scope="col">ラベル</th>
-                        <th scope="col">ラベル</th></tr></thead>
-                <tbody>
-                    <tr><td>データ</td><td>データ</td><td>データ</td></tr>
-                    <tr><td>データ</td><td>データ</td><td>データ</td></tr>
-                    <tr><td>データ</td><td>データ</td><td>データ</td></tr></tbody></table>
-
-            <!-- data-selectable -->
-            <table data-selectable data-border="bottom" style="margin-top: 2rem;">
-                <caption>選択可能（チェックボックス）</caption>
-                <thead>
-                    <tr>
-                        <th scope="col"><label data-size="sm"><input type="checkbox" aria-label="すべて選択"></label></th>
-                        <th scope="col">ラベル</th>
-                        <th scope="col">ラベル</th></tr></thead>
-                <tbody>
-                    <tr>
-                        <td><label data-size="sm"><input type="checkbox" aria-label="行1を選択"></label></td>
-                        <td>データ</td>
-                        <td>データ</td></tr>
-                    <tr>
-                        <td><label data-size="sm"><input type="checkbox" aria-label="行2を選択" checked></label></td>
-                        <td>データ</td>
-                        <td>データ</td></tr></tbody></table>
-
-            <!-- data-sort -->
-            <table data-border="bottom" style="margin-top: 2rem;">
-                <caption>ソート（aria-sort: none / ascending / descending）</caption>
-                <thead>
-                    <tr>
-                        <th data-sort scope="col">
-                            名前
-                            <div>
-                                <button data-sort-direction="up" type="button" aria-label="名前 昇順"></button>
-                                <button data-sort-direction="down" type="button" aria-label="名前 降順"></button></div></th>
-                        <th data-sort aria-sort="ascending" scope="col">
-                            日付
-                            <div>
-                                <button data-sort-direction="up" type="button" aria-label="日付 昇順"></button>
-                                <button data-sort-direction="down" type="button" aria-label="日付 降順"></button></div></th>
-                        <th data-sort aria-sort="descending" scope="col">
-                            金額
-                            <div>
-                                <button data-sort-direction="up" type="button" aria-label="金額 昇順"></button>
-                                <button data-sort-direction="down" type="button" aria-label="金額 降順"></button></div></th></tr></thead>
-                <tbody>
-                    <tr>
-                        <td>山田 太郎</td>
-                        <td>2026-06-01</td>
-                        <td>¥12,000</td></tr>
-                    <tr>
-                        <td>佐藤 花子</td>
-                        <td>2026-06-02</td>
-                        <td>¥8,500</td></tr></tbody></table>
-
-            <!-- data-border="" (全セル格子) -->
-            <table data-border="" style="margin-top: 2rem;">
-                <caption>全セルボーダー</caption>
-                <thead>
-                    <tr>
-                        <th scope="col">ラベル</th>
-                        <th scope="col">ラベル</th>
-                        <th scope="col">ラベル</th></tr></thead>
-                <tbody>
-                    <tr><td>データ</td><td>データ</td><td>データ</td></tr>
-                    <tr><td>データ</td><td>データ</td><td>データ</td></tr></tbody></table></section>
-
-        <h2 id="main_h2-20" aria-label="example usage of textarea">Textarea</h2>
-        <section aria-labelledby="main_h2-20">
-            <div style="width:16rem">
-                <!-- data-size: lg / md(未指定) / sm -->
-                <textarea placeholder="data-size: lg" data-size="lg" aria-label="data-size: lg" style="margin-top:1rem;display:block"></textarea>
-                <textarea placeholder="data-size: 未指定(md)" aria-label="data-size: 未指定(md)" style="margin-top:1rem;display:block"></textarea>
-                <textarea placeholder="data-size: sm" data-size="sm" aria-label="data-size: sm" style="margin-top:1rem;display:block"></textarea>
-
-                <!-- エラー -->
-                <textarea style="margin-top:1rem;display:block" aria-invalid="true" aria-label="エラー"></textarea>
-
-                <!-- 読み取り専用 -->
-                <textarea style="margin-top:1rem;display:block" readonly aria-label="読み取り専用">読み取り専用の値</textarea>
-
-                <!-- 無効 -->
-                <textarea style="margin-top:1rem;display:block" disabled aria-label="無効">無効</textarea>
-
-                <!-- data-textarea-counter -->
-                <textarea style="margin-top:1rem;display:block" aria-label="文字数カウンター付き" aria-describedby="main_textarea-counter-1" maxlength="100"></textarea>
-                <span id="main_textarea-counter-1" data-textarea-counter>0/100</span>
-
-                <!-- data-textarea-counter[data-exceeded] -->
-                <textarea style="margin-top:1rem;display:block" aria-label="文字数超過" aria-describedby="main_textarea-counter-2" maxlength="100">超過している場合の表示例です。</textarea>
-                <span id="main_textarea-counter-2" data-textarea-counter data-exceeded>105/100</span></div></section>
-
-        <h2 id="main_h2-21" aria-label="example usage of toggle">Toggle</h2>
-        <section aria-labelledby="main_h2-21">
-            <label data-size="lg">
-                <span>label text</span>
-                <input type="checkbox" role="switch"></label>
+                <summary>Summary</summary>
+                <p>Details</p></details></section>
+        <section data-style="rule-indent">
+            <h3>[data-size]</h3>
+            <button data-size="xs">Button</button>
+            <button data-size="sm">Button</button>
+            <button data-size="md">Button</button>
+            <button data-size="lg">Button</button>
+            <button data-size="xl">Button</button>
+            <button data-size="2xl">Button</button>
+            <a href="#anchor" data-size="xs">Anchor</a>
+            <a href="#anchor" data-size="sm">Anchor</a>
+            <a href="#anchor" data-size="md">Anchor</a>
+            <a href="#anchor" data-size="lg">Anchor</a>
+            <a href="#anchor" data-size="xl">Anchor</a>
+            <a href="#anchor" data-size="2xl">Anchor</a>
+            <details>
+                <summary data-size="xs">Summary</summary>
+                <p>Details</p></details>
+            <details>
+                <summary data-size="sm">Summary</summary>
+                <p>Details</p></details>
+            <details>
+                <summary data-size="md">Summary</summary>
+                <p>Details</p></details>
+            <details>
+                <summary data-size="lg">Summary</summary>
+                <p>Details</p></details>
+            <details>
+                <summary data-size="xl">Summary</summary>
+                <p>Details</p></details>
+            <details>
+                <summary data-size="2xl">Summary</summary>
+                <p>Details</p></details></section>
+        <section data-style="rule-indent">
+            <h3>[data-style="fill"], [data-style="outline"], [data-style="underline"]</h3>
+            <button type="button" data-style="outline">Button</button>
+            <button type="button" data-style="underline">Button</button>
+            <a href="#anchor" data-style="fill">Anchor</a>
+            <a href="#anchor" data-style="outline">Anchor</a>
+            <details  data-axis="inline">
+                <summary data-style="fill">Summary</summary>
+                <p>Details</p></details>
+            <details>
+                <summary data-style="outline">Summary</summary>
+                <p>Details</p></details></section>
+        <section data-style="rule-indent">
+            <h3>:disabled, [aria-disabled="true"]</h3>
+            <button disabled>Button</button>
+            <a href="#anchor" aria-disabled="true" tabindex="-1">Anchor</a>
+            <details>
+                <summary aria-disabled="true" tabindex="-1">Summary</summary>
+                <p>Details</p></details></section></section>
+    <section data-style="rule-indent">
+        <h2>Toggle button (input[type="checkbox"][role="switch"])</h2>
+        <section data-style="rule-indent">
             <label>
-                <span>label text</span>
+                <span>inline</span>
                 <input type="checkbox" role="switch"></label>
-            <label data-size="sm">
-                <span>label text</span>
-                <input type="checkbox" role="switch"></label>
-            <label data-size="xs">
-                <span>label text</span>
-                <input type="checkbox" role="switch"></label>
-            <label data-type="knob-only" data-size="sm">
-                <span>knob only clickable</span>
-                <input type="checkbox" role="switch"></label>
-            <label data-type="label-above" data-size="lg">
-                <span>label text</span>
-                <input type="checkbox" role="switch"></label></section></main>
+            <label data-axis="block" data-type="knob-only">
+                <span>inline</span>
+                <input type="checkbox" role="switch"></label></section>
+        <section data-style="rule-indent">
+            <h3>[data-size]</h3>
+            <label>
+                <span>inline</span>
+                <input type="checkbox" role="switch" data-size="xs"></label>
+            <label>
+                <span>inline</span>
+                <input type="checkbox" role="switch" data-size="sm"></label>
+            <label>
+                <span>inline</span>
+                <input type="checkbox" role="switch" data-size="md"></label>
+            <label>
+                <span>inline</span>
+                <input type="checkbox" role="switch" data-size="lg"></label>
+            <label>
+                <span>inline</span>
+                <input type="checkbox" role="switch" data-size="xl"></label>
+            <label>
+                <span>inline</span>
+                <input type="checkbox" role="switch" data-size="2xl"></label></section>
+        <section data-style="rule-indent">
+            <h3>:disabled, [aria-disabled="true"]</h3>
+            <label>
+                <span>inline</span>
+                <input type="checkbox" role="switch" data-size="2xl" disabled></label>
+            <label>
+                <span>inline</span>
+                <input type="checkbox" role="switch" data-size="2xl" checked disabled></label></section>
 
+    </section>
+
+    <section data-style="rule-indent">
+        <h2>Checkbox</h2>
+        <section data-style="rule-indent">
+            <label>
+                <span>inline</span>
+                <input type="checkbox"></label>
+            <label>
+                <span>inline</span>
+                <input type="checkbox" checked></label>
+            <label>
+                <span>inline</span>
+                <input type="checkbox" data-indeterminate></label></section>
+        <section data-style="rule-indent">
+            <label>
+                <span>inline</span>
+                <input type="checkbox" data-size="xs"></label>
+            <label>
+                <span>inline</span>
+                <input type="checkbox" data-size="sm"></label>
+            <label>
+                <span>inline</span>
+                <input type="checkbox" data-size="md"></label>
+            <label>
+                <span>inline</span>
+                <input type="checkbox" data-size="lg"></label>
+            <label>
+                <span>inline</span>
+                <input type="checkbox" data-size="xl"></label>
+            <label>
+                <span>inline</span>
+                <input type="checkbox" data-size="2xl"></label></section>
+        <section data-style="rule-indent">
+            <label>
+                <span>inline</span>
+                <input type="checkbox" aria-invalid="true"></label>
+            <label>
+                <span>inline</span>
+                <input type="checkbox" aria-invalid="true" checked></label>
+            <label>
+                <span>inline</span>
+                <input type="checkbox" disabled></label>
+            <label>
+                <span>inline</span>
+                <input type="checkbox" checked disabled></label></section></section>
+
+    <section data-style="rule-indent">
+        <h2>Radio button</h2>
+        <section data-style="rule-indent">
+            <label>
+                <span>inline</span>
+                <input type="radio" name="r"></label>
+            <label>
+                <span>inline</span>
+                <input type="radio" name="r" checked></label></section>
+        <section data-style="rule-indent">
+            <label>
+                <span>inline</span>
+                <input type="radio" name="r-size" data-size="xs"></label>
+            <label>
+                <span>inline</span>
+                <input type="radio" name="r-size" data-size="sm"></label>
+            <label>
+                <span>inline</span>
+                <input type="radio" name="r-size" data-size="md"></label>
+            <label>
+                <span>inline</span>
+                <input type="radio" name="r-size" data-size="lg"></label>
+            <label>
+                <span>inline</span>
+                <input type="radio" name="r-size" data-size="xl"></label>
+            <label>
+                <span>inline</span>
+                <input type="radio" name="r-size" data-size="2xl"></label></section>
+        <section data-style="rule-indent">
+            <label>
+                <span>inline</span>
+                <input type="radio" name="r-state" aria-invalid="true"></label>
+            <label>
+                <span>inline</span>
+                <input type="radio" name="r-state" aria-invalid="true" checked></label>
+            <label>
+                <span>inline</span>
+                <input type="radio" name="r-disabled" disabled></label>
+            <label>
+                <span>inline</span>
+                <input type="radio" name="r-disabled" checked disabled></label></section></section>
+
+    <section data-style="rule-indent">
+        <h2>Slider (input[type="range"])</h2>
+        <section data-style="rule-indent">
+            <input type="range" min="0" max="100" step="10" value="20">
+            <input type="range" min="0" max="100" step="10" value="60"></section>
+        <section data-style="rule-indent">
+            <h3>[data-size]</h3>
+            <input type="range" data-size="xs" value="20">
+            <input type="range" data-size="sm" value="30">
+            <input type="range" data-size="md" value="40">
+            <input type="range" data-size="lg" value="60">
+            <input type="range" data-size="xl" value="80">
+            <input type="range" data-size="2xl" value="90"></section>
+        <section data-style="rule-indent">
+            <h3>label &gt; input[type="range"] ([data-text-min], [data-text-max])</h3>
+            <label data-axis="block" data-text-min="0" data-text-max="100">
+                <span>inline</span>
+                <input type="range" min="0" max="100" step="10" value="20"></label>
+            <label data-axis="block" data-text-min="less expensive" data-text-max="more expensive">
+                <span>inline</span>
+                <input type="range" min="0" max="100" step="20" value="40"></label></section>
+        <section data-style="rule-indent">
+            <h3>:user-invalid, [aria-invalid="true"]</h3>
+            <input type="range" value="50" aria-invalid="true"></section>
+        <section data-style="rule-indent">
+            <h3>:disabled, [aria-disabled="true"]</h3>
+            <input type="range" value="50" disabled>
+            <input type="range" value="50" aria-disabled="true"></section></section>
+
+    <section data-style="rule-indent">
+        <h2>Step button (button[data-action] + input[role="spinbutton"])</h2>
+        <section data-style="rule-indent">
+            <label>
+                <button type="button" data-action="decrement"></button>
+                <input type="text" inputmode="numeric" pattern="[0-9]*" role="spinbutton" value="10" size="4">
+                <button type="button" data-action="increment"></button></label></section>
+        <section data-style="rule-indent">
+            <h3>[data-size]</h3>
+            <label>
+                <button type="button" data-action="decrement" data-size="xs"></button>
+                <input type="text" inputmode="numeric" pattern="[0-9]*" role="spinbutton" value="10" size="3" data-size="xs">
+                <button type="button" data-action="increment" data-size="xs"></button></label>
+            <label>
+                <button type="button" data-action="decrement" data-size="sm"></button>
+                <input type="text" inputmode="numeric" pattern="[0-9]*" role="spinbutton" value="10" size="3" data-size="sm">
+                <button type="button" data-action="increment" data-size="sm"></button></label>
+            <label>
+                <button type="button" data-action="decrement" data-size="md"></button>
+                <input type="text" inputmode="numeric" pattern="[0-9]*" role="spinbutton" value="10" size="3" data-size="md">
+                <button type="button" data-action="increment" data-size="md"></button></label>
+            <label>
+                <button type="button" data-action="decrement" data-size="lg"></button>
+                <input type="text" inputmode="numeric" pattern="[0-9]*" role="spinbutton" value="10" size="3" data-size="lg">
+                <button type="button" data-action="increment" data-size="lg"></button></label>
+            <label>
+                <button type="button" data-action="decrement" data-size="xl"></button>
+                <input type="text" inputmode="numeric" pattern="[0-9]*" role="spinbutton" value="10" size="3" data-size="xl">
+                <button type="button" data-action="increment" data-size="xl"></button></label>
+            <label>
+                <button type="button" data-action="decrement" data-size="2xl"></button>
+                <input type="text" inputmode="numeric" pattern="[0-9]*" role="spinbutton" value="10" size="3" data-size="2xl">
+                <button type="button" data-action="increment" data-size="2xl"></button></label></section>
+        <section data-style="rule-indent">
+            <h3>label[data-axis="block"]</h3>
+            <label data-axis="block">
+                <input type="text" inputmode="numeric" pattern="[0-9]*" role="spinbutton" value="10" size="4">
+                <button type="button" data-action="increment"></button>
+                <button type="button" data-action="decrement"></button></label>
+            <label data-axis="block">
+                <input type="text" inputmode="numeric" pattern="[0-9]*" role="spinbutton" value="10" size="4" data-size="lg">
+                <button type="button" data-action="increment" data-size="lg"></button>
+                <button type="button" data-action="decrement" data-size="lg"></button></label></section>
+        <section data-style="rule-indent">
+            <h3>button[data-action] (:empty ではない場合、記号は描かない)</h3>
+            <label>
+                <button type="button" data-action="decrement">減</button>
+                <input type="text" inputmode="numeric" pattern="[0-9]*" role="spinbutton" value="10" size="4">
+                <button type="button" data-action="increment">増</button></label></section>
+        <section data-style="rule-indent">
+            <h3>[data-style="outline"]</h3>
+            <label>
+                <button type="button" data-action="decrement" data-style="outline"></button>
+                <input type="text" inputmode="numeric" pattern="[0-9]*" role="spinbutton" value="10" size="4">
+                <button type="button" data-action="increment" data-style="outline"></button></label></section>
+        <section data-style="rule-indent">
+            <h3>:user-invalid, [aria-invalid="true"]</h3>
+            <label>
+                <button type="button" data-action="decrement"></button>
+                <input type="text" inputmode="numeric" pattern="[0-9]*" role="spinbutton" value="10" size="4" aria-invalid="true">
+                <button type="button" data-action="increment"></button></label></section>
+        <section data-style="rule-indent">
+            <h3>:disabled, [aria-disabled="true"]</h3>
+            <label>
+                <button type="button" data-action="decrement" disabled></button>
+                <input type="text" inputmode="numeric" pattern="[0-9]*" role="spinbutton" value="10" size="4" disabled>
+                <button type="button" data-action="increment" disabled></button></label>
+            <label>
+                <button type="button" data-action="decrement" aria-disabled="true"></button>
+                <input type="text" inputmode="numeric" pattern="[0-9]*" role="spinbutton" value="10" size="4" aria-disabled="true">
+                <button type="button" data-action="increment" aria-disabled="true"></button></label></section></section>
+
+    <section data-style="rule-indent">
+        <h2>Error (section[data-type="error-summary"], p[data-type="error"])</h2>
+        <section data-style="rule-indent">
+            <h3>section[data-type="error-summary"]</h3>
+            <section role="alert" data-type="error-summary" aria-labelledby="error-summary-heading-1">
+                <h2 id="error-summary-heading-1">入力内容に問題があります</h2>
+                <ul>
+                    <li><a href="#error-name">氏名を入力してください</a></li>
+                    <li><a href="#error-dob">生年月日は実在する日付を入力してください</a></li></ul></section></section>
+        <section data-style="rule-indent">
+            <h3>section[data-type="error-summary"] &gt; p (説明つき)</h3>
+            <section role="alert" data-type="error-summary" aria-labelledby="error-summary-heading-2">
+                <h2 id="error-summary-heading-2">入力内容に問題があります</h2>
+                <p>次の項目を修正してから、もう一度送信してください。</p>
+                <ul>
+                    <li><a href="#error-name">氏名を入力してください</a></li></ul></section></section>
+        <section data-style="rule-indent">
+            <h3>p[data-type="error"]</h3>
+            <label for="error-name">氏名</label>
+            <p data-type="error" id="error-name-message"><strong>エラー:</strong> 氏名を入力してください</p>
+            <input type="text" id="error-name" aria-describedby="error-name-message" aria-invalid="true"></section>
+        <section data-style="rule-indent">
+            <h3>legend + p[data-type="error"]</h3>
+            <fieldset aria-describedby="error-dob-message" aria-invalid="true">
+                <legend>生年月日</legend>
+                <p data-type="error" id="error-dob-message"><strong>エラー:</strong> 生年月日は実在する日付を入力してください</p>
+                <input type="text" id="error-dob" inputmode="numeric" pattern="[0-9]*" size="4" aria-invalid="true"></fieldset></section></section>
+
+    <section data-style="rule-indent">
+        <h2>Heading</h2>
+        <section data-style="rule-indent">
+            <h1>H1</h1>
+            <h2>H2</h2>
+            <h3>H3</h3>
+            <h4>H4</h4>
+            <h5>H5</h5>
+            <h6>H6</h6>
+            <hgroup>
+                <h1>H1</h1>
+                <p>P</p></hgroup></section>
+        <section data-style="rule-indent">
+            <h3>[data-axis="inline"]</h3>
+            <hgroup data-axis="inline">
+                <h1>H1</h1>
+                <p>Subtitle</p></hgroup>
+            <hgroup data-axis="inline">
+                <h2>H2</h2>
+                <p>Subtitle</p></hgroup>
+            <hgroup data-axis="inline">
+                <h3>H3</h3>
+                <p>Subtitle</p></hgroup>
+            <hgroup data-axis="inline">
+                <h4>H4</h4>
+                <p>Subtitle</p></hgroup></section>
+        <section data-style="rule-indent">
+            <h3>[data-size]</h3>
+            <hgroup data-axis="inline" data-size="sm">
+                <h1>H1 sm</h1>
+                <p>Subtitle</p></hgroup>
+            <hgroup data-axis="inline" data-size="2xl">
+                <h3>H3 2xl</h3>
+                <p>Subtitle</p></hgroup></section></section>
+
+    <section data-style="rule-indent">
+        <h2>Search</h2>
+        <section data-style="rule-indent">
+            <h3>search (button[type="button"])</h3>
+            <search aria-labelledby="search-a">
+                <span id="search-a">Inline text</span>
+                <label>
+                    <input type="search" aria-label="Search"></label>
+                <button type="button">Search</button></search>
+            <search aria-label="Search">
+                <label>
+                    <input type="search" aria-label="Search"></label>
+                <button type="button">Search</button></search></section>
+        <section data-style="rule-indent">
+            <h3>form[role="search"] (button[type="submit"])</h3>
+            <form role="search" aria-labelledby="search-b">
+                <span id="search-b">Inline text</span>
+                <label>
+                    <input type="search" name="q" aria-label="Search"></label>
+                <button type="submit">Search</button></form>
+            <form role="search" aria-label="Search">
+                <label>
+                    <input type="search" name="q" aria-label="Search"></label>
+                <button type="submit">Search</button></form></section>
+        <section data-style="rule-indent">
+            <h3>search &gt; label &gt; select (button[type="button"])</h3>
+            <search aria-labelledby="search-c">
+                <span id="search-c">Inline text</span>
+                <label>
+                    <select aria-label="Search scope">
+                        <option>All</option>
+                        <option>Title</option>
+                        <option>Body</option></select></label>
+                <label>
+                    <input type="search" aria-label="Search"></label>
+                <button type="button">Search</button></search>
+            <search aria-label="Search">
+                <label>
+                    <select aria-label="Search scope">
+                        <option>All</option>
+                        <option>Title</option>
+                        <option>Body</option></select></label>
+                <label>
+                    <input type="search" aria-label="Search"></label>
+                <button type="button">Search</button></search></section>
+        <section data-style="rule-indent">
+            <h3>form[role="search"] &gt; label &gt; select (button[type="submit"])</h3>
+            <form role="search" aria-labelledby="search-d">
+                <span id="search-d">Inline text</span>
+                <label>
+                    <select name="scope" aria-label="Search scope">
+                        <option>All</option>
+                        <option>Title</option>
+                        <option>Body</option></select></label>
+                <label>
+                    <input type="search" name="q" aria-label="Search"></label>
+                <button type="submit">Search</button></form>
+            <form role="search" aria-label="Search">
+                <label>
+                    <select name="scope" aria-label="Search scope">
+                        <option>All</option>
+                        <option>Title</option>
+                        <option>Body</option></select></label>
+                <label>
+                    <input type="search" name="q" aria-label="Search"></label>
+                <button type="submit">Search</button></form></section>
+        <section data-style="rule-indent">
+            <h3>[data-size]</h3>
+            <search aria-label="Search xs">
+                <label>
+                    <select data-size="xs" aria-label="Search scope">
+                        <option>All</option>
+                        <option>Title</option></select></label>
+                <label>
+                    <input type="search" data-size="xs" aria-label="Search"></label>
+                <button type="button" data-size="xs">Search</button></search>
+            <search aria-label="Search sm">
+                <label>
+                    <select data-size="sm" aria-label="Search scope">
+                        <option>All</option>
+                        <option>Title</option></select></label>
+                <label>
+                    <input type="search" data-size="sm" aria-label="Search"></label>
+                <button type="button" data-size="sm">Search</button></search>
+            <search aria-label="Search md">
+                <label>
+                    <select data-size="md" aria-label="Search scope">
+                        <option>All</option>
+                        <option>Title</option></select></label>
+                <label>
+                    <input type="search" data-size="md" aria-label="Search"></label>
+                <button type="button" data-size="md">Search</button></search>
+            <search aria-label="Search lg">
+                <label>
+                    <select data-size="lg" aria-label="Search scope">
+                        <option>All</option>
+                        <option>Title</option></select></label>
+                <label>
+                    <input type="search" data-size="lg" aria-label="Search"></label>
+                <button type="button" data-size="lg">Search</button></search>
+            <search aria-label="Search xl">
+                <label>
+                    <select data-size="xl" aria-label="Search scope">
+                        <option>All</option>
+                        <option>Title</option></select></label>
+                <label>
+                    <input type="search" data-size="xl" aria-label="Search"></label>
+                <button type="button" data-size="xl">Search</button></search>
+            <search aria-label="Search 2xl">
+                <label>
+                    <select data-size="2xl" aria-label="Search scope">
+                        <option>All</option>
+                        <option>Title</option></select></label>
+                <label>
+                    <input type="search" data-size="2xl" aria-label="Search"></label>
+                <button type="button" data-size="2xl">Search</button></search></section></section>
+
+    <section data-style="rule-indent">
+        <h2>Table</h2>
+        <section data-style="rule-indent">
+            <table>
+                <caption>Caption</caption>
+                <thead>
+                    <tr>
+                        <th scope="col">Head</th>
+                        <th scope="col">Head</th>
+                        <th scope="col">Head</th></tr></thead>
+                <tbody>
+                    <tr>
+                        <th scope="row">Row</th>
+                        <td>Cell</td>
+                        <td>Cell</td></tr>
+                    <tr>
+                        <th scope="row">Row</th>
+                        <td>Cell</td>
+                        <td>Cell</td></tr>
+                    <tr>
+                        <th scope="row">Row</th>
+                        <td>Cell</td>
+                        <td>Cell</td></tr></tbody></table></section>
+        <section data-style="rule-indent">
+            <h3>[data-border]</h3>
+            <table data-border="">
+                <caption>All four edges of every cell</caption>
+                <thead>
+                    <tr>
+                        <th scope="col">Head</th>
+                        <th scope="col">Head</th>
+                        <th scope="col">Head</th></tr></thead>
+                <tbody>
+                    <tr>
+                        <th scope="row">Row</th>
+                        <td>Cell</td>
+                        <td>Cell</td></tr>
+                    <tr>
+                        <th scope="row">Row</th>
+                        <td>Cell</td>
+                        <td>Cell</td></tr>
+                    <tr>
+                        <th scope="row">Row</th>
+                        <td>Cell</td>
+                        <td>Cell</td></tr></tbody></table>
+            <table data-border="block-start">
+                <caption>Top edge of every cell: rules between rows</caption>
+                <thead>
+                    <tr>
+                        <th scope="col">Head</th>
+                        <th scope="col">Head</th>
+                        <th scope="col">Head</th></tr></thead>
+                <tbody>
+                    <tr>
+                        <th scope="row">Row</th>
+                        <td>Cell</td>
+                        <td>Cell</td></tr>
+                    <tr>
+                        <th scope="row">Row</th>
+                        <td>Cell</td>
+                        <td>Cell</td></tr>
+                    <tr>
+                        <th scope="row">Row</th>
+                        <td>Cell</td>
+                        <td>Cell</td></tr></tbody></table>
+            <table data-border="block-end">
+                <caption>Bottom edge of every cell: rules between rows</caption>
+                <thead>
+                    <tr>
+                        <th scope="col">Head</th>
+                        <th scope="col">Head</th>
+                        <th scope="col">Head</th></tr></thead>
+                <tbody>
+                    <tr>
+                        <th scope="row">Row</th>
+                        <td>Cell</td>
+                        <td>Cell</td></tr>
+                    <tr>
+                        <th scope="row">Row</th>
+                        <td>Cell</td>
+                        <td>Cell</td></tr>
+                    <tr>
+                        <th scope="row">Row</th>
+                        <td>Cell</td>
+                        <td>Cell</td></tr></tbody></table>
+            <table data-border="inline-start">
+                <caption>Leading edge of every cell: rules between columns</caption>
+                <thead>
+                    <tr>
+                        <th scope="col">Head</th>
+                        <th scope="col">Head</th>
+                        <th scope="col">Head</th></tr></thead>
+                <tbody>
+                    <tr>
+                        <th scope="row">Row</th>
+                        <td>Cell</td>
+                        <td>Cell</td></tr>
+                    <tr>
+                        <th scope="row">Row</th>
+                        <td>Cell</td>
+                        <td>Cell</td></tr>
+                    <tr>
+                        <th scope="row">Row</th>
+                        <td>Cell</td>
+                        <td>Cell</td></tr></tbody></table>
+            <table data-border="inline-end">
+                <caption>Trailing edge of every cell: rules between columns</caption>
+                <thead>
+                    <tr>
+                        <th scope="col">Head</th>
+                        <th scope="col">Head</th>
+                        <th scope="col">Head</th></tr></thead>
+                <tbody>
+                    <tr>
+                        <th scope="row">Row</th>
+                        <td>Cell</td>
+                        <td>Cell</td></tr>
+                    <tr>
+                        <th scope="row">Row</th>
+                        <td>Cell</td>
+                        <td>Cell</td></tr>
+                    <tr>
+                        <th scope="row">Row</th>
+                        <td>Cell</td>
+                        <td>Cell</td></tr></tbody></table>
+            <table data-border="block-end inline-end">
+                <caption>Two edges combined: space-separated values</caption>
+                <thead>
+                    <tr>
+                        <th scope="col">Head</th>
+                        <th scope="col">Head</th>
+                        <th scope="col">Head</th></tr></thead>
+                <tbody>
+                    <tr>
+                        <th scope="row">Row</th>
+                        <td>Cell</td>
+                        <td>Cell</td></tr>
+                    <tr>
+                        <th scope="row">Row</th>
+                        <td>Cell</td>
+                        <td>Cell</td></tr>
+                    <tr>
+                        <th scope="row">Row</th>
+                        <td>Cell</td>
+                        <td>Cell</td></tr></tbody></table></section>
+        <section data-style="rule-indent">
+            <h3>[data-stripe], [data-hover], [data-selectable]</h3>
+            <table data-stripe>
+                <caption>Caption</caption>
+                <thead>
+                    <tr>
+                        <th scope="col">Head</th>
+                        <th scope="col">Head</th>
+                        <th scope="col">Head</th></tr></thead>
+                <tbody>
+                    <tr>
+                        <th scope="row">Row</th>
+                        <td>Cell</td>
+                        <td>Cell</td></tr>
+                    <tr>
+                        <th scope="row">Row</th>
+                        <td>Cell</td>
+                        <td>Cell</td></tr>
+                    <tr>
+                        <th scope="row">Row</th>
+                        <td>Cell</td>
+                        <td>Cell</td></tr></tbody></table>
+            <table data-hover>
+                <caption>Caption</caption>
+                <thead>
+                    <tr>
+                        <th scope="col">Head</th>
+                        <th scope="col">Head</th>
+                        <th scope="col">Head</th></tr></thead>
+                <tbody>
+                    <tr>
+                        <th scope="row">Row</th>
+                        <td>Cell</td>
+                        <td>Cell</td></tr>
+                    <tr>
+                        <th scope="row">Row</th>
+                        <td>Cell</td>
+                        <td>Cell</td></tr>
+                    <tr>
+                        <th scope="row">Row</th>
+                        <td>Cell</td>
+                        <td>Cell</td></tr></tbody></table>
+            <table data-border="" data-selectable>
+                <caption>Caption</caption>
+                <thead>
+                    <tr>
+                        <th scope="col">
+                            <label>
+                                <input type="checkbox" aria-label="Select all" data-size="sm"></label></th>
+                        <th scope="col">Head</th>
+                        <th scope="col">Head</th></tr></thead>
+                <tbody>
+                    <tr>
+                        <td>
+                            <label>
+                                <input type="checkbox" aria-label="Select row" data-size="sm"></label></td>
+                        <td>Cell</td>
+                        <td>Cell</td></tr>
+                    <tr>
+                        <td>
+                            <label>
+                                <input type="checkbox" checked aria-label="Select row" data-size="sm"></label></td>
+                        <td>Cell</td>
+                        <td>Cell</td></tr></tbody></table></section>
+        <section data-style="rule-indent">
+            <h3>th > label > input[type="radio"] (sort)</h3>
+            <table data-border="">
+                <caption>Caption</caption>
+                <thead>
+                    <tr>
+                        <th scope="col" aria-sort="ascending">Head
+                            <span data-axis="block">
+                                <label>
+                                    <input type="radio" name="sort-1" value="a-asc" aria-label="Sort ascending" checked></label>
+                                <label>
+                                    <input type="radio" name="sort-1" value="a-desc" aria-label="Sort descending"></label></span></th>
+                        <th scope="col" aria-sort="none">Head
+                            <span data-axis="block">
+                                <label>
+                                    <input type="radio" name="sort-1" value="b-asc" aria-label="Sort ascending"></label>
+                                <label>
+                                    <input type="radio" name="sort-1" value="b-desc" aria-label="Sort descending"></label></span></th></tr></thead>
+                <tbody>
+                    <tr>
+                        <td>Cell</td>
+                        <td>Cell</td></tr>
+                    <tr>
+                        <td>Cell</td>
+                        <td>Cell</td></tr></tbody></table></section>
+        <section data-style="rule-indent">
+            <h3>[data-size]</h3>
+            <table data-border="" data-size="xs">
+                <caption>Caption</caption>
+                <thead>
+                    <tr>
+                        <th scope="col">Head</th>
+                        <th scope="col">Head</th>
+                        <th scope="col">Head</th></tr></thead>
+                <tbody>
+                    <tr>
+                        <th scope="row">Row</th>
+                        <td>Cell</td>
+                        <td>Cell</td></tr>
+                    <tr>
+                        <th scope="row">Row</th>
+                        <td>Cell</td>
+                        <td>Cell</td></tr>
+                    <tr>
+                        <th scope="row">Row</th>
+                        <td>Cell</td>
+                        <td>Cell</td></tr></tbody></table>
+            <table data-border="" data-size="sm">
+                <caption>Caption</caption>
+                <thead>
+                    <tr>
+                        <th scope="col">Head</th>
+                        <th scope="col">Head</th>
+                        <th scope="col">Head</th></tr></thead>
+                <tbody>
+                    <tr>
+                        <th scope="row">Row</th>
+                        <td>Cell</td>
+                        <td>Cell</td></tr>
+                    <tr>
+                        <th scope="row">Row</th>
+                        <td>Cell</td>
+                        <td>Cell</td></tr>
+                    <tr>
+                        <th scope="row">Row</th>
+                        <td>Cell</td>
+                        <td>Cell</td></tr></tbody></table>
+            <table data-border="" data-size="lg">
+                <caption>Caption</caption>
+                <thead>
+                    <tr>
+                        <th scope="col">Head</th>
+                        <th scope="col">Head</th>
+                        <th scope="col">Head</th></tr></thead>
+                <tbody>
+                    <tr>
+                        <th scope="row">Row</th>
+                        <td>Cell</td>
+                        <td>Cell</td></tr>
+                    <tr>
+                        <th scope="row">Row</th>
+                        <td>Cell</td>
+                        <td>Cell</td></tr>
+                    <tr>
+                        <th scope="row">Row</th>
+                        <td>Cell</td>
+                        <td>Cell</td></tr></tbody></table>
+            <table data-border="" data-size="2xl">
+                <caption>Caption</caption>
+                <thead>
+                    <tr>
+                        <th scope="col">Head</th>
+                        <th scope="col">Head</th>
+                        <th scope="col">Head</th></tr></thead>
+                <tbody>
+                    <tr>
+                        <th scope="row">Row</th>
+                        <td>Cell</td>
+                        <td>Cell</td></tr>
+                    <tr>
+                        <th scope="row">Row</th>
+                        <td>Cell</td>
+                        <td>Cell</td></tr>
+                    <tr>
+                        <th scope="row">Row</th>
+                        <td>Cell</td>
+                        <td>Cell</td></tr></tbody></table></section></section>
+
+    <section data-style="rule-indent">
+        <h2>Blockquote</h2>
+        <figure data-style="rule-indent">
+            <blockquote>
+                <p>"I will cast the dark shadows of human life over you without reserve. But you must not be afraid."</p></blockquote>
+            <figcaption>Soseki Natsume. 1914. <cite>Kokoro</cite>. Iwanami Shoten, Tokyo, Japan. Translated by Andyou, 2026.</figcaption></section>
 </body></html>

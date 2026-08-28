@@ -1,0 +1,162 @@
+/* error: a summary of what went wrong, and the message beside each answer. */
+
+/*  the two are one pattern and must be used together (per GDS): a summary at
+    the top of the page, and a message next to every answer it names. the
+    wording in the two has to match.
+
+    error summary: the root is a section, not a div, and the parts are named by
+    their element rather than by a class. it carries role="alert" itself: the
+    role is split off into a child in govuk-frontend only to work around a race
+    with scripted focus movement (PR #2677), and nothing here moves focus, so a
+    single element is enough.
+
+    <section role="alert" data-type="error-summary" aria-labelledby="error-heading">
+        <h2 id="error-heading">There is a problem</h2>
+        <p>optional description</p>
+        <ul>
+            <li><a href="#name">Enter your name</a></li>
+            <li><a href="#dob-day">Date of birth must be a real date</a></li></ul></section>
+
+    error message: the field's own message, tied to the control by
+    aria-describedby so it is read as part of the control.
+
+    the "Error:" prefix is shown, not hidden: a visually hidden copy says the
+    thing to one reader and nothing to another, and generated content is not
+    dependable for information that matters. so it is written in the markup, in
+    a strong, where everyone gets it.
+
+    <label for="name">Name</label>
+    <p data-type="error" id="name-error"><strong>Error:</strong> Enter your name</p>
+    <input type="text" id="name" aria-describedby="name-error" aria-invalid="true">
+
+    the red border that ties a message to its control is already set by
+    css.input on :user-invalid and [aria-invalid="true"]. */
+
+@layer css.error {
+
+    /* === field label (label[for], legend) === */
+
+    :is(label[for], legend) {
+        color:          var(--color-ink);
+        display:        block;
+        font-size:      var(--md-font-size);
+        font-weight:    bold;
+        letter-spacing: var(--md-letter-spacing);
+        line-height:    var(--md-line-height);
+        margin:         0 0 0.5rem 0;
+        padding:        0;
+    }
+
+    /* === error message (p[data-type="error"]) === */
+
+    /*  it sits after the question text and its hint, and before the control:
+        the answer is not reached until the reason it is wrong has been read. */
+
+    p[data-type="error"] {
+        clear:          both; /* per govuk: stay clear of a floated hint */
+        color:          var(--color-error);
+        display:        block;
+        font-size:      var(--md-font-size);
+        font-weight:    bold;
+        letter-spacing: var(--md-letter-spacing);
+        line-height:    var(--md-line-height);
+        margin:         0 0 0.5rem 0;
+    }
+
+    /* === error summary (section[data-type="error-summary"]) === */
+
+    /*  a border the width of a focus ring, not of a field: the summary is the
+        one thing on the page that has to be found without being looked for. */
+
+    section[data-type="error-summary"] {
+        border-color:   var(--color-error);
+        border-style:   solid;
+        border-width:   0.25rem;
+        color:          var(--color-ink);
+        font-size:      var(--md-font-size);
+        letter-spacing: var(--md-letter-spacing);
+        line-height:    var(--md-line-height);
+        margin-block:   0 1.5rem;
+        padding:        1rem;
+    }
+
+    section[data-type="error-summary"] > h2 {
+        font-size:      var(--lg-font-size);
+        font-weight:    bold;
+        letter-spacing: var(--lg-letter-spacing);
+        line-height:    var(--lg-line-height);
+        margin-block:   0 1rem;
+    }
+
+    section[data-type="error-summary"] > p {
+        margin-block: 0 1rem;
+    }
+
+    /*  the list is the summary: one line per answer, each a link to it. the
+        markers are dropped because a marker would be read before every one of
+        them, and the links already separate the lines. */
+
+    section[data-type="error-summary"] > ul {
+        list-style:   none;
+        margin-block: 0;
+        padding:      0;
+    }
+
+    section[data-type="error-summary"] > ul > li + li {
+        margin-block-start: 0.5rem;
+    }
+
+    /*  the last child sets no bottom margin: the section's own padding is the
+        space below it, and a margin there would be added to it. */
+
+    section[data-type="error-summary"] > *:last-child {
+        margin-block-end: 0;
+    }
+
+    /*  the link is bold and in the error colour: it is the error itself, not a
+        link that happens to sit in one. */
+
+    section[data-type="error-summary"] > ul > li > a {
+        color:                     var(--color-error);
+        font-weight:               bold;
+        text-decoration-color:     currentColor;
+        text-decoration-line:      underline;
+        text-decoration-thickness: 0.0625rem;
+        text-underline-offset:     0.3em;
+    }
+
+    /*  css.button styles every a:any-link without [data-style] in
+        --color-emphasis; the error colour has to hold through every state. */
+
+    section[data-type="error-summary"] > ul > li > a:is(:visited, :hover, :active) {
+        color: var(--color-error);
+    }
+
+    section[data-type="error-summary"] > ul > li > a:focus-visible {
+        outline-color:  var(--color-error);
+        outline-offset: 0;
+        outline-style:  solid;
+        outline-width:  0.25rem;
+    }
+
+    /* === forced-colors === */
+
+    /*  the error colour is replaced under forced colours, so the cue moves to
+        Mark, the system colour for something called out. */
+
+    @media (forced-colors: active) {
+        p[data-type="error"] {
+            color: Mark;
+        }
+        section[data-type="error-summary"] {
+            border-color: Mark;
+        }
+        section[data-type="error-summary"] > ul > li > a,
+        section[data-type="error-summary"] > ul > li > a:is(:visited, :hover, :active) {
+            color: LinkText;
+        }
+        section[data-type="error-summary"] > ul > li > a:focus-visible {
+            outline-color: Highlight;
+        }
+    }
+}

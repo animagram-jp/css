@@ -10,9 +10,9 @@
         padding-inline-start: 1rem;
         padding-inline-end: 3rem;
         border-radius: 0.5rem;
-        border: 0.125rem solid var(--color-muted);
+        border: 0.125rem solid var(--color-mute);
         background-color: transparent;
-        color: rgb(var(--rgb-ink));
+        color: var(--color-ink);
         font: inherit;
         line-height: 1;
         letter-spacing: 0.02em;
@@ -86,12 +86,12 @@
         max-height: calc((8 + 44 * 6.5) / 16 * 1rem);
         overflow-y: auto;
         border-radius: 0.5rem;
-        border: 0.125rem solid var(--color-muted);
+        border: 0.125rem solid var(--color-mute);
         background-color: var(--color-background);
         padding: 0.5rem 0;
         box-shadow: var(--elevation-1);
         list-style-type: none;
-        color: rgb(var(--rgb-ink));
+        color: var(--color-ink);
         font-weight: normal;
         font-size: var(--md-font-size);
         line-height: var(--md-line-height);

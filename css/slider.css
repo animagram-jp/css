@@ -1,0 +1,447 @@
+/* slider: input widget that allows users to choose an approximate value from a range. */
+
+/*  <input type="range" min="0" max="100" step="10" value="20">
+
+    per GDS (question-pages), a range slider must offer a way to select a value
+    that does not rely on 'click and drag' (WCAG 2.5.1 Pointer Gestures).
+    the native input[type="range"] is keyboard operable by itself, so it is kept
+    native here; pair it with a number input when a precise value is required.
+
+    per USWDS (range-slider), use it only when the range matters more than
+    precision, keep the step coarse (10-20% of the total range), and label the
+    limits of the range. those need markup, hence the label form below.
+
+    to label the limits and show the current value, wrap it in a label:
+
+    <label data-axis="block" data-text-min="quiet" data-text-max="loud">
+        <span>Volume</span>
+        <input type="range" min="0" max="100" step="10" value="20"></label> */
+
+@layer css.slider {
+
+    /* === track === */
+
+    /*  the track is the input's own box. the thumb is a vendor pseudo-element,
+        which cannot be grouped in a selector list: an unknown pseudo-element
+        drops the whole rule. every thumb rule below is therefore repeated
+        per engine, and must be kept in sync. */
+
+    /*  the width is a layout concern, not a size step: it follows the parent the
+        way input.css leaves the inline size to the caller. only a lower bound is
+        set here, so the thumb always has room to travel. */
+
+    input[type="range"] {
+        appearance:       none;
+        background-color: transparent;
+        border:           0;
+        cursor:           pointer;
+        display:          inline-block;
+        inline-size:      100%;
+        margin:           0;
+        max-inline-size:  100%;
+        min-inline-size:  calc(var(--md-box-height) * 4);
+        padding:          0;
+        touch-action:     manipulation;
+        vertical-align:   middle;
+    }
+
+    /*  the visible rail is painted on the input box as a centered background,
+        sized by background-size, so the thumb can overhang it without changing
+        the hit area. the box itself keeps the full box height for the target. */
+    input[type="range"] {
+        background-color:    var(--color-paper);
+        background-image:    linear-gradient(var(--color-mute), var(--color-mute));
+        background-position: center;
+        background-repeat:   no-repeat;
+    }
+
+    /* --- track: webkit, blink --- */
+
+    input[type="range"]::-webkit-slider-runnable-track {
+        background-color: transparent;
+        border:           0;
+        inline-size:      100%;
+    }
+
+    /* --- track: gecko --- */
+
+    input[type="range"]::-moz-range-track {
+        background-color: transparent;
+        border:           0;
+        inline-size:      100%;
+    }
+
+    /* === thumb === */
+
+    /* --- thumb: webkit, blink --- */
+
+    input[type="range"]::-webkit-slider-thumb {
+        appearance:       none;
+        background-color: var(--color-paper);
+        border-color:     var(--color-ink);
+        border-radius:    50%;
+        border-style:     solid;
+        box-sizing:       border-box;
+        cursor:           pointer;
+    }
+
+    /* --- thumb: gecko --- */
+
+    input[type="range"]::-moz-range-thumb {
+        appearance:       none;
+        background-color: var(--color-paper);
+        border-color:     var(--color-ink);
+        border-radius:    50%;
+        border-style:     solid;
+        box-sizing:       border-box;
+        cursor:           pointer;
+    }
+
+    @media (prefers-reduced-motion: no-preference) {
+        input[type="range"]::-webkit-slider-thumb {
+            transition: background-color 150ms ease, scale 150ms ease;
+        }
+        input[type="range"]::-moz-range-thumb {
+            transition: background-color 150ms ease, scale 150ms ease;
+        }
+    }
+
+    /* === [data-size] === */
+
+    /*  the input box height is the full box height, so the touch target keeps
+        the size of every other control (WCAG 2.5.8 Target Size).
+        the rail is drawn at --*-border-width * 3, centered by background-size.
+        the thumb is sized from the box height and overhangs the rail.
+        the inline size is not stepped here: see the width policy above. */
+
+    input[type="range"][data-size="xs"] {
+        background-size: 100% calc(var(--xs-border-width) * 3);
+        block-size:      var(--xs-box-height);
+        border-radius:   var(--xs-border-radius);
+    }
+    input[type="range"][data-size="xs"]::-webkit-slider-thumb {
+        block-size:   calc(var(--xs-box-height) - var(--xs-border-width) * 4);
+        border-width: var(--xs-border-width);
+        inline-size:  calc(var(--xs-box-height) - var(--xs-border-width) * 4);
+        margin-top:   0;
+    }
+    input[type="range"][data-size="xs"]::-moz-range-thumb {
+        block-size:   calc(var(--xs-box-height) - var(--xs-border-width) * 4);
+        border-width: var(--xs-border-width);
+        inline-size:  calc(var(--xs-box-height) - var(--xs-border-width) * 4);
+    }
+
+    input[type="range"][data-size="sm"] {
+        background-size: 100% calc(var(--sm-border-width) * 3);
+        block-size:      var(--sm-box-height);
+        border-radius:   var(--sm-border-radius);
+    }
+    input[type="range"][data-size="sm"]::-webkit-slider-thumb {
+        block-size:   calc(var(--sm-box-height) - var(--sm-border-width) * 4);
+        border-width: var(--sm-border-width);
+        inline-size:  calc(var(--sm-box-height) - var(--sm-border-width) * 4);
+        margin-top:   0;
+    }
+    input[type="range"][data-size="sm"]::-moz-range-thumb {
+        block-size:   calc(var(--sm-box-height) - var(--sm-border-width) * 4);
+        border-width: var(--sm-border-width);
+        inline-size:  calc(var(--sm-box-height) - var(--sm-border-width) * 4);
+    }
+
+    input[type="range"]:not([data-size]),
+    input[type="range"][data-size="md"] {
+        background-size: 100% calc(var(--md-border-width) * 3);
+        block-size:      var(--md-box-height);
+        border-radius:   var(--md-border-radius);
+    }
+    input[type="range"]:not([data-size])::-webkit-slider-thumb,
+    input[type="range"][data-size="md"]::-webkit-slider-thumb {
+        block-size:   calc(var(--md-box-height) - var(--md-border-width) * 4);
+        border-width: var(--md-border-width);
+        inline-size:  calc(var(--md-box-height) - var(--md-border-width) * 4);
+        margin-top:   0;
+    }
+    input[type="range"]:not([data-size])::-moz-range-thumb,
+    input[type="range"][data-size="md"]::-moz-range-thumb {
+        block-size:   calc(var(--md-box-height) - var(--md-border-width) * 4);
+        border-width: var(--md-border-width);
+        inline-size:  calc(var(--md-box-height) - var(--md-border-width) * 4);
+    }
+
+    input[type="range"][data-size="lg"] {
+        background-size: 100% calc(var(--lg-border-width) * 3);
+        block-size:      var(--lg-box-height);
+        border-radius:   var(--lg-border-radius);
+    }
+    input[type="range"][data-size="lg"]::-webkit-slider-thumb {
+        block-size:   calc(var(--lg-box-height) - var(--lg-border-width) * 4);
+        border-width: var(--lg-border-width);
+        inline-size:  calc(var(--lg-box-height) - var(--lg-border-width) * 4);
+        margin-top:   0;
+    }
+    input[type="range"][data-size="lg"]::-moz-range-thumb {
+        block-size:   calc(var(--lg-box-height) - var(--lg-border-width) * 4);
+        border-width: var(--lg-border-width);
+        inline-size:  calc(var(--lg-box-height) - var(--lg-border-width) * 4);
+    }
+
+    input[type="range"][data-size="xl"] {
+        background-size: 100% calc(var(--xl-border-width) * 3);
+        block-size:      var(--xl-box-height);
+        border-radius:   var(--xl-border-radius);
+    }
+    input[type="range"][data-size="xl"]::-webkit-slider-thumb {
+        block-size:   calc(var(--xl-box-height) - var(--xl-border-width) * 4);
+        border-width: var(--xl-border-width);
+        inline-size:  calc(var(--xl-box-height) - var(--xl-border-width) * 4);
+        margin-top:   0;
+    }
+    input[type="range"][data-size="xl"]::-moz-range-thumb {
+        block-size:   calc(var(--xl-box-height) - var(--xl-border-width) * 4);
+        border-width: var(--xl-border-width);
+        inline-size:  calc(var(--xl-box-height) - var(--xl-border-width) * 4);
+    }
+
+    input[type="range"][data-size="2xl"] {
+        background-size: 100% calc(var(--2xl-border-width) * 3);
+        block-size:      var(--2xl-box-height);
+        border-radius:   var(--2xl-border-radius);
+    }
+    input[type="range"][data-size="2xl"]::-webkit-slider-thumb {
+        block-size:   calc(var(--2xl-box-height) - var(--2xl-border-width) * 4);
+        border-width: var(--2xl-border-width);
+        inline-size:  calc(var(--2xl-box-height) - var(--2xl-border-width) * 4);
+        margin-top:   0;
+    }
+    input[type="range"][data-size="2xl"]::-moz-range-thumb {
+        block-size:   calc(var(--2xl-box-height) - var(--2xl-border-width) * 4);
+        border-width: var(--2xl-border-width);
+        inline-size:  calc(var(--2xl-box-height) - var(--2xl-border-width) * 4);
+    }
+
+    /* === :hover, :active, :focus-visible === */
+
+    /*  the thumb color follows the emphasis fill on interaction, mirroring the
+        active state of the other controls. */
+
+    input[type="range"]:hover::-webkit-slider-thumb,
+    input[type="range"]:active::-webkit-slider-thumb,
+    input[type="range"]:focus-visible::-webkit-slider-thumb {
+        background-color: var(--color-emphasis-fill);
+        border-color:     var(--color-emphasis-fill);
+    }
+    input[type="range"]:hover::-moz-range-thumb,
+    input[type="range"]:active::-moz-range-thumb,
+    input[type="range"]:focus-visible::-moz-range-thumb {
+        background-color: var(--color-emphasis-fill);
+        border-color:     var(--color-emphasis-fill);
+    }
+
+    input[type="range"]:active::-webkit-slider-thumb {
+        background-color: var(--color-emphasis-fill-active);
+        border-color:     var(--color-emphasis-fill-active);
+        scale:            1.15;
+    }
+    input[type="range"]:active::-moz-range-thumb {
+        background-color: var(--color-emphasis-fill-active);
+        border-color:     var(--color-emphasis-fill-active);
+        scale:            1.15;
+    }
+
+    input[type="range"]:focus-visible {
+        outline-color:  var(--color-focus);
+        outline-offset: 0;
+        outline-style:  solid;
+        outline-width:  0.25rem;
+        z-index:        1;
+    }
+
+    /* === label > input[type="range"] === */
+
+    /*  a slider has no text of its own, so the range limits need a wrapper.
+        the label supplies the box that ::before and ::after are attached to. */
+
+    label:has(> input[type="range"]),
+    label:has(> input[type="range"]) > * {
+        vertical-align: middle;
+    }
+
+    /*  label[data-axis="block"]: the name sits above the slider.
+
+        a slider fills its parent, so the label must be a block: an inline
+        flow-root (as toggle and checkbox use) sizes shrink-to-fit, which makes
+        the slider's inline-size:100% circular and collapses it to the
+        min-inline-size floor. */
+
+    label:has(> input[type="range"])[data-axis="block"] {
+        display: block;
+    }
+    label:has(> input[type="range"])[data-axis="block"] > *:first-child {
+        display: block;
+    }
+
+    /*  the limits of the range, per USWDS ("0/100", "small/large").
+        attr() on a pseudo-element reads the attribute of its own originating
+        element, so the words go on the label, not on the input.
+
+        ::before always generates before the content and ::after always after,
+        so the rows cannot be reordered by source. named grid rows pin both
+        limits to the row under the slider instead: the label text takes "name",
+        the slider spans "track", and the limits share "limit". */
+
+    label:has(> input[type="range"]):is([data-text-min], [data-text-max]) {
+        column-gap:            0.5rem;
+        display:               grid;
+        grid-template-areas:   "name  name"
+                               "track track"
+                               "min   max";
+        grid-template-columns: auto auto;
+        justify-content:       space-between;
+    }
+    label:has(> input[type="range"]):is([data-text-min], [data-text-max]) > input[type="range"] {
+        grid-area: track;
+    }
+    label:has(> input[type="range"]):is([data-text-min], [data-text-max]) > *:not(input[type="range"]) {
+        grid-area: name;
+    }
+
+    label[data-text-min]:has(> input[type="range"])::before {
+        content:      attr(data-text-min);
+        grid-area:    min;
+        justify-self: start;
+    }
+    label[data-text-max]:has(> input[type="range"])::after {
+        content:      attr(data-text-max);
+        grid-area:    max;
+        justify-self: end;
+    }
+
+    label:has(> input[type="range"])::before,
+    label:has(> input[type="range"])::after {
+        color:          var(--color-mute);
+        font-size:      var(--md-font-size);
+        letter-spacing: var(--md-letter-spacing);
+        line-height:    var(--md-line-height);
+    }
+
+    /* === :user-invalid, [aria-invalid="true"] === */
+
+    input[type="range"]:user-invalid,
+    input[type="range"][aria-invalid="true"] {
+        background-image: linear-gradient(var(--color-error), var(--color-error));
+    }
+    input[type="range"]:user-invalid::-webkit-slider-thumb,
+    input[type="range"][aria-invalid="true"]::-webkit-slider-thumb {
+        border-color: var(--color-error);
+    }
+    input[type="range"]:user-invalid::-moz-range-thumb,
+    input[type="range"][aria-invalid="true"]::-moz-range-thumb {
+        border-color: var(--color-error);
+    }
+    input[type="range"]:user-invalid:focus-visible,
+    input[type="range"][aria-invalid="true"]:focus-visible {
+        outline-color: var(--color-error);
+    }
+
+    /* === :disabled, [aria-disabled="true"] === */
+
+    input[type="range"]:disabled,
+    input[type="range"][aria-disabled="true"] {
+        background-image: linear-gradient(var(--color-mute), var(--color-mute));
+        cursor:           not-allowed;
+        outline-color:    transparent;
+        pointer-events:   none;
+    }
+    input[type="range"]:disabled::-webkit-slider-thumb,
+    input[type="range"][aria-disabled="true"]::-webkit-slider-thumb {
+        background-color: var(--color-paper);
+        border-color:     var(--color-mute);
+        cursor:           not-allowed;
+    }
+    input[type="range"]:disabled::-moz-range-thumb,
+    input[type="range"][aria-disabled="true"]::-moz-range-thumb {
+        background-color: var(--color-paper);
+        border-color:     var(--color-mute);
+        cursor:           not-allowed;
+    }
+    label:has(> input[type="range"]:disabled)::before,
+    label:has(> input[type="range"]:disabled)::after,
+    label:has(> input[type="range"][aria-disabled="true"])::before,
+    label:has(> input[type="range"][aria-disabled="true"])::after {
+        color: var(--color-mute);
+    }
+
+    /* === forced-colors === */
+
+    /*  a background-image is dropped in forced-colors mode (per style.css), so
+        the rail is restored as a border-box color on the content box. */
+
+    @media (forced-colors: active) {
+        input[type="range"] {
+            background-color: Canvas;
+            background-image: linear-gradient(CanvasText, CanvasText);
+            forced-color-adjust: none;
+        }
+        input[type="range"]::-webkit-slider-thumb {
+            background-color: Canvas;
+            border-color:     CanvasText;
+        }
+        input[type="range"]::-moz-range-thumb {
+            background-color: Canvas;
+            border-color:     CanvasText;
+        }
+        input[type="range"]:hover::-webkit-slider-thumb,
+        input[type="range"]:active::-webkit-slider-thumb,
+        input[type="range"]:focus-visible::-webkit-slider-thumb {
+            background-color: Highlight;
+            border-color:     CanvasText;
+        }
+        input[type="range"]:hover::-moz-range-thumb,
+        input[type="range"]:active::-moz-range-thumb,
+        input[type="range"]:focus-visible::-moz-range-thumb {
+            background-color: Highlight;
+            border-color:     CanvasText;
+        }
+        input[type="range"]:focus-visible {
+            outline-color: Highlight;
+        }
+        input[type="range"]:user-invalid,
+        input[type="range"][aria-invalid="true"] {
+            background-image: linear-gradient(Mark, Mark);
+        }
+        input[type="range"]:user-invalid::-webkit-slider-thumb,
+        input[type="range"][aria-invalid="true"]::-webkit-slider-thumb {
+            border-color: Mark;
+        }
+        input[type="range"]:user-invalid::-moz-range-thumb,
+        input[type="range"][aria-invalid="true"]::-moz-range-thumb {
+            border-color: Mark;
+        }
+        input[type="range"]:disabled,
+        input[type="range"][aria-disabled="true"] {
+            background-image: linear-gradient(GrayText, GrayText);
+        }
+        input[type="range"]:disabled::-webkit-slider-thumb,
+        input[type="range"][aria-disabled="true"]::-webkit-slider-thumb {
+            border-color: GrayText;
+        }
+        input[type="range"]:disabled::-moz-range-thumb,
+        input[type="range"][aria-disabled="true"]::-moz-range-thumb {
+            border-color: GrayText;
+        }
+        label:has(> input[type="range"]:disabled)::before,
+        label:has(> input[type="range"]:disabled)::after,
+        label:has(> input[type="range"][aria-disabled="true"])::before,
+        label:has(> input[type="range"][aria-disabled="true"])::after {
+            color: GrayText;
+        }
+    }
+
+    /* === print === */
+
+    @media print {
+        input[type="range"] {
+            background-image: linear-gradient(var(--color-ink), var(--color-ink));
+        }
+    }
+}
