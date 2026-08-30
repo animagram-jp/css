@@ -1,4 +1,4 @@
-*.md
+/*.md
 !README.md
 !CONTRIBUTING.md
 
@@ -7,3 +7,6 @@ node_modules
 examples/*
 !/examples/audit.mjs
 !/examples/style.css
+
+reference/gds/
+reference/govuk-frontend/

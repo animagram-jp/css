@@ -19,6 +19,13 @@ docker exec accessibility-audit node docs/audit.mjs
 
 ---
 
+## Todo
+
+- [ ] focusは当たってんのにまだcaretは出てない、って状態を無くして、確実にcaretを出したい
+- [ ] focus時の密レイアウト差分として、inset差分も同時に用意する。
+
+---
+
 # Color System
 
 - [CUDO: Color Universal Design Recommended Color Set ver.3](https://cudo.jp/wp-content/uploads/2016/07/CUD%E6%8E%A8%E5%A5%A8%E9%85%8D%E8%89%B2%E3%82%BB%E3%83%83%E3%83%88%E3%82%AC%E3%82%A4%E3%83%89%E3%83%96%E3%83%83%E3%82%AF.pdf)
