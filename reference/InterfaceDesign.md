@@ -1,4 +1,6 @@
-# User Interface
+// This file includes untranslated text (ja).
+
+# Interface design
 
 本プロジェクトで体系化の対象とするインターフェース装置を、以下の2種類の機能のどちらかを持つ、または両者を統合した装置と定義する。
 
@@ -42,11 +44,10 @@ From the information the system needs to convey to the person, it determines one
 
 ---
 
-## 整理・実装中
-
-- config.css, component.css, style.css参照
+## 部品体系
 
 - 部品の部品
+    - Text block: monospace font, copy button (pre, code, kbd, samp)
     - Card: article > header, footer
     - Hidden:
         - [hidden], .hidden: visibility: hidden
@@ -110,6 +111,8 @@ From the information the system needs to convey to the person, it determines one
         - Command button: [disabled]
         - label > button[type="button"], a[role=button]
         - Back link, Link: a, button[role="link"]
+          - Link copy button: chain(🔗) 
+          - Anchor link: [Kelp: Heading anchors](https://kelpui.com/docs/components/heading-anchors)
         - Breadcrumb: nav > ol > li > a
         - Pagenation: nav[aria-label="Pagination"] > (a[rel=prev] > span, ul > li > a[aria-current="page"], a[rel=next]) [GOV.UK Design System: Pagenation](https://design-system.service.gov.uk/components/pagination/)
     - Cookie agreement: https://design-system.service.gov.uk/components/cookie-banner/
@@ -131,7 +134,6 @@ From the information the system needs to convey to the person, it determines one
     - nav, search, form: セマンティクスラッパー
     - hr
     - cite
-    - pre, code, kbd, samp, q
     - q
     - ruby > rt
     - em, strong
@@ -143,7 +145,6 @@ From the information the system needs to convey to the person, it determines one
     - bdi
     - time[datetime]
     - Media: img, iframe, object, video, audio
-    - Link copy: anchor(#) [Kelp: Heading anchors](https://kelpui.com/docs/components/heading-anchors)
 
 ---
 

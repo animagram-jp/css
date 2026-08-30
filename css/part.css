@@ -183,4 +183,10 @@
         margin-top: var(--gap);
         margin-bottom: calc(-1 * var(--gap));
     }
+
+    @media (prefers-reduced-motion: no-preference) {
+    [aria-busy="true"] {
+
+        }
+    }
 }

@@ -159,6 +159,12 @@
         --2xl-font-size:      2rem;
         --2xl-letter-spacing: 0;
         --2xl-line-height:    3rem;
+
+        --font-family-sans-serif: ui-sans-serif, system-ui, sans-serif;
+        --font-family-serif:      ui-serif, serif;
+        --font-family-monospace:  ui-monospace, monospace;
+
+        font-family: var(--font-family-sans-serif);
     }
 
     html {
@@ -214,5 +220,11 @@
         mark, ::selection {
             color: var(--color-paper);
         }
+    }
+
+    code, pre, kbd, samp, var, 
+    input:is([type="tel"], [type="number"], [type="password"], [inputmode="numeric"]) {
+        font-family: var(--font-family-monospace);
+        font-style: normal;
     }
 }

@@ -5,6 +5,7 @@
 node_modules
 
 reference/*
+!/reference/InterfaceDesign.md
 !/reference/audit.mjs
 !/reference/style.css
 
