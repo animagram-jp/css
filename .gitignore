@@ -4,9 +4,11 @@
 
 node_modules
 
-examples/*
-!/examples/audit.mjs
-!/examples/style.css
+reference/*
+!/reference/audit.mjs
+!/reference/style.css
 
 reference/gds/
 reference/govuk-frontend/
+reference/CUD推奨配色セットガイドブック.pdf
+reference/CUDO.md
