@@ -1,0 +1,244 @@
+@layer 
+    css.base, 
+    css.part, 
+    css.input, 
+    css.button, 
+    css.checkbox, 
+    css.toggle, 
+    css.radio, 
+    css.heading, 
+    css.search, 
+    css.table, 
+    css.slider, 
+    css.step, 
+    css.error, 
+    css-list-box;
+
+@layer css.base {
+    :root {
+        /*
+        * Source: Color Universal Design Recommended Color Set ver.3
+        * CUDO (Color Universal Design Organization)
+        * https://cudo.jp/wp-content/uploads/2016/07/CUD%E6%8E%A8%E5%A5%A8%E9%85%8D%E8%89%B2%E3%82%BB%E3%83%83%E3%83%88%E3%82%AC%E3%82%A4%E3%83%89%E3%83%96%E3%83%83%E3%82%AF.pdf
+        * Per-color comments: JPMA color chip no. (Munsell notation), CMYK
+        */
+
+        /* Accent colors: high-saturation colors for small areas like signage and graphs */
+        --rgb-accent-red:    255  40   0; /* G08-50V (8.75R 5/12),  CMYK 0,75,95,0 (or 0.75,90,0) */
+        --rgb-accent-yellow: 250 245   0; /* G27-85V (7.5Y 8.5/12), CMYK 0,0,100,0 */
+        --rgb-accent-green:   53 161 107; /* G47-60T (7.5G 6/10),   CMYK 75,0,65,0 */
+        --rgb-accent-blue:     0  65 255; /* G77-40V (7.5PB 4/12),  CMYK 100,45,0,0 */
+        --rgb-accent-sky:    102 204 255; /* G69-70P (10B 7/18),    CMYK 55,0,0,0 */
+        --rgb-accent-pink:   255 153 160; /* G02-70T (2.5R 7/10),   CMYK 0,55,35,0 */
+        --rgb-accent-orange: 255 153   0; /* G15-65X (5YR 6.5/14),  CMYK 0,45,100,0 */
+        --rgb-accent-purple: 154   0 121; /* G89-40T (10P 4/10),    CMYK 30,95,0,0 */
+        --rgb-accent-brown:  102  51   0; /* G09-30L (10R 3/6),     CMYK 55,90,100,0 */
+
+        /* Base colors: low-saturation colors for large areas like maps and diagrams */
+        --rgb-base-light-pink:         255 209 209; /* G05-80L (5R 8/6),     CMYK 0,25,15,0 */
+        --rgb-base-cream:              255 255 153; /* G25-90H (5Y 9/4),     CMYK 0,0,40,0 */
+        --rgb-base-light-yellow-green: 203 242 102; /* G32-80P (2.5GY 8/8),  CMYK 25,0,80,0 */
+        --rgb-base-light-sky:          180 235 250; /* G69-80H (10B 8/4),    CMYK 30,0,0,0 */
+        --rgb-base-beige:              237 197 143; /* G19-75L (10YR 7.5/6), CMYK 0,25,45,0 */
+        --rgb-base-light-green:        135 231 176; /* G42-70H (2.5G 7/4),   CMYK 45,0,45,0 */
+        --rgb-base-light-purple:       199 178 222; /* G82-70H (2.5P 7/4),   CMYK 25,30,0,0 */
+
+        /* Achromatic colors */
+        --rgb-white:      255 255 255; /* GN93 (N9.3),       CMYK 0,0,0,0 */
+        --rgb-light-gray: 200 200 203; /* G75-80B (5PB 8/1), CMYK 15,10,10,0 */
+        --rgb-gray:       127 135 143; /* G75-50D (5PB 5/2), CMYK 18,10,0,55 */
+        --rgb-black:        0   0   0; /* GN-15 (N1.5),      CMYK 50,50,50,100 (or 0,0,0,100) */
+
+        /* Status colors: non-text elements (border, icon, background fill) only (per CUDO FAQ). */
+        --color-error:     rgb(var(--rgb-accent-red));
+        --color-highlight: rgb(var(--rgb-accent-yellow));
+        --color-success:   rgb(var(--rgb-accent-green));
+
+        color-scheme: light dark;
+
+        --color-ink:   rgb(var(--rgb-black)); /* base text color */
+        --color-paper: rgb(var(--rgb-white)); /* base background color */
+
+        /* Mute color still meets 4.5:1 against paper (per WCAG AA:1.4.3 Contrast (Minimum)). */
+        --ratio-mute: 60%;
+        --color-mute: color-mix(in srgb, var(--color-ink) var(--ratio-mute), var(--color-paper));
+
+        /* Emphasis color meets 7:1 against paper (per WCAG AAA:1.4.6 Contrast (Enhanced)). */
+        --color-emphasis: rgb(var(--rgb-accent-blue));
+
+        /* Emphasis color to fill meets 7:1 (AAA) against ink */
+        --color-emphasis-fill: var(--color-emphasis);
+
+        /* Emphasis colors variants: */
+        --ratio-emphasis-active:      50%;
+        --color-emphasis-active:      color-mix(in srgb, var(--color-emphasis) var(--ratio-emphasis-active), var(--color-ink));
+        /* Fill active color meets 3:1 (WCAG AA: 1.4.11 Non-text Contrast) with paper */
+        --color-emphasis-fill-active: color-mix(in srgb, var(--color-emphasis-fill) var(--ratio-emphasis-active), rgb(0,0,0));
+
+        /* Wash color to fill with emphasis-active text. */
+        --ratio-paper-active: 16%;
+        --color-paper-active: color-mix(in srgb, var(--color-ink) var(--ratio-paper-active), var(--color-paper));
+
+        --color-focus: var(--color-emphasis);
+    }
+    @media (prefers-color-scheme: dark) {
+        :root {
+            --color-ink:           rgb(var(--rgb-white));
+            --color-paper:         rgb(var(--rgb-black));
+            --color-emphasis:      rgb(var(--rgb-accent-sky));
+            --color-emphasis-fill: rgb(var(--rgb-accent-blue));
+        }
+    }
+    @media (forced-colors: active) {
+        :root {
+            --color-ink:   CanvasText;
+            --color-paper: Canvas;
+        }
+    }
+    @media (prefers-contrast: more) and (forced-colors: none) {
+        :root {
+            --ratio-mute: 66%; /* Meets 7:1 (AAA) against paper in both light and dark modes */
+        }
+    }
+    @media (prefers-contrast: less) and (forced-colors: none) {
+        :root {
+            --color-ink:  rgb(63,63,63); /* 10:1 (arbitrary) against paper */
+            --color-mute: rgb(85,85,85); /*  7:1 (AAA) against paper */
+            --color-paper: rgb(var(--rgb-base-cream));
+            /* --color-mute: rgb(115,115,115); */ /*  4.5:1 (AA)  against paper */
+            /* --color-ink:  rgb( 85, 85, 85); */ /*    7:1 (AAA) against paper */
+        }
+    }
+    @media (prefers-contrast: less) and (forced-colors: none) and (prefers-color-scheme: dark) {
+        :root {
+            --color-ink:   rgb(var(--rgb-light-gray));
+            --color-mute:  rgb(58,58,58); /*  7:1 (AAA) against paper */
+            --color-paper: rgb(29,29,29); /* 10:1 (arbitrary) against paper */
+            /* --color-paper: rgb( 58, 58, 58); */ /*   7:1 (AAA) against ink */
+            /* --color-mute:     rgb(163,163,163); */ /* 4.5:1 (AA) against paper */
+        }
+    }
+    @media print {
+        :root {
+            --color-ink:           rgb(var(--rgb-black));
+            --color-paper:         rgb(var(--rgb-white));
+            --color-mute:          color-mix(in srgb, var(--color-ink) var(--ratio-mute), var(--color-paper));
+            --color-emphasis:      rgb(var(--rgb-accent-blue));
+            --color-emphasis-fill: var(--color-emphasis);
+        }
+    }
+
+    *, *::before, *::after {
+        box-sizing: border-box;
+    }
+    :root {
+        --xs-border-radius:  0.4rem;
+        --xs-border-width:   0.0625rem;
+        --xs-box-height:     1.75rem;
+        --xs-font-size:      0.85rem;
+        --xs-letter-spacing: 0.02rem;
+        --xs-line-height:    1.5rem;
+
+        --sm-border-radius:  0.5rem;
+        --sm-border-width:   0.125rem;
+        --sm-box-height:     2.5rem;
+        --sm-font-size:      0.85rem;
+        --sm-letter-spacing: 0.02rem;
+        --sm-line-height:    1.5rem;
+
+        --md-border-radius:  0.5rem;
+        --md-border-width:   0.125rem;
+        --md-box-height:     3rem;
+        --md-font-size:      1rem;
+        --md-letter-spacing: 0;
+        --md-line-height:    1.5rem;
+
+        --lg-border-radius:  0.5rem;
+        --lg-border-width:   0.125rem;
+        --lg-box-height:     3.5rem;
+        --lg-font-size:      1.15rem;
+        --lg-letter-spacing: 0;
+        --lg-line-height:    1.725rem;
+
+        --xl-border-radius:  0.75rem;
+        --xl-border-width:   0.125rem;
+        --xl-box-height:     4rem;
+        --xl-font-size:      1.5rem;
+        --xl-letter-spacing: 0;
+        --xl-line-height:    2.25rem;
+
+        --2xl-border-radius:  0.75rem;
+        --2xl-border-width:   0.125rem;
+        --2xl-box-height:     4.75rem;
+        --2xl-font-size:      2rem;
+        --2xl-letter-spacing: 0;
+        --2xl-line-height:    3rem;
+
+        --font-family-sans-serif: ui-sans-serif, system-ui, sans-serif;
+        --font-family-serif:      ui-serif, serif;
+        --font-family-monospace:  ui-monospace, monospace;
+
+        font-family: var(--font-family-sans-serif);
+    }
+
+    html {
+        scrollbar-gutter: stable;
+    }
+
+    @media print {
+        html {
+            font-size: 14pt;
+        }
+    }
+
+    html:has(:modal) {
+        overflow: clip;
+        scrollbar-gutter: auto;
+    }
+
+    body {
+        color: var(--color-ink);
+        background: var(--color-paper);
+        margin: 0;
+    }
+
+    body:has(:modal) {
+        overflow: auto;
+        scrollbar-gutter: stable;
+    }
+
+    [hidden],
+    .hidden {
+        display: none !important;
+    }
+
+    *:focus-visible {
+        outline-color: var(--color-focus);
+    }
+    @media (forced-colors: active) {
+        *:focus-visible {
+            outline-color: Highlight;
+        }
+    }
+
+    mark {
+        --ratio-mark: 70%;
+        background-color: color-mix(in srgb, var(--color-highlight) var(--ratio-mark), var(--color-paper));
+        color: var(--color-ink);
+    }
+    ::selection {
+        background-color: var(--color-highlight);
+        color: var(--color-ink);
+    }
+    @media (prefers-color-scheme: dark) {
+        mark, ::selection {
+            color: var(--color-paper);
+        }
+    }
+
+    code, pre, kbd, samp, var, 
+    input:is([type="tel"], [type="number"], [type="password"], [inputmode="numeric"]) {
+        font-family: var(--font-family-monospace);
+        font-style: normal;
+    }
+}

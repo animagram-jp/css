@@ -1,0 +1,446 @@
+/* step: a pair of controls that move a value in opposite directions. */
+
+/*  
+    <label>
+        <button type="button" data-action="decrement"></button>
+        <input type="text" inputmode="numeric" pattern="[0-9]*" role="spinbutton">
+        <button type="button" data-action="increment"></button></label>
+
+    the buttons stack after the input, increment on top, and the two together are one box height.
+
+    <label data-axis="block">
+        <input type="text" inputmode="numeric" pattern="[0-9]*" role="spinbutton">
+        <button type="button" data-action="increment"></button>
+        <button type="button" data-action="decrement"></button></label>
+*/
+
+@layer css.step {
+
+    label:has(> input[inputmode="numeric"]) {
+        align-items: stretch;
+        display:     inline flex;
+    }
+
+    label:has(> input[inputmode="numeric"]) > button[data-action] {
+        border-color: var(--color-mute);
+    }
+
+    /*  the state lives on the input, so the buttons follow it: without this the
+        group would show a mute outer line around an error-coloured middle. */
+
+    label:has(> input[inputmode="numeric"]:is(:user-invalid, [aria-invalid="true"])) > button[data-action] {
+        border-color: var(--color-error);
+    }
+
+    label:has(> input[inputmode="numeric"]) > input[inputmode="numeric"] {
+        /*  a spinbutton is read and corrected digit by digit, so the field does
+            not grow with its content the way a text input does. */
+        field-sizing: fixed;
+        flex:         0 1 auto;
+        min-inline-size: 0;
+    }
+
+    /* === buttons === */
+
+    /*  button.css already gives these the fill style, the focus ring, the
+        disabled treatment and the forced-colors fallbacks. only the geometry
+        and the glyph are set here. */
+
+    label:has(> input[inputmode="numeric"]) > button[data-action] {
+        flex:           0 0 auto;
+        padding-inline: 0;
+        position:       relative;
+    }
+
+    label:has(> input[inputmode="numeric"]) > button[data-action]:empty::after,
+    label:has(> input[inputmode="numeric"]) > button[data-action="increment"]:empty::before {
+        background-color: currentColor;
+        content:          "";
+        inset:            0;
+        margin:           auto;
+        position:         absolute;
+    }
+
+    /* === [data-size] === */
+
+    label:has(> input[inputmode="numeric"]) > button[data-action][data-size="xs"] {
+        inline-size: var(--xs-box-height);
+    }
+    label:has(> input[inputmode="numeric"]) > button[data-action][data-size="xs"]:empty::after {
+        block-size:  var(--xs-border-width);
+        inline-size: calc(var(--xs-box-height) / 4);
+    }
+    label:has(> input[inputmode="numeric"]) > button[data-action="increment"][data-size="xs"]:empty::before {
+        block-size:  calc(var(--xs-box-height) / 4);
+        inline-size: var(--xs-border-width);
+    }
+
+    label:has(> input[inputmode="numeric"]) > button[data-action][data-size="sm"] {
+        inline-size: var(--sm-box-height);
+    }
+    label:has(> input[inputmode="numeric"]) > button[data-action][data-size="sm"]:empty::after {
+        block-size:  var(--sm-border-width);
+        inline-size: calc(var(--sm-box-height) / 4);
+    }
+    label:has(> input[inputmode="numeric"]) > button[data-action="increment"][data-size="sm"]:empty::before {
+        block-size:  calc(var(--sm-box-height) / 4);
+        inline-size: var(--sm-border-width);
+    }
+
+    label:has(> input[inputmode="numeric"]) > button[data-action]:not([data-size]),
+    label:has(> input[inputmode="numeric"]) > button[data-action][data-size="md"] {
+        inline-size: var(--md-box-height);
+    }
+    label:has(> input[inputmode="numeric"]) > button[data-action]:not([data-size]):empty::after,
+    label:has(> input[inputmode="numeric"]) > button[data-action][data-size="md"]:empty::after {
+        block-size:  var(--md-border-width);
+        inline-size: calc(var(--md-box-height) / 4);
+    }
+    label:has(> input[inputmode="numeric"]) > button[data-action="increment"]:not([data-size]):empty::before,
+    label:has(> input[inputmode="numeric"]) > button[data-action="increment"][data-size="md"]:empty::before {
+        block-size:  calc(var(--md-box-height) / 4);
+        inline-size: var(--md-border-width);
+    }
+
+    label:has(> input[inputmode="numeric"]) > button[data-action][data-size="lg"] {
+        inline-size: var(--lg-box-height);
+    }
+    label:has(> input[inputmode="numeric"]) > button[data-action][data-size="lg"]:empty::after {
+        block-size:  var(--lg-border-width);
+        inline-size: calc(var(--lg-box-height) / 4);
+    }
+    label:has(> input[inputmode="numeric"]) > button[data-action="increment"][data-size="lg"]:empty::before {
+        block-size:  calc(var(--lg-box-height) / 4);
+        inline-size: var(--lg-border-width);
+    }
+
+    label:has(> input[inputmode="numeric"]) > button[data-action][data-size="xl"] {
+        inline-size: var(--xl-box-height);
+    }
+    label:has(> input[inputmode="numeric"]) > button[data-action][data-size="xl"]:empty::after {
+        block-size:  var(--xl-border-width);
+        inline-size: calc(var(--xl-box-height) / 4);
+    }
+    label:has(> input[inputmode="numeric"]) > button[data-action="increment"][data-size="xl"]:empty::before {
+        block-size:  calc(var(--xl-box-height) / 4);
+        inline-size: var(--xl-border-width);
+    }
+
+    label:has(> input[inputmode="numeric"]) > button[data-action][data-size="2xl"] {
+        inline-size: var(--2xl-box-height);
+    }
+    label:has(> input[inputmode="numeric"]) > button[data-action][data-size="2xl"]:empty::after {
+        block-size:  var(--2xl-border-width);
+        inline-size: calc(var(--2xl-box-height) / 4);
+    }
+    label:has(> input[inputmode="numeric"]) > button[data-action="increment"][data-size="2xl"]:empty::before {
+        block-size:  calc(var(--2xl-box-height) / 4);
+        inline-size: var(--2xl-border-width);
+    }
+
+    /* === corners and seams === */
+
+    label:has(> input[inputmode="numeric"]) > button[data-action]:first-child {
+        border-end-end-radius:   0;
+        border-start-end-radius: 0;
+    }
+    label:has(> input[inputmode="numeric"]) > button[data-action]:last-child {
+        border-end-start-radius:   0;
+        border-start-start-radius: 0;
+    }
+    label:has(> input[inputmode="numeric"]) > input[inputmode="numeric"] {
+        border-radius: 0;
+    }
+
+    /*  the seam: the input and the button would each draw a line there, so the
+        input drops the edges it shares with them. every edge of the group is
+        then drawn exactly once, by whichever part owns the outside of it.
+
+        inline: buttons on both sides, so both inline edges go. the block form
+        overrides this below, where only the end edge is shared. */
+
+    label:has(> input[inputmode="numeric"]) > input[inputmode="numeric"] {
+        border-inline-width: 0;
+    }
+
+    /* === label[data-axis="block"] === */
+
+    label:has(> input[inputmode="numeric"])[data-axis="block"] {
+        display:               inline grid;
+        grid-template-columns: auto auto;
+        grid-template-rows:    1fr 1fr;
+    }
+    label:has(> input[inputmode="numeric"])[data-axis="block"] > input[inputmode="numeric"] {
+        grid-column: 1;
+        grid-row:    1 / span 2;
+    }
+    label:has(> input[inputmode="numeric"])[data-axis="block"] > button[data-action="increment"] {
+        grid-column: 2;
+        grid-row:    1;
+    }
+    label:has(> input[inputmode="numeric"])[data-axis="block"] > button[data-action="decrement"] {
+        grid-column: 2;
+        grid-row:    2;
+    }
+
+    /*  half a box height each, and the min-height button.css sets per size step
+        has to give way for the pair to add up to one box. */
+
+    label:has(> input[inputmode="numeric"])[data-axis="block"] > button[data-action] {
+        min-block-size: 0;
+        padding-block:  0;
+    }
+
+    label:has(> input[inputmode="numeric"])[data-axis="block"] > button[data-action][data-size="xs"] {
+        block-size: calc(var(--xs-box-height) / 2);
+    }
+    label:has(> input[inputmode="numeric"])[data-axis="block"] > button[data-action][data-size="sm"] {
+        block-size: calc(var(--sm-box-height) / 2);
+    }
+    label:has(> input[inputmode="numeric"])[data-axis="block"] > button[data-action]:not([data-size]),
+    label:has(> input[inputmode="numeric"])[data-axis="block"] > button[data-action][data-size="md"] {
+        block-size: calc(var(--md-box-height) / 2);
+    }
+    label:has(> input[inputmode="numeric"])[data-axis="block"] > button[data-action][data-size="lg"] {
+        block-size: calc(var(--lg-box-height) / 2);
+    }
+    label:has(> input[inputmode="numeric"])[data-axis="block"] > button[data-action][data-size="xl"] {
+        block-size: calc(var(--xl-box-height) / 2);
+    }
+    label:has(> input[inputmode="numeric"])[data-axis="block"] > button[data-action][data-size="2xl"] {
+        block-size: calc(var(--2xl-box-height) / 2);
+    }
+
+    /*  only the end edge is shared here: the start edge is the outside of the
+        group and has to keep its line. */
+
+    label:has(> input[inputmode="numeric"])[data-axis="block"] > input[inputmode="numeric"] {
+        border-inline-end-width:   0;
+        border-inline-start-width: var(--md-border-width);
+    }
+    label:has(> input[inputmode="numeric"])[data-axis="block"] > input[inputmode="numeric"][data-size="xs"] {
+        border-inline-start-width: var(--xs-border-width);
+    }
+    label:has(> input[inputmode="numeric"])[data-axis="block"] > input[inputmode="numeric"][data-size="sm"] {
+        border-inline-start-width: var(--sm-border-width);
+    }
+    label:has(> input[inputmode="numeric"])[data-axis="block"] > input[inputmode="numeric"][data-size="lg"] {
+        border-inline-start-width: var(--lg-border-width);
+    }
+    label:has(> input[inputmode="numeric"])[data-axis="block"] > input[inputmode="numeric"][data-size="xl"] {
+        border-inline-start-width: var(--xl-border-width);
+    }
+    label:has(> input[inputmode="numeric"])[data-axis="block"] > input[inputmode="numeric"][data-size="2xl"] {
+        border-inline-start-width: var(--2xl-border-width);
+    }
+
+    /*  corners: the input owns the start edge, the buttons the end edge. the
+        inline form squares off the input entirely, so the start corners are
+        given back here: they are the outside of the group. */
+
+    label:has(> input[inputmode="numeric"])[data-axis="block"] > input[inputmode="numeric"][data-size="xs"] {
+        border-end-start-radius:   var(--xs-border-radius);
+        border-start-start-radius: var(--xs-border-radius);
+    }
+    label:has(> input[inputmode="numeric"])[data-axis="block"] > input[inputmode="numeric"][data-size="sm"] {
+        border-end-start-radius:   var(--sm-border-radius);
+        border-start-start-radius: var(--sm-border-radius);
+    }
+    label:has(> input[inputmode="numeric"])[data-axis="block"] > input[inputmode="numeric"]:not([data-size]),
+    label:has(> input[inputmode="numeric"])[data-axis="block"] > input[inputmode="numeric"][data-size="md"] {
+        border-end-start-radius:   var(--md-border-radius);
+        border-start-start-radius: var(--md-border-radius);
+    }
+    label:has(> input[inputmode="numeric"])[data-axis="block"] > input[inputmode="numeric"][data-size="lg"] {
+        border-end-start-radius:   var(--lg-border-radius);
+        border-start-start-radius: var(--lg-border-radius);
+    }
+    label:has(> input[inputmode="numeric"])[data-axis="block"] > input[inputmode="numeric"][data-size="xl"] {
+        border-end-start-radius:   var(--xl-border-radius);
+        border-start-start-radius: var(--xl-border-radius);
+    }
+    label:has(> input[inputmode="numeric"])[data-axis="block"] > input[inputmode="numeric"][data-size="2xl"] {
+        border-end-start-radius:   var(--2xl-border-radius);
+        border-start-start-radius: var(--2xl-border-radius);
+    }
+
+    label:has(> input[inputmode="numeric"])[data-axis="block"] > input[inputmode="numeric"] {
+        border-end-end-radius:   0;
+        border-start-end-radius: 0;
+    }
+    label:has(> input[inputmode="numeric"])[data-axis="block"] > button[data-action="increment"] {
+        border-end-end-radius:     0;
+        border-end-start-radius:   0;
+        border-start-start-radius: 0;
+    }
+    label:has(> input[inputmode="numeric"])[data-axis="block"] > button[data-action="decrement"] {
+        border-end-start-radius:   0;
+        border-start-end-radius:   0;
+        border-start-start-radius: 0;
+    }
+
+    /* === sort (th > label > input[type="radio"]) === */
+
+    /*  a column sorter: the pair picks a sort direction, so it is a radio group
+        and not a pair of buttons. the browser then does the work that would
+        otherwise fall to script.
+
+        the name is shared by every sorter in ONE TABLE, not by one column:
+        a single-column sort is one choice made across the whole table, so
+        picking a direction in another column releases this one by itself. give
+        each table its own name; reusing a name across tables would tie them
+        together, and a name per column would break the exclusivity.
+
+        there is no control for "unsorted": a radio cannot be cleared, and the
+        state is only reachable before the first choice is made. a table that
+        has to return to its original order offers one command for that outside
+        the group.
+
+        the direction in force is held by aria-sort on the th, which is what
+        assistive technology reads; :checked is the same fact for the eye. both
+        are set, and they must agree.
+
+        the radio has no visible text of its own -- the triangle is the label --
+        so the name of each direction is carried by aria-label on the input.
+
+        <table>
+            <thead>
+                <tr>
+                    <th scope="col" aria-sort="ascending">Head
+                        <span data-axis="block">
+                            <label>
+                                <input type="radio" name="sort-{table}" value="{col1}-asc"
+                                       aria-label="Sort ascending" checked></label>
+                            <label>
+                                <input type="radio" name="sort-{table}" value="{col1}-desc"
+                                       aria-label="Sort descending"></label></span></th>
+                    <th scope="col" aria-sort="none">Head
+                        <span data-axis="block">
+                            <label>
+                                <input type="radio" name="sort-{table}" value="{col2}-asc"
+                                       aria-label="Sort ascending"></label>
+                            <label>
+                                <input type="radio" name="sort-{table}" value="{col2}-desc"
+                                       aria-label="Sort descending"></label></span></th></tr></thead>
+        </table>
+
+        the glyph is a triangle, not a bar: a sorter names a direction, where a
+        spinbutton names an amount. it is drawn with the border trick, a
+        zero-sized box whose side borders are transparent and whose remaining
+        border is the fill, because a mask-image is dropped under forced-colors
+        and would take the only cue for direction with it. */
+
+    /*  the header text and its sorter stay on one line: the sorter is part of
+        the label, not a second line under it. (moved here from css.table with
+        the rest of the sort styling.) */
+
+    th:has(> [data-axis="block"] input[type="radio"]) {
+        white-space: nowrap;
+    }
+
+    th > [data-axis="block"]:has(input[type="radio"]) {
+        display:              inline flow-root;
+        padding-inline-start: calc(var(--md-border-radius) / 2);
+        vertical-align:       middle;
+    }
+
+    th > [data-axis="block"] > label:has(> input[type="radio"]) {
+        cursor:  pointer;
+        display: block;
+    }
+
+    /*  the radio itself is not drawn: the triangle stands for it. the input
+        keeps its box so it still takes focus and the hit area stays whole. */
+
+    th > [data-axis="block"] > label > input[type="radio"] {
+        appearance:       none;
+        background-color: transparent;
+        border:           0;
+        color:            var(--color-mute);
+        cursor:           pointer;
+        display:          block;
+        inline-size:      var(--md-line-height);
+        block-size:       calc(var(--md-line-height) / 2);
+        margin:           0;
+        padding:          0;
+        position:         relative;
+    }
+
+    /*  css.radio rounds this pseudo-element into the inner circle of a radio;
+        the triangle needs its corners back. */
+
+    th > [data-axis="block"] > label > input[type="radio"]::after {
+        background-color: transparent;
+        block-size:       0;
+        border-inline:    calc(var(--md-line-height) / 4) solid transparent;
+        border-radius:    0;
+        content:          "";
+        inline-size:      0;
+        inset:            0;
+        margin:           auto;
+        position:         absolute;
+    }
+
+    /*  first is ascending, second is descending: the order on the page is the
+        order of the values, so the shape follows the position rather than a
+        value attribute. */
+
+    th > [data-axis="block"] > label:first-child > input[type="radio"]::after {
+        border-block-end: calc(var(--md-line-height) / 4) solid currentColor;
+    }
+    th > [data-axis="block"] > label:last-child > input[type="radio"]::after {
+        border-block-start: calc(var(--md-line-height) / 4) solid currentColor;
+    }
+
+    /* the direction in force is the one drawn in ink. */
+
+    th > [data-axis="block"] > label > input[type="radio"]:checked {
+        color: var(--color-ink);
+    }
+
+    @media (hover: hover) {
+        th > [data-axis="block"] > label > input[type="radio"]:hover {
+            color: var(--color-ink);
+        }
+    }
+
+    /*  an outline, not a box-shadow, which is not painted under forced-colors.
+        the ring is the width of a border here: the control is smaller than a
+        box height, so the ring used elsewhere would swallow it. */
+
+    th > [data-axis="block"] > label > input[type="radio"]:focus-visible {
+        outline-color:  var(--color-focus);
+        outline-offset: 0;
+        outline-style:  solid;
+        outline-width:  var(--md-border-width);
+        z-index:        1;
+    }
+
+    @media (forced-colors: active) {
+        th > [data-axis="block"] > label > input[type="radio"] {
+            color: ButtonText;
+        }
+        th > [data-axis="block"] > label > input[type="radio"]:checked {
+            color: Highlight;
+        }
+        th > [data-axis="block"] > label > input[type="radio"]:focus-visible {
+            outline-color: Highlight;
+        }
+    }
+
+    /* :disabled, [aria-disabled="true"] */
+
+    th > [data-axis="block"] > label > input[type="radio"]:disabled,
+    th > [data-axis="block"] > label > input[type="radio"][aria-disabled="true"] {
+        color:          var(--color-mute);
+        cursor:         not-allowed;
+        pointer-events: none;
+    }
+
+    @media (forced-colors: active) {
+        th > [data-axis="block"] > label > input[type="radio"]:disabled,
+        th > [data-axis="block"] > label > input[type="radio"][aria-disabled="true"] {
+            color: GrayText;
+        }
+    }
+}

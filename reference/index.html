@@ -1,0 +1,686 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>css examples</title>
+    <link rel="stylesheet" href="css/config.css">
+    <link rel="stylesheet" href="css/badge.css">
+    <link rel="stylesheet" href="css/blockquote.css">
+    <link rel="stylesheet" href="css/button.css">
+    <link rel="stylesheet" href="css/checkbox.css">
+    <link rel="stylesheet" href="css/description_list.css">
+    <link rel="stylesheet" href="css/disclosure.css">
+    <link rel="stylesheet" href="css/field-label.css">
+    <link rel="stylesheet" href="css/heading.css">
+    <link rel="stylesheet" href="css/horizontal_rule.css">
+    <link rel="stylesheet" href="css/icon.css">
+    <link rel="stylesheet" href="css/input.css">
+    <link rel="stylesheet" href="css/list.css">
+    <link rel="stylesheet" href="css/list-box.css">
+    <link rel="stylesheet" href="css/radio.css">
+    <link rel="stylesheet" href="css/search-box.css">
+    <link rel="stylesheet" href="css/table.css">
+    <link rel="stylesheet" href="css/textarea.css">
+    <link rel="stylesheet" href="css/toggle.css">
+    <link rel="stylesheet" href="reference/style.css"></head>
+<body>
+    <header>
+        <hgroup id="header_hgroup">
+            <h1>css library</h1>
+            <p>Css universal design boilerplate. Works without interference to HTML.</p></hgroup>
+
+        <label data-size="sm">
+            <span>Dark mode</span>
+            <input type="checkbox" role="switch" id="theme-toggle"></label></header>
+
+    <script>
+        (() => {
+            const root = document.documentElement;
+            const toggle = document.getElementById("theme-toggle");
+
+            toggle.checked = window.matchMedia("(prefers-color-scheme: dark)").matches;
+
+            toggle.addEventListener("change", () => {
+                root.setAttribute("data-theme", toggle.checked ? "dark" : "light");
+            });
+        })();
+    </script>
+
+    <main>
+        <h2 id="main_h2-1" aria-label="WCAG 2.2 auto-generated report link">WCAG 2.2 Report</h2>
+        <p aria-labelledby="main_h2-1">
+            <a href="./reference/audit.html">WCAG 2.2 auto-generated report</a></p>
+
+        <h2 id="main_h2-2" aria-label="example usage of badge">Badge</h2>
+        <section aria-labelledby="main_h2-2">
+
+            <div class="demo-row">
+                <div class="demo-meta">badge[data-type="fill" data-size="2xl,xl,lg,(md),sm,xs" × data-icon="hatch"]</div>
+                <span class="badge" data-type="fill" data-size="2xl">tag</span>
+                <span class="badge" data-type="fill" data-size="xl">tag</span>
+                <span class="badge" data-type="fill" data-size="lg">tag</span>
+                <span class="badge" data-type="fill">tag</span>
+                <span class="badge" data-type="fill" data-size="sm">tag</span>
+                <span class="badge" data-type="fill" data-size="xs">tag</span>
+                <span class="badge" data-type="fill" data-icon="hatch">tag</span></div>
+
+            <div class="demo-row">
+                <div class="demo-meta">badge[(data-type="outline") data-size="2xl,xl,lg,(md),sm,xs" × data-icon="hatch"]</div>
+                <span class="badge" data-size="2xl">tag</span>
+                <span class="badge" data-size="xl">tag</span>
+                <span class="badge" data-size="lg">tag</span>
+                <span class="badge">tag</span>
+                <span class="badge" data-size="sm">tag</span>
+                <span class="badge" data-size="xs">tag</span>
+                <span class="badge" data-icon="hatch">tag</span></div>
+
+            <div class="demo-row">
+                <div class="demo-meta">badge[data-type="text" data-size="2xl,xl,lg,(md),sm,xs" × data-icon="hatch"]</div>
+                <span class="badge" data-type="text" data-size="2xl">tag</span>
+                <span class="badge" data-type="text" data-size="xl">tag</span>
+                <span class="badge" data-type="text" data-size="lg">tag</span>
+                <span class="badge" data-type="text">tag</span>
+                <span class="badge" data-type="text" data-size="sm">tag</span>
+                <span class="badge" data-type="text" data-size="xs">tag</span>
+                <span class="badge" data-type="text" data-icon="hatch">tag</span></div></section>
+
+        <h2 id="main_h2-3" aria-label="example usage of blackquote">Blockquote</h2>
+        <section aria-labelledby="main_h2-3">
+            <figure>
+                <blockquote>
+                    <p>"I will cast the dark shadows of human life over you without reserve. But you must not be afraid."</p></blockquote>
+                <figcaption>Soseki Natsume. 1914. <cite>Kokoro</cite>. Iwanami Shoten, Tokyo, Japan. Translated by Andyou, 2026.</figcaption></figure></section>
+
+        <h2 id="main_h2-4" aria-label="example usage of button">Button</h2>
+        <section aria-labelledby="main_h2-4">
+
+            <div class="demo-row">
+                <div class="demo-meta">button[data-type="fill" data-size="lg,(md),sm,xs"  × disabled]</div>
+                <button data-size="lg" data-type="fill">ボタン</button>
+                <button data-type="fill">ボタン</button>
+                <button data-size="sm" data-type="fill">ボタン</button>
+                <button data-size="xs" data-type="fill">ボタン</button>
+                <button data-type="fill" disabled>ボタン</button></div>
+
+            <div class="demo-row">
+                <div class="demo-meta">button[(data-type="outline") data-size="lg,(md),sm,xs"  × disabled]</div>
+                <button data-size="lg">ボタン</button>
+                <button>ボタン</button>
+                <button data-size="sm">ボタン</button>
+                <button data-size="xs">ボタン</button>
+                <button disabled>ボタン</button></div>
+
+            <div class="demo-row">
+                <div class="demo-meta">button[data-type="text" data-size="lg,(md),sm,xs"  × disabled]</div>
+                <button data-size="lg" data-type="text">ボタン</button>
+                <button data-type="text">ボタン</button>
+                <button data-size="sm" data-type="text">ボタン</button>
+                <button data-size="xs" data-type="text">ボタン</button>
+                <button data-type="text" disabled>ボタン</button></div>
+
+            <div class="demo-row">
+                <div class="demo-meta">button > svg > use[#icon-external-link]</div>
+                <button>ボタン
+                    <svg width="16" height="16" viewBox="0 0 48 48" role="img" aria-label="新規タブで開きます">
+                        <use href="svg/icons.svg#icon-external-link"></use></svg></button></div></section>
+
+        <h2 id="main_h2-5" aria-label="example usage of checkbox">Checkbox</h2>
+        <section aria-labelledby="main_h2-5">
+            <style>
+                .checkbox-row { margin-block: 1.5rem; }
+                .checkbox-meta { font: 0.75rem/2 monospace; color: var(--color-muted); margin-bottom: 0.25rem; }
+                .checkbox-grid { display: grid; grid-template-columns: repeat(6, auto); gap: 2rem; justify-content: start; }</style>
+
+            <div class="checkbox-row">
+                <div class="checkbox-meta">label[data-size="2xl"] > input[aria-invalid="true", disabled]</div>
+                <div class="checkbox-grid">
+                    <label data-size="2xl"><input type="checkbox">ラベル</label>
+                    <label data-size="2xl"><input type="checkbox" aria-invalid="true">ラベル</label>
+                    <label data-size="2xl"><input type="checkbox" disabled>ラベル</label>
+                    <label data-size="2xl"><input type="checkbox" checked disabled>ラベル</label></div></div>
+
+            <div class="checkbox-row">
+                <div class="checkbox-meta">label[data-size="xl"] > input[aria-invalid="true", disabled]</div>
+                <div class="checkbox-grid">
+                    <label data-size="xl"><input type="checkbox">ラベル</label>
+                    <label data-size="xl"><input type="checkbox" aria-invalid="true">ラベル</label>
+                    <label data-size="xl"><input type="checkbox" disabled>ラベル</label>
+                    <label data-size="xl"><input type="checkbox" checked disabled>ラベル</label></div></div>
+
+            <div class="checkbox-row">
+                <div class="checkbox-meta">label[data-size="lg"] > input[aria-invalid="true", disabled]</div>
+                <div class="checkbox-grid">
+                    <label data-size="lg"><input type="checkbox">ラベル</label>
+                    <label data-size="lg"><input type="checkbox" aria-invalid="true">ラベル</label>
+                    <label data-size="lg"><input type="checkbox" disabled>ラベル</label>
+                    <label data-size="lg"><input type="checkbox" checked disabled>ラベル</label></div></div>
+
+            <div class="checkbox-row">
+                <div class="checkbox-meta">label([data-size="md"]) > input[aria-invalid="true", disabled]</div>
+                <div class="checkbox-grid">
+                    <label><input type="checkbox">ラベル</label>
+                    <label><input type="checkbox" aria-invalid="true">ラベル</label>
+                    <label><input type="checkbox" disabled>ラベル</label>
+                    <label><input type="checkbox" checked disabled>ラベル</label></div></div>
+
+            <div class="checkbox-row">
+                <div class="checkbox-meta">label[data-size="sm"] > input[aria-invalid="true", disabled]</div>
+                <div class="checkbox-grid">
+                    <label data-size="sm"><input type="checkbox">ラベル</label>
+                    <label data-size="sm"><input type="checkbox" aria-invalid="true">ラベル</label>
+                    <label data-size="sm"><input type="checkbox" disabled>ラベル</label>
+                    <label data-size="sm"><input type="checkbox" checked disabled>ラベル</label></div></div>
+
+            <div class="checkbox-row">
+                <div class="checkbox-meta">label[data-size="xs"] > input[aria-invalid="true", disabled]</div>
+                <div class="checkbox-grid">
+                    <label data-size="xs"><input type="checkbox">ラベル</label>
+                    <label data-size="xs"><input type="checkbox" aria-invalid="true">ラベル</label>
+                    <label data-size="xs"><input type="checkbox" disabled>ラベル</label>
+                    <label data-size="xs"><input type="checkbox" checked disabled>ラベル</label></div></div></section>
+
+        <h2 id="main_h2-6" aria-label="example usage of description list">Description List</h2>
+        <section aria-labelledby="main_h2-6">
+            <dl>
+                <dt>氏名</dt>
+                <dd>山田 太郎</dd>
+                <dt>メールアドレス</dt>
+                <dd>taro.yamada@example.com</dd>
+                <dt>電話番号</dt>
+                <dd>03-0000-0000</dd></dl></section>
+
+        <h2 id="main_h2-7" aria-label="example usage of disclosure">Disclosure</h2>
+        <section aria-labelledby="main_h2-7">
+            <details data-size="2xl">
+                <summary>details[data-size="2xl"] > summary, block</summary>
+                <p>Some example content appears here.</p></details>
+            <details data-size="xl">
+                <summary>details[data-size="xl"] > summary, block</summary>
+                <p>Some example content appears here.</p></details>
+            <details data-size="lg">
+                <summary>details[data-size="lg"] > summary, block</summary>
+                <p>Some example content appears here.</p></details>
+            <details>
+                <summary>details > summary, block</summary>
+                <p>Some example content appears here.</p></details>
+            <details data-size="sm">
+                <summary>details[data-size="sm"] > summary, block</summary>
+                <p>Some example content appears here.</p></details>
+            <details data-size="xs">
+                <summary>details[data-size="xs"] > summary, block</summary>
+                <p>Some example content appears here.</p></details>
+            <details data-type="fill">
+                <summary>details[data-type="fill"] > summary, block</summary>
+                <p>Some example content appears here.</p></details>
+            <details data-size="2xl" data-type="outline">
+                <summary>details[data-size="2xl"][data-type="outline"] > summary, block</summary>
+                <p>Some example content appears here.</p></details>
+            <details data-axis="inline">
+                <summary>details[data-axis="inline"] > summary, block</summary>
+                <p>Some example content appears here.</p></details></section>
+
+        <h2 id="main_h2-8" aria-label="example usage of hr">Horizontal Rule</h2>
+        <section aria-labelledby="main_h2-8">
+        <div style="display: flex; flex-direction: column; row-gap: 2rem">
+            <hr>
+            <hr data-type="dashed" data-width="2">
+            <hr data-width="3">
+            <hr data-type="dashed" data-width="4"></div></section>
+
+        <h2 id="main_h2-9" aria-label="example usage of field label">Field Label</h2>
+        <section aria-labelledby="main_h2-9">
+            <label for="main_section-9_input">
+                氏名
+                <span data-requirement>必須</span></label>
+            <p data-type="support">姓と名の間にスペースを入れてください。</p>
+            <input id="main_section-9_input" inputmode="text" aria-invalid="true">
+            <p data-type="error" style="margin-top:1rem">エラーテキストが入ります。</p>
+
+            <fieldset style="margin-top:2rem; border:0; padding:0">
+                <legend>
+                該当する項目
+                <span data-requirement>任意</span></legend>
+                <p data-type="support">該当するものをすべて選択してください。</p>
+                <label data-size="md"><input type="checkbox">選択肢A</label>
+                <label data-size="md"><input type="checkbox">選択肢B</label></fieldset></section>
+
+        <h2 id="main_h2-10" aria-label="example usage of heading">Heading</h2>
+        <section aria-labelledby="main_h2-10">
+            <style>
+                .heading-row { margin-block: 2rem; }
+                .heading-meta { font: 0.75rem/2 monospace; color: var(--color-muted); margin-bottom: 0.25rem; }</style>
+
+            <div class="heading-row">
+                <div class="heading-meta">h2[data-size="2xl"]</div>
+                <h2 data-size="2xl">見出しテキスト</h2></div>
+
+            <div class="heading-row">
+                <div class="heading-meta">hgroup[data-size="xl"] > p, h2</div>
+                <hgroup data-size="xl">
+                    <p>ショルダーテキスト</p>
+                    <h2>見出しテキスト</h2></hgroup></div>
+
+            <div class="heading-row">
+                <div class="heading-meta">h2[data-size="lg"][data-chip]</div>
+                <h2 data-size="lg" data-chip>見出しテキスト</h2></div>
+
+            <div class="heading-row">
+                <div class="heading-meta">hgroup[data-size="md"][data-chip] > p, h2</div>
+                <hgroup data-size="md" data-chip>
+                    <p>ショルダーテキスト</p>
+                    <h2>見出しテキスト</h2></hgroup></div>
+
+            <div class="heading-row">
+                <div class="heading-meta">h2[data-size="2xl"][data-chip]</div>
+                <h2 data-size="2xl" data-chip>見出しテキスト</h2></div>
+
+            <div class="heading-row">
+                <div class="heading-meta">hgroup[data-size="xl"][data-chip] > p, h2</div>
+                <hgroup data-size="xl" data-chip>
+                    <p>ショルダーテキスト</p>
+                    <h2>見出しテキスト</h2></hgroup></div>
+
+            <div class="heading-row">
+                <div class="heading-meta">h2[data-size="lg"][data-chip][data-rule]</div>
+                <h2 data-size="lg" data-chip data-rule>見出しテキスト</h2></div>
+
+            <div class="heading-row">
+                <div class="heading-meta">hgroup[data-size="xl"][data-chip][data-rule] > p, h2</div>
+                <hgroup data-size="md" data-chip data-rule>
+                    <p>ショルダーテキスト</p>
+                    <h2>見出しテキスト</h2></hgroup></div></section>
+
+        <h2 id="main_h2-11" aria-label="example usage of input number">Input Number</h2>
+        <section aria-labelledby="main_h2-11">
+            <style>
+                .input-number-list { display: flex; flex-direction: column; row-gap: 1rem; align-items: start; }
+                .input-number-meta { font: 0.75rem/2 monospace; color: var(--color-muted); }</style>
+
+            <div class="input-number-meta">data-size="lg" / "md"(未指定) / "sm"</div>
+
+            <div class="input-number-list">
+                <span data-input-number data-size="lg">
+                    <button type="button" aria-label="減らす">−</button>
+                    <input type="text" inputmode="numeric" min="0" placeholder="0">
+                    <button type="button" aria-label="増やす">+</button></span>
+
+                <span data-input-number>
+                    <button type="button" aria-label="減らす">−</button>
+                    <input type="text" inputmode="numeric" min="0" placeholder="0">
+                    <button type="button" aria-label="増やす">+</button></span>
+
+                <span data-input-number data-size="sm">
+                    <button type="button" aria-label="減らす">−</button>
+                    <input type="text" inputmode="numeric" min="0" placeholder="0">
+                    <button type="button" aria-label="増やす">+</button></span></div></section>
+
+        <h2 id="main_h2-12" aria-label="example usage of input text">Input Text</h2>
+        <section aria-labelledby="main_h2-12">
+            <style>
+                .input-row { margin-top: 1rem; display: block; }
+                .input-meta { font: 0.75rem/2 monospace; color: var(--color-muted); }</style>
+
+            <div class="input-meta">data-size="lg" / "md"(未指定) / "sm" × (通常, エラー, 読み取り専用, 無効)</div>
+
+            <input type="text" data-size="lg" placeholder="data-size: lg" aria-label="data-size: lg" class="input-row">
+            <input type="text" data-size="lg" aria-invalid="true" aria-label="data-size: lg, エラー" class="input-row">
+            <input type="text" data-size="lg" value="読み取り専用の値" readonly aria-label="data-size: lg, 読み取り専用" class="input-row">
+            <input type="text" data-size="lg" value="無効" disabled aria-label="data-size: lg, 無効" class="input-row">
+
+            <input type="text" placeholder="data-size: 未指定(md)" aria-label="data-size: 未指定(md)" class="input-row">
+            <input type="text" aria-invalid="true" aria-label="data-size: 未指定(md), エラー" class="input-row">
+            <input type="text" value="読み取り専用の値" readonly aria-label="data-size: 未指定(md), 読み取り専用" class="input-row">
+            <input type="text" value="無効" disabled aria-label="data-size: 未指定(md), 無効" class="input-row">
+
+            <input type="text" data-size="sm" placeholder="data-size: sm" aria-label="data-size: sm" class="input-row">
+            <input type="text" data-size="sm" aria-invalid="true" aria-label="data-size: sm, エラー" class="input-row">
+            <input type="text" data-size="sm" value="読み取り専用の値" readonly aria-label="data-size: sm, 読み取り専用" class="input-row">
+            <input type="text" data-size="sm" value="無効" disabled aria-label="data-size: sm, 無効" class="input-row"></section>
+
+        <h2 id="main_h2-13" aria-label="example usage of link">Link</h2>
+        <section aria-labelledby="main_h2-13">
+            <a href="#" target="_blank">
+                リンクテキスト
+                <svg class="link__icon" width="16" height="16" viewBox="0 0 48 48" role="img" aria-label="新規タブで開きます">
+                    <use href="svg/icons.svg#icon-external-link"></use></svg></a></section>
+
+        <h2 id="main_h2-14" aria-label="example usage of list">List</h2>
+        <section aria-labelledby="main_h2-14">
+            <!-- 箇条書き -->
+            <ul>
+                <li>項目A</li>
+                <li>項目B（少し長めのテキストサンプルです）</li>
+                <li>
+                    ネストあり
+                    <ul>
+                        <li>サブ項目1</li>
+                        <li><a href="#">サブ項目2（リンク）</a></li></ul></li></ul>
+
+            <!-- 番号付き -->
+            <ol style="margin-top: 2rem">
+                <li><span>1. </span><span>最初の項目</span></li>
+                <li><span>2. </span><span>二番目の項目</span></li>
+                <li><span>3. </span><span>三番目の項目</span></li></ol></section>
+
+        <h2 id="main_h2-15" aria-label="example usage of list box">List Box</h2>
+        <section aria-labelledby="main_h2-15">
+            <ul id="list-box-1" popover="auto" role="listbox" aria-labelledby="list-box-1-trigger">
+                <li role="presentation">アイテムから選択してください</li>
+                <li role="option" aria-selected="true"><button>リストアイテム1</button></li>
+                <li role="option"><button>リストアイテム2</button></li>
+                <li role="option"><button>リストアイテム3</button></li></ul>
+
+            <button type="button" id="list-box-1-trigger" popovertarget="list-box-1" aria-haspopup="listbox" aria-controls="list-box-1">
+                現在選択中のリストアイテム</button></section>
+
+        <h2 id="main_h2-16" aria-label="example usage of radio">Radio</h2>
+        <section aria-labelledby="main_h2-16">
+            <style>
+                .radio-row { margin-block: 1.5rem; }
+                .radio-meta { font: 0.75rem/2 monospace; color: var(--color-muted); margin-bottom: 0.25rem; }
+                .radio-grid { display: grid; grid-template-columns: repeat(6, auto); gap: 2rem; justify-content: start; }</style>
+
+            <div class="radio-row">
+                <div class="radio-meta">label[data-size="2xl"] > input[checked, aria-invalid="true", disabled]</div>
+                <div class="radio-grid">
+                    <label data-size="2xl"><input type="radio" name="2xl-1">ラベル</label>
+                    <label data-size="2xl"><input type="radio" name="2xl-1" checked>ラベル</label>
+                    <label data-size="2xl"><input type="radio" name="2xl-2" aria-invalid="true">ラベル</label>
+                    <label data-size="2xl"><input type="radio" name="2xl-2" checked aria-invalid="true">ラベル</label>
+                    <label data-size="2xl"><input type="radio" name="2xl-3" disabled>ラベル</label>
+                    <label data-size="2xl"><input type="radio" name="2xl-3" checked disabled>ラベル</label></div></div>
+
+            <div class="radio-row">
+                <div class="radio-meta">label[data-size="xl"] > input[checked, aria-invalid="true", disabled]</div>
+                <div class="radio-grid">
+                    <label data-size="xl"><input type="radio" name="xl-1">ラベル</label>
+                    <label data-size="xl"><input type="radio" name="xl-1" checked>ラベル</label>
+                    <label data-size="xl"><input type="radio" name="xl-2" aria-invalid="true">ラベル</label>
+                    <label data-size="xl"><input type="radio" name="xl-2" checked aria-invalid="true">ラベル</label>
+                    <label data-size="xl"><input type="radio" name="xl-3" disabled>ラベル</label>
+                    <label data-size="xl"><input type="radio" name="xl-3" checked disabled>ラベル</label></div></div>
+
+            <div class="radio-row">
+                <div class="radio-meta">label[data-size="lg"] > input[checked, aria-invalid="true", disabled]</div>
+                <div class="radio-grid">
+                    <label data-size="lg"><input type="radio" name="lg-1">ラベル</label>
+                    <label data-size="lg"><input type="radio" name="lg-1" checked>ラベル</label>
+                    <label data-size="lg"><input type="radio" name="lg-2" aria-invalid="true">ラベル</label>
+                    <label data-size="lg"><input type="radio" name="lg-2" checked aria-invalid="true">ラベル</label>
+                    <label data-size="lg"><input type="radio" name="lg-3" disabled>ラベル</label>
+                    <label data-size="lg"><input type="radio" name="lg-3" checked disabled>ラベル</label></div></div>
+
+            <div class="radio-row">
+                <div class="radio-meta">label([data-size="md"]) > input[checked, aria-invalid="true", disabled]</div>
+                <div class="radio-grid">
+                    <label><input type="radio" name="md-1">ラベル</label>
+                    <label><input type="radio" name="md-1" checked>ラベル</label>
+                    <label><input type="radio" name="md-2" aria-invalid="true">ラベル</label>
+                    <label><input type="radio" name="md-2" checked aria-invalid="true">ラベル</label>
+                    <label><input type="radio" name="md-3" disabled>ラベル</label>
+                    <label><input type="radio" name="md-3" checked disabled>ラベル</label></div></div>
+
+            <div class="radio-row">
+                <div class="radio-meta">label[data-size="sm"] > input[checked, aria-invalid="true", disabled]</div>
+                <div class="radio-grid">
+                    <label data-size="sm"><input type="radio" name="sm-1">ラベル</label>
+                    <label data-size="sm"><input type="radio" name="sm-1" checked>ラベル</label>
+                    <label data-size="sm"><input type="radio" name="sm-2" aria-invalid="true">ラベル</label>
+                    <label data-size="sm"><input type="radio" name="sm-2" checked aria-invalid="true">ラベル</label>
+                    <label data-size="sm"><input type="radio" name="sm-3" disabled>ラベル</label>
+                    <label data-size="sm"><input type="radio" name="sm-3" checked disabled>ラベル</label></div></div>
+
+            <div class="radio-row">
+                <div class="radio-meta">label[data-size="xs"] > input[checked, aria-invalid="true", disabled]</div>
+                <div class="radio-grid">
+                    <label data-size="xs"><input type="radio" name="xs-1">ラベル</label>
+                    <label data-size="xs"><input type="radio" name="xs-1" checked>ラベル</label>
+                    <label data-size="xs"><input type="radio" name="xs-2" aria-invalid="true">ラベル</label>
+                    <label data-size="xs"><input type="radio" name="xs-2" checked aria-invalid="true">ラベル</label>
+                    <label data-size="xs"><input type="radio" name="xs-3" disabled>ラベル</label>
+                    <label data-size="xs"><input type="radio" name="xs-3" checked disabled>ラベル</label></div></div></section>
+
+        <h2 id="main_h2-17" aria-label="example usage of search box">Search Box</h2>
+        <section aria-labelledby="main_h2-17">
+            <div style="margin-top:1rem; display: flex;">
+                <label data-search-box>
+                    <svg width="24" height="24" viewBox="0 0 24 24" aria-hidden="true">
+                        <use href="svg/icons.svg#icon-search"></use></svg>
+                    <span class="visually-hidden">検索</span>
+                    <input type="search" name="q"></label>
+                <span style="display: inline flex; width: 0.5rem;"></span>
+                <button type="submit" data-type="fill">検索</button></div>
+
+            <div style="margin-top:1rem; display: flex;">
+                <label data-search-box-scope data-size="lg">
+                    <span>検索対象</span>
+                    <select>
+                        <option value="">すべて</option>
+                        <option value="images">画像</option>
+                        <option value="files">ファイル</option></select></label>
+                <label data-search-box data-size="lg">
+                    <svg width="24" height="24" viewBox="0 0 24 24" aria-hidden="true">
+                        <use href="svg/icons.svg#icon-search"></use></svg>
+                    <span class="visually-hidden">検索</span>
+                    <input type="search" name="q" data-size="lg"></label>
+                <span style="display: inline flex; width: 0.5rem;"></span>
+                <button type="submit" data-type="fill" data-size="lg">検索</button></div></section>
+
+        <h2 id="main_h2-18" aria-label="example usage of select">Select</h2>
+        <section aria-labelledby="main_h2-18">
+            <style>
+                .select-row { margin-top: 1rem; display: block; }
+                .select-meta { font: 0.75rem/2 monospace; color: var(--color-muted); }</style>
+
+            <div class="select-meta">data-size="lg" / "md"(未指定) / "sm" × (通常, エラー, 無効)</div>
+
+            <select data-size="lg" aria-label="data-size: lg" class="select-row">
+                <option value="">選択してください</option>
+                <option value="1">選択肢1</option></select>
+            <select data-size="lg" aria-invalid="true" aria-label="data-size: lg, エラー" class="select-row">
+                <option value="">選択してください</option>
+                <option value="1">選択肢1</option></select>
+            <select data-size="lg" disabled aria-label="data-size: lg, 無効" class="select-row">
+                <option value="">選択してください</option></select>
+
+            <select aria-label="data-size: 未指定(md)" class="select-row">
+                <option value="">選択してください</option>
+                <option value="1">選択肢1</option></select>
+            <select aria-invalid="true" aria-label="data-size: 未指定(md), エラー" class="select-row">
+                <option value="">選択してください</option>
+                <option value="1">選択肢1</option></select>
+            <select disabled aria-label="data-size: 未指定(md), 無効" class="select-row">
+                <option value="">選択してください</option></select>
+
+            <select data-size="sm" aria-label="data-size: sm" class="select-row">
+                <option value="">選択してください</option>
+                <option value="1">選択肢1</option></select>
+            <select data-size="sm" aria-invalid="true" aria-label="data-size: sm, エラー" class="select-row">
+                <option value="">選択してください</option>
+                <option value="1">選択肢1</option></select>
+            <select data-size="sm" disabled aria-label="data-size: sm, 無効" class="select-row">
+                <option value="">選択してください</option></select>
+
+            <div class="select-meta">select[multiple]</div>
+            <select multiple aria-label="複数選択" class="select-row">
+                <option value="1">選択肢1</option>
+                <option value="2">選択肢2</option>
+                <option value="3">選択肢3</option>
+                <option value="4">選択肢4</option>
+                <option value="5">選択肢5</option></select></section>
+
+        <h2 id="main_h2-19" aria-label="example usage of table">Table</h2>
+        <section aria-labelledby="main_h2-19">
+            <!-- 通常 -->
+            <table>
+                <thead>
+                    <tr>
+                        <th scope="col">ラベル</th>
+                        <th scope="col">ラベル</th>
+                        <th scope="col">ラベル</th>
+                        <th scope="col">ラベル</th></tr></thead>
+                <tbody>
+                    <tr>
+                        <td>データ</td>
+                        <td>データ</td>
+                        <td>データ</td>
+                        <td>データ</td></tr>
+                    <tr>
+                        <td>データ</td>
+                        <td>データ</td>
+                        <td>データ</td>
+                        <td>データ</td></tr></tbody></table>
+
+            <!-- ストライプ・デンス -->
+            <table data-stripe data-border="bottom" data-type="dense" style="margin-top: 2rem;">
+                <caption>ストライプ・デンスタイプ</caption>
+                <thead>
+                    <tr>
+                        <th scope="col">ラベル</th>
+                        <th scope="col">ラベル</th>
+                        <th scope="col">ラベル</th>
+                        <th scope="col">ラベル</th></tr></thead>
+                <tbody>
+                    <tr><td>データ</td><td>データ</td><td>データ</td><td>データ</td></tr>
+                    <tr><td>データ</td><td>データ</td><td>データ</td><td>データ</td></tr>
+                    <tr><td>データ</td><td>データ</td><td>データ</td><td>データ</td></tr></tbody></table>
+
+            <!-- tbody th (行ヘッダー) -->
+            <table data-border="bottom" style="margin-top: 2rem;">
+                <caption>行ヘッダー付き</caption>
+                <thead>
+                    <tr>
+                        <th scope="col">項目</th>
+                        <th scope="col">値A</th>
+                        <th scope="col">値B</th></tr></thead>
+                <tbody>
+                    <tr>
+                        <th scope="row">行1</th>
+                        <td>データ</td>
+                        <td>データ</td></tr>
+                    <tr>
+                        <th scope="row">行2</th>
+                        <td>データ</td>
+                        <td>データ</td></tr></tbody></table>
+
+            <!-- data-hover -->
+            <table data-hover data-border="bottom" style="margin-top: 2rem;">
+                <caption>ホバーハイライト</caption>
+                <thead>
+                    <tr>
+                        <th scope="col">ラベル</th>
+                        <th scope="col">ラベル</th>
+                        <th scope="col">ラベル</th></tr></thead>
+                <tbody>
+                    <tr><td>データ</td><td>データ</td><td>データ</td></tr>
+                    <tr><td>データ</td><td>データ</td><td>データ</td></tr>
+                    <tr><td>データ</td><td>データ</td><td>データ</td></tr></tbody></table>
+
+            <!-- data-selectable -->
+            <table data-selectable data-border="bottom" style="margin-top: 2rem;">
+                <caption>選択可能（チェックボックス）</caption>
+                <thead>
+                    <tr>
+                        <th scope="col"><label data-size="sm"><input type="checkbox" aria-label="すべて選択"></label></th>
+                        <th scope="col">ラベル</th>
+                        <th scope="col">ラベル</th></tr></thead>
+                <tbody>
+                    <tr>
+                        <td><label data-size="sm"><input type="checkbox" aria-label="行1を選択"></label></td>
+                        <td>データ</td>
+                        <td>データ</td></tr>
+                    <tr>
+                        <td><label data-size="sm"><input type="checkbox" aria-label="行2を選択" checked></label></td>
+                        <td>データ</td>
+                        <td>データ</td></tr></tbody></table>
+
+            <!-- data-sort -->
+            <table data-border="bottom" style="margin-top: 2rem;">
+                <caption>ソート（aria-sort: none / ascending / descending）</caption>
+                <thead>
+                    <tr>
+                        <th data-sort scope="col">
+                            名前
+                            <div>
+                                <button data-sort-direction="up" type="button" aria-label="名前 昇順"></button>
+                                <button data-sort-direction="down" type="button" aria-label="名前 降順"></button></div></th>
+                        <th data-sort aria-sort="ascending" scope="col">
+                            日付
+                            <div>
+                                <button data-sort-direction="up" type="button" aria-label="日付 昇順"></button>
+                                <button data-sort-direction="down" type="button" aria-label="日付 降順"></button></div></th>
+                        <th data-sort aria-sort="descending" scope="col">
+                            金額
+                            <div>
+                                <button data-sort-direction="up" type="button" aria-label="金額 昇順"></button>
+                                <button data-sort-direction="down" type="button" aria-label="金額 降順"></button></div></th></tr></thead>
+                <tbody>
+                    <tr>
+                        <td>山田 太郎</td>
+                        <td>2026-06-01</td>
+                        <td>¥12,000</td></tr>
+                    <tr>
+                        <td>佐藤 花子</td>
+                        <td>2026-06-02</td>
+                        <td>¥8,500</td></tr></tbody></table>
+
+            <!-- data-border="" (全セル格子) -->
+            <table data-border="" style="margin-top: 2rem;">
+                <caption>全セルボーダー</caption>
+                <thead>
+                    <tr>
+                        <th scope="col">ラベル</th>
+                        <th scope="col">ラベル</th>
+                        <th scope="col">ラベル</th></tr></thead>
+                <tbody>
+                    <tr><td>データ</td><td>データ</td><td>データ</td></tr>
+                    <tr><td>データ</td><td>データ</td><td>データ</td></tr></tbody></table></section>
+
+        <h2 id="main_h2-20" aria-label="example usage of textarea">Textarea</h2>
+        <section aria-labelledby="main_h2-20">
+            <div style="width:16rem">
+                <!-- data-size: lg / md(未指定) / sm -->
+                <textarea placeholder="data-size: lg" data-size="lg" aria-label="data-size: lg" style="margin-top:1rem;display:block"></textarea>
+                <textarea placeholder="data-size: 未指定(md)" aria-label="data-size: 未指定(md)" style="margin-top:1rem;display:block"></textarea>
+                <textarea placeholder="data-size: sm" data-size="sm" aria-label="data-size: sm" style="margin-top:1rem;display:block"></textarea>
+
+                <!-- エラー -->
+                <textarea style="margin-top:1rem;display:block" aria-invalid="true" aria-label="エラー"></textarea>
+
+                <!-- 読み取り専用 -->
+                <textarea style="margin-top:1rem;display:block" readonly aria-label="読み取り専用">読み取り専用の値</textarea>
+
+                <!-- 無効 -->
+                <textarea style="margin-top:1rem;display:block" disabled aria-label="無効">無効</textarea>
+
+                <!-- data-textarea-counter -->
+                <textarea style="margin-top:1rem;display:block" aria-label="文字数カウンター付き" aria-describedby="main_textarea-counter-1" maxlength="100"></textarea>
+                <span id="main_textarea-counter-1" data-textarea-counter>0/100</span>
+
+                <!-- data-textarea-counter[data-exceeded] -->
+                <textarea style="margin-top:1rem;display:block" aria-label="文字数超過" aria-describedby="main_textarea-counter-2" maxlength="100">超過している場合の表示例です。</textarea>
+                <span id="main_textarea-counter-2" data-textarea-counter data-exceeded>105/100</span></div></section>
+
+        <h2 id="main_h2-21" aria-label="example usage of toggle">Toggle</h2>
+        <section aria-labelledby="main_h2-21">
+            <label data-size="lg">
+                <span>label text</span>
+                <input type="checkbox" role="switch"></label>
+            <label>
+                <span>label text</span>
+                <input type="checkbox" role="switch"></label>
+            <label data-size="sm">
+                <span>label text</span>
+                <input type="checkbox" role="switch"></label>
+            <label data-size="xs">
+                <span>label text</span>
+                <input type="checkbox" role="switch"></label>
+            <label data-type="knob-only" data-size="sm">
+                <span>knob only clickable</span>
+                <input type="checkbox" role="switch"></label>
+            <label data-type="label-above" data-size="lg">
+                <span>label text</span>
+                <input type="checkbox" role="switch"></label></section></main>
+
+</body></html>

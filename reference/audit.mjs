@@ -10,7 +10,7 @@ import path from 'node:path';
 // axe-core only ever inspects what's currently rendered, so pseudo-classes
 // and prefers-color-scheme both need to be triggered live via Playwright —
 // neither is visible to a plain static scan.
-const OUT = 'examples';
+const OUT = 'reference';
 mkdirSync(OUT, { recursive: true });
 
 const TAGS = ['wcag2a', 'wcag2aa', 'wcag21a', 'wcag21aa', 'wcag22aa'];
@@ -30,11 +30,18 @@ for (const scheme of SCHEMES) {
     const url = pathToFileURL(path.resolve('index.html')).href;
     await page.goto(url, { waitUntil: 'load' });
 
+    // stray mouse/keyboard interaction during hover/active/focus probing can land
+    // on a submit button and trigger a real navigation, which kills the page's
+    // execution context mid-scan — block all form submission for the audit run.
+    await page.evaluate(() => {
+        document.addEventListener('submit', e => e.preventDefault(), true);
+    });
+
     // static: whatever is already in the markup (normal + disabled buttons)
     const staticResults = await new AxeBuilder({ page }).withTags(TAGS).analyze();
     allResults.push({ scheme, state: 'static', label: '(all)', results: staticResults });
 
-    const allButtons = await page.$$('button:not([disabled])');
+    const allButtons = await page.$$('button:not([disabled], [aria-disabled="true"])');
     const visibility = await Promise.all(allButtons.map(b => b.isVisible()));
     const buttons = allButtons.filter((_, i) => visibility[i]);
     console.log(`[${scheme}] found ${buttons.length} enabled buttons`);
@@ -47,7 +54,7 @@ for (const scheme of SCHEMES) {
         // hover
         await handle.hover();
         let results = await new AxeBuilder({ page }).withTags(TAGS)
-            .include('button:not([disabled])')
+            .include('button:not([disabled], [aria-disabled="true"])')
             .analyze();
         allResults.push({ scheme, state: 'hover', label, index: i, results });
 
@@ -55,7 +62,7 @@ for (const scheme of SCHEMES) {
         await handle.hover();
         await page.mouse.down();
         results = await new AxeBuilder({ page }).withTags(TAGS)
-            .include('button:not([disabled])')
+            .include('button:not([disabled], [aria-disabled="true"])')
             .analyze();
         allResults.push({ scheme, state: 'active', label, index: i, results });
         await page.mouse.up();
@@ -65,7 +72,7 @@ for (const scheme of SCHEMES) {
         await page.keyboard.press('Tab'); // best-effort; explicit focus() below is the reliable path
         await handle.evaluate(el => el.focus());
         results = await new AxeBuilder({ page }).withTags(TAGS)
-            .include('button:not([disabled])')
+            .include('button:not([disabled], [aria-disabled="true"])')
             .analyze();
         allResults.push({ scheme, state: 'focus-visible', label, index: i, results });
         await handle.evaluate(el => el.blur());
@@ -170,4 +177,4 @@ section { margin-bottom: 56px; }
 ${detailSections || '<p style="color:var(--ok);font-weight:bold;margin-top:24px">✓ No violations found in any scheme/state combination.</p>'}
 `);
 
-console.log('done: examples/audit.html, examples/audit.json');
+console.log('done: reference/audit.html, reference/audit.json');

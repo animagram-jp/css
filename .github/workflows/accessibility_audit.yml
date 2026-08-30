@@ -37,12 +37,12 @@ jobs:
           run: npx playwright install-deps chromium
 
         - name: "run axe over ./index.html"
-          run: node examples/audit.mjs
+          run: node reference/audit.mjs
 
         - name: "upload report artifact"
           uses: actions/upload-artifact@v7
           with:
             name: accessibility-report
             path: |
-              examples/audit.html
-              examples/audit-*.json
+              reference/audit.html
+              reference/audit.json

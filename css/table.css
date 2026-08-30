@@ -1,206 +1,233 @@
-@layer css.components {
+/*  <table>
+        <caption></caption>
+        <thead>
+            <tr>
+                <th scope="col"></th></tr></thead>
+        <tbody>
+            <tr>
+                <th scope="row"></th>
+                <td></td></tr></tbody>
+        <tfoot>
+            <tr>
+                <td></td></tr></tfoot></table>
 
+    (a sortable column header is in step.css)
+*/
+
+@layer css.table {
+
+    /* === table === */
+
+    /*
+    * Cells are separated by rules rather than by fill, so the borders are
+    * collapsed onto one another and the row height is carried by padding.
+    */
     table {
-        --border-color: var(--color-muted);
-        --padding: calc(20 / 16 * 1rem) 0.5rem;
-        margin: 0;
-        max-width: 100%;
-        border-collapse: collapse;
-        color: rgb(var(--rgb-ink));
-        font-weight: normal;
-        font-size: var(--md-font-size);
-        line-height: var(--md-line-height);
-        font-family: var(--font-family-sans);
-        letter-spacing: var(--md-letter-spacing);
+        border-collapse:  collapse;
+        color:            var(--color-ink);
+        font-size:        var(--md-font-size);
+        font-weight:      normal;
+        letter-spacing:   var(--md-letter-spacing);
+        line-height:      var(--md-line-height);
+        margin:           0;
+        max-inline-size:  100%;
     }
 
-    table[data-type="dense"] {
-        --padding: 0.75rem 0.1rem;
-        line-height: var(--md-line-height);
-    }
-
-    table caption {
-        font-weight: bold;
-        font-size: var(--md-font-size);
-        text-align: left;
-        margin-bottom: 1rem;
-    }
-
+    /*
+    * The block padding is what is left of the row once the text has taken its
+    * line-height, halved for the two sides -- the same relation css.input and
+    * css.button use to seat a line inside --*-box-height.
+    */
     table :is(td, th) {
-        padding: var(--padding);
-        text-align: left;
+        padding-block:  calc((var(--md-box-height) - var(--md-line-height)) / 2);
+        padding-inline: calc(var(--md-border-radius) / 2);
+        text-align:     start;
         vertical-align: baseline;
+    }
+
+    @media (width >= 40rem) {
+        table :is(td, th) {
+            padding-inline: var(--md-border-radius);
+        }
     }
 
     table th {
         font-weight: bold;
     }
 
-    table thead th {
-        --border-color: var(--color-muted);
-        background-color: rgb(var(--rgb-light-gray) / 0.3);
-        color: rgb(var(--rgb-ink));
+    /*
+    * No margin and no padding of its own: the first row's own block padding
+    * already stands between the caption and the grid, so anything here would
+    * be added to it rather than replacing it.
+    */
+    table caption {
+        font-size:   var(--md-font-size);
+        font-weight: bold;
+        margin:      0;
+        padding:     0;
+        text-align:  start;
     }
 
-    table tbody th {
-        --border-color: var(--color-muted);
-        background-color: rgb(var(--rgb-light-gray) / 0.3);
-        color: rgb(var(--rgb-ink));
+    /* === [data-size] === */
+
+    table[data-size="xs"] {
+        font-size:      var(--xs-font-size);
+        letter-spacing: var(--xs-letter-spacing);
+        line-height:    var(--xs-line-height);
+    }
+    table[data-size="xs"] :is(td, th) {
+        padding-block:  calc((var(--xs-box-height) - var(--xs-line-height)) / 2);
+        padding-inline: var(--xs-border-radius);
+    }
+    table[data-size="xs"] caption {
+        font-size: var(--xs-font-size);
     }
 
-    /* Stripe */
-
-    table[data-stripe] {
-        --border-color: var(--color-muted);
+    table[data-size="sm"] {
+        font-size:      var(--sm-font-size);
+        letter-spacing: var(--sm-letter-spacing);
+        line-height:    var(--sm-line-height);
+    }
+    table[data-size="sm"] :is(td, th) {
+        padding-block:  calc((var(--sm-box-height) - var(--sm-line-height)) / 2);
+        padding-inline: var(--sm-border-radius);
+    }
+    table[data-size="sm"] caption {
+        font-size: var(--sm-font-size);
     }
 
-    table[data-stripe] tr:nth-child(even) {
-        background-color: rgb(var(--rgb-light-gray) / 0.2);
+    table[data-size="lg"] {
+        font-size:      var(--lg-font-size);
+        letter-spacing: var(--lg-letter-spacing);
+        line-height:    var(--lg-line-height);
+    }
+    table[data-size="lg"] :is(td, th) {
+        padding-block:  calc((var(--lg-box-height) - var(--lg-line-height)) / 2);
+        padding-inline: var(--lg-border-radius);
+    }
+    table[data-size="lg"] caption {
+        font-size: var(--lg-font-size);
     }
 
-    /* Hover highlight */
-
-    table[data-hover] {
-        --border-color: var(--color-muted);
+    table[data-size="xl"] {
+        font-size:      var(--xl-font-size);
+        letter-spacing: var(--xl-letter-spacing);
+        line-height:    var(--xl-line-height);
     }
+    table[data-size="xl"] :is(td, th) {
+        padding-block:  calc((var(--xl-box-height) - var(--xl-line-height)) / 2);
+        padding-inline: var(--xl-border-radius);
+    }
+    table[data-size="xl"] caption {
+        font-size: var(--xl-font-size);
+    }
+
+    table[data-size="2xl"] {
+        font-size:      var(--2xl-font-size);
+        letter-spacing: var(--2xl-letter-spacing);
+        line-height:    var(--2xl-line-height);
+    }
+    table[data-size="2xl"] :is(td, th) {
+        padding-block:  calc((var(--2xl-box-height) - var(--2xl-line-height)) / 2);
+        padding-inline: var(--2xl-border-radius);
+    }
+    table[data-size="2xl"] caption {
+        font-size: var(--2xl-font-size);
+    }
+
+    /* === header cells === */
+
+    /*
+    * Header cells are told apart by weight and by the rule under the header
+    * row, not by a fill: a fill would have to survive forced-colors, where a
+    * background is replaced and the distinction is lost.
+    */
+    table thead tr:last-of-type :is(td, th) {
+        border-block-end: var(--md-border-width) solid var(--color-ink);
+    }
+
+    table tbody th[scope="row"] {
+        border-inline-end: var(--md-border-width) solid var(--color-ink);
+    }
+
+    table tfoot tr:first-of-type :is(td, th) {
+        border-block-start: var(--md-border-width) solid var(--color-ink);
+    }
+
+    /* === [data-stripe] === */
+
+    /*
+    * A wash of ink over paper, so it follows the scheme and stays behind the
+    * text at both ends of the contrast range. It carries no meaning of its
+    * own, so it is dropped under forced-colors rather than given a system
+    * colour, which would read as a state.
+    */
+    table[data-stripe] tbody tr:nth-child(even) {
+        background-color: var(--color-paper-active);
+    }
+
+    /* === [data-hover] === */
 
     @media (hover: hover) {
-        table[data-hover] tr:hover {
-            background-color: rgb(var(--rgb-emphasis) / 8%);
+        table[data-hover] tbody tr:hover {
+            background-color: var(--color-paper-active);
         }
     }
 
-    /* With checkbox */
+    /* === [data-selectable] === */
 
-    table[data-selectable] {
-        --border-color: var(--color-muted);
+    /*
+    * A selected row is a state, not an alternation, so it is washed with the
+    * emphasis colour to tell it apart from [data-stripe] above.
+    */
+    table[data-selectable] tbody tr:has(:checked) {
+        background-color: color-mix(in srgb, var(--color-emphasis) var(--ratio-paper-active), var(--color-paper));
     }
 
-    table[data-selectable] tr:has(:checked) {
-        background-color: rgb(var(--rgb-emphasis) / 15%);
-    }
-
-    @supports (selector(:has(.x))) {
-        table :is(td, th):has(> label:only-child > input:is([type="checkbox"]:not([role="switch"]), [type="radio"])) {
-            position: relative;
-            box-sizing: border-box;
-            width: 2.5rem;
-            padding: 0;
+    @media (forced-colors: active) {
+        table[data-stripe] tbody tr:nth-child(even),
+        table[data-hover] tbody tr:hover,
+        table[data-selectable] tbody tr:has(:checked) {
+            background-color: revert;
         }
-
-        table :is(td, th) > label:only-child:has(> input:is([type="checkbox"]:not([role="switch"]), [type="radio"])) {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            width: fit-content;
+        /* The selected row keeps a mark that survives the colour replacement. */
+        table[data-selectable] tbody tr:has(:checked) :is(td, th) {
+            border-block: var(--md-border-width) solid Highlight;
         }
     }
 
-    /* Sort */
-
-    table th[data-sort] {
-        --border-color: var(--color-muted);
-        background-color: rgb(var(--rgb-light-gray) / 0.3);
-        padding: 0.75rem 1rem;
-        color: rgb(var(--rgb-ink));
-        white-space: nowrap;
+    /* The control column is only as wide as the control, which is centred. */
+    table :is(td, th):has(> label:only-child > input:is([type="checkbox"]:not([role="switch"]), [type="radio"])) {
+        inline-size:    0; /* shrink-to-fit around the control */
+        padding-inline: calc(var(--md-border-radius) / 2);
+        text-align:     center;
     }
 
-    table[data-type="dense"] th[data-sort] {
-        padding-top: 0;
-        padding-bottom: 0;
+    table :is(td, th) > label:only-child:has(> input:is([type="checkbox"]:not([role="switch"]), [type="radio"])) {
+        display: inline flow-root;
     }
 
-    th[data-sort] > div {
-        display: inline flex;
-        flex-direction: column;
-        vertical-align: middle;
-        margin-inline-start: 0.25rem;
-    }
-
-    button[data-sort-direction] {
-        display: block;
-        width: 1.5rem;
-        height: 0.75rem;
-        border: 0;
-        background-color: transparent;
-        padding: 0;
-        color: var(--color-muted);
-        cursor: pointer;
-    }
-
-    button[data-sort-direction]::after {
-        content: "";
-        display: block;
-        width: 100%;
-        height: 100%;
-        background-color: currentcolor;
-        mask-repeat: no-repeat;
-        mask-position: center;
-        mask-size: contain;
-    }
-
-    button[data-sort-direction="up"]::after {
-        mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 12'%3E%3Cpath d='M2 10l10-9 10 9H2z'/%3E%3C/svg%3E");
-    }
-
-    button[data-sort-direction="down"]::after {
-        mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 12'%3E%3Cpath d='M2 2l10 9 10-9H2z'/%3E%3C/svg%3E");
-    }
-
-    th[data-sort][aria-sort="ascending"] button[data-sort-direction="up"],
-    th[data-sort][aria-sort="descending"] button[data-sort-direction="down"] {
-        color: rgb(var(--rgb-ink));
-    }
-
-    button[data-sort-direction]:hover {
-        color: rgb(var(--rgb-ink));
-    }
-
-    button[data-sort-direction]:focus-visible {
-        outline: 0.125rem solid rgb(var(--rgb-border));
-        outline-offset: 0.125rem;
-        border-radius: 0.125rem;
-        background-color: rgb(var(--rgb-focus));
-        box-shadow: 0 0 0 0.125rem rgb(var(--rgb-focus));
-    }
-
-    /* Utilities */
+    /* === [data-border] === */
 
     table[data-border=""] :where(td, th) {
-        border: 1px solid var(--border-color);
+        border: var(--md-border-width) solid var(--color-mute);
+    }
+    table[data-border~="block-start"] :where(td, th) {
+        border-block-start: var(--md-border-width) solid var(--color-mute);
+    }
+    table[data-border~="block-end"] :where(td, th) {
+        border-block-end: var(--md-border-width) solid var(--color-mute);
+    }
+    table[data-border~="inline-start"] :where(td, th) {
+        border-inline-start: var(--md-border-width) solid var(--color-mute);
+    }
+    table[data-border~="inline-end"] :where(td, th) {
+        border-inline-end: var(--md-border-width) solid var(--color-mute);
     }
 
-    table[data-border~="top"] :where(td, th) {
-        border-top: 1px solid var(--border-color);
-    }
-
-    table[data-border~="right"] :where(td, th) {
-        border-right: 1px solid var(--border-color);
-    }
-
-    table[data-border~="bottom"] :where(td, th) {
-        border-bottom: 1px solid var(--border-color);
-    }
-
-    table[data-border~="left"] :where(td, th) {
-        border-left: 1px solid var(--border-color);
-    }
-
-    /* Header cell's black border should take precedence over [data-border] */
-    table thead tr:last-of-type th {
-        border-bottom: 1px solid rgb(var(--rgb-border));
-    }
-
-    table tbody th:last-of-type {
-        border-right: 1px solid rgb(var(--rgb-border));
-    }
-
-    @media (width >= 40rem) {
-        table {
-            --padding: calc(20 / 16 * 1rem) 1rem;
+    @media (forced-colors: active) {
+        table :is(td, th) {
+            border-color: CanvasText;
         }
     }
-
 }

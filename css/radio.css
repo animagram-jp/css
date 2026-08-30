@@ -1,226 +1,188 @@
-/* <label>
-        <input type="radio">
-        inline</label> */
+/* radio: input widget that allows users to choose one of several values. */
 
-@layer css.components {
+/*  <label>
+        <span>inline</span>
+        <input type="radio"></label> */
 
-    label:has(> input[type="radio"]) {
-        position: relative;
-        display: inline flex;
-        align-items: center;
-        gap: var(--gap);
-        width: fit-content;
-        color: rgb(var(--rgb-ink));
-        font-family: var(--font-family-sans);
-        font-weight: normal;
-    }
+@layer css.radio {
 
-    label:has(> input[type="radio"]:is(:disabled, [aria-disabled="true"])) {
-        color: var(--color-muted);
-    }
-
-    label[data-size="xs"]:has(> input[type="radio"]) {
-        --gap: 0.25rem;
-        --radio-outer-size: var(--xs-line-height);
-        --radio-size: calc(var(--radio-outer-size) + 2 * 0.25rem);
-        --radio-inner-size: calc(8 / 16 * 1rem);
-        --radio-border-width: 0.125rem;
-        min-height: var(--xs-box-height);
-        font-size: var(--xs-font-size);
-        line-height: var(--xs-line-height);
-        letter-spacing: var(--xs-letter-spacing);
-    }
-
-    label[data-size="sm"]:has(> input[type="radio"]) {
-        --gap: 0.25rem;
-        --radio-outer-size: var(--sm-line-height);
-        --radio-size: calc(var(--radio-outer-size) + 2 * 0.25rem);
-        --radio-inner-size: calc(10 / 16 * 1rem);
-        --radio-border-width: 0.125rem;
-        min-height: var(--sm-box-height);
-        font-size: var(--sm-font-size);
-        line-height: var(--sm-line-height);
-        letter-spacing: var(--sm-letter-spacing);
-    }
-
-    label:not([data-size]):has(> input[type="radio"]),
-    label[data-size="md"]:has(> input[type="radio"]) {
-        --gap: 0.5rem;
-        --radio-outer-size: var(--md-line-height);
-        --radio-size: calc(var(--radio-outer-size) + 2 * 0.25rem);
-        --radio-inner-size: 0.75rem;
-        --radio-border-width: 0.125rem;
-        min-height: var(--md-box-height);
-        font-size: var(--md-font-size);
-        line-height: var(--md-line-height);
-        letter-spacing: var(--md-letter-spacing);
-    }
-
-    label[data-size="lg"]:has(> input[type="radio"]) {
-        --gap: 0.75rem;
-        --radio-outer-size: var(--lg-line-height);
-        --radio-size: calc(var(--radio-outer-size) + 2 * 0.25rem);
-        --radio-inner-size: 1rem;
-        --radio-border-width: calc(3 / 16 * 1rem);
-        min-height: var(--lg-box-height);
-        font-size: var(--lg-font-size);
-        line-height: var(--lg-line-height);
-        letter-spacing: var(--lg-letter-spacing);
-    }
-
-    label[data-size="xl"]:has(> input[type="radio"]) {
-        --gap: 1rem;
-        --radio-outer-size: var(--xl-line-height);
-        --radio-size: calc(var(--radio-outer-size) + 2 * 0.25rem);
-        --radio-inner-size: 1.25rem;
-        --radio-border-width: calc(3 / 16 * 1rem);
-        min-height: var(--xl-box-height);
-        font-size: var(--xl-font-size);
-        line-height: var(--xl-line-height);
-        letter-spacing: var(--xl-letter-spacing);
-    }
-
-    label[data-size="2xl"]:has(> input[type="radio"]) {
-        --gap: 1.25rem;
-        --radio-outer-size: var(--2xl-line-height);
-        --radio-size: calc(var(--radio-outer-size) + 2 * 0.25rem);
-        --radio-inner-size: 1.5rem;
-        --radio-border-width: 0.25rem;
-        min-height: var(--2xl-box-height);
-        font-size: var(--2xl-font-size);
-        line-height: var(--2xl-line-height);
-        letter-spacing: var(--2xl-letter-spacing);
+    label:has(> input[type="radio"]),
+    label:has(> input[type="radio"]) > * {
+        vertical-align: middle;
     }
 
     label > input[type="radio"] {
-        position: relative;
-        flex-shrink: 0;
-        margin: 0;
-        appearance: none;
-        width: var(--radio-outer-size);
-        height: var(--radio-outer-size);
-        border-radius: 51%;
-        background-color: var(--color-background);
-        border: var(--radio-border-width) solid var(--color-muted);
+        appearance:       none;
+        background-color: var(--color-paper);
+        border-color:     var(--color-ink);
+        border-style:     solid;
+        border-radius:    50%;
+        cursor:           pointer;
+        position:         relative;
+        margin:           0;
     }
 
+    /* ● : 内円 (box-height - border-width * 2) から更に border-width * 2 を引いた直径。
+       内円との間隔は border-width 1個分になる */
+
+    label > input[type="radio"]::after {
+        background-color: transparent;
+        border-radius:    50%;
+        content:          "";
+        inset-block:      0;
+        inset-inline:     0;
+        margin:           auto; /* 中央揃え (inset: 0 の余白を上下左右均等に配分) */
+        position:         absolute;
+    }
+
+    @media (prefers-reduced-motion: no-preference) {
+        label > input[type="radio"]::after {
+            transition: background-color 150ms ease;
+        }
+    }
+
+    label > input[type="radio"]:checked::after {
+        background-color: var(--color-emphasis-fill);
+    }
+
+    /* :focus-visible, :hover, :active */
+
+    label > input[type="radio"]:focus-visible,
+    label > input[type="radio"]:hover,
+    label > input[type="radio"]:active {
+        outline-color:  var(--color-focus);
+        outline-offset: 0;
+        outline-style:  solid;
+        outline-width:  0.25rem;
+        z-index:        1;
+    }
+
+    /* [data-size] */
+
+    label > input[type="radio"][data-size="xs"] {
+        border-width: var(--xs-border-width);
+        block-size:   var(--xs-box-height);
+        inline-size:  var(--xs-box-height);
+    }
+    label > input[type="radio"][data-size="xs"]::after {
+        block-size:  calc(var(--xs-box-height) - var(--xs-border-width) * 4);
+        inline-size: calc(var(--xs-box-height) - var(--xs-border-width) * 4);
+    }
+
+    label > input[type="radio"][data-size="sm"] {
+        border-width: var(--sm-border-width);
+        block-size:   var(--sm-box-height);
+        inline-size:  var(--sm-box-height);
+    }
+    label > input[type="radio"][data-size="sm"]::after {
+        block-size:  calc(var(--sm-box-height) - var(--sm-border-width) * 4);
+        inline-size: calc(var(--sm-box-height) - var(--sm-border-width) * 4);
+    }
+
+    label > input[type="radio"]:not([data-size]),
+    label > input[type="radio"][data-size="md"] {
+        border-width: var(--md-border-width);
+        block-size:   var(--md-box-height);
+        inline-size:  var(--md-box-height);
+    }
+    label > input[type="radio"]:not([data-size])::after,
+    label > input[type="radio"][data-size="md"]::after {
+        block-size:  calc(var(--md-box-height) - var(--md-border-width) * 4);
+        inline-size: calc(var(--md-box-height) - var(--md-border-width) * 4);
+    }
+
+    label > input[type="radio"][data-size="lg"] {
+        border-width: var(--lg-border-width);
+        block-size:   var(--lg-box-height);
+        inline-size:  var(--lg-box-height);
+    }
+    label > input[type="radio"][data-size="lg"]::after {
+        block-size:  calc(var(--lg-box-height) - var(--lg-border-width) * 4);
+        inline-size: calc(var(--lg-box-height) - var(--lg-border-width) * 4);
+    }
+
+    label > input[type="radio"][data-size="xl"] {
+        border-width: var(--xl-border-width);
+        block-size:   var(--xl-box-height);
+        inline-size:  var(--xl-box-height);
+    }
+    label > input[type="radio"][data-size="xl"]::after {
+        block-size:  calc(var(--xl-box-height) - var(--xl-border-width) * 4);
+        inline-size: calc(var(--xl-box-height) - var(--xl-border-width) * 4);
+    }
+
+    label > input[type="radio"][data-size="2xl"] {
+        border-width: var(--2xl-border-width);
+        block-size:   var(--2xl-box-height);
+        inline-size:  var(--2xl-box-height);
+    }
+    label > input[type="radio"][data-size="2xl"]::after {
+        block-size:  calc(var(--2xl-box-height) - var(--2xl-border-width) * 4);
+        inline-size: calc(var(--2xl-box-height) - var(--2xl-border-width) * 4);
+    }
+
+    /* :user-invalid, [aria-invalid="true"] */
+
+    label:has(> input[type="radio"]:user-invalid),
+    label:has(> input[type="radio"][aria-invalid="true"]) {
+        color: var(--color-error);
+    }
+    label > input[type="radio"]:user-invalid,
     label > input[type="radio"][aria-invalid="true"] {
-        border-color: rgb(var(--rgb-error));
+        border-color: var(--color-error);
+    }
+    label > input[type="radio"]:user-invalid:checked::after,
+    label > input[type="radio"][aria-invalid="true"]:checked::after {
+        background-color: var(--color-error);
+    }
+    label > input[type="radio"]:user-invalid:focus-visible,
+    label > input[type="radio"][aria-invalid="true"]:focus-visible {
+        outline-color: var(--color-error);
     }
 
-    label > input[type="radio"]:is(:disabled, [aria-disabled="true"]) {
-        border-color: rgb(var(--rgb-light-gray));
-    }
-
-    @media (hover: hover) {
-        label:has(> input[type="radio"])::before {
-            position: absolute;
-            top: 50%;
-            left: calc((var(--radio-size) - var(--radio-outer-size)) / -2);
-            transform: translateY(-50%);
-            width: var(--radio-size);
-            height: var(--radio-size);
-            border-radius: 50%;
-            content: "";
-            pointer-events: none;
-        }
-
-        label:has(> input[type="radio"]:not(:focus, :disabled, [aria-disabled="true"]):hover)::before {
-            background-color: rgb(var(--rgb-ink) / var(--alpha-highlight-weak));
-        }
-    }
-
-    label > input[type="radio"]:focus {
-        outline: 0.125rem solid rgb(var(--rgb-border));
-        outline-offset: 0.125rem;
-        box-shadow: 0 0 0 0.125rem rgb(var(--rgb-focus));
-    }
-
-    @media (hover: hover) {
-        label > input[type="radio"]:not(:disabled, [aria-disabled="true"]):hover {
-            border-color: rgb(var(--rgb-border));
-        }
-
-        label > input[type="radio"][aria-invalid="true"]:not(:disabled, [aria-disabled="true"]):hover {
-            border-color: rgb(var(--rgb-error));
-        }
-    }
-
-    label > input[type="radio"]:checked {
-        border-color: var(--color-emphasis);
-    }
-
-    label > input[type="radio"][aria-invalid="true"]:checked {
-        border-color: rgb(var(--rgb-error));
-    }
-
-    label > input[type="radio"]:checked:is(:disabled, [aria-disabled="true"]) {
-        border-color: rgb(var(--rgb-light-gray));
-    }
-
-    @media (hover: hover) {
-        label > input[type="radio"]:checked:not(:disabled, [aria-disabled="true"]):hover {
-            border-color: var(--color-emphasis-hover);
-        }
-
-        label > input[type="radio"][aria-invalid="true"]:checked:not(:disabled, [aria-disabled="true"]):hover {
-            border-color: rgb(var(--rgb-error));
-        }
-    }
-
-    label > input[type="radio"]:checked::before {
-        position: absolute;
-        inset: 0;
-        margin: auto;
-        width: var(--radio-inner-size);
-        height: var(--radio-inner-size);
-        border-radius: 51%;
-        background-color: var(--color-emphasis);
-        content: "";
-    }
-
-    label > input[type="radio"][aria-invalid="true"]:checked::before {
-        background-color: rgb(var(--rgb-error));
-    }
-
-    label > input[type="radio"]:checked:is(:disabled, [aria-disabled="true"])::before {
-        background-color: rgb(var(--rgb-light-gray));
-    }
-
-    @media (hover: hover) {
-        label > input[type="radio"]:checked:not(:disabled, [aria-disabled="true"]):hover::before {
-            background-color: var(--color-emphasis-hover);
-        }
-
-        label > input[type="radio"][aria-invalid="true"]:checked:not(:disabled, [aria-disabled="true"]):hover::before {
-            background-color: rgb(var(--rgb-error));
-        }
-    }
+    /* forced-colors */
 
     @media (forced-colors: active) {
         label > input[type="radio"] {
-            border-color: ButtonText;
+            background-color: Canvas;
+            border-color:     CanvasText;
         }
-
-        label > input[type="radio"]:is(:disabled, [aria-disabled="true"]) {
-            border-color: GrayText;
+        label > input[type="radio"]:checked::after {
+            background-color: CanvasText;
         }
-
-        label > input[type="radio"]:checked {
-            border-color: Highlight;
-        }
-
-        label > input[type="radio"]:checked:is(:disabled, [aria-disabled="true"]) {
-            border-color: GrayText;
-        }
-
-        label > input[type="radio"]:checked::before {
-            background-color: Highlight;
-        }
-
-        label > input[type="radio"]:checked:is(:disabled, [aria-disabled="true"])::before {
-            background-color: GrayText;
+        label > input[type="radio"]:focus-visible,
+        label > input[type="radio"]:hover,
+        label > input[type="radio"]:active {
+            outline-color: Highlight;
         }
     }
 
+    /* disabled, [aria-disabled="true"] */
+
+    label:has(> input[type="radio"]:disabled),
+    label:has(> input[type="radio"][aria-disabled="true"]) {
+        color: var(--color-mute);
+    }
+    label > input[type="radio"]:disabled,
+    label > input[type="radio"][aria-disabled="true"] {
+        border-color:   var(--color-mute);
+        cursor:         not-allowed;
+        outline-color:  transparent;
+        pointer-events: none;
+    }
+    label > input[type="radio"]:disabled:checked::after,
+    label > input[type="radio"][aria-disabled="true"]:checked::after {
+        background-color: var(--color-mute);
+    }
+
+    @media (forced-colors: active) {
+        label > input[type="radio"]:disabled,
+        label > input[type="radio"][aria-disabled="true"] {
+            border-color: GrayText;
+        }
+        label > input[type="radio"]:disabled:checked::after,
+        label > input[type="radio"][aria-disabled="true"]:checked::after {
+            background-color: GrayText;
+        }
+    }
 }

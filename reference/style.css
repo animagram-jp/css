@@ -1,0 +1,105 @@
+:root {
+    --font-family-sans-serif: "IBM Plex Sans", "BIZ UDGothic", "Noto Sans JP", "Hiragino Sans", sans-serif;
+    --font-family-monospace:  "Fira Code", "BIZ UDGothic", monospace;
+}
+
+:root[data-theme="light"] {
+    --color-ink:   rgb(var(--rgb-black));
+    --color-paper: rgb(var(--rgb-white));
+    --color-emphasis: rgb(var(--rgb-accent-blue));
+    --color-emphasis-fill: var(--color-emphasis);
+}
+:root[data-theme="dark"] {
+    --color-ink:           rgb(var(--rgb-white));
+    --color-paper:         rgb(var(--rgb-black));
+    --color-emphasis:      rgb(var(--rgb-accent-sky));
+    --color-emphasis-fill: rgb(var(--rgb-accent-blue));
+}
+
+/*:root {
+    --color-emphasis: rgb(91, 47, 145);
+}*/
+
+html {
+    overflow-x: hidden;
+}
+
+body {
+    max-width: 100%;
+    min-height: 100dvh;
+    overflow-x: hidden;
+    padding: 0.25rem;
+}
+
+body>header {
+    padding-top: 0.5rem;
+}
+
+body>header, main, aside, body>footer {
+    max-width: 60rem;
+    margin: 0 auto;
+}
+
+section {
+    margin: 2rem 0;
+}
+
+:is(ul, ol) {
+    --gap: 0.25rem;
+}
+
+.demo-meta {
+    color: var(--color-muted);
+    font: var(--sm-font-size) var(--font-family-monospace);
+    width: 100%;
+}
+
+.demo-row {
+    margin-block: 1.5rem;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    align-items: center;
+}
+
+@media (prefers-contrast) {
+    /*
+    * Common Layer: Visual simplification only.
+    * Change gradients background and border to a solid color.
+    */
+    * {
+        background-image: none;
+        border: 0.125rem solid var(--color-border);
+        box-shadow: none;
+        /* opacity: 1; */
+    }
+}
+
+/* list-box demo: each trigger/listbox pair needs its own anchor-name,
+   since css.list-box defines anchor-name on the bare selector. */
+#list-box-1-trigger { anchor-name: --list-box-1-trigger; }
+#list-box-1          { position-anchor: --list-box-1-trigger; }
+#list-box-2-trigger  { anchor-name: --list-box-2-trigger; }
+#list-box-2          { position-anchor: --list-box-2-trigger; }
+#list-box-3-trigger  { anchor-name: --list-box-3-trigger; }
+#list-box-3          { position-anchor: --list-box-3-trigger; }
+#list-box-4-trigger  { anchor-name: --list-box-4-trigger; }
+#list-box-4          { position-anchor: --list-box-4-trigger; }
+#list-box-5-trigger  { anchor-name: --list-box-5-trigger; }
+#list-box-5          { position-anchor: --list-box-5-trigger; }
+#list-box-6-trigger  { anchor-name: --list-box-6-trigger; }
+#list-box-6          { position-anchor: --list-box-6-trigger; }
+#list-box-7-trigger  { anchor-name: --list-box-7-trigger; }
+#list-box-7          { position-anchor: --list-box-7-trigger; }
+#list-box-8-trigger  { anchor-name: --list-box-8-trigger; }
+#list-box-8          { position-anchor: --list-box-8-trigger; }
+
+/* component.cssに反映予定 */
+
+/* フォーカスのエスカレーションが必要なフォーム要素などに追加 */
+/* *:focus-visible {
+    outline: none;
+}
+*:has(*:focus-visible) {
+    outline-color: var(--color-focus);
+} */
