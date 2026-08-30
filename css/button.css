@@ -14,13 +14,13 @@
     }
 
     details > summary::after {
-        content:      "";
-        position:     absolute;
-        inset-block:  0;
-        margin-block: auto;
         border-color: currentColor;
         border-style: solid;
-        border-width: 0 0.25rem 0.25rem 0;
+        border-width: 0 0.125rem 0.125rem 0;
+        content:      "";
+        inset-block:  0;
+        margin-block: auto;
+        position:     absolute;
         transform:    rotate(-135deg); /* ▶ */
     }
     @media (prefers-reduced-motion: no-preference) {
@@ -85,21 +85,22 @@
     [data-style="underline"],
     :where(a:any-link:not([data-style])),
     :where(details) > summary:where(:not([data-style])) {
-        background-color: var(--color-paper);
-        border: none;
-        box-decoration-break: clone;
-        color: var(--color-emphasis);
-        text-decoration-color: currentColor;
-        text-decoration-line: underline;
-        text-underline-offset: 0.3em;
+        background-color:          var(--color-paper);
+        border:                    none;
+        box-decoration-break:      clone;
+        color:                     var(--color-emphasis);
+        margin:                    0;
+        text-decoration-color:     currentColor;
+        text-decoration-line:      underline;
         text-decoration-thickness: 0.0625rem;
+        text-underline-offset:     0.3em;
     }
 
     @media (forced-colors: active) {
         button, [type="button"], [type="submit"], [type="reset"] {
             background-color: ButtonFace;
-            color: ButtonText;
-            border-color: ButtonBorder;
+            border-color:     ButtonBorder;
+            color:            ButtonText;
         }
         a:any-link {
             color: LinkText;
@@ -116,13 +117,17 @@
         letter-spacing: var(--xs-letter-spacing);
         line-height:    var(--xs-line-height);
         min-height:     var(--xs-box-height);
-        padding-block: calc(((var(--xs-box-height) - var(--xs-line-height)) / 2) - var(--xs-border-width));
+        padding-block:  calc(((var(--xs-box-height) - var(--xs-line-height)) / 2) - var(--xs-border-width));
         padding-inline: var(--xs-border-radius);
     }
     details > summary[data-size="xs"]::after {
-        inline-size:      calc(var(--xs-font-size) * 0.75 * 1.06);
         block-size:       calc(var(--xs-font-size) * 0.75 * 1.06);
+        inline-size:      calc(var(--xs-font-size) * 0.75 * 1.06);
         inset-inline-end: var(--xs-border-radius);
+        transform:        translateY(calc(2 / 16 * 1rem)) rotate(-135deg);
+    }
+    details[open] summary[data-size="xs"]::after {
+        transform: translateY(-0.125rem) rotate(45deg);
     }
     details > summary[data-size="xs"] {
         /* アイコンは absolute でレイアウトから抜けるため、右余白を明示的に確保する */
@@ -136,13 +141,17 @@
         letter-spacing: var(--sm-letter-spacing);
         line-height:    var(--sm-line-height);
         min-height:     var(--sm-box-height);
-        padding-block: calc(((var(--sm-box-height) - var(--sm-line-height)) / 2) - var(--sm-border-width));
+        padding-block:  calc(((var(--sm-box-height) - var(--sm-line-height)) / 2) - var(--sm-border-width));
         padding-inline: var(--sm-border-radius);
     }
     details > summary[data-size="sm"]::after {
-        inline-size:      calc(var(--sm-font-size) * 0.75 * 1.06);
         block-size:       calc(var(--sm-font-size) * 0.75 * 1.06);
+        inline-size:      calc(var(--sm-font-size) * 0.75 * 1.06);
         inset-inline-end: var(--sm-border-radius);
+        transform:        translateY(calc(2 / 16 * 1rem)) rotate(-135deg);
+    }
+    details[open] summary[data-size="sm"]::after {
+        transform: translateY(-0.125rem) rotate(45deg);
     }
     details > summary[data-size="sm"] {
         /* アイコンは absolute でレイアウトから抜けるため、右余白を明示的に確保する */
@@ -158,14 +167,19 @@
         letter-spacing: var(--md-letter-spacing);
         line-height:    var(--md-line-height);
         min-height:     var(--md-box-height);
-        padding-block: calc(((var(--md-box-height) - var(--md-line-height)) / 2) - var(--md-border-width));
+        padding-block:  calc(((var(--md-box-height) - var(--md-line-height)) / 2) - var(--md-border-width));
         padding-inline: var(--md-border-radius);
     }
     details > summary:not([data-size])::after,
     details > summary[data-size="md"]::after {
-        inline-size:      calc(var(--md-font-size) * 0.75 * 1.06);
         block-size:       calc(var(--md-font-size) * 0.75 * 1.06);
+        inline-size:      calc(var(--md-font-size) * 0.75 * 1.06);
         inset-inline-end: var(--md-border-radius);
+        transform:        translateY(calc(3 / 16 * 1rem)) rotate(-135deg);
+    }
+    details[open] summary:not([data-size])::after,
+    details[open] summary[data-size="md"]::after {
+        transform: translateY(-0.1875rem) rotate(45deg);
     }
     details > summary:not([data-size]),
     details > summary[data-size="md"] {
@@ -180,17 +194,21 @@
         letter-spacing: var(--lg-letter-spacing);
         line-height:    var(--lg-line-height);
         min-height:     var(--lg-box-height);
-        padding-block: calc(((var(--lg-box-height) - var(--lg-line-height)) / 2) - var(--lg-border-width));
+        padding-block:  calc(((var(--lg-box-height) - var(--lg-line-height)) / 2) - var(--lg-border-width));
         padding-inline: var(--lg-border-radius);
     }
     details > summary[data-size="lg"]::after {
-        inline-size:      calc(var(--lg-font-size) * 0.75 * 1.06);
-        block-size:       calc(var(--lg-font-size) * 0.75 * 1.06);
+        block-size:       calc(var(--lg-font-size) * 0.6 * 1.06);
+        inline-size:      calc(var(--lg-font-size) * 0.6 * 1.06);
         inset-inline-end: var(--lg-border-radius);
+        transform:        translateY(calc(2 / 16 * 1rem)) rotate(-135deg);
+    }
+    details[open] summary[data-size="lg"]::after {
+        transform: translateY(-0.125rem) rotate(45deg);
     }
     details > summary[data-size="lg"] {
         /* アイコンは absolute でレイアウトから抜けるため、右余白を明示的に確保する */
-        padding-inline-end: calc(var(--lg-border-radius) * 2 + var(--lg-font-size) * 0.75 * 1.06);
+        padding-inline-end: calc(var(--lg-border-radius) * 2 + var(--lg-font-size) * 0.6 * 1.06);
     }
     :is(a, button, details > summary)[data-size="xl"],
     details > summary[data-size="xl"] ~ *:first-of-type {
@@ -200,17 +218,21 @@
         letter-spacing: var(--xl-letter-spacing);
         line-height:    var(--xl-line-height);
         min-height:     var(--xl-box-height);
-        padding-block: calc(((var(--xl-box-height) - var(--xl-line-height)) / 2) - var(--xl-border-width));
+        padding-block:  calc(((var(--xl-box-height) - var(--xl-line-height)) / 2) - var(--xl-border-width));
         padding-inline: var(--xl-border-radius);
     }
     details > summary[data-size="xl"]::after {
-        inline-size:      calc(var(--xl-font-size) * 0.75 * 1.06);
-        block-size:       calc(var(--xl-font-size) * 0.75 * 1.06);
+        block-size:       calc(var(--xl-font-size) * 0.6 * 1.06);
+        inline-size:      calc(var(--xl-font-size) * 0.6 * 1.06);
         inset-inline-end: var(--xl-border-radius);
+        transform:        translateY(calc(3 / 16 * 1rem)) rotate(-135deg);
+    }
+    details[open] summary[data-size="xl"]::after {
+        transform: translateY(-0.1875rem) rotate(45deg);
     }
     details > summary[data-size="xl"] {
         /* アイコンは absolute でレイアウトから抜けるため、右余白を明示的に確保する */
-        padding-inline-end: calc(var(--xl-border-radius) * 2 + var(--xl-font-size) * 0.75 * 1.06);
+        padding-inline-end: calc(var(--xl-border-radius) * 2 + var(--xl-font-size) * 0.6 * 1.06);
     }
     :is(a, button, details > summary)[data-size="2xl"],
     details > summary[data-size="2xl"] ~ *:first-of-type {
@@ -220,17 +242,21 @@
         letter-spacing: var(--2xl-letter-spacing);
         line-height:    var(--2xl-line-height);
         min-height:     var(--2xl-box-height);
-        padding-block: calc(((var(--2xl-box-height) - var(--2xl-line-height)) / 2) - var(--2xl-border-width));
+        padding-block:  calc(((var(--2xl-box-height) - var(--2xl-line-height)) / 2) - var(--2xl-border-width));
         padding-inline: var(--2xl-border-radius);
     }
     details > summary[data-size="2xl"]::after {
-        inline-size:      calc(var(--2xl-font-size) * 0.75 * 1.06);
-        block-size:       calc(var(--2xl-font-size) * 0.75 * 1.06);
+        block-size:       calc(var(--2xl-font-size) * 0.6 * 1.06);
+        inline-size:      calc(var(--2xl-font-size) * 0.6 * 1.06);
         inset-inline-end: var(--2xl-border-radius);
+        transform:        translateY(calc(4 / 16 * 1rem)) rotate(-135deg);
+    }
+    details[open] summary[data-size="2xl"]::after {
+        transform: translateY(-0.25rem) rotate(45deg);
     }
     details > summary[data-size="2xl"] {
         /* アイコンは absolute でレイアウトから抜けるため、右余白を明示的に確保する */
-        padding-inline-end: calc(var(--2xl-border-radius) * 2 + var(--2xl-font-size) * 0.75 * 1.06);
+        padding-inline-end: calc(var(--2xl-border-radius) * 2 + var(--2xl-font-size) * 0.6 * 1.06);
     }
 
     /* :visited */
@@ -260,10 +286,10 @@
 
     @media (hover: hover) {
         :is(a, button, details > summary):hover {
-            text-decoration-color: currentColor;
-            text-decoration-line: underline;
-            text-underline-offset: 0.3em; /* 成立範囲 0.25em < x <= 0.351em (上限は md の half-leading) の中央 */
+            text-decoration-color:     currentColor;
+            text-decoration-line:      underline;
             text-decoration-thickness: max(0.1875rem, 0.12em); /* per GOV.UK (max(3px, 0.1875rem, 0.12em) の 3px = 0.1875rem) */
+            text-underline-offset:     0.3em; /* 成立範囲 0.25em < x <= 0.351em (上限は md の half-leading) の中央 */
         }
     }
 
@@ -297,19 +323,19 @@
     :is(a, button, details > summary)[data-style="fill"]:active,
     button:not([data-style]):active {
         background-color: var(--color-emphasis-fill-active);
-        border-color: var(--color-emphasis-fill);
+        border-color:     var(--color-emphasis-fill);
     }
 
     :is(a, button, details > summary)[data-style="outline"]:active {
         background-color: var(--color-emphasis-fill-active);
-        color: var(--color-emphasis-active);
+        color:            var(--color-emphasis-active);
     }
 
     :is(a, button, details > summary)[data-style="underline"]:active,
     :where(a:any-link:not([data-style])):active,
     details > summary:not([data-style]):active {
         background-color: var(--color-emphasis-fill-active);
-        color: var(--color-emphasis-active);
+        color:            var(--color-emphasis-active);
     }
 
     @media (forced-colors: active) {
@@ -323,10 +349,10 @@
     *:is([data-style="outline"], [data-style="underline"]):disabled,
     *:is([data-style="outline"], [data-style="underline"])[aria-disabled="true"],
     :is(a, button, details > summary)[aria-disabled="true"] {
-        border-color: var(--color-mute);
-        color: var(--color-mute);
-        cursor: not-allowed;
-        outline-color: transparent;
+        border-color:   var(--color-mute);
+        color:          var(--color-mute);
+        cursor:         not-allowed;
+        outline-color:  transparent;
         pointer-events: none;
     }
 
@@ -352,8 +378,8 @@
 
     @media (forced-colors: active) {
         :disabled, [aria-disabled="true"] {
-            color: GrayText;
             border-color: GrayText;
+            color:        GrayText;
         }
     }
 }

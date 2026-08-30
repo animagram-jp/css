@@ -75,6 +75,25 @@ section {
     }
 }
 
+/* list-box demo: each trigger/listbox pair needs its own anchor-name,
+   since css.list-box defines anchor-name on the bare selector. */
+#list-box-1-trigger { anchor-name: --list-box-1-trigger; }
+#list-box-1          { position-anchor: --list-box-1-trigger; }
+#list-box-2-trigger  { anchor-name: --list-box-2-trigger; }
+#list-box-2          { position-anchor: --list-box-2-trigger; }
+#list-box-3-trigger  { anchor-name: --list-box-3-trigger; }
+#list-box-3          { position-anchor: --list-box-3-trigger; }
+#list-box-4-trigger  { anchor-name: --list-box-4-trigger; }
+#list-box-4          { position-anchor: --list-box-4-trigger; }
+#list-box-5-trigger  { anchor-name: --list-box-5-trigger; }
+#list-box-5          { position-anchor: --list-box-5-trigger; }
+#list-box-6-trigger  { anchor-name: --list-box-6-trigger; }
+#list-box-6          { position-anchor: --list-box-6-trigger; }
+#list-box-7-trigger  { anchor-name: --list-box-7-trigger; }
+#list-box-7          { position-anchor: --list-box-7-trigger; }
+#list-box-8-trigger  { anchor-name: --list-box-8-trigger; }
+#list-box-8          { position-anchor: --list-box-8-trigger; }
+
 /* component.cssに反映予定 */
 
 /* フォーカスのエスカレーションが必要なフォーム要素などに追加 */

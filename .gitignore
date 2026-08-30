@@ -2,7 +2,7 @@
 !README.md
 !CONTRIBUTING.md
 
-node_modules
+node_modules/
 
 reference/*
 !/reference/InterfaceDesign.md
@@ -11,5 +11,6 @@ reference/*
 
 reference/gds/
 reference/govuk-frontend/
-reference/CUD推奨配色セットガイドブック.pdf
 reference/CUDO.md
+
+.claude/

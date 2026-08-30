@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="css/part.css">
     <link rel="stylesheet" href="css/input.css">
     <link rel="stylesheet" href="css/button.css">
+    <link rel="stylesheet" href="css/list-box.css">
     <link rel="stylesheet" href="css/toggle.css">
     <link rel="stylesheet" href="css/checkbox.css">
     <link rel="stylesheet" href="css/radio.css">
@@ -120,7 +121,69 @@
             <a href="#anchor" aria-disabled="true" tabindex="-1">Anchor</a>
             <details>
                 <summary aria-disabled="true" tabindex="-1">Summary</summary>
-                <p>Details</p></details></section></section>
+                <p>Details</p></details></section>
+        <section data-style="rule-indent">
+            <h3>button[aria-haspopup="listbox"] + [popover][role="listbox"]</h3>
+            <ul id="list-box-1" popover="auto" role="listbox" aria-labelledby="list-box-1-trigger">
+                <li role="presentation">アイテムから選択してください</li>
+                <li role="option" aria-selected="true"><button>リストアイテム1</button></li>
+                <li role="option"><button>リストアイテム2</button></li>
+                <li role="option"><button>リストアイテム3</button></li></ul>
+            <button type="button" id="list-box-1-trigger" popovertarget="list-box-1" aria-haspopup="listbox" aria-controls="list-box-1">
+                現在選択中のリストアイテム</button></section>
+        <section data-style="rule-indent">
+            <h3>[data-size]</h3>
+            <ul id="list-box-2" popover="auto" role="listbox" aria-labelledby="list-box-2-trigger">
+                <li role="presentation">アイテムから選択してください</li>
+                <li role="option" aria-selected="true"><button>リストアイテム1</button></li>
+                <li role="option"><button>リストアイテム2</button></li>
+                <li role="option"><button>リストアイテム3</button></li></ul>
+            <button type="button" id="list-box-2-trigger" data-size="xs" popovertarget="list-box-2" aria-haspopup="listbox" aria-controls="list-box-2">
+                現在選択中のリストアイテム</button>
+            <ul id="list-box-3" popover="auto" role="listbox" aria-labelledby="list-box-3-trigger">
+                <li role="presentation">アイテムから選択してください</li>
+                <li role="option" aria-selected="true"><button>リストアイテム1</button></li>
+                <li role="option"><button>リストアイテム2</button></li>
+                <li role="option"><button>リストアイテム3</button></li></ul>
+            <button type="button" id="list-box-3-trigger" data-size="sm" popovertarget="list-box-3" aria-haspopup="listbox" aria-controls="list-box-3">
+                現在選択中のリストアイテム</button>
+            <ul id="list-box-4" popover="auto" role="listbox" aria-labelledby="list-box-4-trigger">
+                <li role="presentation">アイテムから選択してください</li>
+                <li role="option" aria-selected="true"><button>リストアイテム1</button></li>
+                <li role="option"><button>リストアイテム2</button></li>
+                <li role="option"><button>リストアイテム3</button></li></ul>
+            <button type="button" id="list-box-4-trigger" data-size="md" popovertarget="list-box-4" aria-haspopup="listbox" aria-controls="list-box-4">
+                現在選択中のリストアイテム</button>
+            <ul id="list-box-5" popover="auto" role="listbox" aria-labelledby="list-box-5-trigger">
+                <li role="presentation">アイテムから選択してください</li>
+                <li role="option" aria-selected="true"><button>リストアイテム1</button></li>
+                <li role="option"><button>リストアイテム2</button></li>
+                <li role="option"><button>リストアイテム3</button></li></ul>
+            <button type="button" id="list-box-5-trigger" data-size="lg" popovertarget="list-box-5" aria-haspopup="listbox" aria-controls="list-box-5">
+                現在選択中のリストアイテム</button>
+            <ul id="list-box-6" popover="auto" role="listbox" aria-labelledby="list-box-6-trigger">
+                <li role="presentation">アイテムから選択してください</li>
+                <li role="option" aria-selected="true"><button>リストアイテム1</button></li>
+                <li role="option"><button>リストアイテム2</button></li>
+                <li role="option"><button>リストアイテム3</button></li></ul>
+            <button type="button" id="list-box-6-trigger" data-size="xl" popovertarget="list-box-6" aria-haspopup="listbox" aria-controls="list-box-6">
+                現在選択中のリストアイテム</button>
+            <ul id="list-box-7" popover="auto" role="listbox" aria-labelledby="list-box-7-trigger">
+                <li role="presentation">アイテムから選択してください</li>
+                <li role="option" aria-selected="true"><button>リストアイテム1</button></li>
+                <li role="option"><button>リストアイテム2</button></li>
+                <li role="option"><button>リストアイテム3</button></li></ul>
+            <button type="button" id="list-box-7-trigger" data-size="2xl" popovertarget="list-box-7" aria-haspopup="listbox" aria-controls="list-box-7">
+                現在選択中のリストアイテム</button></section>
+        <section data-style="rule-indent">
+            <h3>:disabled</h3>
+            <ul id="list-box-8" popover="auto" role="listbox" aria-labelledby="list-box-8-trigger">
+                <li role="presentation">アイテムから選択してください</li>
+                <li role="option" aria-selected="true"><button>リストアイテム1</button></li>
+                <li role="option"><button>リストアイテム2</button></li>
+                <li role="option"><button>リストアイテム3</button></li></ul>
+            <button type="button" id="list-box-8-trigger" popovertarget="list-box-8" aria-haspopup="listbox" aria-controls="list-box-8" disabled>
+                現在選択中のリストアイテム</button></section></section>
     <section data-style="rule-indent">
         <h2>Toggle button (input[type="checkbox"][role="switch"])</h2>
         <section data-style="rule-indent">
@@ -414,6 +477,34 @@
 
     <section data-style="rule-indent">
         <h2>Search</h2>
+        <section data-style="rule-indent">
+            <h3>label &gt; input[type="search"] (standalone)</h3>
+            <label>
+                <input type="search" aria-label="Search"></label></section>
+        <section data-style="rule-indent">
+            <h3>search &gt; label &gt; select (no button)</h3>
+            <search aria-label="Search">
+                <label>
+                    <select aria-label="Search scope">
+                        <option>All</option>
+                        <option>Title</option>
+                        <option>Body</option></select></label>
+                <label>
+                    <input type="search" aria-label="Search"></label></search></section>
+        <section data-style="rule-indent">
+            <h3>[data-size]</h3>
+            <label>
+                <input type="search" data-size="xs" aria-label="Search xs"></label>
+            <label>
+                <input type="search" data-size="sm" aria-label="Search sm"></label>
+            <label>
+                <input type="search" data-size="md" aria-label="Search md"></label>
+            <label>
+                <input type="search" data-size="lg" aria-label="Search lg"></label>
+            <label>
+                <input type="search" data-size="xl" aria-label="Search xl"></label>
+            <label>
+                <input type="search" data-size="2xl" aria-label="Search 2xl"></label></section>
         <section data-style="rule-indent">
             <h3>search (button[type="button"])</h3>
             <search aria-labelledby="search-a">

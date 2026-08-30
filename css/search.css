@@ -1,4 +1,7 @@
 /*
+    <label>
+        <input type="search"></label>
+
     <search aria-labelledby="">
         <span id="">Inline text</span>
         <label>
@@ -38,12 +41,16 @@
 
 @layer css.search {
 
-    /* === container === */
+    /* === container (search, form[role="search"]) === */
 
     /*
     * The scope select, the search box and the submit button form one control
     * group (JIS C 0447 4.1.8). The parts stay in the inline flow, as in
     * css.input and css.button, so no layout mode is imposed on the container.
+    * This is the only rule in this layer that requires a container: every
+    * other rule below styles label > input[type="search"] and label > select
+    * on their own, so the same markers and spacing apply whether or not
+    * they sit inside search / form[role="search"].
     */
     :is(search, form[role="search"]) > * {
         vertical-align: middle;
@@ -66,9 +73,15 @@
     * The label wraps the control it names and carries no text of its own here.
     * It exists solely to host the pseudo-elements that draw the markers:
     * input[type="search"] and select are replaced elements, which generate no
-    * ::before or ::after of their own.
+    * ::before or ::after of their own. This holds whether the label sits
+    * alone or inside a search / form[role="search"] group.
+    *
+    * inline flow-root also closes off whitespace between adjacent labels:
+    * plain inline boxes let source-formatting linebreaks render as a visible
+    * gap, which would otherwise stack with the 0.125rem spacing below and
+    * make that value look like it is doing far more than it is.
     */
-    :is(search, form[role="search"]) > label {
+    label:has(> input[type="search"], > select) {
         display:  inline flow-root;
         position: relative;
     }
@@ -93,8 +106,8 @@
     * paints an opaque background and css.input raises it to 1 while focused,
     * which would bury ::before; both markers therefore sit above that.
     */
-    :is(search, form[role="search"]) > label:has(> input[type="search"])::before,
-    :is(search, form[role="search"]) > label:has(> input[type="search"])::after {
+    label:has(> input[type="search"])::before,
+    label:has(> input[type="search"])::after {
         color:          var(--color-mute);
         content:        "";
         inset-block:    0;
@@ -108,7 +121,7 @@
     * Lens: a circle of box-height / 4, set in from the edge by the same
     * amount, so its centre sits at box-height * 0.375.
     */
-    :is(search, form[role="search"]) > label:has(> input[type="search"])::before {
+    label:has(> input[type="search"])::before {
         border-radius: 50%;
         border-style:  solid;
     }
@@ -119,85 +132,85 @@
     * that diagonal is r/sqrt(2) = 0.354 * r from the centre on each axis, and
     * is rotated about its own top end.
     */
-    :is(search, form[role="search"]) > label:has(> input[type="search"])::after {
+    label:has(> input[type="search"])::after {
         background-color: currentColor;
         transform-origin: top center;
     }
 
-    :is(search, form[role="search"]) > label:has(> input[type="search"][data-size="xs"])::before {
+    label:has(> input[type="search"][data-size="xs"])::before {
         block-size:         calc(var(--xs-box-height) / 4);
         border-width:       var(--xs-border-width);
         inline-size:        calc(var(--xs-box-height) / 4);
         inset-inline-start: calc(var(--xs-box-height) / 4);
     }
-    :is(search, form[role="search"]) > label:has(> input[type="search"][data-size="xs"])::after {
+    label:has(> input[type="search"][data-size="xs"])::after {
         block-size:         calc(var(--xs-box-height) / 6);
         inline-size:        var(--xs-border-width);
         inset-inline-start: calc(var(--xs-box-height) * 0.375 + var(--xs-box-height) / 8 * 0.707 - var(--xs-border-width) / 2);
         transform:          translateY(calc(var(--xs-box-height) / 8 * 0.707 + var(--xs-box-height) / 12)) rotate(-45deg);
     }
 
-    :is(search, form[role="search"]) > label:has(> input[type="search"][data-size="sm"])::before {
+    label:has(> input[type="search"][data-size="sm"])::before {
         block-size:         calc(var(--sm-box-height) / 4);
         border-width:       var(--sm-border-width);
         inline-size:        calc(var(--sm-box-height) / 4);
         inset-inline-start: calc(var(--sm-box-height) / 4);
     }
-    :is(search, form[role="search"]) > label:has(> input[type="search"][data-size="sm"])::after {
+    label:has(> input[type="search"][data-size="sm"])::after {
         block-size:         calc(var(--sm-box-height) / 6);
         inline-size:        var(--sm-border-width);
         inset-inline-start: calc(var(--sm-box-height) * 0.375 + var(--sm-box-height) / 8 * 0.707 - var(--sm-border-width) / 2);
         transform:          translateY(calc(var(--sm-box-height) / 8 * 0.707 + var(--sm-box-height) / 12)) rotate(-45deg);
     }
 
-    :is(search, form[role="search"]) > label:has(> input[type="search"]:not([data-size]))::before,
-    :is(search, form[role="search"]) > label:has(> input[type="search"][data-size="md"])::before {
+    label:has(> input[type="search"]:not([data-size]))::before,
+    label:has(> input[type="search"][data-size="md"])::before {
         block-size:         calc(var(--md-box-height) / 4);
         border-width:       var(--md-border-width);
         inline-size:        calc(var(--md-box-height) / 4);
         inset-inline-start: calc(var(--md-box-height) / 4);
     }
-    :is(search, form[role="search"]) > label:has(> input[type="search"]:not([data-size]))::after,
-    :is(search, form[role="search"]) > label:has(> input[type="search"][data-size="md"])::after {
+    label:has(> input[type="search"]:not([data-size]))::after,
+    label:has(> input[type="search"][data-size="md"])::after {
         block-size:         calc(var(--md-box-height) / 6);
         inline-size:        var(--md-border-width);
         inset-inline-start: calc(var(--md-box-height) * 0.375 + var(--md-box-height) / 8 * 0.707 - var(--md-border-width) / 2);
         transform:          translateY(calc(var(--md-box-height) / 8 * 0.707 + var(--md-box-height) / 12)) rotate(-45deg);
     }
 
-    :is(search, form[role="search"]) > label:has(> input[type="search"][data-size="lg"])::before {
+    label:has(> input[type="search"][data-size="lg"])::before {
         block-size:         calc(var(--lg-box-height) / 4);
         border-width:       var(--lg-border-width);
         inline-size:        calc(var(--lg-box-height) / 4);
         inset-inline-start: calc(var(--lg-box-height) / 4);
     }
-    :is(search, form[role="search"]) > label:has(> input[type="search"][data-size="lg"])::after {
+    label:has(> input[type="search"][data-size="lg"])::after {
         block-size:         calc(var(--lg-box-height) / 6);
         inline-size:        var(--lg-border-width);
         inset-inline-start: calc(var(--lg-box-height) * 0.375 + var(--lg-box-height) / 8 * 0.707 - var(--lg-border-width) / 2);
         transform:          translateY(calc(var(--lg-box-height) / 8 * 0.707 + var(--lg-box-height) / 12)) rotate(-45deg);
     }
 
-    :is(search, form[role="search"]) > label:has(> input[type="search"][data-size="xl"])::before {
+    label:has(> input[type="search"][data-size="xl"])::before {
         block-size:         calc(var(--xl-box-height) / 4);
         border-width:       var(--xl-border-width);
         inline-size:        calc(var(--xl-box-height) / 4);
         inset-inline-start: calc(var(--xl-box-height) / 4);
     }
-    :is(search, form[role="search"]) > label:has(> input[type="search"][data-size="xl"])::after {
+    label:has(> input[type="search"][data-size="xl"])::after {
         block-size:         calc(var(--xl-box-height) / 6);
         inline-size:        var(--xl-border-width);
         inset-inline-start: calc(var(--xl-box-height) * 0.375 + var(--xl-box-height) / 8 * 0.707 - var(--xl-border-width) / 2);
         transform:          translateY(calc(var(--xl-box-height) / 8 * 0.707 + var(--xl-box-height) / 12)) rotate(-45deg);
     }
 
-    :is(search, form[role="search"]) > label:has(> input[type="search"][data-size="2xl"])::before {
+    label:has(> input[type="search"][data-size="2xl"])::before {
         block-size:         calc(var(--2xl-box-height) / 4);
         border-width:       var(--2xl-border-width);
         inline-size:        calc(var(--2xl-box-height) / 4);
         inset-inline-start: calc(var(--2xl-box-height) / 4);
     }
-    :is(search, form[role="search"]) > label:has(> input[type="search"][data-size="2xl"])::after {
+    label:has(> input[type="search"][data-size="2xl"])::after {
         block-size:         calc(var(--2xl-box-height) / 6);
         inline-size:        var(--2xl-border-width);
         inset-inline-start: calc(var(--2xl-box-height) * 0.375 + var(--2xl-box-height) / 8 * 0.707 - var(--2xl-border-width) / 2);
@@ -205,8 +218,8 @@
     }
 
     @media (forced-colors: active) {
-    :is(search, form[role="search"]) > label:has(> input[type="search"])::before,
-    :is(search, form[role="search"]) > label:has(> input[type="search"])::after {
+        label:has(> input[type="search"])::before,
+        label:has(> input[type="search"])::after {
             color: FieldText;
         }
     }
@@ -214,28 +227,28 @@
     /* === search box (label > input[type="search"]) === */
 
     /* Sizing, border, focus and disabled come from css.input. */
-    :is(search, form[role="search"]) > label > input[type="search"][data-size="xs"] {
+    label > input[type="search"][data-size="xs"] {
         padding-inline-start: calc(var(--xs-box-height) * 0.75);
     }
 
-    :is(search, form[role="search"]) > label > input[type="search"][data-size="sm"] {
+    label > input[type="search"][data-size="sm"] {
         padding-inline-start: calc(var(--sm-box-height) * 0.75);
     }
 
-    :is(search, form[role="search"]) > label > input[type="search"]:not([data-size]),
-    :is(search, form[role="search"]) > label > input[type="search"][data-size="md"] {
+    label > input[type="search"]:not([data-size]),
+    label > input[type="search"][data-size="md"] {
         padding-inline-start: calc(var(--md-box-height) * 0.75);
     }
 
-    :is(search, form[role="search"]) > label > input[type="search"][data-size="lg"] {
+    label > input[type="search"][data-size="lg"] {
         padding-inline-start: calc(var(--lg-box-height) * 0.75);
     }
 
-    :is(search, form[role="search"]) > label > input[type="search"][data-size="xl"] {
+    label > input[type="search"][data-size="xl"] {
         padding-inline-start: calc(var(--xl-box-height) * 0.75);
     }
 
-    :is(search, form[role="search"]) > label > input[type="search"][data-size="2xl"] {
+    label > input[type="search"][data-size="2xl"] {
         padding-inline-start: calc(var(--2xl-box-height) * 0.75);
     }
 
@@ -243,91 +256,104 @@
 
     /*
     * css.input sets appearance:none, which removes the UA dropdown marker, so
-    * it is redrawn here: two borders of a box, rotated to a chevron, per
-    * details > summary::after in css.button, so it survives forced-colors.
+    * it is redrawn here as a chevron, per the css.list-box trigger arrow
+    * (button[aria-haspopup="listbox"]::after): one ::after box, its bottom
+    * and right edges drawn as a border and rotated 45deg, so it survives
+    * forced-colors without a background-image. Centred the same way too --
+    * inset to 0 on the cross axis with margin: auto, then nudged back on
+    * to the visual centre of the rotated box with translateY, rather than
+    * solving that offset in the box's own inset.
     * Sized per [data-size] against --*-box-height for the same reason as the
     * magnifier above -- the attribute sits on the select, not on this label.
+    * Not scoped to the container either: a standalone label > select without
+    * a following search box draws the same chevron.
     */
-    :is(search, form[role="search"]) > label:has(> select)::after {
-        border-color:   currentColor;
-        border-style:   solid;
+    label:has(> select)::after {
         content:        "";
         inset-block:    0;
         margin-block:   auto;
         pointer-events: none;
         position:       absolute;
         z-index:        2; /* above the focused select, as with the magnifier */
+        border-right:  var(--md-border-width) solid currentcolor;
+        border-bottom: var(--md-border-width) solid currentcolor;
     }
 
-    :is(search, form[role="search"]) > label:has(> select[data-size="xs"])::after {
-        block-size:       calc(var(--xs-box-height) / 6);
-        border-width:     0 var(--xs-border-width) var(--xs-border-width) 0;
-        inline-size:      calc(var(--xs-box-height) / 6);
-        inset-inline-end: calc(var(--xs-box-height) / 4);
-        transform:        translateY(calc(0px - var(--xs-box-height) / 24)) rotate(45deg);
+    label:has(> select[data-size="xs"])::after {
+        border-right-width:  var(--xs-border-width);
+        border-bottom-width: var(--xs-border-width);
+        inline-size:         calc(var(--xs-box-height) / 6);
+        block-size:          calc(var(--xs-box-height) / 6);
+        inset-inline-end:    var(--xs-border-radius);
+        transform:           translateY(calc(0px - var(--xs-box-height) / 24)) rotate(45deg);
     }
-    :is(search, form[role="search"]) > label > select[data-size="xs"] {
+    label > select[data-size="xs"] {
         padding-inline-end: calc(var(--xs-box-height) * 0.6);
     }
 
-    :is(search, form[role="search"]) > label:has(> select[data-size="sm"])::after {
-        block-size:       calc(var(--sm-box-height) / 6);
-        border-width:     0 var(--sm-border-width) var(--sm-border-width) 0;
-        inline-size:      calc(var(--sm-box-height) / 6);
-        inset-inline-end: calc(var(--sm-box-height) / 4);
-        transform:        translateY(calc(0px - var(--sm-box-height) / 24)) rotate(45deg);
+    label:has(> select[data-size="sm"])::after {
+        border-right-width:  var(--sm-border-width);
+        border-bottom-width: var(--sm-border-width);
+        inline-size:         calc(var(--sm-box-height) / 6);
+        block-size:          calc(var(--sm-box-height) / 6);
+        inset-inline-end:    var(--sm-border-radius);
+        transform:           translateY(calc(0px - var(--sm-box-height) / 24)) rotate(45deg);
     }
-    :is(search, form[role="search"]) > label > select[data-size="sm"] {
+    label > select[data-size="sm"] {
         padding-inline-end: calc(var(--sm-box-height) * 0.6);
     }
 
-    :is(search, form[role="search"]) > label:has(> select:not([data-size]))::after,
-    :is(search, form[role="search"]) > label:has(> select[data-size="md"])::after {
-        block-size:       calc(var(--md-box-height) / 6);
-        border-width:     0 var(--md-border-width) var(--md-border-width) 0;
-        inline-size:      calc(var(--md-box-height) / 6);
-        inset-inline-end: calc(var(--md-box-height) / 4);
-        transform:        translateY(calc(0px - var(--md-box-height) / 24)) rotate(45deg);
+    label:has(> select:not([data-size]))::after,
+    label:has(> select[data-size="md"])::after {
+        border-right-width:  var(--md-border-width);
+        border-bottom-width: var(--md-border-width);
+        inline-size:         calc(var(--md-box-height) / 6);
+        block-size:          calc(var(--md-box-height) / 6);
+        inset-inline-end:    var(--md-border-radius);
+        transform:           translateY(calc(0px - var(--md-box-height) / 24)) rotate(45deg);
     }
-    :is(search, form[role="search"]) > label > select:not([data-size]),
-    :is(search, form[role="search"]) > label > select[data-size="md"] {
+    label > select:not([data-size]),
+    label > select[data-size="md"] {
         padding-inline-end: calc(var(--md-box-height) * 0.6);
     }
 
-    :is(search, form[role="search"]) > label:has(> select[data-size="lg"])::after {
-        block-size:       calc(var(--lg-box-height) / 6);
-        border-width:     0 var(--lg-border-width) var(--lg-border-width) 0;
-        inline-size:      calc(var(--lg-box-height) / 6);
-        inset-inline-end: calc(var(--lg-box-height) / 4);
-        transform:        translateY(calc(0px - var(--lg-box-height) / 24)) rotate(45deg);
+    label:has(> select[data-size="lg"])::after {
+        border-right-width:  var(--lg-border-width);
+        border-bottom-width: var(--lg-border-width);
+        inline-size:         calc(var(--lg-box-height) / 6);
+        block-size:          calc(var(--lg-box-height) / 6);
+        inset-inline-end:    var(--lg-border-radius);
+        transform:           translateY(calc(0px - var(--lg-box-height) / 24)) rotate(45deg);
     }
-    :is(search, form[role="search"]) > label > select[data-size="lg"] {
+    label > select[data-size="lg"] {
         padding-inline-end: calc(var(--lg-box-height) * 0.6);
     }
 
-    :is(search, form[role="search"]) > label:has(> select[data-size="xl"])::after {
-        block-size:       calc(var(--xl-box-height) / 6);
-        border-width:     0 var(--xl-border-width) var(--xl-border-width) 0;
-        inline-size:      calc(var(--xl-box-height) / 6);
-        inset-inline-end: calc(var(--xl-box-height) / 4);
-        transform:        translateY(calc(0px - var(--xl-box-height) / 24)) rotate(45deg);
+    label:has(> select[data-size="xl"])::after {
+        border-right-width:  var(--xl-border-width);
+        border-bottom-width: var(--xl-border-width);
+        inline-size:         calc(var(--xl-box-height) / 6);
+        block-size:          calc(var(--xl-box-height) / 6);
+        inset-inline-end:    var(--xl-border-radius);
+        transform:           translateY(calc(0px - var(--xl-box-height) / 24)) rotate(45deg);
     }
-    :is(search, form[role="search"]) > label > select[data-size="xl"] {
+    label > select[data-size="xl"] {
         padding-inline-end: calc(var(--xl-box-height) * 0.6);
     }
 
-    :is(search, form[role="search"]) > label:has(> select[data-size="2xl"])::after {
-        block-size:       calc(var(--2xl-box-height) / 6);
-        border-width:     0 var(--2xl-border-width) var(--2xl-border-width) 0;
-        inline-size:      calc(var(--2xl-box-height) / 6);
-        inset-inline-end: calc(var(--2xl-box-height) / 4);
-        transform:        translateY(calc(0px - var(--2xl-box-height) / 24)) rotate(45deg);
+    label:has(> select[data-size="2xl"])::after {
+        border-right-width:  var(--2xl-border-width);
+        border-bottom-width: var(--2xl-border-width);
+        inline-size:         calc(var(--2xl-box-height) / 6);
+        block-size:          calc(var(--2xl-box-height) / 6);
+        inset-inline-end:    var(--2xl-border-radius);
+        transform:           translateY(calc(0px - var(--2xl-box-height) / 24)) rotate(45deg);
     }
-    :is(search, form[role="search"]) > label > select[data-size="2xl"] {
+    label > select[data-size="2xl"] {
         padding-inline-end: calc(var(--2xl-box-height) * 0.6);
     }
 
-    /* === shared border colour === */
+    /* === shared border colour (container only) === */
 
     /*
     * css.button leaves a fill button's border transparent, so in a run the
@@ -356,21 +382,27 @@
         }
     }
 
-    /* === spacing === */
+    /* === spacing (container only) === */
 
     /*
-    * The parts are not allowed to share a border. Each keeps its own: the
-    * button's is an active-state signal (css.button sets border-color on
-    * :active), and the focus ring is an outline wider than any border, so a
-    * shared edge would let one part clip the other's ring. They are therefore
-    * set apart by the focus outline's own width, which is the smallest gap
-    * that keeps every ring whole.
+    * The parts are not allowed to share a border. Each keeps its own: a
+    * button's border is an active-state signal (css.button sets border-color
+    * on :active), and the focus ring is an outline wider than any border, so
+    * a shared edge would let one part clip the other's ring. They are
+    * therefore set apart by the focus outline's own width, which is the
+    * smallest gap that keeps every ring whole.
+    *
+    * Scoped to the container: without it, this cannot tell a deliberate
+    * label + label group (scope select next to the search box) apart from
+    * two standalone search boxes that merely happen to sit side by side,
+    * e.g. in a [data-size] demo. A scope select is therefore always wrapped
+    * in search / form[role="search"], even with no button.
     */
     :is(search, form[role="search"]) > * + * {
         margin-inline-start: 0.125rem;
     }
 
-    /* === squared inner corners === */
+    /* === squared inner corners (container only) === */
 
     /*
     * The gap keeps each part's border and focus ring intact, so the grouping
@@ -378,6 +410,8 @@
     * leaving the rounded corners only on the two ends of the run. The radius
     * is the one [data-size] resolved in css.input and css.button, so each
     * size is restated here against the same variables rather than a local one.
+    *
+    * Scoped to the container for the same reason as spacing above.
     */
     :is(search, form[role="search"]) > label:not(:last-child) > :is(input, select),
     :is(search, form[role="search"]) > button:not(:last-child) {

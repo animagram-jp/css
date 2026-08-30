@@ -1,15 +1,6 @@
 /* error: a summary of what went wrong, and the message beside each answer. */
 
-/*  the two are one pattern and must be used together (per GDS): a summary at
-    the top of the page, and a message next to every answer it names. the
-    wording in the two has to match.
-
-    error summary: the root is a section, not a div, and the parts are named by
-    their element rather than by a class. it carries role="alert" itself: the
-    role is split off into a child in govuk-frontend only to work around a race
-    with scripted focus movement (PR #2677), and nothing here moves focus, so a
-    single element is enough.
-
+/*  
     <section role="alert" data-type="error-summary" aria-labelledby="error-heading">
         <h2 id="error-heading">There is a problem</h2>
         <p>optional description</p>
@@ -17,20 +8,10 @@
             <li><a href="#name">Enter your name</a></li>
             <li><a href="#dob-day">Date of birth must be a real date</a></li></ul></section>
 
-    error message: the field's own message, tied to the control by
-    aria-describedby so it is read as part of the control.
-
-    the "Error:" prefix is shown, not hidden: a visually hidden copy says the
-    thing to one reader and nothing to another, and generated content is not
-    dependable for information that matters. so it is written in the markup, in
-    a strong, where everyone gets it.
-
     <label for="name">Name</label>
     <p data-type="error" id="name-error"><strong>Error:</strong> Enter your name</p>
     <input type="text" id="name" aria-describedby="name-error" aria-invalid="true">
-
-    the red border that ties a message to its control is already set by
-    css.input on :user-invalid and [aria-invalid="true"]. */
+ */
 
 @layer css.error {
 

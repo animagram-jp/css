@@ -50,47 +50,12 @@
         }
     }
 
-    /*  <figure >
+    /*  <figure data-style="rule-indent">
             <blockquote>Block contents</blockquote>
             <figcaption>Author. YYYY. <cite>Title</cite>. Publisher, Location.</figcaption></figure> */
     figure > * {
         margin: 0;
         padding: 0;
-    }
-
-    /* step button (forward/backward) (e.g., +-) */
-    /*
-        <label>
-            <button type="button" data-action="decrement">−</button>
-            <input type="text" inputmode="numeric" pattern="[0-9]*" role="spinbutton">
-            <button type="button" data-action="increment">＋</button></label>
-
-        <fieldset>
-            <legend class="visually-hidden"></legend>
-            <button type="button" data-action="decrement">−</button>
-            <input type="text" inputmode="numeric" role="spinbutton">
-            <button type="button" data-action="increment">＋</button>
-    */
-    label:has(input[inputmode="numeric"]) > *:first-child {
-        /* todo */
-    }
-
-    label:has(input[inputmode="numeric"]) > *:nth-child(3) {
-        /* todo */
-    }
-
-    /* step button (forward/backward) [data-axis="block"] */
-    /*
-        <label>
-            <input type="text" inputmode="numeric" pattern="[0-9]*" role="spinbutton">
-            <button type="button" data-action="decrement">−</button>
-            <button type="button" data-action="increment">＋</button></label>
-     */
-    label:has(input[inputmode="numeric"]) > *:nth-child(2) {
-        /* todo */
-    }
-    label:has(input[inputmode="numeric"]) > *:nth-child(3) {
-
     }
 
     /* data-icon */

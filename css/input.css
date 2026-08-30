@@ -2,9 +2,19 @@
 
     /* === input style (input, select, textarea) === */
 
-    input:is([type="text"], [type="email"], [type="password"], [type="search"], [type="url"], [type="tel"]),
-    select, textarea {
+    input:is([type="text"], [type="email"], [type="password"], [type="search"], [type="url"], [type="tel"]) {
         appearance:       none;
+        background-color: var(--color-paper);
+        border-color:     var(--color-mute);
+        border-style:     solid;
+        field-sizing:     content;
+        position:         relative;
+        margin:           0;
+        max-inline-size:  100%;
+        min-inline-size:  7ch; /* per https://developer.chrome.com/docs/css-ui/css-field-sizing */
+        vertical-align:   middle;
+    }
+    select, textarea {
         background-color: var(--color-paper);
         border-color:     var(--color-mute);
         border-style:     solid;
