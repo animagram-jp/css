@@ -16,9 +16,9 @@
     --color-emphasis-fill: rgb(var(--rgb-accent-blue));
 }
 
-:root {
+/*:root {
     --color-emphasis: rgb(91, 47, 145);
-}
+}*/
 
 html {
     overflow-x: hidden;
