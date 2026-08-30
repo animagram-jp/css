@@ -1,48 +1,20 @@
 /* step: a pair of controls that move a value in opposite directions. */
 
-/*  the pair is one control group: an increase and its opposite, so the two sit
-    on the axis they act on (per JIS C 0447 5.1).
-
-    two shapes share that geometry:
-
-    - a spinbutton, where the pair steps a number up and down. the parts are
-      buttons: each press is an action that leaves no state of its own.
-
-    - a column sorter, where the pair picks a sort direction. the parts are
-      radios: the direction is a state, and only one of them holds at a time.
-      see the sort section at the end of this file.
-
-    inline (default): the buttons flank the input, decrement first.
-
+/*  
     <label>
         <button type="button" data-action="decrement"></button>
         <input type="text" inputmode="numeric" pattern="[0-9]*" role="spinbutton">
         <button type="button" data-action="increment"></button></label>
 
-    block: the buttons stack after the input, increment on top, and the two
-    together are one box height.
+    the buttons stack after the input, increment on top, and the two together are one box height.
 
     <label data-axis="block">
         <input type="text" inputmode="numeric" pattern="[0-9]*" role="spinbutton">
         <button type="button" data-action="increment"></button>
         <button type="button" data-action="decrement"></button></label>
-
-    the glyphs are drawn in CSS, not written in the markup, so their weight and
-    position follow the size step rather than the font. a button that carries
-    its own label instead is left alone: see [data-action] with content below. */
+*/
 
 @layer css.step {
-
-    /* === group === */
-
-    /*  the input keeps the border it gets from input.css: the group is not a
-        box of its own, so [data-size], :user-invalid and :disabled stay in one
-        place.
-
-        the parts have to read as one field, so the buttons take the input's
-        border colour instead of button.css's transparent one, and each seam is
-        collapsed by pulling the neighbours together by one border width. what
-        is left is a single line around the outside. */
 
     label:has(> input[inputmode="numeric"]) {
         align-items: stretch;
@@ -66,7 +38,6 @@
         field-sizing: fixed;
         flex:         0 1 auto;
         min-inline-size: 0;
-        text-align:   center;
     }
 
     /* === buttons === */
@@ -81,17 +52,6 @@
         position:       relative;
     }
 
-    /*  the glyph: a minus is one bar, a plus is that bar plus its upright.
-        both are drawn from the same ::after, so the two buttons keep the same
-        optical weight; the upright is the ::before, present only on increment.
-
-        a button that already has content (a word, an icon) is not given a
-        glyph: the pseudo-elements only fill an empty button. */
-
-    /*  the upright belongs to increment alone: generating ::before on both would
-        put an unsized box on decrement, which `inset: 0` then stretches over the
-        whole button. */
-
     label:has(> input[inputmode="numeric"]) > button[data-action]:empty::after,
     label:has(> input[inputmode="numeric"]) > button[data-action="increment"]:empty::before {
         background-color: currentColor;
@@ -102,10 +62,6 @@
     }
 
     /* === [data-size] === */
-
-    /*  the buttons are square in the inline layout, so the group reads as one
-        row of --*-box-height. the bar is a quarter of that, which keeps it
-        inside the border radius at every step. */
 
     label:has(> input[inputmode="numeric"]) > button[data-action][data-size="xs"] {
         inline-size: var(--xs-box-height);
@@ -184,9 +140,6 @@
 
     /* === corners and seams === */
 
-    /*  the group is one field, so only its outer corners are round: the buttons
-        square off the edges they share with the input. */
-
     label:has(> input[inputmode="numeric"]) > button[data-action]:first-child {
         border-end-end-radius:   0;
         border-start-end-radius: 0;
@@ -211,13 +164,6 @@
     }
 
     /* === label[data-axis="block"] === */
-
-    /*  the buttons stack after the input and the pair fills one box height, so
-        each takes half of it. increment sits on top: the axis of the control
-        runs the way the value does. */
-
-    /*  a grid, not flex: the two buttons share one column while the input spans
-        both rows, which is what makes the pair add up to one box height. */
 
     label:has(> input[inputmode="numeric"])[data-axis="block"] {
         display:               inline grid;

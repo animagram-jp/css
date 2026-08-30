@@ -1,4 +1,18 @@
-@layer css.base, css.part, css.input, css.button, css.checkbox, css.toggle, css.radio, css.heading, css.search, css.table, css.slider, css.step, css.error, css-list-box;
+@layer 
+    css.base, 
+    css.part, 
+    css.input, 
+    css.button, 
+    css.checkbox, 
+    css.toggle, 
+    css.radio, 
+    css.heading, 
+    css.search, 
+    css.table, 
+    css.slider, 
+    css.step, 
+    css.error, 
+    css-list-box;
 
 @layer css.base {
     :root {

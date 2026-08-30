@@ -43,44 +43,20 @@
 
     /* === container (search, form[role="search"]) === */
 
-    /*
-    * The scope select, the search box and the submit button form one control
-    * group (JIS C 0447 4.1.8). The parts stay in the inline flow, as in
-    * css.input and css.button, so no layout mode is imposed on the container.
-    * This is the only rule in this layer that requires a container: every
-    * other rule below styles label > input[type="search"] and label > select
-    * on their own, so the same markers and spacing apply whether or not
-    * they sit inside search / form[role="search"].
-    */
+    /* Only the container needs styling directly -- every other rule below targets label > input[type="search"] / label > select on their own, so it also applies standalone. */
     :is(search, form[role="search"]) > * {
         vertical-align: middle;
     }
 
     /* === group label (search > span) === */
 
-    /*
-    * Names the group as a whole, sitting outside the run of controls. It is
-    * referenced by the container's aria-labelledby, so it carries the
-    * landmark's accessible name.
-    */
     :is(search, form[role="search"]) > span {
         margin-inline-end: 0.5em;
     }
 
     /* === label === */
 
-    /*
-    * The label wraps the control it names and carries no text of its own here.
-    * It exists solely to host the pseudo-elements that draw the markers:
-    * input[type="search"] and select are replaced elements, which generate no
-    * ::before or ::after of their own. This holds whether the label sits
-    * alone or inside a search / form[role="search"] group.
-    *
-    * inline flow-root also closes off whitespace between adjacent labels:
-    * plain inline boxes let source-formatting linebreaks render as a visible
-    * gap, which would otherwise stack with the 0.125rem spacing below and
-    * make that value look like it is doing far more than it is.
-    */
+    /* Hosts the ::before/::after markers, since input[type="search"] and select are replaced elements. inline flow-root also closes off inter-label whitespace from source linebreaks. */
     label:has(> input[type="search"], > select) {
         display:  inline flow-root;
         position: relative;
@@ -88,24 +64,7 @@
 
     /* === magnifier (label:has(> input[type="search"]) pseudo-elements) === */
 
-    /*
-    * Decorative only: the accessible name comes from the control itself.
-    * The glyph is the lens (::before, a circle) plus the handle (::after, a
-    * rotated rule), drawn with border and background-color rather than a
-    * background-image, which computes to none under forced-colors.
-    *
-    * The sizes are stated per [data-size] in rem, against the same variables
-    * css.input resolved, rather than in em: [data-size] sits on the input,
-    * so the label that hosts these pseudo-elements never sees that font-size
-    * and an em would resolve against the inherited 1rem at every size.
-    * Every length is a fraction of --*-box-height, so the glyph keeps one
-    * weight relative to the field across the scale.
-    *
-    * The label sets no z-index, so these share a stacking context with the
-    * field and are ordered against it by value, then by tree order. The field
-    * paints an opaque background and css.input raises it to 1 while focused,
-    * which would bury ::before; both markers therefore sit above that.
-    */
+    /* Decorative; lens (::before) + handle (::after), drawn with border/background-color rather than background-image so it survives forced-colors. Sized in rem per [data-size], against --*-box-height. */
     label:has(> input[type="search"])::before,
     label:has(> input[type="search"])::after {
         color:          var(--color-mute);
@@ -117,21 +76,11 @@
         z-index:        2;
     }
 
-    /*
-    * Lens: a circle of box-height / 4, set in from the edge by the same
-    * amount, so its centre sits at box-height * 0.375.
-    */
     label:has(> input[type="search"])::before {
         border-radius: 50%;
         border-style:  solid;
     }
 
-    /*
-    * Handle: laid along the lens' normal, the 45deg diagonal through its
-    * centre, so the glyph reads as one stroke. It starts on the rim, which on
-    * that diagonal is r/sqrt(2) = 0.354 * r from the centre on each axis, and
-    * is rotated about its own top end.
-    */
     label:has(> input[type="search"])::after {
         background-color: currentColor;
         transform-origin: top center;
@@ -254,36 +203,28 @@
 
     /* === scope select (label > select) === */
 
-    /*
-    * css.input sets appearance:none, which removes the UA dropdown marker, so
-    * it is redrawn here as a chevron, per the css.list-box trigger arrow
-    * (button[aria-haspopup="listbox"]::after): one ::after box, its bottom
-    * and right edges drawn as a border and rotated 45deg, so it survives
-    * forced-colors without a background-image. Centred the same way too --
-    * inset to 0 on the cross axis with margin: auto, then nudged back on
-    * to the visual centre of the rotated box with translateY, rather than
-    * solving that offset in the box's own inset.
-    * Sized per [data-size] against --*-box-height for the same reason as the
-    * magnifier above -- the attribute sits on the select, not on this label.
-    * Not scoped to the container either: a standalone label > select without
-    * a following search box draws the same chevron.
-    */
+    /* appearance: none is scoped to this select, not css.input -- a plain select outside this component keeps its native marker. */
+    label > select {
+        appearance: none;
+    }
+
+    /* Marker redrawn as a chevron, per the css.list-box trigger arrow (button[aria-haspopup="listbox"]::after). */
     label:has(> select)::after {
+        border-bottom:  var(--md-border-width) solid currentcolor;
+        border-right:   var(--md-border-width) solid currentcolor;
         content:        "";
         inset-block:    0;
         margin-block:   auto;
         pointer-events: none;
         position:       absolute;
         z-index:        2; /* above the focused select, as with the magnifier */
-        border-right:  var(--md-border-width) solid currentcolor;
-        border-bottom: var(--md-border-width) solid currentcolor;
     }
 
     label:has(> select[data-size="xs"])::after {
-        border-right-width:  var(--xs-border-width);
-        border-bottom-width: var(--xs-border-width);
-        inline-size:         calc(var(--xs-box-height) / 6);
         block-size:          calc(var(--xs-box-height) / 6);
+        border-bottom-width: var(--xs-border-width);
+        border-right-width:  var(--xs-border-width);
+        inline-size:         calc(var(--xs-box-height) / 6);
         inset-inline-end:    var(--xs-border-radius);
         transform:           translateY(calc(0px - var(--xs-box-height) / 24)) rotate(45deg);
     }
@@ -292,10 +233,10 @@
     }
 
     label:has(> select[data-size="sm"])::after {
-        border-right-width:  var(--sm-border-width);
-        border-bottom-width: var(--sm-border-width);
-        inline-size:         calc(var(--sm-box-height) / 6);
         block-size:          calc(var(--sm-box-height) / 6);
+        border-bottom-width: var(--sm-border-width);
+        border-right-width:  var(--sm-border-width);
+        inline-size:         calc(var(--sm-box-height) / 6);
         inset-inline-end:    var(--sm-border-radius);
         transform:           translateY(calc(0px - var(--sm-box-height) / 24)) rotate(45deg);
     }
@@ -305,10 +246,10 @@
 
     label:has(> select:not([data-size]))::after,
     label:has(> select[data-size="md"])::after {
-        border-right-width:  var(--md-border-width);
-        border-bottom-width: var(--md-border-width);
-        inline-size:         calc(var(--md-box-height) / 6);
         block-size:          calc(var(--md-box-height) / 6);
+        border-bottom-width: var(--md-border-width);
+        border-right-width:  var(--md-border-width);
+        inline-size:         calc(var(--md-box-height) / 6);
         inset-inline-end:    var(--md-border-radius);
         transform:           translateY(calc(0px - var(--md-box-height) / 24)) rotate(45deg);
     }
@@ -318,10 +259,10 @@
     }
 
     label:has(> select[data-size="lg"])::after {
-        border-right-width:  var(--lg-border-width);
-        border-bottom-width: var(--lg-border-width);
-        inline-size:         calc(var(--lg-box-height) / 6);
         block-size:          calc(var(--lg-box-height) / 6);
+        border-bottom-width: var(--lg-border-width);
+        border-right-width:  var(--lg-border-width);
+        inline-size:         calc(var(--lg-box-height) / 6);
         inset-inline-end:    var(--lg-border-radius);
         transform:           translateY(calc(0px - var(--lg-box-height) / 24)) rotate(45deg);
     }
@@ -330,10 +271,10 @@
     }
 
     label:has(> select[data-size="xl"])::after {
-        border-right-width:  var(--xl-border-width);
-        border-bottom-width: var(--xl-border-width);
-        inline-size:         calc(var(--xl-box-height) / 6);
         block-size:          calc(var(--xl-box-height) / 6);
+        border-bottom-width: var(--xl-border-width);
+        border-right-width:  var(--xl-border-width);
+        inline-size:         calc(var(--xl-box-height) / 6);
         inset-inline-end:    var(--xl-border-radius);
         transform:           translateY(calc(0px - var(--xl-box-height) / 24)) rotate(45deg);
     }
@@ -342,10 +283,10 @@
     }
 
     label:has(> select[data-size="2xl"])::after {
-        border-right-width:  var(--2xl-border-width);
-        border-bottom-width: var(--2xl-border-width);
-        inline-size:         calc(var(--2xl-box-height) / 6);
         block-size:          calc(var(--2xl-box-height) / 6);
+        border-bottom-width: var(--2xl-border-width);
+        border-right-width:  var(--2xl-border-width);
+        inline-size:         calc(var(--2xl-box-height) / 6);
         inset-inline-end:    var(--2xl-border-radius);
         transform:           translateY(calc(0px - var(--2xl-box-height) / 24)) rotate(45deg);
     }
@@ -355,23 +296,11 @@
 
     /* === shared border colour (container only) === */
 
-    /*
-    * css.button leaves a fill button's border transparent, so in a run the
-    * button alone would show no line while the input and select next to it
-    * draw one in --color-mute: the group reads as a field with a slab stuck
-    * to its end. The button therefore takes the same colour as its
-    * neighbours, but only at rest -- :active sets border-color as a state
-    * signal (css.button), and that has to keep winning, so this is not
-    * allowed to be more specific than the :active rule.
-    */
+    /* css.button leaves a fill button's border transparent; matched to its neighbours at rest, but not more specific than :active (css.button sets border-color as a state signal there). */
     :is(search, form[role="search"]) > button:not(:active) {
         border-color: var(--color-mute);
     }
 
-    /*
-    * The state lives on the search field, so the button follows it: otherwise
-    * an invalid field would sit in a run whose button is still mute.
-    */
     :is(search, form[role="search"]):has(> label > input[type="search"]:is(:user-invalid, [aria-invalid="true"])) > button:not(:active) {
         border-color: var(--color-error);
     }
@@ -384,45 +313,20 @@
 
     /* === spacing (container only) === */
 
-    /*
-    * The parts are not allowed to share a border. Each keeps its own: a
-    * button's border is an active-state signal (css.button sets border-color
-    * on :active), and the focus ring is an outline wider than any border, so
-    * a shared edge would let one part clip the other's ring. They are
-    * therefore set apart by the focus outline's own width, which is the
-    * smallest gap that keeps every ring whole.
-    *
-    * Scoped to the container: without it, this cannot tell a deliberate
-    * label + label group (scope select next to the search box) apart from
-    * two standalone search boxes that merely happen to sit side by side,
-    * e.g. in a [data-size] demo. A scope select is therefore always wrapped
-    * in search / form[role="search"], even with no button.
-    */
+    /* Not scoped beyond the container -- otherwise this can't tell a deliberate label + label group apart from unrelated adjacent labels, e.g. in a [data-size] demo. */
     :is(search, form[role="search"]) > * + * {
         margin-inline-start: 0.125rem;
     }
 
     /* === squared inner corners (container only) === */
 
-    /*
-    * The gap keeps each part's border and focus ring intact, so the grouping
-    * is carried by shape instead: every edge facing a neighbour is squared,
-    * leaving the rounded corners only on the two ends of the run. The radius
-    * is the one [data-size] resolved in css.input and css.button, so each
-    * size is restated here against the same variables rather than a local one.
-    *
-    * Scoped to the container for the same reason as spacing above.
-    */
+    /* Every edge facing a neighbour is squared, leaving rounded corners only at the two ends of the run. */
     :is(search, form[role="search"]) > label:not(:last-child) > :is(input, select),
     :is(search, form[role="search"]) > button:not(:last-child) {
         border-end-end-radius:   0;
         border-start-end-radius: 0;
     }
-    /*
-    * A control is preceded by another control when a label sits before it;
-    * the group label (span) is not part of the run, so it must not square
-    * the first control's leading corners.
-    */
+    /* A control is preceded by another control when a label sits before it -- the group label (span) doesn't count. */
     :is(search, form[role="search"]) > label ~ label > :is(input, select),
     :is(search, form[role="search"]) > label ~ button {
         border-end-start-radius:   0;

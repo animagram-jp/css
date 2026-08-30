@@ -1,18 +1,15 @@
 @layer css.list-box {
 
     button[aria-haspopup="listbox"] {
-        align-items:      center;
         anchor-name:      --list-box-trigger;
         background-color: transparent;
-        border:           var(--md-border-width) solid var(--color-mute);
-        border-radius:    var(--md-border-radius);
+        border-color:     var(--color-mute);
+        border-style:     solid;
         box-sizing:       border-box;
         color:            var(--color-ink);
         cursor:           pointer;
-        display:          inline flex;
+        display:          inline flow-root;
         font:             inherit;
-        letter-spacing:   var(--md-letter-spacing);
-        line-height:      1;
         margin:           0;
         position:         relative;
     }
@@ -31,7 +28,13 @@
     /* --- [data-size] --- */
 
     button[aria-haspopup="listbox"][data-size="xs"] {
-        height:                var(--xs-box-height);
+        border-radius:         var(--xs-border-radius);
+        border-width:          var(--xs-border-width);
+        font-size:             var(--xs-font-size);
+        letter-spacing:        var(--xs-letter-spacing);
+        line-height:           var(--xs-line-height);
+        min-height:            var(--xs-box-height);
+        padding-block:         calc(((var(--xs-box-height) - var(--xs-line-height)) / 2) - var(--xs-border-width));
         padding-inline-end:    calc(var(--xs-border-radius) * 2 + var(--xs-font-size) * 0.75 * 1.06);
         padding-inline-start:  var(--xs-border-radius);
     }
@@ -46,7 +49,13 @@
     }
 
     button[aria-haspopup="listbox"][data-size="sm"] {
-        height:                var(--sm-box-height);
+        border-radius:         var(--sm-border-radius);
+        border-width:          var(--sm-border-width);
+        font-size:             var(--sm-font-size);
+        letter-spacing:        var(--sm-letter-spacing);
+        line-height:           var(--sm-line-height);
+        min-height:            var(--sm-box-height);
+        padding-block:         calc(((var(--sm-box-height) - var(--sm-line-height)) / 2) - var(--sm-border-width));
         padding-inline-end:    calc(var(--sm-border-radius) * 2 + var(--sm-font-size) * 0.75 * 1.06);
         padding-inline-start:  var(--sm-border-radius);
     }
@@ -62,7 +71,13 @@
 
     button[aria-haspopup="listbox"]:not([data-size]),
     button[aria-haspopup="listbox"][data-size="md"] {
-        height:                var(--md-box-height);
+        border-radius:         var(--md-border-radius);
+        border-width:          var(--md-border-width);
+        font-size:             var(--md-font-size);
+        letter-spacing:        var(--md-letter-spacing);
+        line-height:           var(--md-line-height);
+        min-height:            var(--md-box-height);
+        padding-block:         calc(((var(--md-box-height) - var(--md-line-height)) / 2) - var(--md-border-width));
         padding-inline-end:    calc(var(--md-border-radius) * 2 + var(--md-font-size) * 0.75 * 1.06);
         padding-inline-start:  var(--md-border-radius);
     }
@@ -79,7 +94,13 @@
     }
 
     button[aria-haspopup="listbox"][data-size="lg"] {
-        height:                var(--lg-box-height);
+        border-radius:         var(--lg-border-radius);
+        border-width:          var(--lg-border-width);
+        font-size:             var(--lg-font-size);
+        letter-spacing:        var(--lg-letter-spacing);
+        line-height:           var(--lg-line-height);
+        min-height:            var(--lg-box-height);
+        padding-block:         calc(((var(--lg-box-height) - var(--lg-line-height)) / 2) - var(--lg-border-width));
         padding-inline-end:    calc(var(--lg-border-radius) * 2 + var(--lg-font-size) * 0.6 * 1.06);
         padding-inline-start:  var(--lg-border-radius);
     }
@@ -94,7 +115,13 @@
     }
 
     button[aria-haspopup="listbox"][data-size="xl"] {
-        height:                var(--xl-box-height);
+        border-radius:         var(--xl-border-radius);
+        border-width:          var(--xl-border-width);
+        font-size:             var(--xl-font-size);
+        letter-spacing:        var(--xl-letter-spacing);
+        line-height:           var(--xl-line-height);
+        min-height:            var(--xl-box-height);
+        padding-block:         calc(((var(--xl-box-height) - var(--xl-line-height)) / 2) - var(--xl-border-width));
         padding-inline-end:    calc(var(--xl-border-radius) * 2 + var(--xl-font-size) * 0.6 * 1.06);
         padding-inline-start:  var(--xl-border-radius);
     }
@@ -109,7 +136,13 @@
     }
 
     button[aria-haspopup="listbox"][data-size="2xl"] {
-        height:                var(--2xl-box-height);
+        border-radius:         var(--2xl-border-radius);
+        border-width:          var(--2xl-border-width);
+        font-size:             var(--2xl-font-size);
+        letter-spacing:        var(--2xl-letter-spacing);
+        line-height:           var(--2xl-line-height);
+        min-height:            var(--2xl-box-height);
+        padding-block:         calc(((var(--2xl-box-height) - var(--2xl-line-height)) / 2) - var(--2xl-border-width));
         padding-inline-end:    calc(var(--2xl-border-radius) * 2 + var(--2xl-font-size) * 0.6 * 1.06);
         padding-inline-start:  var(--2xl-border-radius);
     }
