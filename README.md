@@ -12,7 +12,7 @@ Css universal design boilerplate. Works without interference to HTML.
 
 | Version | Status    | Date       | Description |
 |---------|-----------|------------|-------------|
-| 0.1.0   | Scheduled | 2026-08-31 | 1st release |
+| 0.1.0   | Scheduled | 2026-09-30 | 1st release |
 
 ## Color
 
