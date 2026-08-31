@@ -34,14 +34,18 @@
         the answer is not reached until the reason it is wrong has been read. */
 
     p[data-type="error"] {
+        border-inline-start-color: var(--color-error);
+        border-inline-start-style: solid;
+        border-inline-start-width: 0.25rem;
         clear:          both; /* per govuk: stay clear of a floated hint */
-        color:          var(--color-error);
+        color:          var(--color-ink);
         display:        block;
         font-size:      var(--md-font-size);
         font-weight:    bold;
         letter-spacing: var(--md-letter-spacing);
         line-height:    var(--md-line-height);
         margin:         0 0 0.5rem 0;
+        padding-inline-start: 0.75rem;
     }
 
     /* === error summary (section[data-type="error-summary"]) === */
@@ -94,27 +98,33 @@
         margin-block-end: 0;
     }
 
-    /*  the link is bold and in the error colour: it is the error itself, not a
-        link that happens to sit in one. */
+    /*  the link is bold and in ink: it is the error itself, not a link that
+        happens to sit in one, so it does not take the emphasis colour either.
+        the underline marks it as a link without relying on colour to do it. */
 
     section[data-type="error-summary"] > ul > li > a {
-        color:                     var(--color-error);
+        color:                     var(--color-ink);
         font-weight:               bold;
         text-decoration-color:     currentColor;
         text-decoration-line:      underline;
-        text-decoration-thickness: 0.0625rem;
+        text-decoration-thickness: 0.125rem;
         text-underline-offset:     0.3em;
     }
 
     /*  css.button styles every a:any-link without [data-style] in
-        --color-emphasis; the error colour has to hold through every state. */
+        --color-emphasis; ink has to hold through every state. hover and active
+        thicken the underline rather than shifting hue. */
 
     section[data-type="error-summary"] > ul > li > a:is(:visited, :hover, :active) {
-        color: var(--color-error);
+        color: var(--color-ink);
+    }
+
+    section[data-type="error-summary"] > ul > li > a:is(:hover, :active) {
+        text-decoration-thickness: 0.25rem;
     }
 
     section[data-type="error-summary"] > ul > li > a:focus-visible {
-        outline-color:  var(--color-error);
+        outline-color:  var(--color-focus);
         outline-offset: 0;
         outline-style:  solid;
         outline-width:  0.25rem;
@@ -122,12 +132,14 @@
 
     /* === forced-colors === */
 
-    /*  the error colour is replaced under forced colours, so the cue moves to
-        Mark, the system colour for something called out. */
+    /*  the error colour is replaced under forced colours, so the non-text cues
+        move to Mark, the system colour for something called out. the text
+        itself stays CanvasText: it was never carrying the error by colour. */
 
     @media (forced-colors: active) {
         p[data-type="error"] {
-            color: Mark;
+            border-inline-start-color: Mark;
+            color: CanvasText;
         }
         section[data-type="error-summary"] {
             border-color: Mark;

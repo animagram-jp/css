@@ -133,7 +133,6 @@
     input:is([type="text"], [type="email"], [type="password"], [type="search"], [type="url"], [type="tel"])[aria-invalid="true"],
     select[aria-invalid="true"], textarea[aria-invalid="true"] {
         border-color: var(--color-error);
-        color:        var(--color-error);
     }
 
     /* :user-invalid:focus-visible, [aria-invalid="true"]:focus-visible */

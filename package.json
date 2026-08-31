@@ -3,7 +3,7 @@
   "private": true,
   "type": "module",
   "scripts": {
-    "audit": "node docs/audit.mjs"
+    "audit": "node reference/audit.mjs"
   },
   "dependencies": {
     "@axe-core/playwright": "^4",
