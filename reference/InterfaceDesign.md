@@ -27,7 +27,23 @@ From the information the system needs to convey to the person, it determines one
 
 ---
 
-# 共通手続き段階
+## animagram/css プロジェクトについて
+
+インターフェース装置は、設計時には知り得ない個人と、コンピューターアルゴリズムが干渉しあう。
+UD(個人や状況に依らず機能する)の網羅性の程度も、機能品質の程度も、決して100%を達成することはない。
+また、本プロジェクトの成果物である
+そのため、以下の方針を取る:
+
+1. プロジェクトの現在の網羅性の期待水準を定め、リリースには、それを満たしただけを含める。
+2. 各要素の更新にあたり、網羅水準を更新前から下げない。
+
+また、本プロジェクトの成果物は、インターフェース装置を形成する各要素が、自然言語による定義とCSS実装で構成されたライブラリ形式を想定する。
+インターフェース装置は、CSSで表すことのできるより遥かに広い組み合わせ空間を持つため、本プロジェクトの要素群は、体系を網羅することはできない。
+そのため、要素の体系は、自然言語によるインターフェース装置の取り得る空間内の整理、HTMLとCSSによる具体的な実装の、トップダウンとボトムアップから、それぞれ行い、この2つの語彙の乖離を修正することで行う。
+
+---
+
+## 共通手続き段階
 
 人間の単一の意図表明に始まる、インターフェース装置と人間、システムの間に発生する手続きを段階で定義する:
 
@@ -46,9 +62,67 @@ From the information the system needs to convey to the person, it determines one
 
 ---
 
-# 部品体系
+## 装置と手続き段階の対応
 
-ライブラリ化可能な範囲でインターフェースの部品を整理する。
+`InterfaceDesign.md` の「P1~P3'パターン具体例」表に現れる入力手段を、装置
+ごとに整理する。同じ所作が部品によって異なる段階に割り当てられる点が要である。
+
+| 所作 | 装置 | 現れる段階の例 |
+|-|-|-|
+| フォーカス | keyboard, pointer | P1 (toggle switch, command button) |
+| ポインターホバー | pointer | P1 (大半の部品), P2 (command menu のオプション) |
+| ポインターダウン | pointer | P1 (drag and drop の掴み), P3 (emergency stop, hold-to-run) |
+| ポインタームーブ | pointer | P2 (immediate slider, rating, drag and drop) |
+| ポインターアップ | pointer | P3 (drag and drop) |
+| タップ | pointer | P3 (大半), P1 (inline edit, command palette) |
+| Enter | keyboard | P3 (大半), P2→P3 (inline edit) |
+| Space | keyboard | P3 (command button) |
+| 矢印キー | keyboard | P2 (immediate slider, rating) |
+| テキスト入力 | keyboard, IME | P2 (inline edit, command palette) |
+| フォーカスアウト | keyboard, pointer | P3 (inline edit) |
+| 境界外ポインタームーブ | pointer | P3 のキャンセル (drag and drop) |
+
+---
+
+## 部品体系
+
+### Data Variant
+
+inline editor with select option
+
+### Footnote
+
+```html
+<sup></sup>
+<sub></sub>
+```
+
+```css
+sub, sup {
+  font-size: smaller;
+  line-height: normal;
+}
+
+sub { vertical-align: sub; }
+sup { vertical-align: super; }
+```
+
+```
+1個目: *   asterisk
+2個目: †   dagger
+3個目: ‡   double dagger
+4個目: §   section sign
+5個目: ‖   parallel
+6個目: ¶   pilcrow
+7個目: **
+8個目: ††
+9個目: ‡‡
+...
+```
+
+---
+
+構成用部品, 信号用部品
 
 - 部品の部品
     - Text block: monospace font, copy button (pre, code, kbd, samp)
@@ -338,6 +412,15 @@ JIS C 0447(IEC60447:1993)の基本原則の規則化要素
 | `[data-style="outline"]` | emphasis border, transparent background, emphasis text | emphasis outline | emphasis text(差分), 太い下線, `box-decoration-break: clone;cursor: pointer;` | - | - | - |  |
 | `[data-style="fill"]` | transparent border, emphasis background, paper text | emphasis outline | emphasis background(差分), 下線の太線化  | - | - | - | mute(差分) background, `cursor: not-allowd` |
 | `a:not([data-style]), [data-style="underline"]` | transparent background, ink text, ink underline | emphasis outline | underline太線化 | - | - | - | mute text, mute underline, `cursor: not-allowd` |
+
+---
+
+## References
+
+- [Kelp CSS](https://github.com/cferdinandi/kelp)
+- [Pico CSS](https://picocss.com/docs)
+- [Gov UK Design System: Repository](https://github.com/alphagov/govuk-frontend)
+- [U.S. Web Design System (USWDS)](https://designsystem.digital.gov/)
 
 ---
 
