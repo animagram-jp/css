@@ -12,7 +12,7 @@
     css.slider, 
     css.step, 
     css.error, 
-    css-list-box;
+    css.list-box;
 
 @layer css.base {
     :root {

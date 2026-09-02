@@ -193,11 +193,7 @@
     }
 
     /* :user-invalid, [aria-invalid="true"] */
-
-    label:has(> input[type="checkbox"]:not([role="switch"]):user-invalid),
-    label:has(> input[type="checkbox"]:not([role="switch"])[aria-invalid="true"]) {
-        color: var(--color-error);
-    }
+    
     label > input[type="checkbox"]:not([role="switch"]):user-invalid,
     label > input[type="checkbox"]:not([role="switch"])[aria-invalid="true"] {
         border-color: var(--color-error);

@@ -125,7 +125,7 @@
 
     label:has(> input[type="radio"]:user-invalid),
     label:has(> input[type="radio"][aria-invalid="true"]) {
-        color: var(--color-error);
+        color: var(--color-ink);
     }
     label > input[type="radio"]:user-invalid,
     label > input[type="radio"][aria-invalid="true"] {
