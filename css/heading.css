@@ -57,7 +57,17 @@
         );
     }
 
-    /* [data-size] */
+    /*  [data-size]
+
+        the per-tag default (h1:not([data-size]) 等) already matches an h1 with
+        no data-size regardless of what it's inside -- an "hgroup:not([data-size])
+        > h1" arm would test the same "h1 has no data-size" condition again
+        (an hgroup with no data-size doesn't change it) while adding an extra
+        tag's worth of specificity, which let it beat h1[data-size] set on the
+        heading itself. no such arm exists, so a data-size on the heading always
+        wins unless the hgroup itself also sets one (hgroup[data-size] > :is(...)
+        below, one tag + one attribute more specific, same as css.button's
+        [data-size] override on a plain child). */
 
     :is(h1, h2, h3, h4, h5, h6)[data-size="xs"],
     hgroup[data-size="xs"] > :is(h1, h2, h3, h4, h5, h6) {
@@ -74,7 +84,6 @@
     }
 
     :is(h4, h5, h6):not([data-size]),
-    hgroup:not([data-size]) > :is(h4, h5, h6),
     :is(h1, h2, h3, h4, h5, h6)[data-size="md"],
     hgroup[data-size="md"] > :is(h1, h2, h3, h4, h5, h6) {
         font-size: var(--md-font-size);
@@ -83,7 +92,6 @@
     }
 
     h3:not([data-size]),
-    hgroup:not([data-size]) > h3,
     :is(h1, h2, h3, h4, h5, h6)[data-size="lg"],
     hgroup[data-size="lg"] > :is(h1, h2, h3, h4, h5, h6) {
         font-size: var(--lg-font-size);
@@ -92,7 +100,6 @@
     }
 
     h2:not([data-size]),
-    hgroup:not([data-size]) > h2,
     :is(h1, h2, h3, h4, h5, h6)[data-size="xl"],
     hgroup[data-size="xl"] > :is(h1, h2, h3, h4, h5, h6) {
         font-size: var(--xl-font-size);
@@ -101,7 +108,6 @@
     }
 
     h1:not([data-size]),
-    hgroup:not([data-size]) > h1,
     :is(h1, h2, h3, h4, h5, h6)[data-size="2xl"],
     hgroup[data-size="2xl"] > :is(h1, h2, h3, h4, h5, h6) {
         font-size: var(--2xl-font-size);

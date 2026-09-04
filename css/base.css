@@ -11,8 +11,9 @@
     css.table, 
     css.slider, 
     css.step, 
-    css.error, 
-    css.list-box;
+    css.error,
+    css.list-box,
+    css.toast;
 
 @layer css.base {
     :root {
