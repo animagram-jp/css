@@ -57,7 +57,15 @@
         );
     }
 
-    /* [data-size] */
+    /*  [data-size]
+
+        the per-tag defaults below (h1:not([data-size]) 等) are grouped with their
+        hgroup-context twin (:where(hgroup:not([data-size])) > h1 等) since both
+        resolve to the same size. the hgroup half is wrapped in :where() so it
+        contributes no specificity of its own: without it, "hgroup > h1" (2 tags)
+        would always outrank "h1[data-size]" (1 tag + 1 attribute), and a
+        data-size set directly on a heading inside a plain hgroup could never
+        win over the hgroup's own tag-based default. */
 
     :is(h1, h2, h3, h4, h5, h6)[data-size="xs"],
     hgroup[data-size="xs"] > :is(h1, h2, h3, h4, h5, h6) {
@@ -74,7 +82,7 @@
     }
 
     :is(h4, h5, h6):not([data-size]),
-    hgroup:not([data-size]) > :is(h4, h5, h6),
+    :where(hgroup:not([data-size])) > :is(h4, h5, h6),
     :is(h1, h2, h3, h4, h5, h6)[data-size="md"],
     hgroup[data-size="md"] > :is(h1, h2, h3, h4, h5, h6) {
         font-size: var(--md-font-size);
@@ -83,7 +91,7 @@
     }
 
     h3:not([data-size]),
-    hgroup:not([data-size]) > h3,
+    :where(hgroup:not([data-size])) > h3,
     :is(h1, h2, h3, h4, h5, h6)[data-size="lg"],
     hgroup[data-size="lg"] > :is(h1, h2, h3, h4, h5, h6) {
         font-size: var(--lg-font-size);
@@ -92,7 +100,7 @@
     }
 
     h2:not([data-size]),
-    hgroup:not([data-size]) > h2,
+    :where(hgroup:not([data-size])) > h2,
     :is(h1, h2, h3, h4, h5, h6)[data-size="xl"],
     hgroup[data-size="xl"] > :is(h1, h2, h3, h4, h5, h6) {
         font-size: var(--xl-font-size);
@@ -101,7 +109,7 @@
     }
 
     h1:not([data-size]),
-    hgroup:not([data-size]) > h1,
+    :where(hgroup:not([data-size])) > h1,
     :is(h1, h2, h3, h4, h5, h6)[data-size="2xl"],
     hgroup[data-size="2xl"] > :is(h1, h2, h3, h4, h5, h6) {
         font-size: var(--2xl-font-size);
