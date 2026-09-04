@@ -74,3 +74,20 @@ document.querySelectorAll('input[type="checkbox"][data-indeterminate]')
     base.addEventListener("load", () => draw(current()));
     radios.forEach((radio) => radio.addEventListener("change", () => draw(current())));
 })();
+
+const jsFn = {
+    show: (el) => {
+        el.classList.remove("hidden");
+        requestAnimationFrame(() => requestAnimationFrame(() => {
+            el.classList.add("show");
+            setTimeout(() => {
+                el.classList.replace("show", "hide");
+                el.addEventListener("transitionend", () => el.classList.remove("hide"), { once: true });
+            }, 3000);
+        }));
+    },
+    hide: (el) => {
+        el.classList.replace("show", "hide");
+        el.addEventListener("transitionend", () => el.classList.remove("hide"), { once: true });
+    },
+};
