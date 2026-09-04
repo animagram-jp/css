@@ -1,13 +1,18 @@
 /* toast: a transient status message stacked in a fixed corner of the viewport. */
 
-/*  <div class="toast-region">
-        <output class="toast hidden" data-status="success">
+/*  <div data-type="toast-region">
+        <output class="hidden" data-status="success">
             <span><strong>Success:</strong> message</span>
-            <button type="button" class="toast-dismiss" aria-label="Dismiss notification"></button></output></div>
+            <button type="button" aria-label="Dismiss notification"></button></output></div>
 
     output の content model は phrasing content のみ (article・p は入れられない) なので、
     メッセージは span で包む。output は role="status" を implicit に持つため、
     warning のように即時に読み上げたい場合は role="alert" で上書きする。
+
+    [data-status]・[data-style]・[data-size] は output に付ける想定 (button.css の
+    :is(a, button, details > summary)[data-size] と同じ、対象タグに連結した属性セレクタ)。
+    他要素 (article 等) に直接付いた場合はこの層のセレクタが素通りするだけで、
+    それは通常のカスケードに委ねる。
 
     表示は reference/style.js の jsFn.show/hide が担う: .hidden を外し、次のフレームで
     .show を足す。.show の間だけ表示され、setTimeout 経過後 .hide に置き換わり、
@@ -16,131 +21,231 @@
 
 @layer css.toast {
 
-    .toast-region {
-        bottom:          1.5rem;
-        display:         flex;
-        flex-direction:  column-reverse;
-        gap:             0.75rem;
+    [data-type="toast-region"] {
+        bottom:           1.5rem;
+        display:          flex;
+        flex-direction:   column-reverse;
+        gap:              0.75rem;
         inset-inline-end: 1.5rem;
-        max-inline-size: calc(100vw - 3rem);
-        position:        fixed;
-        z-index:         100; /* ページ上の他要素より確実に手前へ */
+        max-inline-size:  calc(100vw - 3rem);
+        position:         fixed;
+        z-index:          100; /* ページ上の他要素より確実に手前へ */
     }
 
-    .toast {
-        align-items:       flex-start;
-        background-color:  var(--color-paper);
-        border-color:      var(--color-mute);
-        border-inline-start-color: var(--color-mute);
-        border-inline-start-width: 0.25rem;
-        border-radius:     var(--md-border-radius);
-        border-style:      solid;
-        border-width:      var(--md-border-width);
-        box-sizing:        border-box;
-        color:             var(--color-ink);
-        display:           flex;
-        font-size:         var(--sm-font-size);
-        gap:               0.5rem;
-        letter-spacing:    var(--sm-letter-spacing);
-        line-height:       var(--sm-line-height);
-        max-inline-size:   22rem;
-        min-inline-size:   14rem;
-        opacity:           0;
-        padding:           0.75rem 1rem;
-        pointer-events:    none;
-        translate:         1.5rem 0;
+    output {
+        align-items:     flex-start;
+        border-style:    solid;
+        box-sizing:      border-box;
+        display:         flex;
+        gap:             0.5rem;
+        max-inline-size: 22rem;
+        min-inline-size: 14rem;
+        opacity:         0;
+        pointer-events:  none;
+        translate:       1.5rem 0;
     }
 
     @media (prefers-reduced-motion: no-preference) {
-        .toast {
+        output {
             transition: opacity 0.2s ease, translate 0.2s ease;
         }
     }
 
-    .toast > span {
+    output > span {
         flex: 1;
     }
 
     /*  .hidden (base.css の display:none) が外れてから初めて、.show が入って見える
         状態になる。.hide は自動で閉じる際の再生用で、.hidden には戻さない。 */
 
-    .toast.show {
+    output.show {
         opacity:        1;
         pointer-events: auto;
         translate:      0 0;
     }
 
-    .toast.hide {
+    output.hide {
         opacity:        0;
         pointer-events: none;
         translate:      1.5rem 0;
     }
 
     @media (prefers-reduced-motion: no-preference) {
-        .toast.hide {
+        output.hide {
             transition-duration: 0.15s;
         }
     }
 
-    /*  === [data-status] ===
+    /*  === [data-style="outline"], :not([data-style]) ===
         地の色は常に --color-paper/--color-ink を保ち、状態は縁の帯だけで示す
         (CUDO: アクセントカラーは非テキスト要素の小面積のみに使う)。文言側でも
         <strong> で状態を明示するため、色だけに依存しない。 */
 
-    .toast[data-status="info"] {
+    output:not([data-style]),
+    output[data-style="outline"] {
+        background-color: var(--color-paper);
+        border-color:      var(--color-mute);
+        color:              var(--color-ink);
+    }
+
+    output:not([data-style])[data-status="info"],
+    output[data-style="outline"][data-status="info"] {
         border-inline-start-color: var(--color-emphasis);
     }
-    .toast[data-status="success"] {
+    output:not([data-style])[data-status="success"],
+    output[data-style="outline"][data-status="success"] {
         border-inline-start-color: var(--color-success);
     }
-    .toast[data-status="warning"] {
+    output:not([data-style])[data-status="warning"],
+    output[data-style="outline"][data-status="warning"] {
         border-inline-start-color: var(--color-highlight);
     }
 
-    @media (forced-colors: active) {
-        .toast {
-            background-color: Canvas;
-            border-color:     CanvasText;
-            color:             CanvasText;
+    /*  === [data-style="fill"] ===
+        アクセントカラーそのものを地に塗る強調版。border は地と同色にして帯を消し、
+        文字色は各色に対して実測でAA (4.5:1) 以上になる側 (黒 or paper/ink反転) を固定する。 */
+
+    output[data-style="fill"] {
+        background-color: var(--color-ink);
+        border-color:      transparent;
+        color:              var(--color-paper);
+    }
+    output[data-style="fill"][data-status="info"] {
+        background-color: var(--color-emphasis-fill);
+        color:              var(--color-paper);
+    }
+    @media (prefers-color-scheme: dark) {
+        output[data-style="fill"][data-status="info"] {
+            color: var(--color-ink);
         }
-        .toast[data-status] {
+    }
+    output[data-style="fill"][data-status="success"] {
+        background-color: var(--color-success);
+        color:              rgb(var(--rgb-black)); /* 白文字だと約3.2:1 でAA未達のため黒で固定 */
+    }
+    output[data-style="fill"][data-status="warning"] {
+        background-color: var(--color-highlight);
+        color:              rgb(var(--rgb-black)); /* 黄地に白文字は約1.2:1 で不可、黒で固定 */
+    }
+
+    @media (forced-colors: active) {
+        output {
+            background-color: Canvas;
+            border-color:      ButtonBorder;
+            color:              CanvasText;
+        }
+        output[data-style="fill"] {
+            background-color: ButtonFace;
+            color:              ButtonText;
+        }
+        output[data-status] {
             border-inline-start-color: Mark;
         }
     }
 
-    /* === toast-dismiss (button) === */
+    /* === [data-size] === */
 
-    .toast-dismiss {
+    output[data-size="xs"] {
+        border-inline-start-width: calc(var(--xs-border-width) * 2);
+        border-radius:             var(--xs-border-radius);
+        border-width:              var(--xs-border-width);
+        font-size:                 var(--xs-font-size);
+        letter-spacing:            var(--xs-letter-spacing);
+        line-height:               var(--xs-line-height);
+        min-block-size:            var(--xs-box-height);
+        padding-block:             calc(((var(--xs-box-height) - var(--xs-line-height)) / 2) - var(--xs-border-width));
+        padding-inline:            var(--xs-border-radius);
+    }
+    output[data-size="sm"] {
+        border-inline-start-width: calc(var(--sm-border-width) * 2);
+        border-radius:             var(--sm-border-radius);
+        border-width:              var(--sm-border-width);
+        font-size:                 var(--sm-font-size);
+        letter-spacing:            var(--sm-letter-spacing);
+        line-height:               var(--sm-line-height);
+        min-block-size:            var(--sm-box-height);
+        padding-block:             calc(((var(--sm-box-height) - var(--sm-line-height)) / 2) - var(--sm-border-width));
+        padding-inline:            var(--sm-border-radius);
+    }
+    output:not([data-size]),
+    output[data-size="md"] {
+        border-inline-start-width: calc(var(--md-border-width) * 2);
+        border-radius:             var(--md-border-radius);
+        border-width:              var(--md-border-width);
+        font-size:                 var(--md-font-size);
+        letter-spacing:            var(--md-letter-spacing);
+        line-height:               var(--md-line-height);
+        min-block-size:            var(--md-box-height);
+        padding-block:             calc(((var(--md-box-height) - var(--md-line-height)) / 2) - var(--md-border-width));
+        padding-inline:            var(--md-border-radius);
+    }
+    output[data-size="lg"] {
+        border-inline-start-width: calc(var(--lg-border-width) * 2);
+        border-radius:             var(--lg-border-radius);
+        border-width:              var(--lg-border-width);
+        font-size:                 var(--lg-font-size);
+        letter-spacing:            var(--lg-letter-spacing);
+        line-height:               var(--lg-line-height);
+        min-block-size:            var(--lg-box-height);
+        padding-block:             calc(((var(--lg-box-height) - var(--lg-line-height)) / 2) - var(--lg-border-width));
+        padding-inline:            var(--lg-border-radius);
+    }
+    output[data-size="xl"] {
+        border-inline-start-width: calc(var(--xl-border-width) * 2);
+        border-radius:             var(--xl-border-radius);
+        border-width:              var(--xl-border-width);
+        font-size:                 var(--xl-font-size);
+        letter-spacing:            var(--xl-letter-spacing);
+        line-height:               var(--xl-line-height);
+        min-block-size:            var(--xl-box-height);
+        padding-block:             calc(((var(--xl-box-height) - var(--xl-line-height)) / 2) - var(--xl-border-width));
+        padding-inline:            var(--xl-border-radius);
+    }
+    output[data-size="2xl"] {
+        border-inline-start-width: calc(var(--2xl-border-width) * 2);
+        border-radius:             var(--2xl-border-radius);
+        border-width:              var(--2xl-border-width);
+        font-size:                 var(--2xl-font-size);
+        letter-spacing:            var(--2xl-letter-spacing);
+        line-height:               var(--2xl-line-height);
+        min-block-size:            var(--2xl-box-height);
+        padding-block:             calc(((var(--2xl-box-height) - var(--2xl-line-height)) / 2) - var(--2xl-border-width));
+        padding-inline:            var(--2xl-border-radius);
+    }
+
+    /* === dismiss button (output > button) === */
+
+    output > button {
         all:         unset;
-        block-size:  1rem;
+        block-size:  1em;
         cursor:      pointer;
         flex-shrink: 0;
-        inline-size: 1rem;
-        margin-block-start: 0.125rem; /* 1行目の文字中心に揃える */
+        font:        inherit; /* × を em で描くので、output 側の [data-size] にそのまま追従する */
+        inline-size: 1em;
         position:    relative;
     }
 
     /*  ×: button.css の summary::after と同じく、辺を回転させて描く。
         currentColor で描くため forced-colors でも別途上書きは不要。 */
 
-    .toast-dismiss::before,
-    .toast-dismiss::after {
+    output > button::before,
+    output > button::after {
         background-color: currentColor;
-        block-size:       0.125rem;
-        content:          "";
-        inline-size:      0.75rem;
-        inset:            0;
-        margin:           auto;
-        position:         absolute;
+        block-size:        0.125em;
+        content:           "";
+        inline-size:       0.75em;
+        inset:             0;
+        margin:            auto;
+        position:          absolute;
     }
-    .toast-dismiss::before {
+    output > button::before {
         rotate: 45deg;
     }
-    .toast-dismiss::after {
+    output > button::after {
         rotate: -45deg;
     }
 
-    .toast-dismiss:focus-visible {
+    output > button:focus-visible {
         outline-color:  var(--color-focus);
         outline-offset: 0.125rem;
         outline-style:  solid;
@@ -148,13 +253,13 @@
     }
 
     @media (hover: hover) {
-        .toast-dismiss:hover {
+        output > button:hover {
             opacity: 0.7;
         }
     }
 
     @media (forced-colors: active) {
-        .toast-dismiss:focus-visible {
+        output > button:focus-visible {
             outline-color: Highlight;
         }
     }
