@@ -1,0 +1,161 @@
+/* toast: a transient status message stacked in a fixed corner of the viewport. */
+
+/*  <div class="toast-region">
+        <output class="toast hidden" data-status="success">
+            <span><strong>Success:</strong> message</span>
+            <button type="button" class="toast-dismiss" aria-label="Dismiss notification"></button></output></div>
+
+    output の content model は phrasing content のみ (article・p は入れられない) なので、
+    メッセージは span で包む。output は role="status" を implicit に持つため、
+    warning のように即時に読み上げたい場合は role="alert" で上書きする。
+
+    表示は reference/style.js の jsFn.show/hide が担う: .hidden を外し、次のフレームで
+    .show を足す。.show の間だけ表示され、setTimeout 経過後 .hide に置き換わり、
+    transitionend で .hide を外す（.hidden には戻らない -- base.css の [hidden]/.hidden
+    は最初の一回だけレイアウトから抜くためのもの）。 */
+
+@layer css.toast {
+
+    .toast-region {
+        bottom:          1.5rem;
+        display:         flex;
+        flex-direction:  column-reverse;
+        gap:             0.75rem;
+        inset-inline-end: 1.5rem;
+        max-inline-size: calc(100vw - 3rem);
+        position:        fixed;
+        z-index:         100; /* ページ上の他要素より確実に手前へ */
+    }
+
+    .toast {
+        align-items:       flex-start;
+        background-color:  var(--color-paper);
+        border-color:      var(--color-mute);
+        border-inline-start-color: var(--color-mute);
+        border-inline-start-width: 0.25rem;
+        border-radius:     var(--md-border-radius);
+        border-style:      solid;
+        border-width:      var(--md-border-width);
+        box-sizing:        border-box;
+        color:             var(--color-ink);
+        display:           flex;
+        font-size:         var(--sm-font-size);
+        gap:               0.5rem;
+        letter-spacing:    var(--sm-letter-spacing);
+        line-height:       var(--sm-line-height);
+        max-inline-size:   22rem;
+        min-inline-size:   14rem;
+        opacity:           0;
+        padding:           0.75rem 1rem;
+        pointer-events:    none;
+        translate:         1.5rem 0;
+    }
+
+    @media (prefers-reduced-motion: no-preference) {
+        .toast {
+            transition: opacity 0.2s ease, translate 0.2s ease;
+        }
+    }
+
+    .toast > span {
+        flex: 1;
+    }
+
+    /*  .hidden (base.css の display:none) が外れてから初めて、.show が入って見える
+        状態になる。.hide は自動で閉じる際の再生用で、.hidden には戻さない。 */
+
+    .toast.show {
+        opacity:        1;
+        pointer-events: auto;
+        translate:      0 0;
+    }
+
+    .toast.hide {
+        opacity:        0;
+        pointer-events: none;
+        translate:      1.5rem 0;
+    }
+
+    @media (prefers-reduced-motion: no-preference) {
+        .toast.hide {
+            transition-duration: 0.15s;
+        }
+    }
+
+    /*  === [data-status] ===
+        地の色は常に --color-paper/--color-ink を保ち、状態は縁の帯だけで示す
+        (CUDO: アクセントカラーは非テキスト要素の小面積のみに使う)。文言側でも
+        <strong> で状態を明示するため、色だけに依存しない。 */
+
+    .toast[data-status="info"] {
+        border-inline-start-color: var(--color-emphasis);
+    }
+    .toast[data-status="success"] {
+        border-inline-start-color: var(--color-success);
+    }
+    .toast[data-status="warning"] {
+        border-inline-start-color: var(--color-highlight);
+    }
+
+    @media (forced-colors: active) {
+        .toast {
+            background-color: Canvas;
+            border-color:     CanvasText;
+            color:             CanvasText;
+        }
+        .toast[data-status] {
+            border-inline-start-color: Mark;
+        }
+    }
+
+    /* === toast-dismiss (button) === */
+
+    .toast-dismiss {
+        all:         unset;
+        block-size:  1rem;
+        cursor:      pointer;
+        flex-shrink: 0;
+        inline-size: 1rem;
+        margin-block-start: 0.125rem; /* 1行目の文字中心に揃える */
+        position:    relative;
+    }
+
+    /*  ×: button.css の summary::after と同じく、辺を回転させて描く。
+        currentColor で描くため forced-colors でも別途上書きは不要。 */
+
+    .toast-dismiss::before,
+    .toast-dismiss::after {
+        background-color: currentColor;
+        block-size:       0.125rem;
+        content:          "";
+        inline-size:      0.75rem;
+        inset:            0;
+        margin:           auto;
+        position:         absolute;
+    }
+    .toast-dismiss::before {
+        rotate: 45deg;
+    }
+    .toast-dismiss::after {
+        rotate: -45deg;
+    }
+
+    .toast-dismiss:focus-visible {
+        outline-color:  var(--color-focus);
+        outline-offset: 0.125rem;
+        outline-style:  solid;
+        outline-width:  0.125rem;
+    }
+
+    @media (hover: hover) {
+        .toast-dismiss:hover {
+            opacity: 0.7;
+        }
+    }
+
+    @media (forced-colors: active) {
+        .toast-dismiss:focus-visible {
+            outline-color: Highlight;
+        }
+    }
+}
