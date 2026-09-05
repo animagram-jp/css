@@ -27,14 +27,31 @@
         <hgroup data-axis="inline" data-style="rule-indent">
             <h1>css library</h1>
             <p>Universal design CSS library.</p></hgroup>
-        <label>
-            <span>Darkmode</span>
-            <input id="theme-toggle" type="checkbox" role="switch"></label>
+        <fieldset>
+            <legend>Color theme</legend>
+            <label>
+                <span>Light (less contrast)</span>
+                <input type="radio" name="color-theme" value="light-less-contrast"></label>
+            <label>
+                <span>Light</span>
+                <input type="radio" name="color-theme" value="light"></label>
+            <label>
+                <span>Light (high contrast)</span>
+                <input type="radio" name="color-theme" value="light-high-contrast"></label>
+            <label>
+                <span>Dark (less contrast)</span>
+                <input type="radio" name="color-theme" value="dark-less-contrast"></label>
+            <label>
+                <span>Dark</span>
+                <input type="radio" name="color-theme" value="dark"></label>
+            <label>
+                <span>Dark (high contrast)</span>
+                <input type="radio" name="color-theme" value="dark-high-contrast"></label></fieldset>
 
         <p><a href="./reference/audit.html">WCAG 2.2 auto-generated report</a></p>
     </header>
 
-    <section data-style="rule-indent">
+    <section>
         <h2>input, select, textarea</h2>
         <section data-style="rule-indent">
             <input type="text">
@@ -63,7 +80,7 @@
                 <option>2</option></select>
             <textarea aria-invalid="true"></textarea></section></section>
 
-    <section data-style="rule-indent">
+    <section>
         <h2>button, a, details > summary</h2>
         <section data-style="rule-indent">
             <button type="button">Button</button>
@@ -186,7 +203,7 @@
                 <li role="option"><button>リストアイテム3</button></li></ul>
             <button type="button" id="list-box-8-trigger" popovertarget="list-box-8" aria-haspopup="listbox" aria-controls="list-box-8" disabled>
                 現在選択中のリストアイテム</button></section></section>
-    <section data-style="rule-indent">
+    <section>
         <h2>Toggle button (input[type="checkbox"][role="switch"])</h2>
         <section data-style="rule-indent">
             <label>
@@ -226,7 +243,7 @@
 
     </section>
 
-    <section data-style="rule-indent">
+    <section>
         <h2>Checkbox</h2>
         <section data-style="rule-indent">
             <label>
@@ -271,7 +288,7 @@
                 <span>inline</span>
                 <input type="checkbox" checked disabled></label></section></section>
 
-    <section data-style="rule-indent">
+    <section>
         <h2>Radio button</h2>
         <section data-style="rule-indent">
             <label>
@@ -313,7 +330,7 @@
                 <span>inline</span>
                 <input type="radio" name="r-disabled" checked disabled></label></section></section>
 
-    <section data-style="rule-indent">
+    <section>
         <h2>Slider (input[type="range"])</h2>
         <section data-style="rule-indent">
             <input type="range" min="0" max="100" step="10" value="20">
@@ -342,7 +359,7 @@
             <input type="range" value="50" disabled>
             <input type="range" value="50" aria-disabled="true"></section></section>
 
-    <section data-style="rule-indent">
+    <section>
         <h2>Step button (button[data-action] + input[role="spinbutton"])</h2>
         <section data-style="rule-indent">
             <label>
@@ -414,7 +431,7 @@
                 <input type="text" inputmode="numeric" pattern="[0-9]*" role="spinbutton" value="10" size="4" aria-disabled="true">
                 <button type="button" data-action="increment" aria-disabled="true"></button></label></section></section>
 
-    <section data-style="rule-indent">
+    <section>
         <h2>Error (section[data-type="error-summary"], p[data-type="error"])</h2>
         <section data-style="rule-indent">
             <h3>section[data-type="error-summary"]</h3>
@@ -442,7 +459,7 @@
                 <p data-type="error" id="error-dob-message"><strong>エラー:</strong> 生年月日は実在する日付を入力してください</p>
                 <input type="text" id="error-dob" inputmode="numeric" pattern="[0-9]*" size="4" aria-invalid="true"></fieldset></section></section>
 
-    <section data-style="rule-indent">
+    <section>
         <h2>Heading</h2>
         <section data-style="rule-indent">
             <h1>H1</h1>
@@ -477,7 +494,7 @@
                 <h3>H3 2xl</h3>
                 <p>Subtitle</p></hgroup></section></section>
 
-    <section data-style="rule-indent">
+    <section>
         <h2>Search</h2>
         <section data-style="rule-indent">
             <h3>label &gt; input[type="search"] (standalone)</h3>
@@ -622,7 +639,7 @@
                     <input type="search" data-size="2xl" aria-label="Search"></label>
                 <button type="button" data-size="2xl">Search</button></search></section></section>
 
-    <section data-style="rule-indent">
+    <section>
         <h2>Table</h2>
         <section data-style="rule-indent">
             <table>
@@ -939,25 +956,27 @@
                         <td>Cell</td>
                         <td>Cell</td></tr></tbody></table></section></section>
 
-    <section data-style="rule-indent">
+    <section>
         <h2>Blockquote</h2>
         <figure data-style="rule-indent">
             <blockquote>
                 <p>"I will cast the dark shadows of human life over you without reserve. But you must not be afraid."</p></blockquote>
             <figcaption>Soseki Natsume. 1914. <cite>Kokoro</cite>. Iwanami Shoten, Tokyo, Japan. Translated by Andyou, 2026.</figcaption></figure></section>
 
-    <section data-style="rule-indent">
-        <h2>Favicon status</h2>
+    <section>
+        <h2>Icon badge</h2>
         <section data-style="rule-indent">
             <label>
+                <span>none</span>
+                <input type="radio" name="icon-badge" value="none" checked></label>
+            <label>
                 <span>active</span>
-                <input type="radio" name="favicon-status" value="active" checked></label>
+                <input type="radio" name="icon-badge" value="active"></label>
             <label>
                 <span>information</span>
-                <input type="radio" name="favicon-status" value="information"></label>
-            <p id="favicon-status-text" aria-live="polite">active</p></section></section>
+                <input type="radio" name="icon-badge" value="information"></label></section></section>
 
-    <section data-style="rule-indent">
+    <section>
         <h2>Toast (output in [data-type="toast-region"])</h2>
         <section data-style="rule-indent">
             <h3>[data-status]</h3>
@@ -978,7 +997,7 @@
                 <button type="button" onclick="jsFn.show(document.getElementById('toast-size-sm'))">sm を表示</button>
                 <button type="button" onclick="jsFn.show(document.getElementById('toast-size-lg'))">lg を表示</button></div></section>
 
-        <div data-type="toast-region">
+        <section data-type="toast-region">
             <output id="toast-status-info" class="hidden" data-status="info">
                 <span><strong>情報:</strong> 新しいバージョンが利用できます。</span>
                 <button type="button" aria-label="通知を閉じる" onclick="jsFn.hide(this.closest('output'))"></button></output>
@@ -999,5 +1018,8 @@
                 <button type="button" aria-label="通知を閉じる" onclick="jsFn.hide(this.closest('output'))"></button></output>
             <output id="toast-size-lg" class="hidden" data-size="lg" data-status="info">
                 <span><strong>情報:</strong> data-size="lg"</span>
-                <button type="button" aria-label="通知を閉じる" onclick="jsFn.hide(this.closest('output'))"></button></output></div></section>
+                <button type="button" aria-label="通知を閉じる" onclick="jsFn.hide(this.closest('output'))"></button></output></section>
+
+
+</section>
 </body></html>

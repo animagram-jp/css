@@ -1,12 +1,11 @@
 # css
 
-Css universal design boilerplate. Works without interference to HTML.
+Interface design system and DOM implements.
 
-- Universal Design (variants included) based on [digital government jp design system](https://github.com/digital-go-jp/design-system-example-components-html), [CUDO: Color Universal Design Recommended Color Set ver.3](https://cudo.jp/wp-content/uploads/2016/07/CUD%E6%8E%A8%E5%A5%A8%E9%85%8D%E8%89%B2%E3%82%BB%E3%83%83%E3%83%88%E3%82%AC%E3%82%A4%E3%83%89%E3%83%96%E3%83%83%E3%82%AF.pdf), WCAG 2.2, ARIA APG, IEC60447:1993(Man-machine-interface Principle).
-- Requires to html only semantic and also structural tag's structure and minimum anonymous elements.
+- Universal Design (variants included) based on [digital government jp design system](https://github.com/digital-go-jp/design-system-example-components-html), [CUDO: Color Universal Design Recommended Color Set ver.3](https://cudo.jp/wp-content/uploads/2016/07/CUD%E6%8E%A8%E5%A5%A8%E9%85%8D%E8%89%B2%E3%82%BB%E3%83%83%E3%83%88%E3%82%AC%E3%82%A4%E3%83%89%E3%83%96%E3%83%83%E3%82%AF.pdf), GOV.UK Design System, WCAG 2.2, ARIA APG, IEC60447:1993(Man-machine-interface Principle).
+- Requires to html only semantic and also structural tags and minimum anonymous elements.
 - Render correctly without JS.
-- Each component's CSS file starts with an HTML comment showing its expected HTML structure.
-- All CSS Property is described in order of dependencies, and then, alphabetical.
+- All CSS properties are described in order of dependencies, and then, alphabetical.
 
 ## Version
 
@@ -16,7 +15,8 @@ Css universal design boilerplate. Works without interference to HTML.
 
 ## Color
 
-Defined in [base.css](./css/base.css) (`@layer css.base`). There is no separate config file — override the `--color-*` variables on any scope to restyle.
+Defined in [base.css](./css/base.css) (`@layer css.base`). 
+Override the `--color-*` variables on any scope to restyle.
 
 ```css
 @layer css.base {
@@ -31,20 +31,20 @@ Defined in [base.css](./css/base.css) (`@layer css.base`). There is no separate 
         --rgb-white, --rgb-light-gray, --rgb-gray, --rgb-black;
 
         /* Roles — these are what components actually consume */
-        --color-ink;    /* text color        */
-        --color-paper;  /* background color  */
-        --color-mute;   /* border / subdued text; >=4.5:1 on paper (WCAG AA 1.4.3) */
+        --color-ink;   /* text color        */
+        --color-paper; /* background color  */
+        --color-mute;  /* border / subdued text; >=4.5:1 on paper (WCAG AA 1.4.3) */
 
-        --color-emphasis;              /* >=7:1 on paper (WCAG AAA 1.4.6) */
-        --color-emphasis-fill;         /* emphasis as a fill; >=7:1 against ink */
+        --color-emphasis;             /* >=7:1 on paper (WCAG AAA 1.4.6) */
+        --color-emphasis-fill;        /* emphasis as a fill; >=7:1 against ink */
         --color-emphasis-active;
-        --color-emphasis-fill-active;  /* >=3:1 on paper (WCAG AA 1.4.11)  */
+        --color-emphasis-fill-active; /* >=3:1 on paper (WCAG AA 1.4.11)  */
         --color-paper-active;
 
-        --color-focus;      /* focus ring; defaults to --color-emphasis */
-        --color-error;      /* non-text only (per CUDO FAQ) */
-        --color-success;    /* non-text only */
-        --color-highlight;  /* mark, ::selection */
+        --color-focus;     /* focus ring; defaults to --color-emphasis */
+        --color-error;     /* non-text only (per CUDO FAQ) */
+        --color-highlight; /* mark, ::selection */
+        --color-success;   /* non-text only */
     }
 }
 

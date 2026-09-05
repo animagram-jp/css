@@ -1,77 +1,123 @@
-(() => {
-    const root = document.documentElement;
-    const toggle = document.getElementById("theme-toggle");
+// example Javascript for animagram-jp/css/index.html demonstration and test
 
-    toggle.checked = window.matchMedia("(prefers-color-scheme: dark)").matches;
-
-    toggle.addEventListener("change", () => {
-        root.setAttribute("data-theme", toggle.checked ? "dark" : "light");
-    });
-})();
-
-/* :indeterminate は IDL プロパティのみで HTML 属性が存在しないため、
-   サンプル表示用に data-indeterminate 属性から付与する */
+// for :indeterminate
 
 document.querySelectorAll('input[type="checkbox"][data-indeterminate]')
     .forEach((input) => { input.indeterminate = true; });
 
-/* favicon にステータスを重ねるサンプル。
-   色は base.css の CUD 配色に合わせた実値で持つ（canvas は CSS 変数を解決できないため）。
-   色覚特性に依存しないよう、色相だけでなく塗り/抜きの形でも状態を区別している。 */
+// radio event for color theme (light/dark x less/normal/more contrast)
+(() => {
+    const root = document.documentElement;
+    const radios = document.querySelectorAll('input[name="color-theme"]');
+    if (!radios.length) return;
+
+    // reflect the user's OS-level prefers-* settings as the initial radio position
+    const scheme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light";
+    const contrast = window.matchMedia("(prefers-contrast: more)").matches ? "-high-contrast"
+        : window.matchMedia("(prefers-contrast: less)").matches ? "-less-contrast"
+        : "";
+    const initial = `${scheme}${contrast}`;
+
+    const setColorTheme = (value) => root.setAttribute("data-color-theme", value);
+
+    const initialRadio = document.querySelector(`input[name="color-theme"][value="${initial}"]`);
+    if (initialRadio) initialRadio.checked = true;
+    setColorTheme(initial);
+
+    radios.forEach((radio) => radio.addEventListener("change", () => {
+        setColorTheme(document.querySelector('input[name="color-theme"]:checked').value);
+    }));
+})();
+
+// --- radio event for icon badge at the bottom right corner ---
+
+const ICON_BADGE = {
+    active:      { fill: "rgb(53,161,107)",  stroke: "rgb(255,255,255)" }, // --rgb-accent-green
+    information: { fill: "rgb(127,135,143)", stroke: "rgb(255,255,255)" }, // --rgb-grey
+};
+
+// ratio of badge for each icon
+const ICON_BADGE_RADIUS_RATIO = 5 / 32;
+const ICON_BADGE_STROKE_RATIO = 0.3; // outline width (color: stroke)
+
+// compute location and size of badge for each icon data
+function computeIconBadgeGeometry(icon) {
+    const size = Math.min(icon.naturalWidth, icon.naturalHeight);
+    if (!size) return null;
+
+    const radius = size * ICON_BADGE_RADIUS_RATIO;
+    const stroke = radius * ICON_BADGE_STROKE_RATIO;
+    const center = size - radius - stroke;
+
+    return { size, radius, stroke, center };
+}
+
+function drawIconBadge(name, { link, canvas, context, base, geometry, originalHref }) {
+    if (name === "none" || !base.complete) {
+        link.href = originalHref;
+        return;
+    }
+
+    const badge = ICON_BADGE[name];
+    if (!badge || !geometry) return;
+
+    const { size, radius, stroke, center } = geometry;
+    canvas.width = canvas.height = size;
+
+    context.clearRect(0, 0, size, size);
+    context.imageSmoothingQuality = "high";
+    context.drawImage(base, 0, 0, size, size);
+
+    context.beginPath();
+    context.arc(center, center, radius, 0, Math.PI * 2);
+    context.strokeStyle = badge.stroke;
+    context.lineWidth = stroke * 2;
+    context.stroke();
+
+    context.beginPath();
+    context.arc(center, center, radius, 0, Math.PI * 2);
+    context.fillStyle = badge.fill;
+    context.fill();
+
+    try {
+        link.href = canvas.toDataURL("image/png");
+    } catch (err) {
+        console.warn("icon-badge: canvas is tainted, skipping badge overlay.", err);
+        link.href = originalHref;
+    }
+}
 
 (() => {
-    const STATUS = {
-        active:      { color: "rgb(53,161,107)", filled: true  }, /* --rgb-accent-green */
-        information: { color: "rgb(119,119,119)", filled: false },
-    };
-
-    const SIZE = 32;   /* 16 では点が 2〜3px となり潰れる */
-    const CENTER = 24; /* 右下。多くのロゴは中央に重心があり四隅で最も情報が薄い */
-    const RADIUS = 5;
-    const EDGE = 1.5;  /* 下地から輪郭を立てるための縁取り */
-
     const link = document.querySelector("link[rel~='icon']");
-    const text = document.getElementById("favicon-status-text");
-    const radios = document.querySelectorAll('input[name="favicon-status"]');
+    const radios = document.querySelectorAll('input[name="icon-badge"]');
     if (!link || !radios.length) return;
 
+    const originalHref = link.href;
+
     const canvas = document.createElement("canvas");
-    canvas.width = canvas.height = SIZE;
     const context = canvas.getContext("2d");
 
     const base = new Image();
+    base.crossOrigin = "anonymous";
+
+    let geometry = null;
+
+    const current = () => document.querySelector('input[name="icon-badge"]:checked')?.value;
+    const draw = (name) => drawIconBadge(name, { link, canvas, context, base, geometry, originalHref });
+
+    base.addEventListener("load", () => {
+        geometry = computeIconBadgeGeometry(base);
+        if (!geometry) {
+            console.warn("icon-badge: base icon has no size, skipping.");
+            return;
+        }
+        draw(current());
+    });
+    base.addEventListener("error", () => {
+        console.warn("icon-badge: failed to load base icon image.");
+    });
     base.src = link.href;
 
-    const draw = (name) => {
-        const status = STATUS[name];
-        if (!status || !base.complete) return;
-
-        context.clearRect(0, 0, SIZE, SIZE);
-        context.imageSmoothingQuality = "high"; /* 512px から 16 倍縮小するため */
-        context.drawImage(base, 0, 0, SIZE, SIZE);
-
-        context.beginPath();
-        context.arc(CENTER, CENTER, RADIUS, 0, Math.PI * 2);
-        context.strokeStyle = "rgb(255,255,255)";
-        context.lineWidth = EDGE * 2; /* 半分は円の内側に描かれる */
-        context.stroke();
-
-        context.fillStyle = status.filled ? status.color : "rgb(255,255,255)";
-        context.fill();
-
-        if (!status.filled) {
-            context.strokeStyle = status.color;
-            context.lineWidth = EDGE;
-            context.stroke();
-        }
-
-        link.href = canvas.toDataURL("image/png");
-        if (text) text.textContent = name;
-    };
-
-    const current = () => document.querySelector('input[name="favicon-status"]:checked')?.value;
-
-    base.addEventListener("load", () => draw(current()));
     radios.forEach((radio) => radio.addEventListener("change", () => draw(current())));
 })();
 

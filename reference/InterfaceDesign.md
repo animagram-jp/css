@@ -31,7 +31,6 @@ From the information the system needs to convey to the person, it determines one
 
 インターフェース装置は、設計時には知り得ない個人と、コンピューターアルゴリズムが干渉しあう。
 UD(個人や状況に依らず機能する)の網羅性の程度も、機能品質の程度も、決して100%を達成することはない。
-また、本プロジェクトの成果物である
 そのため、以下の方針を取る:
 
 1. プロジェクトの現在の網羅性の期待水準を定め、リリースには、それを満たしただけを含める。
@@ -62,77 +61,77 @@ UD(個人や状況に依らず機能する)の網羅性の程度も、機能品�
 
 ---
 
-## 装置と手続き段階の対応
+## 所作
 
-`InterfaceDesign.md` の「P1~P3'パターン具体例」表に現れる入力手段を、装置
-ごとに整理する。同じ所作が部品によって異なる段階に割り当てられる点が要である。
+十分容易な運動によって、要求する1つの所作を定義する。運動には、代替を想定する。
+例として、ディスプレイに触れる手指の運動で実現する時、それは
+tap と long press のうち個々の人間にとってより容易な片方の運動によって実現できるように、
+tap =  long press → (show context menu) → option 1 long press
+の2つを代替関係とする。
 
-| 所作 | 装置 | 現れる段階の例 |
-|-|-|-|
-| フォーカス | keyboard, pointer | P1 (toggle switch, command button) |
-| ポインターホバー | pointer | P1 (大半の部品), P2 (command menu のオプション) |
-| ポインターダウン | pointer | P1 (drag and drop の掴み), P3 (emergency stop, hold-to-run) |
-| ポインタームーブ | pointer | P2 (immediate slider, rating, drag and drop) |
-| ポインターアップ | pointer | P3 (drag and drop) |
-| タップ | pointer | P3 (大半), P1 (inline edit, command palette) |
-| Enter | keyboard | P3 (大半), P2→P3 (inline edit) |
-| Space | keyboard | P3 (command button) |
-| 矢印キー | keyboard | P2 (immediate slider, rating) |
-| テキスト入力 | keyboard, IME | P2 (inline edit, command palette) |
-| フォーカスアウト | keyboard, pointer | P3 (inline edit) |
-| 境界外ポインタームーブ | pointer | P3 のキャンセル (drag and drop) |
+- pointer down, move, up (touch, mouse)
+    - tap
+    - long press
+    - drag (& drop)
+    - swipe
+    - (hover) (mouse only)
+- keyboard
+    - enter
+    - space
+    - arrow (↑→↓←)
 
 ---
 
 ## 部品体系
 
-### Data Variant
-
-inline editor with select option
-
-### Footnote
-
-```html
-<sup></sup>
-<sub></sub>
-```
+### 未分類
 
 ```css
-sub, sup {
-  font-size: smaller;
-  line-height: normal;
+/* monospace font, block and copy button */
+
+pre, pre > code, pre > samp {
+    
 }
 
-sub { vertical-align: sub; }
-sup { vertical-align: super; }
+/* kbd: [data-style="outline"], [data-style="fill"] */
+
+kbd {
+    
+}
+
+/* Card: [data-style="outline"], [data-style="fill"] */
+article > header, footer {
+
+}
 ```
 
-```
-1個目: *   asterisk
-2個目: †   dagger
-3個目: ‡   double dagger
-4個目: §   section sign
-5個目: ‖   parallel
-6個目: ¶   pilcrow
-7個目: **
-8個目: ††
-9個目: ‡‡
-...
+## グルーピング機能
+
+### surround style
+
+- fill
+- outline
+- fill header and outline body [GOV.UK Design System: Notification banner](https://design-system.service.gov.uk/components/notification-banner/)
+
+```css
+[data-style="fill"] {}
+[data-style="outline"] {}
+[data-style="fill"], [data-style="outline"] {}
 ```
 
----
+### contiguous style
 
-構成用部品, 信号用部品
+```css
+[role="group"] > *, [data-style="contiguous"] > * {}
+```
+
+### 信号機能用
+
+構成機能用部品, 信号機能用部品
 
 - 部品の部品
-    - Text block: monospace font, copy button (pre, code, kbd, samp)
-    - Card: article > header, footer
-    - Hidden:
-        - [hidden], .hidden: visibility: hidden
-        - aria-hidden
-        - .visibility-hidden
     - Fill box: *[data-style="fill"]:before, *[data-style="fill"], *[data-style="fill"]:after
-    - Fill header and outline body: [GOV.UK Design System: Notification banner](https://design-system.service.gov.uk/components/notification-banner/)
+    - Fill header and outline body: 
     - List:
         - ol > li
         - ul > li

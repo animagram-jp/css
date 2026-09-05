@@ -1,19 +1,6 @@
 :root {
-    --font-family-sans-serif: "IBM Plex Sans", "BIZ UDGothic", "Noto Sans JP", "Hiragino Sans", sans-serif;
+    --font-family-sans-serif: "IBM Plex Sans", "Noto Sans JP", "BIZ UDGothic", "Hiragino Sans", sans-serif;
     --font-family-monospace:  "Fira Code", "BIZ UDGothic", monospace;
-}
-
-:root[data-theme="light"] {
-    --color-ink:   rgb(var(--rgb-black));
-    --color-paper: rgb(var(--rgb-white));
-    --color-emphasis: rgb(var(--rgb-accent-blue));
-    --color-emphasis-fill: var(--color-emphasis);
-}
-:root[data-theme="dark"] {
-    --color-ink:           rgb(var(--rgb-white));
-    --color-paper:         rgb(var(--rgb-black));
-    --color-emphasis:      rgb(var(--rgb-accent-sky));
-    --color-emphasis-fill: rgb(var(--rgb-accent-blue));
 }
 
 /*:root {
