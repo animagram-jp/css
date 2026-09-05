@@ -27,8 +27,9 @@
         <hgroup data-axis="inline" data-style="rule-indent">
             <h1>css library</h1>
             <p>Universal design CSS library.</p></hgroup>
-        <fieldset>
-            <legend>Color theme</legend>
+        <fieldset data-axis="inline" style="grid-template-columns: max-content repeat(1, minmax(0, max-content)); grid-template-rows: auto repeat(6, auto);">
+            <legend>
+                <span>Color theme</span></legend>
             <label>
                 <span>Light (less contrast)</span>
                 <input type="radio" name="color-theme" value="light-less-contrast"></label>
@@ -50,6 +51,14 @@
 
         <p><a href="./reference/audit.html">WCAG 2.2 auto-generated report</a></p>
     </header>
+
+    <dialog>
+        <nav>
+            <ul>
+                <li></li></ul>
+            </nav>
+    
+        </dialog>
 
     <section>
         <h2>input, select, textarea</h2>
@@ -328,7 +337,97 @@
                 <input type="radio" name="r-disabled" disabled></label>
             <label>
                 <span>inline</span>
-                <input type="radio" name="r-disabled" checked disabled></label></section></section>
+                <input type="radio" name="r-disabled" checked disabled></label></section>
+
+        <h3 id="h3-radio-button-field">Radio button fieldset</h3>
+        <section data-style="rule-indent" aria-labelledby="h3-radio-button-field">
+            <fieldset id="section_fieldset" style="grid-template-columns: repeat(3, minmax(0, max-content));">
+                <legend>
+                    <span>repeat(3, max-content)</span></legend>
+                <label>
+                    <span>Light (less contrast)</span>
+                    <input type="radio" name="grid-demo-2b" value="light-less-contrast"></label>
+                <label>
+                    <span>Light</span>
+                    <input type="radio" name="grid-demo-2b" value="light"></label>
+                <label>
+                    <span>Light (high contrast)</span>
+                    <input type="radio" name="grid-demo-2b" value="light-high-contrast"></label>
+                <label>
+                    <span>Dark (less contrast)</span>
+                    <input type="radio" name="grid-demo-2b" value="dark-less-contrast"></label>
+                <label>
+                    <span>Dark</span>
+                    <input type="radio" name="grid-demo-2b" value="dark"></label>
+                <label>
+                    <span>Dark (high contrast)</span>
+                    <input type="radio" name="grid-demo-2b" value="dark-high-contrast"></label></fieldset>
+    
+            <fieldset style="grid-template-columns: repeat(3, 10rem);">
+                <legend>
+                    <span>repeat(3, 10rem)</span></legend>
+                <label>
+                    <span>Light (less contrast)</span>
+                    <input type="radio" name="grid-demo-2d" value="light-less-contrast"></label>
+                <label>
+                    <span>Light</span>
+                    <input type="radio" name="grid-demo-2d" value="light"></label>
+                <label>
+                    <span>Light (high contrast)</span>
+                    <input type="radio" name="grid-demo-2d" value="light-high-contrast"></label>
+                <label>
+                    <span>Dark (less contrast)</span>
+                    <input type="radio" name="grid-demo-2d" value="dark-less-contrast"></label>
+                <label>
+                    <span>Dark</span>
+                    <input type="radio" name="grid-demo-2d" value="dark"></label>
+                <label>
+                    <span>Dark (high contrast)</span>
+                    <input type="radio" name="grid-demo-2d" value="dark-high-contrast"></label></fieldset>
+    
+            <fieldset data-axis="inline" style="grid-template-columns: auto repeat(3, minmax(0, max-content)); grid-template-rows: repeat(2, auto);">
+                <legend>
+                    <span>axis=inline, grid-auto-columns: max-content</span></legend>
+                <label>
+                    <span>Light (less contrast)</span>
+                    <input type="radio" name="grid-demo-3e" value="light-less-contrast"></label>
+                <label>
+                    <span>Light</span>
+                    <input type="radio" name="grid-demo-3e" value="light"></label>
+                <label>
+                    <span>Light (high contrast)</span>
+                    <input type="radio" name="grid-demo-3e" value="light-high-contrast"></label>
+                <label>
+                    <span>Dark (less contrast)</span>
+                    <input type="radio" name="grid-demo-3e" value="dark-less-contrast"></label>
+                <label>
+                    <span>Dark</span>
+                    <input type="radio" name="grid-demo-3e" value="dark"></label>
+                <label>
+                    <span>Dark (high contrast)</span>
+                    <input type="radio" name="grid-demo-3e" value="dark-high-contrast"></label></fieldset>
+    
+            <fieldset data-axis="inline" style="grid-template-columns: auto repeat(3, 10rem); grid-template-rows: repeat(2, auto);">
+                <legend>
+                    <span>axis=inline, grid-auto-columns: 10rem</span></legend>
+                <label>
+                    <span>Light (less contrast)</span>
+                    <input type="radio" name="grid-demo-3f" value="light-less-contrast"></label>
+                <label>
+                    <span>Light</span>
+                    <input type="radio" name="grid-demo-3f" value="light"></label>
+                <label>
+                    <span>Light (high contrast)</span>
+                    <input type="radio" name="grid-demo-3f" value="light-high-contrast"></label>
+                <label>
+                    <span>Dark (less contrast)</span>
+                    <input type="radio" name="grid-demo-3f" value="dark-less-contrast"></label>
+                <label>
+                    <span>Dark</span>
+                    <input type="radio" name="grid-demo-3f" value="dark"></label>
+                <label>
+                    <span>Dark (high contrast)</span>
+                    <input type="radio" name="grid-demo-3f" value="dark-high-contrast"></label></fieldset></section></section>
 
     <section>
         <h2>Slider (input[type="range"])</h2>

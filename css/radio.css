@@ -1,10 +1,82 @@
-/* radio: input widget that allows users to choose one of several values. */
+/*  Usage: 
 
-/*  <label>
-        <span>inline</span>
-        <input type="radio"></label> */
+    <label>
+        <span></span>
+        <input type="radio" name="" value=""></label>
+
+    <fieldset data-axis="block | inline">
+        <legend><span></span></legend>
+        <label>
+            <span></span>
+            <input type="radio" name="" value=""></label>
+        <label>
+            <span></span>
+            <input type="radio" name="" value=""></label></fieldset>
+
+    <fieldset aria-labelledby="">
+        <*:not(legend, label) id=""></*:not(legend, label)>
+        <label>
+            <span></span>
+            <input type="radio" name="" value=""></label>
+        <label>
+            <span></span>
+            <input type="radio" name="" value=""></label></fieldset>
+*/
 
 @layer css.radio {
+
+    fieldset:has(> label > input[type="radio"]) {
+        display: grid;
+        border:  none;
+        margin:  0;
+        padding: 0;
+        gap:     0.5rem;
+    }
+
+    /* 
+        [data-axis="inline"] 
+        To fit vertical, needs grid-template-rows: repeat(N, ...); 
+    */
+    fieldset:has(> label > input[type="radio"])[data-axis="inline"] {
+        grid-template-columns: auto 1fr;
+    }
+    /* legend needs an inner wrapper due to browsers. */
+    fieldset:has(> label > input[type="radio"]) > legend {
+        display: contents;
+    }
+    fieldset:has(> label > input[type="radio"]) > legend > * {
+        grid-column:      1 / -1;
+        min-inline-size:  0;
+        overflow-wrap:    anywhere;
+    }
+    fieldset:has(> label > input[type="radio"])[data-axis="inline"] > legend > * {
+        grid-column: 1;
+        grid-row:    1 / -1;
+        align-self:  center;
+    }
+
+    fieldset:has(> label > input[type="radio"]) > *:not(legend, label) {
+        grid-column:     1 / -1;
+        min-inline-size: 0;
+        overflow-wrap:   anywhere;
+        margin:          0;
+    }
+    fieldset:has(> label > input[type="radio"])[data-axis="inline"] > *:not(legend, label) {
+        grid-column: 1;
+        grid-row:    1 / -1;
+        align-self:  center;
+    }
+
+    fieldset:has(> label > input[type="radio"]) > label {
+        display:         inline-flex;
+        justify-content: space-between;
+        align-items:     center;
+        gap:             0.5rem;
+        inline-size:     100%;
+    }
+    fieldset:has(> label > input[type="radio"]) > label > input[type="radio"] {
+        flex-shrink: 0;
+    }
 
     label:has(> input[type="radio"]),
     label:has(> input[type="radio"]) > * {

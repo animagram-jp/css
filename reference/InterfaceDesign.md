@@ -474,7 +474,6 @@ govuk-frontend が「透明outline/borderを常時置く」パターン中心な
 
 上の一括指定では拾えず、コンポーネント単位の判断が必要になるもの。
 
-- **box-shadow だけで作っているフォーカスリング** — forced-colors では box-shadow が描画されず、フォーカスが完全に消える。透明 `outline` の常時併置が必須。現行実装はフォーカスに `outline` を使っている(`base.css:108-121`)ため素性は良いが、`--color-focus`(黄)の背景・box-shadow に依存している箇所は代替が必要。論点#8/#10 と合わせて確認する。
 - **`--color-focus`(黄)を background-color で塗るフォーカス表現** — GOV.UK の focused-text 型の「マーカー塗り」は forced-colors で消える。黄色の帯を主表現にする設計を採るなら、透明 outline のフォールバックを同時に入れることが前提条件になる。
 - **`border: none` を基本ルールにしている要素** — forced-colors では背景色差が消えるので、border が無い要素は輪郭を失う。透明 border を先に確保しておく必要がある(論点#10 で `border-color` が死んだ宣言になっている件と根が同じ)。
 - **hover/active の色差** — ink基調のウォッシュ(`--color-wash-hover` 等)は forced-colors 下で消え、hover のフィードバックが失われる。論点#6/#11 と合わせ、色以外の手掛かり(下線の太さ、outline)を持たせるか判断する。
@@ -546,3 +545,18 @@ govuk-frontend が「透明outline/borderを常時置く」パターン中心な
 - **ダークモードとの組み合わせ** — `prefers-color-scheme: dark` と `prefers-contrast: more` の同時成立時、ダークの地に対して振り切るべき方向が逆になる(白文字を #fff へ、地を #000 へ)。上のコードブロックはライト前提なので、ダーク側の指定と組み合わせる際は入れ子の順序に注意する。なお仕様 §12.4 には「forced-colors のパレットが `prefers-color-scheme` のいずれかに合致する場合、その値も真になる」という規定もあるため、Windows ハイコントラストのダークテーマでは `dark` も同時に立つ。
 - **`less` を無視しないこと** — `more` だけ対応して `less` を放置する実装は珍しくないが、仕様 §12.3 は `less` の需要理由として片頭痛(強いコントラストが視覚的苦痛)とディスレクシアの一部(高コントラストの文字が光って見える)を挙げている。`more` と対称に扱うのが本来。
 - **そもそも採用するかの判断** — 参照3ライブラリすべてが0件という事実は重い。「最初から全配色を高コントラストで設計する」(GOV.UK 方式)を採れば層2は不要になる。導入するなら、層1(視覚的単純化)だけを入れるのが最も費用対効果が高く、仕様の推奨にも合致する。
+
+```css
+@media (prefers-contrast) {
+    /*
+    * Common Layer: Visual simplification only.
+    * Change gradients background and border to a solid color.
+    */
+    * {
+        background-image: none;
+        border: 0.125rem solid var(--color-border);
+        box-shadow: none;
+        /* opacity: 1; */
+    }
+}
+```

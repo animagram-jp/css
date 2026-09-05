@@ -1,6 +1,7 @@
 @layer 
     css.base, 
     css.part, 
+    css.error,
     css.input, 
     css.button, 
     css.checkbox, 
@@ -11,7 +12,6 @@
     css.table, 
     css.slider, 
     css.step, 
-    css.error,
     css.list-box,
     css.toast;
 
@@ -79,7 +79,7 @@
         /* Fill active color meets 3:1 (WCAG AA: 1.4.11 Non-text Contrast) with paper */
         --color-emphasis-fill-active: color-mix(in srgb, var(--color-emphasis-fill) var(--ratio-emphasis-active), rgb(0,0,0));
 
-        /* Wash color to fill with emphasis-active text. */
+        /* Paper color with emphasis-active text. */
         --ratio-paper-active: 16%;
         --color-paper-active: color-mix(in srgb, var(--color-ink) var(--ratio-paper-active), var(--color-paper));
 
