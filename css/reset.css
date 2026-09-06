@@ -36,7 +36,6 @@
     ::backdrop, /* per tailwind-preflight.css:7-16 */
     ::file-selector-button { /* per tailwind-preflight.css:7-16 */
         box-sizing: border-box;
-        border-style: solid; /* per tailwind-preflight.css:7-16 */
     }
     
     /* Fix mobile Safari increase font-size on landscape mode */
