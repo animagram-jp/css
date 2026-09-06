@@ -22,12 +22,9 @@ Override the `--color-*` variables on any scope to restyle.
 @layer css.base {
     :root {
         /* CUDO palette, as space-separated channels (usable via rgb(var(--rgb-*) / alpha)) */
-        --rgb-accent-red, --rgb-accent-yellow, --rgb-accent-green, --rgb-accent-blue,
-        --rgb-accent-sky, --rgb-accent-pink, --rgb-accent-orange, --rgb-accent-purple,
-        --rgb-accent-brown;
-        --rgb-base-light-pink, --rgb-base-cream, --rgb-base-light-yellow-green,
-        --rgb-base-light-sky, --rgb-base-beige, --rgb-base-light-green,
-        --rgb-base-light-purple;
+        --rgb-accent-red, --rgb-accent-yellow, --rgb-accent-green,
+        --rgb-accent-purple,
+        --rgb-base-cream,
         --rgb-white, --rgb-light-gray, --rgb-gray, --rgb-black;
 
         /* Roles — these are what components actually consume */
