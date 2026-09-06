@@ -125,20 +125,35 @@ function drawIconBadge(name, { link, canvas, context, base, geometry, originalHr
 const TOAST_ALERT_STATUSES = new Set(["warning", "error"]);
 const TOAST_LABELS = { info: "Information", success: "Success", warning: "Warning", error: "Error" };
 
+// Tracks each toast element's pending auto-hide timer and transitionend listener, so reusing a
+// slot mid-animation (e.g. clicking again before the 3s auto-hide finishes) cancels the old cycle
+// instead of stacking a second one on top of it — which otherwise leaves conflicting show/hide
+// classes and orphaned listeners that permanently wedge the slot.
+const toastCycles = new WeakMap();
+
+const cancelToastCycle = (el) => {
+    const cycle = toastCycles.get(el);
+    if (!cycle) return;
+    clearTimeout(cycle.timer);
+    cycle.controller.abort();
+};
+
 const jsFn = {
     show: (el) => {
-        el.classList.remove("hidden");
+        cancelToastCycle(el);
+        el.classList.remove("hidden", "hide");
         requestAnimationFrame(() => requestAnimationFrame(() => {
             el.classList.add("show");
-            setTimeout(() => {
-                el.classList.replace("show", "hide");
-                el.addEventListener("transitionend", () => el.classList.replace("hide", "hidden"), { once: true });
-            }, 3000);
+            const timer = setTimeout(() => jsFn.hide(el), 3000);
+            toastCycles.set(el, { timer, controller: new AbortController() });
         }));
     },
     hide: (el) => {
+        cancelToastCycle(el);
+        const controller = new AbortController();
+        toastCycles.set(el, { timer: undefined, controller });
         el.classList.replace("show", "hide");
-        el.addEventListener("transitionend", () => el.classList.replace("hide", "hidden"), { once: true });
+        el.addEventListener("transitionend", () => el.classList.replace("hide", "hidden"), { once: true, signal: controller.signal });
     },
     // Fills a free [data-type="toast"] output slot and shows it. Slots are reused, not bound
     // to a fixed status, so the slot count (not the status) caps how many toasts show at once.
