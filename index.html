@@ -534,19 +534,13 @@
     <section>
         <h2>Error (section[data-type="error-summary"], p[data-type="error"])</h2>
         <section data-style="rule-indent">
-            <h3>section[data-type="error-summary"]</h3>
+            <h3><code>section[data-type="error-summary"] &gt; (h2, p, ul > li)</code></h3>
             <section role="alert" data-type="error-summary" aria-labelledby="error-summary-heading-1">
                 <h2 id="error-summary-heading-1">There is a problem</h2>
-                <ul>
-                    <li><a href="#error-name">Enter your full name</a></li>
-                    <li><a href="#error-dob">The date your passport was issued must be in the past</a></li></ul></section></section>
-        <section data-style="rule-indent">
-            <h3>section[data-type="error-summary"] &gt; p (説明つき)</h3>
-            <section role="alert" data-type="error-summary" aria-labelledby="error-summary-heading-2">
-                <h2 id="error-summary-heading-2">入力内容に問題があります</h2>
                 <p>次の項目を修正してから、もう一度送信してください。</p>
                 <ul>
-                    <li><a href="#error-name">氏名を入力してください</a></li></ul></section></section>
+                    <li><a href="#error-name">Enter your full name</a></li>
+                    <li><a href="#error-dob">Date of birth must be a real date</a></li></ul></section></section>
         <section data-style="rule-indent">
             <h3>section[data-type="error-summary"][data-size]</h3>
             <section role="alert" data-type="error-summary" data-size="xs" aria-labelledby="error-summary-heading-xs">
