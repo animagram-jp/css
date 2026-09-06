@@ -536,10 +536,10 @@
         <section data-style="rule-indent">
             <h3>section[data-type="error-summary"]</h3>
             <section role="alert" data-type="error-summary" aria-labelledby="error-summary-heading-1">
-                <h2 id="error-summary-heading-1">入力内容に問題があります</h2>
+                <h2 id="error-summary-heading-1">There is a problem</h2>
                 <ul>
-                    <li><a href="#error-name">氏名を入力してください</a></li>
-                    <li><a href="#error-dob">生年月日は実在する日付を入力してください</a></li></ul></section></section>
+                    <li><a href="#error-name">Enter your full name</a></li>
+                    <li><a href="#error-dob">The date your passport was issued must be in the past</a></li></ul></section></section>
         <section data-style="rule-indent">
             <h3>section[data-type="error-summary"] &gt; p (説明つき)</h3>
             <section role="alert" data-type="error-summary" aria-labelledby="error-summary-heading-2">
@@ -548,7 +548,58 @@
                 <ul>
                     <li><a href="#error-name">氏名を入力してください</a></li></ul></section></section>
         <section data-style="rule-indent">
-            <h3>p[data-type="error"]</h3>
+            <h3>section[data-type="error-summary"][data-size]</h3>
+            <section role="alert" data-type="error-summary" data-size="xs" aria-labelledby="error-summary-heading-xs">
+                <h2 id="error-summary-heading-xs">入力内容に問題があります (xs)</h2>
+                <ul>
+                    <li><a href="#error-name">氏名を入力してください</a></li></ul></section>
+            <section role="alert" data-type="error-summary" data-size="sm" aria-labelledby="error-summary-heading-sm">
+                <h2 id="error-summary-heading-sm">入力内容に問題があります (sm)</h2>
+                <ul>
+                    <li><a href="#error-name">氏名を入力してください</a></li></ul></section>
+            <section role="alert" data-type="error-summary" data-size="md" aria-labelledby="error-summary-heading-md">
+                <h2 id="error-summary-heading-md">入力内容に問題があります (md)</h2>
+                <ul>
+                    <li><a href="#error-name">氏名を入力してください</a></li></ul></section>
+            <section role="alert" data-type="error-summary" data-size="lg" aria-labelledby="error-summary-heading-lg">
+                <h2 id="error-summary-heading-lg">入力内容に問題があります (lg)</h2>
+                <ul>
+                    <li><a href="#error-name">氏名を入力してください</a></li></ul></section>
+            <section role="alert" data-type="error-summary" data-size="xl" aria-labelledby="error-summary-heading-xl">
+                <h2 id="error-summary-heading-xl">入力内容に問題があります (xl)</h2>
+                <ul>
+                    <li><a href="#error-name">氏名を入力してください</a></li></ul></section>
+            <section role="alert" data-type="error-summary" data-size="2xl" aria-labelledby="error-summary-heading-2xl">
+                <h2 id="error-summary-heading-2xl">入力内容に問題があります (2xl)</h2>
+                <ul>
+                    <li><a href="#error-name">氏名を入力してください</a></li></ul></section></section>
+        <section data-style="rule-indent">
+            <h3>p[data-type="error"][data-size]</h3>
+            <label for="error-name-xs">氏名 (xs)</label>
+            <p data-type="error" data-size="xs" id="error-name-xs-message"><strong>エラー:</strong> 氏名を入力してください</p>
+            <input type="text" data-size="xs" id="error-name-xs" aria-describedby="error-name-xs-message" aria-invalid="true">
+            <label for="error-name-sm">氏名 (sm)</label>
+            <p data-type="error" data-size="sm" id="error-name-sm-message"><strong>エラー:</strong> 氏名を入力してください</p>
+            <input type="text" data-size="sm" id="error-name-sm" aria-describedby="error-name-sm-message" aria-invalid="true">
+            <label for="error-name-md">氏名 (md)</label>
+            <p data-type="error" data-size="md" id="error-name-md-message"><strong>エラー:</strong> 氏名を入力してください</p>
+            <input type="text" data-size="md" id="error-name-md" aria-describedby="error-name-md-message" aria-invalid="true">
+            <label for="error-name-lg">氏名 (lg)</label>
+            <p data-type="error" data-size="lg" id="error-name-lg-message"><strong>エラー:</strong> 氏名を入力してください</p>
+            <input type="text" data-size="lg" id="error-name-lg" aria-describedby="error-name-lg-message" aria-invalid="true">
+            <label for="error-name-xl">氏名 (xl)</label>
+            <p data-type="error" data-size="xl" id="error-name-xl-message"><strong>エラー:</strong> 氏名を入力してください</p>
+            <input type="text" data-size="xl" id="error-name-xl" aria-describedby="error-name-xl-message" aria-invalid="true">
+            <label for="error-name-2xl">氏名 (2xl)</label>
+            <p data-type="error" data-size="2xl" id="error-name-2xl-message"><strong>エラー:</strong> 氏名を入力してください</p>
+            <input type="text" data-size="2xl" id="error-name-2xl" aria-describedby="error-name-2xl-message" aria-invalid="true"></section>
+        <section data-style="rule-indent">
+            <h3>label &gt; (p[data-type="error"], input)</h3>
+            <label>氏名
+                <p data-type="error" id="error-name-nested-message"><strong>エラー:</strong> 氏名を入力してください</p>
+                <input type="text" aria-describedby="error-name-nested-message" aria-invalid="true"></label></section>
+        <section data-style="rule-indent">
+            <h3>label[for] + p[data-type="error"]</h3>
             <label for="error-name">氏名</label>
             <p data-type="error" id="error-name-message"><strong>エラー:</strong> 氏名を入力してください</p>
             <input type="text" id="error-name" aria-describedby="error-name-message" aria-invalid="true"></section>

@@ -43,10 +43,10 @@ docker exec accessibility-audit node reference/audit.mjs
 
 ```
 ┌　background　───┐
-│　┏ border　━━━┓　│
-│　┃　　fill  　　　┃　│
-│　┃ 　 -text-　 ┃　│
-│　┗━━━━━━━━━━━┛　│
+│　┏ border ━━━┓　│
+│　┃　　fill    ┃ │
+│　┃ 　 -text-　┃ │
+│　┗━━━━━━━━━━━┛ │
 └───────────────┘
 ```
 
