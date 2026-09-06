@@ -1,33 +1,14 @@
 /* toast: a transient status message stacked in a fixed corner of the viewport. */
 
-/*  <section data-type="toast">
+/* Usage:
+    <section data-type="toast">
         <output id="toast-slot-1" class="hidden"></output>
         <output id="toast-slot-2" class="hidden"></output></section>
 
-    2つの output はスロット（同時表示数の上限）であり、特定の data-status に固定された
-    ものではない。中身は毎回 reference/style.js の jsFn.toast が空いているスロットへ
-    動的に組み立てて差し込む。
-
-    output の content model は phrasing content のみ (article・p は入れられない) なので、
-    メッセージは span で包む。output は role="status" を implicit に持つため、
-    warning・error のように即時に読み上げたい場合だけ jsFn.toast が role="alert" を
-    明示的に付与し、info・success は何もせず implicit role="status" に任せる。
-
-    [data-status]・[data-style]・[data-size] は output に付ける想定 (button.css の
-    :is(a, button, details > summary)[data-size] と同じ、対象タグに連結した属性セレクタ)。
-    他要素に直接付いた場合はこの層のセレクタが素通りするだけで、それは通常のカスケードに
-    委ねる。
-
-    [data-type="toast"] 側の position: fixed / flex column-reverse / gap は、複数の
-    output を同じ角に自動で積み上げるための実際のレイアウト計算。output それぞれに
-    position: fixed を個別指定すると、内容量で変わる高さぶんのオフセットを毎回手計算する
-    羽目になるため、このラッパー要素は省略できない。
-
-    表示は reference/style.js の jsFn.show/hide が担う: .hidden を外し、次のフレームで
-    .show を足す。.show の間だけ表示され、setTimeout 経過後 .hide に置き換わり、
-    transitionend で .hide が .hidden に戻る。スロットは使い回すため、フェードアウトが
-    完了したら base.css の [hidden]/.hidden (display: none) でレイアウトからも抜き、
-    使用済みスロットが flex の隙間を占有し続けないようにする。 */
+    The number of output tags represents the maximum number of toasts that can be displayed simultaneously.
+    Output's default role is "status". Override with role="alert" when needed.
+    Also see reference/style.js.
+*/
 
 @layer css.toast {
 
@@ -39,7 +20,7 @@
         inset-inline-end: 1.5rem;
         max-inline-size:  calc(100vw - 3rem);
         position:         fixed;
-        z-index:          100; /* ページ上の他要素より確実に手前へ */
+        z-index:          100;
     }
 
     output {
@@ -65,9 +46,6 @@
         flex: 1;
     }
 
-    /*  .hidden (base.css の display:none) が外れてから初めて、.show が入って見える
-        状態になる。.hide は自動で閉じる際の再生用で、transitionend で .hidden に戻る。 */
-
     output.show {
         opacity:        1;
         pointer-events: auto;
@@ -86,10 +64,7 @@
         }
     }
 
-    /*  === [data-style="outline"], :not([data-style]) ===
-        地の色は常に --color-paper/--color-ink を保ち、状態は縁の帯だけで示す
-        (CUDO: アクセントカラーは非テキスト要素の小面積のみに使う)。文言側でも
-        <strong> で状態を明示するため、色だけに依存しない。 */
+    /* [data-style="outline"], :not([data-style]) */
 
     output:not([data-style]),
     output[data-style="outline"] {
@@ -111,9 +86,7 @@
         border-inline-start-color: var(--color-highlight);
     }
 
-    /*  === [data-style="fill"] ===
-        アクセントカラーそのものを地に塗る強調版。border は地と同色にして帯を消し、
-        文字色は各色に対して実測でAA (4.5:1) 以上になる側 (黒 or paper/ink反転) を固定する。 */
+    /* [data-style="fill"] */
 
     output[data-style="fill"] {
         background-color: var(--color-ink);
@@ -131,11 +104,11 @@
     }
     output[data-style="fill"][data-status="success"] {
         background-color: var(--color-success);
-        color:              rgb(var(--rgb-black)); /* 白文字だと約3.2:1 でAA未達のため黒で固定 */
+        color:              rgb(var(--rgb-black));
     }
     output[data-style="fill"][data-status="warning"] {
         background-color: var(--color-highlight);
-        color:              rgb(var(--rgb-black)); /* 黄地に白文字は約1.2:1 で不可、黒で固定 */
+        color:              rgb(var(--rgb-black));
     }
 
     @media (forced-colors: active) {
@@ -230,13 +203,10 @@
         block-size:  1em;
         cursor:      pointer;
         flex-shrink: 0;
-        font:        inherit; /* × を em で描くので、output 側の [data-size] にそのまま追従する */
+        font:        inherit;
         inline-size: 1em;
         position:    relative;
     }
-
-    /*  ×: button.css の summary::after と同じく、辺を回転させて描く。
-        currentColor で描くため forced-colors でも別途上書きは不要。 */
 
     output > button::before,
     output > button::after {
