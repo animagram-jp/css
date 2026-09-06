@@ -151,9 +151,17 @@ const jsFn = {
     hide: (el) => {
         cancelToastCycle(el);
         const controller = new AbortController();
-        toastCycles.set(el, { timer: undefined, controller });
+        const finish = () => {
+            clearTimeout(fallback);
+            el.classList.replace("hide", "hidden");
+        };
         el.classList.replace("show", "hide");
-        el.addEventListener("transitionend", () => el.classList.replace("hide", "hidden"), { once: true, signal: controller.signal });
+        el.addEventListener("transitionend", finish, { once: true, signal: controller.signal });
+        // Fallback in case no transition ever runs (e.g. prefers-reduced-motion), which would
+        // otherwise leave transitionend unfired and the slot wedged in "hide" forever, making it
+        // permanently ineligible for reuse as a free slot.
+        const fallback = setTimeout(finish, 250);
+        toastCycles.set(el, { timer: fallback, controller });
     },
     // Fills a free [data-type="toast"] output slot and shows it. Slots are reused, not bound
     // to a fixed status, so the slot count (not the status) caps how many toasts show at once.
