@@ -15,19 +15,6 @@
 
 @layer css.error {
 
-    /* === field label (label[for], legend) === */
-
-    :is(label[for], legend) {
-        color:          var(--color-ink);
-        display:        block;
-        font-size:      var(--md-font-size);
-        font-weight:    bold;
-        letter-spacing: var(--md-letter-spacing);
-        line-height:    var(--md-line-height);
-        margin:         0 0 0.5rem 0;
-        padding:        0;
-    }
-
     /* === error message (p[data-type="error"]) === */
 
     /*  it sits after the question text and its hint, and before the control:
