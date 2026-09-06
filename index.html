@@ -1077,24 +1077,20 @@
 
     <section>
         <h2>Toast</h2>
-        <button type="button" onclick="jsFn.show(document.getElementById('toast-status-info'))">Information</button>
-        <button type="button" onclick="jsFn.show(document.getElementById('toast-status-success'))">Success</button>
-        <button type="button" onclick="jsFn.show(document.getElementById('toast-status-warning'))">Warning</button>
-        <button type="button" onclick="jsFn.show(document.getElementById('toast-status-warning'))">[data-style="fill"]</button>
-        <button type="button" onclick="jsFn.show(document.getElementById('toast-status-warning'))">[data-size="xs"]</button>
-        <button type="button" onclick="jsFn.show(document.getElementById('toast-status-warning'))">[data-size="sm"]</button>
-        <button type="button" onclick="jsFn.show(document.getElementById('toast-status-warning'))">([data-size="md"])</button>
-        <button type="button" onclick="jsFn.show(document.getElementById('toast-status-warning'))">[data-size="lg"]</button>
-        <button type="button" onclick="jsFn.show(document.getElementById('toast-status-warning'))">[data-size="xl"]</button>
-        <button type="button" onclick="jsFn.show(document.getElementById('toast-status-warning'))">[data-size="2xl"]</button></section>
+        <button type="button" onclick="jsFn.toast('info', 'New version available.')">Information</button>
+        <button type="button" onclick="jsFn.toast('success', 'Changes saved.')">Success</button>
+        <button type="button" onclick="jsFn.toast('warning', 'Connection is unstable.')">Warning</button>
+        <button type="button" onclick="jsFn.toast('warning', 'Connection is unstable.', { style: 'fill' })">[data-style="fill"]</button>
+        <button type="button" onclick="jsFn.toast('warning', 'Connection is unstable.', { size: 'xs' })">[data-size="xs"]</button>
+        <button type="button" onclick="jsFn.toast('warning', 'Connection is unstable.', { size: 'sm' })">[data-size="sm"]</button>
+        <button type="button" onclick="jsFn.toast('warning', 'Connection is unstable.')">([data-size="md"])</button>
+        <button type="button" onclick="jsFn.toast('warning', 'Connection is unstable.', { size: 'lg' })">[data-size="lg"]</button>
+        <button type="button" onclick="jsFn.toast('warning', 'Connection is unstable.', { size: 'xl' })">[data-size="xl"]</button>
+        <button type="button" onclick="jsFn.toast('warning', 'Connection is unstable.', { size: '2xl' })">[data-size="2xl"]</button></section>
 
-    <output id="output" aria-label="toast">
-        <article id="output_article-1">
-            <span id="output_article-1_span"></span>
-            <p id="output_article-1_p"></p></article>
-        <article id="output_article-2">
-            <span id="output_article-2_span"></span>
-            <p id="output_article-2_p"></p></article></output>
+    <section data-type="toast">
+        <output id="toast-slot-1" class="hidden"></output>
+        <output id="toast-slot-2" class="hidden"></output></section>
 
 
 </section>

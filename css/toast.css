@@ -1,27 +1,37 @@
 /* toast: a transient status message stacked in a fixed corner of the viewport. */
 
-/*  <div data-type="toast-region">
-        <output class="hidden" data-status="success">
-            <span><strong>Success:</strong> message</span>
-            <button type="button" aria-label="Dismiss notification"></button></output></div>
+/*  <section data-type="toast">
+        <output id="toast-slot-1" class="hidden"></output>
+        <output id="toast-slot-2" class="hidden"></output></section>
+
+    2つの output はスロット（同時表示数の上限）であり、特定の data-status に固定された
+    ものではない。中身は毎回 reference/style.js の jsFn.toast が空いているスロットへ
+    動的に組み立てて差し込む。
 
     output の content model は phrasing content のみ (article・p は入れられない) なので、
     メッセージは span で包む。output は role="status" を implicit に持つため、
-    warning のように即時に読み上げたい場合は role="alert" で上書きする。
+    warning・error のように即時に読み上げたい場合だけ jsFn.toast が role="alert" を
+    明示的に付与し、info・success は何もせず implicit role="status" に任せる。
 
     [data-status]・[data-style]・[data-size] は output に付ける想定 (button.css の
     :is(a, button, details > summary)[data-size] と同じ、対象タグに連結した属性セレクタ)。
-    他要素 (article 等) に直接付いた場合はこの層のセレクタが素通りするだけで、
-    それは通常のカスケードに委ねる。
+    他要素に直接付いた場合はこの層のセレクタが素通りするだけで、それは通常のカスケードに
+    委ねる。
+
+    [data-type="toast"] 側の position: fixed / flex column-reverse / gap は、複数の
+    output を同じ角に自動で積み上げるための実際のレイアウト計算。output それぞれに
+    position: fixed を個別指定すると、内容量で変わる高さぶんのオフセットを毎回手計算する
+    羽目になるため、このラッパー要素は省略できない。
 
     表示は reference/style.js の jsFn.show/hide が担う: .hidden を外し、次のフレームで
     .show を足す。.show の間だけ表示され、setTimeout 経過後 .hide に置き換わり、
-    transitionend で .hide を外す（.hidden には戻らない -- base.css の [hidden]/.hidden
-    は最初の一回だけレイアウトから抜くためのもの）。 */
+    transitionend で .hide が .hidden に戻る。スロットは使い回すため、フェードアウトが
+    完了したら base.css の [hidden]/.hidden (display: none) でレイアウトからも抜き、
+    使用済みスロットが flex の隙間を占有し続けないようにする。 */
 
 @layer css.toast {
 
-    [data-type="toast-region"] {
+    [data-type="toast"] {
         bottom:           1.5rem;
         display:          flex;
         flex-direction:   column-reverse;
@@ -56,7 +66,7 @@
     }
 
     /*  .hidden (base.css の display:none) が外れてから初めて、.show が入って見える
-        状態になる。.hide は自動で閉じる際の再生用で、.hidden には戻さない。 */
+        状態になる。.hide は自動で閉じる際の再生用で、transitionend で .hidden に戻る。 */
 
     output.show {
         opacity:        1;
