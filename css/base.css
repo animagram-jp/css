@@ -161,9 +161,6 @@
         }
     }
 
-    *, *::before, *::after {
-        box-sizing: border-box;
-    }
     :root {
         --xs-border-radius:  0.4rem;
         --xs-border-width:   0.0625rem;
