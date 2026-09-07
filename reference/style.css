@@ -23,10 +23,6 @@ body>footer {
     margin: 0 auto;
 }
 
-section {
-    margin: 2rem 0;
-}
-
 /* list-box: each trigger/listbox pair needs its own anchor-name. */
 #list-box-1-trigger  { anchor-name: --list-box-1-trigger; }
 #list-box-1          { position-anchor: --list-box-1-trigger; }
