@@ -21,12 +21,6 @@
         margin:           0;
     }
 
-    @media (prefers-color-scheme: dark) {
-        label > input[type="checkbox"]:not([role="switch"])::after {
-            border-color: var(--color-ink);
-        }
-    }
-
     @media (prefers-reduced-motion: no-preference) {
         label > input[type="checkbox"]:not([role="switch"]) {
             transition: background-color 150ms ease;
@@ -51,6 +45,12 @@
         inset-inline: 0;
         margin:       auto; /* 中央揃え (inset: 0 の余白を上下左右均等に配分) */
         position:     absolute;
+    }
+
+    @media (prefers-color-scheme: dark) {
+        label > input[type="checkbox"]:not([role="switch"])::after {
+            border-color: var(--color-ink);
+        }
     }
 
     /* ✓ : 右辺 + 下辺を残した「く」の字を 45deg 回転して描く (button.css の summary::after と同じ手法)。
