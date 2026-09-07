@@ -1,0 +1,33 @@
+@layer src.data_style {
+    *[data-style="fill"] {
+        background-color: var(--color-emphasis-fill);
+        border-color:     transparent;
+        border-style:     solid;
+        color:            var(--color-paper);
+        margin:           0;
+    }
+    *[data-style="fill"] {
+        color: var(--color-ink);
+    }
+    *[data-style="outline"] {
+        appearance:       none;
+        background-color: transparent;
+        border-color:     var(--color-emphasis);
+        border-style:     solid;
+        color:            var(--color-emphasis);
+        margin:           0;
+        vertical-align:   middle;
+        width:            auto;
+    }
+    *[data-style="underline"] {
+        background-color:          var(--color-paper);
+        border:                    none;
+        box-decoration-break:      clone;
+        color:                     var(--color-emphasis);
+        margin:                    0;
+        text-decoration-color:     currentColor;
+        text-decoration-line:      underline;
+        text-decoration-thickness: 0.0625rem;
+        text-underline-offset:     0.3em;
+    }
+}
