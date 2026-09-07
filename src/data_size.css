@@ -1,4 +1,12 @@
-@layer css.data_size {
+@layer css.reset, src.reset, src.data_size, src.data_style;
+
+@layer src.reset {
+    * {
+        margin: 0;
+    }
+}
+
+@layer src.data_size {
     *[data-size="xs"] {
         border-radius:  var(--xs-border-radius);
         border-width:   var(--xs-border-width);
