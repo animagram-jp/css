@@ -1,144 +1,130 @@
-@layer src.reset, css.reset, src.data_size, src.data_style;
-
-@layer src.reset {
-    /*
-        Remove all the styles of the "User-Agent-Stylesheet", except for the 'display' property
-        - The "symbol *" part is to solve Firefox SVG sprite bug
-        - The "html" element is excluded, otherwise a bug in Chrome breaks the CSS hyphens property (https://github.com/elad2412/the-new-css-reset/issues/36)
-    */
-    *:where(:not(html, iframe, canvas, img, svg, video, audio):not(svg *, symbol *)) {
-        all: unset;
-        display: revert;
-    }
-}
+@layer css.reset, src.data_size, src.data_style;
 
 @layer src.data_size {
-    *:where([data-style="fill"], [data-style="outline"])[data-size="xs"] {
-        border-radius:  var(--xs-border-radius);
-        border-width:   var(--xs-border-width);
+
+    /* === common for elements whether inline or not, focusable or not. === */
+
+    *[data-size="xs"] {
         font-size:      var(--xs-font-size);
         letter-spacing: var(--xs-letter-spacing);
         line-height:    var(--xs-line-height);
+    }
+
+    *[data-size="sm"] {
+        font-size:      var(--sm-font-size);
+        letter-spacing: var(--sm-letter-spacing);
+        line-height:    var(--sm-line-height);
+    }
+
+    *[data-size="md"],
+    *:not([data-size]) {
+        font-size:      var(--md-font-size);
+        letter-spacing: var(--md-letter-spacing);
+        line-height:    var(--md-line-height);
+    }
+
+    *[data-size="lg"],
+    h3:not([data-size]) {
+        font-size:      var(--lg-font-size);
+        letter-spacing: var(--lg-letter-spacing);
+        line-height:    var(--lg-line-height);
+    }
+
+    *[data-size="xl"],
+    h2:not([data-size]) {
+        font-size:      var(--xl-font-size);
+        letter-spacing: var(--xl-letter-spacing);
+        line-height:    var(--xl-line-height);
+    }
+
+    *[data-size="2xl"],
+    h1:not([data-size]) {
+        font-size:      var(--2xl-font-size);
+        letter-spacing: var(--2xl-letter-spacing);
+        line-height:    var(--2xl-line-height);
+    }
+
+    /* === size variants for elements not inline === */
+
+    *:where([data-style="fill"], [data-style="outline"])[data-size="xs"],
+    *:where(button, summary, input, select, textarea)[data-size="xs"] {
+        border-radius:  var(--xs-border-radius);
+        border-width:   var(--xs-border-width);
         min-height:     var(--xs-box-height);
         padding-block:  calc(((var(--xs-box-height) - var(--xs-line-height)) / 2) - var(--xs-border-width));
         padding-inline: var(--xs-border-radius);
     }
 
-    *:where([data-style="fill"], [data-style="outline"])[data-size="sm"] {
+    *:where([data-style="fill"], [data-style="outline"])[data-size="sm"],
+    *:where(button, summary, input, select, textarea)[data-size="sm"] {
         border-radius:  var(--sm-border-radius);
         border-width:   var(--sm-border-width);
-        font-size:      var(--sm-font-size);
-        letter-spacing: var(--sm-letter-spacing);
-        line-height:    var(--sm-line-height);
         min-height:     var(--sm-box-height);
         padding-block:  calc(((var(--sm-box-height) - var(--sm-line-height)) / 2) - var(--sm-border-width));
         padding-inline: var(--sm-border-radius);
     }
 
+    *:where([data-style="fill"], [data-style="outline"])[data-size="md"],
+    *:where(button, summary, input, select, textarea)[data-size="md"],
     *:where([data-style="fill"], [data-style="outline"]):not([data-size]),
-    *:where([data-style="fill"], [data-style="outline"])[data-size="md"] {
+    *:where(button, summary, input, select, textarea):not([data-size]) {
         border-radius:  var(--md-border-radius);
         border-width:   var(--md-border-width);
-        font-size:      var(--md-font-size);
-        letter-spacing: var(--md-letter-spacing);
-        line-height:    var(--md-line-height);
         min-height:     var(--md-box-height);
         padding-block:  calc(((var(--md-box-height) - var(--md-line-height)) / 2) - var(--md-border-width));
         padding-inline: var(--md-border-radius);
     }
 
-    *:where([data-style="fill"], [data-style="outline"])[data-size="lg"] {
+    *:where([data-style="fill"], [data-style="outline"])[data-size="lg"],
+    *:where(button, summary, input, select, textarea)[data-size="lg"] {
         border-radius:  var(--lg-border-radius);
         border-width:   var(--lg-border-width);
-        font-size:      var(--lg-font-size);
-        letter-spacing: var(--lg-letter-spacing);
-        line-height:    var(--lg-line-height);
         min-height:     var(--lg-box-height);
         padding-block:  calc(((var(--lg-box-height) - var(--lg-line-height)) / 2) - var(--lg-border-width));
         padding-inline: var(--lg-border-radius);
     }
 
-    *:where([data-style="fill"], [data-style="outline"])[data-size="xl"] {
+    *:where([data-style="fill"], [data-style="outline"])[data-size="xl"],
+    *:where(button, summary, input, select, textarea)[data-size="xl"] {
         border-radius:  var(--xl-border-radius);
         border-width:   var(--xl-border-width);
-        font-size:      var(--xl-font-size);
-        letter-spacing: var(--xl-letter-spacing);
-        line-height:    var(--xl-line-height);
         min-height:     var(--xl-box-height);
         padding-block:  calc(((var(--xl-box-height) - var(--xl-line-height)) / 2) - var(--xl-border-width));
         padding-inline: var(--xl-border-radius);
     }
 
-    *:where([data-style="fill"], [data-style="outline"])[data-size="2xl"] {
+    *:where([data-style="fill"], [data-style="outline"])[data-size="2xl"],
+    *:where(button, summary, input, select, textarea)[data-size="2xl"] {
         border-radius:  var(--2xl-border-radius);
         border-width:   var(--2xl-border-width);
-        font-size:      var(--2xl-font-size);
-        letter-spacing: var(--2xl-letter-spacing);
-        line-height:    var(--2xl-line-height);
         min-height:     var(--2xl-box-height);
         padding-block:  calc(((var(--2xl-box-height) - var(--2xl-line-height)) / 2) - var(--2xl-border-width));
         padding-inline: var(--2xl-border-radius);
     }
 
-    /*  a[data-size]は本来ボタン然としたfill/outlineのための計算式であり、
-        素のinline a(underlineおよびdata-style無指定)は行内に混在するため
-        box-height基準のpadding-block/min-height/borderを持たせると上下の
-        行と重なって隠れる。outlineはボーダーボックスの外側にflowへ参加
-        せず描かれるため、fill/outlineでpadding-blockが作っていた余白を
-        outline-offsetに置き換えれば、レイアウトを侵さずに同じ見た目の
-        focus-visible outlineを再現できる。 */
-    a:not([data-style="fill"], [data-style="outline"])[data-size="xs"] {
-        font-size:      var(--xs-font-size);
-        letter-spacing: var(--xs-letter-spacing);
-        line-height:    var(--xs-line-height);
-    }
+    /* === size variants for elements inline and focusable === */
+
     a:not([data-style="fill"], [data-style="outline"])[data-size="xs"]:focus-visible {
         outline-offset: calc(((var(--xs-box-height) - var(--xs-line-height)) / 2) - var(--xs-border-width));
     }
 
-    a:not([data-style="fill"], [data-style="outline"])[data-size="sm"] {
-        font-size:      var(--sm-font-size);
-        letter-spacing: var(--sm-letter-spacing);
-        line-height:    var(--sm-line-height);
-    }
     a:not([data-style="fill"], [data-style="outline"])[data-size="sm"]:focus-visible {
         outline-offset: calc(((var(--sm-box-height) - var(--sm-line-height)) / 2) - var(--sm-border-width));
     }
 
-    a:not([data-style="fill"], [data-style="outline"]):not([data-size]),
-    a:not([data-style="fill"], [data-style="outline"])[data-size="md"] {
-        font-size:      var(--md-font-size);
-        letter-spacing: var(--md-letter-spacing);
-        line-height:    var(--md-line-height);
-    }
     a:not([data-style="fill"], [data-style="outline"]):not([data-size]):focus-visible,
     a:not([data-style="fill"], [data-style="outline"])[data-size="md"]:focus-visible {
         outline-offset: calc(((var(--md-box-height) - var(--md-line-height)) / 2) - var(--md-border-width));
     }
 
-    a:not([data-style="fill"], [data-style="outline"])[data-size="lg"] {
-        font-size:      var(--lg-font-size);
-        letter-spacing: var(--lg-letter-spacing);
-        line-height:    var(--lg-line-height);
-    }
     a:not([data-style="fill"], [data-style="outline"])[data-size="lg"]:focus-visible {
         outline-offset: calc(((var(--lg-box-height) - var(--lg-line-height)) / 2) - var(--lg-border-width));
     }
-
-    a:not([data-style="fill"], [data-style="outline"])[data-size="xl"] {
-        font-size:      var(--xl-font-size);
-        letter-spacing: var(--xl-letter-spacing);
-        line-height:    var(--xl-line-height);
-    }
+    
     a:not([data-style="fill"], [data-style="outline"])[data-size="xl"]:focus-visible {
         outline-offset: calc(((var(--xl-box-height) - var(--xl-line-height)) / 2) - var(--xl-border-width));
     }
 
-    a:not([data-style="fill"], [data-style="outline"])[data-size="2xl"] {
-        font-size:      var(--2xl-font-size);
-        letter-spacing: var(--2xl-letter-spacing);
-        line-height:    var(--2xl-line-height);
-    }
     a:not([data-style="fill"], [data-style="outline"])[data-size="2xl"]:focus-visible {
         outline-offset: calc(((var(--2xl-box-height) - var(--2xl-line-height)) / 2) - var(--2xl-border-width));
     }
