@@ -1,10 +1,14 @@
-@layer css.reset, src.reset, src.data_size, src.data_style;
+@layer src.reset, css.reset, src.data_size, src.data_style;
 
 @layer src.reset {
-    * {
-        border: none;
-        margin: 0;
-        padding: 0;
+    /*
+        Remove all the styles of the "User-Agent-Stylesheet", except for the 'display' property
+        - The "symbol *" part is to solve Firefox SVG sprite bug
+        - The "html" element is excluded, otherwise a bug in Chrome breaks the CSS hyphens property (https://github.com/elad2412/the-new-css-reset/issues/36)
+    */
+    *:where(:not(html, iframe, canvas, img, svg, video, audio):not(svg *, symbol *)) {
+        all: unset;
+        display: revert;
     }
 }
 

@@ -70,8 +70,8 @@
     }
     
     hr { /* per tailwind-preflight.css:53-63 */
-        height: 0;
         border-top-width: 1px;
+        height: 0;
     }
     
     b, strong { /* per tailwind-preflight.css:98-105 */
@@ -128,11 +128,11 @@
     }
     
     ::file-selector-button { /* per tailwind-preflight.css:236-257 */
+        color: inherit;
         font: inherit;
         font-feature-settings: inherit;
         font-variation-settings: inherit;
         letter-spacing: inherit;
-        color: inherit;
     }
     
     /* revert the 'white-space' property for textarea elements on Safari */
