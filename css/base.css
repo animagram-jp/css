@@ -162,42 +162,42 @@
     }
 
     :root {
-        --xs-border-radius:  0.4rem;
+        --xs-border-radius:  0.325rem;
         --xs-border-width:   0.0625rem;
         --xs-box-height:     1.75rem;
         --xs-font-size:      0.85rem;
         --xs-letter-spacing: 0.02rem;
         --xs-line-height:    1.5rem;
 
-        --sm-border-radius:  0.5rem;
+        --sm-border-radius:  0.325rem;
         --sm-border-width:   0.125rem;
         --sm-box-height:     2.5rem;
         --sm-font-size:      0.85rem;
         --sm-letter-spacing: 0.02rem;
         --sm-line-height:    1.5rem;
 
-        --md-border-radius:  0.5rem;
+        --md-border-radius:  0.325rem;
         --md-border-width:   0.125rem;
         --md-box-height:     3rem;
         --md-font-size:      1rem;
         --md-letter-spacing: 0;
         --md-line-height:    1.5rem;
 
-        --lg-border-radius:  0.5rem;
+        --lg-border-radius:  0.325rem;
         --lg-border-width:   0.125rem;
         --lg-box-height:     3.5rem;
         --lg-font-size:      1.15rem;
         --lg-letter-spacing: 0;
         --lg-line-height:    1.725rem;
 
-        --xl-border-radius:  0.75rem;
+        --xl-border-radius:  0.325rem;
         --xl-border-width:   0.125rem;
         --xl-box-height:     4rem;
         --xl-font-size:      1.5rem;
         --xl-letter-spacing: 0;
         --xl-line-height:    2.25rem;
 
-        --2xl-border-radius:  0.75rem;
+        --2xl-border-radius:  0.325rem;
         --2xl-border-width:   0.125rem;
         --2xl-box-height:     4.75rem;
         --2xl-font-size:      2rem;
