@@ -1,14 +1,68 @@
 @layer src.data_style {
-    *[data-style="fill"] {
+
+    /* === common for elements focusable === */
+
+    :where(
+        a, 
+        button, 
+        summary, 
+        input:is(
+            [type="text"], 
+            [type="email"], 
+            [type="password"], 
+            [type="search"], 
+            [type="url"], 
+            [type="tel"]
+        ),
+        select,
+        textarea
+    ) {
+        position: relative; /* :focus-visible {z-index:1} */
+    }
+
+    :where(
+        a,
+        button,
+        summary,
+        input:is(
+            [type="text"],
+            [type="email"],
+            [type="password"],
+            [type="search"],
+            [type="url"],
+            [type="tel"]
+        ),
+        select,
+        textarea
+    ):focus-visible {
+        outline-color:  var(--color-focus);
+        outline-offset: 0;
+        outline-style:  solid;
+        outline-width:  0.25rem;
+        z-index:        1;
+    }
+
+    /* === surround fill style === */
+
+    *[data-style="fill"],
+    button:not([data-style]) {
+        appearance:       none;
         background-color: var(--color-emphasis-fill);
         border-color:     transparent;
         border-style:     solid;
         color:            var(--color-paper);
         margin:           0;
     }
-    *[data-style="fill"] {
-        color: var(--color-ink);
+    
+    @media (prefers-color-scheme: dark) {
+        *[data-style="fill"],
+        button:not([data-style]) {
+            color: var(--color-ink);
+        }
     }
+
+    /* === surround outline style === */
+    
     *[data-style="outline"] {
         appearance:       none;
         background-color: transparent;
@@ -19,7 +73,11 @@
         vertical-align:   middle;
         width:            auto;
     }
-    *[data-style="underline"] {
+
+    /* === underline style === */
+    
+    *[data-style="underline"],
+    :where(summary, a):not([data-style]) {
         background-color:          var(--color-paper);
         border:                    none;
         box-decoration-break:      clone;
