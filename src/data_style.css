@@ -97,10 +97,10 @@
         padding-inline-start: 1.5rem;
         position:             relative;
     }
-    *[data-rule="rule-indent"]::before {
+    *[data-style="rule-indent"]::before {
         background-color:   var(--color-emphasis);
         content:            "";
-        inset-block-start:  0;
+        inset-block:        0;
         inset-inline-start: 0;
         position:           absolute;
         width:              0.5rem;
@@ -108,22 +108,22 @@
 
     /* when data-size */
 
-    *[data-rule="rule-indent"][data-size="xs"]::before {
+    *[data-style="rule-indent"][data-size="xs"]::before {
         inset-block: calc((var(--xs-box-height) - var(--xs-line-height)) / 2);
     }
-    *[data-rule="rule-indent"][data-size="sm"]::before {
+    *[data-style="rule-indent"][data-size="sm"]::before {
         inset-block: calc((var(--sm-box-height) - var(--sm-line-height)) / 2);
     }
-    *[data-rule="rule-indent"][data-size="md"]::before {
+    *[data-style="rule-indent"][data-size="md"]::before {
         inset-block: calc((var(--md-box-height) - var(--md-line-height)) / 2);
     }
-    *[data-rule="rule-indent"][data-size="lg"]::before {
+    *[data-style="rule-indent"][data-size="lg"]::before {
         inset-block: calc((var(--lg-box-height) - var(--lg-line-height)) / 2);
     }
-    *[data-rule="rule-indent"][data-size="xl"]::before {
+    *[data-style="rule-indent"][data-size="xl"]::before {
         inset-block: calc((var(--xl-box-height) - var(--xl-line-height)) / 2);
     }
-    *[data-rule="rule-indent"][data-size="2xl"]::before {
+    *[data-style="rule-indent"][data-size="2xl"]::before {
         inset-block: calc((var(--2xl-box-height) - var(--2xl-line-height)) / 2);
     }
 }
