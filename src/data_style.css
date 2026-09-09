@@ -90,4 +90,50 @@
         text-decoration-thickness: 0.0625rem;
         text-underline-offset:     0.3em;
     }
+
+    /* === additional (pseudo element) rule style === */
+    
+    *[data-rule="box"] {
+        padding-inline-start: 1.5rem;
+        position:             relative;
+    }
+    *[data-rule="box"]::before {
+        background-color:   var(--color-emphasis);
+        content:            "";
+        inset-block-start:  0;
+        inset-inline-start: 0;
+        position:           absolute;
+        width:              0.5rem;
+    }
+
+    *[data-rule="line"] {
+        padding-inline-start: 1.5rem;
+        position:             relative;
+    }
+    *[data-rule="line"]::before {
+        background-color:   var(--color-emphasis);
+        content:            "";
+        inset-inline-start: 0;
+        position:           absolute;
+        width:              0.5rem;
+    }
+
+    *[data-rule="line"][data-size="xs"]::before {
+        inset-block: calc((var(--xs-box-height) - var(--xs-line-height)) / 2);
+    }
+    *[data-rule="line"][data-size="sm"]::before {
+        inset-block: calc((var(--sm-box-height) - var(--sm-line-height)) / 2);
+    }
+    *[data-rule="line"][data-size="md"]::before {
+        inset-block: calc((var(--md-box-height) - var(--md-line-height)) / 2);
+    }
+    *[data-rule="line"][data-size="lg"]::before {
+        inset-block: calc((var(--lg-box-height) - var(--lg-line-height)) / 2);
+    }
+    *[data-rule="line"][data-size="xl"]::before {
+        inset-block: calc((var(--xl-box-height) - var(--xl-line-height)) / 2);
+    }
+    *[data-rule="line"][data-size="2xl"]::before {
+        inset-block: calc((var(--2xl-box-height) - var(--2xl-line-height)) / 2);
+    }
 }
