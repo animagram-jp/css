@@ -1,0 +1,144 @@
+@layer src.input {
+
+    /* === surround input style (input, select, textarea) === */
+
+    /* --- color, layout --- */
+
+    input:where(
+        [type="text"], 
+        [type="email"], 
+        [type="password"], 
+        [type="search"], 
+        [type="url"], 
+        [type="tel"]
+    ),
+    select,
+    textarea {
+        background-color: var(--color-paper);
+        border-color:     var(--color-mute);
+        border-style:     solid;
+        field-sizing:     content;
+        max-inline-size:  100%;
+        min-inline-size:  7ch; /* per https://developer.chrome.com/docs/css-ui/css-field-sizing */
+        vertical-align:   middle;
+    }
+
+    input:where(
+        [type="text"], 
+        [type="email"], 
+        [type="password"], 
+        [type="search"], 
+        [type="url"], 
+        [type="tel"]
+    ) {
+        appearance: none;
+    }
+    
+    input:where(
+        [type="text"], 
+        [type="email"], 
+        [type="password"], 
+        [type="search"], 
+        [type="url"], 
+        [type="tel"]
+    ),
+    textarea {
+        caret-color: var(--color-mute);
+        cursor:      text;
+    }
+    select {
+        cursor: pointer;
+    }
+    input[inputmode="numeric"] {
+        text-align: right;
+    }
+    textarea {
+        resize: none;
+
+    }
+
+    @media (forced-colors: active) {
+        input:where(
+            [type="text"], 
+            [type="email"], 
+            [type="password"], 
+            [type="search"], 
+            [type="url"], 
+            [type="tel"]
+        ),
+        textarea, 
+        select {
+            background-color: Field;
+            border-color:     FieldText;
+            color:            FieldText;
+        }
+    }
+
+    /* --- size --- */
+    
+    /*　--- focus --- */
+
+    /* --- invalid --- */
+
+    :is(
+        input:is(
+            [type="text"], 
+            [type="email"], 
+            [type="password"], 
+            [type="search"], 
+            [type="url"], 
+            [type="tel"]
+        ),
+        select,
+        textarea
+    ):where(
+        :user-invalid,
+        [aria-invalid="true"]
+    ) {
+        border-color: var(--color-error);
+    }
+
+    :is(
+        input:is(
+            [type="text"], 
+            [type="email"], 
+            [type="password"], 
+            [type="search"], 
+            [type="url"], 
+            [type="tel"]
+        ),
+        select,
+        textarea
+    ):where(
+        :user-invalid,
+        [aria-invalid="true"]
+    ):focus-visible {
+        outline-color: var(--color-error);
+    }
+
+    @media (forced-colors: active) {
+        *:user-invalid, *[aria-invalid="true"] {
+            border-color: Mark;
+        }
+        *:user-invalid:focus-visible, *[aria-invalid="true"]:focus-visible {
+            outline-color: Mark;
+        }
+    }
+
+    /* disabled, [aria-disabled="true"] */
+
+    :is(input, select, textarea):disabled, :is(input, select, textarea)[aria-disabled="true"] {
+        border-color:   var(--color-mute);
+        color:          var(--color-mute);
+        cursor:         not-allowed;
+        outline-color:  transparent;
+        pointer-events: none;
+    }
+
+    @media (forced-colors: active) {
+        :disabled, [aria-disabled="true"] {
+            color: GrayText;
+            border-color: GrayText;
+        }
+    }
+}
