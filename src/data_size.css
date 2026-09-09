@@ -47,7 +47,7 @@
     /* === size variants for elements not inline === */
 
     *:where([data-style="fill"], [data-style="outline"])[data-size="xs"],
-    *:where(button, summary, input, select, textarea)[data-size="xs"] {
+    *:where(button, summary, input:is([type="text"], [type="email"], [type="password"], [type="search"], [type="url"], [type="tel"]), select, textarea)[data-size="xs"] {
         border-radius:  var(--xs-border-radius);
         border-width:   var(--xs-border-width);
         min-height:     var(--xs-box-height);
@@ -56,7 +56,7 @@
     }
 
     *:where([data-style="fill"], [data-style="outline"])[data-size="sm"],
-    *:where(button, summary, input, select, textarea)[data-size="sm"] {
+    *:where(button, summary, input:is([type="text"], [type="email"], [type="password"], [type="search"], [type="url"], [type="tel"]), select, textarea)[data-size="sm"] {
         border-radius:  var(--sm-border-radius);
         border-width:   var(--sm-border-width);
         min-height:     var(--sm-box-height);
@@ -65,7 +65,7 @@
     }
 
     *:where([data-style="fill"], [data-style="outline"])[data-size="md"],
-    *:where(button, summary, input, select, textarea)[data-size="md"],
+    *:where(button, summary, input:is([type="text"], [type="email"], [type="password"], [type="search"], [type="url"], [type="tel"]), select, textarea)[data-size="md"],
     *:where([data-style="fill"], [data-style="outline"]):not([data-size]),
     *:where(button, summary, input, select, textarea):not([data-size]) {
         border-radius:  var(--md-border-radius);
@@ -76,7 +76,7 @@
     }
 
     *:where([data-style="fill"], [data-style="outline"])[data-size="lg"],
-    *:where(button, summary, input, select, textarea)[data-size="lg"] {
+    *:where(button, summary, input:is([type="text"], [type="email"], [type="password"], [type="search"], [type="url"], [type="tel"]), select, textarea)[data-size="lg"] {
         border-radius:  var(--lg-border-radius);
         border-width:   var(--lg-border-width);
         min-height:     var(--lg-box-height);
@@ -85,7 +85,7 @@
     }
 
     *:where([data-style="fill"], [data-style="outline"])[data-size="xl"],
-    *:where(button, summary, input, select, textarea)[data-size="xl"] {
+    *:where(button, summary, input:is([type="text"], [type="email"], [type="password"], [type="search"], [type="url"], [type="tel"]), select, textarea)[data-size="xl"] {
         border-radius:  var(--xl-border-radius);
         border-width:   var(--xl-border-width);
         min-height:     var(--xl-box-height);
@@ -94,7 +94,7 @@
     }
 
     *:where([data-style="fill"], [data-style="outline"])[data-size="2xl"],
-    *:where(button, summary, input, select, textarea)[data-size="2xl"] {
+    *:where(button, summary, input:is([type="text"], [type="email"], [type="password"], [type="search"], [type="url"], [type="tel"]), select, textarea)[data-size="2xl"] {
         border-radius:  var(--2xl-border-radius);
         border-width:   var(--2xl-border-width);
         min-height:     var(--2xl-box-height);
