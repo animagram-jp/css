@@ -74,7 +74,7 @@
         width:            auto;
     }
 
-    /* === input style: input.css === */
+    /* === surround input style: input.css === */
 
     /* === underline style === */
     
@@ -93,11 +93,11 @@
 
     /* === additional (pseudo element) rule style === */
     
-    *[data-rule="box"] {
+    *[data-style="rule-indent"] {
         padding-inline-start: 1.5rem;
         position:             relative;
     }
-    *[data-rule="box"]::before {
+    *[data-rule="rule-indent"]::before {
         background-color:   var(--color-emphasis);
         content:            "";
         inset-block-start:  0;
@@ -106,34 +106,24 @@
         width:              0.5rem;
     }
 
-    *[data-rule="line"] {
-        padding-inline-start: 1.5rem;
-        position:             relative;
-    }
-    *[data-rule="line"]::before {
-        background-color:   var(--color-emphasis);
-        content:            "";
-        inset-inline-start: 0;
-        position:           absolute;
-        width:              0.5rem;
-    }
+    /* when data-size */
 
-    *[data-rule="line"][data-size="xs"]::before {
+    *[data-rule="rule-indent"][data-size="xs"]::before {
         inset-block: calc((var(--xs-box-height) - var(--xs-line-height)) / 2);
     }
-    *[data-rule="line"][data-size="sm"]::before {
+    *[data-rule="rule-indent"][data-size="sm"]::before {
         inset-block: calc((var(--sm-box-height) - var(--sm-line-height)) / 2);
     }
-    *[data-rule="line"][data-size="md"]::before {
+    *[data-rule="rule-indent"][data-size="md"]::before {
         inset-block: calc((var(--md-box-height) - var(--md-line-height)) / 2);
     }
-    *[data-rule="line"][data-size="lg"]::before {
+    *[data-rule="rule-indent"][data-size="lg"]::before {
         inset-block: calc((var(--lg-box-height) - var(--lg-line-height)) / 2);
     }
-    *[data-rule="line"][data-size="xl"]::before {
+    *[data-rule="rule-indent"][data-size="xl"]::before {
         inset-block: calc((var(--xl-box-height) - var(--xl-line-height)) / 2);
     }
-    *[data-rule="line"][data-size="2xl"]::before {
+    *[data-rule="rule-indent"][data-size="2xl"]::before {
         inset-block: calc((var(--2xl-box-height) - var(--2xl-line-height)) / 2);
     }
 }
