@@ -1,8 +1,6 @@
-@layer css.reset, src.data_size, src.data_style;
-
 @layer src.data_size {
 
-    /* === common for elements whether inline or not, focusable or not. === */
+    /* === common for elements whether inline flow or not, focusable or not. === */
 
     *[data-size="xs"] {
         font-size:      var(--xs-font-size);
@@ -44,7 +42,7 @@
         line-height:    var(--2xl-line-height);
     }
 
-    /* === size variants for elements not inline === */
+    /* === size variants for elements not inline flow === */
 
     *:where([data-style="fill"], [data-style="outline"])[data-size="xs"],
     *:where(button, summary, input:is([type="text"], [type="email"], [type="password"], [type="search"], [type="url"], [type="tel"]), select, textarea)[data-size="xs"] {
@@ -102,30 +100,36 @@
         padding-inline: var(--2xl-border-radius);
     }
 
-    /* === size variants for elements inline and focusable === */
+    /* === size variants for elements inline flow and focusable === */
 
     a:not([data-style="fill"], [data-style="outline"])[data-size="xs"]:focus-visible {
         outline-offset: calc(((var(--xs-box-height) - var(--xs-line-height)) / 2) - var(--xs-border-width));
+        outline-width:  var(--xs-border-width);
     }
 
     a:not([data-style="fill"], [data-style="outline"])[data-size="sm"]:focus-visible {
         outline-offset: calc(((var(--sm-box-height) - var(--sm-line-height)) / 2) - var(--sm-border-width));
+        outline-width:  var(--sm-border-width);
     }
 
     a:not([data-style="fill"], [data-style="outline"]):not([data-size]):focus-visible,
     a:not([data-style="fill"], [data-style="outline"])[data-size="md"]:focus-visible {
         outline-offset: calc(((var(--md-box-height) - var(--md-line-height)) / 2) - var(--md-border-width));
+        outline-width:  var(--md-border-width);
     }
 
     a:not([data-style="fill"], [data-style="outline"])[data-size="lg"]:focus-visible {
         outline-offset: calc(((var(--lg-box-height) - var(--lg-line-height)) / 2) - var(--lg-border-width));
+        outline-width:  var(--lg-border-width);
     }
-    
+
     a:not([data-style="fill"], [data-style="outline"])[data-size="xl"]:focus-visible {
         outline-offset: calc(((var(--xl-box-height) - var(--xl-line-height)) / 2) - var(--xl-border-width));
+        outline-width:  var(--xl-border-width);
     }
 
     a:not([data-style="fill"], [data-style="outline"])[data-size="2xl"]:focus-visible {
         outline-offset: calc(((var(--2xl-box-height) - var(--2xl-line-height)) / 2) - var(--2xl-border-width));
+        outline-width:  var(--2xl-border-width);
     }
 }
