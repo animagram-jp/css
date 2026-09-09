@@ -1,0 +1,213 @@
+/*  <table>
+        <caption></caption>
+        <thead>
+            <tr>
+                <th scope="col"></th></tr></thead>
+        <tbody>
+            <tr>
+                <th scope="row"></th>
+                <td></td></tr></tbody>
+        <tfoot>
+            <tr>
+                <td></td></tr></tfoot></table>
+
+    (a sortable column header is in step.css)
+*/
+
+@layer src.table {
+
+    /* === table === */
+
+    /*
+    * Cells are separated by rules rather than by fill, so the borders are
+    * collapsed onto one another and the row height is carried by padding.
+    */
+    table {
+        border-collapse:  collapse;
+        color:            var(--color-ink);
+        font-size:        var(--md-font-size);
+        font-weight:      normal;
+        letter-spacing:   var(--md-letter-spacing);
+        line-height:      var(--md-line-height);
+        margin:           0;
+        max-inline-size:  100%;
+    }
+
+    /*
+    * The block padding is what is left of the row once the text has taken its
+    * line-height, halved for the two sides -- the same relation css.input and
+    * css.button use to seat a line inside --*-box-height.
+    */
+    table :is(td, th) {
+        padding-block:  calc((var(--md-box-height) - var(--md-line-height)) / 2);
+        padding-inline: calc(var(--md-border-radius) / 2);
+        text-align:     start;
+        vertical-align: baseline;
+    }
+
+    @media (width >= 40rem) {
+        table :is(td, th) {
+            padding-inline: var(--md-border-radius);
+        }
+    }
+
+    table th {
+        font-weight: bold;
+    }
+
+    /*
+    * No margin and no padding of its own: the first row's own block padding
+    * already stands between the caption and the grid, so anything here would
+    * be added to it rather than replacing it.
+    */
+    table caption {
+        font-size:   var(--md-font-size);
+        font-weight: bold;
+        margin:      0;
+        padding:     0;
+        text-align:  start;
+    }
+
+    /* === [data-size] ===
+
+       table[data-size] 自体の font-size/letter-spacing/line-height は
+       data_size.css の *[data-size] (要素を問わない汎用ルール) でカバー済み。
+       td/th の padding、caption の font-size のみ固有実装 (caption は
+       table 自身の [data-size] を継承するため、汎用ルールでは届かない)。 */
+
+    table[data-size="xs"] :is(td, th) {
+        padding-block:  calc((var(--xs-box-height) - var(--xs-line-height)) / 2);
+        padding-inline: var(--xs-border-radius);
+    }
+    table[data-size="xs"] caption {
+        font-size: var(--xs-font-size);
+    }
+
+    table[data-size="sm"] :is(td, th) {
+        padding-block:  calc((var(--sm-box-height) - var(--sm-line-height)) / 2);
+        padding-inline: var(--sm-border-radius);
+    }
+    table[data-size="sm"] caption {
+        font-size: var(--sm-font-size);
+    }
+
+    table[data-size="lg"] :is(td, th) {
+        padding-block:  calc((var(--lg-box-height) - var(--lg-line-height)) / 2);
+        padding-inline: var(--lg-border-radius);
+    }
+    table[data-size="lg"] caption {
+        font-size: var(--lg-font-size);
+    }
+
+    table[data-size="xl"] :is(td, th) {
+        padding-block:  calc((var(--xl-box-height) - var(--xl-line-height)) / 2);
+        padding-inline: var(--xl-border-radius);
+    }
+    table[data-size="xl"] caption {
+        font-size: var(--xl-font-size);
+    }
+
+    table[data-size="2xl"] :is(td, th) {
+        padding-block:  calc((var(--2xl-box-height) - var(--2xl-line-height)) / 2);
+        padding-inline: var(--2xl-border-radius);
+    }
+    table[data-size="2xl"] caption {
+        font-size: var(--2xl-font-size);
+    }
+
+    /* === header cells === */
+
+    /*
+    * Header cells are told apart by weight and by the rule under the header
+    * row, not by a fill: a fill would have to survive forced-colors, where a
+    * background is replaced and the distinction is lost.
+    */
+    table thead tr:last-of-type :is(td, th) {
+        border-block-end: var(--md-border-width) solid var(--color-ink);
+    }
+
+    table tbody th[scope="row"] {
+        border-inline-end: var(--md-border-width) solid var(--color-ink);
+    }
+
+    table tfoot tr:first-of-type :is(td, th) {
+        border-block-start: var(--md-border-width) solid var(--color-ink);
+    }
+
+    /* === [data-stripe] === */
+
+    /*
+    * A wash of ink over paper, so it follows the scheme and stays behind the
+    * text at both ends of the contrast range. It carries no meaning of its
+    * own, so it is dropped under forced-colors rather than given a system
+    * colour, which would read as a state.
+    */
+    table[data-stripe] tbody tr:nth-child(even) {
+        background-color: var(--color-paper-active);
+    }
+
+    /* === [data-hover] === */
+
+    @media (hover: hover) {
+        table[data-hover] tbody tr:hover {
+            background-color: var(--color-paper-active);
+        }
+    }
+
+    /* === [data-selectable] === */
+
+    /*
+    * A selected row is a state, not an alternation, so it is washed with the
+    * emphasis colour to tell it apart from [data-stripe] above.
+    */
+    table[data-selectable] tbody tr:has(:checked) {
+        background-color: color-mix(in srgb, var(--color-emphasis) var(--ratio-paper-active), var(--color-paper));
+    }
+
+    @media (forced-colors: active) {
+        table[data-stripe] tbody tr:nth-child(even),
+        table[data-hover] tbody tr:hover,
+        table[data-selectable] tbody tr:has(:checked) {
+            background-color: revert;
+        }
+        /* The selected row keeps a mark that survives the colour replacement. */
+        table[data-selectable] tbody tr:has(:checked) :is(td, th) {
+            border-block: var(--md-border-width) solid Highlight;
+        }
+    }
+
+    /* The control column is only as wide as the control, which is centred. */
+    table :is(td, th):has(> label:only-child > input:is([type="checkbox"]:not([role="switch"]), [type="radio"])) {
+        inline-size:    0; /* shrink-to-fit around the control */
+        padding-inline: calc(var(--md-border-radius) / 2);
+        text-align:     center;
+    }
+
+    table :is(td, th) > label:only-child:has(> input:is([type="checkbox"]:not([role="switch"]), [type="radio"])) {
+        display: inline flow-root;
+    }
+
+    /* === [data-border] === */
+
+    table[data-border=""] :where(td, th) {
+        border: var(--md-border-width) solid var(--color-mute);
+    }
+    table[data-border~="block-start"] :where(td, th) {
+        border-block-start: var(--md-border-width) solid var(--color-mute);
+    }
+    table[data-border~="block-end"] :where(td, th) {
+        border-block-end: var(--md-border-width) solid var(--color-mute);
+    }
+    table[data-border~="inline-start"] :where(td, th) {
+        border-inline-start: var(--md-border-width) solid var(--color-mute);
+    }
+    table[data-border~="inline-end"] :where(td, th) {
+        border-inline-end: var(--md-border-width) solid var(--color-mute);
+    }
+
+    @media (forced-colors: active) {
+        table :is(td, th) {
+            border-color: CanvasText;
+        }
+    }
+}
