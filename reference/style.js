@@ -5,10 +5,10 @@
 document.querySelectorAll('input[type="checkbox"][data-indeterminate]')
     .forEach((input) => { input.indeterminate = true; });
 
-// radio event for color theme (light/dark x less/normal/more contrast)
+// radio event for color scheme (light/dark x less/normal/more contrast)
 (() => {
     const root = document.documentElement;
-    const radios = document.querySelectorAll('input[name="color-theme"]');
+    const radios = document.querySelectorAll('input[name="color-scheme"]');
     if (!radios.length) return;
 
     // reflect the user's OS-level prefers-* settings as the initial radio position
@@ -18,14 +18,14 @@ document.querySelectorAll('input[type="checkbox"][data-indeterminate]')
         : "";
     const initial = `${scheme}${contrast}`;
 
-    const setColorTheme = (value) => root.setAttribute("data-color-theme", value);
+    const setColorScheme = (value) => root.setAttribute("data-color-scheme", value);
 
-    const initialRadio = document.querySelector(`input[name="color-theme"][value="${initial}"]`);
+    const initialRadio = document.querySelector(`input[name="color-scheme"][value="${initial}"]`);
     if (initialRadio) initialRadio.checked = true;
-    setColorTheme(initial);
+    setColorScheme(initial);
 
     radios.forEach((radio) => radio.addEventListener("change", () => {
-        setColorTheme(document.querySelector('input[name="color-theme"]:checked').value);
+        setColorScheme(document.querySelector('input[name="color-scheme"]:checked').value);
     }));
 })();
 
