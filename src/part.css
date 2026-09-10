@@ -97,12 +97,17 @@
     /*  --- chevron ---
 
         A rotating corner-bracket arrow (border-bottom + border-right), the
-        default disclosure/dropdown marker for a bare summary, a bare label
-        wrapping a select, and a bare listbox trigger button -- anything
-        else opts in with [data-facet="chevron"]. Points down at rest;
-        flips to up when open, via whichever signal the host exposes:
-        details[open] for summary, :popover-open on the listbox for its
-        trigger button, [aria-expanded="true"] for a plain
+        default disclosure/dropdown marker for a bare summary and a bare
+        listbox trigger button -- both are unambiguous by tag/attribute
+        alone, so no extra opt-in is needed there; anything else, including
+        a select, opts in explicitly with [data-facet="chevron"]. A select
+        does NOT default to it: a select wrapped in a label is just how you
+        label one -- it says nothing about wanting appearance:none plus a
+        custom marker in place of the native one, unlike search.css's
+        compact scope-select, which sets [data-facet="chevron"] itself.
+        Points down at rest; flips to up when open, via whichever signal
+        the host exposes: details[open] for summary, :popover-open on the
+        listbox for its trigger button, [aria-expanded="true"] for a plain
         [data-facet="chevron"] element. (A <select>'s own popup state isn't
         exposed to CSS, so its marker never flips.) Sized off the host's
         own font-size, at the same two ratios (0.75 up to md, 0.6 from lg)
@@ -110,7 +115,7 @@
 
     *[data-facet="chevron"]::after,
     summary:not([data-facet])::after,
-    label:not([data-facet]):has(> select)::after,
+    label:has(> select[data-facet="chevron"])::after,
     button[aria-haspopup="listbox"]:not([data-facet])::after {
         border-bottom:  var(--md-border-width) solid currentColor;
         border-right:   var(--md-border-width) solid currentColor;
@@ -126,8 +131,8 @@
     *[data-facet="chevron"][data-size="md"]::after,
     summary:not([data-facet]):not([data-size])::after,
     summary:not([data-facet])[data-size="md"]::after,
-    label:not([data-facet]):has(> select:not([data-size]))::after,
-    label:not([data-facet]):has(> select[data-size="md"])::after,
+    label:has(> select[data-facet="chevron"]:not([data-size]))::after,
+    label:has(> select[data-facet="chevron"][data-size="md"])::after,
     button[aria-haspopup="listbox"]:not([data-facet]):not([data-size])::after,
     button[aria-haspopup="listbox"]:not([data-facet])[data-size="md"]::after {
         block-size:         calc(var(--md-font-size) * 0.75 * 1.06);
@@ -146,7 +151,7 @@
 
     *[data-facet="chevron"][data-size="xs"]::after,
     summary:not([data-facet])[data-size="xs"]::after,
-    label:not([data-facet]):has(> select[data-size="xs"])::after,
+    label:has(> select[data-facet="chevron"][data-size="xs"])::after,
     button[aria-haspopup="listbox"]:not([data-facet])[data-size="xs"]::after {
         block-size:          calc(var(--xs-font-size) * 0.75 * 1.06);
         border-bottom-width: var(--xs-border-width);
@@ -163,7 +168,7 @@
 
     *[data-facet="chevron"][data-size="sm"]::after,
     summary:not([data-facet])[data-size="sm"]::after,
-    label:not([data-facet]):has(> select[data-size="sm"])::after,
+    label:has(> select[data-facet="chevron"][data-size="sm"])::after,
     button[aria-haspopup="listbox"]:not([data-facet])[data-size="sm"]::after {
         block-size:          calc(var(--sm-font-size) * 0.75 * 1.06);
         border-bottom-width: var(--sm-border-width);
@@ -180,7 +185,7 @@
 
     *[data-facet="chevron"][data-size="lg"]::after,
     summary:not([data-facet])[data-size="lg"]::after,
-    label:not([data-facet]):has(> select[data-size="lg"])::after,
+    label:has(> select[data-facet="chevron"][data-size="lg"])::after,
     button[aria-haspopup="listbox"]:not([data-facet])[data-size="lg"]::after {
         block-size:          calc(var(--lg-font-size) * 0.6 * 1.06);
         border-bottom-width: var(--lg-border-width);
@@ -197,7 +202,7 @@
 
     *[data-facet="chevron"][data-size="xl"]::after,
     summary:not([data-facet])[data-size="xl"]::after,
-    label:not([data-facet]):has(> select[data-size="xl"])::after,
+    label:has(> select[data-facet="chevron"][data-size="xl"])::after,
     button[aria-haspopup="listbox"]:not([data-facet])[data-size="xl"]::after {
         block-size:          calc(var(--xl-font-size) * 0.6 * 1.06);
         border-bottom-width: var(--xl-border-width);
@@ -214,7 +219,7 @@
 
     *[data-facet="chevron"][data-size="2xl"]::after,
     summary:not([data-facet])[data-size="2xl"]::after,
-    label:not([data-facet]):has(> select[data-size="2xl"])::after,
+    label:has(> select[data-facet="chevron"][data-size="2xl"])::after,
     button[aria-haspopup="listbox"]:not([data-facet])[data-size="2xl"]::after {
         block-size:          calc(var(--2xl-font-size) * 0.6 * 1.06);
         border-bottom-width: var(--2xl-border-width);

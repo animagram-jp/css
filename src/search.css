@@ -63,8 +63,8 @@
 
     /* === label === */
 
-    /* Hosts the ::before/::after markers, since input[type="search"] and select are replaced elements. inline flow-root also closes off inter-label whitespace from source linebreaks. */
-    label:has(> input[type="search"], > select) {
+    /* Hosts the ::before/::after markers, since input[type="search"] and select are replaced elements. inline flow-root also closes off inter-label whitespace from source linebreaks. A select only needs this when it actually carries a marker ([data-facet="chevron"]); input[type="search"] always does (the magnifier). */
+    label:has(> input[type="search"], > select[data-facet="chevron"]) {
         display:  inline flow-root;
         position: relative;
     }
@@ -208,37 +208,41 @@
         padding-inline-start: calc(var(--2xl-box-height) * 0.75);
     }
 
-    /* === scope select (label > select) === */
+    /* === scope select (label > select[data-facet="chevron"]) ===
 
-    /* appearance: none is scoped to this select, not css.input -- a plain select outside this component keeps its native marker. */
-    label > select {
+       [data-facet="chevron"] is required (part.css), not implicit: a select
+       inside a label is just how you label one, and says nothing about
+       wanting its native marker replaced. appearance:none and the extra
+       end padding below only make sense together with that replacement
+       marker, so both stay scoped to it too -- an ordinary labelled select
+       here keeps its native appearance untouched. */
+
+    label > select[data-facet="chevron"] {
         appearance: none;
     }
 
-    /* The marker itself is part.css's [data-facet="chevron"] (a bare label > select qualifies by default). */
-
-    label > select[data-size="xs"] {
+    label > select[data-facet="chevron"][data-size="xs"] {
         padding-inline-end: calc(var(--xs-box-height) * 0.6);
     }
 
-    label > select[data-size="sm"] {
+    label > select[data-facet="chevron"][data-size="sm"] {
         padding-inline-end: calc(var(--sm-box-height) * 0.6);
     }
 
-    label > select:not([data-size]),
-    label > select[data-size="md"] {
+    label > select[data-facet="chevron"]:not([data-size]),
+    label > select[data-facet="chevron"][data-size="md"] {
         padding-inline-end: calc(var(--md-box-height) * 0.6);
     }
 
-    label > select[data-size="lg"] {
+    label > select[data-facet="chevron"][data-size="lg"] {
         padding-inline-end: calc(var(--lg-box-height) * 0.6);
     }
 
-    label > select[data-size="xl"] {
+    label > select[data-facet="chevron"][data-size="xl"] {
         padding-inline-end: calc(var(--xl-box-height) * 0.6);
     }
 
-    label > select[data-size="2xl"] {
+    label > select[data-facet="chevron"][data-size="2xl"] {
         padding-inline-end: calc(var(--2xl-box-height) * 0.6);
     }
 }
