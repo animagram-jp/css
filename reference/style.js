@@ -157,38 +157,8 @@ const jsFn = {
         };
         el.classList.replace("show", "hide");
         el.addEventListener("transitionend", finish, { once: true, signal: controller.signal });
-        // Fallback in case no transition ever runs (e.g. prefers-reduced-motion), which would
-        // otherwise leave transitionend unfired and the slot wedged in "hide" forever, making it
-        // permanently ineligible for reuse as a free slot.
+        // fallback for prefers-reduced-motion
         const fallback = setTimeout(finish, 250);
         toastCycles.set(el, { timer: fallback, controller });
-    },
-    // Fills a free [data-type="toast"] output slot and shows it. Slots are reused, not bound
-    // to a fixed status, so the slot count (not the status) caps how many toasts show at once.
-    toast: (status, message, { style, size } = {}) => {
-        const slots = document.querySelectorAll('[data-type="toast"] > output');
-        const slot = [...slots].find((el) => el.classList.contains("hidden")) ?? slots[0];
-        if (!slot) return;
-
-        slot.dataset.status = status;
-        if (style) slot.dataset.style = style; else delete slot.dataset.style;
-        if (size) slot.dataset.size = size; else delete slot.dataset.size;
-
-        if (TOAST_ALERT_STATUSES.has(status)) slot.setAttribute("role", "alert");
-        else slot.removeAttribute("role");
-
-        slot.replaceChildren();
-        const span = document.createElement("span");
-        const strong = document.createElement("strong");
-        strong.textContent = `${TOAST_LABELS[status] ?? status}:`;
-        span.append(strong, ` ${message}`);
-
-        const button = document.createElement("button");
-        button.type = "button";
-        button.setAttribute("aria-label", "Dismiss notification");
-        button.addEventListener("click", () => jsFn.hide(slot));
-
-        slot.append(span, button);
-        jsFn.show(slot);
     },
 };
