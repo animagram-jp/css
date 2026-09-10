@@ -126,4 +126,99 @@
     *[data-style="rule-indent"][data-size="2xl"]::before {
         inset-block: calc((var(--2xl-box-height) - var(--2xl-line-height)) / 2);
     }
+
+    /* === group style: adjacent controls sharing one visual run ===
+
+       A member is a bare button/input/select, or a label wrapping an
+       input/select (as search.css uses). [data-axis="block"] only opts out
+       of the layout below (nowrap, spacing, corner-squaring): a block-axis
+       group's shape can be too irregular for one generic rule -- step.css's
+       input-beside-stacked-buttons grid is a 2-column layout, not a plain
+       stack -- so it implements its own. The border-colour sharing at the
+       end is layout-independent and applies either way. */
+
+    /* <search> and <form role="search"> qualify by tag -- their markup already
+       says what they are, so no [data-style="group"] is needed on them.
+       Anything else that groups a label/input/select/button run opts in with
+       the attribute. */
+
+    *[data-style="group"]:not([data-axis="block"]),
+    :is(search, form[role="search"]) {
+        white-space: nowrap;
+    }
+
+    *[data-style="group"]:not([data-axis="block"]) > *,
+    :is(search, form[role="search"]) > * {
+        vertical-align: middle;
+    }
+
+    /* leading label text ahead of the group (search > span) */
+
+    *[data-style="group"]:not([data-axis="block"]) > span,
+    :is(search, form[role="search"]) > span {
+        margin-inline-end: 0.5em;
+    }
+
+    /* --- spacing --- */
+
+    *[data-style="group"]:not([data-axis="block"]) > * + *,
+    :is(search, form[role="search"]) > * + * {
+        margin-inline-start: 0.125rem;
+    }
+
+    /* --- squared inner corners ---
+
+       Every edge facing a neighbour is squared, leaving rounded corners only
+       at the two ends of the run. A member is a boxed control -- a plain
+       button, a text-like input, select or textarea, or anything carrying
+       [data-style="fill"|"outline"] -- or a label wrapping one (search's
+       pattern); a borderless one (step.css's sort radios, a
+       [data-style="underline"] link) is never a match, so nothing needs
+       excluding it by name. A member is preceded by another member when one
+       (or the label wrapping it) sits before it -- the group label (span)
+       doesn't count.
+
+       [data-axis="block"] still opts out here even with members narrowed
+       this precisely: it's not about which elements qualify, but about the
+       corners being 1-D ("did a member come before/after this one"), which
+       doesn't hold for every block-axis shape -- step.css's stepper is a
+       2-column grid (input beside two stacked buttons), not a plain stack,
+       so it keeps its own corner rules for that variant. */
+
+    *[data-style="group"]:not([data-axis="block"]) > label:not(:last-child) > :where(input:is([type="text"], [type="email"], [type="password"], [type="search"], [type="url"], [type="tel"]), select),
+    *[data-style="group"]:not([data-axis="block"]) > :where(:where(button, input:is([type="text"], [type="email"], [type="password"], [type="search"], [type="url"], [type="tel"]), select, textarea):not([data-style]), [data-style="fill"], [data-style="outline"]):not(:last-child),
+    :is(search, form[role="search"]) > label:not(:last-child) > :is(input, select),
+    :is(search, form[role="search"]) > button:not(:last-child) {
+        border-end-end-radius:   0;
+        border-start-end-radius: 0;
+    }
+    *[data-style="group"]:not([data-axis="block"]) > :where(label, button, input, select) ~ label > :where(input:is([type="text"], [type="email"], [type="password"], [type="search"], [type="url"], [type="tel"]), select),
+    *[data-style="group"]:not([data-axis="block"]) > :where(label, button, input, select) ~ :where(:where(button, input:is([type="text"], [type="email"], [type="password"], [type="search"], [type="url"], [type="tel"]), select, textarea):not([data-style]), [data-style="fill"], [data-style="outline"]),
+    :is(search, form[role="search"]) > label ~ label > :is(input, select),
+    :is(search, form[role="search"]) > label ~ button {
+        border-end-start-radius:   0;
+        border-start-start-radius: 0;
+    }
+
+    /* --- shared border colour ---
+
+       A plain button in the group matches the border of its neighbours at
+       rest, and turns error-coloured when a contained control is invalid.
+       Layout-independent: this is the one piece a block-axis group (e.g.
+       step.css's stepper) still takes from here. */
+
+    *[data-style="group"] > button:not(:active),
+    :is(search, form[role="search"]) > button:not(:active) {
+        border-color: var(--color-mute);
+    }
+    *[data-style="group"]:has(:is(:user-invalid, [aria-invalid="true"])) > button:not(:active),
+    :is(search, form[role="search"]):has(:is(:user-invalid, [aria-invalid="true"])) > button:not(:active) {
+        border-color: var(--color-error);
+    }
+    @media (forced-colors: active) {
+        *[data-style="group"] > button:not(:active),
+        :is(search, form[role="search"]) > button:not(:active) {
+            border-color: ButtonBorder;
+        }
+    }
 }
