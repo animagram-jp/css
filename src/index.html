@@ -1090,12 +1090,12 @@
 
     <section>
         <h2>Toast</h2>
-        <button type="button" onclick="jsFn.show('toast')">show</button>
-        <button type="button" onclick="jsFn.hide('toast')">hide</button></section>
+        <button type="button" onclick="jsFn.show('toast_output-1')">show (data-style="fill")</button>
+        <button type="button" onclick="jsFn.show('toast_output-2')">show data-style="outline"</button></section>
 
     <section id="toast" data-type="toast">
-        <output class="hidden">(Fill Style)</output>
-        <output data-style="outline" class="hidden">Outline Style</output></section>
+        <output id="toast_output-1" class="hidden">(data-style="fill")</output>
+        <output id="toast_output-2" data-style="outline" class="hidden">data-style="outline"</output></section>
 
 
 </section>
