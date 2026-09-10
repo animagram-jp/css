@@ -68,6 +68,32 @@
         );
     }
 
+    /*  --- close (x) ---
+
+        A pair of crossed bars sized off the element's own font-size, meant
+        for a [data-style="icon"] button (data_style.css) where the icon is
+        the entire content, not a marker ahead of other content: ::before
+        and ::after are positioned and centred directly (not offset by the
+        [data-icon] base rule's margin-right, which this overrides via the
+        shorthand below). */
+
+    [data-icon="close"]::before,
+    [data-icon="close"]::after {
+        background-color: currentColor;
+        block-size:        0.125em;
+        content:           "";
+        inline-size:       0.75em;
+        inset:             0;
+        margin:            auto;
+        position:          absolute;
+    }
+    [data-icon="close"]::before {
+        rotate: 45deg;
+    }
+    [data-icon="close"]::after {
+        rotate: -45deg;
+    }
+
     /* Reference: https://github.com/yuto-hasegawa/sashimi-ui/blob/main/src/css/key-value.css */
 
     dl {

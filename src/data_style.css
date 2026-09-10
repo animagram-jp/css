@@ -91,6 +91,39 @@
         text-underline-offset:     0.3em;
     }
 
+    /* === icon style ===
+
+       A button (or other element) that shows only an icon, no text: chrome
+       is fully reset and sized to 1em, so an icon drawn by [data-icon]
+       (part.css) fills it and scales with font-size. The focus ring and
+       hover are scaled down to suit something this small -- the common
+       focusable block above's ring would overwhelm a 1em control. */
+
+    *[data-style="icon"] {
+        all:        unset;
+        block-size: 1em;
+        cursor:     pointer;
+        font:       inherit;
+        inline-size: 1em;
+        position:   relative;
+    }
+    *[data-style="icon"]:focus-visible {
+        outline-color:  var(--color-focus);
+        outline-offset: 0.125rem;
+        outline-style:  solid;
+        outline-width:  0.125rem;
+    }
+    @media (hover: hover) {
+        *[data-style="icon"]:hover {
+            opacity: 0.7;
+        }
+    }
+    @media (forced-colors: active) {
+        *[data-style="icon"]:focus-visible {
+            outline-color: Highlight;
+        }
+    }
+
     /* === additional (pseudo element) rule style === */
     
     *[data-style="rule-indent"] {

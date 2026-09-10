@@ -171,7 +171,9 @@ const jsFn = {
         if (!slot) return;
 
         slot.dataset.status = status;
-        if (style) slot.dataset.style = style; else delete slot.dataset.style;
+        // toast.css delegates style colour entirely to data_style.css's [data-style="fill"|"outline"],
+        // which does nothing for an element carrying neither -- so a toast always needs one.
+        slot.dataset.style = style ?? "outline";
         if (size) slot.dataset.size = size; else delete slot.dataset.size;
 
         if (TOAST_ALERT_STATUSES.has(status)) slot.setAttribute("role", "alert");
@@ -185,6 +187,8 @@ const jsFn = {
 
         const button = document.createElement("button");
         button.type = "button";
+        button.dataset.style = "icon";
+        button.dataset.icon = "close";
         button.setAttribute("aria-label", "Dismiss notification");
         button.addEventListener("click", () => jsFn.hide(slot));
 
