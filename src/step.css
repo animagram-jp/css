@@ -255,6 +255,52 @@
         border-start-start-radius: 0;
     }
 
+    /*  the one corner each button keeps (increment's outer top corner,
+        decrement's outer bottom corner) used to go unstated, left to
+        whatever border-radius default happened to still reach it. Restated
+        explicitly per size instead, so this variant stands on its own
+        regardless of what any other rule elsewhere does or stops doing. */
+
+    label:has(> input[inputmode="numeric"])[data-axis="block"] > button[data-action="increment"][data-size="xs"] {
+        border-start-end-radius: var(--xs-border-radius);
+    }
+    label:has(> input[inputmode="numeric"])[data-axis="block"] > button[data-action="increment"][data-size="sm"] {
+        border-start-end-radius: var(--sm-border-radius);
+    }
+    label:has(> input[inputmode="numeric"])[data-axis="block"] > button[data-action="increment"]:not([data-size]),
+    label:has(> input[inputmode="numeric"])[data-axis="block"] > button[data-action="increment"][data-size="md"] {
+        border-start-end-radius: var(--md-border-radius);
+    }
+    label:has(> input[inputmode="numeric"])[data-axis="block"] > button[data-action="increment"][data-size="lg"] {
+        border-start-end-radius: var(--lg-border-radius);
+    }
+    label:has(> input[inputmode="numeric"])[data-axis="block"] > button[data-action="increment"][data-size="xl"] {
+        border-start-end-radius: var(--xl-border-radius);
+    }
+    label:has(> input[inputmode="numeric"])[data-axis="block"] > button[data-action="increment"][data-size="2xl"] {
+        border-start-end-radius: var(--2xl-border-radius);
+    }
+
+    label:has(> input[inputmode="numeric"])[data-axis="block"] > button[data-action="decrement"][data-size="xs"] {
+        border-end-end-radius: var(--xs-border-radius);
+    }
+    label:has(> input[inputmode="numeric"])[data-axis="block"] > button[data-action="decrement"][data-size="sm"] {
+        border-end-end-radius: var(--sm-border-radius);
+    }
+    label:has(> input[inputmode="numeric"])[data-axis="block"] > button[data-action="decrement"]:not([data-size]),
+    label:has(> input[inputmode="numeric"])[data-axis="block"] > button[data-action="decrement"][data-size="md"] {
+        border-end-end-radius: var(--md-border-radius);
+    }
+    label:has(> input[inputmode="numeric"])[data-axis="block"] > button[data-action="decrement"][data-size="lg"] {
+        border-end-end-radius: var(--lg-border-radius);
+    }
+    label:has(> input[inputmode="numeric"])[data-axis="block"] > button[data-action="decrement"][data-size="xl"] {
+        border-end-end-radius: var(--xl-border-radius);
+    }
+    label:has(> input[inputmode="numeric"])[data-axis="block"] > button[data-action="decrement"][data-size="2xl"] {
+        border-end-end-radius: var(--2xl-border-radius);
+    }
+
     /* === sort (th > label > input[type="radio"]) === */
 
     /*  a column sorter: the pair picks a sort direction, so it is a radio group
