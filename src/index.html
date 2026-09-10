@@ -1090,16 +1090,18 @@
 
     <section>
         <h2>Toast</h2>
-        <button type="button" onclick="jsFn.show('toast_output-1')">show (data-style="fill")</button>
-        <button type="button" onclick="jsFn.show('toast_output-2')">show data-style="outline"</button></section>
+        <button type="button" onclick="jsFn.show(document.getElementById('toast_output-1'))">show (data-style="fill")</button>
+        <button type="button" onclick="jsFn.show(document.getElementById('toast_output-2'))">show data-style="outline"</button></section>
 
     <section id="toast" data-type="toast">
         <output id="toast_output-1" class="hidden">
             <span id="toast_output-1_span"></span>
-            <p id="toast_output-1_p">(data-style="fill")</p></output>
+            <p id="toast_output-1_p">(data-style="fill")</p>
+            <button type="button" data-style="icon" data-icon="close" aria-label="Dismiss notification" onclick="jsFn.hide(this.closest('output'))"></button></output>
         <output id="toast_output-2" data-style="outline" class="hidden">
             <span id="toast_output-2_span"></span>
-            <p id="toast_output-1_p">data-style="outline"</p></output></section>
+            <p id="toast_output-2_p">data-style="outline"</p>
+            <button type="button" data-style="icon" data-icon="close" aria-label="Dismiss notification" onclick="jsFn.hide(this.closest('output'))"></button></output></section>
 
 
 </section>

@@ -134,12 +134,8 @@ const cancelToastCycle = (el) => {
     cycle.controller.abort();
 };
 
-// show/hide take either an element or its id, since the toast demo triggers both by id.
-const resolveEl = (el) => typeof el === "string" ? document.getElementById(el) : el;
-
 const jsFn = {
     show: (el) => {
-        el = resolveEl(el);
         cancelToastCycle(el);
         el.classList.remove("hidden", "hide");
         requestAnimationFrame(() => requestAnimationFrame(() => {
@@ -149,7 +145,6 @@ const jsFn = {
         }));
     },
     hide: (el) => {
-        el = resolveEl(el);
         cancelToastCycle(el);
         const controller = new AbortController();
         const finish = () => {
