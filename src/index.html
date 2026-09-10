@@ -1090,20 +1090,12 @@
 
     <section>
         <h2>Toast</h2>
-        <button type="button" onclick="jsFn.toast('info', 'New version available.')">Information</button>
-        <button type="button" onclick="jsFn.toast('success', 'Changes saved.')">Success</button>
-        <button type="button" onclick="jsFn.toast('warning', 'Connection is unstable.')">Warning</button>
-        <button type="button" onclick="jsFn.toast('warning', 'Connection is unstable.', { style: 'fill' })">[data-style="fill"]</button>
-        <button type="button" onclick="jsFn.toast('warning', 'Connection is unstable.', { size: 'xs' })">[data-size="xs"]</button>
-        <button type="button" onclick="jsFn.toast('warning', 'Connection is unstable.', { size: 'sm' })">[data-size="sm"]</button>
-        <button type="button" onclick="jsFn.toast('warning', 'Connection is unstable.')">([data-size="md"])</button>
-        <button type="button" onclick="jsFn.toast('warning', 'Connection is unstable.', { size: 'lg' })">[data-size="lg"]</button>
-        <button type="button" onclick="jsFn.toast('warning', 'Connection is unstable.', { size: 'xl' })">[data-size="xl"]</button>
-        <button type="button" onclick="jsFn.toast('warning', 'Connection is unstable.', { size: '2xl' })">[data-size="2xl"]</button></section>
+        <button type="button" onclick="jsFn.show('toast')">show</button>
+        <button type="button" onclick="jsFn.hide('toast')">hide</button></section>
 
-    <section data-type="toast">
-        <output id="toast-slot-1" class="hidden"></output>
-        <output id="toast-slot-2" class="hidden"></output></section>
+    <section id="toast" data-type="toast">
+        <output class="hidden">(Fill Style)</output>
+        <output data-style="outline" class="hidden">Outline Style</output></section>
 
 
 </section>
