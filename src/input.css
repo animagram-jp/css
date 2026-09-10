@@ -125,7 +125,7 @@
         }
     }
 
-    /* disabled, [aria-disabled="true"] */
+    /* --- disabled --- */
 
     :is(input, select, textarea):disabled, :is(input, select, textarea)[aria-disabled="true"] {
         border-color:   var(--color-mute);

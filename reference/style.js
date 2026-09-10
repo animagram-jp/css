@@ -5,10 +5,10 @@
 document.querySelectorAll('input[type="checkbox"][data-indeterminate]')
     .forEach((input) => { input.indeterminate = true; });
 
-// radio event for color theme (light/dark x less/normal/more contrast)
+// radio event for color scheme (light/dark x less/normal/more contrast)
 (() => {
     const root = document.documentElement;
-    const radios = document.querySelectorAll('input[name="color-theme"]');
+    const radios = document.querySelectorAll('input[name="color-scheme"]');
     if (!radios.length) return;
 
     // reflect the user's OS-level prefers-* settings as the initial radio position
@@ -18,14 +18,14 @@ document.querySelectorAll('input[type="checkbox"][data-indeterminate]')
         : "";
     const initial = `${scheme}${contrast}`;
 
-    const setColorTheme = (value) => root.setAttribute("data-color-theme", value);
+    const setColorScheme = (value) => root.setAttribute("data-color-scheme", value);
 
-    const initialRadio = document.querySelector(`input[name="color-theme"][value="${initial}"]`);
+    const initialRadio = document.querySelector(`input[name="color-scheme"][value="${initial}"]`);
     if (initialRadio) initialRadio.checked = true;
-    setColorTheme(initial);
+    setColorScheme(initial);
 
     radios.forEach((radio) => radio.addEventListener("change", () => {
-        setColorTheme(document.querySelector('input[name="color-theme"]:checked').value);
+        setColorScheme(document.querySelector('input[name="color-scheme"]:checked').value);
     }));
 })();
 
@@ -121,10 +121,6 @@ function drawIconBadge(name, { link, canvas, context, base, geometry, originalHr
     radios.forEach((radio) => radio.addEventListener("change", () => draw(current())));
 })();
 
-// role="alert" (assertive) for urgent statuses; info/success rely on output's implicit role="status" (polite).
-const TOAST_ALERT_STATUSES = new Set(["warning", "error"]);
-const TOAST_LABELS = { info: "Information", success: "Success", warning: "Warning", error: "Error" };
-
 // Tracks each toast element's pending auto-hide timer and transitionend listener, so reusing a
 // slot mid-animation (e.g. clicking again before the 3s auto-hide finishes) cancels the old cycle
 // instead of stacking a second one on top of it — which otherwise leaves conflicting show/hide
@@ -138,8 +134,12 @@ const cancelToastCycle = (el) => {
     cycle.controller.abort();
 };
 
+// show/hide take either an element or its id, since the toast demo triggers both by id.
+const resolveEl = (el) => typeof el === "string" ? document.getElementById(el) : el;
+
 const jsFn = {
     show: (el) => {
+        el = resolveEl(el);
         cancelToastCycle(el);
         el.classList.remove("hidden", "hide");
         requestAnimationFrame(() => requestAnimationFrame(() => {
@@ -149,6 +149,7 @@ const jsFn = {
         }));
     },
     hide: (el) => {
+        el = resolveEl(el);
         cancelToastCycle(el);
         const controller = new AbortController();
         const finish = () => {
@@ -157,42 +158,8 @@ const jsFn = {
         };
         el.classList.replace("show", "hide");
         el.addEventListener("transitionend", finish, { once: true, signal: controller.signal });
-        // Fallback in case no transition ever runs (e.g. prefers-reduced-motion), which would
-        // otherwise leave transitionend unfired and the slot wedged in "hide" forever, making it
-        // permanently ineligible for reuse as a free slot.
+        // fallback for prefers-reduced-motion
         const fallback = setTimeout(finish, 250);
         toastCycles.set(el, { timer: fallback, controller });
-    },
-    // Fills a free [data-type="toast"] output slot and shows it. Slots are reused, not bound
-    // to a fixed status, so the slot count (not the status) caps how many toasts show at once.
-    toast: (status, message, { style, size } = {}) => {
-        const slots = document.querySelectorAll('[data-type="toast"] > output');
-        const slot = [...slots].find((el) => el.classList.contains("hidden")) ?? slots[0];
-        if (!slot) return;
-
-        slot.dataset.status = status;
-        // toast.css delegates style colour entirely to data_style.css's [data-style="fill"|"outline"],
-        // which does nothing for an element carrying neither -- so a toast always needs one.
-        slot.dataset.style = style ?? "outline";
-        if (size) slot.dataset.size = size; else delete slot.dataset.size;
-
-        if (TOAST_ALERT_STATUSES.has(status)) slot.setAttribute("role", "alert");
-        else slot.removeAttribute("role");
-
-        slot.replaceChildren();
-        const span = document.createElement("span");
-        const strong = document.createElement("strong");
-        strong.textContent = `${TOAST_LABELS[status] ?? status}:`;
-        span.append(strong, ` ${message}`);
-
-        const button = document.createElement("button");
-        button.type = "button";
-        button.dataset.style = "icon";
-        button.dataset.icon = "close";
-        button.setAttribute("aria-label", "Dismiss notification");
-        button.addEventListener("click", () => jsFn.hide(slot));
-
-        slot.append(span, button);
-        jsFn.show(slot);
     },
 };

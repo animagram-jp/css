@@ -42,10 +42,13 @@
         z-index:        1;
     }
 
-    /* === surround fill style === */
+    /* === surround fill style ===
+
+       output is listed alongside button so a bare (no [data-style])
+       toast.css <output> gets the same implicit fill a bare button does. */
 
     *[data-style="fill"],
-    button:not([data-style]) {
+    :is(button, output):not([data-style]) {
         appearance:       none;
         background-color: var(--color-emphasis-fill);
         border-color:     transparent;
@@ -56,7 +59,7 @@
     
     @media (prefers-color-scheme: dark) {
         *[data-style="fill"],
-        button:not([data-style]) {
+        :is(button, output):not([data-style]) {
             color: var(--color-ink);
         }
     }

@@ -10,6 +10,8 @@
     Also see reference/style.js.
 */
 
+/* --- color, layout --- */
+
 @layer src.toast {
 
     [data-type="toast"] {
@@ -60,40 +62,19 @@
 
     @media (prefers-reduced-motion: no-preference) {
         output.hide {
-            transition-duration: 0.15s;
+            transition-duration: 150ms;
         }
     }
 
     /* [data-style="outline"], [data-style="fill"]
 
-       Colour is delegated entirely to data_style.css -- outline's emphasis
-       border/text, fill's emphasis background/paper text (including its
-       dark-mode swap). A bare output (no [data-style]) is unstyled, same as
-       any other plain element; style.js always sets one, defaulting to
-       "outline". Only what a toast needs beyond that stays here: an opaque
-       background (it floats over arbitrary page content, unlike a plain
-       outline button that already sits on one), and the status colour --
-       a concept data_style.css's generic styles know nothing about. */
-
-    output[data-style="outline"] {
-        background-color: var(--color-paper);
-    }
-
-    output[data-style="outline"][data-status="success"] {
-        border-inline-start-color: var(--color-success);
-    }
-    output[data-style="outline"][data-status="warning"] {
-        border-inline-start-color: var(--color-highlight);
-    }
-
-    output[data-style="fill"][data-status="success"] {
-        background-color: var(--color-success);
-        color:              rgb(var(--rgb-black));
-    }
-    output[data-style="fill"][data-status="warning"] {
-        background-color: var(--color-highlight);
-        color:              rgb(var(--rgb-black));
-    }
+       Colour and box model are both delegated entirely to the common files:
+       data_style.css gives a bare (no [data-style]) output the same
+       implicit fill as a bare button, plus explicit outline; data_size.css
+       gives it border-radius/border-width/min-height/padding for
+       [data-size] (or its md default) the same way it already does for
+       button. Nothing status-specific is left -- see index.html and
+       style.js for the current (fill vs. outline) demo. */
 
     @media (forced-colors: active) {
         output {
@@ -101,43 +82,16 @@
             border-color:      ButtonBorder;
             color:              CanvasText;
         }
+        output:not([data-style]),
         output[data-style="fill"] {
             background-color: ButtonFace;
             color:              ButtonText;
         }
-        output[data-status] {
-            border-inline-start-color: Mark;
-        }
     }
 
-    /* === [data-size] ===
+    /* --- size --- */
 
-       font-size, letter-spacing, line-height, border-radius, border-width,
-       min-height, padding-block, padding-inline are all covered generically
-       once [data-style] is always set: data_size.css's box-model rule
-       matches any *[data-style="fill"|"outline"][data-size], not just the
-       tags it lists by name. Only the accent stripe's doubled start-edge
-       width is a toast-specific step beyond the plain border-width. */
-
-    output[data-size="xs"] {
-        border-inline-start-width: calc(var(--xs-border-width) * 2);
-    }
-    output[data-size="sm"] {
-        border-inline-start-width: calc(var(--sm-border-width) * 2);
-    }
-    output:not([data-size]),
-    output[data-size="md"] {
-        border-inline-start-width: calc(var(--md-border-width) * 2);
-    }
-    output[data-size="lg"] {
-        border-inline-start-width: calc(var(--lg-border-width) * 2);
-    }
-    output[data-size="xl"] {
-        border-inline-start-width: calc(var(--xl-border-width) * 2);
-    }
-    output[data-size="2xl"] {
-        border-inline-start-width: calc(var(--2xl-border-width) * 2);
-    }
+    /* --- focus --- */
 
     /* === dismiss button (output > button) ===
 
