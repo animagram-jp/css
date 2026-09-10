@@ -1094,8 +1094,12 @@
         <button type="button" onclick="jsFn.show('toast_output-2')">show data-style="outline"</button></section>
 
     <section id="toast" data-type="toast">
-        <output id="toast_output-1" class="hidden">(data-style="fill")</output>
-        <output id="toast_output-2" data-style="outline" class="hidden">data-style="outline"</output></section>
+        <output id="toast_output-1" class="hidden">
+            <span id="toast_output-1_span"></span>
+            <p id="toast_output-1_p">(data-style="fill")</p></output>
+        <output id="toast_output-2" data-style="outline" class="hidden">
+            <span id="toast_output-2_span"></span>
+            <p id="toast_output-1_p">data-style="outline"</p></output></section>
 
 
 </section>
