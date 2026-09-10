@@ -14,16 +14,7 @@
         position:         relative;
     }
 
-    button[aria-haspopup="listbox"]::after {
-        border-bottom: 0.125rem solid currentcolor;
-        border-right:  0.125rem solid currentcolor;
-        bottom:        0;
-        content:       "";
-        left:          auto;
-        margin:        auto 0;
-        position:      absolute;
-        top:           0;
-    }
+    /* The arrow itself is part.css's [data-facet="chevron"] (a bare button[aria-haspopup="listbox"] qualifies by default). */
 
     /* --- size ---
 
@@ -35,82 +26,26 @@
     button[aria-haspopup="listbox"][data-size="xs"] {
         padding-inline-end: calc(var(--xs-border-radius) * 2 + var(--xs-font-size) * 0.75 * 1.06);
     }
-    button[aria-haspopup="listbox"][data-size="xs"]::after {
-        height:    calc(var(--xs-font-size) * 0.75 * 1.06);
-        right:     var(--xs-border-radius);
-        transform: translateY(calc(-2 / 16 * 1rem)) rotate(45deg);
-        width:     calc(var(--xs-font-size) * 0.75 * 1.06);
-    }
-    [role="listbox"]:popover-open + button[aria-haspopup="listbox"][data-size="xs"]::after {
-        transform: translateY(0.125rem) rotate(225deg);
-    }
 
     button[aria-haspopup="listbox"][data-size="sm"] {
         padding-inline-end: calc(var(--sm-border-radius) * 2 + var(--sm-font-size) * 0.75 * 1.06);
-    }
-    button[aria-haspopup="listbox"][data-size="sm"]::after {
-        height:    calc(var(--sm-font-size) * 0.75 * 1.06);
-        right:     var(--sm-border-radius);
-        transform: translateY(calc(-2 / 16 * 1rem)) rotate(45deg);
-        width:     calc(var(--sm-font-size) * 0.75 * 1.06);
-    }
-    [role="listbox"]:popover-open + button[aria-haspopup="listbox"][data-size="sm"]::after {
-        transform: translateY(0.125rem) rotate(225deg);
     }
 
     button[aria-haspopup="listbox"]:not([data-size]),
     button[aria-haspopup="listbox"][data-size="md"] {
         padding-inline-end: calc(var(--md-border-radius) * 2 + var(--md-font-size) * 0.75 * 1.06);
     }
-    button[aria-haspopup="listbox"]:not([data-size])::after,
-    button[aria-haspopup="listbox"][data-size="md"]::after {
-        height:    calc(var(--md-font-size) * 0.75 * 1.06);
-        right:     var(--md-border-radius);
-        transform: translateY(calc(-3 / 16 * 1rem)) rotate(45deg);
-        width:     calc(var(--md-font-size) * 0.75 * 1.06);
-    }
-    [role="listbox"]:popover-open + button[aria-haspopup="listbox"]:not([data-size])::after,
-    [role="listbox"]:popover-open + button[aria-haspopup="listbox"][data-size="md"]::after {
-        transform: translateY(0.1875rem) rotate(225deg);
-    }
 
     button[aria-haspopup="listbox"][data-size="lg"] {
         padding-inline-end: calc(var(--lg-border-radius) * 2 + var(--lg-font-size) * 0.6 * 1.06);
-    }
-    button[aria-haspopup="listbox"][data-size="lg"]::after {
-        height:    calc(var(--lg-font-size) * 0.6 * 1.06);
-        right:     var(--lg-border-radius);
-        transform: translateY(calc(-2 / 16 * 1rem)) rotate(45deg);
-        width:     calc(var(--lg-font-size) * 0.6 * 1.06);
-    }
-    [role="listbox"]:popover-open + button[aria-haspopup="listbox"][data-size="lg"]::after {
-        transform: translateY(0.125rem) rotate(225deg);
     }
 
     button[aria-haspopup="listbox"][data-size="xl"] {
         padding-inline-end: calc(var(--xl-border-radius) * 2 + var(--xl-font-size) * 0.6 * 1.06);
     }
-    button[aria-haspopup="listbox"][data-size="xl"]::after {
-        height:    calc(var(--xl-font-size) * 0.6 * 1.06);
-        right:     var(--xl-border-radius);
-        transform: translateY(calc(-3 / 16 * 1rem)) rotate(45deg);
-        width:     calc(var(--xl-font-size) * 0.6 * 1.06);
-    }
-    [role="listbox"]:popover-open + button[aria-haspopup="listbox"][data-size="xl"]::after {
-        transform: translateY(0.1875rem) rotate(225deg);
-    }
 
     button[aria-haspopup="listbox"][data-size="2xl"] {
         padding-inline-end: calc(var(--2xl-border-radius) * 2 + var(--2xl-font-size) * 0.6 * 1.06);
-    }
-    button[aria-haspopup="listbox"][data-size="2xl"]::after {
-        height:    calc(var(--2xl-font-size) * 0.6 * 1.06);
-        right:     var(--2xl-border-radius);
-        transform: translateY(calc(-4 / 16 * 1rem)) rotate(45deg);
-        width:     calc(var(--2xl-font-size) * 0.6 * 1.06);
-    }
-    [role="listbox"]:popover-open + button[aria-haspopup="listbox"][data-size="2xl"]::after {
-        transform: translateY(0.25rem) rotate(225deg);
     }
 
     /* --- focus --- */

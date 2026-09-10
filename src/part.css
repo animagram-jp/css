@@ -94,6 +94,141 @@
         rotate: -45deg;
     }
 
+    /*  --- chevron ---
+
+        A rotating corner-bracket arrow (border-bottom + border-right), the
+        default disclosure/dropdown marker for a bare summary, a bare label
+        wrapping a select, and a bare listbox trigger button -- anything
+        else opts in with [data-facet="chevron"]. Points down at rest;
+        flips to up when open, via whichever signal the host exposes:
+        details[open] for summary, :popover-open on the listbox for its
+        trigger button, [aria-expanded="true"] for a plain
+        [data-facet="chevron"] element. (A <select>'s own popup state isn't
+        exposed to CSS, so its marker never flips.) Sized off the host's
+        own font-size, at the same two ratios (0.75 up to md, 0.6 from lg)
+        used throughout for icons set beside text. */
+
+    *[data-facet="chevron"]::after,
+    summary:not([data-facet])::after,
+    label:not([data-facet]):has(> select)::after,
+    button[aria-haspopup="listbox"]:not([data-facet])::after {
+        border-bottom:  var(--md-border-width) solid currentColor;
+        border-right:   var(--md-border-width) solid currentColor;
+        content:        "";
+        inset-block:    0;
+        margin-block:   auto;
+        pointer-events: none; /* let a click through to a select the marker overlays; harmless on the others, which are their own click target */
+        position:       absolute;
+        z-index:        2; /* above a focused select's own outline, as with search.css's magnifier */
+    }
+
+    *[data-facet="chevron"]:not([data-size])::after,
+    *[data-facet="chevron"][data-size="md"]::after,
+    summary:not([data-facet]):not([data-size])::after,
+    summary:not([data-facet])[data-size="md"]::after,
+    label:not([data-facet]):has(> select:not([data-size]))::after,
+    label:not([data-facet]):has(> select[data-size="md"])::after,
+    button[aria-haspopup="listbox"]:not([data-facet]):not([data-size])::after,
+    button[aria-haspopup="listbox"]:not([data-facet])[data-size="md"]::after {
+        block-size:         calc(var(--md-font-size) * 0.75 * 1.06);
+        inline-size:        calc(var(--md-font-size) * 0.75 * 1.06);
+        inset-inline-end:   var(--md-border-radius);
+        transform:          translateY(-0.1875rem) rotate(45deg);
+    }
+    details[open] > summary:not([data-facet]):not([data-size])::after,
+    details[open] > summary:not([data-facet])[data-size="md"]::after,
+    [role="listbox"]:popover-open + button[aria-haspopup="listbox"]:not([data-facet]):not([data-size])::after,
+    [role="listbox"]:popover-open + button[aria-haspopup="listbox"]:not([data-facet])[data-size="md"]::after,
+    *[data-facet="chevron"]:not([data-size])[aria-expanded="true"]::after,
+    *[data-facet="chevron"][data-size="md"][aria-expanded="true"]::after {
+        transform: translateY(calc(3 / 16 * 1rem)) rotate(225deg);
+    }
+
+    *[data-facet="chevron"][data-size="xs"]::after,
+    summary:not([data-facet])[data-size="xs"]::after,
+    label:not([data-facet]):has(> select[data-size="xs"])::after,
+    button[aria-haspopup="listbox"]:not([data-facet])[data-size="xs"]::after {
+        block-size:          calc(var(--xs-font-size) * 0.75 * 1.06);
+        border-bottom-width: var(--xs-border-width);
+        border-right-width:  var(--xs-border-width);
+        inline-size:         calc(var(--xs-font-size) * 0.75 * 1.06);
+        inset-inline-end:    var(--xs-border-radius);
+        transform:           translateY(-0.125rem) rotate(45deg);
+    }
+    details[open] > summary:not([data-facet])[data-size="xs"]::after,
+    [role="listbox"]:popover-open + button[aria-haspopup="listbox"]:not([data-facet])[data-size="xs"]::after,
+    *[data-facet="chevron"][data-size="xs"][aria-expanded="true"]::after {
+        transform: translateY(calc(2 / 16 * 1rem)) rotate(225deg);
+    }
+
+    *[data-facet="chevron"][data-size="sm"]::after,
+    summary:not([data-facet])[data-size="sm"]::after,
+    label:not([data-facet]):has(> select[data-size="sm"])::after,
+    button[aria-haspopup="listbox"]:not([data-facet])[data-size="sm"]::after {
+        block-size:          calc(var(--sm-font-size) * 0.75 * 1.06);
+        border-bottom-width: var(--sm-border-width);
+        border-right-width:  var(--sm-border-width);
+        inline-size:         calc(var(--sm-font-size) * 0.75 * 1.06);
+        inset-inline-end:    var(--sm-border-radius);
+        transform:           translateY(-0.125rem) rotate(45deg);
+    }
+    details[open] > summary:not([data-facet])[data-size="sm"]::after,
+    [role="listbox"]:popover-open + button[aria-haspopup="listbox"]:not([data-facet])[data-size="sm"]::after,
+    *[data-facet="chevron"][data-size="sm"][aria-expanded="true"]::after {
+        transform: translateY(calc(2 / 16 * 1rem)) rotate(225deg);
+    }
+
+    *[data-facet="chevron"][data-size="lg"]::after,
+    summary:not([data-facet])[data-size="lg"]::after,
+    label:not([data-facet]):has(> select[data-size="lg"])::after,
+    button[aria-haspopup="listbox"]:not([data-facet])[data-size="lg"]::after {
+        block-size:          calc(var(--lg-font-size) * 0.6 * 1.06);
+        border-bottom-width: var(--lg-border-width);
+        border-right-width:  var(--lg-border-width);
+        inline-size:         calc(var(--lg-font-size) * 0.6 * 1.06);
+        inset-inline-end:    var(--lg-border-radius);
+        transform:           translateY(-0.125rem) rotate(45deg);
+    }
+    details[open] > summary:not([data-facet])[data-size="lg"]::after,
+    [role="listbox"]:popover-open + button[aria-haspopup="listbox"]:not([data-facet])[data-size="lg"]::after,
+    *[data-facet="chevron"][data-size="lg"][aria-expanded="true"]::after {
+        transform: translateY(calc(2 / 16 * 1rem)) rotate(225deg);
+    }
+
+    *[data-facet="chevron"][data-size="xl"]::after,
+    summary:not([data-facet])[data-size="xl"]::after,
+    label:not([data-facet]):has(> select[data-size="xl"])::after,
+    button[aria-haspopup="listbox"]:not([data-facet])[data-size="xl"]::after {
+        block-size:          calc(var(--xl-font-size) * 0.6 * 1.06);
+        border-bottom-width: var(--xl-border-width);
+        border-right-width:  var(--xl-border-width);
+        inline-size:         calc(var(--xl-font-size) * 0.6 * 1.06);
+        inset-inline-end:    var(--xl-border-radius);
+        transform:           translateY(-0.1875rem) rotate(45deg);
+    }
+    details[open] > summary:not([data-facet])[data-size="xl"]::after,
+    [role="listbox"]:popover-open + button[aria-haspopup="listbox"]:not([data-facet])[data-size="xl"]::after,
+    *[data-facet="chevron"][data-size="xl"][aria-expanded="true"]::after {
+        transform: translateY(calc(3 / 16 * 1rem)) rotate(225deg);
+    }
+
+    *[data-facet="chevron"][data-size="2xl"]::after,
+    summary:not([data-facet])[data-size="2xl"]::after,
+    label:not([data-facet]):has(> select[data-size="2xl"])::after,
+    button[aria-haspopup="listbox"]:not([data-facet])[data-size="2xl"]::after {
+        block-size:          calc(var(--2xl-font-size) * 0.6 * 1.06);
+        border-bottom-width: var(--2xl-border-width);
+        border-right-width:  var(--2xl-border-width);
+        inline-size:         calc(var(--2xl-font-size) * 0.6 * 1.06);
+        inset-inline-end:    var(--2xl-border-radius);
+        transform:           translateY(-0.25rem) rotate(45deg);
+    }
+    details[open] > summary:not([data-facet])[data-size="2xl"]::after,
+    [role="listbox"]:popover-open + button[aria-haspopup="listbox"]:not([data-facet])[data-size="2xl"]::after,
+    *[data-facet="chevron"][data-size="2xl"][aria-expanded="true"]::after {
+        transform: translateY(calc(4 / 16 * 1rem)) rotate(225deg);
+    }
+
     /* Reference: https://github.com/yuto-hasegawa/sashimi-ui/blob/main/src/css/key-value.css */
 
     dl {
