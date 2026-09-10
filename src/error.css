@@ -21,6 +21,8 @@
 
     /* === error summary (section[data-type="error-summary"]) === */
 
+    /* --- color, layout --- */
+
     section[data-type="error-summary"] {
         border-color: var(--color-error);
         border-style: solid;
@@ -74,7 +76,13 @@
         text-underline-offset:     0.3em;
     }
 
-    /* button.css / data_style.css styles every a:any-link without [data-style] in --color-emphasis */
+    /* --- focus ---
+
+       :focus-visible は data_style.css (通常時) / base.css (forced-colors) でカバー済み。 */
+
+    /* --- visited, hover, active ---
+
+       button.css / data_style.css styles every a:any-link without [data-style] in --color-emphasis */
 
     section[data-type="error-summary"] > ul > li > a:is(:visited, :hover, :active) {
         color: var(--color-ink);
@@ -84,9 +92,9 @@
         text-decoration-thickness: 0.25rem;
     }
 
-    /* :focus-visible は data_style.css (通常時) / base.css (forced-colors) でカバー済み。 */
-
     /* === error message (p[data-type="error"]) === */
+
+    /* --- color, layout --- */
 
     p[data-type="error"] {
         clear:          both; /* per govuk: stay clear of a floated hint */
@@ -104,9 +112,9 @@
         width:            0.5rem;
     }
 
-    /* --- [data-size] --- */
+    /* --- size ---
 
-    /* font-size, letter-spacing, line-height は data_size.css でカバー済み。min-height, padding-block のみ固有実装。 */
+       font-size, letter-spacing, line-height は data_size.css でカバー済み。min-height, padding-block のみ固有実装。 */
 
     p[data-type="error"][data-size="xs"] {
         min-height:    var(--xs-box-height);

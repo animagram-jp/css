@@ -25,7 +25,7 @@
         top:           0;
     }
 
-    /* --- [data-size] ---
+    /* --- size ---
 
        border-radius, border-width, font-size, letter-spacing, line-height,
        min-height, padding-inline-start は data_size.css でカバー済み (button は
@@ -113,7 +113,7 @@
         transform: translateY(0.25rem) rotate(225deg);
     }
 
-    /* :focus-visible */
+    /* --- focus --- */
 
     button[aria-haspopup="listbox"]:focus-visible {
         background-color: var(--color-focus);
@@ -124,7 +124,7 @@
         outline: none;
     }
 
-    /* :hover */
+    /* --- hover --- */
 
     @media (hover: hover) {
         button[aria-haspopup="listbox"]:hover {
@@ -135,7 +135,7 @@
         }
     }
 
-    /* :disabled, [aria-disabled="true"] */
+    /* --- disabled --- */
 
     button[aria-haspopup="listbox"]:disabled,
     button[aria-haspopup="listbox"][aria-disabled="true"] {
@@ -157,6 +157,8 @@
             color:        GrayText;
         }
     }
+
+    /* --- color, layout --- */
 
     [role="listbox"] {
         background-color:       var(--color-paper);
@@ -212,7 +214,7 @@
         flex:   1;
     }
 
-    /* :hover */
+    /* --- hover --- */
 
     @media (hover: hover) {
         [role="listbox"] [role="option"]:hover {
@@ -220,7 +222,7 @@
         }
     }
 
-    /* :focus-visible */
+    /* --- focus --- */
 
     [role="listbox"] [role="option"] button:focus-visible {
         outline: none;
@@ -236,7 +238,7 @@
         z-index:  1;
     }
 
-    /* :disabled, [aria-disabled="true"] */
+    /* --- disabled --- */
 
     [role="listbox"] [role="option"] button:disabled,
     [role="listbox"] [role="option"] button[aria-disabled="true"] {

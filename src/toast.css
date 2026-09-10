@@ -10,9 +10,9 @@
     Also see reference/style.js.
 */
 
-/* --- color, layout --- */
-
 @layer src.toast {
+
+    /* --- color, layout --- */
 
     [data-type="toast"] {
         bottom:           1.5rem;
@@ -90,8 +90,6 @@
     }
 
     /* --- size --- */
-
-    /* --- focus --- */
 
     /* === dismiss button (output > button) ===
 

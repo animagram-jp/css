@@ -21,6 +21,15 @@
 
 @layer src.step {
 
+    /* --- color, layout, size ---
+
+       Organized below by axis variant (default inline, [data-axis="block"])
+       rather than split by category, since each one's geometry is its own
+       self-contained shape. The buttons and input are plain button/input
+       elements underneath, so --- focus, hover, active, invalid, disabled ---
+       need nothing step-specific: button.css and input.css already cover
+       them. */
+
     label:has(> input[inputmode="numeric"]) > button[data-action] {
         padding-inline: 0;
         position:       relative;

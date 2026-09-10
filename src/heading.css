@@ -6,6 +6,8 @@
 
 @layer src.heading {
 
+    /* --- color, layout --- */
+
     :is(h1, h2, h3, h4, h5, h6) {
         font-weight: bold;
     }
@@ -57,7 +59,7 @@
         );
     }
 
-    /*  [data-size]
+    /* --- size ---
 
         素の h1〜h6[data-size] の font-size/letter-spacing/line-height は
         data_size.css の *[data-size] (要素を問わない汎用ルール) でカバー済みのため

@@ -41,6 +41,13 @@
 
 @layer src.search {
 
+    /* --- color, layout, size ---
+
+       Organized below by sub-element (label, magnifier, search box, scope
+       select) rather than split by category -- each one's colour and its
+       [data-size] geometry belong together (e.g. the magnifier's lens/handle
+       size formula), so they aren't pulled apart into separate blocks here. */
+
     /* === container (search, form[role="search"]) ===
 
        white-space, child vertical-align, leading-label spacing, inter-child
@@ -48,6 +55,11 @@
        all covered by data_style.css's [data-style="group"] style, which also
        matches :is(search, form[role="search"]) by tag. Nothing left to add
        here for the container itself. */
+
+    /* --- focus ---
+
+       input[type="search"] and select are both in data_style.css's common
+       focusable list, so their focus ring needs nothing search-specific. */
 
     /* === label === */
 

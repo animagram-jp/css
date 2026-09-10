@@ -18,6 +18,8 @@
 
     /* === table === */
 
+    /* --- color, layout --- */
+
     /*
     * Cells are separated by rules rather than by fill, so the borders are
     * collapsed onto one another and the row height is carried by padding.
@@ -68,7 +70,9 @@
         text-align:  start;
     }
 
-    /* === [data-size] ===
+    /* === [data-size] === */
+
+    /* --- size ---
 
        table[data-size] 自体の font-size/letter-spacing/line-height は
        data_size.css の *[data-size] (要素を問わない汎用ルール) でカバー済み。
@@ -147,6 +151,8 @@
     }
 
     /* === [data-hover] === */
+
+    /* --- hover --- */
 
     @media (hover: hover) {
         table[data-hover] tbody tr:hover {
