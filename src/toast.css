@@ -10,6 +10,8 @@
     Also see reference/style.js.
 */
 
+/* --- color, layout --- */
+
 @layer src.toast {
 
     [data-type="toast"] {
@@ -60,59 +62,8 @@
 
     @media (prefers-reduced-motion: no-preference) {
         output.hide {
-            transition-duration: 0.15s;
+            transition-duration: 150ms;
         }
-    }
-
-    /* [data-style="outline"], :not([data-style]) */
-
-    /*  output は data_style.css の汎用 [data-style] 対象 (*[data-style=...]) にも
-        マッチするが、ステータス別の配色は toast 固有の実装であり、後続レイヤーの
-        本ルールが上書きする。 */
-
-    output:not([data-style]),
-    output[data-style="outline"] {
-        background-color: var(--color-paper);
-        border-color:      var(--color-mute);
-        color:              var(--color-ink);
-    }
-
-    output:not([data-style])[data-status="info"],
-    output[data-style="outline"][data-status="info"] {
-        border-inline-start-color: var(--color-emphasis);
-    }
-    output:not([data-style])[data-status="success"],
-    output[data-style="outline"][data-status="success"] {
-        border-inline-start-color: var(--color-success);
-    }
-    output:not([data-style])[data-status="warning"],
-    output[data-style="outline"][data-status="warning"] {
-        border-inline-start-color: var(--color-highlight);
-    }
-
-    /* [data-style="fill"] */
-
-    output[data-style="fill"] {
-        background-color: var(--color-ink);
-        border-color:      transparent;
-        color:              var(--color-paper);
-    }
-    output[data-style="fill"][data-status="info"] {
-        background-color: var(--color-emphasis-fill);
-        color:              var(--color-paper);
-    }
-    @media (prefers-color-scheme: dark) {
-        output[data-style="fill"][data-status="info"] {
-            color: var(--color-ink);
-        }
-    }
-    output[data-style="fill"][data-status="success"] {
-        background-color: var(--color-success);
-        color:              rgb(var(--rgb-black));
-    }
-    output[data-style="fill"][data-status="warning"] {
-        background-color: var(--color-highlight);
-        color:              rgb(var(--rgb-black));
     }
 
     @media (forced-colors: active) {
@@ -125,64 +76,11 @@
             background-color: ButtonFace;
             color:              ButtonText;
         }
-        output[data-status] {
-            border-inline-start-color: Mark;
-        }
     }
 
-    /* === [data-size] ===
+    /* --- size --- */
 
-       font-size, letter-spacing, line-height は data_size.css でカバー済み。 */
-
-    output[data-size="xs"] {
-        border-inline-start-width: calc(var(--xs-border-width) * 2);
-        border-radius:             var(--xs-border-radius);
-        border-width:              var(--xs-border-width);
-        min-block-size:            var(--xs-box-height);
-        padding-block:             calc(((var(--xs-box-height) - var(--xs-line-height)) / 2) - var(--xs-border-width));
-        padding-inline:            var(--xs-border-radius);
-    }
-    output[data-size="sm"] {
-        border-inline-start-width: calc(var(--sm-border-width) * 2);
-        border-radius:             var(--sm-border-radius);
-        border-width:              var(--sm-border-width);
-        min-block-size:            var(--sm-box-height);
-        padding-block:             calc(((var(--sm-box-height) - var(--sm-line-height)) / 2) - var(--sm-border-width));
-        padding-inline:            var(--sm-border-radius);
-    }
-    output:not([data-size]),
-    output[data-size="md"] {
-        border-inline-start-width: calc(var(--md-border-width) * 2);
-        border-radius:             var(--md-border-radius);
-        border-width:              var(--md-border-width);
-        min-block-size:            var(--md-box-height);
-        padding-block:             calc(((var(--md-box-height) - var(--md-line-height)) / 2) - var(--md-border-width));
-        padding-inline:            var(--md-border-radius);
-    }
-    output[data-size="lg"] {
-        border-inline-start-width: calc(var(--lg-border-width) * 2);
-        border-radius:             var(--lg-border-radius);
-        border-width:              var(--lg-border-width);
-        min-block-size:            var(--lg-box-height);
-        padding-block:             calc(((var(--lg-box-height) - var(--lg-line-height)) / 2) - var(--lg-border-width));
-        padding-inline:            var(--lg-border-radius);
-    }
-    output[data-size="xl"] {
-        border-inline-start-width: calc(var(--xl-border-width) * 2);
-        border-radius:             var(--xl-border-radius);
-        border-width:              var(--xl-border-width);
-        min-block-size:            var(--xl-box-height);
-        padding-block:             calc(((var(--xl-box-height) - var(--xl-line-height)) / 2) - var(--xl-border-width));
-        padding-inline:            var(--xl-border-radius);
-    }
-    output[data-size="2xl"] {
-        border-inline-start-width: calc(var(--2xl-border-width) * 2);
-        border-radius:             var(--2xl-border-radius);
-        border-width:              var(--2xl-border-width);
-        min-block-size:            var(--2xl-box-height);
-        padding-block:             calc(((var(--2xl-box-height) - var(--2xl-line-height)) / 2) - var(--2xl-border-width));
-        padding-inline:            var(--2xl-border-radius);
-    }
+    /* --- focus --- */
 
     /* === dismiss button (output > button) === */
 
