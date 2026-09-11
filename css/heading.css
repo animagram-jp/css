@@ -6,6 +6,8 @@
 
 @layer css.heading {
 
+    /* --- color, layout --- */
+
     :is(h1, h2, h3, h4, h5, h6) {
         font-weight: bold;
     }
@@ -57,7 +59,11 @@
         );
     }
 
-    /*  [data-size]
+    /* --- size ---
+
+        素の h1〜h6[data-size] の font-size/letter-spacing/line-height は
+        data_size.css の *[data-size] (要素を問わない汎用ルール) でカバー済みのため
+        ここでは持たない。hgroup[data-size] > :is(...) による子への継承のみ固有実装。
 
         the per-tag default (h1:not([data-size]) 等) already matches an h1 with
         no data-size regardless of what it's inside -- an "hgroup:not([data-size])
@@ -69,14 +75,12 @@
         below, one tag + one attribute more specific, same as css.button's
         [data-size] override on a plain child). */
 
-    :is(h1, h2, h3, h4, h5, h6)[data-size="xs"],
     hgroup[data-size="xs"] > :is(h1, h2, h3, h4, h5, h6) {
         font-size: var(--xs-font-size);
         letter-spacing: var(--xs-letter-spacing);
         line-height: var(--xs-line-height);
     }
 
-    :is(h1, h2, h3, h4, h5, h6)[data-size="sm"],
     hgroup[data-size="sm"] > :is(h1, h2, h3, h4, h5, h6) {
         font-size: var(--sm-font-size);
         letter-spacing: var(--sm-letter-spacing);
@@ -84,7 +88,6 @@
     }
 
     :is(h4, h5, h6):not([data-size]),
-    :is(h1, h2, h3, h4, h5, h6)[data-size="md"],
     hgroup[data-size="md"] > :is(h1, h2, h3, h4, h5, h6) {
         font-size: var(--md-font-size);
         letter-spacing: var(--md-letter-spacing);
@@ -92,7 +95,6 @@
     }
 
     h3:not([data-size]),
-    :is(h1, h2, h3, h4, h5, h6)[data-size="lg"],
     hgroup[data-size="lg"] > :is(h1, h2, h3, h4, h5, h6) {
         font-size: var(--lg-font-size);
         letter-spacing: var(--lg-letter-spacing);
@@ -100,7 +102,6 @@
     }
 
     h2:not([data-size]),
-    :is(h1, h2, h3, h4, h5, h6)[data-size="xl"],
     hgroup[data-size="xl"] > :is(h1, h2, h3, h4, h5, h6) {
         font-size: var(--xl-font-size);
         letter-spacing: var(--xl-letter-spacing);
@@ -108,7 +109,6 @@
     }
 
     h1:not([data-size]),
-    :is(h1, h2, h3, h4, h5, h6)[data-size="2xl"],
     hgroup[data-size="2xl"] > :is(h1, h2, h3, h4, h5, h6) {
         font-size: var(--2xl-font-size);
         letter-spacing: var(--2xl-letter-spacing);

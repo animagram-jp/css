@@ -4,7 +4,9 @@
         <span>inline</span>
         <input type="checkbox" role="switch"></label> */
 
-@layer css.toggle {
+@layer src.toggle {
+
+    /* --- color, layout --- */
 
     label:has(> input[type="checkbox"][role="switch"]),
     label:has(> input[type="checkbox"][role="switch"]) > * {
@@ -87,18 +89,6 @@
         color:   var(--color-ink);
     }
 
-    /* :focus-visible, :hover, :active */
-
-    label > input[type="checkbox"][role="switch"]:focus-visible,
-    label > input[type="checkbox"][role="switch"]:hover,
-    label > input[type="checkbox"][role="switch"]:active {
-        outline-color:  var(--color-focus);
-        outline-offset: 0;
-        outline-style:  solid;
-        outline-width:  0.25rem;
-        z-index:        1;
-    }
-
     /* label[data-type="knob-only"] */
 
     label[data-type="knob-only"] {
@@ -110,8 +100,26 @@
     label[data-type="knob-only"] > input[type="checkbox"][role="switch"]::after {
         pointer-events: auto;
     }
-    
-    /* [data-size] */
+
+    @media (forced-colors: active) {
+        label > input[type="checkbox"][role="switch"] {
+            background-color: Canvas;
+            border-color:     CanvasText;
+        }
+        label > input[type="checkbox"][role="switch"]:checked {
+            background: Canvas;
+        }
+        label > input[type="checkbox"][role="switch"]::after {
+            background:   CanvasText;
+            border-color: CanvasText;
+            color:        Canvas;
+        }
+        label > input[type="checkbox"][role="switch"]:checked::after {
+            color: Canvas;
+        }
+    }
+
+    /* --- size --- */
 
     label > input[type="checkbox"][role="switch"][data-size="xs"] {
         border-radius: calc(var(--xs-box-height) / 2);
@@ -228,24 +236,19 @@
         transform: translateX(calc(calc(var(--2xl-box-height) - var(--2xl-border-width) * 4) * var(--toggle-dir, 1)));
     }
 
-    /* forced-colors */
+    /* --- focus, hover, active --- */
+
+    label > input[type="checkbox"][role="switch"]:focus-visible,
+    label > input[type="checkbox"][role="switch"]:hover,
+    label > input[type="checkbox"][role="switch"]:active {
+        outline-color:  var(--color-focus);
+        outline-offset: 0;
+        outline-style:  solid;
+        outline-width:  0.25rem;
+        z-index:        1;
+    }
 
     @media (forced-colors: active) {
-        label > input[type="checkbox"][role="switch"] {
-            background-color: Canvas;
-            border-color:     CanvasText;
-        }
-        label > input[type="checkbox"][role="switch"]:checked {
-            background: Canvas;
-        }
-        label > input[type="checkbox"][role="switch"]::after {
-            background:   CanvasText;
-            border-color: CanvasText;
-            color:        Canvas;
-        }
-        label > input[type="checkbox"][role="switch"]:checked::after {
-            color: Canvas;
-        }
         label > input[type="checkbox"][role="switch"]:focus-visible,
         label > input[type="checkbox"][role="switch"]:hover,
         label > input[type="checkbox"][role="switch"]:active {
@@ -253,7 +256,7 @@
         }
     }
 
-    /* disabled, [aria-disabled="true"] */
+    /* --- disabled --- */
 
     label > input[type="checkbox"][role="switch"]:disabled,
     label > input[type="checkbox"][role="switch"][aria-disabled="true"] {

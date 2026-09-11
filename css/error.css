@@ -1,6 +1,6 @@
 /* error: a summary of what went wrong, and the message beside each answer. */
 
-/*  
+/*
     <section role="alert" data-type="error-summary" aria-labelledby="error-heading">
         <h2 id="error-heading">There is a problem</h2>
         <p>optional description</p>
@@ -20,6 +20,8 @@
 @layer css.error {
 
     /* === error summary (section[data-type="error-summary"]) === */
+
+    /* --- color, layout --- */
 
     section[data-type="error-summary"] {
         border-color: var(--color-error);
@@ -74,7 +76,13 @@
         text-underline-offset:     0.3em;
     }
 
-    /* css.button styles every a:any-link without [data-style] in --color-emphasis */
+    /* --- focus ---
+
+       :focus-visible は data_style.css (通常時) / base.css (forced-colors) でカバー済み。 */
+
+    /* --- visited, hover, active ---
+
+       button.css / data_style.css styles every a:any-link without [data-style] in --color-emphasis */
 
     section[data-type="error-summary"] > ul > li > a:is(:visited, :hover, :active) {
         color: var(--color-ink);
@@ -84,14 +92,9 @@
         text-decoration-thickness: 0.25rem;
     }
 
-    section[data-type="error-summary"] > ul > li > a:focus-visible {
-        outline-color:  var(--color-focus);
-        outline-offset: 0;
-        outline-style:  solid;
-        outline-width:  0.25rem;
-    }
-
     /* === error message (p[data-type="error"]) === */
+
+    /* --- color, layout --- */
 
     p[data-type="error"] {
         clear:          both; /* per govuk: stay clear of a floated hint */
@@ -109,66 +112,50 @@
         width:            0.5rem;
     }
 
-    /* --- [data-size] --- */
+    /* --- size ---
+
+       font-size, letter-spacing, line-height は data_size.css でカバー済み。min-height, padding-block のみ固有実装。 */
 
     p[data-type="error"][data-size="xs"] {
-        font-size:      var(--xs-font-size);
-        letter-spacing: var(--xs-letter-spacing);
-        line-height:    var(--xs-line-height);
-        min-height:     var(--xs-box-height);
-        padding-block:  calc((var(--xs-box-height) - var(--xs-line-height)) / 2);
+        min-height:    var(--xs-box-height);
+        padding-block: calc((var(--xs-box-height) - var(--xs-line-height)) / 2);
     }
     p[data-type="error"][data-size="xs"]::before {
         inset-block: calc((var(--xs-box-height) - var(--xs-line-height)) / 2);
     }
     p[data-type="error"][data-size="sm"] {
-        font-size:      var(--sm-font-size);
-        letter-spacing: var(--sm-letter-spacing);
-        line-height:    var(--sm-line-height);
-        min-height:     var(--sm-box-height);
-        padding-block:  calc((var(--sm-box-height) - var(--sm-line-height)) / 2);
+        min-height:    var(--sm-box-height);
+        padding-block: calc((var(--sm-box-height) - var(--sm-line-height)) / 2);
     }
     p[data-type="error"][data-size="sm"]::before {
         inset-block: calc((var(--sm-box-height) - var(--sm-line-height)) / 2);
     }
     p[data-type="error"]:not([data-size]),
     p[data-type="error"][data-size="md"] {
-        font-size:      var(--md-font-size);
-        letter-spacing: var(--md-letter-spacing);
-        line-height:    var(--md-line-height);
-        min-height:     var(--md-box-height);
-        padding-block:  calc((var(--md-box-height) - var(--md-line-height)) / 2);
+        min-height:    var(--md-box-height);
+        padding-block: calc((var(--md-box-height) - var(--md-line-height)) / 2);
     }
     p[data-type="error"]:not([data-size])::before,
     p[data-type="error"][data-size="md"]::before {
         inset-block: calc((var(--md-box-height) - var(--md-line-height)) / 2);
     }
     p[data-type="error"][data-size="lg"] {
-        font-size:      var(--lg-font-size);
-        letter-spacing: var(--lg-letter-spacing);
-        line-height:    var(--lg-line-height);
-        min-height:     var(--lg-box-height);
-        padding-block:  calc((var(--lg-box-height) - var(--lg-line-height)) / 2);
+        min-height:    var(--lg-box-height);
+        padding-block: calc((var(--lg-box-height) - var(--lg-line-height)) / 2);
     }
     p[data-type="error"][data-size="lg"]::before {
         inset-block: calc((var(--lg-box-height) - var(--lg-line-height)) / 2);
     }
     p[data-type="error"][data-size="xl"] {
-        font-size:      var(--xl-font-size);
-        letter-spacing: var(--xl-letter-spacing);
-        line-height:    var(--xl-line-height);
-        min-height:     var(--xl-box-height);
-        padding-block:  calc((var(--xl-box-height) - var(--xl-line-height)) / 2);
+        min-height:    var(--xl-box-height);
+        padding-block: calc((var(--xl-box-height) - var(--xl-line-height)) / 2);
     }
     p[data-type="error"][data-size="xl"]::before {
         inset-block: calc((var(--xl-box-height) - var(--xl-line-height)) / 2);
     }
     p[data-type="error"][data-size="2xl"] {
-        font-size:      var(--2xl-font-size);
-        letter-spacing: var(--2xl-letter-spacing);
-        line-height:    var(--2xl-line-height);
-        min-height:     var(--2xl-box-height);
-        padding-block:  calc((var(--2xl-box-height) - var(--2xl-line-height)) / 2);
+        min-height:    var(--2xl-box-height);
+        padding-block: calc((var(--2xl-box-height) - var(--2xl-line-height)) / 2);
     }
     p[data-type="error"][data-size="2xl"]::before {
         inset-block: calc((var(--2xl-box-height) - var(--2xl-line-height)) / 2);
@@ -189,9 +176,6 @@
         section[data-type="error-summary"] > ul > li > a,
         section[data-type="error-summary"] > ul > li > a:is(:visited, :hover, :active) {
             color: LinkText;
-        }
-        section[data-type="error-summary"] > ul > li > a:focus-visible {
-            outline-color: Highlight;
         }
     }
 }

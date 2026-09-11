@@ -6,6 +6,8 @@
 
 @layer css.checkbox {
 
+    /* --- color, layout --- */
+
     label:has(> input[type="checkbox"]:not([role="switch"])),
     label:has(> input[type="checkbox"]:not([role="switch"])) > * {
         vertical-align: middle;
@@ -69,19 +71,20 @@
         translate:    0 -0.09375rem; /* 下辺のインク (太さ 0.1875rem) の半分だけ上へ */
     }
 
-    /* :focus-visible, :hover, :active */
-
-    label > input[type="checkbox"]:not([role="switch"]):focus-visible,
-    label > input[type="checkbox"]:not([role="switch"]):hover,
-    label > input[type="checkbox"]:not([role="switch"]):active {
-        outline-color:  var(--color-focus);
-        outline-offset: 0;
-        outline-style:  solid;
-        outline-width:  0.25rem;
-        z-index:        1;
+    @media (forced-colors: active) {
+        label > input[type="checkbox"]:not([role="switch"]) {
+            background-color: Canvas;
+            border-color:     CanvasText;
+        }
+        label > input[type="checkbox"]:not([role="switch"]):is(:checked, :indeterminate) {
+            background-color: CanvasText;
+        }
+        label > input[type="checkbox"]:not([role="switch"])::after {
+            border-color: Canvas; /* ✓/─ は border で描くため background ではなく border-color */
+        }
     }
 
-    /* [data-size] */
+    /* --- size --- */
 
     label > input[type="checkbox"]:not([role="switch"])[data-size="xs"] {
         border-radius: var(--xs-border-radius);
@@ -198,8 +201,28 @@
         inline-size:  calc(var(--2xl-box-height) / 2);
     }
 
-    /* :user-invalid, [aria-invalid="true"] */
-    
+    /* --- focus, hover, active --- */
+
+    label > input[type="checkbox"]:not([role="switch"]):focus-visible,
+    label > input[type="checkbox"]:not([role="switch"]):hover,
+    label > input[type="checkbox"]:not([role="switch"]):active {
+        outline-color:  var(--color-focus);
+        outline-offset: 0;
+        outline-style:  solid;
+        outline-width:  0.25rem;
+        z-index:        1;
+    }
+
+    @media (forced-colors: active) {
+        label > input[type="checkbox"]:not([role="switch"]):focus-visible,
+        label > input[type="checkbox"]:not([role="switch"]):hover,
+        label > input[type="checkbox"]:not([role="switch"]):active {
+            outline-color: Highlight;
+        }
+    }
+
+    /* --- invalid --- */
+
     label > input[type="checkbox"]:not([role="switch"]):user-invalid,
     label > input[type="checkbox"]:not([role="switch"])[aria-invalid="true"] {
         border-color: var(--color-error);
@@ -213,27 +236,7 @@
         outline-color: var(--color-error);
     }
 
-    /* forced-colors */
-
-    @media (forced-colors: active) {
-        label > input[type="checkbox"]:not([role="switch"]) {
-            background-color: Canvas;
-            border-color:     CanvasText;
-        }
-        label > input[type="checkbox"]:not([role="switch"]):is(:checked, :indeterminate) {
-            background-color: CanvasText;
-        }
-        label > input[type="checkbox"]:not([role="switch"])::after {
-            border-color: Canvas; /* ✓/─ は border で描くため background ではなく border-color */
-        }
-        label > input[type="checkbox"]:not([role="switch"]):focus-visible,
-        label > input[type="checkbox"]:not([role="switch"]):hover,
-        label > input[type="checkbox"]:not([role="switch"]):active {
-            outline-color: Highlight;
-        }
-    }
-
-    /* disabled, [aria-disabled="true"] */
+    /* --- disabled --- */
 
     label:has(> input[type="checkbox"]:not([role="switch"]):disabled),
     label:has(> input[type="checkbox"]:not([role="switch"])[aria-disabled="true"]) {

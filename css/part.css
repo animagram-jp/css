@@ -1,32 +1,5 @@
 @layer css.part {
 
-    *[data-style="rule-indent"] {
-        margin:         0;
-        padding-left:   1.5rem;
-        position:       relative;
-        outline:        0.125rem solid transparent;
-        outline-offset: 0.125rem;
-    }
-    *[data-style="rule-indent"]::before {
-        background-color: var(--color-emphasis);
-        bottom:           0;
-        content:          "";
-        left:             0;
-        position:         absolute;
-        top:              0;
-        width:            0.5rem;
-    }
-
-    /* forced-colors */
-
-    @media (forced-colors: active) {
-        *[data-style="rule-indent"]::before {
-            background-color: CanvasText;
-        }
-    }
-
-    /* [data-size] todo inline, block */
-
     /* [aria-orientation] todo */
 
     [aria-orientation="horizontal"] {}
@@ -38,12 +11,11 @@
 
     }
 
-    /* cite */
+    /* --- cite --- */
 
     cite {
         font-style: italic;
     }
-
     :lang(ja), :lang(zh), :lang(ko) {
         cite {
             font-style: normal;
@@ -81,6 +53,148 @@
             transparent 0.125rem,
             transparent 0.25rem
         );
+    }
+
+    /*  --- close (x) --- */
+
+    [data-icon="close"]::before,
+    [data-icon="close"]::after {
+        background-color: currentColor;
+        block-size:        0.125em;
+        content:           "";
+        inline-size:       0.75em;
+        inset:             0;
+        margin:            auto;
+        position:          absolute;
+    }
+    [data-icon="close"]::before {
+        rotate: 45deg;
+    }
+    [data-icon="close"]::after {
+        rotate: -45deg;
+    }
+
+    /*  --- chevron --- */
+
+    *[data-facet="chevron"]::after,
+    summary:not([data-facet])::after,
+    label:has(> select[data-facet="chevron"])::after,
+    button[aria-haspopup="listbox"]:not([data-facet])::after {
+        border-bottom:  var(--md-border-width) solid currentColor;
+        border-right:   var(--md-border-width) solid currentColor;
+        content:        "";
+        inset-block:    0;
+        margin-block:   auto;
+        pointer-events: none; /* let a click through to a select the marker overlays; harmless on the others, which are their own click target */
+        position:       absolute;
+        z-index:        2; /* above a focused select's own outline, as with search.css's magnifier */
+    }
+
+    *[data-facet="chevron"]:not([data-size])::after,
+    *[data-facet="chevron"][data-size="md"]::after,
+    summary:not([data-facet]):not([data-size])::after,
+    summary:not([data-facet])[data-size="md"]::after,
+    label:has(> select[data-facet="chevron"]:not([data-size]))::after,
+    label:has(> select[data-facet="chevron"][data-size="md"])::after,
+    button[aria-haspopup="listbox"]:not([data-facet]):not([data-size])::after,
+    button[aria-haspopup="listbox"]:not([data-facet])[data-size="md"]::after {
+        block-size:         calc(var(--md-font-size) * 0.75 * 1.06);
+        inline-size:        calc(var(--md-font-size) * 0.75 * 1.06);
+        inset-inline-end:   var(--md-border-radius);
+        transform:          translateY(-0.1875rem) rotate(45deg);
+    }
+    details[open] > summary:not([data-facet]):not([data-size])::after,
+    details[open] > summary:not([data-facet])[data-size="md"]::after,
+    [role="listbox"]:popover-open + button[aria-haspopup="listbox"]:not([data-facet]):not([data-size])::after,
+    [role="listbox"]:popover-open + button[aria-haspopup="listbox"]:not([data-facet])[data-size="md"]::after,
+    *[data-facet="chevron"]:not([data-size])[aria-expanded="true"]::after,
+    *[data-facet="chevron"][data-size="md"][aria-expanded="true"]::after {
+        transform: translateY(calc(3 / 16 * 1rem)) rotate(225deg);
+    }
+
+    *[data-facet="chevron"][data-size="xs"]::after,
+    summary:not([data-facet])[data-size="xs"]::after,
+    label:has(> select[data-facet="chevron"][data-size="xs"])::after,
+    button[aria-haspopup="listbox"]:not([data-facet])[data-size="xs"]::after {
+        block-size:          calc(var(--xs-font-size) * 0.75 * 1.06);
+        border-bottom-width: var(--xs-border-width);
+        border-right-width:  var(--xs-border-width);
+        inline-size:         calc(var(--xs-font-size) * 0.75 * 1.06);
+        inset-inline-end:    var(--xs-border-radius);
+        transform:           translateY(-0.125rem) rotate(45deg);
+    }
+    details[open] > summary:not([data-facet])[data-size="xs"]::after,
+    [role="listbox"]:popover-open + button[aria-haspopup="listbox"]:not([data-facet])[data-size="xs"]::after,
+    *[data-facet="chevron"][data-size="xs"][aria-expanded="true"]::after {
+        transform: translateY(calc(2 / 16 * 1rem)) rotate(225deg);
+    }
+
+    *[data-facet="chevron"][data-size="sm"]::after,
+    summary:not([data-facet])[data-size="sm"]::after,
+    label:has(> select[data-facet="chevron"][data-size="sm"])::after,
+    button[aria-haspopup="listbox"]:not([data-facet])[data-size="sm"]::after {
+        block-size:          calc(var(--sm-font-size) * 0.75 * 1.06);
+        border-bottom-width: var(--sm-border-width);
+        border-right-width:  var(--sm-border-width);
+        inline-size:         calc(var(--sm-font-size) * 0.75 * 1.06);
+        inset-inline-end:    var(--sm-border-radius);
+        transform:           translateY(-0.125rem) rotate(45deg);
+    }
+    details[open] > summary:not([data-facet])[data-size="sm"]::after,
+    [role="listbox"]:popover-open + button[aria-haspopup="listbox"]:not([data-facet])[data-size="sm"]::after,
+    *[data-facet="chevron"][data-size="sm"][aria-expanded="true"]::after {
+        transform: translateY(calc(2 / 16 * 1rem)) rotate(225deg);
+    }
+
+    *[data-facet="chevron"][data-size="lg"]::after,
+    summary:not([data-facet])[data-size="lg"]::after,
+    label:has(> select[data-facet="chevron"][data-size="lg"])::after,
+    button[aria-haspopup="listbox"]:not([data-facet])[data-size="lg"]::after {
+        block-size:          calc(var(--lg-font-size) * 0.6 * 1.06);
+        border-bottom-width: var(--lg-border-width);
+        border-right-width:  var(--lg-border-width);
+        inline-size:         calc(var(--lg-font-size) * 0.6 * 1.06);
+        inset-inline-end:    var(--lg-border-radius);
+        transform:           translateY(-0.125rem) rotate(45deg);
+    }
+    details[open] > summary:not([data-facet])[data-size="lg"]::after,
+    [role="listbox"]:popover-open + button[aria-haspopup="listbox"]:not([data-facet])[data-size="lg"]::after,
+    *[data-facet="chevron"][data-size="lg"][aria-expanded="true"]::after {
+        transform: translateY(calc(2 / 16 * 1rem)) rotate(225deg);
+    }
+
+    *[data-facet="chevron"][data-size="xl"]::after,
+    summary:not([data-facet])[data-size="xl"]::after,
+    label:has(> select[data-facet="chevron"][data-size="xl"])::after,
+    button[aria-haspopup="listbox"]:not([data-facet])[data-size="xl"]::after {
+        block-size:          calc(var(--xl-font-size) * 0.6 * 1.06);
+        border-bottom-width: var(--xl-border-width);
+        border-right-width:  var(--xl-border-width);
+        inline-size:         calc(var(--xl-font-size) * 0.6 * 1.06);
+        inset-inline-end:    var(--xl-border-radius);
+        transform:           translateY(-0.1875rem) rotate(45deg);
+    }
+    details[open] > summary:not([data-facet])[data-size="xl"]::after,
+    [role="listbox"]:popover-open + button[aria-haspopup="listbox"]:not([data-facet])[data-size="xl"]::after,
+    *[data-facet="chevron"][data-size="xl"][aria-expanded="true"]::after {
+        transform: translateY(calc(3 / 16 * 1rem)) rotate(225deg);
+    }
+
+    *[data-facet="chevron"][data-size="2xl"]::after,
+    summary:not([data-facet])[data-size="2xl"]::after,
+    label:has(> select[data-facet="chevron"][data-size="2xl"])::after,
+    button[aria-haspopup="listbox"]:not([data-facet])[data-size="2xl"]::after {
+        block-size:          calc(var(--2xl-font-size) * 0.6 * 1.06);
+        border-bottom-width: var(--2xl-border-width);
+        border-right-width:  var(--2xl-border-width);
+        inline-size:         calc(var(--2xl-font-size) * 0.6 * 1.06);
+        inset-inline-end:    var(--2xl-border-radius);
+        transform:           translateY(-0.25rem) rotate(45deg);
+    }
+    details[open] > summary:not([data-facet])[data-size="2xl"]::after,
+    [role="listbox"]:popover-open + button[aria-haspopup="listbox"]:not([data-facet])[data-size="2xl"]::after,
+    *[data-facet="chevron"][data-size="2xl"][aria-expanded="true"]::after {
+        transform: translateY(calc(4 / 16 * 1rem)) rotate(225deg);
     }
 
     /* Reference: https://github.com/yuto-hasegawa/sashimi-ui/blob/main/src/css/key-value.css */
@@ -153,15 +267,5 @@
     [aria-busy="true"] {
 
         }
-    }
-
-    fieldset {
-        border: none;
-        margin: 0;
-        padding: 0;
-    }
-    legend {
-        margin: 0;
-        padding: 0;
     }
 }

@@ -10,7 +10,9 @@
     Also see reference/style.js.
 */
 
-@layer css.toast {
+@layer src.toast {
+
+    /* --- color, layout --- */
 
     [data-type="toast"] {
         bottom:           1.5rem;
@@ -60,56 +62,19 @@
 
     @media (prefers-reduced-motion: no-preference) {
         output.hide {
-            transition-duration: 0.15s;
+            transition-duration: 150ms;
         }
     }
 
-    /* [data-style="outline"], :not([data-style]) */
+    /* [data-style="outline"], [data-style="fill"]
 
-    output:not([data-style]),
-    output[data-style="outline"] {
-        background-color: var(--color-paper);
-        border-color:      var(--color-mute);
-        color:              var(--color-ink);
-    }
-
-    output:not([data-style])[data-status="info"],
-    output[data-style="outline"][data-status="info"] {
-        border-inline-start-color: var(--color-emphasis);
-    }
-    output:not([data-style])[data-status="success"],
-    output[data-style="outline"][data-status="success"] {
-        border-inline-start-color: var(--color-success);
-    }
-    output:not([data-style])[data-status="warning"],
-    output[data-style="outline"][data-status="warning"] {
-        border-inline-start-color: var(--color-highlight);
-    }
-
-    /* [data-style="fill"] */
-
-    output[data-style="fill"] {
-        background-color: var(--color-ink);
-        border-color:      transparent;
-        color:              var(--color-paper);
-    }
-    output[data-style="fill"][data-status="info"] {
-        background-color: var(--color-emphasis-fill);
-        color:              var(--color-paper);
-    }
-    @media (prefers-color-scheme: dark) {
-        output[data-style="fill"][data-status="info"] {
-            color: var(--color-ink);
-        }
-    }
-    output[data-style="fill"][data-status="success"] {
-        background-color: var(--color-success);
-        color:              rgb(var(--rgb-black));
-    }
-    output[data-style="fill"][data-status="warning"] {
-        background-color: var(--color-highlight);
-        color:              rgb(var(--rgb-black));
-    }
+       Colour and box model are both delegated entirely to the common files:
+       data_style.css gives a bare (no [data-style]) output the same
+       implicit fill as a bare button, plus explicit outline; data_size.css
+       gives it border-radius/border-width/min-height/padding for
+       [data-size] (or its md default) the same way it already does for
+       button. Nothing status-specific is left -- see index.html and
+       style.js for the current (fill vs. outline) demo. */
 
     @media (forced-colors: active) {
         output {
@@ -117,130 +82,23 @@
             border-color:      ButtonBorder;
             color:              CanvasText;
         }
+        output:not([data-style]),
         output[data-style="fill"] {
             background-color: ButtonFace;
             color:              ButtonText;
         }
-        output[data-status] {
-            border-inline-start-color: Mark;
-        }
     }
 
-    /* === [data-size] === */
+    /* --- size --- */
 
-    output[data-size="xs"] {
-        border-inline-start-width: calc(var(--xs-border-width) * 2);
-        border-radius:             var(--xs-border-radius);
-        border-width:              var(--xs-border-width);
-        font-size:                 var(--xs-font-size);
-        letter-spacing:            var(--xs-letter-spacing);
-        line-height:               var(--xs-line-height);
-        min-block-size:            var(--xs-box-height);
-        padding-block:             calc(((var(--xs-box-height) - var(--xs-line-height)) / 2) - var(--xs-border-width));
-        padding-inline:            var(--xs-border-radius);
-    }
-    output[data-size="sm"] {
-        border-inline-start-width: calc(var(--sm-border-width) * 2);
-        border-radius:             var(--sm-border-radius);
-        border-width:              var(--sm-border-width);
-        font-size:                 var(--sm-font-size);
-        letter-spacing:            var(--sm-letter-spacing);
-        line-height:               var(--sm-line-height);
-        min-block-size:            var(--sm-box-height);
-        padding-block:             calc(((var(--sm-box-height) - var(--sm-line-height)) / 2) - var(--sm-border-width));
-        padding-inline:            var(--sm-border-radius);
-    }
-    output:not([data-size]),
-    output[data-size="md"] {
-        border-inline-start-width: calc(var(--md-border-width) * 2);
-        border-radius:             var(--md-border-radius);
-        border-width:              var(--md-border-width);
-        font-size:                 var(--md-font-size);
-        letter-spacing:            var(--md-letter-spacing);
-        line-height:               var(--md-line-height);
-        min-block-size:            var(--md-box-height);
-        padding-block:             calc(((var(--md-box-height) - var(--md-line-height)) / 2) - var(--md-border-width));
-        padding-inline:            var(--md-border-radius);
-    }
-    output[data-size="lg"] {
-        border-inline-start-width: calc(var(--lg-border-width) * 2);
-        border-radius:             var(--lg-border-radius);
-        border-width:              var(--lg-border-width);
-        font-size:                 var(--lg-font-size);
-        letter-spacing:            var(--lg-letter-spacing);
-        line-height:               var(--lg-line-height);
-        min-block-size:            var(--lg-box-height);
-        padding-block:             calc(((var(--lg-box-height) - var(--lg-line-height)) / 2) - var(--lg-border-width));
-        padding-inline:            var(--lg-border-radius);
-    }
-    output[data-size="xl"] {
-        border-inline-start-width: calc(var(--xl-border-width) * 2);
-        border-radius:             var(--xl-border-radius);
-        border-width:              var(--xl-border-width);
-        font-size:                 var(--xl-font-size);
-        letter-spacing:            var(--xl-letter-spacing);
-        line-height:               var(--xl-line-height);
-        min-block-size:            var(--xl-box-height);
-        padding-block:             calc(((var(--xl-box-height) - var(--xl-line-height)) / 2) - var(--xl-border-width));
-        padding-inline:            var(--xl-border-radius);
-    }
-    output[data-size="2xl"] {
-        border-inline-start-width: calc(var(--2xl-border-width) * 2);
-        border-radius:             var(--2xl-border-radius);
-        border-width:              var(--2xl-border-width);
-        font-size:                 var(--2xl-font-size);
-        letter-spacing:            var(--2xl-letter-spacing);
-        line-height:               var(--2xl-line-height);
-        min-block-size:            var(--2xl-box-height);
-        padding-block:             calc(((var(--2xl-box-height) - var(--2xl-line-height)) / 2) - var(--2xl-border-width));
-        padding-inline:            var(--2xl-border-radius);
-    }
+    /* === dismiss button (output > button) ===
 
-    /* === dismiss button (output > button) === */
+       [data-style="icon"] (data_style.css) is the generic icon-only-button
+       reset -- chrome, sizing, focus ring, hover. [data-icon="close"]
+       (part.css) draws the × itself. Only being a flex item is toast's own;
+       the markup carries both attributes (see style.js). */
 
     output > button {
-        all:         unset;
-        block-size:  1em;
-        cursor:      pointer;
         flex-shrink: 0;
-        font:        inherit;
-        inline-size: 1em;
-        position:    relative;
-    }
-
-    output > button::before,
-    output > button::after {
-        background-color: currentColor;
-        block-size:        0.125em;
-        content:           "";
-        inline-size:       0.75em;
-        inset:             0;
-        margin:            auto;
-        position:          absolute;
-    }
-    output > button::before {
-        rotate: 45deg;
-    }
-    output > button::after {
-        rotate: -45deg;
-    }
-
-    output > button:focus-visible {
-        outline-color:  var(--color-focus);
-        outline-offset: 0.125rem;
-        outline-style:  solid;
-        outline-width:  0.125rem;
-    }
-
-    @media (hover: hover) {
-        output > button:hover {
-            opacity: 0.7;
-        }
-    }
-
-    @media (forced-colors: active) {
-        output > button:focus-visible {
-            outline-color: Highlight;
-        }
     }
 }

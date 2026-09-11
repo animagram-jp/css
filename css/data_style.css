@@ -1,4 +1,4 @@
-@layer src.data_style {
+@layer css.data_style {
 
     /* === common for elements focusable === */
 
@@ -42,10 +42,7 @@
         z-index:        1;
     }
 
-    /* === surround fill style ===
-
-       output is listed alongside button so a bare (no [data-style])
-       toast.css <output> gets the same implicit fill a bare button does. */
+    /* === surround fill style === */
 
     *[data-style="fill"],
     :is(button, output):not([data-style]) {
@@ -140,6 +137,11 @@
         inset-inline-start: 0;
         position:           absolute;
         width:              0.5rem;
+    }
+    @media (forced-colors: active) {
+        *[data-style="rule-indent"]::before {
+            background-color: CanvasText;
+        }
     }
 
     /* when data-size */

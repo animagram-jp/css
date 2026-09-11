@@ -5,24 +5,26 @@
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <title>css examples</title>
     <link rel="icon" href="reference/animagram.png">
-    <link rel="stylesheet" href="css/reset.css">
-    <link rel="stylesheet" href="css/base.css">
-    <link rel="stylesheet" href="css/part.css">
-    <link rel="stylesheet" href="css/input.css">
-    <link rel="stylesheet" href="css/button.css">
-    <link rel="stylesheet" href="css/list-box.css">
-    <link rel="stylesheet" href="css/toggle.css">
-    <link rel="stylesheet" href="css/checkbox.css">
-    <link rel="stylesheet" href="css/radio.css">
-    <link rel="stylesheet" href="css/heading.css">
-    <link rel="stylesheet" href="css/search.css">
-    <link rel="stylesheet" href="css/table.css">
-    <link rel="stylesheet" href="css/slider.css">
-    <link rel="stylesheet" href="css/step.css">
-    <link rel="stylesheet" href="css/error.css">
-    <link rel="stylesheet" href="css/toast.css">
-    <link rel="stylesheet" href="reference/style.css">
-    <script src="reference/style.js" defer></script></head>
+    <link rel="stylesheet" href="./css/reset.css">
+    <link rel="stylesheet" href="./css/base.css">
+    <link rel="stylesheet" href="./css/part.css">
+    <link rel="stylesheet" href="./css/data_style.css">
+    <link rel="stylesheet" href="./css/data_size.css">
+    <link rel="stylesheet" href="./css/input.css">
+    <link rel="stylesheet" href="./css/button.css">
+    <link rel="stylesheet" href="./css/list-box.css">
+    <link rel="stylesheet" href="./css/toggle.css">
+    <link rel="stylesheet" href="./css/checkbox.css">
+    <link rel="stylesheet" href="./css/radio.css">
+    <link rel="stylesheet" href="./css/heading.css">
+    <link rel="stylesheet" href="./css/search.css">
+    <link rel="stylesheet" href="./css/table.css">
+    <link rel="stylesheet" href="./css/slider.css">
+    <link rel="stylesheet" href="./css/step.css">
+    <link rel="stylesheet" href="./css/error.css">
+    <link rel="stylesheet" href="./css/toast.css">
+    <link rel="stylesheet" href="./reference/style.css">
+    <script src="./reference/style.js" type="module"></script></head>
 <body>
     <header>
         <hgroup data-axis="inline" data-style="rule-indent">
@@ -56,10 +58,14 @@
     <dialog>
         <nav>
             <ul>
-                <li></li></ul>
-            </nav>
-    
-        </dialog>
+                <li></li></ul></nav></dialog>
+
+    <section>
+        <h2>inline flow or not, focusable or not.</h2>
+        <section>
+            <span>span</span>
+            <a href="#anchor">a</a>
+            <div data-style="rule-indent">div</div></section></section>
 
     <section>
         <h2>input, select, textarea</h2>
@@ -625,7 +631,7 @@
             <h3>search &gt; label &gt; select (no button)</h3>
             <search aria-label="Search">
                 <label>
-                    <select aria-label="Search scope">
+                    <select data-facet="chevron" aria-label="Search scope">
                         <option>All</option>
                         <option>Title</option>
                         <option>Body</option></select></label>
@@ -672,7 +678,7 @@
             <search aria-labelledby="search-c">
                 <span id="search-c">Inline text</span>
                 <label>
-                    <select aria-label="Search scope">
+                    <select data-facet="chevron" aria-label="Search scope">
                         <option>All</option>
                         <option>Title</option>
                         <option>Body</option></select></label>
@@ -681,7 +687,7 @@
                 <button type="button">Search</button></search>
             <search aria-label="Search">
                 <label>
-                    <select aria-label="Search scope">
+                    <select data-facet="chevron" aria-label="Search scope">
                         <option>All</option>
                         <option>Title</option>
                         <option>Body</option></select></label>
@@ -693,7 +699,7 @@
             <form role="search" aria-labelledby="search-d">
                 <span id="search-d">Inline text</span>
                 <label>
-                    <select name="scope" aria-label="Search scope">
+                    <select data-facet="chevron" name="scope" aria-label="Search scope">
                         <option>All</option>
                         <option>Title</option>
                         <option>Body</option></select></label>
@@ -702,7 +708,7 @@
                 <button type="submit">Search</button></form>
             <form role="search" aria-label="Search">
                 <label>
-                    <select name="scope" aria-label="Search scope">
+                    <select data-facet="chevron" name="scope" aria-label="Search scope">
                         <option>All</option>
                         <option>Title</option>
                         <option>Body</option></select></label>
@@ -713,7 +719,7 @@
             <h3>[data-size]</h3>
             <search aria-label="Search xs">
                 <label>
-                    <select data-size="xs" aria-label="Search scope">
+                    <select data-facet="chevron" data-size="xs" aria-label="Search scope">
                         <option>All</option>
                         <option>Title</option></select></label>
                 <label>
@@ -721,7 +727,7 @@
                 <button type="button" data-size="xs">Search</button></search>
             <search aria-label="Search sm">
                 <label>
-                    <select data-size="sm" aria-label="Search scope">
+                    <select data-facet="chevron" data-size="sm" aria-label="Search scope">
                         <option>All</option>
                         <option>Title</option></select></label>
                 <label>
@@ -729,7 +735,7 @@
                 <button type="button" data-size="sm">Search</button></search>
             <search aria-label="Search md">
                 <label>
-                    <select data-size="md" aria-label="Search scope">
+                    <select data-facet="chevron" data-size="md" aria-label="Search scope">
                         <option>All</option>
                         <option>Title</option></select></label>
                 <label>
@@ -737,7 +743,7 @@
                 <button type="button" data-size="md">Search</button></search>
             <search aria-label="Search lg">
                 <label>
-                    <select data-size="lg" aria-label="Search scope">
+                    <select data-facet="chevron" data-size="lg" aria-label="Search scope">
                         <option>All</option>
                         <option>Title</option></select></label>
                 <label>
@@ -745,7 +751,7 @@
                 <button type="button" data-size="lg">Search</button></search>
             <search aria-label="Search xl">
                 <label>
-                    <select data-size="xl" aria-label="Search scope">
+                    <select data-facet="chevron" data-size="xl" aria-label="Search scope">
                         <option>All</option>
                         <option>Title</option></select></label>
                 <label>
@@ -753,7 +759,7 @@
                 <button type="button" data-size="xl">Search</button></search>
             <search aria-label="Search 2xl">
                 <label>
-                    <select data-size="2xl" aria-label="Search scope">
+                    <select data-facet="chevron" data-size="2xl" aria-label="Search scope">
                         <option>All</option>
                         <option>Title</option></select></label>
                 <label>
@@ -1099,20 +1105,18 @@
 
     <section>
         <h2>Toast</h2>
-        <button type="button" onclick="jsFn.toast('info', 'New version available.')">Information</button>
-        <button type="button" onclick="jsFn.toast('success', 'Changes saved.')">Success</button>
-        <button type="button" onclick="jsFn.toast('warning', 'Connection is unstable.')">Warning</button>
-        <button type="button" onclick="jsFn.toast('warning', 'Connection is unstable.', { style: 'fill' })">[data-style="fill"]</button>
-        <button type="button" onclick="jsFn.toast('warning', 'Connection is unstable.', { size: 'xs' })">[data-size="xs"]</button>
-        <button type="button" onclick="jsFn.toast('warning', 'Connection is unstable.', { size: 'sm' })">[data-size="sm"]</button>
-        <button type="button" onclick="jsFn.toast('warning', 'Connection is unstable.')">([data-size="md"])</button>
-        <button type="button" onclick="jsFn.toast('warning', 'Connection is unstable.', { size: 'lg' })">[data-size="lg"]</button>
-        <button type="button" onclick="jsFn.toast('warning', 'Connection is unstable.', { size: 'xl' })">[data-size="xl"]</button>
-        <button type="button" onclick="jsFn.toast('warning', 'Connection is unstable.', { size: '2xl' })">[data-size="2xl"]</button></section>
+        <button type="button" onclick="jsFn.show(document.getElementById('toast_output-1'))">show (data-style="fill")</button>
+        <button type="button" onclick="jsFn.show(document.getElementById('toast_output-2'))">show data-style="outline"</button></section>
 
-    <section data-type="toast">
-        <output id="toast-slot-1" class="hidden"></output>
-        <output id="toast-slot-2" class="hidden"></output></section>
+    <section id="toast" data-type="toast">
+        <output id="toast_output-1" class="hidden">
+            <span id="toast_output-1_span"></span>
+            <p id="toast_output-1_p">(data-style="fill")</p>
+            <button type="button" data-style="icon" data-icon="close" aria-label="Dismiss notification" onclick="jsFn.hide(this.closest('output'))"></button></output>
+        <output id="toast_output-2" data-style="outline" class="hidden">
+            <span id="toast_output-2_span"></span>
+            <p id="toast_output-2_p">data-style="outline"</p>
+            <button type="button" data-style="icon" data-icon="close" aria-label="Dismiss notification" onclick="jsFn.hide(this.closest('output'))"></button></output></section>
 
 
 </section>

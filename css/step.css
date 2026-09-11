@@ -1,53 +1,36 @@
 /* step: a pair of controls that move a value in opposite directions. */
 
-/*  
-    <label>
+/*
+    <label data-style="group">
         <button type="button" data-action="decrement"></button>
         <input type="text" inputmode="numeric" pattern="[0-9]*" role="spinbutton">
         <button type="button" data-action="increment"></button></label>
 
     the buttons stack after the input, increment on top, and the two together are one box height.
 
-    <label data-axis="block">
+    <label data-style="group" data-axis="block">
         <input type="text" inputmode="numeric" pattern="[0-9]*" role="spinbutton">
         <button type="button" data-action="increment"></button>
         <button type="button" data-action="decrement"></button></label>
+
+    [data-style="group"] (data_style.css) supplies the shared border colour
+    either way, plus -- for the default (inline) axis only -- the nowrap,
+    inter-item spacing and corner-squaring. [data-axis="block"]'s
+    input-beside-stacked-buttons shape is its own 2-column grid, below.
 */
 
-@layer css.step {
+@layer src.step {
 
-    label:has(> input[inputmode="numeric"]) {
-        align-items: stretch;
-        display:     inline flex;
-    }
+    /* --- color, layout, size ---
 
-    label:has(> input[inputmode="numeric"]) > button[data-action] {
-        border-color: var(--color-mute);
-    }
-
-    /*  the state lives on the input, so the buttons follow it: without this the
-        group would show a mute outer line around an error-coloured middle. */
-
-    label:has(> input[inputmode="numeric"]:is(:user-invalid, [aria-invalid="true"])) > button[data-action] {
-        border-color: var(--color-error);
-    }
-
-    label:has(> input[inputmode="numeric"]) > input[inputmode="numeric"] {
-        /*  a spinbutton is read and corrected digit by digit, so the field does
-            not grow with its content the way a text input does. */
-        field-sizing: fixed;
-        flex:         0 1 auto;
-        min-inline-size: 0;
-    }
-
-    /* === buttons === */
-
-    /*  button.css already gives these the fill style, the focus ring, the
-        disabled treatment and the forced-colors fallbacks. only the geometry
-        and the glyph are set here. */
+       Organized below by axis variant (default inline, [data-axis="block"])
+       rather than split by category, since each one's geometry is its own
+       self-contained shape. The buttons and input are plain button/input
+       elements underneath, so --- focus, hover, active, invalid, disabled ---
+       need nothing step-specific: button.css and input.css already cover
+       them. */
 
     label:has(> input[inputmode="numeric"]) > button[data-action] {
-        flex:           0 0 auto;
         padding-inline: 0;
         position:       relative;
     }
@@ -138,26 +121,28 @@
         inline-size: var(--2xl-border-width);
     }
 
-    /* === corners and seams === */
+    /* === input === */
 
-    label:has(> input[inputmode="numeric"]) > button[data-action]:first-child {
-        border-end-end-radius:   0;
-        border-start-end-radius: 0;
-    }
-    label:has(> input[inputmode="numeric"]) > button[data-action]:last-child {
-        border-end-start-radius:   0;
-        border-start-start-radius: 0;
-    }
     label:has(> input[inputmode="numeric"]) > input[inputmode="numeric"] {
-        border-radius: 0;
+        /*  a spinbutton is read and corrected digit by digit, so the field does
+            not grow with its content the way a text input does. */
+        field-sizing:    fixed;
+        min-inline-size: 0;
     }
 
-    /*  the seam: the input and the button would each draw a line there, so the
-        input drops the edges it shares with them. every edge of the group is
-        then drawn exactly once, by whichever part owns the outside of it.
+    /* === seam ===
 
-        inline: buttons on both sides, so both inline edges go. the block form
-        overrides this below, where only the end edge is shared. */
+       [data-style="group"]'s default inter-item gap only applies to the
+       default (inline) axis, so [data-axis="block"] below needs no override.
+       For the inline run, the border itself is what's shared: the input and
+       its neighbours would each draw a line at that edge, so the input drops
+       the edges it shares with them and lets the buttons' own borders carry
+       the line alone. [data-style="group"]'s corner-squaring (data_style.css)
+       already rounds only the outer corners of the run. */
+
+    label:has(> input[inputmode="numeric"]) > * + * {
+        margin-inline-start: 0;
+    }
 
     label:has(> input[inputmode="numeric"]) > input[inputmode="numeric"] {
         border-inline-width: 0;
@@ -279,6 +264,52 @@
         border-start-start-radius: 0;
     }
 
+    /*  the one corner each button keeps (increment's outer top corner,
+        decrement's outer bottom corner) used to go unstated, left to
+        whatever border-radius default happened to still reach it. Restated
+        explicitly per size instead, so this variant stands on its own
+        regardless of what any other rule elsewhere does or stops doing. */
+
+    label:has(> input[inputmode="numeric"])[data-axis="block"] > button[data-action="increment"][data-size="xs"] {
+        border-start-end-radius: var(--xs-border-radius);
+    }
+    label:has(> input[inputmode="numeric"])[data-axis="block"] > button[data-action="increment"][data-size="sm"] {
+        border-start-end-radius: var(--sm-border-radius);
+    }
+    label:has(> input[inputmode="numeric"])[data-axis="block"] > button[data-action="increment"]:not([data-size]),
+    label:has(> input[inputmode="numeric"])[data-axis="block"] > button[data-action="increment"][data-size="md"] {
+        border-start-end-radius: var(--md-border-radius);
+    }
+    label:has(> input[inputmode="numeric"])[data-axis="block"] > button[data-action="increment"][data-size="lg"] {
+        border-start-end-radius: var(--lg-border-radius);
+    }
+    label:has(> input[inputmode="numeric"])[data-axis="block"] > button[data-action="increment"][data-size="xl"] {
+        border-start-end-radius: var(--xl-border-radius);
+    }
+    label:has(> input[inputmode="numeric"])[data-axis="block"] > button[data-action="increment"][data-size="2xl"] {
+        border-start-end-radius: var(--2xl-border-radius);
+    }
+
+    label:has(> input[inputmode="numeric"])[data-axis="block"] > button[data-action="decrement"][data-size="xs"] {
+        border-end-end-radius: var(--xs-border-radius);
+    }
+    label:has(> input[inputmode="numeric"])[data-axis="block"] > button[data-action="decrement"][data-size="sm"] {
+        border-end-end-radius: var(--sm-border-radius);
+    }
+    label:has(> input[inputmode="numeric"])[data-axis="block"] > button[data-action="decrement"]:not([data-size]),
+    label:has(> input[inputmode="numeric"])[data-axis="block"] > button[data-action="decrement"][data-size="md"] {
+        border-end-end-radius: var(--md-border-radius);
+    }
+    label:has(> input[inputmode="numeric"])[data-axis="block"] > button[data-action="decrement"][data-size="lg"] {
+        border-end-end-radius: var(--lg-border-radius);
+    }
+    label:has(> input[inputmode="numeric"])[data-axis="block"] > button[data-action="decrement"][data-size="xl"] {
+        border-end-end-radius: var(--xl-border-radius);
+    }
+    label:has(> input[inputmode="numeric"])[data-axis="block"] > button[data-action="decrement"][data-size="2xl"] {
+        border-end-end-radius: var(--2xl-border-radius);
+    }
+
     /* === sort (th > label > input[type="radio"]) === */
 
     /*  a column sorter: the pair picks a sort direction, so it is a radio group
@@ -328,7 +359,13 @@
         spinbutton names an amount. it is drawn with the border trick, a
         zero-sized box whose side borders are transparent and whose remaining
         border is the fill, because a mask-image is dropped under forced-colors
-        and would take the only cue for direction with it. */
+        and would take the only cue for direction with it.
+
+        this is a stacked pair too, like [data-axis="block"] above, but it
+        carries no border/fill of its own -- there is nothing for
+        [data-style="group"] to share here, so it uses [data-axis="block"]
+        alone as a plain layout marker, with its own layout below rather than
+        data_style.css's. */
 
     /*  the header text and its sorter stay on one line: the sorter is part of
         the label, not a second line under it. (moved here from css.table with

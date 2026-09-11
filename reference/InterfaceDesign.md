@@ -423,6 +423,32 @@ JIS C 0447(IEC60447:1993)の基本原則の規則化要素
 
 ---
 
+## Sign
+
+Sign (符号)は、その幾何学的性質を利用して、なるべく依存する文脈を少なく理解できるのが望ましい。Charles Sanders Peirce の Sign で言う、Index(因果関係)で Object(表現したい意味)と結びつくべきである。
+また、同じ場所にあり続け、試行できるインタラクティブ要素を表すとき、記号は変化せず、今現在の様子の信号とセットで使うべきである(例: toggle button)。
+試行すると同じ場所にあることのできない要素は、それがもたらす操作を表現する信号となることが望ましい(例: chevron button dropdown)。
+
+```
+˄ (U+02C4 MODIFIER LETTER UP ARROWHEAD)
+˅ (U+02C5 MODIFIER LETTER DOWN ARROWHEAD)
+˂ (U+02C2 MODIFIER LETTER LEFT ARROWHEAD)
+˃ (U+02C3 MODIFIER LETTER RIGHT ARROWHEAD)
+∘ (U+2218 RING OPERATOR)
+
+× (U+00D7 MULTIPLICATION SIGN)
+
++ (U+002B PLUS SIGN)
+☰ (U+2630 TRIGRAM FOR HEAVEN)
+⦀ (U+2980 TRIPLE VERTICAL BAR DELIMITER)
+⊤ (U+22A4 DOWN TACK)
+⊥ (U+22A5 UP TACK)
+⊢ (U+22A2 RIGHT TACK)
+⊣ (U+22A3 LEFT TACK)
+```
+
+---
+
 ## forced-colors: active
 
 - [W3C: CSS Color Adjustment Module Level 1](https://www.w3.org/TR/css-color-adjust-1/)

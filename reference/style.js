@@ -158,3 +158,5 @@ const jsFn = {
         toastCycles.set(el, { timer: fallback, controller });
     },
 };
+
+window.jsFn = jsFn;

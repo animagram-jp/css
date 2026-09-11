@@ -1,4 +1,4 @@
-/*  Usage: 
+/*  Usage:
 
     <label>
         <span></span>
@@ -25,6 +25,8 @@
 
 @layer css.radio {
 
+    /* --- color, layout --- */
+
     fieldset:has(> label > input[type="radio"]) {
         display: grid;
         border:  none;
@@ -33,9 +35,9 @@
         gap:     0.5rem;
     }
 
-    /* 
-        [data-axis="inline"] 
-        To fit vertical, needs grid-template-rows: repeat(N, ...); 
+    /*
+        [data-axis="inline"]
+        To fit vertical, needs grid-template-rows: repeat(N, ...);
     */
     fieldset:has(> label > input[type="radio"])[data-axis="inline"] {
         grid-template-columns: auto 1fr;
@@ -112,19 +114,17 @@
         background-color: var(--color-emphasis-fill);
     }
 
-    /* :focus-visible, :hover, :active */
-
-    label > input[type="radio"]:focus-visible,
-    label > input[type="radio"]:hover,
-    label > input[type="radio"]:active {
-        outline-color:  var(--color-focus);
-        outline-offset: 0;
-        outline-style:  solid;
-        outline-width:  0.25rem;
-        z-index:        1;
+    @media (forced-colors: active) {
+        label > input[type="radio"] {
+            background-color: Canvas;
+            border-color:     CanvasText;
+        }
+        label > input[type="radio"]:checked::after {
+            background-color: CanvasText;
+        }
     }
 
-    /* [data-size] */
+    /* --- size --- */
 
     label > input[type="radio"][data-size="xs"] {
         border-width: var(--xs-border-width);
@@ -200,7 +200,27 @@
         inset-inline-start: calc(var(--2xl-border-width) * 2);
     }
 
-    /* :user-invalid, [aria-invalid="true"] */
+    /* --- focus, hover, active --- */
+
+    label > input[type="radio"]:focus-visible,
+    label > input[type="radio"]:hover,
+    label > input[type="radio"]:active {
+        outline-color:  var(--color-focus);
+        outline-offset: 0;
+        outline-style:  solid;
+        outline-width:  0.25rem;
+        z-index:        1;
+    }
+
+    @media (forced-colors: active) {
+        label > input[type="radio"]:focus-visible,
+        label > input[type="radio"]:hover,
+        label > input[type="radio"]:active {
+            outline-color: Highlight;
+        }
+    }
+
+    /* --- invalid --- */
 
     label:has(> input[type="radio"]:user-invalid),
     label:has(> input[type="radio"][aria-invalid="true"]) {
@@ -219,24 +239,7 @@
         outline-color: var(--color-error);
     }
 
-    /* forced-colors */
-
-    @media (forced-colors: active) {
-        label > input[type="radio"] {
-            background-color: Canvas;
-            border-color:     CanvasText;
-        }
-        label > input[type="radio"]:checked::after {
-            background-color: CanvasText;
-        }
-        label > input[type="radio"]:focus-visible,
-        label > input[type="radio"]:hover,
-        label > input[type="radio"]:active {
-            outline-color: Highlight;
-        }
-    }
-
-    /* disabled, [aria-disabled="true"] */
+    /* --- disabled --- */
 
     label:has(> input[type="radio"]:disabled),
     label:has(> input[type="radio"][aria-disabled="true"]) {

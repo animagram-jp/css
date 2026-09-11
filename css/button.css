@@ -2,98 +2,38 @@
 
     /* === outline style (button, a, details > summary) === */
 
-    details > summary {
+    /* --- color, layout --- */
+
+    summary {
         cursor:      pointer;
         list-style:  none;
         position:    relative; /* summary::after {position: absolute}, :focus-visible {z-index:1} */
         user-select: none;
     }
 
-    details > summary ~ *:first-of-type {
+    summary ~ *:first-of-type {
         margin: 0;
     }
 
-    details > summary::after {
-        border-color: currentColor;
-        border-style: solid;
-        border-width: 0 0.125rem 0.125rem 0;
-        content:      "";
-        inset-block:  0;
-        margin-block: auto;
-        position:     absolute;
-        transform:    rotate(-135deg); /* ▶ */
-    }
+    /* summary::after (the ▼/▲ disclosure arrow) is part.css's [data-facet="chevron"]. */
+
     @media (prefers-reduced-motion: no-preference) {
-        details > summary::after {
-        transition: transform 150ms ease;
-       }
+        summary::after {
+            transition: transform 150ms ease;
+        }
     }
-    details[open] summary::after {
-        transform: rotate(45deg);  /* ▼ */
-    }
-
-    details[data-axis="inline"] {
-        /* todo: display: inline flow-root; */
-    }
-
-    /* [data-style] */
 
     button,
     a:is([data-style="fill"], [data-style="outline"]) {
         cursor:      pointer;
         display:     inline flow-root;
-        position:    relative; /* :focus-visible {z-index:1} */
         user-select: none;
         width:       auto;
     }
 
-    details > summary:is([data-style="fill"], [data-style="outline"]) {
+    summary:is([data-style="fill"], [data-style="outline"]) {
         display: inline flow-root;
         width:   auto;
-    }
-
-    [data-style="fill"],
-    button:not([data-style]),
-    :where(a)[data-style="fill"]:visited {
-        appearance:       none;
-        background-color: var(--color-emphasis-fill);
-        border-color:     transparent;
-        border-style:     solid;
-        color:            var(--color-paper);
-        margin:           0;
-    }
-    @media (prefers-color-scheme: dark) {
-        [data-style="fill"],
-        button:not([data-style]),
-        :where(a)[data-style="fill"]:visited {
-            color: var(--color-ink);
-        }
-    }
-
-    [data-style="outline"],
-    :where(a)[data-style="outline"]:visited {
-        appearance:       none;
-        background-color: transparent;
-        border-color:     var(--color-emphasis);
-        border-style:     solid;
-        color:            var(--color-emphasis);
-        margin:           0;
-        vertical-align:   middle;
-        width:            auto;
-    }
-
-    [data-style="underline"],
-    :where(a:any-link:not([data-style])),
-    :where(details) > summary:where(:not([data-style])) {
-        background-color:          var(--color-paper);
-        border:                    none;
-        box-decoration-break:      clone;
-        color:                     var(--color-emphasis);
-        margin:                    0;
-        text-decoration-color:     currentColor;
-        text-decoration-line:      underline;
-        text-decoration-thickness: 0.0625rem;
-        text-underline-offset:     0.3em;
     }
 
     @media (forced-colors: active) {
@@ -107,159 +47,47 @@
         }
     }
 
-    /* --- [data-size] --- */
+    /* --- size --- */
 
-    :is(a, button, details > summary)[data-size="xs"],
-    details > summary[data-size="xs"] ~ *:first-of-type {
-        border-radius:  var(--xs-border-radius);
-        border-width:   var(--xs-border-width);
-        font-size:      var(--xs-font-size);
-        letter-spacing: var(--xs-letter-spacing);
-        line-height:    var(--xs-line-height);
-        min-height:     var(--xs-box-height);
-        padding-block:  calc(((var(--xs-box-height) - var(--xs-line-height)) / 2) - var(--xs-border-width));
-        padding-inline: var(--xs-border-radius);
-    }
-    details > summary[data-size="xs"]::after {
-        block-size:       calc(var(--xs-font-size) * 0.75 * 1.06);
-        inline-size:      calc(var(--xs-font-size) * 0.75 * 1.06);
-        inset-inline-end: var(--xs-border-radius);
-        transform:        translateY(calc(2 / 16 * 1rem)) rotate(-135deg);
-    }
-    details[open] summary[data-size="xs"]::after {
-        transform: translateY(-0.125rem) rotate(45deg);
-    }
-    details > summary[data-size="xs"] {
+    /* [data-size] は data_size.css でカバー済み。summary::after の形状/回転は
+       part.css の [data-facet="chevron"] でカバー済み。右余白の確保のみ固有実装。 */
+
+    summary[data-size="xs"] {
         /* アイコンは absolute でレイアウトから抜けるため、右余白を明示的に確保する */
         padding-inline-end: calc(var(--xs-border-radius) * 2 + var(--xs-font-size) * 0.75 * 1.06);
     }
-    :is(a, button, details > summary)[data-size="sm"],
-    details > summary[data-size="sm"] ~ *:first-of-type {
-        border-radius:  var(--sm-border-radius);
-        border-width:   var(--sm-border-width);
-        font-size:      var(--sm-font-size);
-        letter-spacing: var(--sm-letter-spacing);
-        line-height:    var(--sm-line-height);
-        min-height:     var(--sm-box-height);
-        padding-block:  calc(((var(--sm-box-height) - var(--sm-line-height)) / 2) - var(--sm-border-width));
-        padding-inline: var(--sm-border-radius);
-    }
-    details > summary[data-size="sm"]::after {
-        block-size:       calc(var(--sm-font-size) * 0.75 * 1.06);
-        inline-size:      calc(var(--sm-font-size) * 0.75 * 1.06);
-        inset-inline-end: var(--sm-border-radius);
-        transform:        translateY(calc(2 / 16 * 1rem)) rotate(-135deg);
-    }
-    details[open] summary[data-size="sm"]::after {
-        transform: translateY(-0.125rem) rotate(45deg);
-    }
-    details > summary[data-size="sm"] {
+
+    summary[data-size="sm"] {
         /* アイコンは absolute でレイアウトから抜けるため、右余白を明示的に確保する */
         padding-inline-end: calc(var(--sm-border-radius) * 2 + var(--sm-font-size) * 0.75 * 1.06);
     }
-    :is(a, button, details > summary):not([data-size]),
-    :is(a, button, details > summary)[data-size="md"],
-    details > summary:not([data-size]) ~ *:first-of-type,
-    details > summary[data-size="md"] ~ *:first-of-type {
-        border-radius:  var(--md-border-radius);
-        border-width:   var(--md-border-width);
-        font-size:      var(--md-font-size);
-        letter-spacing: var(--md-letter-spacing);
-        line-height:    var(--md-line-height);
-        min-height:     var(--md-box-height);
-        padding-block:  calc(((var(--md-box-height) - var(--md-line-height)) / 2) - var(--md-border-width));
-        padding-inline: var(--md-border-radius);
-    }
-    details > summary:not([data-size])::after,
-    details > summary[data-size="md"]::after {
-        block-size:       calc(var(--md-font-size) * 0.75 * 1.06);
-        inline-size:      calc(var(--md-font-size) * 0.75 * 1.06);
-        inset-inline-end: var(--md-border-radius);
-        transform:        translateY(calc(3 / 16 * 1rem)) rotate(-135deg);
-    }
-    details[open] summary:not([data-size])::after,
-    details[open] summary[data-size="md"]::after {
-        transform: translateY(-0.1875rem) rotate(45deg);
-    }
-    details > summary:not([data-size]),
-    details > summary[data-size="md"] {
+
+    summary:not([data-size]),
+    summary[data-size="md"] {
         /* アイコンは absolute でレイアウトから抜けるため、右余白を明示的に確保する */
         padding-inline-end: calc(var(--md-border-radius) * 2 + var(--md-font-size) * 0.75 * 1.06);
     }
-    :is(a, button, details > summary)[data-size="lg"],
-    details > summary[data-size="lg"] ~ *:first-of-type {
-        border-radius:  var(--lg-border-radius);
-        border-width:   var(--lg-border-width);
-        font-size:      var(--lg-font-size);
-        letter-spacing: var(--lg-letter-spacing);
-        line-height:    var(--lg-line-height);
-        min-height:     var(--lg-box-height);
-        padding-block:  calc(((var(--lg-box-height) - var(--lg-line-height)) / 2) - var(--lg-border-width));
-        padding-inline: var(--lg-border-radius);
-    }
-    details > summary[data-size="lg"]::after {
-        block-size:       calc(var(--lg-font-size) * 0.6 * 1.06);
-        inline-size:      calc(var(--lg-font-size) * 0.6 * 1.06);
-        inset-inline-end: var(--lg-border-radius);
-        transform:        translateY(calc(2 / 16 * 1rem)) rotate(-135deg);
-    }
-    details[open] summary[data-size="lg"]::after {
-        transform: translateY(-0.125rem) rotate(45deg);
-    }
-    details > summary[data-size="lg"] {
+
+    summary[data-size="lg"] {
         /* アイコンは absolute でレイアウトから抜けるため、右余白を明示的に確保する */
         padding-inline-end: calc(var(--lg-border-radius) * 2 + var(--lg-font-size) * 0.6 * 1.06);
     }
-    :is(a, button, details > summary)[data-size="xl"],
-    details > summary[data-size="xl"] ~ *:first-of-type {
-        border-radius:  var(--xl-border-radius);
-        border-width:   var(--xl-border-width);
-        font-size:      var(--xl-font-size);
-        letter-spacing: var(--xl-letter-spacing);
-        line-height:    var(--xl-line-height);
-        min-height:     var(--xl-box-height);
-        padding-block:  calc(((var(--xl-box-height) - var(--xl-line-height)) / 2) - var(--xl-border-width));
-        padding-inline: var(--xl-border-radius);
-    }
-    details > summary[data-size="xl"]::after {
-        block-size:       calc(var(--xl-font-size) * 0.6 * 1.06);
-        inline-size:      calc(var(--xl-font-size) * 0.6 * 1.06);
-        inset-inline-end: var(--xl-border-radius);
-        transform:        translateY(calc(3 / 16 * 1rem)) rotate(-135deg);
-    }
-    details[open] summary[data-size="xl"]::after {
-        transform: translateY(-0.1875rem) rotate(45deg);
-    }
-    details > summary[data-size="xl"] {
+
+    summary[data-size="xl"] {
         /* アイコンは absolute でレイアウトから抜けるため、右余白を明示的に確保する */
         padding-inline-end: calc(var(--xl-border-radius) * 2 + var(--xl-font-size) * 0.6 * 1.06);
     }
-    :is(a, button, details > summary)[data-size="2xl"],
-    details > summary[data-size="2xl"] ~ *:first-of-type {
-        border-radius:  var(--2xl-border-radius);
-        border-width:   var(--2xl-border-width);
-        font-size:      var(--2xl-font-size);
-        letter-spacing: var(--2xl-letter-spacing);
-        line-height:    var(--2xl-line-height);
-        min-height:     var(--2xl-box-height);
-        padding-block:  calc(((var(--2xl-box-height) - var(--2xl-line-height)) / 2) - var(--2xl-border-width));
-        padding-inline: var(--2xl-border-radius);
-    }
-    details > summary[data-size="2xl"]::after {
-        block-size:       calc(var(--2xl-font-size) * 0.6 * 1.06);
-        inline-size:      calc(var(--2xl-font-size) * 0.6 * 1.06);
-        inset-inline-end: var(--2xl-border-radius);
-        transform:        translateY(calc(4 / 16 * 1rem)) rotate(-135deg);
-    }
-    details[open] summary[data-size="2xl"]::after {
-        transform: translateY(-0.25rem) rotate(45deg);
-    }
-    details > summary[data-size="2xl"] {
+
+    summary[data-size="2xl"] {
         /* アイコンは absolute でレイアウトから抜けるため、右余白を明示的に確保する */
         padding-inline-end: calc(var(--2xl-border-radius) * 2 + var(--2xl-font-size) * 0.6 * 1.06);
     }
 
-    /* :visited */
+    /* --- focus --- */
+
+    /* :focus-visible は data_style.css でカバー済み。 */
+
+    /* --- visited --- */
 
     :where(a):not([data-style="fill"], [data-style="outline"]):visited:not(:hover):not(:focus-visible):not([aria-disabled="true"]) {
         color: rgb(var(--rgb-accent-purple));
@@ -272,20 +100,10 @@
         }
     }
 
-    /* :focus-visible */
-
-    :is(a, button, details > summary):focus-visible {
-        outline-color:  var(--color-focus);
-        outline-offset: 0;
-        outline-style:  solid;
-        outline-width:  0.25rem;
-        z-index:        1;
-    }
-
-    /* :hover */
+    /* --- hover --- */
 
     @media (hover: hover) {
-        :is(a, button, details > summary):hover {
+        :is(a, button, summary):hover {
             text-decoration-color:     currentColor;
             text-decoration-line:      underline;
             text-decoration-thickness: max(0.1875rem, 0.12em); /* per GOV.UK (max(3px, 0.1875rem, 0.12em) の 3px = 0.1875rem) */
@@ -293,47 +111,45 @@
         }
     }
 
-    /* :user-invalid, [aria-invalid="true"] */
+    /* --- invalid --- */
 
-    :is(a, button, details > summary):user-invalid,
-    :is(a, button, details > summary)[aria-invalid="true"] {
+    :is(a, button, summary):user-invalid,
+    :is(a, button, summary)[aria-invalid="true"] {
         border-color: var(--color-error);
     }
 
-    /* :user-invalid:focus-visible, [aria-invalid="true"]:focus-visible */
-
-    :is(a, button, details > summary):user-invalid:focus-visible,
-    :is(a, button, details > summary)[aria-invalid="true"]:focus-visible {
+    :is(a, button, summary):user-invalid:focus-visible,
+    :is(a, button, summary)[aria-invalid="true"]:focus-visible {
         outline-color: var(--color-error);
     }
 
     @media (forced-colors: active) {
-        :is(a, button, details > summary):user-invalid,
-        :is(a, button, details > summary)[aria-invalid="true"] {
+        :is(a, button, summary):user-invalid,
+        :is(a, button, summary)[aria-invalid="true"] {
             border-color: Mark;
         }
-        :is(a, button, details > summary):user-invalid:focus-visible,
-        :is(a, button, details > summary)[aria-invalid="true"]:focus-visible {
+        :is(a, button, summary):user-invalid:focus-visible,
+        :is(a, button, summary)[aria-invalid="true"]:focus-visible {
             outline-color: Mark;
         }
     }
 
-    /* :active */
+    /* --- active --- */
 
-    :is(a, button, details > summary)[data-style="fill"]:active,
+    :is(a, button, summary)[data-style="fill"]:active,
     button:not([data-style]):active {
         background-color: var(--color-emphasis-fill-active);
         border-color:     var(--color-emphasis-fill);
     }
 
-    :is(a, button, details > summary)[data-style="outline"]:active {
+    :is(a, button, summary)[data-style="outline"]:active {
         background-color: var(--color-emphasis-fill-active);
         color:            var(--color-emphasis-active);
     }
 
-    :is(a, button, details > summary)[data-style="underline"]:active,
+    :is(a, button, summary)[data-style="underline"]:active,
     :where(a:any-link:not([data-style])):active,
-    details > summary:not([data-style]):active {
+    summary:not([data-style]):active {
         background-color: var(--color-emphasis-fill-active);
         color:            var(--color-emphasis-active);
     }
@@ -344,11 +160,11 @@
         }
     }
 
-    /* disabled, [aria-disabled="true"] */
+    /* --- disabled --- */
 
     *:is([data-style="outline"], [data-style="underline"]):disabled,
     *:is([data-style="outline"], [data-style="underline"])[aria-disabled="true"],
-    :is(a, button, details > summary)[aria-disabled="true"] {
+    :is(a, button, summary)[aria-disabled="true"] {
         border-color:   var(--color-mute);
         color:          var(--color-mute);
         cursor:         not-allowed;
@@ -357,8 +173,7 @@
     }
 
     /*  fill の無効時は地を mute で塗るため、文字色は上の mute を打ち消して
-        paper に戻す。currentColor で描かれる図形 (step.css の +- など) が
-        地に溶けるのを防ぐ。 */
+        paper に戻す。currentColor で描かれる図形が地に溶けるのを防ぐ。 */
     [data-style="fill"]:disabled,
     button:not([data-style]):disabled,
     [data-style="fill"][aria-disabled="true"],

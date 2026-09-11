@@ -1,146 +1,118 @@
 @layer css.input {
 
-    /* === input style (input, select, textarea) === */
+    /* === surround input style (input, select, textarea) === */
 
-    input:is([type="text"], [type="email"], [type="password"], [type="search"], [type="url"], [type="tel"]) {
-        appearance:       none;
+    /* --- color, layout --- */
+
+    input:where(
+        [type="text"], 
+        [type="email"], 
+        [type="password"], 
+        [type="search"], 
+        [type="url"], 
+        [type="tel"]
+    ),
+    select,
+    textarea {
         background-color: var(--color-paper);
         border-color:     var(--color-mute);
         border-style:     solid;
         field-sizing:     content;
-        position:         relative;
-        margin:           0;
         max-inline-size:  100%;
         min-inline-size:  7ch; /* per https://developer.chrome.com/docs/css-ui/css-field-sizing */
         vertical-align:   middle;
     }
-    select, textarea {
-        background-color: var(--color-paper);
-        border-color:     var(--color-mute);
-        border-style:     solid;
-        field-sizing:     content;
-        position:         relative;
-        margin:           0;
-        max-inline-size:  100%;
-        min-inline-size:  7ch; /* per https://developer.chrome.com/docs/css-ui/css-field-sizing */
-        vertical-align:   middle;
+
+    input:where(
+        [type="text"], 
+        [type="email"], 
+        [type="password"], 
+        [type="search"], 
+        [type="url"], 
+        [type="tel"]
+    ) {
+        appearance: none;
     }
-    input:is([type="text"], [type="email"], [type="password"], [type="search"], [type="url"], [type="tel"]),
+    
+    input:where(
+        [type="text"], 
+        [type="email"], 
+        [type="password"], 
+        [type="search"], 
+        [type="url"], 
+        [type="tel"]
+    ),
     textarea {
         caret-color: var(--color-mute);
         cursor:      text;
     }
-    input[inputmode="numeric"] {
-        text-align: right;
-    }
     select {
         cursor: pointer;
     }
+    input[inputmode="numeric"] {
+        text-align: right;
+    }
     textarea {
-        field-sizing: content;
         resize: none;
 
     }
 
     @media (forced-colors: active) {
-            input:not([type="button"], [type="submit"], [type="reset"], [type="checkbox"], [type="radio"]), textarea, select {
+        input:where(
+            [type="text"], 
+            [type="email"], 
+            [type="password"], 
+            [type="search"], 
+            [type="url"], 
+            [type="tel"]
+        ),
+        textarea, 
+        select {
             background-color: Field;
             border-color:     FieldText;
             color:            FieldText;
         }
     }
 
-    /* --- [data-size] --- */
+    /* --- size --- */
+    
+    /*　--- focus --- */
 
-    input:is([type="text"], [type="email"], [type="password"], [type="search"], [type="url"], [type="tel"])[data-size="xs"],
-    select[data-size="xs"], textarea[data-size="xs"] {
-        border-radius:  var(--xs-border-radius);
-        border-width:   var(--xs-border-width);
-        font-size:      var(--xs-font-size);
-        letter-spacing: var(--xs-letter-spacing);
-        line-height:    var(--xs-line-height);
-        min-height:     var(--xs-box-height);
-        padding-block: calc(((var(--xs-box-height) - var(--xs-line-height)) / 2) - var(--xs-border-width));
-    }
-    input:is([type="text"], [type="email"], [type="password"], [type="search"], [type="url"], [type="tel"])[data-size="sm"],
-    select[data-size="sm"], textarea[data-size="sm"] {
-        border-radius:  var(--sm-border-radius);
-        border-width:   var(--sm-border-width);
-        font-size:      var(--sm-font-size);
-        letter-spacing: var(--sm-letter-spacing);
-        line-height:    var(--sm-line-height);
-        min-height:     var(--sm-box-height);
-        padding-block: calc(((var(--sm-box-height) - var(--sm-line-height)) / 2) - var(--sm-border-width));
-    }
-    input:is([type="text"], [type="email"], [type="password"], [type="search"], [type="url"], [type="tel"]):not([data-size]),
-    select:not([data-size]), textarea:not([data-size]),
-    input:is([type="text"], [type="email"], [type="password"], [type="search"], [type="url"], [type="tel"])[data-size="md"],
-    select[data-size="md"], textarea[data-size="md"] {
-        border-radius:  var(--md-border-radius);
-        border-width:   var(--md-border-width);
-        font-size:      var(--md-font-size);
-        letter-spacing: var(--md-letter-spacing);
-        line-height:    var(--md-line-height);
-        min-height:     var(--md-box-height);
-        padding-block: calc(((var(--md-box-height) - var(--md-line-height)) / 2) - var(--md-border-width));
-    }
-    input:is([type="text"], [type="email"], [type="password"], [type="search"], [type="url"], [type="tel"])[data-size="lg"],
-    select[data-size="lg"], textarea[data-size="lg"] {
-        border-radius:  var(--lg-border-radius);
-        border-width:   var(--lg-border-width);
-        font-size:      var(--lg-font-size);
-        letter-spacing: var(--lg-letter-spacing);
-        line-height:    var(--lg-line-height);
-        min-height:     var(--lg-box-height);
-        padding-block: calc(((var(--lg-box-height) - var(--lg-line-height)) / 2) - var(--lg-border-width));
-    }
-    input:is([type="text"], [type="email"], [type="password"], [type="search"], [type="url"], [type="tel"])[data-size="xl"],
-    select[data-size="xl"], textarea[data-size="xl"] {
-        border-radius:  var(--xl-border-radius);
-        border-width:   var(--xl-border-width);
-        font-size:      var(--xl-font-size);
-        letter-spacing: var(--xl-letter-spacing);
-        line-height:    var(--xl-line-height);
-        min-height:     var(--xl-box-height);
-        padding-block: calc(((var(--xl-box-height) - var(--xl-line-height)) / 2) - var(--xl-border-width));
-    }
-    input:is([type="text"], [type="email"], [type="password"], [type="search"], [type="url"], [type="tel"])[data-size="2xl"],
-    select[data-size="2xl"], textarea[data-size="2xl"] {
-        border-radius:  var(--2xl-border-radius);
-        border-width:   var(--2xl-border-width);
-        font-size:      var(--2xl-font-size);
-        letter-spacing: var(--2xl-letter-spacing);
-        line-height:    var(--2xl-line-height);
-        min-height:     var(--2xl-box-height);
-        padding-block: calc(((var(--2xl-box-height) - var(--2xl-line-height)) / 2) - var(--2xl-border-width));
-    }
+    /* --- invalid --- */
 
-    /* :focus-visible */
-
-    input:is([type="text"], [type="email"], [type="password"], [type="search"], [type="url"], [type="tel"]):focus-visible,
-    select:focus-visible, textarea:focus-visible {
-        outline-color:  var(--color-focus);
-        outline-offset: 0;
-        outline-style:  solid;
-        outline-width:  0.25rem;
-        z-index:        1;
-    }
-
-    /* :user-invalid, [aria-invalid="true"] */
-
-    input:is([type="text"], [type="email"], [type="password"], [type="search"], [type="url"], [type="tel"]):user-invalid,
-    select:user-invalid, textarea:user-invalid,
-    input:is([type="text"], [type="email"], [type="password"], [type="search"], [type="url"], [type="tel"])[aria-invalid="true"],
-    select[aria-invalid="true"], textarea[aria-invalid="true"] {
+    :is(
+        input:is(
+            [type="text"], 
+            [type="email"], 
+            [type="password"], 
+            [type="search"], 
+            [type="url"], 
+            [type="tel"]
+        ),
+        select,
+        textarea
+    ):where(
+        :user-invalid,
+        [aria-invalid="true"]
+    ) {
         border-color: var(--color-error);
     }
 
-    /* :user-invalid:focus-visible, [aria-invalid="true"]:focus-visible */
-
-    input:is([type="text"], [type="email"], [type="password"], [type="search"], [type="url"], [type="tel"]):user-invalid:focus-visible,
-    select:user-invalid:focus-visible, textarea:user-invalid:focus-visible,
-    input:is([type="text"], [type="email"], [type="password"], [type="search"], [type="url"], [type="tel"])[aria-invalid="true"]:focus-visible,
-    select[aria-invalid="true"]:focus-visible, textarea[aria-invalid="true"]:focus-visible {
+    :is(
+        input:is(
+            [type="text"], 
+            [type="email"], 
+            [type="password"], 
+            [type="search"], 
+            [type="url"], 
+            [type="tel"]
+        ),
+        select,
+        textarea
+    ):where(
+        :user-invalid,
+        [aria-invalid="true"]
+    ):focus-visible {
         outline-color: var(--color-error);
     }
 
@@ -153,7 +125,7 @@
         }
     }
 
-    /* disabled, [aria-disabled="true"] */
+    /* --- disabled --- */
 
     :is(input, select, textarea):disabled, :is(input, select, textarea)[aria-disabled="true"] {
         border-color:   var(--color-mute);

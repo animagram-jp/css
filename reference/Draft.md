@@ -1,5 +1,7 @@
 # Footnote
 
+/* data variant: inline editor with select option */
+
 ```html
 <sup></sup>
 <sub></sub>

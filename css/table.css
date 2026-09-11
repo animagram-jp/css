@@ -14,9 +14,11 @@
     (a sortable column header is in step.css)
 */
 
-@layer css.table {
+@layer src.table {
 
     /* === table === */
+
+    /* --- color, layout --- */
 
     /*
     * Cells are separated by rules rather than by fill, so the borders are
@@ -70,11 +72,13 @@
 
     /* === [data-size] === */
 
-    table[data-size="xs"] {
-        font-size:      var(--xs-font-size);
-        letter-spacing: var(--xs-letter-spacing);
-        line-height:    var(--xs-line-height);
-    }
+    /* --- size ---
+
+       table[data-size] 自体の font-size/letter-spacing/line-height は
+       data_size.css の *[data-size] (要素を問わない汎用ルール) でカバー済み。
+       td/th の padding、caption の font-size のみ固有実装 (caption は
+       table 自身の [data-size] を継承するため、汎用ルールでは届かない)。 */
+
     table[data-size="xs"] :is(td, th) {
         padding-block:  calc((var(--xs-box-height) - var(--xs-line-height)) / 2);
         padding-inline: var(--xs-border-radius);
@@ -83,11 +87,6 @@
         font-size: var(--xs-font-size);
     }
 
-    table[data-size="sm"] {
-        font-size:      var(--sm-font-size);
-        letter-spacing: var(--sm-letter-spacing);
-        line-height:    var(--sm-line-height);
-    }
     table[data-size="sm"] :is(td, th) {
         padding-block:  calc((var(--sm-box-height) - var(--sm-line-height)) / 2);
         padding-inline: var(--sm-border-radius);
@@ -96,11 +95,6 @@
         font-size: var(--sm-font-size);
     }
 
-    table[data-size="lg"] {
-        font-size:      var(--lg-font-size);
-        letter-spacing: var(--lg-letter-spacing);
-        line-height:    var(--lg-line-height);
-    }
     table[data-size="lg"] :is(td, th) {
         padding-block:  calc((var(--lg-box-height) - var(--lg-line-height)) / 2);
         padding-inline: var(--lg-border-radius);
@@ -109,11 +103,6 @@
         font-size: var(--lg-font-size);
     }
 
-    table[data-size="xl"] {
-        font-size:      var(--xl-font-size);
-        letter-spacing: var(--xl-letter-spacing);
-        line-height:    var(--xl-line-height);
-    }
     table[data-size="xl"] :is(td, th) {
         padding-block:  calc((var(--xl-box-height) - var(--xl-line-height)) / 2);
         padding-inline: var(--xl-border-radius);
@@ -122,11 +111,6 @@
         font-size: var(--xl-font-size);
     }
 
-    table[data-size="2xl"] {
-        font-size:      var(--2xl-font-size);
-        letter-spacing: var(--2xl-letter-spacing);
-        line-height:    var(--2xl-line-height);
-    }
     table[data-size="2xl"] :is(td, th) {
         padding-block:  calc((var(--2xl-box-height) - var(--2xl-line-height)) / 2);
         padding-inline: var(--2xl-border-radius);
@@ -167,6 +151,8 @@
     }
 
     /* === [data-hover] === */
+
+    /* --- hover --- */
 
     @media (hover: hover) {
         table[data-hover] tbody tr:hover {
