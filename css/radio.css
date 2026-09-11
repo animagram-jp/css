@@ -222,10 +222,6 @@
 
     /* --- invalid --- */
 
-    label:has(> input[type="radio"]:user-invalid),
-    label:has(> input[type="radio"][aria-invalid="true"]) {
-        color: var(--color-ink);
-    }
     label > input[type="radio"]:user-invalid,
     label > input[type="radio"][aria-invalid="true"] {
         border-color: var(--color-error);
@@ -237,6 +233,21 @@
     label > input[type="radio"]:user-invalid:focus-visible,
     label > input[type="radio"][aria-invalid="true"]:focus-visible {
         outline-color: var(--color-error);
+    }
+
+    @media (forced-colors: active) {
+        label > input[type="radio"]:user-invalid,
+        label > input[type="radio"][aria-invalid="true"] {
+            border-color: Mark;
+        }
+        label > input[type="radio"]:user-invalid:checked::after,
+        label > input[type="radio"][aria-invalid="true"]:checked::after {
+            background-color: Mark;
+        }
+        label > input[type="radio"]:user-invalid:focus-visible,
+        label > input[type="radio"][aria-invalid="true"]:focus-visible {
+            outline-color: Mark;
+        }
     }
 
     /* --- disabled --- */
