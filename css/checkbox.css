@@ -236,6 +236,21 @@
         outline-color: var(--color-error);
     }
 
+    @media (forced-colors: active) {
+        label > input[type="checkbox"]:not([role="switch"]):user-invalid,
+        label > input[type="checkbox"]:not([role="switch"])[aria-invalid="true"] {
+            border-color: Mark;
+        }
+        label > input[type="checkbox"]:not([role="switch"]):user-invalid:is(:checked, :indeterminate),
+        label > input[type="checkbox"]:not([role="switch"])[aria-invalid="true"]:is(:checked, :indeterminate) {
+            background-color: Mark;
+        }
+        label > input[type="checkbox"]:not([role="switch"]):user-invalid:focus-visible,
+        label > input[type="checkbox"]:not([role="switch"])[aria-invalid="true"]:focus-visible {
+            outline-color: Mark;
+        }
+    }
+
     /* --- disabled --- */
 
     label:has(> input[type="checkbox"]:not([role="switch"]):disabled),
