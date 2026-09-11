@@ -1,42 +1,27 @@
-/* step: a pair of controls that move a value in opposite directions. */
+/*  Usage:
 
-/*
-    <label data-style="group">
-        <button type="button" data-action="decrement"></button>
+    <label>
+        <button type="button" tabindex="-1" aria-label="decrement"></button>
         <input type="text" inputmode="numeric" pattern="[0-9]*" role="spinbutton">
-        <button type="button" data-action="increment"></button></label>
+        <button type="button" tabindex="-1" aria-label="increment"></button></label>
 
-    the buttons stack after the input, increment on top, and the two together are one box height.
-
-    <label data-style="group" data-axis="block">
+    <label data-axis="block">
         <input type="text" inputmode="numeric" pattern="[0-9]*" role="spinbutton">
-        <button type="button" data-action="increment"></button>
-        <button type="button" data-action="decrement"></button></label>
-
-    [data-style="group"] (data_style.css) supplies the shared border colour
-    either way, plus -- for the default (inline) axis only -- the nowrap,
-    inter-item spacing and corner-squaring. [data-axis="block"]'s
-    input-beside-stacked-buttons shape is its own 2-column grid, below.
+        <button type="button" tabindex="-1" aria-label="increment"></button>
+        <button type="button" tabindex="-1" aria-label="decrement"></button></label>
 */
 
 @layer css.step {
 
-    /* --- color, layout, size ---
+    /* === color, layout === */
 
-       Organized below by axis variant (default inline, [data-axis="block"])
-       rather than split by category, since each one's geometry is its own
-       self-contained shape. The buttons and input are plain button/input
-       elements underneath, so --- focus, hover, active, invalid, disabled ---
-       need nothing step-specific: button.css and input.css already cover
-       them. */
-
-    label:has(> input[inputmode="numeric"]) > button[data-action] {
+    label:has(> input[role="spinbutton"]) > button {
         padding-inline: 0;
         position:       relative;
     }
 
-    label:has(> input[inputmode="numeric"]) > button[data-action]:empty::after,
-    label:has(> input[inputmode="numeric"]) > button[data-action="increment"]:empty::before {
+    label:has(> input[role="spinbutton"]) > button[data-action]:empty::after,
+    label:has(> input[role="spinbutton"]) > button[data-action="increment"]:empty::before {
         background-color: currentColor;
         content:          "";
         inset:            0;
@@ -44,7 +29,7 @@
         position:         absolute;
     }
 
-    /* === [data-size] === */
+    /* === size === */
 
     label:has(> input[inputmode="numeric"]) > button[data-action][data-size="xs"] {
         inline-size: var(--xs-box-height);
@@ -130,25 +115,7 @@
         min-inline-size: 0;
     }
 
-    /* === seam ===
-
-       [data-style="group"]'s default inter-item gap only applies to the
-       default (inline) axis, so [data-axis="block"] below needs no override.
-       For the inline run, the border itself is what's shared: the input and
-       its neighbours would each draw a line at that edge, so the input drops
-       the edges it shares with them and lets the buttons' own borders carry
-       the line alone. [data-style="group"]'s corner-squaring (data_style.css)
-       already rounds only the outer corners of the run. */
-
-    label:has(> input[inputmode="numeric"]) > * + * {
-        margin-inline-start: 0;
-    }
-
-    label:has(> input[inputmode="numeric"]) > input[inputmode="numeric"] {
-        border-inline-width: 0;
-    }
-
-    /* === label[data-axis="block"] === */
+    /* === [data-axis="block"] === */
 
     label:has(> input[inputmode="numeric"])[data-axis="block"] {
         display:               inline grid;
@@ -363,9 +330,9 @@
 
         this is a stacked pair too, like [data-axis="block"] above, but it
         carries no border/fill of its own -- there is nothing for
-        [data-style="group"] to share here, so it uses [data-axis="block"]
+        [data-group="inline"] to share here, so it uses [data-axis="block"]
         alone as a plain layout marker, with its own layout below rather than
-        data_style.css's. */
+        data_group.css's. */
 
     /*  the header text and its sorter stay on one line: the sorter is part of
         the label, not a second line under it. (moved here from css.table with

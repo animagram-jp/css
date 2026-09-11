@@ -3,70 +3,63 @@
         <input type="search"></label>
 
     <search aria-labelledby="">
-        <span id="">Inline text</span>
+        <span id=""></span>
         <label>
             <input type="search"></label>
-        <button type="button"></button>
-    </search>
+        <button type="button"></button></search>
 
     <form role="search" aria-labelledby="">
-        <span id="">Inline text</span>
+        <span id=""></span>
         <label>
             <input type="search" name=""></label>
-        <button type="submit"></button>
-    </form>
+        <button type="submit"></button></form>
 
     <search aria-labelledby="">
-        <span id="">Inline text</span>
+        <span id=""></span>
         <label>
             <select>
                 <option></option>
                 <option></option></select></label>
         <label>
             <input type="search"></label>
-        <button type="button"></button>
-    </search>
+        <button type="button"></button></search>
 
     <form role="search" aria-labelledby="">
-        <span id="">Inline text</span>
+        <span id=""></span>
         <label>
             <select>
                 <option></option>
                 <option></option></select></label>
         <label>
             <input type="search" name=""></label>
-        <button type="submit"></button>
-    </form>
+        <button type="submit"></button></form>
 */
 
 @layer css.search {
 
-    /* --- color, layout, size ---
-
-       Organized below by sub-element (label, magnifier, search box, scope
-       select) rather than split by category -- each one's colour and its
-       [data-size] geometry belong together (e.g. the magnifier's lens/handle
-       size formula), so they aren't pulled apart into separate blocks here. */
+    /* --- color, layout, size --- */
 
     /* === container (search, form[role="search"]) ===
 
-       white-space, child vertical-align, leading-label spacing, inter-child
-       spacing, squared inner corners and the shared button border colour are
-       all covered by data_style.css's [data-style="group"] style, which also
-       matches :is(search, form[role="search"]) by tag. Nothing left to add
-       here for the container itself. */
+       white-space, child vertical-align, leading-label spacing, squared
+       inner corners and the shared button border colour are all covered by
+       data_group.css's [data-group="inline"] style, which also matches
+       :is(search, form[role="search"]) by tag. Nothing left to add here for
+       the container itself. */
 
-    /* --- focus ---
-
-       input[type="search"] and select are both in data_style.css's common
-       focusable list, so their focus ring needs nothing search-specific. */
+    /* --- focus --- */
 
     /* === label === */
 
-    /* Hosts the ::before/::after markers, since input[type="search"] and select are replaced elements. inline flow-root also closes off inter-label whitespace from source linebreaks. A select only needs this when it actually carries a marker ([data-facet="chevron"]); input[type="search"] always does (the magnifier). */
     label:has(> input[type="search"], > select[data-facet="chevron"]) {
         display:  inline flow-root;
         position: relative;
+    }
+
+        /* leading label text ahead of the group (search > span) */
+
+    :is(search, form[role="search"]) > span {
+        margin-inline-end: 0.5em;
     }
 
     /* === magnifier (label:has(> input[type="search"]) pseudo-elements) === */

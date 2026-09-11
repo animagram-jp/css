@@ -94,7 +94,7 @@
     /* === dismiss button (output > button) ===
 
        [data-style="icon"] (data_style.css) is the generic icon-only-button
-       reset -- chrome, sizing, focus ring, hover. [data-icon="close"]
+       reset -- chrome, sizing, focus ring, hover. [data-sign="close"]
        (part.css) draws the × itself. Only being a flex item is toast's own;
        the markup carries both attributes (see style.js). */
 

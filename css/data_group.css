@@ -1,0 +1,61 @@
+@layer css.data_group {
+
+    :where(
+        *[data-group="inline"],
+        search,
+        form[role="search"],
+        label:has(> *[role="spinbutton"]),
+    ) {
+        font-size:  0;
+        white-space: nowrap;
+        width: fit-content;
+    }
+
+    :where(
+        *[data-group="inline"],
+        search,
+        form[role="search"],
+        label:has(> *[role="spinbutton"]),
+    ) > * {
+        vertical-align: middle;
+    }
+
+    /* --- squared inner corners --- */
+
+    *[data-group="inline"] > label:not(:last-child) > :where(input:is([type="text"], [type="email"], [type="password"], [type="search"], [type="url"], [type="tel"]), select),
+    *[data-group="inline"] > :where(:where(button, input:is([type="text"], [type="email"], [type="password"], [type="search"], [type="url"], [type="tel"]), select, textarea):not([data-style]), [data-style="fill"], [data-style="outline"]):not(:last-child),
+    :is(search, form[role="search"]) > label:not(:last-child) > :is(input, select),
+    :is(search, form[role="search"]) > button:not(:last-child) {
+        border-end-end-radius:   0;
+        border-start-end-radius: 0;
+    }
+    *[data-group="inline"] > :where(label, button, input, select) ~ label > :where(input:is([type="text"], [type="email"], [type="password"], [type="search"], [type="url"], [type="tel"]), select),
+    *[data-group="inline"] > :where(label, button, input, select) ~ :where(:where(button, input:is([type="text"], [type="email"], [type="password"], [type="search"], [type="url"], [type="tel"]), select, textarea):not([data-style]), [data-style="fill"], [data-style="outline"]),
+    :is(search, form[role="search"]) > label ~ label > :is(input, select),
+    :is(search, form[role="search"]) > label ~ button {
+        border-end-start-radius:   0;
+        border-start-start-radius: 0;
+    }
+
+    /* --- shared border colour ---
+
+       A plain button in the group matches the border of its neighbours at
+       rest, and turns error-coloured when a contained control is invalid.
+       Layout-independent: this is the one piece a block-axis group (e.g.
+       step.css's stepper) still takes from here. */
+
+    *[data-group="inline"] > button:not(:active),
+    :is(search, form[role="search"]) > button:not(:active) {
+        border-color: var(--color-mute);
+    }
+    *[data-group="inline"]:has(:is(:user-invalid, [aria-invalid="true"])) > button:not(:active),
+    :is(search, form[role="search"]):has(:is(:user-invalid, [aria-invalid="true"])) > button:not(:active) {
+        border-color: var(--color-error);
+    }
+    @media (forced-colors: active) {
+        *[data-group="inline"] > button:not(:active),
+        :is(search, form[role="search"]) > button:not(:active) {
+            border-color: ButtonBorder;
+        }
+    }
+}

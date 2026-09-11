@@ -7,9 +7,10 @@
     <link rel="icon" href="reference/animagram.png">
     <link rel="stylesheet" href="./css/reset.css">
     <link rel="stylesheet" href="./css/base.css">
-    <link rel="stylesheet" href="./css/part.css">
-    <link rel="stylesheet" href="./css/data_style.css">
+    <link rel="stylesheet" href="./css/data_sign.css">
+    <link rel="stylesheet" href="./css/data_group.css">
     <link rel="stylesheet" href="./css/data_size.css">
+    <link rel="stylesheet" href="./css/data_style.css">
     <link rel="stylesheet" href="./css/input.css">
     <link rel="stylesheet" href="./css/button.css">
     <link rel="stylesheet" href="./css/list-box.css">
@@ -64,6 +65,16 @@
         <h2>inline flow or not, focusable or not.</h2>
         <section>
             <span>span</span>
+            <a href="#anchor">a</a>
+            <div data-style="rule-indent">div</div></section></section>
+
+    <section>
+        <h2>Select</h2>
+        <section>
+            <label>
+                <select data-facet="chevron">
+                    <option>option</option>
+                    <option>option</option></select></label>
             <a href="#anchor">a</a>
             <div data-style="rule-indent">div</div></section></section>
 
@@ -468,71 +479,71 @@
     <section>
         <h2>Step button (button[data-action] + input[role="spinbutton"])</h2>
         <section data-style="rule-indent">
-            <label>
+            <label data-group="inline">
                 <button type="button" data-action="decrement"></button>
                 <input type="text" inputmode="numeric" pattern="[0-9]*" role="spinbutton" value="10" size="4">
                 <button type="button" data-action="increment"></button></label></section>
         <section data-style="rule-indent">
             <h3>[data-size]</h3>
-            <label>
+            <label data-group="inline">
                 <button type="button" data-action="decrement" data-size="xs"></button>
                 <input type="text" inputmode="numeric" pattern="[0-9]*" role="spinbutton" value="10" size="3" data-size="xs">
                 <button type="button" data-action="increment" data-size="xs"></button></label>
-            <label>
+            <label data-group="inline">
                 <button type="button" data-action="decrement" data-size="sm"></button>
                 <input type="text" inputmode="numeric" pattern="[0-9]*" role="spinbutton" value="10" size="3" data-size="sm">
                 <button type="button" data-action="increment" data-size="sm"></button></label>
-            <label>
+            <label data-group="inline">
                 <button type="button" data-action="decrement" data-size="md"></button>
                 <input type="text" inputmode="numeric" pattern="[0-9]*" role="spinbutton" value="10" size="3" data-size="md">
                 <button type="button" data-action="increment" data-size="md"></button></label>
-            <label>
+            <label data-group="inline">
                 <button type="button" data-action="decrement" data-size="lg"></button>
                 <input type="text" inputmode="numeric" pattern="[0-9]*" role="spinbutton" value="10" size="3" data-size="lg">
                 <button type="button" data-action="increment" data-size="lg"></button></label>
-            <label>
+            <label data-group="inline">
                 <button type="button" data-action="decrement" data-size="xl"></button>
                 <input type="text" inputmode="numeric" pattern="[0-9]*" role="spinbutton" value="10" size="3" data-size="xl">
                 <button type="button" data-action="increment" data-size="xl"></button></label>
-            <label>
+            <label data-group="inline">
                 <button type="button" data-action="decrement" data-size="2xl"></button>
                 <input type="text" inputmode="numeric" pattern="[0-9]*" role="spinbutton" value="10" size="3" data-size="2xl">
                 <button type="button" data-action="increment" data-size="2xl"></button></label></section>
         <section data-style="rule-indent">
             <h3>label[data-axis="block"]</h3>
-            <label data-axis="block">
+            <label data-group="inline" data-axis="block">
                 <input type="text" inputmode="numeric" pattern="[0-9]*" role="spinbutton" value="10" size="4">
                 <button type="button" data-action="increment"></button>
                 <button type="button" data-action="decrement"></button></label>
-            <label data-axis="block">
+            <label data-group="inline" data-axis="block">
                 <input type="text" inputmode="numeric" pattern="[0-9]*" role="spinbutton" value="10" size="4" data-size="lg">
                 <button type="button" data-action="increment" data-size="lg"></button>
                 <button type="button" data-action="decrement" data-size="lg"></button></label></section>
         <section data-style="rule-indent">
             <h3>button[data-action] (:empty ではない場合、記号は描かない)</h3>
-            <label>
+            <label data-group="inline">
                 <button type="button" data-action="decrement">減</button>
                 <input type="text" inputmode="numeric" pattern="[0-9]*" role="spinbutton" value="10" size="4">
                 <button type="button" data-action="increment">増</button></label></section>
         <section data-style="rule-indent">
             <h3>[data-style="outline"]</h3>
-            <label>
+            <label data-group="inline">
                 <button type="button" data-action="decrement" data-style="outline"></button>
                 <input type="text" inputmode="numeric" pattern="[0-9]*" role="spinbutton" value="10" size="4">
                 <button type="button" data-action="increment" data-style="outline"></button></label></section>
         <section data-style="rule-indent">
             <h3>:user-invalid, [aria-invalid="true"]</h3>
-            <label>
+            <label data-group="inline">
                 <button type="button" data-action="decrement"></button>
                 <input type="text" inputmode="numeric" pattern="[0-9]*" role="spinbutton" value="10" size="4" aria-invalid="true">
                 <button type="button" data-action="increment"></button></label></section>
         <section data-style="rule-indent">
             <h3>:disabled, [aria-disabled="true"]</h3>
-            <label>
+            <label data-group="inline">
                 <button type="button" data-action="decrement" disabled></button>
                 <input type="text" inputmode="numeric" pattern="[0-9]*" role="spinbutton" value="10" size="4" disabled>
                 <button type="button" data-action="increment" disabled></button></label>
-            <label>
+            <label data-group="inline">
                 <button type="button" data-action="decrement" aria-disabled="true"></button>
                 <input type="text" inputmode="numeric" pattern="[0-9]*" role="spinbutton" value="10" size="4" aria-disabled="true">
                 <button type="button" data-action="increment" aria-disabled="true"></button></label></section></section>
@@ -624,147 +635,110 @@
     <section>
         <h2>Search</h2>
         <section data-style="rule-indent">
-            <h3>label &gt; input[type="search"] (standalone)</h3>
+
             <label>
-                <input type="search" aria-label="Search"></label></section>
-        <section data-style="rule-indent">
-            <h3>search &gt; label &gt; select (no button)</h3>
-            <search aria-label="Search">
+                <input type="search" value='label > input[type="search"]'></label>
+        
+            <search aria-labelledby="">
+                <span id="">search > (span, label > input, button)</span>
                 <label>
-                    <select data-facet="chevron" aria-label="Search scope">
-                        <option>All</option>
-                        <option>Title</option>
-                        <option>Body</option></select></label>
+                    <input type="search" value='input[type="search"]'></label>
+                <button type="button">button</button></search>
+        
+            <form role="search" aria-labelledby="">
+                <span id="">form[role="search"] > (span, label > input, button)</span>
                 <label>
-                    <input type="search" aria-label="Search"></label></search></section>
+                    <input type="search" name='input[type="search"]'></label>
+                <button type="submit">button</button></form>
+        
+            <search aria-labelledby="">
+                <span id="">search > (span, label > select, label > input, button)</span>
+                <label data-facet="chevron">
+                    <select>
+                        <option>option</option>
+                        <option>option</option></select></label>
+                <label>
+                    <input type="search" value='input[type="search"]'></label>
+                <button type="button">button</button></search>
+        
+            <form role="search" aria-labelledby="">
+                <span id="">form[role="search"] > (span, label > select, label > input, button) </span>
+                <label data-facet="chevron">
+                    <select>
+                        <option></option>
+                        <option></option></select></label>
+                <label>
+                    <input type="search" name='input[type="search"]'></label>
+                <button type="submit">button</button></form></section>
+                
         <section data-style="rule-indent">
-            <h3>[data-size]</h3>
+            <h3>size</h3>
             <label>
-                <input type="search" data-size="xs" aria-label="Search xs"></label>
+                <input type="search" data-size="xs"></label>
             <label>
-                <input type="search" data-size="sm" aria-label="Search sm"></label>
+                <input type="search" data-size="sm"></label>
             <label>
-                <input type="search" data-size="md" aria-label="Search md"></label>
+                <input type="search" data-size="md"></label>
             <label>
-                <input type="search" data-size="lg" aria-label="Search lg"></label>
+                <input type="search" data-size="lg"></label>
             <label>
-                <input type="search" data-size="xl" aria-label="Search xl"></label>
+                <input type="search" data-size="xl"></label>
             <label>
-                <input type="search" data-size="2xl" aria-label="Search 2xl"></label></section>
-        <section data-style="rule-indent">
-            <h3>search (button[type="button"])</h3>
-            <search aria-labelledby="search-a">
-                <span id="search-a">Inline text</span>
+                <input type="search" data-size="2xl"></label>
+            <search>
+                <span>xs</span>
+                <label data-facet="chevron">
+                    <select data-size="xs">
+                        <option>option</option>
+                        <option>option</option></select></label>
                 <label>
-                    <input type="search" aria-label="Search"></label>
-                <button type="button">Search</button></search>
-            <search aria-label="Search">
+                    <input type="search" data-size="xs"></label>
+                <button type="button" data-size="xs">button</button></search>
+            <searc>
+                <span>sm</span>
+                <label data-facet="chevron">
+                    <select data-size="sm">
+                        <option>option</option>
+                        <option>option</option></select></label>
                 <label>
-                    <input type="search" aria-label="Search"></label>
-                <button type="button">Search</button></search></section>
-        <section data-style="rule-indent">
-            <h3>form[role="search"] (button[type="submit"])</h3>
-            <form role="search" aria-labelledby="search-b">
-                <span id="search-b">Inline text</span>
-                <label>
-                    <input type="search" name="q" aria-label="Search"></label>
-                <button type="submit">Search</button></form>
-            <form role="search" aria-label="Search">
-                <label>
-                    <input type="search" name="q" aria-label="Search"></label>
-                <button type="submit">Search</button></form></section>
-        <section data-style="rule-indent">
-            <h3>search &gt; label &gt; select (button[type="button"])</h3>
-            <search aria-labelledby="search-c">
-                <span id="search-c">Inline text</span>
-                <label>
-                    <select data-facet="chevron" aria-label="Search scope">
-                        <option>All</option>
-                        <option>Title</option>
-                        <option>Body</option></select></label>
-                <label>
-                    <input type="search" aria-label="Search"></label>
-                <button type="button">Search</button></search>
-            <search aria-label="Search">
-                <label>
-                    <select data-facet="chevron" aria-label="Search scope">
-                        <option>All</option>
-                        <option>Title</option>
-                        <option>Body</option></select></label>
-                <label>
-                    <input type="search" aria-label="Search"></label>
-                <button type="button">Search</button></search></section>
-        <section data-style="rule-indent">
-            <h3>form[role="search"] &gt; label &gt; select (button[type="submit"])</h3>
-            <form role="search" aria-labelledby="search-d">
-                <span id="search-d">Inline text</span>
-                <label>
-                    <select data-facet="chevron" name="scope" aria-label="Search scope">
-                        <option>All</option>
-                        <option>Title</option>
-                        <option>Body</option></select></label>
-                <label>
-                    <input type="search" name="q" aria-label="Search"></label>
-                <button type="submit">Search</button></form>
-            <form role="search" aria-label="Search">
-                <label>
-                    <select data-facet="chevron" name="scope" aria-label="Search scope">
-                        <option>All</option>
-                        <option>Title</option>
-                        <option>Body</option></select></label>
-                <label>
-                    <input type="search" name="q" aria-label="Search"></label>
-                <button type="submit">Search</button></form></section>
-        <section data-style="rule-indent">
-            <h3>[data-size]</h3>
-            <search aria-label="Search xs">
-                <label>
-                    <select data-facet="chevron" data-size="xs" aria-label="Search scope">
+                    <input type="search" data-size="sm"></label>
+                <button type="button" data-size="sm">button</button></search>
+            <search>
+                <span>md</span>
+                <label data-facet="chevron">
+                    <select data-size="md">
                         <option>All</option>
                         <option>Title</option></select></label>
                 <label>
-                    <input type="search" data-size="xs" aria-label="Search"></label>
-                <button type="button" data-size="xs">Search</button></search>
-            <search aria-label="Search sm">
-                <label>
-                    <select data-facet="chevron" data-size="sm" aria-label="Search scope">
-                        <option>All</option>
-                        <option>Title</option></select></label>
-                <label>
-                    <input type="search" data-size="sm" aria-label="Search"></label>
-                <button type="button" data-size="sm">Search</button></search>
-            <search aria-label="Search md">
-                <label>
-                    <select data-facet="chevron" data-size="md" aria-label="Search scope">
-                        <option>All</option>
-                        <option>Title</option></select></label>
-                <label>
-                    <input type="search" data-size="md" aria-label="Search"></label>
+                    <input type="search" data-size="md"></label>
                 <button type="button" data-size="md">Search</button></search>
-            <search aria-label="Search lg">
+            <search>
+                <span>lg</span>
+                <label data-facet="chevron">
+                    <select data-size="lg">
+                        <option>option</option>
+                        <option>option</option></select></label>
                 <label>
-                    <select data-facet="chevron" data-size="lg" aria-label="Search scope">
-                        <option>All</option>
-                        <option>Title</option></select></label>
-                <label>
-                    <input type="search" data-size="lg" aria-label="Search"></label>
+                    <input type="search" data-size="lg"></label>
                 <button type="button" data-size="lg">Search</button></search>
-            <search aria-label="Search xl">
+            <search>
+                <span>xl</span>
+                <label data-facet="chevron">
+                    <select data-size="xl">
+                        <option>option</option>
+                        <option>option</option></select></label>
                 <label>
-                    <select data-facet="chevron" data-size="xl" aria-label="Search scope">
-                        <option>All</option>
-                        <option>Title</option></select></label>
-                <label>
-                    <input type="search" data-size="xl" aria-label="Search"></label>
+                    <input type="search" data-size="xl"></label>
                 <button type="button" data-size="xl">Search</button></search>
-            <search aria-label="Search 2xl">
+            <search>
+                <span>2xl</span>
+                <label data-facet="chevron">
+                    <select data-size="2xl">
+                        <option>option</option>
+                        <option>option</option></select></label>
                 <label>
-                    <select data-facet="chevron" data-size="2xl" aria-label="Search scope">
-                        <option>All</option>
-                        <option>Title</option></select></label>
-                <label>
-                    <input type="search" data-size="2xl" aria-label="Search"></label>
-                <button type="button" data-size="2xl">Search</button></search></section></section>
+                    <input type="search" data-size="2xl"></label>
+                <button type="button" data-size="2xl">button</button></search></section></section>
 
     <section>
         <h2>Table</h2>
@@ -1112,11 +1086,11 @@
         <output id="toast_output-1" class="hidden">
             <span id="toast_output-1_span"></span>
             <p id="toast_output-1_p">(data-style="fill")</p>
-            <button type="button" data-style="icon" data-icon="close" aria-label="Dismiss notification" onclick="jsFn.hide(this.closest('output'))"></button></output>
+            <button type="button" data-style="icon" data-sign="close" aria-label="Dismiss notification" onclick="jsFn.hide(this.closest('output'))"></button></output>
         <output id="toast_output-2" data-style="outline" class="hidden">
             <span id="toast_output-2_span"></span>
             <p id="toast_output-2_p">data-style="outline"</p>
-            <button type="button" data-style="icon" data-icon="close" aria-label="Dismiss notification" onclick="jsFn.hide(this.closest('output'))"></button></output></section>
+            <button type="button" data-style="icon" data-sign="close" aria-label="Dismiss notification" onclick="jsFn.hide(this.closest('output'))"></button></output></section>
 
 
 </section>
