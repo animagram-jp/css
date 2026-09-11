@@ -14,7 +14,7 @@
     (a sortable column header is in step.css)
 */
 
-@layer src.table {
+@layer css.table {
 
     /* === table === */
 
