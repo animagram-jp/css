@@ -69,7 +69,7 @@
     *:where([data-style="fill"], [data-style="outline"])[data-size="md"],
     *:where(button, summary, input:is([type="text"], [type="email"], [type="password"], [type="search"], [type="url"], [type="tel"]), select, textarea, output)[data-size="md"],
     *:where([data-style="fill"], [data-style="outline"]):not([data-size]),
-    *:where(button, summary, input, select, textarea, output):not([data-size]) {
+    *:where(button, summary, input:is([type="text"], [type="email"], [type="password"], [type="search"], [type="url"], [type="tel"]), select, textarea, output):not([data-size]) {
         border-radius:  var(--md-border-radius);
         border-width:   var(--md-border-width);
         min-height:     var(--md-box-height);
