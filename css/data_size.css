@@ -48,8 +48,23 @@
        <output> gets this box model the same way a bare button does,
        whether or not it also carries [data-style]. */
 
-    *:where([data-style="fill"], [data-style="outline"])[data-size="xs"],
-    *:where(button, summary, input:is([type="text"], [type="email"], [type="password"], [type="search"], [type="url"], [type="tel"]), select, textarea, output)[data-size="xs"] {
+    *:where(
+        *[data-style="fill"], 
+        *[data-style="outline"],
+        button,
+        input:is(
+            [type="text"], 
+            [type="email"], 
+            [type="password"], 
+            [type="search"], 
+            [type="url"], 
+            [type="tel"]
+        ), 
+        summary,
+        select, 
+        textarea, 
+        output,
+    )[data-size="xs"] {
         border-radius:  var(--xs-border-radius);
         border-width:   var(--xs-border-width);
         min-height:     var(--xs-box-height);
@@ -57,8 +72,23 @@
         padding-inline: var(--xs-border-radius);
     }
 
-    *:where([data-style="fill"], [data-style="outline"])[data-size="sm"],
-    *:where(button, summary, input:is([type="text"], [type="email"], [type="password"], [type="search"], [type="url"], [type="tel"]), select, textarea, output)[data-size="sm"] {
+    *:where(
+        *[data-style="fill"], 
+        *[data-style="outline"],
+        button,
+        input:is(
+            [type="text"], 
+            [type="email"], 
+            [type="password"], 
+            [type="search"], 
+            [type="url"], 
+            [type="tel"]
+        ), 
+        summary,
+        select, 
+        textarea, 
+        output,
+    )[data-size="sm"] {
         border-radius:  var(--sm-border-radius);
         border-width:   var(--sm-border-width);
         min-height:     var(--sm-box-height);
@@ -66,10 +96,26 @@
         padding-inline: var(--sm-border-radius);
     }
 
-    *:where([data-style="fill"], [data-style="outline"])[data-size="md"],
-    *:where(button, summary, input:is([type="text"], [type="email"], [type="password"], [type="search"], [type="url"], [type="tel"]), select, textarea, output)[data-size="md"],
-    *:where([data-style="fill"], [data-style="outline"]):not([data-size]),
-    *:where(button, summary, input:is([type="text"], [type="email"], [type="password"], [type="search"], [type="url"], [type="tel"]), select, textarea, output):not([data-size]) {
+    *:where(
+        *[data-style="fill"], 
+        *[data-style="outline"],
+        button,
+        input:is(
+            [type="text"], 
+            [type="email"], 
+            [type="password"], 
+            [type="search"], 
+            [type="url"], 
+            [type="tel"]
+        ), 
+        summary,
+        select, 
+        textarea, 
+        output,
+    ):where(
+        [data-size="md"],
+        :not([data-size]),
+    ) {
         border-radius:  var(--md-border-radius);
         border-width:   var(--md-border-width);
         min-height:     var(--md-box-height);
@@ -77,8 +123,23 @@
         padding-inline: var(--md-border-radius);
     }
 
-    *:where([data-style="fill"], [data-style="outline"])[data-size="lg"],
-    *:where(button, summary, input:is([type="text"], [type="email"], [type="password"], [type="search"], [type="url"], [type="tel"]), select, textarea, output)[data-size="lg"] {
+    *:where(
+        *[data-style="fill"], 
+        *[data-style="outline"],
+        button,
+        input:is(
+            [type="text"], 
+            [type="email"], 
+            [type="password"], 
+            [type="search"], 
+            [type="url"], 
+            [type="tel"]
+        ), 
+        summary,
+        select, 
+        textarea, 
+        output,
+    )[data-size="lg"] {
         border-radius:  var(--lg-border-radius);
         border-width:   var(--lg-border-width);
         min-height:     var(--lg-box-height);
@@ -86,8 +147,23 @@
         padding-inline: var(--lg-border-radius);
     }
 
-    *:where([data-style="fill"], [data-style="outline"])[data-size="xl"],
-    *:where(button, summary, input:is([type="text"], [type="email"], [type="password"], [type="search"], [type="url"], [type="tel"]), select, textarea, output)[data-size="xl"] {
+    *:where(
+        *[data-style="fill"], 
+        *[data-style="outline"],
+        button,
+        input:is(
+            [type="text"], 
+            [type="email"], 
+            [type="password"], 
+            [type="search"], 
+            [type="url"], 
+            [type="tel"]
+        ), 
+        summary,
+        select, 
+        textarea, 
+        output,
+    )[data-size="xl"] {
         border-radius:  var(--xl-border-radius);
         border-width:   var(--xl-border-width);
         min-height:     var(--xl-box-height);
@@ -95,8 +171,23 @@
         padding-inline: var(--xl-border-radius);
     }
 
-    *:where([data-style="fill"], [data-style="outline"])[data-size="2xl"],
-    *:where(button, summary, input:is([type="text"], [type="email"], [type="password"], [type="search"], [type="url"], [type="tel"]), select, textarea, output)[data-size="2xl"] {
+    *:where(
+        *[data-style="fill"], 
+        *[data-style="outline"],
+        button,
+        input:is(
+            [type="text"], 
+            [type="email"], 
+            [type="password"], 
+            [type="search"], 
+            [type="url"], 
+            [type="tel"]
+        ), 
+        summary,
+        select, 
+        textarea, 
+        output,
+    )[data-size="2xl"] {
         border-radius:  var(--2xl-border-radius);
         border-width:   var(--2xl-border-width);
         min-height:     var(--2xl-box-height);
