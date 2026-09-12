@@ -4,14 +4,13 @@
 
 node_modules/
 
-.claude/
+reference/audit.html
+reference/audit.json
 
+.claude/
 reference/gds/
 reference/govuk-frontend/
 reference/ibm_common_user_access/
 reference/uswds/
 reference/CUDO.md
-reference/audit.html
-reference/audit.json
 reference/JIS_C_0447*
-reference/XForms11.md

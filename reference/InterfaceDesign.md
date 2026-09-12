@@ -49,7 +49,7 @@ UD(個人や状況に依らず機能する)の網羅性の程度も、機能品�
 7. 人間の所作と装置の構成機能: 執行命令 (P3)
 8. 装置の信号機能: 結果信号 (P3')
 
-- reference: JIS C 0447:1997 (IEC60447:1993)
+- reference: JIS C 0447:1997 (IEC60447:1993) Man-machine-interface (MMI) - Actuating principles
 
 ---
 
@@ -71,6 +71,38 @@ tap ==  long press → (show context menu) → option 1 long press
     - enter
     - space
     - arrow (↑→↓←)
+
+---
+
+## 状態属性による信号操作 (draft)
+
+フォーカス・ホバーの相互作用状態と別に、信号機能の実装機構としての一般的な状態属性を以下に挙げる。
+適用には、各状態に対応する差分を設計してある必要がある。
+
+| Variant | Meaning |
+|-|-|
+| hidden, disabled | irrelevant |
+| readonly | - |
+| required | - |
+| valid | 検証済み(受け入れ可) |
+| invalid, out-of-range | 検証済み(受け入れ不可) |
+| busy | not ready |
+
+- reference: XForms 1.1, W3C Recommendation 20 October 2009 - 6 4.4 model item property
+
+---
+
+## 規則化要素 (draft)
+
+個別の要素に習熟を要さないために、構成要素・信号要素に共通して、規則を適用する。
+
+| 名前 | 既存例 | 構成 |
+|-|-|-|
+| control grouping | toolbar(ARIA APG), 機能・順序・頻度・優先順位によるグループ化(JIS C 0447 4.1.8) | P1要素の配列規則。 |
+| group boundary | divider(Material 3), 区画枠(JIS C 0447 4.1.8) | 表示(囲み)によるcontrol groupingの視覚表現。 |
+| identification mark | Avatar(Ant Design), 図記号・色・文字による識別(JIS C 0447 6)  | 信号要素の識別規則 |
+| direction mapping | 操作方向と結果の対応(JIS 表A)  | P2要素のジェスチャ方向の符号化規則 |
+| neutral position | 停止位置規則(JIS 5.2) | 中立・停止状態の空間的定位規則 |
 
 ---
 
@@ -156,99 +188,6 @@ tap ==  long press → (show context menu) → option 1 long press
 
 ---
 
-## 持続状態 (draft)
-
-- XForms 1.1 6章・4.4節
-
-P1'〜P3'の信号部品は、フォーカス・ホバーのような一時的な相互作用状態を扱う。それとは別に、部品が値および文脈から負う**持続状態**の軸が要る。のmodel item propertyとその遷移イベントの対を、閉じた状態集合として採る。
-
-| 状態 | 属性/セレクタ | 継承 | 遷移信号 |
-|-|-|-|-|
-| relevant | `[hidden]`, `[aria-hidden]`, `:disabled`, `[aria-disabled]` | **祖先のAND** | 出現・消失, disabled表現(Kelp: button `opacity:0.7`+`pointer-events:none` / checkbox `opacity:0.6`+`cursor:not-allowed`) |
-| readonly | `[readonly]`, `[aria-readonly]` | **祖先のOR** | 入力枠・キャレット表現の消失 |
-| required | `[required]`, `[aria-required]` | しない | 必須マーク(ラベルへの付加) |
-| valid | `:user-invalid`, `[aria-invalid]` | 子の集約 | validation message |
-| in-range | `:in-range`, `:out-of-range`, `[aria-valuemin]`, `[aria-valuemax]` | しない | 範囲外表現 |
-| busy | `[aria-busy]` | 子孫への伝播 | progress indicator (Pico: 属性のみでスピナー) |
-
-- **relevantが他のすべての状態に先行する**(XForms 8.1.1: 関与復帰時に`xforms-enabled`→値→valid→readonly→required→in-rangeの順で再表明)。非関与のあいだ他の状態は意味を持たない。よってCSSでもrelevantの否定を最優先で適用し、他状態の装飾を打ち消す。
-- 継承規則はCSSの子孫セレクタと`:has()`で直接書ける。relevantのANDは祖先の`[aria-disabled]`からの子孫セレクタ、readonlyのORも同様。validの子集約は`:has(:user-invalid)`。
-- relevantがfalseの部品は**ナビゲーション順序から除外**しフォーカスを与えない(XForms 6.1.4)。`display:none`/`[hidden]`は自動的にそうなるが、disabled表現で残す場合は`tabindex`の扱いを別途要する。
-- in-rangeはvalidとは別軸で、**部品が値を表現しきれるか**を指す(例: sliderのトラック範囲外の値、date pickerの表示月外の日付)。
-- 必須・妥当・表現可能性・読取専用の4つは、XFormsが描画の区別を**必須要件**とし、かつスタイルシートから制御可能にすることを要求している(8.1.1)。本ライブラリの責務範囲がここに重なる。
-
----
-
-## 規則要素
-
-JIS C 0447(IEC60447:1993)の基本原則の規則化要素
-
-| 名前 | 既存例 | 構成 |
-|-|-|-|
-| control grouping | toolbar(ARIA APG), 機能・順序・頻度・優先順位によるグループ化(JIS C 0447 4.1.8) | P1要素の配列規則。 |
-| group boundary | divider(Material 3), 区画枠(JIS C 0447 4.1.8) | 表示(囲み)によるcontrol groupingの視覚表現。 |
-| identification mark | Avatar(Ant Design), 図記号・色・文字による識別(JIS C 0447 6)  | 信号要素の識別規則 |
-| direction mapping | 操作方向と結果の対応(JIS 表A)  | P2要素のジェスチャ方向の符号化規則 |
-| neutral position | 停止位置規則(JIS 5.2) | 中立・停止状態の空間的定位規則 |
-
----
-
-## Keyboard operation (draft)
-
-- [ARIA APG: pattern](https://www.w3.org/WAI/ARIA/apg/patterns/)
-- [IBM Common User Guide](./references/ibm_common_user_access/)
-- [Microsoft: Shortcut Keys](https://learn.microsoft.com/en-us/previous-versions/windows/desktop/bb246441(v=vs.85)?redirectedfrom=MSDN)
-- [Microsoft: Keyboard Interface Summary](https://learn.microsoft.com/en-us/previous-versions/ms997427(v=msdn.10))
-
-| Component | Key | Specification |
-|-|-|-|
-| Button, Link  | Enter, Space | Activates the button. |
-|               | Tab / Shift + Tab | Seque focus to /  |
-| Disclosure    | Enter, Space | (Dis)close a panel if focused |
-| Modal, Drawer | Escape | Closes the dialog. |
-| Link | Shift + F10 | Opens a context menu for the page or focused element. |
-| Textarea | Tab / Shift Tab | Indent if caret visible / unindent |
-| Dropdown, Spin button | ↓ / ↑ | |
-| Radio button, Slider | → / ← |
-
----
-
-## Color
-
-グローバル体系:
-- ink   : 体系内で最も(濃い/薄い)基本文字色。
-- paper : 体系内で最も(薄い/濃い)基本背景色。
-- mute  : inkとpaperの混文字色(灰色)。
-- emphasis:    UIの印象を表現する色。各コントラスト要件に応じたバリアントの集合概念。コンポーネントレベルで上書き可能。
-- error:       赤系の色。textに使用不可(borderかfillのみに使用可能)。
-- invalid:     エラーサマリー及びメッセージ表現は表外で別途実装する。
-- transparent: 各コンポーネントは、paper(または--rgb-base-*)色上に載る前提とする。
-
-コンポーネント内体系:
-- background: コンポーネントに隣接する背景色。
-- border:     コンポーネントが持つ、境界線色。
-- fill:       コンポーネントが持つ、境界内塗り色。
-- text:       コンポーネントのインライン文字色。
-
-```
-┌ background ─────┐
-│  ┏ border ━━━┓  │
-│  ┃  fill     ┃  │
-│  ┃  -text-   ┃  │
-│  ┗━━━━━━━━━━━┛  │
-└─────────────────┘
-```
-
-| Style | Static | Focus | Hover | Focus hover | Invalid | Invalid focus | Disabled |
-|-|-|-|-|-|-|-|-|
-| select | border: mute, background: transparent, text: mute | outline: emphasis, border: ink | cursor: pointer | - | border: error | error border, error outline | mute border, mute text, cursor: not-allowd |
-| input | border: mute, background: transparent, text: mute, caret: mute, text: ink |  | cursor: text | - | | | |
-| outline | border: emphasis, background: transparent, text: emphasis | outline: emphasis | underline: emphasis, cursor: pointer | - | - | - |  |
-| fill | border: transparent, background: emphasis, text: paper | outline: emphasis | emphasis background: emphasis, underline: bold paper | - | - | - | background: mute, cursor: not-allowd |
-| underline | background: transparent, text: ink, underline: ink | outline: emphasis | underline: bold | - | - | - | text: mute, underline: mute, cursor: not-allowd |
-
----
-
 ## Sign (draft)
 
 Sign (符号)は、その幾何学的性質を利用して、なるべく依存する文脈を少なく理解できるのが望ましい。
@@ -272,6 +211,52 @@ Sign (符号)は、その幾何学的性質を利用して、なるべく依存�
 ⊢ (U+22A2 RIGHT TACK)
 ⊣ (U+22A3 LEFT TACK)
 ```
+
+---
+
+## Color
+
+グローバル系:
+
+- black: 系全体で最も黒に近い色値。
+- white: 系全体で最も白に近い色値。
+
+スコープ系:
+
+- ink   : 系内で最も(濃い | 薄い)文字色。
+- paper : 系内で最も(薄い | 濃い)背景色。
+- mute  : inkとpaperの混文字色。
+- emphasis: 系内に1つ、印象を表現する色。背景/文字の他、各コントラスト要件に応じたバリアント値の集合。
+- error:     赤の背景色。
+- highlight: 黄の背景色。
+- focus:     境界線色。
+- transparent: 透明の背景色。各コンポーネントは、paper(または--rgb-base-*)色上に載る前提とする。
+
+コンポーネント系:
+
+- background: コンポーネントに隣接する外部の背景色。
+- border:     コンポーネントが持つ、境界線色。
+- fill:       コンポーネントが持つ、内部の背景色。
+- text:       コンポーネントが持つ、内部の文字色。
+
+textに対して背景色を当てることは出来ない。
+
+```
+┌ background ─────┐
+│  ┏ border ━━━┓  │
+│  ┃  fill     ┃  │
+│  ┃  -text-   ┃  │
+│  ┗━━━━━━━━━━━┛  │
+└─────────────────┘
+```
+
+| Style | Static | Focus | Hover | Focus hover | Invalid | Invalid focus | Disabled |
+|-|-|-|-|-|-|-|-|
+| select | border: mute, background: transparent, text: mute | outline: emphasis, border: ink | cursor: pointer | - | border: error | error border, error outline | mute border, mute text, cursor: not-allowd |
+| input | border: mute, background: transparent, text: mute, caret: mute, text: ink |  | cursor: text | - | | | |
+| outline | border: emphasis, background: transparent, text: emphasis | outline: emphasis | underline: emphasis, cursor: pointer | - | - | - |  |
+| fill | border: transparent, background: emphasis, text: paper | outline: emphasis | emphasis background: emphasis, underline: bold paper | - | - | - | background: mute, cursor: not-allowd |
+| underline | background: transparent, text: ink, underline: ink | outline: emphasis | underline: bold | - | - | - | text: mute, underline: mute, cursor: not-allowd |
 
 ---
 
@@ -326,7 +311,30 @@ forced-colorで失われる要素は、使用しない。色要素で伝える�
 
 ## References
 
+- [CUDO: Color Universal Design Recommended Color Set ver.3](https://cudo.jp/wp-content/uploads/2016/07/CUD%E6%8E%A8%E5%A5%A8%E9%85%8D%E8%89%B2%E3%82%BB%E3%83%83%E3%83%88%E3%82%AC%E3%82%A4%E3%83%89%E3%83%96%E3%83%83%E3%82%AF.pdf)
+- JIS C 0447:1997 (IEC60447:1993) Man-machine-interface (MMI) - Actuating principles
+- XForms 1.1, W3C Recommendation 20 October 2009
 - [Kelp CSS](https://github.com/cferdinandi/kelp)
 - [Pico CSS](https://picocss.com/docs)
 - [Gov UK Design System: Repository](https://github.com/alphagov/govuk-frontend)
 - [U.S. Web Design System (USWDS)](https://designsystem.digital.gov/)
+
+---
+
+## Keyboard operation (draft)
+
+| Component | Key | Specification |
+|-|-|-|
+| Button, Link  | Enter, Space | Activates the button. |
+|               | Tab / Shift + Tab | Seque focus to /  |
+| Disclosure    | Enter, Space | (Dis)close a panel if focused |
+| Modal, Drawer | Escape | Closes the dialog. |
+| Link | Shift + F10 | Opens a context menu for the page or focused element. |
+| Textarea | Tab / Shift Tab | Indent if caret visible / unindent |
+| Dropdown, Spin button | ↓ / ↑ | |
+| Radio button, Slider | → / ← |
+
+- [ARIA APG: pattern](https://www.w3.org/WAI/ARIA/apg/patterns/)
+- [IBM Common User Guide](./references/ibm_common_user_access/)
+- [Microsoft: Shortcut Keys](https://learn.microsoft.com/en-us/previous-versions/windows/desktop/bb246441(v=vs.85)?redirectedfrom=MSDN)
+- [Microsoft: Keyboard Interface Summary](https://learn.microsoft.com/en-us/previous-versions/ms997427(v=msdn.10))
