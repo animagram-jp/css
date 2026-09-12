@@ -27,46 +27,38 @@ From the information the system needs to convey to the person, it determines one
 
 ---
 
-## animagram/css プロジェクトについて
+## 本プロジェクトについて
 
-インターフェース装置は、設計時には知り得ない個人と、コンピューターアルゴリズムが干渉しあう。
+インターフェース装置の設計には、設計時には知り得ない個人と、コンピューターアルゴリズムが干渉しあう。
 UD(個人や状況に依らず機能する)の網羅性の程度も、機能品質の程度も、決して100%を達成することはない。
-そのため、以下の方針を取る:
-
-1. プロジェクトの現在の網羅性の期待水準を定め、リリースには、それを満たしただけを含める。
-2. 各要素の更新にあたり、網羅水準を更新前から下げない。
-
-また、本プロジェクトの成果物は、インターフェース装置を形成する各要素が、自然言語による定義とCSS実装で構成されたライブラリ形式を想定する。
-インターフェース装置は、CSSで表すことのできるより遥かに広い組み合わせ空間を持つため、本プロジェクトの要素群は、体系を網羅することはできない。
-そのため、要素の体系は、自然言語によるインターフェース装置の取り得る空間内の整理、HTMLとCSSによる具体的な実装の、トップダウンとボトムアップから、それぞれ行い、この2つの語彙の乖離を修正することで行う。
+本プロジェクトの成果物は、インターフェース装置を形成する各要素が、自然言語による定義とCSS実装で構成されたライブラリ形式を想定する。
+インターフェース装置は、CSSで表すことのできるより遥かに広い組み合わせ空間を持つため、本プロジェクトの要素群は、体系を網羅することはできない。要素の体系は、自然言語によるインターフェース装置の取り得る空間内の整理、HTMLとCSSによる具体的な実装の、トップダウンとボトムアップからそれぞれ行い、この2つの語彙を整合することで行う。
 
 ---
 
 ## 共通手続き段階
 
-人間の単一の意図表明に始まる、インターフェース装置と人間、システムの間に発生する手続きを段階で定義する:
+人間の単一の意図表明に始まる、インターフェース装置と人間、システムの間に発生する手続きを以下に定義する。
 
-- P0  操作意思表明
-- P0' システム状態信号
-- P1  対象選択
-- P1' 選択確認信号
-- P2  コマンド構成
-- P2' 構成確認信号
-- P3  執行命令
-- P3' 結果信号
+1. 人間の所作と装置の構成機能: 操作意思表明 (P0)
+2. 装置の信号機能: システム状態信号 (P0')
+3. 人間の所作と装置の構成機能: 対象選択 (P1)
+4. 装置の信号機能: 選択確認信号 (P1')
+5. 人間の所作と装置の構成機能: コマンド構成 (P2)
+6. 装置の信号機能: 構成確認信号 (P2')
+7. 人間の所作と装置の構成機能: 執行命令 (P3)
+8. 装置の信号機能: 結果信号 (P3')
 
-なお、単機能操作機器/多機能操作機器の差異は、P0'の省略有無と整理できる。
-
-- 参照: [JIS C 0447 4.2](./references/JIS_C_0447.md)
+- reference: JIS C 0447:1997 (IEC60447:1993)
 
 ---
 
-## 所作
+## 所作 (draft)
 
 十分容易な運動によって、要求する1つの所作を定義する。運動には、代替を想定する。
 例として、ディスプレイに触れる手指の運動で実現する時、それは
 tap と long press のうち個々の人間にとってより容易な片方の運動によって実現できるように、
-tap =  long press → (show context menu) → option 1 long press
+tap ==  long press → (show context menu) → option 1 long press
 の2つを代替関係とする。
 
 - pointer down, move, up (touch, mouse)
@@ -82,150 +74,7 @@ tap =  long press → (show context menu) → option 1 long press
 
 ---
 
-## 部品体系
-
-### 未分類
-
-```css
-/* monospace font, block and copy button */
-
-pre, pre > code, pre > samp {
-    
-}
-
-/* kbd: [data-style="outline"], [data-style="fill"] */
-
-kbd {
-    
-}
-
-/* Card: [data-style="outline"], [data-style="fill"] */
-article > header, footer {
-
-}
-```
-
-## グルーピング機能
-
-### surround style
-
-- fill
-- outline
-- fill header and outline body [GOV.UK Design System: Notification banner](https://design-system.service.gov.uk/components/notification-banner/)
-
-```css
-[data-style="fill"] {}
-[data-style="outline"] {}
-[data-style="fill"], [data-style="outline"] {}
-```
-
-### contiguous style
-
-```css
-[role="group"] > *, [data-style="contiguous"] > * {}
-```
-
-### 信号機能用
-
-構成機能用部品, 信号機能用部品
-
-- 部品の部品
-    - Fill box: *[data-style="fill"]:before, *[data-style="fill"], *[data-style="fill"]:after
-    - Fill header and outline body: 
-    - List:
-        - ol > li
-        - ul > li
-        - menu > li
-    - Outline box: *[data-style="outline"]:before, *[data-style="outline"], *[data-style="outline"]:after
-    - Panel box: div[data-style="panel"] > (*[data-style="fill"], *[data-style="outline"], *[data-style="underline"]) [GOV.UK Design System: Panel](https://design-system.service.gov.uk/components/panel/)
-    - Underline text: *[data-style="underline"]:before, *[data-style="underline"], *[data-style="underline"]:after
-    - Rule indent(indent block with accent rule): *[data-style="rule-indent"]
-    - Mark: mark, *:selection, *[data-style="underline"]:focus-visible
-    - Strikethrough: del
-
-- 信号部品
-    - Badge: span[data-style]
-    - Deletion and addition: div > (del > p, ins > p) (https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/ins)
-    - Description list: dl > (dt, dd)
-        - [GOV.UK Design System: Summary list](https://design-system.service.gov.uk/components/summary-list/)
-        - Task list: https://design-system.service.gov.uk/components/task-list/
-    - Figure: figure > (figcaption > cite, img/table/blockquote/div)
-        - Blockquote: figure > (blockquote > p, figcaption > cite)
-    - Error message: https://design-system.service.gov.uk/components/error-message/
-    - Heading: hgroup > (h1/h2/h3/h4/h5/h6, p)
-    - Meter: label > meter
-    - Progress indicator:
-        - Loading: *[aria-busy="true"] [Pico: Loading](https://picocss.com/docs/loading)
-    - Table: table > (caption, (thead, tbody, tfoot) > tr > (th, td))
-    - Tabs: ul > li, div
-    - Input count: p[role="status"][aria-live="polite"][aria-atomic="true"] > (samp, span)
-    - Icon: image [Kelp CSS: Avatar](https://kelpui.com/docs/components/avatar/)
-
-- P2(コマンド構成)部品
-    - Checkbox: fieldset > (legend, label > input[type="checkbox"])
-    - Color picker
-    - Coordinate picker: label > input[type=image]
-    - Dropdown:
-        - details > (summary, ul > li) [Pico: Dropdown](https://picocss.com/docs/dropdown)
-        - label > select > optgroup > option
-    - Email: label > input[type="email"]
-    - File picker: label > input[type=file]
-    - Numeric: label > (button[type="button"], input[type="text"][inputmode="numeric"], button[type="button"])
-    - Password:
-        - label > input[type="password"][autocomplete="current-password"], label > input[type="checkbox"]
-        - fieldset > (legend, label > input[type="password"][autocomplete="new-password"], label > input[type="checkbox"], label > input[type="password"][autocomplete="new-password"], label > input[type="checkbox"])
-    - Radio: fieldset > (legend, label > input[type="radio"])
-    - Range: label > input[type=range]
-    - Searchbox: label > input[type=search], [role="search"]
-    - Tel: label > input[type="tel"]
-    - Temporal: fieldset[role=group] > (legend, (label > input[type=text][inputmode=numeric]))
-        - [autocomplete="bday-year", "bday-month", "bday-day"]
-    - Text: label > input[type="text"], [readonly], [disabled], [aria-invalid], ::placeholder
-    - Textarea: label > textarea
-    - Url: label > input[type="url"]
-
-- P1~P3(対象選択~執行)パターン
-        - Command button: [disabled]
-        - label > button[type="button"], a[role=button]
-        - Back link, Link: a, button[role="link"]
-          - Link copy button: chain(🔗) 
-          - Anchor link: [Kelp: Heading anchors](https://kelpui.com/docs/components/heading-anchors)
-        - Breadcrumb: nav > ol > li > a
-        - Pagenation: nav[aria-label="Pagination"] > (a[rel=prev] > span, ul > li > a[aria-current="page"], a[rel=next]) [GOV.UK Design System: Pagenation](https://design-system.service.gov.uk/components/pagination/)
-    - Cookie agreement: https://design-system.service.gov.uk/components/cookie-banner/
-    - Disclosure: details > (summary, div)
-    - Form: form, fieldset > legend, submit button[type="submit"], button[type="reset"]
-        - Hint
-        - Error summary: div[role="alert"] > p, (ul > li) (https://design-system.service.gov.uk/components/error-summary/)
-    - Toggle button: label > input[type="checkbox"]
-    - Tooltip: *:hover, *:focus
-
-- その他
-    - header, footer
-    - section: 汎用ブロック要素
-    - article: 汎用ブロック要素(独立して意味の通る情報)
-    - dialog:  汎用ポップアップ要素, ::backdrop, backdrop-filter
-    - label > output
-    - body > header, main, aside, body > footer
-    - address
-    - nav, search, form: セマンティクスラッパー
-    - hr
-    - cite
-    - q
-    - ruby > rt
-    - em, strong
-    - small: 免責事項、著作権表示、利用規約への言及
-    - sub
-    - sup
-    - dfn
-    - abbr
-    - bdi
-    - time[datetime]
-    - Media: img, iframe, object, video, audio
-
----
-
-## P1~P3'パターン具体例
+## P1~P3'パターン具体例 (draft)
 
 - 表中「タップ」はショートクリック・ショートタップ(ポインターダウンからポインターアップまで)を指す。
 - 長押し時・ドラッグ時の挙動については、定義を別途必要とする行がある。
@@ -307,9 +156,11 @@ article > header, footer {
 
 ---
 
-## 持続状態
+## 持続状態 (draft)
 
-P1'〜P3'の信号部品は、フォーカス・ホバーのような一時的な相互作用状態を扱う。それとは別に、部品が値および文脈から負う**持続状態**の軸が要る。[XForms 1.1 6章・4.4節](./references/XForms11.md)のmodel item propertyとその遷移イベントの対を、閉じた状態集合として採る。
+- XForms 1.1 6章・4.4節
+
+P1'〜P3'の信号部品は、フォーカス・ホバーのような一時的な相互作用状態を扱う。それとは別に、部品が値および文脈から負う**持続状態**の軸が要る。のmodel item propertyとその遷移イベントの対を、閉じた状態集合として採る。
 
 | 状態 | 属性/セレクタ | 継承 | 遷移信号 |
 |-|-|-|-|
@@ -342,7 +193,7 @@ JIS C 0447(IEC60447:1993)の基本原則の規則化要素
 
 ---
 
-## Keyboard operation
+## Keyboard operation (draft)
 
 - [ARIA APG: pattern](https://www.w3.org/WAI/ARIA/apg/patterns/)
 - [IBM Common User Guide](./references/ibm_common_user_access/)
@@ -359,31 +210,6 @@ JIS C 0447(IEC60447:1993)の基本原則の規則化要素
 | Textarea | Tab / Shift Tab | Indent if caret visible / unindent |
 | Dropdown, Spin button | ↓ / ↑ | |
 | Radio button, Slider | → / ← |
-
----
-
-## Bertin (1967) Sémiologie graphique
-
-### 4性質の定義
-
-| 仏語 | 日本語 | 意味 |
-|-|-|-|
-| sélectif (sélectivité) | 選択性 | 同じ図の中で、あるカテゴリの記号だけを瞬時に「浮き上がらせて」見つけられるか。例:多色の点群の中から青い点だけを一瞬で識別できるか。 |
-| associatif (associativité) | 結合性 | 他の変数(色・位置など)が変化しても、あるカテゴリを一貫して知覚できるか。例:色や位置が違っても三角形を「三角形」として見つけられるか。 |
-| ordonné (ordre) | 順序性 | その変数を使った図形同士の間に、視覚的な「順序」を感じ取れるか。 |
-| quantitatif (quantité) | 定量性 | その変数を使った図形同士の間に、量の比率(何倍か)を感じ取れるか。 |
-
-### 6つの網膜変数 × 4性質のマトリクス
-
-| 変数(仏語/日本語) | 選択性 | 結合性 | 順序性 | 定量性 |
-|-|-|-|-|-|
-| Position/Plan(位置・平面 X,Y) | ○ | ○ | ○ | ○ |
-| Taille(サイズ) | ○ | ✕ | ○ | ○ |
-| Valeur(明度) | ○ | ? | ○ | ✕ |
-| Grain(粒状・テクスチャー) | ○ | ○ | △ | △ |
-| Couleur(色相) | ○ | ○ | ✕ | ✕ |
-| Orientation(傾き) | △(点では○、面では✕) | ○ | ✕ | ✕ |
-| Forme(形) | ✕ | ? | ✕ | ✕ |
 
 ---
 
@@ -404,28 +230,28 @@ JIS C 0447(IEC60447:1993)の基本原則の規則化要素
 - fill:       コンポーネントが持つ、境界内塗り色。
 - text:       コンポーネントのインライン文字色。
 
-| Style | | :focus-visible | :hover | :focus-visible:hover | :user-invalid | :user-invalid:focus | :disabled, [aria-disabled="true"] |
+```
+┌ background ─────┐
+│  ┏ border ━━━┓  │
+│  ┃  fill     ┃  │
+│  ┃  -text-   ┃  │
+│  ┗━━━━━━━━━━━┛  │
+└─────────────────┘
+```
+
+| Style | Static | Focus | Hover | Focus hover | Invalid | Invalid focus | Disabled |
 |-|-|-|-|-|-|-|-|
-| `select` | mute border, transparent background, mute text | emphasis outline, ink border | `cursor: pointer;` | - | error border | error border, error outline | mute border, mute text, `cursor: not-allowd` |
-| `input:is([type="text"], [type="email"], [type="password"], [type="search"], [type="url"]), textarea` | (as above), mute caret, ink text |  | `cursor: text;` | | | | |
-| `[data-style="outline"]` | emphasis border, transparent background, emphasis text | emphasis outline | emphasis text(差分), 太い下線, `box-decoration-break: clone;cursor: pointer;` | - | - | - |  |
-| `[data-style="fill"]` | transparent border, emphasis background, paper text | emphasis outline | emphasis background(差分), 下線の太線化  | - | - | - | mute(差分) background, `cursor: not-allowd` |
-| `a:not([data-style]), [data-style="underline"]` | transparent background, ink text, ink underline | emphasis outline | underline太線化 | - | - | - | mute text, mute underline, `cursor: not-allowd` |
+| select | border: mute, background: transparent, text: mute | outline: emphasis, border: ink | cursor: pointer | - | border: error | error border, error outline | mute border, mute text, cursor: not-allowd |
+| input | border: mute, background: transparent, text: mute, caret: mute, text: ink |  | cursor: text | - | | | |
+| outline | border: emphasis, background: transparent, text: emphasis | outline: emphasis | underline: emphasis, cursor: pointer | - | - | - |  |
+| fill | border: transparent, background: emphasis, text: paper | outline: emphasis | emphasis background: emphasis, underline: bold paper | - | - | - | background: mute, cursor: not-allowd |
+| underline | background: transparent, text: ink, underline: ink | outline: emphasis | underline: bold | - | - | - | text: mute, underline: mute, cursor: not-allowd |
 
 ---
 
-## References
+## Sign (draft)
 
-- [Kelp CSS](https://github.com/cferdinandi/kelp)
-- [Pico CSS](https://picocss.com/docs)
-- [Gov UK Design System: Repository](https://github.com/alphagov/govuk-frontend)
-- [U.S. Web Design System (USWDS)](https://designsystem.digital.gov/)
-
----
-
-## Sign
-
-Sign (符号)は、その幾何学的性質を利用して、なるべく依存する文脈を少なく理解できるのが望ましい。Charles Sanders Peirce の Sign で言う、Index(因果関係)で Object(表現したい意味)と結びつくべきである。
+Sign (符号)は、その幾何学的性質を利用して、なるべく依存する文脈を少なく理解できるのが望ましい。
 また、同じ場所にあり続け、試行できるインタラクティブ要素を表すとき、記号は変化せず、今現在の様子の信号とセットで使うべきである(例: toggle button)。
 試行すると同じ場所にあることのできない要素は、それがもたらす操作を表現する信号となることが望ましい(例: chevron button dropdown)。
 
@@ -451,14 +277,15 @@ Sign (符号)は、その幾何学的性質を利用して、なるべく依存�
 
 ## forced-colors: active
 
+forced-colorで失われる要素は、使用しない。色要素で伝える情報は、形またはテキストを常に併用する。
+
 - [W3C: CSS Color Adjustment Module Level 1](https://www.w3.org/TR/css-color-adjust-1/)
 
 以下が強制的にSystem Color(CSS Color Level 4)またはnone, autoで上書きされる。
 
 - accent-color: auto;, background-color, border-color, caret-color, color, flood-color, fill, lighting-color, outline-color, rule-color, scrollbar-color: auto;, stop-color, stroke, text-decoration-color, text-emphasis-color, "box-shadow and text-shadow compute to none", "background-image computes to none"(但し、url()は例外的に除かれる), "color-scheme computes to light dark"
-- `forced-color-adjust: none`(`header/_mixin.scss:53,102`(バックプレートが下線を隠すのを防止)、`warning-text/_mixin.scss:49`(感嘆符の丸))
-- tag(`tag/_mixin.scss:81`)は forced-colors 下で背景色が本文と同色になるため `font-weight: bold` で区別を作る。かつては透明outlineを足していたが、**ボタンと区別がつかなくなる**ため廃止した経緯がコメントにある。
-- `skip-link/_mixin.scss:33` は forced-colors 下で `outline-offset` を負値へ反転させ、outlineを要素の内側に描く。accordion(`accordion/_mixin.scss:340`)は Firefox 特有の挙動対応で、`<button>` 内テキストが常に黒になる一方で**入れ子要素の背景だけがユーザー指定色になる**ためコントラスト事故が起きる。そのためフォーカス/ホバー時に入れ子要素の背景を `transparent` へ戻している。
+
+### System color
 
 | キーワード | 用途 |
 |---|---|
@@ -482,107 +309,24 @@ Sign (符号)は、その幾何学的性質を利用して、なるべく依存�
 | `AccentColor` | チェックボックス・ラジオなどのアクセント色(比較的新しい) |
 | `AccentColorText` | `AccentColor` 上に乗る文字色 |
 
-### 参考: Kelp の forced-colors 実装
-
-govuk-frontend が「透明outline/borderを常時置く」パターン中心なのに対し、Kelp は**メディアクエリ内で最小限を足す**方式。
-
-| 箇所 | 内容 | 手法の分類 |
-|---|---|---|
-| `components/switch.css:42` | `[role="switch"]` に `border: 1px solid CanvasText`、`:checked` で `background-color: CanvasText` | システムカラー明示。ON/OFF を色ではなく塗りの有無で伝える |
-| `components/forms.css:215` | checkbox/radio の `:checked`/`:indeterminate` の `::after` に `background-color: CanvasText` | 同上。チェックマーク自体が消えるのを防ぐ |
-| `components/mark.css:11` | `background`/`color` を **`revert`** に戻す | 自前のハイライト色を捨て、UA既定(=`Mark`/`MarkText` 相当)に委ねる |
-| `components/skeleton.css:20` | `border: var(--size-6xs) solid` を追加 | 背景色だけで存在を示す要素に輪郭を与える |
-| `components/dialog.css:33` | `border-width: var(--size-5xs)` を追加 | 同上(影で浮かせている要素の輪郭確保) |
-| `components/tabs-wc.css:43` | 選択中タブに `border-width: var(--size-5xs)` | 選択状態を色以外で示す |
-| `components/date-picker.css:10` | `.dark ::-webkit-calendar-picker-indicator` に `filter: invert(1)` を維持 | forced-colors 下でも反転を維持する意図的な例外 |
-
-### 実際のCSSライブラリで個別対応が必要な内容
-
-上の一括指定では拾えず、コンポーネント単位の判断が必要になるもの。
-
-- **`--color-focus`(黄)を background-color で塗るフォーカス表現** — GOV.UK の focused-text 型の「マーカー塗り」は forced-colors で消える。黄色の帯を主表現にする設計を採るなら、透明 outline のフォールバックを同時に入れることが前提条件になる。
-- **`border: none` を基本ルールにしている要素** — forced-colors では背景色差が消えるので、border が無い要素は輪郭を失う。透明 border を先に確保しておく必要がある(論点#10 で `border-color` が死んだ宣言になっている件と根が同じ)。
-- **hover/active の色差** — ink基調のウォッシュ(`--color-wash-hover` 等)は forced-colors 下で消え、hover のフィードバックが失われる。論点#6/#11 と合わせ、色以外の手掛かり(下線の太さ、outline)を持たせるか判断する。
-- **`data-style="fill"` 系ボタン** — 白文字+塗り背景という構成は forced-colors で `ButtonFace`/`ButtonText` に置換され、outline系ボタンとの視覚差が消える。区別を色だけに依存していないか確認する。
-- **入れ子要素に背景色を持つインタラクティブ要素** — accordion と同じ Firefox 挙動を踏む。`<button>` 内に背景色付きの子要素があるなら、forced-colors 下で子の背景を `transparent` へ戻す。
-- **disabled 表現** — 現行が opacity や薄い色で表現している場合、forced-colors では区別が消える。`GrayText` の明示指定が必要。
-- **SVGアイコン** — `fill: currentcolor` でも親の色を継承しない実装があるため `forced-color-adjust: auto` が必要。逆に、リーダビリティ・バックプレートが下線やアイコン形状を潰す箇所では `forced-color-adjust: none` を選ぶ。どちらが必要かは要素ごとに実機確認が必要。
-- **色のみで状態を伝えている要素(tag/badge/バリデーション)** — 背景色が地と同化する。太字・border・アイコンなど色以外の手掛かりを足す。invalid の `--color-invalid`(論点の `forms.css:176`)も forced-colors では色差が消えるため、テキストや記号での明示が必要。
-- **`outline-offset` が親要素に食われるケース** — skip-link のように要素が画面端やオーバーフロー境界にある場合、offset を負値にして内側に描く必要がある。
-- **アイコンフォント・擬似要素の装飾** — `content` による記号は残るが色が置換されるため、地と同化しないか確認する。
-- **`::selection` のカスタム色** — 独自指定していると forced-colors 下で `Highlight`/`HighlightText` に戻す指定が必要。
-- **画像・グラデーションで情報を伝えている箇所** — forced-colors は画像自体は置換しないため、背景がシステムカラーになった上に元の色の画像が乗り、コントラスト事故が起きうる。
-
 ---
 
 ## prefers-reduced-motion
 
-- 自動モーションはデフォルトの定義には適用せず、`@media (prefers-reduced-motion: no-preference)`で明示オプションとして全コンポーネントを設計する。
-
-### 個別に対応が必要な内容
-
-- **一括 `!important` はフォーカス表現を壊しうる** — フォーカスリングのフェードインなど「動きが状態変化を伝えている」箇所まで消える。論点#8/#10 のフォーカス表現に transition を使うなら、その要素は一括指定の対象外にするか、`transition-duration` を短縮するだけに留める判断が必要。
-- **JS 駆動のアニメーション** — CSS メディアクエリでは止まらない。`matchMedia("(prefers-reduced-motion: reduce)")` を JS 側で読んで分岐する必要がある。`scrollIntoView({behavior: "smooth"})`、`Element.animate()`、requestAnimationFrame ベースの処理が該当。
-- **`scroll-behavior: smooth`** — CSS 側は上で打ち消せるが、`html` に直接指定している場合はセレクタが届くか確認が必要(`html:focus-within` は回避策として広まった書き方で、素の `html` にも別途指定した方が確実)。Kelp も `*` 側のリセットに `scroll-behavior: auto !important` を含めており、`html` を個別に狙ってはいない。
-- **自動再生する動画・GIF・カルーセル** — CSS では止まらない。`autoplay` の除去や一時停止コントロールの提供が必要。WCAG 2.2 達成基準 2.2.2 Pause, Stop, Hide の対象。
-- **`transform: scale()` を伴う hover** — 論点#6/#11 の hover 表現に拡大縮小を使う場合、reduced-motion 下では色や下線など動き以外の手掛かりに退避させる。動きを消した結果 hover のフィードバックが完全に消失しないよう確認する。
-- **ローディングスピナー** — `animation-iteration-count: 1` を当てると1回転で停止し、「処理中」が伝わらなくなる。Kelp の `spinner.css:128` のように、スピナー自体を `content: attr(fallback) / ""` によるテキスト表示へ差し替えるのが最も情報が保たれる。属性セレクタで一括リセットから除外するだけの手もあるが、それでは回転が続くだけで reduced-motion の要求に応えていない。
-- **`prefers-reduced-motion: no-preference` を前提にした設計** — 未指定(=`no-preference`)がデフォルトなので、モーションを足す側を `@media (prefers-reduced-motion: no-preference)` で囲む方式もある。「動かないのが基本、動くのは上乗せ」になり事故が少ないため、新規実装ではこちらを推奨。
+- 全コンポーネントで、自動モーションはデフォルトの定義には適用せず、`@media (prefers-reduced-motion: no-preference)`で明示オプションとする。
 
 ---
 
 ## prefers-contrast
 
-`@media (prefers-contrast: more) and (forced-colors: none)` と書く必要がある。
+`@media (prefers-contrast)`(値なし) は、装飾グラデーション・背景画像・box-shadow を単色やsolid borderに置き換えるなど、視覚的な単純化の共通段階に留める。
+`@media (prefers-contrast: more | less) and (forced-colors: none)` と書く必要がある。
 
-| 書き方 | 用途 | 備考 |
-|---|---|---|
-| `@media (prefers-contrast)`(値なし) | **視覚的な単純化**。装飾グラデーション・背景画像・box-shadow を単色やsolid borderに置き換える | `more`/`less`/`custom` すべてで真。forced-colors ユーザーにも有益(仕様が明記) |
-| `@media (prefers-contrast: more)` | コントラストを上げる | forced-colors でも真になるため要注意 |
-| `@media (prefers-contrast: less)` | コントラストを下げる | 片方だけに当てるなら値を明示する |
-| `@media (prefers-contrast)` を高コントラスト用に使う | **仕様が "incorrect and user-hostile" と明言** | `less` を要求した人に高コントラストを押し付けるため |
+---
 
-上を踏まえ、`prefers-contrast: more` で色を濃くする部分は `forced-colors: none` で保護し、値なしの `@media (prefers-contrast)` は仕様推奨どおり「視覚的単純化」専用とする。
+## References
 
-| メディアクエリ | 意味 | 自前の色は | 値なし `(prefers-contrast)` で真? |
-|---|---|---|---|
-| `forced-colors: active` | ブラウザが色を強制置換する | **消える**(システムカラーに置換) | — (別のクエリ) |
-| `prefers-contrast: more` | より高いコントラストを望んでいる | 保たれる(forced-colors 併発時を除く) | ○ |
-| `prefers-contrast: less` | コントラストを下げたい | 保たれる | ○ |
-| `prefers-contrast: custom` | 独自パレット使用中(高低どちらでもない) | 環境依存 | ○ |
-| `prefers-contrast: no-preference` | 未指定 | — | × |
-
-| 環境 | forced-colors | prefers-contrast |
-|---|---|---|
-| Windows ハイコントラスト(高コントラストなパレット) | `active` | `more` |
-| Windows ハイコントラスト(高低どちらでもないパレット) | `active` | `custom` |
-| macOS「コントラストを上げる」 | `none` | `more` |
-| 設定なし | `none` | `no-preference` |
-
-### 個別に対応が必要な内容
-
-- **`(forced-colors: none)` による保護をどこまで付けるか** — 上のコードブロックは層2・層3の両方に付けたが、これは「自前の色を濃く/薄くする」指定だから。`border-width` を太らせるだけの指定なら forced-colors 下でも有害ではないので、保護を外して両環境に効かせる判断もありうる。**プロパティ単位で判断する必要がある**(色系は保護、寸法系は素通しでよいことが多い)。
-- **forced-colors 側の透明 border との二重指定** — forced-colors 節で「透明 border を常時置く」パターンを採ると、層2の `border-width: 2px` と太さが競合する。層2に `(forced-colors: none)` を付けている限り同時適用はされないが、保護を外す判断をした場合は実機確認が必要。
-- **`--color-emphasis-fill` 系のブランド色** — 黒白に振り切ると、ブランド色を使った fill 系ボタン(論点#8)が没個性になる。「どこまでブランドを保つか」は自動判定できず、デザイン判断が必要。
-- **hover/active のウォッシュ(論点#6/#11)** — ink基調のウォッシュは `more` 下で地と同化するか、逆に濃すぎて文字が読めなくなる。トークンを振り切った後のコントラスト比を、ライト/ダーク双方で再計測する必要がある(論点#6 で既に指摘されている「統合後の配色がライト/ダーク双方でコントラスト要件を満たすか確認」に、`more` の軸が加わる)。
-- **`--color-invalid` などの状態色** — `more` 下で赤・緑の区別が保てるか。色相を保ったまま明度だけ下げる必要があり、単純な黒への置換ではエラー表現が壊れる。
-- **薄いグレーの本文・プレースホルダー** — `more` で最も効果が大きい対象。ただし `::placeholder` を本文色まで濃くすると入力値と区別がつかなくなるため、濃くしつつ差は残す。
-- **画像・アイコンの中の色** — CSS トークンでは届かない。SVG なら `currentcolor` 化しておけば追従するが、ラスタ画像は別途高コントラスト版を用意するか、`filter: contrast()` で対処するかの判断が必要。
-- **ダークモードとの組み合わせ** — `prefers-color-scheme: dark` と `prefers-contrast: more` の同時成立時、ダークの地に対して振り切るべき方向が逆になる(白文字を #fff へ、地を #000 へ)。上のコードブロックはライト前提なので、ダーク側の指定と組み合わせる際は入れ子の順序に注意する。なお仕様 §12.4 には「forced-colors のパレットが `prefers-color-scheme` のいずれかに合致する場合、その値も真になる」という規定もあるため、Windows ハイコントラストのダークテーマでは `dark` も同時に立つ。
-- **`less` を無視しないこと** — `more` だけ対応して `less` を放置する実装は珍しくないが、仕様 §12.3 は `less` の需要理由として片頭痛(強いコントラストが視覚的苦痛)とディスレクシアの一部(高コントラストの文字が光って見える)を挙げている。`more` と対称に扱うのが本来。
-- **そもそも採用するかの判断** — 参照3ライブラリすべてが0件という事実は重い。「最初から全配色を高コントラストで設計する」(GOV.UK 方式)を採れば層2は不要になる。導入するなら、層1(視覚的単純化)だけを入れるのが最も費用対効果が高く、仕様の推奨にも合致する。
-
-```css
-@media (prefers-contrast) {
-    /*
-    * Common Layer: Visual simplification only.
-    * Change gradients background and border to a solid color.
-    */
-    * {
-        background-image: none;
-        border: 0.125rem solid var(--color-border);
-        box-shadow: none;
-        /* opacity: 1; */
-    }
-}
-```
+- [Kelp CSS](https://github.com/cferdinandi/kelp)
+- [Pico CSS](https://picocss.com/docs)
+- [Gov UK Design System: Repository](https://github.com/alphagov/govuk-frontend)
+- [U.S. Web Design System (USWDS)](https://designsystem.digital.gov/)

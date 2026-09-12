@@ -13,6 +13,19 @@ Interface design system and DOM implements.
 |---------|-----------|------------|-------------|
 | 0.1.0   | Scheduled | 2026-09-30 | 1st release |
 
+---
+
+## Dependency layers
+
+- [reset.css(@layer css.reset)](./css/reset.css): 1st common layer per the-new-css-reset.
+- [base.css(@layer css.base)](./css/base.css):   2nd common layer defining all constants.
+- [data_style.css(@layer css.data_style)](./css/data_style.css): 3rd common layer defining data-style attribute.
+- [data_size.css(@layer css.data_size)](./css/data_size.css): 4th common layer defining data-size attribute.
+- [data_sign.css(@layer css.data_sign)](./css/data_sign.css): 5th common layer defining data-sign and data-facet attributes.
+- [data_group.css(@layer css.data_group)](./css/data_group.css): 6th common layer defining data-group attribute.
+
+---
+
 ## Color
 
 Defined in [base.css](./css/base.css) (`@layer css.base`). 

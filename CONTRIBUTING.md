@@ -1,3 +1,5 @@
+// This file includes untranslated text (ja).
+
 # Contributing
 
 - Follow [ORG_CONTRIBUTING.md](./ORG_CONTRIBUTING.md)
@@ -21,15 +23,11 @@ docker exec accessibility-audit node reference/audit.mjs
 
 ## Todo
 
-- [ ] focusは当たってんのにまだcaretは出てない、って状態を無くして、確実にcaretを出したい
-- [ ] focus時の密レイアウト差分として、inset差分も同時に用意する。
+- [ ] リファクタリング中
 
 ---
 
 # Color System
-
-- [CUDO: Color Universal Design Recommended Color Set ver.3](https://cudo.jp/wp-content/uploads/2016/07/CUD%E6%8E%A8%E5%A5%A8%E9%85%8D%E8%89%B2%E3%82%BB%E3%83%83%E3%83%88%E3%82%AC%E3%82%A4%E3%83%89%E3%83%96%E3%83%83%E3%82%AF.pdf)
-  - License: free to use the color values (no permission/attribution required for using the colors themselves in products, printed matter, or screens). Cite the source when republishing the color values in guidelines/publications/web media. Figures/artwork in the guidebook are copyrighted by the 5 authoring organizations — no unauthorized reproduction or modification.
 
 ## 採用色の体系
 
@@ -41,14 +39,7 @@ docker exec accessibility-audit node reference/audit.mjs
 
 ## 構成色の体系
 
-```
-┌　background　───┐
-│　┏ border ━━━┓　│
-│　┃　　fill    ┃ │
-│　┃ 　 -text-　┃ │
-│　┗━━━━━━━━━━━┛ │
-└───────────────┘
-```
+
 
 ## 組み合わせ例
 
@@ -147,3 +138,7 @@ docker exec accessibility-audit node reference/audit.mjs
 - グラデーションは全体で無く周辺部だけに留めるなど、ベタ塗りの色面積をなるべく確保するとよい。
 
 ---
+
+## References
+
+- [CUDO: Color Universal Design Recommended Color Set ver.3](https://cudo.jp/wp-content/uploads/2016/07/CUD%E6%8E%A8%E5%A5%A8%E9%85%8D%E8%89%B2%E3%82%BB%E3%83%83%E3%83%88%E3%82%AC%E3%82%A4%E3%83%89%E3%83%96%E3%83%83%E3%82%AF.pdf)

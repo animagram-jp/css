@@ -214,6 +214,10 @@
         font-family: var(--font-family-sans-serif);
     }
 
+    ::placeholder {
+        color: var(--color-mute);
+    }
+
     html {
         scrollbar-gutter: stable;
     }

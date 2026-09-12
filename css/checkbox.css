@@ -1,12 +1,15 @@
 /* checkbox: input widget that allows users to choose one or more values. */
 
-/*  <label>
-        <span>inline</span>
-        <input type="checkbox"></label> */
+/*  Usage:
+
+    <label>
+        <span></span>
+        <input type="checkbox"></label> 
+*/
 
 @layer css.checkbox {
 
-    /* --- color, layout --- */
+    /* === color, layout === */
 
     label:has(> input[type="checkbox"]:not([role="switch"])),
     label:has(> input[type="checkbox"]:not([role="switch"])) > * {
@@ -34,38 +37,23 @@
         color: var(--color-paper);
     }
 
-    /* ✓ / ─ : button.css の summary::after と同じく border 2辺を回転させて描く。
-       clip-path: path() は座標が絶対値で固定されスケールしないため使わない */
+    /* === sign === */
 
-    label > input[type="checkbox"]:not([role="switch"])::after {
+    label > input[type="checkbox"]:not([role="switch"])::before {
         /* --color-emphasis-fill は ink に対して 7:1 (AAA) を満たす塗り色なので、前景は ink */
         border-color: var(--color-paper);
-        border-style: solid;
-        border-width: 0; /* 既定は非表示。:checked / :indeterminate が必要な辺のみ指定する */
-        content:      "";
-        inset-block:  0;
         inset-inline: 0;
-        margin:       auto; /* 中央揃え (inset: 0 の余白を上下左右均等に配分) */
-        position:     absolute;
+        margin-inline: auto; /* data_sign.css は inset-inline-start: 0 なので中央揃えに戻す */
     }
 
     @media (prefers-color-scheme: dark) {
-        label > input[type="checkbox"]:not([role="switch"])::after {
+        label > input[type="checkbox"]:not([role="switch"])::before {
             border-color: var(--color-ink);
         }
     }
 
-    /* ✓ : 右辺 + 下辺を残した「く」の字を 45deg 回転して描く (button.css の summary::after と同じ手法)。
-       glyph box を縦長にすることで、短い左腕 + 長い右腕のチェック形状になる。
-       線の太さは size-variant に依らず一定。回転後のインク外接矩形は glyph box 中心より
-       下にずれる (ズレ量は glyph の大きさに比例) ため、translate は size-variant ごとに指定する */
-    label > input[type="checkbox"]:not([role="switch"]):checked::after {
-        border-width: 0 0.1875rem 0.1875rem 0;
-        rotate:       45deg;
-    }
-
     /* ─ : 下辺のみを残し、回転しない。下辺のインク分だけ上へずらして重心を中央に揃える */
-    label > input[type="checkbox"]:not([role="switch"]):indeterminate::after {
+    label > input[type="checkbox"]:not([role="switch"]):indeterminate::before {
         border-width: 0 0 0.1875rem 0;
         rotate:       0deg;
         translate:    0 -0.09375rem; /* 下辺のインク (太さ 0.1875rem) の半分だけ上へ */
@@ -79,12 +67,12 @@
         label > input[type="checkbox"]:not([role="switch"]):is(:checked, :indeterminate) {
             background-color: CanvasText;
         }
-        label > input[type="checkbox"]:not([role="switch"])::after {
+        label > input[type="checkbox"]:not([role="switch"])::before {
             border-color: Canvas; /* ✓/─ は border で描くため background ではなく border-color */
         }
     }
 
-    /* --- size --- */
+    /* === size === */
 
     label > input[type="checkbox"]:not([role="switch"])[data-size="xs"] {
         border-radius: var(--xs-border-radius);
@@ -92,28 +80,12 @@
         block-size:    var(--xs-box-height);
         inline-size:   var(--xs-box-height);
     }
-    label > input[type="checkbox"]:not([role="switch"])[data-size="xs"]::after {
-        block-size:   calc(var(--xs-box-height) / 2);
-        inline-size:  calc(var(--xs-box-height) / 4);
-    }
-    label > input[type="checkbox"]:not([role="switch"])[data-size="xs"]:checked::after {
-        translate: 0 -0.09375rem;
-    }
-
     label > input[type="checkbox"]:not([role="switch"])[data-size="sm"] {
         border-radius: var(--sm-border-radius);
         border-width:  var(--sm-border-width);
         block-size:    var(--sm-box-height);
         inline-size:   var(--sm-box-height);
     }
-    label > input[type="checkbox"]:not([role="switch"])[data-size="sm"]::after {
-        block-size:   calc(var(--sm-box-height) / 2);
-        inline-size:  calc(var(--sm-box-height) / 4);
-    }
-    label > input[type="checkbox"]:not([role="switch"])[data-size="sm"]:checked::after {
-        translate: 0 -0.15625rem;
-    }
-
     label > input[type="checkbox"]:not([role="switch"]):not([data-size]),
     label > input[type="checkbox"]:not([role="switch"])[data-size="md"] {
         border-radius: var(--md-border-radius);
@@ -121,87 +93,54 @@
         block-size:    var(--md-box-height);
         inline-size:   var(--md-box-height);
     }
-    label > input[type="checkbox"]:not([role="switch"]):not([data-size])::after,
-    label > input[type="checkbox"]:not([role="switch"])[data-size="md"]::after {
-        block-size:   calc(var(--md-box-height) / 2);
-        inline-size:  calc(var(--md-box-height) / 4);
-    }
-    label > input[type="checkbox"]:not([role="switch"]):not([data-size]):checked::after,
-    label > input[type="checkbox"]:not([role="switch"])[data-size="md"]:checked::after {
-        translate: 0 -0.20312rem;
-    }
-
     label > input[type="checkbox"]:not([role="switch"])[data-size="lg"] {
         border-radius: var(--lg-border-radius);
         border-width:  var(--lg-border-width);
         block-size:    var(--lg-box-height);
         inline-size:   var(--lg-box-height);
     }
-    label > input[type="checkbox"]:not([role="switch"])[data-size="lg"]::after {
-        block-size:   calc(var(--lg-box-height) / 2);
-        inline-size:  calc(var(--lg-box-height) / 4);
-    }
-    label > input[type="checkbox"]:not([role="switch"])[data-size="lg"]:checked::after {
-        translate: 0 -0.25rem;
-    }
-
     label > input[type="checkbox"]:not([role="switch"])[data-size="xl"] {
         border-radius: var(--xl-border-radius);
         border-width:  var(--xl-border-width);
         block-size:    var(--xl-box-height);
         inline-size:   var(--xl-box-height);
     }
-    label > input[type="checkbox"]:not([role="switch"])[data-size="xl"]::after {
-        block-size:   calc(var(--xl-box-height) / 2);
-        inline-size:  calc(var(--xl-box-height) / 4);
-    }
-    label > input[type="checkbox"]:not([role="switch"])[data-size="xl"]:checked::after {
-        translate: 0 -0.28125rem;
-    }
-
     label > input[type="checkbox"]:not([role="switch"])[data-size="2xl"] {
         border-radius: var(--2xl-border-radius);
         border-width:  var(--2xl-border-width);
         block-size:    var(--2xl-box-height);
         inline-size:   var(--2xl-box-height);
     }
-    label > input[type="checkbox"]:not([role="switch"])[data-size="2xl"]::after {
-        block-size:   calc(var(--2xl-box-height) / 2);
-        inline-size:  calc(var(--2xl-box-height) / 4);
-    }
-    label > input[type="checkbox"]:not([role="switch"])[data-size="2xl"]:checked::after {
-        translate: 0 -0.35938rem;
-    }
+    
+    /* --- indeterminate --- */
 
-    /* ─ (indeterminate) : 下辺のみの横棒 */
-
-    label > input[type="checkbox"]:not([role="switch"])[data-size="xs"]:indeterminate::after {
+    label > input[type="checkbox"]:not([role="switch"])[data-size="xs"]:indeterminate::before {
         block-size:   0;
         inline-size:  calc(var(--xs-box-height) / 2);
     }
-    label > input[type="checkbox"]:not([role="switch"])[data-size="sm"]:indeterminate::after {
+    label > input[type="checkbox"]:not([role="switch"])[data-size="sm"]:indeterminate::before {
         block-size:   0;
         inline-size:  calc(var(--sm-box-height) / 2);
     }
-    label > input[type="checkbox"]:not([role="switch"]):not([data-size]):indeterminate::after,
-    label > input[type="checkbox"]:not([role="switch"])[data-size="md"]:indeterminate::after {
+    label > input[type="checkbox"]:not([role="switch"]):not([data-size]):indeterminate::before,
+    label > input[type="checkbox"]:not([role="switch"])[data-size="md"]:indeterminate::before {
         block-size:   0;
         inline-size:  calc(var(--md-box-height) / 2);
     }
-    label > input[type="checkbox"]:not([role="switch"])[data-size="lg"]:indeterminate::after {
+    label > input[type="checkbox"]:not([role="switch"])[data-size="lg"]:indeterminate::before {
         block-size:   0;
         inline-size:  calc(var(--lg-box-height) / 2);
     }
-    label > input[type="checkbox"]:not([role="switch"])[data-size="xl"]:indeterminate::after {
+    label > input[type="checkbox"]:not([role="switch"])[data-size="xl"]:indeterminate::before {
         block-size:   0;
         inline-size:  calc(var(--xl-box-height) / 2);
     }
-    label > input[type="checkbox"]:not([role="switch"])[data-size="2xl"]:indeterminate::after {
+    label > input[type="checkbox"]:not([role="switch"])[data-size="2xl"]:indeterminate::before {
         block-size:   0;
         inline-size:  calc(var(--2xl-box-height) / 2);
     }
 
-    /* --- focus, hover, active --- */
+    /* === focus, hover, active === */
 
     label > input[type="checkbox"]:not([role="switch"]):focus-visible,
     label > input[type="checkbox"]:not([role="switch"]):hover,
@@ -221,7 +160,7 @@
         }
     }
 
-    /* --- invalid --- */
+    /* === invalid === */
 
     label > input[type="checkbox"]:not([role="switch"]):user-invalid,
     label > input[type="checkbox"]:not([role="switch"])[aria-invalid="true"] {

@@ -2,7 +2,7 @@
 
     /* === surround input style (input, select, textarea) === */
 
-    /* --- color, layout --- */
+    /* === color, layout === */
 
     input:where(
         [type="text"], 

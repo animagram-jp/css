@@ -6,7 +6,7 @@
 
 @layer css.toggle {
 
-    /* --- color, layout --- */
+    /* === color, layout === */
 
     label:has(> input[type="checkbox"][role="switch"]),
     label:has(> input[type="checkbox"][role="switch"]) > * {
@@ -18,11 +18,11 @@
     label:has(> input[type="checkbox"][role="switch"])[data-axis="block"] {
         display: inline flow-root;
     }
-    label[data-axis="block"] > *:first-child {
+    label:has(> input[type="checkbox"][role="switch"])[data-axis="block"] > *:first-child {
         display:    block;
         text-align: center;
     }
-    label[data-axis="block"] > *:first-child:not([data-size]) {
+    label:has(> input[type="checkbox"][role="switch"])[data-axis="block"] > *:first-child:not([data-size]) {
         border-radius:  var(--md-border-radius);
         border-width:   var(--md-border-width);
         font-size:      var(--md-font-size);

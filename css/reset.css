@@ -88,10 +88,6 @@
         font-weight: bolder;
     }
     
-    code, kbd, samp, pre { /* per tailwind-preflight.css:107-132 */
-        font-family: var(--font-family-monospace);
-    }
-    
     small { /* per tailwind-preflight.css:134-140, but "smaller" not "80%" */
         font-size: smaller;
     }
@@ -167,9 +163,8 @@
         box-sizing: border-box;
     }
     
-    /* reset default text opacity of input placeholder */
+    /* reset default text opacity of input placeholder. */
     ::placeholder {
-        color: unset;
         opacity: 1; /* per tailwind-preflight.css:283-289 */
     }
     

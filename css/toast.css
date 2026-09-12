@@ -12,7 +12,7 @@
 
 @layer css.toast {
 
-    /* --- color, layout --- */
+    /* === color, layout === */
 
     [data-type="toast"] {
         bottom:           1.5rem;

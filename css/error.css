@@ -94,7 +94,7 @@
 
     /* === error message (p[data-type="error"]) === */
 
-    /* --- color, layout --- */
+    /* === color, layout === */
 
     p[data-type="error"] {
         clear:          both; /* per govuk: stay clear of a floated hint */
