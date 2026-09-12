@@ -7,13 +7,13 @@
     css.error,
     css.input,
     css.button,
-    css.checkbox, 
-    css.toggle, 
-    css.radio, 
-    css.heading, 
-    css.search, 
-    css.table, 
-    css.slider, 
+    css.checkbox,
+    css.toggle,
+    css.radio,
+    css.heading,
+    css.search,
+    css.table,
+    css.slider,
     css.step,
     css.data_group,
     css.list-box,
@@ -153,7 +153,7 @@
             --color-paper: rgb(29,29,29); /* 10:1 (arbitrary) against paper */
         }
     }
-    
+
     @media print {
         :root {
             --color-ink:           rgb(var(--rgb-black));
@@ -268,13 +268,19 @@
         color: var(--color-ink);
     }
     @media (prefers-color-scheme: dark) {
-        mark, ::selection {
+        mark,
+        ::selection {
             color: var(--color-paper);
         }
     }
 
-    code, pre, kbd, samp, var, 
-    input:is([type="tel"], [type="number"], [type="password"], [inputmode="numeric"]) {
+    code, pre, kbd, samp, var,
+    input:where(
+        [type="tel"],
+        [type="number"],
+        [type="password"],
+        [inputmode="numeric"]
+    ) {
         font-family: var(--font-family-monospace);
         font-style: normal;
     }

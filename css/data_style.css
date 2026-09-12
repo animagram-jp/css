@@ -2,16 +2,16 @@
 
     /* === common for elements focusable === */
 
-    :where(
-        a, 
-        button, 
-        summary, 
+    *:where(
+        a,
+        button,
+        summary,
         input:is(
-            [type="text"], 
-            [type="email"], 
-            [type="password"], 
-            [type="search"], 
-            [type="url"], 
+            [type="text"],
+            [type="email"],
+            [type="password"],
+            [type="search"],
+            [type="url"],
             [type="tel"]
         ),
         select,
@@ -20,7 +20,7 @@
         position: relative; /* for :focus-visible {z-index:1} */
     }
 
-    :where(
+    *:where(
         a,
         button,
         summary,
@@ -45,7 +45,7 @@
     /* === surround fill style === */
 
     *[data-style="fill"],
-    :is(button, output):not([data-style]) {
+    *:where(button, output):not([data-style]) {
         appearance:       none;
         background-color: var(--color-emphasis-fill);
         border-color:     transparent;
@@ -53,16 +53,16 @@
         color:            var(--color-paper);
         margin:           0;
     }
-    
+
     @media (prefers-color-scheme: dark) {
         *[data-style="fill"],
-        :is(button, output):not([data-style]) {
+        *:where(button, output):not([data-style]) {
             color: var(--color-ink);
         }
     }
 
     /* === surround outline style === */
-    
+
     *[data-style="outline"] {
         appearance:       none;
         background-color: transparent;
@@ -77,9 +77,9 @@
     /* === surround input style: input.css === */
 
     /* === underline style === */
-    
+
     *[data-style="underline"],
-    :where(summary, a):not([data-style]) {
+    *:where(summary, a):not([data-style]) {
         background-color:          var(--color-paper);
         border:                    none;
         box-decoration-break:      clone;
@@ -95,27 +95,34 @@
 
     *[data-style="icon"] {
         align-items: center;
-        all:        unset;
-        block-size: 1em;
-        cursor:     pointer;
-        font:       inherit;
+        all:         unset;
+        block-size:  1em;
+        cursor:      pointer;
+        font:        inherit;
         inline-size: 1em;
-        position:   relative;
+        position:    relative;
     }
+
+    /* --- focus --- */
+
     *[data-style="icon"]:focus-visible {
 
     }
-    @media (hover: hover) {
-    
-    }
+
     @media (forced-colors: active) {
         *[data-style="icon"]:focus-visible {
             outline-color: Highlight;
         }
     }
 
-    /* === rule indent style === */
-    
+    /* --- hover --- */
+
+    @media (hover: hover) {
+
+    }
+
+    /* === rule indent style: indent block with emphasis rule === */
+
     *[data-style="rule-indent"] {
         padding-inline-start: 1.5rem;
         position:             relative;

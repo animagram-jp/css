@@ -138,8 +138,7 @@
     label > input[type="checkbox"][role="switch"][data-size="xs"]:checked::after {
         transform: translateX(calc(calc(var(--xs-box-height) - var(--xs-border-width) * 4) * var(--toggle-dir, 1)));
     }
-    label > input[type="checkbox"][role="switch"][data-size="xs"]::after,
-    label > input[type="checkbox"][role="switch"][data-size="xs"]:checked::after {
+    label > input[type="checkbox"][role="switch"][data-size="xs"]::after {
         content: "";
     }
 
@@ -161,15 +160,19 @@
         transform: translateX(calc(calc(var(--sm-box-height) - var(--sm-border-width) * 4) * var(--toggle-dir, 1)));
     }
 
-    label > input[type="checkbox"][role="switch"]:not([data-size]),
-    label > input[type="checkbox"][role="switch"][data-size="md"] {
+    label > input[type="checkbox"][role="switch"]:where(
+        [data-size="md"],
+        :not([data-size])
+    ) {
         border-radius: calc(var(--md-box-height) / 2);
         border-width:  var(--md-border-width);
         block-size:    var(--md-box-height);
         inline-size:   calc(calc(var(--md-box-height) - var(--md-border-width) * 4) * 2 + var(--md-border-width) * 4);
     }
-    label > input[type="checkbox"][role="switch"]:not([data-size])::after,
-    label > input[type="checkbox"][role="switch"][data-size="md"]::after {
+    label > input[type="checkbox"][role="switch"]:where(
+        [data-size="md"],
+        :not([data-size])
+    )::after {
         border-radius:      calc(var(--md-box-height) / 2);
         border-width:       var(--md-border-width);
         font-size:          var(--md-font-size);
@@ -177,8 +180,10 @@
         inset-inline-start: var(--md-border-width);
         inline-size:        calc(var(--md-box-height) - var(--md-border-width) * 4);
     }
-    label > input[type="checkbox"][role="switch"]:not([data-size]):checked::after,
-    label > input[type="checkbox"][role="switch"][data-size="md"]:checked::after {
+    label > input[type="checkbox"][role="switch"]:where(
+        [data-size="md"],
+        :not([data-size])
+    ):checked::after {
         transform: translateX(calc(calc(var(--md-box-height) - var(--md-border-width) * 4) * var(--toggle-dir, 1)));
     }
 
@@ -238,9 +243,11 @@
 
     /* --- focus, hover, active --- */
 
-    label > input[type="checkbox"][role="switch"]:focus-visible,
-    label > input[type="checkbox"][role="switch"]:hover,
-    label > input[type="checkbox"][role="switch"]:active {
+    label > input[type="checkbox"][role="switch"]:where(
+        :focus-visible,
+        :hover,
+        :active
+    ) {
         outline-color:  var(--color-focus);
         outline-offset: 0;
         outline-style:  solid;
@@ -249,35 +256,45 @@
     }
 
     @media (forced-colors: active) {
-        label > input[type="checkbox"][role="switch"]:focus-visible,
-        label > input[type="checkbox"][role="switch"]:hover,
-        label > input[type="checkbox"][role="switch"]:active {
+        label > input[type="checkbox"][role="switch"]:where(
+            :focus-visible,
+            :hover,
+            :active
+        ) {
             outline-color: Highlight;
         }
     }
 
     /* --- disabled --- */
 
-    label > input[type="checkbox"][role="switch"]:disabled,
-    label > input[type="checkbox"][role="switch"][aria-disabled="true"] {
+    label > input[type="checkbox"][role="switch"]:where(
+        :disabled,
+        [aria-disabled="true"]
+    ) {
         border-color:   var(--color-mute);
         cursor:         not-allowed;
         outline-color:  transparent;
         pointer-events: none;
     }
-    label > input[type="checkbox"][role="switch"]:disabled::after,
-    label > input[type="checkbox"][role="switch"][aria-disabled="true"]::after {
+    label > input[type="checkbox"][role="switch"]:is(
+        :disabled,
+        [aria-disabled="true"]
+    )::after {
         border-color: var(--color-mute);
         color:        var(--color-mute);
     }
 
     @media (forced-colors: active) {
-        label > input[type="checkbox"][role="switch"]:disabled,
-        label > input[type="checkbox"][role="switch"][aria-disabled="true"] {
+        label > input[type="checkbox"][role="switch"]:where(
+            :disabled,
+            [aria-disabled="true"]
+        ) {
             border-color: GrayText;
         }
-        label > input[type="checkbox"][role="switch"]:disabled::after,
-        label > input[type="checkbox"][role="switch"][aria-disabled="true"]::after {
+        label > input[type="checkbox"][role="switch"]:is(
+            :disabled,
+            [aria-disabled="true"]
+        )::after {
             background:   GrayText;
             border-color: GrayText;
         }

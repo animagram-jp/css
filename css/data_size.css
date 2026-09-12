@@ -49,24 +49,24 @@
        whether or not it also carries [data-style]. */
 
     *:where(
-        *[data-style="fill"], 
+        *[data-style="fill"],
         *[data-style="outline"],
         button,
         input:is(
-            [type="text"], 
-            [type="email"], 
-            [type="password"], 
-            [type="search"], 
-            [type="url"], 
+            [type="text"],
+            [type="email"],
+            [type="password"],
+            [type="search"],
+            [type="url"],
             [type="tel"]
-        ), 
+        ),
         summary,
         select,
         textarea,
         output,
         [role="option"],
         [role="presentation"],
-        input[data-facet="check"],
+        input[data-facet="check"]
     )[data-size="xs"] {
         border-radius:  var(--xs-border-radius);
         border-width:   var(--xs-border-width);
@@ -76,24 +76,24 @@
     }
 
     *:where(
-        *[data-style="fill"], 
+        *[data-style="fill"],
         *[data-style="outline"],
         button,
         input:is(
-            [type="text"], 
-            [type="email"], 
-            [type="password"], 
-            [type="search"], 
-            [type="url"], 
+            [type="text"],
+            [type="email"],
+            [type="password"],
+            [type="search"],
+            [type="url"],
             [type="tel"]
-        ), 
+        ),
         summary,
         select,
         textarea,
         output,
         [role="option"],
         [role="presentation"],
-        input[data-facet="check"],
+        input[data-facet="check"]
     )[data-size="sm"] {
         border-radius:  var(--sm-border-radius);
         border-width:   var(--sm-border-width);
@@ -120,10 +120,10 @@
         output,
         [role="option"],
         [role="presentation"],
-        input[data-facet="check"],
+        input[data-facet="check"]
     ):where(
         [data-size="md"],
-        :not([data-size]),
+        :not([data-size])
     ) {
         border-radius:  var(--md-border-radius);
         border-width:   var(--md-border-width);
@@ -133,24 +133,24 @@
     }
 
     *:where(
-        *[data-style="fill"], 
+        *[data-style="fill"],
         *[data-style="outline"],
         button,
         input:is(
-            [type="text"], 
-            [type="email"], 
-            [type="password"], 
-            [type="search"], 
-            [type="url"], 
+            [type="text"],
+            [type="email"],
+            [type="password"],
+            [type="search"],
+            [type="url"],
             [type="tel"]
-        ), 
+        ),
         summary,
         select,
         textarea,
         output,
         [role="option"],
         [role="presentation"],
-        input[data-facet="check"],
+        input[data-facet="check"]
     )[data-size="lg"] {
         border-radius:  var(--lg-border-radius);
         border-width:   var(--lg-border-width);
@@ -160,24 +160,24 @@
     }
 
     *:where(
-        *[data-style="fill"], 
+        *[data-style="fill"],
         *[data-style="outline"],
         button,
         input:is(
-            [type="text"], 
-            [type="email"], 
-            [type="password"], 
-            [type="search"], 
-            [type="url"], 
+            [type="text"],
+            [type="email"],
+            [type="password"],
+            [type="search"],
+            [type="url"],
             [type="tel"]
-        ), 
+        ),
         summary,
         select,
         textarea,
         output,
         [role="option"],
         [role="presentation"],
-        input[data-facet="check"],
+        input[data-facet="check"]
     )[data-size="xl"] {
         border-radius:  var(--xl-border-radius);
         border-width:   var(--xl-border-width);
@@ -187,24 +187,24 @@
     }
 
     *:where(
-        *[data-style="fill"], 
+        *[data-style="fill"],
         *[data-style="outline"],
         button,
         input:is(
-            [type="text"], 
-            [type="email"], 
-            [type="password"], 
-            [type="search"], 
-            [type="url"], 
+            [type="text"],
+            [type="email"],
+            [type="password"],
+            [type="search"],
+            [type="url"],
             [type="tel"]
-        ), 
+        ),
         summary,
         select,
         textarea,
         output,
         [role="option"],
         [role="presentation"],
-        input[data-facet="check"],
+        input[data-facet="check"]
     )[data-size="2xl"] {
         border-radius:  var(--2xl-border-radius);
         border-width:   var(--2xl-border-width);
@@ -225,8 +225,10 @@
         outline-width:  var(--sm-border-width);
     }
 
-    a:not([data-style="fill"], [data-style="outline"]):not([data-size]):focus-visible,
-    a:not([data-style="fill"], [data-style="outline"])[data-size="md"]:focus-visible {
+    a:not([data-style="fill"], [data-style="outline"]):where(
+        [data-size="md"],
+        :not([data-size])
+    ):focus-visible {
         outline-offset: calc(((var(--md-box-height) - var(--md-line-height)) / 2) - var(--md-border-width));
         outline-width:  var(--md-border-width);
     }

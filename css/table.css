@@ -25,14 +25,14 @@
     * collapsed onto one another and the row height is carried by padding.
     */
     table {
-        border-collapse:  collapse;
-        color:            var(--color-ink);
-        font-size:        var(--md-font-size);
-        font-weight:      normal;
-        letter-spacing:   var(--md-letter-spacing);
-        line-height:      var(--md-line-height);
-        margin:           0;
-        max-inline-size:  100%;
+        border-collapse: collapse;
+        color:           var(--color-ink);
+        font-size:       var(--md-font-size);
+        font-weight:     normal;
+        letter-spacing:  var(--md-letter-spacing);
+        line-height:     var(--md-line-height);
+        margin:          0;
+        max-inline-size: 100%;
     }
 
     /*
@@ -40,7 +40,7 @@
     * line-height, halved for the two sides -- the same relation css.input and
     * css.button use to seat a line inside --*-box-height.
     */
-    table :is(td, th) {
+    table *:where(td, th) {
         padding-block:  calc((var(--md-box-height) - var(--md-line-height)) / 2);
         padding-inline: calc(var(--md-border-radius) / 2);
         text-align:     start;
@@ -48,7 +48,7 @@
     }
 
     @media (width >= 40rem) {
-        table :is(td, th) {
+        table *:where(td, th) {
             padding-inline: var(--md-border-radius);
         }
     }
@@ -79,7 +79,7 @@
        td/th の padding、caption の font-size のみ固有実装 (caption は
        table 自身の [data-size] を継承するため、汎用ルールでは届かない)。 */
 
-    table[data-size="xs"] :is(td, th) {
+    table[data-size="xs"] *:where(td, th) {
         padding-block:  calc((var(--xs-box-height) - var(--xs-line-height)) / 2);
         padding-inline: var(--xs-border-radius);
     }
@@ -87,7 +87,7 @@
         font-size: var(--xs-font-size);
     }
 
-    table[data-size="sm"] :is(td, th) {
+    table[data-size="sm"] *:where(td, th) {
         padding-block:  calc((var(--sm-box-height) - var(--sm-line-height)) / 2);
         padding-inline: var(--sm-border-radius);
     }
@@ -95,7 +95,7 @@
         font-size: var(--sm-font-size);
     }
 
-    table[data-size="lg"] :is(td, th) {
+    table[data-size="lg"] *:where(td, th) {
         padding-block:  calc((var(--lg-box-height) - var(--lg-line-height)) / 2);
         padding-inline: var(--lg-border-radius);
     }
@@ -103,7 +103,7 @@
         font-size: var(--lg-font-size);
     }
 
-    table[data-size="xl"] :is(td, th) {
+    table[data-size="xl"] *:where(td, th) {
         padding-block:  calc((var(--xl-box-height) - var(--xl-line-height)) / 2);
         padding-inline: var(--xl-border-radius);
     }
@@ -111,7 +111,7 @@
         font-size: var(--xl-font-size);
     }
 
-    table[data-size="2xl"] :is(td, th) {
+    table[data-size="2xl"] *:where(td, th) {
         padding-block:  calc((var(--2xl-box-height) - var(--2xl-line-height)) / 2);
         padding-inline: var(--2xl-border-radius);
     }
@@ -126,7 +126,7 @@
     * row, not by a fill: a fill would have to survive forced-colors, where a
     * background is replaced and the distinction is lost.
     */
-    table thead tr:last-of-type :is(td, th) {
+    table thead tr:last-of-type *:where(td, th) {
         border-block-end: var(--md-border-width) solid var(--color-ink);
     }
 
@@ -134,7 +134,7 @@
         border-inline-end: var(--md-border-width) solid var(--color-ink);
     }
 
-    table tfoot tr:first-of-type :is(td, th) {
+    table tfoot tr:first-of-type *:where(td, th) {
         border-block-start: var(--md-border-width) solid var(--color-ink);
     }
 
@@ -177,42 +177,48 @@
             background-color: revert;
         }
         /* The selected row keeps a mark that survives the colour replacement. */
-        table[data-selectable] tbody tr:has(:checked) :is(td, th) {
+        table[data-selectable] tbody tr:has(:checked) *:where(td, th) {
             border-block: var(--md-border-width) solid Highlight;
         }
     }
 
     /* The control column is only as wide as the control, which is centred. */
-    table :is(td, th):has(> label:only-child > input:is([type="checkbox"]:not([role="switch"]), [type="radio"])) {
+    table *:where(td, th):has(> label:only-child > input:is(
+        [type="checkbox"]:not([role="switch"]),
+        [type="radio"]
+    )) {
         inline-size:    0; /* shrink-to-fit around the control */
         padding-inline: calc(var(--md-border-radius) / 2);
         text-align:     center;
     }
 
-    table :is(td, th) > label:only-child:has(> input:is([type="checkbox"]:not([role="switch"]), [type="radio"])) {
+    table *:where(td, th) > label:only-child:has(> input:is(
+        [type="checkbox"]:not([role="switch"]),
+        [type="radio"]
+    )) {
         display: inline flow-root;
     }
 
     /* === [data-border] === */
 
-    table[data-border=""] :where(td, th) {
+    table[data-border=""] *:where(td, th) {
         border: var(--md-border-width) solid var(--color-mute);
     }
-    table[data-border~="block-start"] :where(td, th) {
+    table[data-border~="block-start"] *:where(td, th) {
         border-block-start: var(--md-border-width) solid var(--color-mute);
     }
-    table[data-border~="block-end"] :where(td, th) {
+    table[data-border~="block-end"] *:where(td, th) {
         border-block-end: var(--md-border-width) solid var(--color-mute);
     }
-    table[data-border~="inline-start"] :where(td, th) {
+    table[data-border~="inline-start"] *:where(td, th) {
         border-inline-start: var(--md-border-width) solid var(--color-mute);
     }
-    table[data-border~="inline-end"] :where(td, th) {
+    table[data-border~="inline-end"] *:where(td, th) {
         border-inline-end: var(--md-border-width) solid var(--color-mute);
     }
 
     @media (forced-colors: active) {
-        table :is(td, th) {
+        table *:where(td, th) {
             border-color: CanvasText;
         }
     }

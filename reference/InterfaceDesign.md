@@ -229,6 +229,7 @@ Sign (符号)は、その幾何学的性質を利用して、なるべく依存�
 - emphasis: 系内に1つ、印象を表現する色。背景/文字の他、各コントラスト要件に応じたバリアント値の集合。
 - error:     赤の背景色。
 - highlight: 黄の背景色。
+- success:   緑の背景色。
 - focus:     境界線色。
 - transparent: 透明の背景色。各コンポーネントは、paper(または--rgb-base-*)色上に載る前提とする。
 
@@ -257,6 +258,8 @@ textに対して背景色を当てることは出来ない。
 | outline | border: emphasis, background: transparent, text: emphasis | outline: emphasis | underline: emphasis, cursor: pointer | - | - | - |  |
 | fill | border: transparent, background: emphasis, text: paper | outline: emphasis | emphasis background: emphasis, underline: bold paper | - | - | - | background: mute, cursor: not-allowd |
 | underline | background: transparent, text: ink, underline: ink | outline: emphasis | underline: bold | - | - | - | text: mute, underline: mute, cursor: not-allowd |
+| icon | all: unset | - | - | - | - | - | - |
+| rule-indent | background(縦棒): emphasis | - | - | - | - | - | - |
 
 ---
 

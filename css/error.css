@@ -21,17 +21,17 @@
 
     /* === error summary (section[data-type="error-summary"]) === */
 
-    /* --- color, layout --- */
+    /* === color, layout === */
 
     section[data-type="error-summary"] {
-        border-color: var(--color-error);
-        border-style: solid;
-        color:        var(--color-ink);
-        margin: 0;
+        border-color:   var(--color-error);
+        border-style:   solid;
         border-width:   var(--md-border-width);
+        color:          var(--color-ink);
         font-size:      var(--md-font-size);
         letter-spacing: var(--md-letter-spacing);
         line-height:    var(--md-line-height);
+        margin:         0;
         min-height:     var(--md-box-height);
         padding-block:  calc(((var(--md-box-height) - var(--md-line-height)) / 2) - var(--md-border-width));
         padding-inline: var(--md-border-radius);
@@ -84,11 +84,11 @@
 
        button.css / data_style.css styles every a:any-link without [data-style] in --color-emphasis */
 
-    section[data-type="error-summary"] > ul > li > a:is(:visited, :hover, :active) {
+    section[data-type="error-summary"] > ul > li > a:where(:visited, :hover, :active) {
         color: var(--color-ink);
     }
 
-    section[data-type="error-summary"] > ul > li > a:is(:hover, :active) {
+    section[data-type="error-summary"] > ul > li > a:where(:hover, :active) {
         text-decoration-thickness: 0.25rem;
     }
 
@@ -97,12 +97,12 @@
     /* === color, layout === */
 
     p[data-type="error"] {
-        clear:          both; /* per govuk: stay clear of a floated hint */
-        color:          var(--color-ink);
-        font-weight:    bold;
-        margin:         0 0 0.5rem 0;
-        padding-left:   1.5rem;
-        position:       relative;
+        clear:        both; /* per govuk: stay clear of a floated hint */
+        color:        var(--color-ink);
+        font-weight:  bold;
+        margin:       0 0 0.5rem 0;
+        padding-left: 1.5rem;
+        position:     relative;
     }
     p[data-type="error"]::before {
         background-color: var(--color-error);
@@ -114,7 +114,8 @@
 
     /* --- size ---
 
-       font-size, letter-spacing, line-height は data_size.css でカバー済み。min-height, padding-block のみ固有実装。 */
+       font-size, letter-spacing, line-height は data_size.css でカバー済み。
+       min-height, padding-block のみ固有実装。 */
 
     p[data-type="error"][data-size="xs"] {
         min-height:    var(--xs-box-height);
@@ -130,13 +131,17 @@
     p[data-type="error"][data-size="sm"]::before {
         inset-block: calc((var(--sm-box-height) - var(--sm-line-height)) / 2);
     }
-    p[data-type="error"]:not([data-size]),
-    p[data-type="error"][data-size="md"] {
+    p[data-type="error"]:where(
+        [data-size="md"],
+        :not([data-size])
+    ) {
         min-height:    var(--md-box-height);
         padding-block: calc((var(--md-box-height) - var(--md-line-height)) / 2);
     }
-    p[data-type="error"]:not([data-size])::before,
-    p[data-type="error"][data-size="md"]::before {
+    p[data-type="error"]:where(
+        [data-size="md"],
+        :not([data-size])
+    )::before {
         inset-block: calc((var(--md-box-height) - var(--md-line-height)) / 2);
     }
     p[data-type="error"][data-size="lg"] {
@@ -174,7 +179,7 @@
             border-color: Mark;
         }
         section[data-type="error-summary"] > ul > li > a,
-        section[data-type="error-summary"] > ul > li > a:is(:visited, :hover, :active) {
+        section[data-type="error-summary"] > ul > li > a:where(:visited, :hover, :active) {
             color: LinkText;
         }
     }

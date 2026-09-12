@@ -148,21 +148,27 @@
         inline-size:  calc(var(--sm-box-height) - var(--sm-border-width) * 4);
     }
 
-    input[type="range"]:not([data-size]),
-    input[type="range"][data-size="md"] {
+    input[type="range"]:where(
+        [data-size="md"],
+        :not([data-size])
+    ) {
         background-size: 100% calc(var(--md-border-width) * 3);
         block-size:      var(--md-box-height);
         border-radius:   var(--md-border-radius);
     }
-    input[type="range"]:not([data-size])::-webkit-slider-thumb,
-    input[type="range"][data-size="md"]::-webkit-slider-thumb {
+    input[type="range"]:where(
+        [data-size="md"],
+        :not([data-size])
+    )::-webkit-slider-thumb {
         block-size:   calc(var(--md-box-height) - var(--md-border-width) * 4);
         border-width: var(--md-border-width);
         inline-size:  calc(var(--md-box-height) - var(--md-border-width) * 4);
         margin-top:   0;
     }
-    input[type="range"]:not([data-size])::-moz-range-thumb,
-    input[type="range"][data-size="md"]::-moz-range-thumb {
+    input[type="range"]:where(
+        [data-size="md"],
+        :not([data-size])
+    )::-moz-range-thumb {
         block-size:   calc(var(--md-box-height) - var(--md-border-width) * 4);
         border-width: var(--md-border-width);
         inline-size:  calc(var(--md-box-height) - var(--md-border-width) * 4);
@@ -289,7 +295,10 @@
         limits to the row under the slider instead: the label text takes "name",
         the slider spans "track", and the limits share "limit". */
 
-    label:has(> input[type="range"]):is([data-text-min], [data-text-max]) {
+    label:has(> input[type="range"]):is(
+        [data-text-min],
+        [data-text-max]
+    ) {
         column-gap:            0.5rem;
         display:               grid;
         grid-template-areas:   "name  name"
@@ -298,10 +307,16 @@
         grid-template-columns: auto auto;
         justify-content:       space-between;
     }
-    label:has(> input[type="range"]):is([data-text-min], [data-text-max]) > input[type="range"] {
+    label:has(> input[type="range"]):is(
+        [data-text-min],
+        [data-text-max]
+    ) > input[type="range"] {
         grid-area: track;
     }
-    label:has(> input[type="range"]):is([data-text-min], [data-text-max]) > *:not(input[type="range"]) {
+    label:has(> input[type="range"]):is(
+        [data-text-min],
+        [data-text-max]
+    ) > *:not(input[type="range"]) {
         grid-area: name;
     }
 
@@ -326,16 +341,22 @@
 
     /* === :user-invalid, [aria-invalid="true"] === */
 
-    input[type="range"]:user-invalid,
-    input[type="range"][aria-invalid="true"] {
+    input[type="range"]:where(
+        :user-invalid,
+        [aria-invalid="true"]
+    ) {
         background-image: linear-gradient(var(--color-error), var(--color-error));
     }
-    input[type="range"]:user-invalid::-webkit-slider-thumb,
-    input[type="range"][aria-invalid="true"]::-webkit-slider-thumb {
+    input[type="range"]:where(
+        :user-invalid,
+        [aria-invalid="true"]
+    )::-webkit-slider-thumb {
         border-color: var(--color-error);
     }
-    input[type="range"]:user-invalid::-moz-range-thumb,
-    input[type="range"][aria-invalid="true"]::-moz-range-thumb {
+    input[type="range"]:where(
+        :user-invalid,
+        [aria-invalid="true"]
+    )::-moz-range-thumb {
         border-color: var(--color-error);
     }
     input[type="range"]:user-invalid:focus-visible,
@@ -345,29 +366,39 @@
 
     /* === :disabled, [aria-disabled="true"] === */
 
-    input[type="range"]:disabled,
-    input[type="range"][aria-disabled="true"] {
+    input[type="range"]:where(
+        :disabled,
+        [aria-disabled="true"]
+    ) {
         background-image: linear-gradient(var(--color-mute), var(--color-mute));
         cursor:           not-allowed;
         outline-color:    transparent;
         pointer-events:   none;
     }
-    input[type="range"]:disabled::-webkit-slider-thumb,
-    input[type="range"][aria-disabled="true"]::-webkit-slider-thumb {
+    input[type="range"]:where(
+        :disabled,
+        [aria-disabled="true"]
+    )::-webkit-slider-thumb {
         background-color: var(--color-paper);
         border-color:     var(--color-mute);
         cursor:           not-allowed;
     }
-    input[type="range"]:disabled::-moz-range-thumb,
-    input[type="range"][aria-disabled="true"]::-moz-range-thumb {
+    input[type="range"]:where(
+        :disabled,
+        [aria-disabled="true"]
+    )::-moz-range-thumb {
         background-color: var(--color-paper);
         border-color:     var(--color-mute);
         cursor:           not-allowed;
     }
-    label:has(> input[type="range"]:disabled)::before,
-    label:has(> input[type="range"]:disabled)::after,
-    label:has(> input[type="range"][aria-disabled="true"])::before,
-    label:has(> input[type="range"][aria-disabled="true"])::after {
+    label:has(> input[type="range"]:where(
+        :disabled,
+        [aria-disabled="true"]
+    ))::before,
+    label:has(> input[type="range"]:where(
+        :disabled,
+        [aria-disabled="true"]
+    ))::after {
         color: var(--color-mute);
     }
 
@@ -405,34 +436,50 @@
         input[type="range"]:focus-visible {
             outline-color: Highlight;
         }
-        input[type="range"]:user-invalid,
-        input[type="range"][aria-invalid="true"] {
+        input[type="range"]:where(
+            :user-invalid,
+            [aria-invalid="true"]
+        ) {
             background-image: linear-gradient(Mark, Mark);
         }
-        input[type="range"]:user-invalid::-webkit-slider-thumb,
-        input[type="range"][aria-invalid="true"]::-webkit-slider-thumb {
+        input[type="range"]:where(
+            :user-invalid,
+            [aria-invalid="true"]
+        )::-webkit-slider-thumb {
             border-color: Mark;
         }
-        input[type="range"]:user-invalid::-moz-range-thumb,
-        input[type="range"][aria-invalid="true"]::-moz-range-thumb {
+        input[type="range"]:where(
+            :user-invalid,
+            [aria-invalid="true"]
+        )::-moz-range-thumb {
             border-color: Mark;
         }
-        input[type="range"]:disabled,
-        input[type="range"][aria-disabled="true"] {
+        input[type="range"]:where(
+            :disabled,
+            [aria-disabled="true"]
+        ) {
             background-image: linear-gradient(GrayText, GrayText);
         }
-        input[type="range"]:disabled::-webkit-slider-thumb,
-        input[type="range"][aria-disabled="true"]::-webkit-slider-thumb {
+        input[type="range"]:where(
+            :disabled,
+            [aria-disabled="true"]
+        )::-webkit-slider-thumb {
             border-color: GrayText;
         }
-        input[type="range"]:disabled::-moz-range-thumb,
-        input[type="range"][aria-disabled="true"]::-moz-range-thumb {
+        input[type="range"]:where(
+            :disabled,
+            [aria-disabled="true"]
+        )::-moz-range-thumb {
             border-color: GrayText;
         }
-        label:has(> input[type="range"]:disabled)::before,
-        label:has(> input[type="range"]:disabled)::after,
-        label:has(> input[type="range"][aria-disabled="true"])::before,
-        label:has(> input[type="range"][aria-disabled="true"])::after {
+        label:has(> input[type="range"]:where(
+            :disabled,
+            [aria-disabled="true"]
+        ))::before,
+        label:has(> input[type="range"]:where(
+            :disabled,
+            [aria-disabled="true"]
+        ))::after {
             color: GrayText;
         }
     }

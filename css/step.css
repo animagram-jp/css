@@ -55,17 +55,23 @@
         inline-size: var(--sm-border-width);
     }
 
-    label:has(> input[inputmode="numeric"]) > button[data-action]:not([data-size]),
-    label:has(> input[inputmode="numeric"]) > button[data-action][data-size="md"] {
+    label:has(> input[inputmode="numeric"]) > button[data-action]:where(
+        [data-size="md"],
+        :not([data-size])
+    ) {
         inline-size: var(--md-box-height);
     }
-    label:has(> input[inputmode="numeric"]) > button[data-action]:not([data-size]):empty::after,
-    label:has(> input[inputmode="numeric"]) > button[data-action][data-size="md"]:empty::after {
+    label:has(> input[inputmode="numeric"]) > button[data-action]:where(
+        [data-size="md"],
+        :not([data-size])
+    ):empty::after {
         block-size:  var(--md-border-width);
         inline-size: calc(var(--md-box-height) / 4);
     }
-    label:has(> input[inputmode="numeric"]) > button[data-action="increment"]:not([data-size]):empty::before,
-    label:has(> input[inputmode="numeric"]) > button[data-action="increment"][data-size="md"]:empty::before {
+    label:has(> input[inputmode="numeric"]) > button[data-action="increment"]:where(
+        [data-size="md"],
+        :not([data-size])
+    ):empty::before {
         block-size:  calc(var(--md-box-height) / 4);
         inline-size: var(--md-border-width);
     }
@@ -149,8 +155,10 @@
     label:has(> input[inputmode="numeric"])[data-axis="block"] > button[data-action][data-size="sm"] {
         block-size: calc(var(--sm-box-height) / 2);
     }
-    label:has(> input[inputmode="numeric"])[data-axis="block"] > button[data-action]:not([data-size]),
-    label:has(> input[inputmode="numeric"])[data-axis="block"] > button[data-action][data-size="md"] {
+    label:has(> input[inputmode="numeric"])[data-axis="block"] > button[data-action]:where(
+        [data-size="md"],
+        :not([data-size])
+    ) {
         block-size: calc(var(--md-box-height) / 2);
     }
     label:has(> input[inputmode="numeric"])[data-axis="block"] > button[data-action][data-size="lg"] {
@@ -198,8 +206,10 @@
         border-end-start-radius:   var(--sm-border-radius);
         border-start-start-radius: var(--sm-border-radius);
     }
-    label:has(> input[inputmode="numeric"])[data-axis="block"] > input[inputmode="numeric"]:not([data-size]),
-    label:has(> input[inputmode="numeric"])[data-axis="block"] > input[inputmode="numeric"][data-size="md"] {
+    label:has(> input[inputmode="numeric"])[data-axis="block"] > input[inputmode="numeric"]:where(
+        [data-size="md"],
+        :not([data-size])
+    ) {
         border-end-start-radius:   var(--md-border-radius);
         border-start-start-radius: var(--md-border-radius);
     }
@@ -243,8 +253,10 @@
     label:has(> input[inputmode="numeric"])[data-axis="block"] > button[data-action="increment"][data-size="sm"] {
         border-start-end-radius: var(--sm-border-radius);
     }
-    label:has(> input[inputmode="numeric"])[data-axis="block"] > button[data-action="increment"]:not([data-size]),
-    label:has(> input[inputmode="numeric"])[data-axis="block"] > button[data-action="increment"][data-size="md"] {
+    label:has(> input[inputmode="numeric"])[data-axis="block"] > button[data-action="increment"]:where(
+        [data-size="md"],
+        :not([data-size])
+    ) {
         border-start-end-radius: var(--md-border-radius);
     }
     label:has(> input[inputmode="numeric"])[data-axis="block"] > button[data-action="increment"][data-size="lg"] {
@@ -263,8 +275,10 @@
     label:has(> input[inputmode="numeric"])[data-axis="block"] > button[data-action="decrement"][data-size="sm"] {
         border-end-end-radius: var(--sm-border-radius);
     }
-    label:has(> input[inputmode="numeric"])[data-axis="block"] > button[data-action="decrement"]:not([data-size]),
-    label:has(> input[inputmode="numeric"])[data-axis="block"] > button[data-action="decrement"][data-size="md"] {
+    label:has(> input[inputmode="numeric"])[data-axis="block"] > button[data-action="decrement"]:where(
+        [data-size="md"],
+        :not([data-size])
+    ) {
         border-end-end-radius: var(--md-border-radius);
     }
     label:has(> input[inputmode="numeric"])[data-axis="block"] > button[data-action="decrement"][data-size="lg"] {
@@ -434,16 +448,20 @@
 
     /* :disabled, [aria-disabled="true"] */
 
-    th > [data-axis="block"] > label > input[type="radio"]:disabled,
-    th > [data-axis="block"] > label > input[type="radio"][aria-disabled="true"] {
+    th > [data-axis="block"] > label > input[type="radio"]:where(
+        :disabled,
+        [aria-disabled="true"]
+    ) {
         color:          var(--color-mute);
         cursor:         not-allowed;
         pointer-events: none;
     }
 
     @media (forced-colors: active) {
-        th > [data-axis="block"] > label > input[type="radio"]:disabled,
-        th > [data-axis="block"] > label > input[type="radio"][aria-disabled="true"] {
+        th > [data-axis="block"] > label > input[type="radio"]:where(
+            :disabled,
+            [aria-disabled="true"]
+        ) {
             color: GrayText;
         }
     }

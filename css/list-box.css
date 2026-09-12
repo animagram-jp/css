@@ -44,9 +44,9 @@
         width:                  max-content;
     }
 
-    *[role="listbox"] :where(
+    *[role="listbox"] *:where(
         *[role="presentation"],
-        *[role="option"],
+        *[role="option"]
     ) {
         color:          inherit;
         cursor:         default;
@@ -68,7 +68,7 @@
 
     /* === focus === */
 
-    *[role="listbox"] *[role="option"]:has(:is(button, input):focus-visible) {
+    *[role="listbox"] *[role="option"]:has(*:where(button, input):focus-visible) {
         background-color: var(--color-focus);
         color:            rgb(var(--rgb-black));
         outline-color:    var(--color-paper);
@@ -80,7 +80,7 @@
     }
 
     @media (forced-colors: active) {
-        *[role="listbox"] *[role="option"]:has(:is(button, input):focus-visible) {
+        *[role="listbox"] *[role="option"]:has(*:where(button, input):focus-visible) {
             outline-color: Highlight;
         }
     }
@@ -102,30 +102,35 @@
 
     /* === disabled === */
 
-    button[aria-haspopup="listbox"]:disabled,
-    button[aria-haspopup="listbox"][aria-disabled="true"] {
+    button[aria-haspopup="listbox"]:where(
+        :disabled,
+        [aria-disabled="true"]
+    ) {
         border-color:   var(--color-mute);
         color:          var(--color-mute);
         cursor:         not-allowed;
         pointer-events: none;
     }
 
-    *[role="listbox"] *[role="option"] :is(button, input):disabled,
-    *[role="listbox"] *[role="option"] :is(button, input)[aria-disabled="true"] {
+    *[role="listbox"] *[role="option"] *:where(button, input):is(
+        :disabled,
+        [aria-disabled="true"]
+    ) {
         color:          var(--color-mute);
         cursor:         not-allowed;
         pointer-events: none;
     }
 
     @media (forced-colors: active) {
-
         button[aria-haspopup="listbox"] {
             background-color: ButtonFace;
             border-color:     ButtonBorder;
             color:            ButtonText;
         }
-        button[aria-haspopup="listbox"]:disabled,
-        button[aria-haspopup="listbox"][aria-disabled="true"] {
+        button[aria-haspopup="listbox"]:where(
+            :disabled,
+            [aria-disabled="true"]
+        ) {
             border-color: GrayText;
             color:        GrayText;
         }
@@ -135,8 +140,10 @@
             border-color:     ButtonBorder;
             color:            CanvasText;
         }
-        *[role="listbox"] *[role="option"] :is(button, input):disabled,
-        *[role="listbox"] *[role="option"] :is(button, input)[aria-disabled="true"] {
+        *[role="listbox"] *[role="option"] *:where(button, input):is(
+            :disabled,
+            [aria-disabled="true"]
+        ) {
             color: GrayText;
         }
     }

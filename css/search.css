@@ -37,15 +37,15 @@
 
 @layer css.search {
 
-    /* --- color, layout, size --- */
+    /* === color, layout, size === */
 
     /* === container (search, form[role="search"]) ===
 
        white-space, child vertical-align, leading-label spacing, squared
        inner corners and the shared button border colour are all covered by
        data_group.css's [data-group="inline"] style, which also matches
-       :is(search, form[role="search"]) by tag. Nothing left to add here for
-       the container itself. */
+       *:where(search, form[role="search"]) by tag. Nothing left to add
+       here for the container itself. */
 
     /* --- focus --- */
 
@@ -56,15 +56,17 @@
         position: relative;
     }
 
-        /* leading label text ahead of the group (search > span) */
+    /* leading label text ahead of the group (search > span) */
 
-    :is(search, form[role="search"]) > span {
+    *:where(search, form[role="search"]) > span {
         margin-inline-end: 0.5em;
     }
 
     /* === magnifier (label:has(> input[type="search"]) pseudo-elements) === */
 
-    /* Decorative; lens (::before) + handle (::after), drawn with border/background-color rather than background-image so it survives forced-colors. Sized in rem per [data-size], against --*-box-height. */
+    /*  Decorative; lens (::before) + handle (::after), drawn with
+        border/background-color rather than background-image so it survives
+        forced-colors. Sized in rem per [data-size], against --*-box-height. */
     label:has(> input[type="search"])::before,
     label:has(> input[type="search"])::after {
         color:          var(--color-mute);
@@ -112,15 +114,19 @@
         transform:          translateY(calc(var(--sm-box-height) / 8 * 0.707 + var(--sm-box-height) / 12)) rotate(-45deg);
     }
 
-    label:has(> input[type="search"]:not([data-size]))::before,
-    label:has(> input[type="search"][data-size="md"])::before {
+    label:has(> input[type="search"]:where(
+        [data-size="md"],
+        :not([data-size])
+    ))::before {
         block-size:         calc(var(--md-box-height) / 4);
         border-width:       var(--md-border-width);
         inline-size:        calc(var(--md-box-height) / 4);
         inset-inline-start: calc(var(--md-box-height) / 4);
     }
-    label:has(> input[type="search"]:not([data-size]))::after,
-    label:has(> input[type="search"][data-size="md"])::after {
+    label:has(> input[type="search"]:where(
+        [data-size="md"],
+        :not([data-size])
+    ))::after {
         block-size:         calc(var(--md-box-height) / 6);
         inline-size:        var(--md-border-width);
         inset-inline-start: calc(var(--md-box-height) * 0.375 + var(--md-box-height) / 8 * 0.707 - var(--md-border-width) / 2);
@@ -184,8 +190,10 @@
         padding-inline-start: calc(var(--sm-box-height) * 0.75);
     }
 
-    label > input[type="search"]:not([data-size]),
-    label > input[type="search"][data-size="md"] {
+    label > input[type="search"]:where(
+        [data-size="md"],
+        :not([data-size])
+    ) {
         padding-inline-start: calc(var(--md-box-height) * 0.75);
     }
 
@@ -222,8 +230,10 @@
         padding-inline-end: calc(var(--sm-box-height) * 0.6);
     }
 
-    label > select[data-facet="chevron"]:not([data-size]),
-    label > select[data-facet="chevron"][data-size="md"] {
+    label > select[data-facet="chevron"]:where(
+        [data-size="md"],
+        :not([data-size])
+    ) {
         padding-inline-end: calc(var(--md-box-height) * 0.6);
     }
 

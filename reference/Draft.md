@@ -1,34 +1,6 @@
-- List:
-    - ol > li
-    - ul > li
-    - menu > li
+# Draft
 
 ```css
-/* monospace font, block and copy button */
-
-pre, pre > code, pre > samp {
-    
-}
-
-/* kbd: [data-style="outline"], [data-style="fill"] */
-
-kbd {
-    
-}
-
-/* Card: [data-style="outline"], [data-style="fill"] */
-article > header, footer {
-
-}
-```
-
-# Reset
-
-取り込み検討要素
-
-```css
-/* === グループ2: コンポーネント作成時に、自身の対象セレクタへ個別に取り込むか判断する === */
-
 /*
     Remove all the styles of the "User-Agent-Stylesheet", except for the 'display' property
     - The "symbol *" part is to solve Firefox SVG sprite bug
@@ -39,141 +11,116 @@ article > header, footer {
     display: revert;
 }
 
-/* Remove list styles (bullets/numbers)。マーカーを消す場合はリストコンポーネント側で個別に取り込む */
+/* per tailwind-preflight.css:259-273 */
+:where(select:is([multiple], [size])) optgroup {
+    font-weight: bolder;
+}
+:where(select:is([multiple], [size])) optgroup option {
+    padding-inline-start: 20px;
+}
+
+/* monospace font, block and copy button */
+pre, pre > code, pre > samp {}
+
+/* kbd: [data-style="outline"], [data-style="fill"] */
+kbd {}
+
+/* card: [data-style="outline"], [data-style="fill"] */
+article > header, footer {}
+
+
+/* Remove list styles (bullets/numbers). */
 ol, ul, menu, summary {
     list-style: none;
 }
 
-/* optgroupのfont-weight/indent。select系コンポーネントで個別に取り込む */
-:where(select:is([multiple], [size])) optgroup { /* per tailwind-preflight.css:259-273 */
-    font-weight: bolder;
+/* === aria-orientation === */
+*:where(menu):where(
+    [aria-orientation="vertical"],
+    :not([aria-orientation]),
+) {}
+*:where(menu)[aria-orientation="horizontal"] {}
+
+/* Reference: https://github.com/yuto-hasegawa/sashimi-ui/blob/main/src/css/key-value.css */
+dl {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    column-gap: 0.5rem;
+    row-gap: 0.5rem;
+    list-style: none;
+    overflow-wrap: anywhere;
 }
-:where(select:is([multiple], [size])) optgroup option { /* per tailwind-preflight.css:259-273 */
-    padding-inline-start: 20px;
+dl dd {
+    margin: 0;
+    justify-self: end;
 }
-```
-
-# Footnote
-
-    /* Reference: https://github.com/yuto-hasegawa/sashimi-ui/blob/main/src/css/key-value.css */
-
-    dl {
-        display: grid;
-        grid-template-columns: auto 1fr;
-        column-gap: 0.5rem;
-        row-gap: 0.5rem;
-        list-style: none;
-        overflow-wrap: anywhere;
-    }
-
-    dl dd {
-        margin: 0;
-        justify-self: end;
-    }
-
-    /* list */
-
-        :is(ul, ol) {
-        --gap: 0;
-        margin-top: 0;
-        margin-bottom: 0;
-        padding-left: 2rem;
-        list-style-type: revert;
-    }
-
-    :is(ul, ol) > li {
-        padding-top: var(--gap);
-        padding-bottom: var(--gap);
-    }
-
-    ol {
-        display: grid;
-        grid-template-columns: minmax(2rem, auto) 1fr;
-        padding-left: 0;
-        list-style-type: none;
-    }
-
+:is(ul, ol) {
+    --gap: 0;
+    margin-top: 0;
+    margin-bottom: 0;
+    padding-left: 2rem;
+    list-style-type: revert;
+}
+:is(ul, ol) > li {
+    padding-top: var(--gap);
+    padding-bottom: var(--gap);
+}
+ol {
+    display: grid;
+    grid-template-columns: minmax(2rem, auto) 1fr;
+    padding-left: 0;
+    list-style-type: none;
+}
+ol > li,
+ol > li > a {
+    display: grid;
+    grid-column: 1 / -1;
+    grid-template-columns: inherit;
+    align-items: baseline;
+}
+ol > li > a > span {
+    text-decoration-thickness: inherit;
+}
+ol > li > :not(a, span) {
+    grid-column: 2;
+}
+@supports (grid-template-columns: subgrid) {
     ol > li,
     ol > li > a {
-        display: grid;
-        grid-column: 1 / -1;
-        grid-template-columns: inherit;
-        align-items: baseline;
+        grid-template-columns: subgrid;
     }
-
-    ol > li > a > span {
-        text-decoration-thickness: inherit;
-    }
-
-    ol > li > :not(a, span) {
-        grid-column: 2;
-    }
-
-    @supports (grid-template-columns: subgrid) {
-        ol > li,
-        ol > li > a {
-            grid-template-columns: subgrid;
-        }
-    }
-
-    :is(ul, ol) :is(ul, ol) {
-        margin-top: var(--gap);
-        margin-bottom: calc(-1 * var(--gap));
-    }
-
-    @media (prefers-reduced-motion: no-preference) {
-    [aria-busy="true"] {
-
-        }
-    }
-
-    /* [aria-orientation] todo */
-
-    [aria-orientation="horizontal"] {}
-    [aria-orientation="vertical"] {}
-
-    /* code todo */
-
-    code {
-
-    }
-
-    /* --- cite --- */
-
-    cite {
-        font-style: italic;
-    }
-    :lang(ja), :lang(zh), :lang(ko) {
-        cite {
-            font-style: normal;
-        }
-    }
-
-    /*  Usage:
-
-        <figure data-style="rule-indent">
-            <blockquote>Block contents</blockquote>
-            <figcaption>Author. YYYY. <cite>Title</cite>. Publisher, Location.</figcaption></figure> */
-
-
-/* data variant: inline editor with select option */
-
-```html
-<sup></sup>
-<sub></sub>
-```
-
-```css
-sub, sup {
-  font-size: smaller;
-  line-height: normal;
+}
+:is(ul, ol) :is(ul, ol) {
+    margin-top: var(--gap);
+    margin-bottom: calc(-1 * var(--gap));
 }
 
-sub { vertical-align: sub; }
-sup { vertical-align: super; }
-```
+@media (prefers-reduced-motion: no-preference) {
+    [aria-busy="true"] {
 
-```
+    }
+}
+
+/* === cite === */
+cite {
+    font-style: italic;
+}
+:lang(ja), :lang(zh), :lang(ko) {
+    cite {
+        font-style: normal;
+    }
+}
+
+/*  Usage:
+
+    <figure data-style="rule-indent">
+        <blockquote>Block contents</blockquote>
+        <figcaption>Author. YYYY. 
+            <cite>Title</cite>. Publisher, Location.</figcaption></figure> 
+*/
+
+/* footnote 
+
 1個目: *   asterisk
 2個目: †   dagger
 3個目: ‡   double dagger
@@ -183,45 +130,33 @@ sup { vertical-align: super; }
 7個目: **
 8個目: ††
 9個目: ‡‡
-...
-```
 
-## focus-visible
+Usage:
+    <sup></sup>
+    <sub></sub>  
+*/
+sub, sup {
+  font-size: smaller;
+  line-height: normal;
+}
+sub { vertical-align: sub; }
+sup { vertical-align: super; }
 
-/* component.cssに反映予定 */
+/* === focus === */
 
 /* フォーカスのエスカレーションが必要なフォーム要素などに追加 */
-/* *:focus-visible {
+*:focus-visible {
     outline: none;
 }
 *:has(*:focus-visible) {
     outline-color: var(--color-focus);
-} */
-
-## 部品体系 (draft)
-
-## グルーピング機能
-
-### surround style
-
-- fill
-- outline
-- fill header and outline body [GOV.UK Design System: Notification banner](https://design-system.service.gov.uk/components/notification-banner/)
-- Panel box: *[data-style="panel"] > (*[data-style="fill"], *[data-style="outline"], *[data-style="underline"]) [GOV.UK Design System: Panel](https://design-system.service.gov.uk/components/panel/)
-
-### contiguous style
-
-display: contents に近い基底性質を持って、行列配置や角のradius制御などを行う
-
-```css
-[role="group"] > *, [data-style="contiguous"] > * {}
+}
 ```
 
+## Reference
 
-- Underline text: *[data-style="underline"]:before, *[data-style="underline"], *[data-style="underline"]:after
-- Rule indent(indent block with accent rule): *[data-style="rule-indent"]
-- Mark: mark, *:selection, *[data-style="underline"]:focus-visible
-- Strikethrough: del
+- [GOV.UK Design System: Notification banner](https://design-system.service.gov.uk/components/notification-banner/)
+- [GOV.UK Design System: Panel](https://design-system.service.gov.uk/components/panel/)
 
 - 信号部品
     - Badge: span[data-style]

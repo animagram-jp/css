@@ -5,11 +5,11 @@
     /* === color, layout === */
 
     input:where(
-        [type="text"], 
-        [type="email"], 
-        [type="password"], 
-        [type="search"], 
-        [type="url"], 
+        [type="text"],
+        [type="email"],
+        [type="password"],
+        [type="search"],
+        [type="url"],
         [type="tel"]
     ),
     select,
@@ -24,22 +24,22 @@
     }
 
     input:where(
-        [type="text"], 
-        [type="email"], 
-        [type="password"], 
-        [type="search"], 
-        [type="url"], 
+        [type="text"],
+        [type="email"],
+        [type="password"],
+        [type="search"],
+        [type="url"],
         [type="tel"]
     ) {
         appearance: none;
     }
-    
+
     input:where(
-        [type="text"], 
-        [type="email"], 
-        [type="password"], 
-        [type="search"], 
-        [type="url"], 
+        [type="text"],
+        [type="email"],
+        [type="password"],
+        [type="search"],
+        [type="url"],
         [type="tel"]
     ),
     textarea {
@@ -54,20 +54,19 @@
     }
     textarea {
         resize: none;
-
     }
 
     @media (forced-colors: active) {
         input:where(
-            [type="text"], 
-            [type="email"], 
-            [type="password"], 
-            [type="search"], 
-            [type="url"], 
+            [type="text"],
+            [type="email"],
+            [type="password"],
+            [type="search"],
+            [type="url"],
             [type="tel"]
         ),
-        textarea, 
-        select {
+        select,
+        textarea {
             background-color: Field;
             border-color:     FieldText;
             color:            FieldText;
@@ -75,18 +74,18 @@
     }
 
     /* --- size --- */
-    
-    /*　--- focus --- */
+
+    /* --- focus --- */
 
     /* --- invalid --- */
 
-    :is(
+    *:where(
         input:is(
-            [type="text"], 
-            [type="email"], 
-            [type="password"], 
-            [type="search"], 
-            [type="url"], 
+            [type="text"],
+            [type="email"],
+            [type="password"],
+            [type="search"],
+            [type="url"],
             [type="tel"]
         ),
         select,
@@ -98,13 +97,13 @@
         border-color: var(--color-error);
     }
 
-    :is(
+    *:where(
         input:is(
-            [type="text"], 
-            [type="email"], 
-            [type="password"], 
-            [type="search"], 
-            [type="url"], 
+            [type="text"],
+            [type="email"],
+            [type="password"],
+            [type="search"],
+            [type="url"],
             [type="tel"]
         ),
         select,
@@ -117,17 +116,20 @@
     }
 
     @media (forced-colors: active) {
-        *:user-invalid, *[aria-invalid="true"] {
+        *:where(:user-invalid, [aria-invalid="true"]) {
             border-color: Mark;
         }
-        *:user-invalid:focus-visible, *[aria-invalid="true"]:focus-visible {
+        *:where(:user-invalid, [aria-invalid="true"]):focus-visible {
             outline-color: Mark;
         }
     }
 
     /* --- disabled --- */
 
-    :is(input, select, textarea):disabled, :is(input, select, textarea)[aria-disabled="true"] {
+    *:where(input, select, textarea):where(
+        :disabled,
+        [aria-disabled="true"]
+    ) {
         border-color:   var(--color-mute);
         color:          var(--color-mute);
         cursor:         not-allowed;
@@ -136,9 +138,9 @@
     }
 
     @media (forced-colors: active) {
-        :disabled, [aria-disabled="true"] {
-            color: GrayText;
+        *:where(:disabled, [aria-disabled="true"]) {
             border-color: GrayText;
+            color:        GrayText;
         }
     }
 }

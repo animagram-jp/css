@@ -5,7 +5,8 @@
         <output id="toast-slot-1" class="hidden"></output>
         <output id="toast-slot-2" class="hidden"></output></section>
 
-    The number of output tags represents the maximum number of toasts that can be displayed simultaneously.
+    The number of output tags represents the maximum number of toasts that
+    can be displayed simultaneously.
     Output's default role is "status". Override with role="alert" when needed.
     Also see reference/style.js.
 */
@@ -79,13 +80,15 @@
     @media (forced-colors: active) {
         output {
             background-color: Canvas;
-            border-color:      ButtonBorder;
-            color:              CanvasText;
+            border-color:     ButtonBorder;
+            color:            CanvasText;
         }
-        output:not([data-style]),
-        output[data-style="fill"] {
+        output:is(
+            [data-style="fill"],
+            :not([data-style])
+        ) {
             background-color: ButtonFace;
-            color:              ButtonText;
+            color:            ButtonText;
         }
     }
 
