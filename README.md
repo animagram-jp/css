@@ -33,7 +33,7 @@ Override the `--color-*` variables on any scope to restyle.
 
 | Category | Name | Meaning |
 |-|-|-|
-| channel | `--rgb-accent-red` | Default `--color-error` |
+| channel | `--rgb-accent-red` | `--color-error`'s default |
 | | `--rgb-accent-yellow` | `--color-higlight`'s default |
 | | `--rgb-accent-green` | `--color-success`'s default |
 | | `--rgb-accent-purple` | `a:visited`'s default |
