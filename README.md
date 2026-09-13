@@ -34,9 +34,9 @@ Override the `--color-*` variables on any scope to restyle.
 | Category | Name | Meaning |
 |-|-|-|
 | channel | `--rgb-accent-red` | Default `--color-error` |
-| | `--rgb-accent-yellow` | Default `--color-higlight` |
-| | `--rgb-accent-green` | Default `--color-success` |
-| | `--rgb-accent-purple` | Default `a:visited` |
+| | `--rgb-accent-yellow` | `--color-higlight`'s default |
+| | `--rgb-accent-green` | `--color-success`'s default |
+| | `--rgb-accent-purple` | `a:visited`'s default |
 | pallete | `--rgb-white` | The closest to pure white in the scheme. |
 | | `--rgb-black` | The closest to pure black in the scheme. |
 | global parameter | `--color-ink` | Default text color in the scheme. |
