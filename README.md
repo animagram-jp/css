@@ -31,6 +31,29 @@ Interface design system and DOM implements.
 Defined in [base.css](./css/base.css) (`@layer css.base`). 
 Override the `--color-*` variables on any scope to restyle.
 
+| Category | Name | Meaning |
+|-|-|-|
+| channel | `--rgb-accent-red` | Default `--color-error` |
+| | `--rgb-accent-yellow` | Default `--color-higlight` |
+| | `--rgb-accent-green` | Default `--color-success` |
+| | `--rgb-accent-purple` | Default `a:visited` |
+| pallete | `--rgb-white` | The closest to pure white in the scheme. |
+| | `--rgb-black` | The closest to pure black in the scheme. |
+| global parameter | `--color-ink` | Default text color in the scheme. |
+| | `--color-paper` | Default background color in the scheme. |
+| | `--color-mute` | Default mute color to contrast with paper. |
+| | `--color-error` | Default `:user-invalid` |
+| | `--color-highlight` | Default `::selection` |
+| | `--color-success` |  |
+| | `--color-emphasis` |  |
+| | `--color-emphasis-fill` |  |
+| | `--color-emphasis-fill-active` |  |
+| | `--color-paper-active` |  |
+| scoped parameter | `--color-text` |  |
+| | `--color-background` |  |
+| | `--color-border` |  |
+| | `--color-focus` |  |
+
 ```css
 @layer css.base {
     :root {
@@ -41,8 +64,8 @@ Override the `--color-*` variables on any scope to restyle.
         --rgb-white, --rgb-light-gray, --rgb-gray, --rgb-black;
 
         /* Roles — these are what components actually consume */
-        --color-ink;   /* text color        */
-        --color-paper; /* background color  */
+        --color-ink;   /* text color       */
+        --color-paper; /* background color */
         --color-mute;  /* border / subdued text; >=4.5:1 on paper (WCAG AA 1.4.3) */
 
         --color-emphasis;             /* >=7:1 on paper (WCAG AAA 1.4.6) */
