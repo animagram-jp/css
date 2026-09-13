@@ -18,7 +18,7 @@ Interface design system and DOM implements.
 ## Dependency layers
 
 - [reset.css(@layer css.reset)](./css/reset.css): 1st common layer per the-new-css-reset.
-- [base.css(@layer css.base)](./css/base.css):   2nd common layer defining all constants.
+- [base.css(@layer css.base)](./css/base.css):   2nd common layer defining defaults of all custom global/scoped parameters.
 - [data_style.css(@layer css.data_style)](./css/data_style.css): 3rd common layer defining data-style attribute.
 - [data_size.css(@layer css.data_size)](./css/data_size.css): 4th common layer defining data-size attribute.
 - [data_sign.css(@layer css.data_sign)](./css/data_sign.css): 5th common layer defining data-sign and data-facet attributes.
