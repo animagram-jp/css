@@ -3,6 +3,7 @@
     css.base,
     css.data_style,
     css.data_size,
+    css.data_sign,
     css.data_group,
     css.input,
     css.button,
@@ -157,7 +158,6 @@
         :root {
             --color-ink:           rgb(var(--rgb-black));
             --color-paper:         rgb(var(--rgb-white));
-            --color-mute:          color-mix(in srgb, var(--color-ink) var(--ratio-mute), var(--color-paper));
             --color-emphasis:      rgb(var(--rgb-accent-blue));
             --color-emphasis-fill: var(--color-emphasis);
         }

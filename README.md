@@ -33,66 +33,26 @@ Override the `--color-*` variables on any scope to restyle.
 
 | Category | Name | Meaning |
 |-|-|-|
-| channel | `--rgb-accent-red` | `--color-error`'s default |
-| | `--rgb-accent-yellow` | `--color-higlight`'s default |
-| | `--rgb-accent-green` | `--color-success`'s default |
-| | `--rgb-accent-purple` | `a:visited`'s default |
-| pallete | `--rgb-white` | The closest to pure white in the scheme. |
-| | `--rgb-black` | The closest to pure black in the scheme. |
+| channel | `--rgb-accent-red` | `--color-error` default. |
+| | `--rgb-accent-yellow` | `--color-higlight` default. |
+| | `--rgb-accent-green` | `--color-success` default. |
+| | `--rgb-accent-purple` | `a:visited` default. |
+| pallete | `--color-black` | The closest to pure black in the scheme. |
+| | `--color-white` | The closest to pure white in the scheme. |
 | global parameter | `--color-ink` | Default text color in the scheme. |
 | | `--color-paper` | Default background color in the scheme. |
 | | `--color-mute` | Default mute color to contrast with paper. |
-| | `--color-error` | Default `:user-invalid` |
-| | `--color-highlight` | Default `::selection` |
-| | `--color-success` |  |
-| | `--color-emphasis` |  |
-| | `--color-emphasis-fill` |  |
+| | `--color-error` | `:user-invalid` default. |
+| | `--color-highlight` | `::selection` background default. |
+| | `--color-success` | boolean true default. |
+| | `--color-emphasis` | Emphasis text color. |
+| | `--color-emphasis-fill` | Emphasis background color. |
 | | `--color-emphasis-fill-active` |  |
 | | `--color-paper-active` |  |
 | scoped parameter | `--color-text` |  |
-| | `--color-background` |  |
-| | `--color-border` |  |
-| | `--color-focus` |  |
-
-```css
-@layer css.base {
-    :root {
-        /* CUDO palette, as space-separated channels (usable via rgb(var(--rgb-*) / alpha)) */
-        --rgb-accent-red, --rgb-accent-yellow, --rgb-accent-green,
-        --rgb-accent-purple,
-        --rgb-base-cream,
-        --rgb-white, --rgb-light-gray, --rgb-gray, --rgb-black;
-
-        /* Roles — these are what components actually consume */
-        --color-ink;   /* text color       */
-        --color-paper; /* background color */
-        --color-mute;  /* border / subdued text; >=4.5:1 on paper (WCAG AA 1.4.3) */
-
-        --color-emphasis;             /* >=7:1 on paper (WCAG AAA 1.4.6) */
-        --color-emphasis-fill;        /* emphasis as a fill; >=7:1 against ink */
-        --color-emphasis-active;
-        --color-emphasis-fill-active; /* >=3:1 on paper (WCAG AA 1.4.11)  */
-        --color-paper-active;
-
-        --color-focus;     /* focus ring; defaults to --color-emphasis */
-        --color-error;     /* non-text only (per CUDO FAQ) */
-        --color-highlight; /* mark, ::selection */
-        --color-success;   /* non-text only */
-    }
-}
-
-/* --- Example substitution (user-style.css) --- */
-#some-element {
-    --color-ink: ;
-    --color-paper: ;
-    --color-mute: ;
-    --color-emphasis: ;
-}
-```
-
-Status colors (`--color-error`, `--color-success`) are applied to non-text elements only — border, icon, background fill — per the CUDO FAQ; the accompanying text stays `--color-ink`.
-
-`--color-mute` and the `-active` variants are derived with `color-mix()` from the ratios `--ratio-mute`, `--ratio-emphasis-active` and `--ratio-paper-active`, so adjusting a ratio moves every dependent color at once.
+| | `--color-fill` | `background-color` in the scope. |
+| | `--color-border` | `border-color` in the scope. |
+| | `--color-focus` | `outline-color` in the scope. |
 
 ## Size
 
