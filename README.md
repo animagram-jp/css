@@ -68,6 +68,7 @@ Scoped parameters contrast requirements:
 - :hover does not have any color difference.
 - Each ink and paper variant have to meet contrast 7:1 (WCAG 2.2 AAA) with all of the other color group.
 - {color}-mix variant has additional requirement: non text contrast 3:1 (per WCAG 2.2 A) to {color}
+- To fix fill color, ::selection remove text color "mix" suffix.
 
 | Style | text | fill | border | backdrop | 
 |-|-|-|-|-|
@@ -77,7 +78,7 @@ Scoped parameters contrast requirements:
 | input | `--color-ink` | `--color-paper` | `--color-ink-mix` | `--color-paper` |
 | input::selection | | `--color-highlight`/`--color-paper` | | |
 | input:disabled | `--color-ink-mix` | `--color-paper` | `--color-ink-mix` | `--color-paper` |
-| input:disabled::selection | `--color-ink(-mix)` | `--color-highlight`/`--color-paper` | | |
+| input:disabled::selection | `--color-ink` | `--color-highlight`/`--color-paper` | | |
 | input:user-invalid | `--color-ink` | `--color-paper` | `--color-error` | `--color-paper` |
 | input:user-invalid::selection | | `--color-highlight`/`--color-paper` | | |
 | invert | `--color-paper` | `--color-emphasis-ink` | transparent | `--color-paper` |
@@ -92,7 +93,7 @@ Scoped parameters contrast requirements:
 | outline | `--color-emphasis-ink` | `--color-paper` | `--color-emphasis-ink` | `--color-paper` |
 | outline::selection | | `--color-highlight`/`--color-paper` | | |
 | outline:disabled | `--color-ink-mix` | `--color-paper` | `--color-ink-mix` | `--color-paper` |
-| outline:disabled::selection | `--color-ink(-mix)` | `--color-highlight`/`--color-paper` | | |
+| outline:disabled::selection | `--color-ink` | `--color-highlight`/`--color-paper` | | |
 | outline:active | `--color-emphasis-ink-mix` | `--color-paper-mix` | `--color-emphasis-ink-mix` | `--color-paper` |
 | outline:active::selection | | `--color-highlight`/`--color-paper-mix` | | |
 | underline | `--color-emphasis-ink` | `--color-paper` | `--color-emphasis-ink` | `--color-paper` |
@@ -101,8 +102,6 @@ Scoped parameters contrast requirements:
 | underline:disabled::selection | `--color-ink(-mix)` | `--color-highlight`/`--color-paper` | | |
 | underline:active | `--color-emphasis-ink-mix` | `--color-paper-mix` | - | `--color-paper` |
 | underline:active::selection | | `--color-highlight`/`--color-paper-mix` | | |
-
-Derived from the table above (WIP — this is raw observation, not yet classified by WCAG level; ratios are as literally found in the pairings).
 
 | Value | Target | Ratio | Target | Ratio | Target | Ratio | Target | Ratio |
 |-|-|-|-|-|-|-|-|-|
@@ -126,6 +125,16 @@ Groups (WIP): the text contrast pairs above are all *text contrast* (WCAG's prim
 
 - ink group: `--color-ink`, `--color-ink-mix`, `--color-emphasis-ink`, `--color-emphasis-ink-mix`
 - paper group: `--color-paper`, `--color-paper-mix`, `--color-emphasis-paper`, `--color-emphasis-paper-mix`, `--color-success`, `--color-highlight`
+
+### Contrast requirements
+
+| Color | Required | With | Per |
+|-|-|-|-|
+| `*ink*` | 7(4.5) | *paper* | WCAG AAA:1.4.6 Contrast (Enhanced) (AA:1.4.3 Contrast (Minimum)) | `*ink*` | 3 | *ink*   | WCAG AA: 1.4.11 Non-text Contrast |
+| `*paper*` | 3 | *paper* | WCAG AA: 1.4.11 Non-text Contrast |
+| `*paper*` | 3 | `--color-error` | (as above) |
+
+- Text color on `--color-highlight` needs 7:1 against it.
 
 ### style
 
