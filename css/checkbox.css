@@ -33,14 +33,14 @@
     }
 
     label > input[type="checkbox"]:not([role="switch"]):where(:checked, :indeterminate) {
-        background-color: var(--color-emphasis-fill);
+        background-color: var(--color-emphasis-ink-paper);
         color:            var(--color-paper);
     }
 
     /* === sign === */
 
     label > input[type="checkbox"]:not([role="switch"])::before {
-        /* --color-emphasis-fill は ink に対して 7:1 (AAA) を満たす塗り色なので、前景は ink */
+        /* --color-emphasis-ink-paper は ink に対して 7:1 (AAA) を満たす塗り色なので、前景は ink */
         border-color:  var(--color-paper);
         inset-inline:  0;
         margin-inline: auto; /* data_sign.css は inset-inline-start: 0 なので中央揃えに戻す */
@@ -216,13 +216,13 @@
         :disabled,
         [aria-disabled="true"]
     )) {
-        color: var(--color-mute);
+        color: var(--color-ink-mix);
     }
     label > input[type="checkbox"]:not([role="switch"]):where(
         :disabled,
         [aria-disabled="true"]
     ) {
-        border-color:   var(--color-mute);
+        border-color:   var(--color-ink-mix);
         cursor:         not-allowed;
         outline-color:  transparent;
         pointer-events: none;
@@ -231,7 +231,7 @@
         :disabled,
         [aria-disabled="true"]
     ):where(:checked, :indeterminate) {
-        background-color: var(--color-mute);
+        background-color: var(--color-ink-mix);
     }
 
     @media (forced-colors: active) {

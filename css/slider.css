@@ -50,7 +50,7 @@
         the hit area. the box itself keeps the full box height for the target. */
     input[type="range"] {
         background-color:    var(--color-paper);
-        background-image:    linear-gradient(var(--color-mute), var(--color-mute));
+        background-image:    linear-gradient(var(--color-ink-mix), var(--color-ink-mix));
         background-position: center;
         background-repeat:   no-repeat;
     }
@@ -233,24 +233,24 @@
     input[type="range"]:hover::-webkit-slider-thumb,
     input[type="range"]:active::-webkit-slider-thumb,
     input[type="range"]:focus-visible::-webkit-slider-thumb {
-        background-color: var(--color-emphasis-fill);
-        border-color:     var(--color-emphasis-fill);
+        background-color: var(--color-emphasis-ink-paper);
+        border-color:     var(--color-emphasis-ink-paper);
     }
     input[type="range"]:hover::-moz-range-thumb,
     input[type="range"]:active::-moz-range-thumb,
     input[type="range"]:focus-visible::-moz-range-thumb {
-        background-color: var(--color-emphasis-fill);
-        border-color:     var(--color-emphasis-fill);
+        background-color: var(--color-emphasis-ink-paper);
+        border-color:     var(--color-emphasis-ink-paper);
     }
 
     input[type="range"]:active::-webkit-slider-thumb {
-        background-color: var(--color-emphasis-fill-active);
-        border-color:     var(--color-emphasis-fill-active);
+        background-color: var(--color-emphasis-ink-paper-mix);
+        border-color:     var(--color-emphasis-ink-paper-mix);
         scale:            1.15;
     }
     input[type="range"]:active::-moz-range-thumb {
-        background-color: var(--color-emphasis-fill-active);
-        border-color:     var(--color-emphasis-fill-active);
+        background-color: var(--color-emphasis-ink-paper-mix);
+        border-color:     var(--color-emphasis-ink-paper-mix);
         scale:            1.15;
     }
 
@@ -333,7 +333,7 @@
 
     label:has(> input[type="range"])::before,
     label:has(> input[type="range"])::after {
-        color:          var(--color-mute);
+        color:          var(--color-ink-mix);
         font-size:      var(--md-font-size);
         letter-spacing: var(--md-letter-spacing);
         line-height:    var(--md-line-height);
@@ -370,7 +370,7 @@
         :disabled,
         [aria-disabled="true"]
     ) {
-        background-image: linear-gradient(var(--color-mute), var(--color-mute));
+        background-image: linear-gradient(var(--color-ink-mix), var(--color-ink-mix));
         cursor:           not-allowed;
         outline-color:    transparent;
         pointer-events:   none;
@@ -380,7 +380,7 @@
         [aria-disabled="true"]
     )::-webkit-slider-thumb {
         background-color: var(--color-paper);
-        border-color:     var(--color-mute);
+        border-color:     var(--color-ink-mix);
         cursor:           not-allowed;
     }
     input[type="range"]:where(
@@ -388,7 +388,7 @@
         [aria-disabled="true"]
     )::-moz-range-thumb {
         background-color: var(--color-paper);
-        border-color:     var(--color-mute);
+        border-color:     var(--color-ink-mix);
         cursor:           not-allowed;
     }
     label:has(> input[type="range"]:where(
@@ -399,7 +399,7 @@
         :disabled,
         [aria-disabled="true"]
     ))::after {
-        color: var(--color-mute);
+        color: var(--color-ink-mix);
     }
 
     /* === forced-colors === */

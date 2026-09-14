@@ -48,10 +48,10 @@ Override the `--color-*` variables on any scope to restyle.
 | | `--color-emphasis-ink-mix` | Emphasis mixed to contrast with paper. |
 | | `--color-emphasis-paper` | Emphasis color to contrast with ink. |
 | | `--color-emphasis-paper-mix` | Emphasis mixed to contrast with ink. |
-| scoped parameter | `--color-text` |  |
-| | `--color-fill` | `background-color` in the scope. |
-| | `--color-border` | `border-color` in the scope. |
-| | `--color-focus` | `outline-color` in the scope. |
+| scoped parameter | `color` | text color in the scope. |
+| | `background-color` | fill color in the scope. |
+| | `border-color` | border color in the scope. |
+| | `outline-color` | focus color in the scope. |
 
 Scoped parameters contrast requirements:
 
@@ -73,18 +73,22 @@ Scoped parameters contrast requirements:
 |-|-|-|-|-|
 | - | `--color-ink` | `--color-paper` | `--color-ink` | `--color-paper` |
 | ::selection | `--color-ink` | `--color-highlight`/`--color-paper` | | |
+| ::selection (dark) | `--color-paper` | `--color-highlight`/`--color-paper` | | |
 | input | `--color-ink` | `--color-paper` | `--color-ink-mix` | `--color-paper` |
 | input::selection | | `--color-highlight`/`--color-paper` | | |
 | input:disabled | `--color-ink-mix` | `--color-paper` | `--color-ink-mix` | `--color-paper` |
 | input:disabled::selection | `--color-ink(-mix)` | `--color-highlight`/`--color-paper` | | |
 | input:user-invalid | `--color-ink` | `--color-paper` | `--color-error` | `--color-paper` |
 | input:user-invalid::selection | | `--color-highlight`/`--color-paper` | | |
-| fill | `--color-paper` | `--color-emphasis-ink` | transparent | `--color-paper` |
-| fill::selection | | `--color-highlight`/`--color-emphasis-ink` | | |
-| fill:disabled | `--color-paper` | `--color-ink-mix` | transparent | `--color-paper` |
-| fill:disabled::selection | | `--color-highlight`/`--color-ink-mix` | | |
-| fill:active| `--color-paper-mix` | `--color-emphasis-ink-mix` | `--color-emphasis-ink` | `--color-paper` |
-| fill:active::selection| | `--color-highlight`/`--color-emphasis-ink-mix` | `--color-emphasis-ink` | `--color-paper` |
+| invert | `--color-paper` | `--color-emphasis-ink` | transparent | `--color-paper` |
+| invert (dark) | `--color-ink` | `--color-emphasis-paper` | transparent | `--color-paper` |
+| invert::selection | | `--color-highlight`/`--color-emphasis-ink` | | |
+| invert:disabled | `--color-paper` | `--color-ink-mix` | transparent | `--color-paper` |
+| invert:disabled (dark) | `--color-ink` | `--color-ink-mix` | transparent | `--color-paper` |
+| invert:disabled::selection | | `--color-highlight`/`--color-ink-mix` | | |
+| invert:active | `--color-paper` | `--color-emphasis-ink-mix` | `--color-emphasis-ink` | `--color-paper` |
+| invert:active (dark) | `--color-ink` | `--color-emphasis-paper-mix` | `--color-emphasis-paper` | `--color-paper` |
+| invert:active::selection | | `--color-highlight`/`--color-emphasis-ink-mix` | `--color-emphasis-ink` | `--color-paper` |
 | outline | `--color-emphasis-ink` | `--color-paper` | `--color-emphasis-ink` | `--color-paper` |
 | outline::selection | | `--color-highlight`/`--color-paper` | | |
 | outline:disabled | `--color-ink-mix` | `--color-paper` | `--color-ink-mix` | `--color-paper` |
@@ -98,37 +102,59 @@ Scoped parameters contrast requirements:
 | underline:active | `--color-emphasis-ink-mix` | `--color-paper-mix` | - | `--color-paper` |
 | underline:active::selection | | `--color-highlight`/`--color-paper-mix` | | |
 
+Derived from the table above (WIP — this is raw observation, not yet classified by WCAG level; ratios are as literally found in the pairings).
+
+| Value | Target | Ratio | Target | Ratio | Target | Ratio | Target | Ratio |
+|-|-|-|-|-|-|-|-|-|
+| `--color-ink` | `--color-paper` | 7:1 | `--color-highlight` | 7:1 | | | | |
+| `--color-ink-mix` | `--color-paper` | 7:1 | `--color-ink` | 3:1 | `--color-highlight` | 7:1 | | |
+| `--color-paper` | `--color-ink` | 7:1 | `--color-ink-mix` | 7:1 | `--color-emphasis-ink` | 7:1 | `--color-highlight` | 7:1 |
+| `--color-paper-mix` | `--color-emphasis-ink-mix` | 7:1 | `--color-paper` | 3:1 | `--color-highlight` | 7:1 | | |
+| `--color-emphasis-ink` | `--color-paper` | 7:1 | `--color-emphasis-paper` | 7:1 (unverified) | `--color-highlight` | 7:1 | | |
+| `--color-emphasis-ink-mix` | `--color-paper-mix` | 7:1 | `--color-emphasis-ink` | 3:1 | `--color-highlight` | 7:1 | | |
+| `--color-emphasis-paper` | `--color-ink` | 7:1 | `--color-emphasis-ink` | 7:1 (unverified) | `--color-emphasis-paper-mix` | 3:1 | | |
+| `--color-emphasis-paper-mix` | `--color-emphasis-paper` | 3:1 | | | | | | |
+| `--color-highlight` | `--color-ink` | 7:1 | `--color-paper` | 7:1 | `--color-emphasis-ink` | 7:1 | `--color-emphasis-ink-mix` | 7:1 |
+| | `--color-ink-mix` | 7:1 | `--color-paper-mix` | 7:1 | | | | |
+| `--color-success` | `--color-ink` | 7:1 (per its own definition; no row in the table above references it) | | | | | | |
+| `--color-error` | `--color-paper` | 3:1 (border/non-text pairing, not text; moved out of the text-contrast rows above) | | | | | | |
+
+Not covered by the table above:
+- `--color-emphasis-paper-mix`'s 7:1 counterpart is not established (it only appears as a fill alongside `--color-ink` in `invert:active (dark)`, which is the 3:1 pairing already listed above).
+
+Groups (WIP): the text contrast pairs above are all *text contrast* (WCAG's primary, vision-driven requirement) between two sides — one grouped with ink, one grouped with paper. `--color-highlight` stays in the paper group even in dark mode (it does not revert to an "ink" variant): the `invert` style's dark-mode revert exists to re-ink its own (largest-area) fill, and extending that revert to highlight would both dilute that intent and add variable/branch complexity for no clear benefit.
+
+- ink group: `--color-ink`, `--color-ink-mix`, `--color-emphasis-ink`, `--color-emphasis-ink-mix`
+- paper group: `--color-paper`, `--color-paper-mix`, `--color-emphasis-paper`, `--color-emphasis-paper-mix`, `--color-success`, `--color-highlight`
+
+### style
+
+Appearance of a box or of text. Applied by [button.css](./css/button.css) and [part.css](./css/part.css).
+
+| Selector | Value | Description |
+|-|-|-|
+| `button`, `a`, `details > summary` | `invert` | filled with `--color-emphasis-ink`/`--color-emphasis-paper` (dark), transparent border (default for `button`) |
+| | `outline` | transparent background, `--color-emphasis-ink` border and text |
+| | `underline` | no box, underlined `--color-emphasis-ink` text (default for a bare `a:any-link` and a bare `summary`) |
+| any element | `rule-indent` | indented block with an accent rule down the inline start edge |
+
 ## Size
 
-Every component below reuses these same column names — a component either consumes a value as-is or overrides it locally.
-
-```css
-/* base.css */
-@layer css.base {
-    :root {
-        /* ... */
-        --md-border-radius:  0.5rem;
-        --md-border-width:   0.125rem;
-        --md-box-height:     3rem;
-        --md-font-size:      1rem;
-        --md-letter-spacing: 0;
-        --md-line-height:    1.5rem;
-        /* ... */
-    }
-}
-
-/* each component's own layer, e.g. @layer css.button */
-@layer css.button {
-    :is(button, input, select, textarea):not([data-size]),
-    [data-size="md"] {
-        border-radius:  var(--md-border-radius);
-        border-width:   var(--md-border-width);
-        font-size:      var(--md-font-size);
-        letter-spacing: var(--md-letter-spacing);
-        line-height:    var(--md-line-height);
-        padding-block: calc(((var(--md-box-height) - var(--md-line-height)) / 2) - var(--md-border-width));
-    }
-}
+```
+↑ margin-block: 0 (default)
+↓
+───
+↑ border-width: --{size}-border-width
+↓
+───
+↑
+  padding-block: (--{size}-box-height - --{size}-line-height) / 2 - --{size}-border-width
+↓ 
+───
+↑
+  line-height: --{size}-line-height
+↓  
+───
 ```
 
 | `data-size`   | box-height | Typography |
@@ -158,27 +184,6 @@ Every component below reuses these same column names — a component either cons
     - `heading`: `padding-block: 0`
 - **`padding-inline`**, component has of its own (an icon, a stepper button, a dropdown arrow) is a component-local decision, so hardcoded in `rem`, not unified across components.
 - **`width`** is left unset (auto / content-driven) everywhere. Nothing hardcodes a fixed width or `100%`; give an element a width via the surrounding markup (a wrapping `style`/class) when one is needed.
-
-### data-style
-
-Appearance of a box or of text. Applied by [button.css](./css/button.css) and [part.css](./css/part.css).
-
-| Selector | Value | Description |
-|-|-|-|
-| `button`, `a`, `details > summary` | `fill` | filled with `--color-emphasis-fill`, transparent border (default for `button`) |
-| | `outline` | transparent background, `--color-emphasis-ink` border and text |
-| | `underline` | no box, underlined `--color-emphasis-ink` text (default for a bare `a:any-link` and a bare `summary`) |
-| any element | `rule-indent` | indented block with an accent rule down the inline start edge |
-
-### data-type
-
-Kind, rather than appearance. Values are component-local.
-
-| Selector | Value | Description |
-|-|-|-|
-| `section` | `error-summary` | error summary block ([error.css](./css/error.css)) |
-| `p` | `error` | per-field error message ([error.css](./css/error.css)) |
-| `label` (toggle) | `knob-only` | non-interactive toggle showing state only ([toggle.css](./css/toggle.css)) |
 
 ### data-axis
 

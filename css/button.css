@@ -150,8 +150,8 @@
 
     *:where(a, button, summary)[data-style="fill"]:active,
     button:not([data-style]):active {
-        background-color: var(--color-emphasis-fill-active);
-        border-color:     var(--color-emphasis-fill);
+        background-color: var(--color-emphasis-ink-paper-mix);
+        border-color:     var(--color-emphasis-ink-paper);
     }
 
     *:where(a, button, summary):where(
@@ -160,8 +160,8 @@
     ):active,
     *:where(a:any-link):not([data-style]):active,
     summary:not([data-style]):active {
-        background-color: var(--color-emphasis-fill-active);
-        color:            var(--color-emphasis-active);
+        background-color: var(--color-emphasis-ink-paper-mix);
+        color:            var(--color-emphasis-ink-ink-mix);
     }
 
     @media (forced-colors: active) {
@@ -180,8 +180,8 @@
         [aria-disabled="true"]
     ),
     *:where(a, button, summary)[aria-disabled="true"] {
-        border-color:   var(--color-mute);
-        color:          var(--color-mute);
+        border-color:   var(--color-ink-mix);
+        color:          var(--color-ink-mix);
         cursor:         not-allowed;
         outline-color:  transparent;
         pointer-events: none;
@@ -194,7 +194,7 @@
         :disabled,
         [aria-disabled="true"]
     ) {
-        background-color: var(--color-mute);
+        background-color: var(--color-ink-mix);
         color:            var(--color-paper);
         pointer-events:   none;
     }

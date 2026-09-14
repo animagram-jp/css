@@ -47,7 +47,7 @@
     *[data-style="fill"],
     *:where(button, output):not([data-style]) {
         appearance:       none;
-        background-color: var(--color-emphasis-fill);
+        background-color: var(--color-emphasis-ink-paper);
         border-color:     transparent;
         border-style:     solid;
         color:            var(--color-paper);
@@ -66,9 +66,9 @@
     *[data-style="outline"] {
         appearance:       none;
         background-color: transparent;
-        border-color:     var(--color-emphasis);
+        border-color:     var(--color-emphasis-ink);
         border-style:     solid;
-        color:            var(--color-emphasis);
+        color:            var(--color-emphasis-ink);
         margin:           0;
         vertical-align:   middle;
         width:            auto;
@@ -83,7 +83,7 @@
         background-color:          var(--color-paper);
         border:                    none;
         box-decoration-break:      clone;
-        color:                     var(--color-emphasis);
+        color:                     var(--color-emphasis-ink);
         margin:                    0;
         text-decoration-color:     currentColor;
         text-decoration-line:      underline;
@@ -128,7 +128,7 @@
         position:             relative;
     }
     *[data-style="rule-indent"]::before {
-        background-color:   var(--color-emphasis);
+        background-color:   var(--color-emphasis-ink);
         content:            "";
         inset-block:        0;
         inset-inline-start: 0;

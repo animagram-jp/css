@@ -374,7 +374,7 @@
         appearance:       none;
         background-color: transparent;
         border:           0;
-        color:            var(--color-mute);
+        color:            var(--color-ink-mix);
         cursor:           pointer;
         display:          block;
         inline-size:      var(--md-line-height);
@@ -452,7 +452,7 @@
         :disabled,
         [aria-disabled="true"]
     ) {
-        color:          var(--color-mute);
+        color:          var(--color-ink-mix);
         cursor:         not-allowed;
         pointer-events: none;
     }

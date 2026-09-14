@@ -69,7 +69,7 @@
         forced-colors. Sized in rem per [data-size], against --*-box-height. */
     label:has(> input[type="search"])::before,
     label:has(> input[type="search"])::after {
-        color:          var(--color-mute);
+        color:          var(--color-ink-mix);
         content:        "";
         inset-block:    0;
         margin-block:   auto;

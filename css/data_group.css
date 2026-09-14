@@ -128,7 +128,7 @@
         search,
         form[role="search"]
     ) > button:not(:active) {
-        border-color: var(--color-mute);
+        border-color: var(--color-ink-mix);
     }
 
     *:where(

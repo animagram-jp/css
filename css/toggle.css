@@ -45,7 +45,7 @@
 
     label > input[type="checkbox"][role="switch"] {
         appearance:       none;
-        background-color: var(--color-mute);
+        background-color: var(--color-ink-mix);
         border-color:     var(--color-ink);
         border-style:     solid;
         cursor:           pointer;
@@ -68,7 +68,7 @@
         background:      var(--color-paper);
         border-color:    var(--color-ink);
         border-style:    solid;
-        color:           var(--color-mute);
+        color:           var(--color-ink-mix);
         content:         "OFF";
         display:         flex;
         font-weight:     bold;
@@ -271,7 +271,7 @@
         :disabled,
         [aria-disabled="true"]
     ) {
-        border-color:   var(--color-mute);
+        border-color:   var(--color-ink-mix);
         cursor:         not-allowed;
         outline-color:  transparent;
         pointer-events: none;
@@ -280,8 +280,8 @@
         :disabled,
         [aria-disabled="true"]
     )::after {
-        border-color: var(--color-mute);
-        color:        var(--color-mute);
+        border-color: var(--color-ink-mix);
+        color:        var(--color-ink-mix);
     }
 
     @media (forced-colors: active) {

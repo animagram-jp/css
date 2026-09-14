@@ -82,7 +82,7 @@
 
     /* --- visited, hover, active ---
 
-       button.css / data_style.css styles every a:any-link without [data-style] in --color-emphasis */
+       button.css / data_style.css styles every a:any-link without [data-style] in --color-emphasis-ink */
 
     section[data-type="error-summary"] > ul > li > a:where(:visited, :hover, :active) {
         color: var(--color-ink);

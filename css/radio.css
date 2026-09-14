@@ -108,7 +108,7 @@
     }
 
     label > input[type="radio"]:checked::after {
-        background-color: var(--color-emphasis-fill);
+        background-color: var(--color-emphasis-ink-paper);
     }
 
     @media (forced-colors: active) {
@@ -273,13 +273,13 @@
         :disabled,
         [aria-disabled="true"]
     )) {
-        color: var(--color-mute);
+        color: var(--color-ink-mix);
     }
     label > input[type="radio"]:where(
         :disabled,
         [aria-disabled="true"]
     ) {
-        border-color:   var(--color-mute);
+        border-color:   var(--color-ink-mix);
         cursor:         not-allowed;
         outline-color:  transparent;
         pointer-events: none;
@@ -288,7 +288,7 @@
         :disabled,
         [aria-disabled="true"]
     ):checked::after {
-        background-color: var(--color-mute);
+        background-color: var(--color-ink-mix);
     }
 
     @media (forced-colors: active) {

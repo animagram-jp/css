@@ -147,7 +147,7 @@
     * colour, which would read as a state.
     */
     table[data-stripe] tbody tr:nth-child(even) {
-        background-color: var(--color-paper-active);
+        background-color: var(--color-paper-mix);
     }
 
     /* === [data-hover] === */
@@ -156,7 +156,7 @@
 
     @media (hover: hover) {
         table[data-hover] tbody tr:hover {
-            background-color: var(--color-paper-active);
+            background-color: var(--color-paper-mix);
         }
     }
 
@@ -167,7 +167,7 @@
     * emphasis colour to tell it apart from [data-stripe] above.
     */
     table[data-selectable] tbody tr:has(:checked) {
-        background-color: color-mix(in srgb, var(--color-emphasis) var(--ratio-paper-active), var(--color-paper));
+        background-color: color-mix(in srgb, var(--color-emphasis-ink) var(--ratio-paper-mix), var(--color-paper));
     }
 
     @media (forced-colors: active) {
@@ -202,19 +202,19 @@
     /* === [data-border] === */
 
     table[data-border=""] *:where(td, th) {
-        border: var(--md-border-width) solid var(--color-mute);
+        border: var(--md-border-width) solid var(--color-ink-mix);
     }
     table[data-border~="block-start"] *:where(td, th) {
-        border-block-start: var(--md-border-width) solid var(--color-mute);
+        border-block-start: var(--md-border-width) solid var(--color-ink-mix);
     }
     table[data-border~="block-end"] *:where(td, th) {
-        border-block-end: var(--md-border-width) solid var(--color-mute);
+        border-block-end: var(--md-border-width) solid var(--color-ink-mix);
     }
     table[data-border~="inline-start"] *:where(td, th) {
-        border-inline-start: var(--md-border-width) solid var(--color-mute);
+        border-inline-start: var(--md-border-width) solid var(--color-ink-mix);
     }
     table[data-border~="inline-end"] *:where(td, th) {
-        border-inline-end: var(--md-border-width) solid var(--color-mute);
+        border-inline-end: var(--md-border-width) solid var(--color-ink-mix);
     }
 
     @media (forced-colors: active) {

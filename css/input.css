@@ -15,7 +15,7 @@
     select,
     textarea {
         background-color: var(--color-paper);
-        border-color:     var(--color-mute);
+        border-color:     var(--color-ink-mix);
         border-style:     solid;
         field-sizing:     content;
         max-inline-size:  100%;
@@ -43,7 +43,7 @@
         [type="tel"]
     ),
     textarea {
-        caret-color: var(--color-mute);
+        caret-color: var(--color-ink-mix);
         cursor:      text;
     }
     select {
@@ -130,8 +130,8 @@
         :disabled,
         [aria-disabled="true"]
     ) {
-        border-color:   var(--color-mute);
-        color:          var(--color-mute);
+        border-color:   var(--color-ink-mix);
+        color:          var(--color-ink-mix);
         cursor:         not-allowed;
         outline-color:  transparent;
         pointer-events: none;

@@ -19,7 +19,7 @@
 
     button[aria-haspopup="listbox"] {
         background-color: transparent;
-        border-color:     var(--color-mute);
+        border-color:     var(--color-ink-mix);
         border-style:     solid;
         color:            var(--color-ink);
         cursor:           pointer;
@@ -29,7 +29,7 @@
 
     *[role="listbox"] {
         background-color:       var(--color-paper);
-        border-color:           var(--color-mute);
+        border-color:           var(--color-ink-mix);
         border-style:           solid;
         border-width:           var(--md-border-width);
         border-radius:          var(--md-border-radius);
@@ -106,8 +106,8 @@
         :disabled,
         [aria-disabled="true"]
     ) {
-        border-color:   var(--color-mute);
-        color:          var(--color-mute);
+        border-color:   var(--color-ink-mix);
+        color:          var(--color-ink-mix);
         cursor:         not-allowed;
         pointer-events: none;
     }
@@ -116,7 +116,7 @@
         :disabled,
         [aria-disabled="true"]
     ) {
-        color:          var(--color-mute);
+        color:          var(--color-ink-mix);
         cursor:         not-allowed;
         pointer-events: none;
     }
