@@ -243,21 +243,12 @@ Sign (符号)は、その幾何学的性質を利用して、なるべく依存�
 
 コンポーネント系:
 
-- background: コンポーネントに隣接する外部の背景色。
+- backdrop: コンポーネントに隣接する外部の背景色。
 - border:     コンポーネントが持つ、境界線色。
 - fill:       コンポーネントが持つ、内部の背景色。
 - text:       コンポーネントが持つ、内部の文字色。
 
 textに対して背景色を当てることは出来ない。
-
-```
-┌ background ─────┐
-│  ┏ border ━━━┓  │
-│  ┃  fill     ┃  │
-│  ┃  -text-   ┃  │
-│  ┗━━━━━━━━━━━┛  │
-└─────────────────┘
-```
 
 | Style | Static | Focus | Hover | Focus hover | Invalid | Invalid focus | Disabled |
 |-|-|-|-|-|-|-|-|

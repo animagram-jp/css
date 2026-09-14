@@ -2,7 +2,7 @@
 
 Interface design system and DOM implements.
 
-- Universal Design (variants included) based on [digital government jp design system](https://github.com/digital-go-jp/design-system-example-components-html), [CUDO: Color Universal Design Recommended Color Set ver.3](https://cudo.jp/wp-content/uploads/2016/07/CUD%E6%8E%A8%E5%A5%A8%E9%85%8D%E8%89%B2%E3%82%BB%E3%83%83%E3%83%88%E3%82%AC%E3%82%A4%E3%83%89%E3%83%96%E3%83%83%E3%82%AF.pdf), GOV.UK Design System, WCAG 2.2, ARIA APG, IEC60447:1993(Man-machine-interface Principle).
+- Universal Design (variants included) based on [digital government jp design system](https://github.com/digital-go-jp/design-system-example-components-html), [Color Universal Design Recommended Color Set ver.3](https://cudo.jp/wp-content/uploads/2016/07/CUD%E6%8E%A8%E5%A5%A8%E9%85%8D%E8%89%B2%E3%82%BB%E3%83%83%E3%83%88%E3%82%AC%E3%82%A4%E3%83%89%E3%83%96%E3%83%83%E3%82%AF.pdf), GOV.UK Design System, WCAG 2.2, ARIA APG, IEC60447:1993(Man-machine-interface Principle).
 - Requires to html only semantic and also structural tags and minimum anonymous elements.
 - Render correctly without JS.
 - All CSS properties are described in order of dependencies, and then, alphabetical.
@@ -37,22 +37,66 @@ Override the `--color-*` variables on any scope to restyle.
 | | `--rgb-accent-yellow` | `--color-higlight` default. |
 | | `--rgb-accent-green` | `--color-success` default. |
 | | `--rgb-accent-purple` | `a:visited` default. |
-| pallete | `--color-black` | The closest to pure black in the scheme. |
-| | `--color-white` | The closest to pure white in the scheme. |
 | global parameter | `--color-ink` | Default text color in the scheme. |
 | | `--color-paper` | Default background color in the scheme. |
-| | `--color-mute` | Default mute color to contrast with paper. |
+| | `--color-ink-mix` | Default mixed to contrast with paper. |
+| | `--color-paper-mix` | Default mixed to contrast with ink. |
 | | `--color-error` | `:user-invalid` default. |
-| | `--color-highlight` | `::selection` background default. |
-| | `--color-success` | boolean true default. |
-| | `--color-emphasis` | Emphasis text color. |
-| | `--color-emphasis-fill` | Emphasis background color. |
-| | `--color-emphasis-fill-active` |  |
-| | `--color-paper-active` |  |
+| | `--color-highlight` | `::selection` default to contrast with ink. |
+| | `--color-success` | boolean true default to contrast with ink. |
+| | `--color-emphasis-ink` | Emphasis color to contrast with paper. |
+| | `--color-emphasis-ink-mix` | Emphasis mixed to contrast with paper. |
+| | `--color-emphasis-paper` | Emphasis color to contrast with ink. |
+| | `--color-emphasis-paper-mix` | Emphasis mixed to contrast with ink. |
 | scoped parameter | `--color-text` |  |
 | | `--color-fill` | `background-color` in the scope. |
 | | `--color-border` | `border-color` in the scope. |
 | | `--color-focus` | `outline-color` in the scope. |
+
+Scoped parameters contrast requirements:
+
+```
+┌ backdrop ───────┐
+│  ┏ border ━━━┓  │
+│  ┃  fill     ┃  │
+│  ┃  -text-   ┃  │
+│  ┗━━━━━━━━━━━┛  │
+└─────────────────┘
+```
+
+- :focus outline's requirements is equal to border and it is not nessesary to differ with border.
+- :hover does not have any color difference.
+- Each ink and paper variant have to meet contrast 7:1 (WCAG 2.2 AAA) with all of the other color group.
+- {color}-mix variant has additional requirement: non text contrast 3:1 (per WCAG 2.2 A) to {color}
+
+| Style | text | fill | border | backdrop | 
+|-|-|-|-|-|
+| - | `--color-ink` | `--color-paper` | `--color-ink` | `--color-paper` |
+| ::selection | `--color-ink` | `--color-highlight`/`--color-paper` | | |
+| input | `--color-ink` | `--color-paper` | `--color-ink-mix` | `--color-paper` |
+| input::selection | | `--color-highlight`/`--color-paper` | | |
+| input:disabled | `--color-ink-mix` | `--color-paper` | `--color-ink-mix` | `--color-paper` |
+| input:disabled::selection | `--color-ink(-mix)` | `--color-highlight`/`--color-paper` | | |
+| input:user-invalid | `--color-ink` | `--color-paper` | `--color-error` | `--color-paper` |
+| input:user-invalid::selection | | `--color-highlight`/`--color-paper` | | |
+| fill | `--color-paper` | `--color-emphasis-ink` | transparent | `--color-paper` |
+| fill::selection | | `--color-highlight`/`--color-emphasis-ink` | | |
+| fill:disabled | `--color-paper` | `--color-ink-mix` | transparent | `--color-paper` |
+| fill:disabled::selection | | `--color-highlight`/`--color-ink-mix` | | |
+| fill:active| `--color-paper-mix` | `--color-emphasis-ink-mix` | `--color-emphasis-ink` | `--color-paper` |
+| fill:active::selection| | `--color-highlight`/`--color-emphasis-ink-mix` | `--color-emphasis-ink` | `--color-paper` |
+| outline | `--color-emphasis-ink` | `--color-paper` | `--color-emphasis-ink` | `--color-paper` |
+| outline::selection | | `--color-highlight`/`--color-paper` | | |
+| outline:disabled | `--color-ink-mix` | `--color-paper` | `--color-ink-mix` | `--color-paper` |
+| outline:disabled::selection | `--color-ink(-mix)` | `--color-highlight`/`--color-paper` | | |
+| outline:active | `--color-emphasis-ink-mix` | `--color-paper-mix` | `--color-emphasis-ink-mix` | `--color-paper` |
+| outline:active::selection | | `--color-highlight`/`--color-paper-mix` | | |
+| underline | `--color-emphasis-ink` | `--color-paper` | `--color-emphasis-ink` | `--color-paper` |
+| underline::selection | | `--color-highlight`/`--color-paper` | | |
+| underline:disabled | `--color-ink-mix` | `--color-paper` | `--color-ink-mix` | `--color-paper` |
+| underline:disabled::selection | `--color-ink(-mix)` | `--color-highlight`/`--color-paper` | | |
+| underline:active | `--color-emphasis-ink-mix` | `--color-paper-mix` | - | `--color-paper` |
+| underline:active::selection | | `--color-highlight`/`--color-paper-mix` | | |
 
 ## Size
 
@@ -122,8 +166,8 @@ Appearance of a box or of text. Applied by [button.css](./css/button.css) and [p
 | Selector | Value | Description |
 |-|-|-|
 | `button`, `a`, `details > summary` | `fill` | filled with `--color-emphasis-fill`, transparent border (default for `button`) |
-| | `outline` | transparent background, `--color-emphasis` border and text |
-| | `underline` | no box, underlined `--color-emphasis` text (default for a bare `a:any-link` and a bare `summary`) |
+| | `outline` | transparent background, `--color-emphasis-ink` border and text |
+| | `underline` | no box, underlined `--color-emphasis-ink` text (default for a bare `a:any-link` and a bare `summary`) |
 | any element | `rule-indent` | indented block with an accent rule down the inline start edge |
 
 ### data-type
@@ -153,9 +197,3 @@ Direction in which a component lays its parts out. Each value below is opt-in; o
 | `table` | `data-border`, `data-stripe`, `data-hover`, `data-selectable` | boolean; rules, zebra striping, row hover, row selection ([table.css](./css/table.css)) |
 | `label > input[type="range"]` | `data-text-min`, `data-text-max` | labels for the limits of the range ([slider.css](./css/slider.css)) |
 | `button` (step) | `data-action` | `increment` / `decrement` ([step.css](./css/step.css)) |
-
-### Preference
-
-| Preference | |
-|-|-|
-| `prefers-color-scheme: dark` | |
