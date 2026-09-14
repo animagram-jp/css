@@ -103,38 +103,28 @@ Scoped parameters contrast requirements:
 | underline:active | `--color-emphasis-ink-mix` | `--color-paper-mix` | - | `--color-paper` |
 | underline:active::selection | | `--color-highlight`/`--color-paper-mix` | | |
 
-| Value | Target | Ratio | Target | Ratio | Target | Ratio | Target | Ratio |
-|-|-|-|-|-|-|-|-|-|
-| `--color-ink` | `--color-paper` | 7:1 | `--color-highlight` | 7:1 | | | | |
-| `--color-ink-mix` | `--color-paper` | 7:1 | `--color-ink` | 3:1 | `--color-highlight` | 7:1 | | |
-| `--color-paper` | `--color-ink` | 7:1 | `--color-ink-mix` | 7:1 | `--color-emphasis-ink` | 7:1 | `--color-highlight` | 7:1 |
-| `--color-paper-mix` | `--color-emphasis-ink-mix` | 7:1 | `--color-paper` | 3:1 | `--color-highlight` | 7:1 | | |
-| `--color-emphasis-ink` | `--color-paper` | 7:1 | `--color-emphasis-paper` | 7:1 (unverified) | `--color-highlight` | 7:1 | | |
-| `--color-emphasis-ink-mix` | `--color-paper-mix` | 7:1 | `--color-emphasis-ink` | 3:1 | `--color-highlight` | 7:1 | | |
-| `--color-emphasis-paper` | `--color-ink` | 7:1 | `--color-emphasis-ink` | 7:1 (unverified) | `--color-emphasis-paper-mix` | 3:1 | | |
-| `--color-emphasis-paper-mix` | `--color-emphasis-paper` | 3:1 | | | | | | |
-| `--color-highlight` | `--color-ink` | 7:1 | `--color-paper` | 7:1 | `--color-emphasis-ink` | 7:1 | `--color-emphasis-ink-mix` | 7:1 |
-| | `--color-ink-mix` | 7:1 | `--color-paper-mix` | 7:1 | | | | |
-| `--color-success` | `--color-ink` | 7:1 (per its own definition; no row in the table above references it) | | | | | | |
-| `--color-error` | `--color-paper` | 3:1 (border/non-text pairing, not text; moved out of the text-contrast rows above) | | | | | | |
-
-Not covered by the table above:
-- `--color-emphasis-paper-mix`'s 7:1 counterpart is not established (it only appears as a fill alongside `--color-ink` in `invert:active (dark)`, which is the 3:1 pairing already listed above).
-
-Groups (WIP): the text contrast pairs above are all *text contrast* (WCAG's primary, vision-driven requirement) between two sides — one grouped with ink, one grouped with paper. `--color-highlight` stays in the paper group even in dark mode (it does not revert to an "ink" variant): the `invert` style's dark-mode revert exists to re-ink its own (largest-area) fill, and extending that revert to highlight would both dilute that intent and add variable/branch complexity for no clear benefit.
-
-- ink group: `--color-ink`, `--color-ink-mix`, `--color-emphasis-ink`, `--color-emphasis-ink-mix`
-- paper group: `--color-paper`, `--color-paper-mix`, `--color-emphasis-paper`, `--color-emphasis-paper-mix`, `--color-success`, `--color-highlight`
-
 ### Contrast requirements
 
-| Color | Required | With | Per |
-|-|-|-|-|
-| `*ink*` | 7(4.5) | *paper* | WCAG AAA:1.4.6 Contrast (Enhanced) (AA:1.4.3 Contrast (Minimum)) | `*ink*` | 3 | *ink*   | WCAG AA: 1.4.11 Non-text Contrast |
-| `*paper*` | 3 | *paper* | WCAG AA: 1.4.11 Non-text Contrast |
-| `*paper*` | 3 | `--color-error` | (as above) |
+Requirements come from layer adjacency (text↔fill, fill↔border, border↔backdrop) in the style table above, not from color grouping. `:disabled` is exempt throughout: WCAG 1.4.11 excludes inactive components, and 1.4.3/1.4.6 exclude incidental text.
 
-- Text color on `--color-highlight` needs 7:1 against it.
+| Property | 7:1 text (AAA 1.4.6) | 3:1 non-text (AA 1.4.11) |
+|-|-|-|
+| `--color-ink` | `emphasis-paper`, `emphasis-paper-mix`, `highlight`, `paper` | — |
+| `--color-ink-mix` | — | `highlight`, `paper` |
+| `--color-paper` | `emphasis-ink`, `emphasis-ink-mix`, `highlight`, `ink` | `emphasis-paper`, `error`, `ink-mix` |
+| `--color-paper-mix` | `emphasis-ink-mix` | — |
+| `--color-emphasis-ink` | `highlight`, `paper` | `emphasis-ink-mix` |
+| `--color-emphasis-ink-mix` | `highlight`, `paper`, `paper-mix` | `emphasis-ink` |
+| `--color-emphasis-paper` | `ink` | `emphasis-paper-mix`, `paper` |
+| `--color-emphasis-paper-mix` | `ink` | `emphasis-paper` |
+| `--color-highlight` | `emphasis-ink`, `emphasis-ink-mix`, `ink`, `paper` | `error`, `ink-mix` |
+| `--color-error` | — | `highlight`, `paper` |
+
+- Text contrast is 7:1 (AAA 1.4.6), or 4.5:1 for large-scale text (AA 1.4.3).
+- `--color-ink-mix` carries no 7:1 row: it is only ever text on `:disabled`.
+- `*-mix` pairs with its base color only for `emphasis-*` (via `:active`, fill↔border). `--color-ink-mix` and `--color-paper-mix` never touch their base.
+- `--color-highlight` and `--color-paper` occupy the same fill slot, so they never meet; no requirement holds between them.
+- `--color-success` needs 7:1 against `--color-ink` per its own definition; it has no adjacency in the style table above.
 
 ### style
 
