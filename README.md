@@ -73,7 +73,7 @@ Scoped parameters contrast requirements:
 | Style | text | highlight | fill | border | backdrop | 
 |-|-|-|-|-|-|
 | input | color-ink | - | | color-ink-mix | |
-| input::selection | | color-highlight | | | |
+| input::selection | color-paper | color-highlight | | | |
 | input:disabled | color-ink-mix | - | | | |
 | input:disabled::selection | color-paper | color-highlight | | | |
 | input:user-invalid | color-ink | - | | color-error | |
@@ -115,8 +115,8 @@ Requirements come from layer adjacency (text↔fill, fill↔border, border↔bac
 | `--color-emphasis-ink` | `paper` | — | — |
 | `--color-emphasis-ink-mix` | `paper` | — | `highlight` |
 | `--color-emphasis-paper` | — | — | `paper` |
-| `--color-highlight` (light) | — | `ink` | `emphasis-ink`, `emphasis-ink-mix`, `ink-mix`, `paper`, `paper-mix` |
-| `--color-highlight` (dark) | — | `paper` | `emphasis-ink`, `emphasis-ink-mix`, `ink-mix`, `paper-mix`, `ink` |
+| color-highlight-ink | color-paper | - | color(-emphasis)-paper(-mix) |
+| color-highlight-paper | color-ink | - | color(-emphasis)-ink(-mix) |
 | `--color-error` | — | — | `paper` |
 | `--color-success` (light) | — | `paper` | — |
 | `--color-success` (dark) | — | `ink` | — |
