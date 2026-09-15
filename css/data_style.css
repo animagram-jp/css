@@ -47,18 +47,11 @@
     *[data-style="fill"],
     *:where(button, output):not([data-style]) {
         appearance:       none;
-        background-color: var(--color-emphasis-ink-paper);
+        background-color: var(--color-emphasis-ink);
         border-color:     transparent;
         border-style:     solid;
         color:            var(--color-paper);
         margin:           0;
-    }
-
-    @media (prefers-color-scheme: dark) {
-        *[data-style="fill"],
-        *:where(button, output):not([data-style]) {
-            color: var(--color-ink);
-        }
     }
 
     /* === surround outline style === */

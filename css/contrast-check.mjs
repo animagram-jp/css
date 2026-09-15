@@ -36,28 +36,28 @@ const RGB = {
     black:        [0, 0, 0],
 };
 
-// Theme purple (#5B2F91), base.css's --color-emphasis-ink/--color-emphasis-paper
-const THEME_INK_LIGHT = [91, 47, 145];   // theme color as-is
-const THEME_INK_DARK = [173, 151, 200];  // lightened 50% toward white
-const THEME_PAPER = [135, 103, 175];     // lightened 73% toward white, shared by every scheme
+// Theme purple (#5B2F91), mirroring base.css's --color-emphasis-ink/--color-emphasis-paper
+// color-mix(in srgb, rgb(91,47,145) N%, rgb(255,255,255)) formulas
+const THEME_INK_LIGHT = [91, 47, 145];         // theme color as-is
+const THEME_INK_DARK = mix([91, 47, 145], RGB.white, 50);
+const THEME_PAPER = mix([91, 47, 145], RGB.white, 73); // shared by every scheme
 
 // color:visited, mirroring button.css's dark-mode color-mix(in srgb, rgb(var(--rgb-accent-purple)) 35%, rgb(255,255,255))
 const VISITED_DARK = mix(RGB.accentPurple, RGB.white, 35);
 
 // --color-success/--color-highlight, mirroring base.css's color-mix(in srgb, rgb(var(--rgb-accent-*)) N%, rgb(0,0,0))
 const SUCCESS = mix(RGB.accentGreen, RGB.black, 78);
-const HIGHLIGHT = mix(RGB.accentYellow, RGB.black, 60);
+const HIGHLIGHT = mix(RGB.accentYellow, RGB.black, 49);
 
 // --- Scheme color sets, one per base.css [data-color-scheme="..."] block ---
 // ink/paper/emphasisInk/emphasisPaper/inkMix/paperMix mirror the literal values
-// each scheme block sets in base.css (css/base.css). paperMix/emphasisInkMix/emphasisPaperMix
+// each scheme block sets in base.css (css/base.css). paperMix/emphasisInkMix
 // default to the single :root formula unless a scheme overrides them (e.g. *-less-contrast).
+// emphasisPaper has no -mix variant: invert uses emphasisInk/emphasisInkMix in both light and
+// dark now, so emphasisPaper only ever appears as a flat fill (e.g. a selected table row / radio dot).
 function buildScheme(name, { ink, paper, emphasisInk, emphasisPaper, inkMix, paperMix }) {
     const resolvedPaperMix = paperMix ?? mix(ink, paper, 16);
     const emphasisInkMix = mix(emphasisInk, ink, 50);
-    // emphasis-paper-mix has no direct base.css analogue yet; approximate with the same ratio against ink,
-    // mirroring --color-emphasis-ink-mix's own formula (mix emphasis value toward ink).
-    const emphasisPaperMix = mix(emphasisPaper, ink, 50);
     // color:visited only switches under prefers-color-scheme: dark (button.css), not prefers-contrast,
     // so *-high-contrast/*-less-contrast schemes use whichever value their "light"/"dark" half implies.
     const visited = name.startsWith('dark') ? VISITED_DARK : RGB.accentPurple;
@@ -65,7 +65,7 @@ function buildScheme(name, { ink, paper, emphasisInk, emphasisPaper, inkMix, pap
     return {
         name,
         ink, paper, inkMix, paperMix: resolvedPaperMix,
-        emphasisInk, emphasisPaper, emphasisInkMix, emphasisPaperMix,
+        emphasisInk, emphasisPaper, emphasisInkMix,
         highlight: HIGHLIGHT,
         error: RGB.accentRed,
         success: SUCCESS,
@@ -111,77 +111,55 @@ const schemes = [
 // One row per table cell; each pairing listed once (order as in the table's own row).
 // Rows without a (light)/(dark) suffix in README hold in every scheme, so they live here.
 const PAIRINGS = [
-    // --color-ink: 4.5:1 -> emphasis-paper, emphasis-paper-mix
-    ['ink', 'emphasisPaper', 4.5],
-    ['ink', 'emphasisPaperMix', 4.5],
+    // --color-ink: 4.5:1 -> highlight (its own inner ::selection text, always --color-ink now)
+    ['ink', 'highlight', 4.5],
     // --color-ink-mix: 4.5:1 -> paper / 3:1 -> highlight
     ['inkMix', 'paper', 4.5],
     ['inkMix', 'highlight', 3],
-    // --color-paper-mix: 7:1 -> emphasis-ink-mix
+    // --color-paper: 3:1 -> highlight (the outer fill --color-highlight sits on)
+    ['paper', 'highlight', 3],
+    // --color-paper-mix: 7:1 -> emphasis-ink-mix / 3:1 -> highlight
     ['paperMix', 'emphasisInkMix', 7],
-    // --color-emphasis-ink: 7:1 -> paper / 3:1 -> emphasis-ink-mix, highlight
+    ['paperMix', 'highlight', 3],
+    // --color-highlight: 3:1 -> emphasis-ink, emphasis-ink-mix, ink-mix (other outer fills it can sit on)
+    ['highlight', 'emphasisInk', 3],
+    ['highlight', 'emphasisInkMix', 3],
+    // --color-emphasis-ink: 7:1 -> paper (invert:active's border is transparent, not emphasis-ink,
+    // since a color dark enough to clear 7:1 vs paper can't also clear 3:1 vs its own -mix variant)
     ['emphasisInk', 'paper', 7],
-    ['emphasisInk', 'emphasisInkMix', 3],
-    ['emphasisInk', 'highlight', 3],
-    // --color-emphasis-ink-mix: 7:1 -> paper / 3:1 -> emphasis-ink, highlight
+    // --color-emphasis-ink-mix: 7:1 -> paper / 3:1 -> highlight
     ['emphasisInkMix', 'paper', 7],
-    ['emphasisInkMix', 'emphasisInk', 3],
     ['emphasisInkMix', 'highlight', 3],
-    // --color-emphasis-paper: 4.5:1 -> ink / 3:1 -> emphasis-paper-mix, paper
-    ['emphasisPaper', 'ink', 4.5],
-    ['emphasisPaper', 'emphasisPaperMix', 3],
+    // --color-emphasis-paper: 3:1 -> paper (invert no longer uses it; its one remaining use,
+    // a flat fill like a selected table row / radio dot, never carries text)
     ['emphasisPaper', 'paper', 3],
-    // --color-emphasis-paper-mix: 4.5:1 -> ink / 3:1 -> emphasis-paper
-    ['emphasisPaperMix', 'ink', 4.5],
-    ['emphasisPaperMix', 'emphasisPaper', 3],
     // --color-error: 3:1 -> paper (error is only ever a border/outline color; it never neighbors the highlight nested inside a fill)
     ['error', 'paper', 3],
     // color:visited: 7:1 against --color-paper (per its own definition, README.md's Contrast requirements table)
     ['visited', 'paper', 7],
 ];
 
-// --color-highlight's own ::selection text swaps ink <-> paper by scheme (README.md's
-// "--color-ink (light/dark)"/"--color-paper (light/dark)"/"--color-highlight (light/dark)"
-// rows), so these only hold in one scheme family each, unlike the scheme-agnostic PAIRINGS above.
+// --color-highlight's own ::selection text is always --color-ink now (no dark-mode swap to
+// --color-paper), so its ink/paper relationships hold in every scheme and live in PAIRINGS above.
 const PAIRINGS_LIGHT_ONLY = [
-    // --color-ink (light): 4.5:1 -> highlight
-    ['ink', 'highlight', 4.5],
-    // --color-paper (light): 7:1 -> emphasis-ink, emphasis-ink-mix / 4.5:1 -> ink-mix / 3:1 -> emphasis-paper, error, highlight
+    // --color-paper (light): 7:1 -> emphasis-ink, emphasis-ink-mix / 4.5:1 -> ink-mix / 3:1 -> error
     ['paper', 'emphasisInk', 7],
     ['paper', 'emphasisInkMix', 7],
     ['paper', 'inkMix', 4.5],
-    ['paper', 'emphasisPaper', 3],
     ['paper', 'error', 3],
-    ['paper', 'highlight', 3],
-    // --color-highlight (light): 4.5:1 -> ink / 3:1 -> emphasis-ink, emphasis-ink-mix, ink-mix, paper, paper-mix
-    ['highlight', 'ink', 4.5],
-    ['highlight', 'emphasisInk', 3],
-    ['highlight', 'emphasisInkMix', 3],
-    ['highlight', 'inkMix', 3],
-    ['highlight', 'paper', 3],
-    ['highlight', 'paperMix', 3],
     // --color-success (light): 4.5:1 against --color-paper (README.md's Contrast requirements table)
     ['success', 'paper', 4.5],
 ];
 const PAIRINGS_DARK_ONLY = [
-    // --color-ink (dark): 7:1 -> paper / 4.5:1 -> success / 3:1 -> highlight
+    // --color-ink (dark): 7:1 -> paper / 4.5:1 -> success
     ['ink', 'paper', 7],
     ['ink', 'success', 4.5],
-    ['ink', 'highlight', 3],
-    // --color-paper (dark): 7:1 -> emphasis-ink, emphasis-ink-mix, ink / 4.5:1 -> ink-mix / 3:1 -> emphasis-paper, error
+    // --color-paper (dark): 7:1 -> emphasis-ink, emphasis-ink-mix, ink / 4.5:1 -> ink-mix / 3:1 -> error
     ['paper', 'emphasisInk', 7],
     ['paper', 'emphasisInkMix', 7],
     ['paper', 'ink', 7],
     ['paper', 'inkMix', 4.5],
-    ['paper', 'emphasisPaper', 3],
     ['paper', 'error', 3],
-    // --color-highlight (dark): 4.5:1 -> paper / 3:1 -> emphasis-ink, emphasis-ink-mix, ink-mix, paper-mix, ink
-    ['highlight', 'paper', 4.5],
-    ['highlight', 'emphasisInk', 3],
-    ['highlight', 'emphasisInkMix', 3],
-    ['highlight', 'inkMix', 3],
-    ['highlight', 'paperMix', 3],
-    ['highlight', 'ink', 3],
 ];
 
 function fmt(rgb) {

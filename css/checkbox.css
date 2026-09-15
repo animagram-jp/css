@@ -33,14 +33,14 @@
     }
 
     label > input[type="checkbox"]:not([role="switch"]):where(:checked, :indeterminate) {
-        background-color: var(--color-emphasis-ink-paper);
+        background-color: var(--color-emphasis-ink);
         color:            var(--color-paper);
     }
 
     /* === sign === */
 
     label > input[type="checkbox"]:not([role="switch"])::before {
-        /* --color-emphasis-ink-paper は ink に対して 7:1 (AAA) を満たす塗り色なので、前景は ink */
+        /* --color-emphasis-ink は paper に対して 7:1 (AAA) を満たす塗り色なので、前景は paper */
         border-color:  var(--color-paper);
         inset-inline:  0;
         margin-inline: auto; /* data_sign.css は inset-inline-start: 0 なので中央揃えに戻す */

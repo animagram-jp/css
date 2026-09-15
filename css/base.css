@@ -60,9 +60,11 @@
         color-scheme: light dark;
 
         --color-error: rgb(var(--rgb-accent-red));
-        /* Darkened toward black to clear --color-highlight's 4.5:1 text vs ink/paper and 3:1 fill vs paper/ink at once,
-           with enough margin to also clear both in the least-contrast schemes (per README "Contrast requirements"). */
-        --color-highlight: color-mix(in srgb, rgb(var(--rgb-accent-yellow)) 60%, rgb(0,0,0));
+        /* Darkened toward black to clear --color-highlight's 4.5:1 vs its own inner ::selection text
+           (--color-ink, in every scheme now that dark no longer swaps it to --color-paper) and 3:1 vs
+           the --color-paper backdrop it sits on, with margin for the least-contrast schemes too
+           (per README "Contrast requirements"). */
+        --color-highlight: color-mix(in srgb, rgb(var(--rgb-accent-yellow)) 49%, rgb(0,0,0));
         /* Darkened toward black to clear --color-success's 4.5:1 vs whichever of ink/paper reads lighter
            (paper in light, ink in dark), with margin for the least-contrast schemes too (per README "Contrast requirements"). */
         --color-success:   color-mix(in srgb, rgb(var(--rgb-accent-green)) 78%, rgb(0,0,0));
@@ -78,12 +80,10 @@
 
         /* Theme purple, lightened toward white to clear both 4.5:1 vs ink and 3:1 vs the dark-mode paper
            it sits on as a fill (per README "Contrast requirements") -- the full-strength theme color can't do both at once. */
-        --color-emphasis-paper: rgb(135,103,175);
+        --color-emphasis-paper: color-mix(in srgb, rgb(91,47,145) 73%, rgb(255,255,255));
 
         /* Emphasis colors variants: */
         --color-emphasis-ink-mix:      color-mix(in srgb, var(--color-emphasis-ink) 50%, var(--color-ink));
-        /* Fill active color meets 3:1 (WCAG AA: 1.4.11 Non-text Contrast) with paper */
-        --color-emphasis-paper-mix: color-mix(in srgb, var(--color-emphasis-paper) 50%, rgb(0,0,0));
 
         /* Paper color with emphasis-active text. */
         --color-paper-mix: color-mix(in srgb, var(--color-ink) 16%, var(--color-paper));
@@ -94,8 +94,8 @@
         :root {
             --color-ink:              rgb(var(--rgb-white));
             --color-paper:            rgb(var(--rgb-black));
-            --color-emphasis-ink:     rgb(173,151,200);
-            --color-emphasis-paper:   rgb(135,103,175);
+            --color-emphasis-ink:     color-mix(in srgb, rgb(91,47,145) 50%, rgb(255,255,255));
+            --color-emphasis-paper:   color-mix(in srgb, rgb(91,47,145) 73%, rgb(255,255,255));
         }
     }
     @media (prefers-contrast: more) {
@@ -137,27 +137,27 @@
             --color-ink:            rgb(var(--rgb-black));
             --color-paper:          rgb(var(--rgb-white));
             --color-emphasis-ink:   rgb(91,47,145);
-            --color-emphasis-paper: rgb(135,103,175);
+            --color-emphasis-paper: color-mix(in srgb, rgb(91,47,145) 73%, rgb(255,255,255));
         }
         :root[data-color-scheme="dark"] {
             --color-ink:            rgb(var(--rgb-white));
             --color-paper:          rgb(var(--rgb-black));
-            --color-emphasis-ink:   rgb(173,151,200);
-            --color-emphasis-paper: rgb(135,103,175);
+            --color-emphasis-ink:   color-mix(in srgb, rgb(91,47,145) 50%, rgb(255,255,255));
+            --color-emphasis-paper: color-mix(in srgb, rgb(91,47,145) 73%, rgb(255,255,255));
         }
         :root[data-color-scheme="light-high-contrast"] {
             --color-ink:            rgb(var(--rgb-black));
             --color-paper:          rgb(var(--rgb-white));
             --color-emphasis-ink:   rgb(91,47,145);
-            --color-emphasis-paper: rgb(135,103,175);
+            --color-emphasis-paper: color-mix(in srgb, rgb(91,47,145) 73%, rgb(255,255,255));
             /* 66%: meets 7:1 (AAA) against paper in both light and dark modes */
             --color-ink-mix:        color-mix(in srgb, var(--color-ink) 66%, var(--color-paper));
         }
         :root[data-color-scheme="dark-high-contrast"] {
             --color-ink:            rgb(var(--rgb-white));
             --color-paper:          rgb(var(--rgb-black));
-            --color-emphasis-ink:   rgb(173,151,200);
-            --color-emphasis-paper: rgb(135,103,175);
+            --color-emphasis-ink:   color-mix(in srgb, rgb(91,47,145) 50%, rgb(255,255,255));
+            --color-emphasis-paper: color-mix(in srgb, rgb(91,47,145) 73%, rgb(255,255,255));
             --color-ink-mix:        color-mix(in srgb, var(--color-ink) 66%, var(--color-paper));
         }
         :root[data-color-scheme="light-less-contrast"] {
@@ -167,15 +167,15 @@
             --color-ink-mix:        var(--color-ink);
             --color-paper-mix:      var(--color-paper);
             --color-emphasis-ink:   rgb(91,47,145);
-            --color-emphasis-paper: rgb(135,103,175);
+            --color-emphasis-paper: color-mix(in srgb, rgb(91,47,145) 73%, rgb(255,255,255));
         }
         :root[data-color-scheme="dark-less-contrast"] {
             --color-ink:            rgb(246,246,246);
             --color-paper:          rgb(36,36,36);
             --color-ink-mix:        var(--color-ink);
             --color-paper-mix:      var(--color-paper);
-            --color-emphasis-ink:   rgb(173,151,200);
-            --color-emphasis-paper: rgb(135,103,175);
+            --color-emphasis-ink:   color-mix(in srgb, rgb(91,47,145) 50%, rgb(255,255,255));
+            --color-emphasis-paper: color-mix(in srgb, rgb(91,47,145) 73%, rgb(255,255,255));
         }
     }
     @media (forced-colors: active) {
@@ -189,7 +189,7 @@
             --color-ink:            rgb(var(--rgb-black));
             --color-paper:          rgb(var(--rgb-white));
             --color-emphasis-ink:   rgb(91,47,145);
-            --color-emphasis-paper: rgb(135,103,175);
+            --color-emphasis-paper: color-mix(in srgb, rgb(91,47,145) 73%, rgb(255,255,255));
         }
     }
 
@@ -294,12 +294,6 @@
     ::selection {
         background-color: var(--color-highlight);
         color: var(--color-ink);
-    }
-    @media (prefers-color-scheme: dark) {
-        mark,
-        ::selection {
-            color: var(--color-paper);
-        }
     }
 
     code, pre, kbd, samp, var,

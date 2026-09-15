@@ -108,7 +108,7 @@
     }
 
     label > input[type="radio"]:checked::after {
-        background-color: var(--color-emphasis-ink-paper);
+        background-color: var(--color-emphasis-paper);
     }
 
     @media (forced-colors: active) {

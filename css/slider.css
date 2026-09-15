@@ -233,24 +233,24 @@
     input[type="range"]:hover::-webkit-slider-thumb,
     input[type="range"]:active::-webkit-slider-thumb,
     input[type="range"]:focus-visible::-webkit-slider-thumb {
-        background-color: var(--color-emphasis-ink-paper);
-        border-color:     var(--color-emphasis-ink-paper);
+        background-color: var(--color-emphasis-ink);
+        border-color:     var(--color-emphasis-ink);
     }
     input[type="range"]:hover::-moz-range-thumb,
     input[type="range"]:active::-moz-range-thumb,
     input[type="range"]:focus-visible::-moz-range-thumb {
-        background-color: var(--color-emphasis-ink-paper);
-        border-color:     var(--color-emphasis-ink-paper);
+        background-color: var(--color-emphasis-ink);
+        border-color:     var(--color-emphasis-ink);
     }
 
     input[type="range"]:active::-webkit-slider-thumb {
-        background-color: var(--color-emphasis-ink-paper-mix);
-        border-color:     var(--color-emphasis-ink-paper-mix);
+        background-color: var(--color-emphasis-ink-mix);
+        border-color:     var(--color-emphasis-ink-mix);
         scale:            1.15;
     }
     input[type="range"]:active::-moz-range-thumb {
-        background-color: var(--color-emphasis-ink-paper-mix);
-        border-color:     var(--color-emphasis-ink-paper-mix);
+        background-color: var(--color-emphasis-ink-mix);
+        border-color:     var(--color-emphasis-ink-mix);
         scale:            1.15;
     }
 

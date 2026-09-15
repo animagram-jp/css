@@ -161,8 +161,8 @@
 
     *:where(a, button, summary)[data-style="fill"]:active,
     button:not([data-style]):active {
-        background-color: var(--color-emphasis-ink-paper-mix);
-        border-color:     var(--color-emphasis-ink-paper);
+        background-color: var(--color-emphasis-ink-mix);
+        border-color:     transparent;
     }
 
     *:where(a, button, summary):where(
@@ -171,8 +171,12 @@
     ):active,
     *:where(a:any-link):not([data-style]):active,
     summary:not([data-style]):active {
-        background-color: var(--color-emphasis-ink-paper-mix);
-        color:            var(--color-emphasis-ink-ink-mix);
+        background-color: var(--color-paper-mix);
+        color:            var(--color-emphasis-ink-mix);
+    }
+
+    *:where(a, button, summary)[data-style="outline"]:active {
+        border-color: var(--color-emphasis-ink-mix);
     }
 
     @media (forced-colors: active) {
