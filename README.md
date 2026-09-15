@@ -36,7 +36,7 @@ Override the `--color-*` variables on any scope to restyle.
 | channel | `--rgb-accent-red` | `--color-error` default. |
 | | `--rgb-accent-yellow` | `--color-higlight` default. |
 | | `--rgb-accent-green` | `--color-success` default. |
-| | `--rgb-accent-purple` | `a:visited` default (light). Lightened toward white in dark, per "Contrast requirements". |
+| | `--rgb-accent-purple` | `a:visited` default (light mode). |
 | global parameter | `--color-ink` | Default text color in the scheme. |
 | | `--color-paper` | Default background color in the scheme. |
 | | `--color-ink-mix` | Default mixed to contrast with paper. |
@@ -68,42 +68,41 @@ Scoped parameters contrast requirements:
 
 - :focus outline's requirements is equal to border and it is not nessesary to differ with border.
 - :hover does not have any color difference.
-- Each ink and paper variant have to meet contrast 7:1 (WCAG 2.2 AAA) with all of the other color group.
-- {color}-mix variant has additional requirement: non text contrast 3:1 (per WCAG 2.2 A) to {color}
-- To fix fill color, ::selection remove text color "mix" suffix.
+- Empty cells mean as above.
 
-| Style | text | fill | border | backdrop | 
-|-|-|-|-|-|
-| - | `--color-ink` | `--color-paper` | `--color-ink` | `--color-paper` |
-| ::selection | `--color-ink` | `--color-highlight`/`--color-paper` | | |
-| input | `--color-ink` | `--color-paper` | `--color-ink-mix` | `--color-paper` |
-| input::selection | | `--color-highlight`/`--color-paper` | | |
-| input:disabled | `--color-ink-mix` | `--color-paper` | `--color-ink-mix` | `--color-paper` |
-| input:disabled::selection | `--color-ink` | `--color-highlight`/`--color-paper` | | |
-| input:user-invalid | `--color-ink` | `--color-paper` | `--color-error` | `--color-paper` |
-| input:user-invalid::selection | | `--color-highlight`/`--color-paper` | | |
-| invert | `--color-paper` | `--color-emphasis-ink` | transparent | `--color-paper` |
-| invert::selection | | `--color-highlight`/`--color-emphasis-ink` | | |
-| invert:disabled | `--color-paper` | `--color-ink-mix` | transparent | `--color-paper` |
-| invert:disabled::selection | | `--color-highlight`/`--color-ink-mix` | | |
-| invert:active | `--color-paper` | `--color-emphasis-ink-mix` | transparent | `--color-paper` |
-| invert:active::selection | | `--color-highlight`/`--color-emphasis-ink-mix` | transparent | `--color-paper` |
-| outline | `--color-emphasis-ink` | `--color-paper` | `--color-emphasis-ink` | `--color-paper` |
-| outline::selection | | `--color-highlight`/`--color-paper` | | |
-| outline:disabled | `--color-ink-mix` | `--color-paper` | `--color-ink-mix` | `--color-paper` |
-| outline:disabled::selection | `--color-ink` | `--color-highlight`/`--color-paper` | | |
-| outline:active | `--color-emphasis-ink-mix` | `--color-paper-mix` | `--color-emphasis-ink-mix` | `--color-paper` |
-| outline:active::selection | | `--color-highlight`/`--color-paper-mix` | | |
-| underline | `--color-emphasis-ink` | `--color-paper` | `--color-emphasis-ink` | `--color-paper` |
-| underline::selection | | `--color-highlight`/`--color-paper` | | |
-| underline:disabled | `--color-ink-mix` | `--color-paper` | `--color-ink-mix` | `--color-paper` |
-| underline:disabled::selection | `--color-ink(-mix)` | `--color-highlight`/`--color-paper` | | |
-| underline:active | `--color-emphasis-ink-mix` | `--color-paper-mix` | - | `--color-paper` |
-| underline:active::selection | | `--color-highlight`/`--color-paper-mix` | | |
+| Style | text | highlight | fill | border | backdrop | 
+|-|-|-|-|-|-|
+| input | color-ink | - | | color-ink-mix | |
+| input::selection | | color-highlight | | | |
+| input:disabled | color-ink-mix | - | | | |
+| input:disabled::selection | color-paper | color-highlight | | | |
+| input:user-invalid | color-ink | - | | color-error | |
+| input:user-invalid::selection | color-paper | color-highlight | | | |
+| invert | color-paper | - | color-emphasis-ink | transparent | |
+| invert::selection | color-ink | color-highlight | color-emphasis-ink | | |
+| invert:disabled | color-paper | - | color-ink-mix | | |
+| invert:disabled::selection | color-ink | color-highlight | color-ink-mix | | |
+| invert:active | color-paper | - | color-emphasis-ink-mix | | |
+| invert:active::selection | color-ink | color-highlight | color-emphasis-ink-mix | | |
+| outline | color-emphasis-ink | - | color-paper | color-emphasis-ink | |
+| outline::selection | color-emphasis-paper | color-highlight | | | |
+| outline:disabled | color-ink-mix | - | | color-ink-mix | |
+| outline:disabled::selection | color-paper | color-highlight | | | |
+| outline:active | color-emphasis-ink | - | color-paper-mix | color-emphasis-ink-mix | |
+| outline:active::selection | color-emphasis-paper | color-highlight | | | |
+| - | color-ink | - | color-paper(-mix) | color-ink | | 
+| ::selection | color-paper | color-highlight | color-paper(-mix) | | | 
+| - | color-ink | - | color-emphasis-paper-mix | - | | 
+| underline | color-{emphasis}-ink | - | color-paper | - | |
+| underline::selection | color-paper | color-highlight | | | |
+| underline:disabled | color-ink-mix | - | | | |
+| underline:disabled::selection | color-paper | color-highlight | | | |
+| underline:active | color-emphasis-ink-mix | - | | | |
+| underline:active::selection | color-paper | color-highlight | | | |
 
 ### Contrast requirements
 
-Requirements come from layer adjacency (text↔fill, fill↔border, border↔backdrop) in the style table above, not from color grouping.
+Requirements come from layer adjacency (text↔fill, fill↔border, border↔backdrop) in the style table above.
 
 | Property | 7:1 text (AAA 1.4.6) | 4.5:1 text (AA 1.4.3) | 3:1 non-text (AA 1.4.11) |
 |-|-|-|-|
