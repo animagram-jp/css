@@ -32,7 +32,7 @@ document.querySelectorAll('input[type="checkbox"][data-indeterminate]')
 // --- radio event for icon badge at the bottom right corner ---
 
 const ICON_BADGE = {
-    active:      { fill: "rgb(53,161,107)",  stroke: "rgb(255,255,255)" }, // --rgb-accent-green
+    active:      { fill: "rgb(44,134,89)",  stroke: "rgb(255,255,255)" }, // --color-success (rgb(var(--rgb-accent-green)) mixed 83% with rgb(0,0,0))
     information: { fill: "rgb(127,135,143)", stroke: "rgb(255,255,255)" }, // --rgb-grey
 };
 

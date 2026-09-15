@@ -167,7 +167,7 @@
     * emphasis colour to tell it apart from [data-stripe] above.
     */
     table[data-selectable] tbody tr:has(:checked) {
-        background-color: color-mix(in srgb, var(--color-emphasis-ink) var(--ratio-paper-mix), var(--color-paper));
+        background-color: var(--color-emphasis-paper-mix);
     }
 
     @media (forced-colors: active) {

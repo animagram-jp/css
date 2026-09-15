@@ -36,7 +36,7 @@ Override the `--color-*` variables on any scope to restyle.
 | channel | `--rgb-accent-red` | `--color-error` default. |
 | | `--rgb-accent-yellow` | `--color-higlight` default. |
 | | `--rgb-accent-green` | `--color-success` default. |
-| | `--rgb-accent-purple` | `a:visited` default. |
+| | `--rgb-accent-purple` | `a:visited` default (light). Lightened toward white in dark, per "Contrast requirements". |
 | global parameter | `--color-ink` | Default text color in the scheme. |
 | | `--color-paper` | Default background color in the scheme. |
 | | `--color-ink-mix` | Default mixed to contrast with paper. |
@@ -56,12 +56,15 @@ Override the `--color-*` variables on any scope to restyle.
 Scoped parameters contrast requirements:
 
 ```
-┌ backdrop ───────┐
-│  ┏ border ━━━┓  │
-│  ┃  fill     ┃  │
-│  ┃  -text-   ┃  │
-│  ┗━━━━━━━━━━━┛  │
-└─────────────────┘
+┌ backdrop ──────────┐
+│  ┏ border ━━━━━━━┓ │
+│  ┃  fill         ┃ │
+│  ┃ ┌(highlight)┐ ┃ │
+│  ┃ │  -text-   │ ┃ │
+│  ┃ └───────────┘ ┃ │
+│  ┃               ┃ │
+│  ┗━━━━━━━━━━━━━━━┛ │
+└────────────────────┘
 ```
 
 - :focus outline's requirements is equal to border and it is not nessesary to differ with border.
@@ -105,26 +108,36 @@ Scoped parameters contrast requirements:
 
 ### Contrast requirements
 
-Requirements come from layer adjacency (text↔fill, fill↔border, border↔backdrop) in the style table above, not from color grouping. `:disabled` is exempt throughout: WCAG 1.4.11 excludes inactive components, and 1.4.3/1.4.6 exclude incidental text.
+Requirements come from layer adjacency (text↔fill, fill↔border, border↔backdrop) in the style table above, not from color grouping.
 
-| Property | 7:1 text (AAA 1.4.6) | 3:1 non-text (AA 1.4.11) |
-|-|-|-|
-| `--color-ink` | `emphasis-paper`, `emphasis-paper-mix`, `highlight`, `paper` | — |
-| `--color-ink-mix` | — | `highlight`, `paper` |
-| `--color-paper` | `emphasis-ink`, `emphasis-ink-mix`, `highlight`, `ink` | `emphasis-paper`, `error`, `ink-mix` |
-| `--color-paper-mix` | `emphasis-ink-mix` | — |
-| `--color-emphasis-ink` | `highlight`, `paper` | `emphasis-ink-mix` |
-| `--color-emphasis-ink-mix` | `highlight`, `paper`, `paper-mix` | `emphasis-ink` |
-| `--color-emphasis-paper` | `ink` | `emphasis-paper-mix`, `paper` |
-| `--color-emphasis-paper-mix` | `ink` | `emphasis-paper` |
-| `--color-highlight` | `emphasis-ink`, `emphasis-ink-mix`, `ink`, `paper` | `error`, `ink-mix` |
-| `--color-error` | — | `highlight`, `paper` |
+| Property | 7:1 text (AAA 1.4.6) | 4.5:1 text (AA 1.4.3) | 3:1 non-text (AA 1.4.11) |
+|-|-|-|-|
+| `--color-ink` (light) | — | `highlight`, `emphasis-paper`, `emphasis-paper-mix` | — |
+| `--color-ink` (dark) | `paper` | `emphasis-paper`, `emphasis-paper-mix`, `success` | `highlight` |
+| `--color-ink-mix` | — | `paper` | `highlight` |
+| `--color-paper` (light) | `emphasis-ink`, `emphasis-ink-mix` | `success` | `emphasis-paper`, `error`, `highlight`, `ink-mix` |
+| `--color-paper` (dark) | `emphasis-ink`, `emphasis-ink-mix`, `ink` | — | `emphasis-paper`, `error`, `ink-mix` |
+| `--color-paper-mix` | `emphasis-ink-mix` | — | — |
+| `--color-emphasis-ink` | `paper` | — | `emphasis-ink-mix`, `highlight` |
+| `--color-emphasis-ink-mix` | `paper` | — | `emphasis-ink`, `highlight` |
+| `--color-emphasis-paper` | — | `ink` | `emphasis-paper-mix`, `paper` |
+| `--color-emphasis-paper-mix` | — | `ink` | `emphasis-paper` |
+| `--color-highlight` (light) | — | `ink` | `emphasis-ink`, `emphasis-ink-mix`, `ink-mix`, `paper`, `paper-mix` |
+| `--color-highlight` (dark) | — | `paper` | `emphasis-ink`, `emphasis-ink-mix`, `ink-mix`, `paper-mix`, `ink` |
+| `--color-error` | — | — | `paper` |
+| `--color-success` (light) | — | `paper` | — |
+| `--color-success` (dark) | — | `ink` | — |
+| `color:visited` (light) | `paper` | — | — |
+| `color:visited` (dark) | `paper` | — | — |
 
 - Text contrast is 7:1 (AAA 1.4.6), or 4.5:1 for large-scale text (AA 1.4.3).
 - `--color-ink-mix` carries no 7:1 row: it is only ever text on `:disabled`.
 - `*-mix` pairs with its base color only for `emphasis-*` (via `:active`, fill↔border). `--color-ink-mix` and `--color-paper-mix` never touch their base.
-- `--color-highlight` and `--color-paper` occupy the same fill slot, so they never meet; no requirement holds between them.
-- `--color-success` needs 7:1 against `--color-ink` per its own definition; it has no adjacency in the style table above.
+- `--color-highlight` nests inside whatever fill it's applied over (per the Color section's backdrop/border/fill/(highlight)/text diagram): its own inner `::selection` text drops the `-mix` suffix (4.5:1, against `ink` in light / `paper` in dark only — capped at AA, not 7:1, because the same fill must also clear 3:1 as a non-text patch against every outer fill it can land on: `paper`/`ink` normally, `emphasis-ink`/`emphasis-ink-mix`/`paper-mix` under invert/outline/underline `:active`; one color can't hit 7:1 text and 3:1 non-text against opposite ends of the same ink/paper pair at once). It never touches `--color-error`, since `error` is only ever a `border-color`/`outline-color` and the diagram has no border↔highlight adjacency (border meets fill, not the highlight nested inside it).
+- Rows marked (light)/(dark) hold only in that color-scheme, because `--color-highlight`'s `::selection` text swaps `ink`↔`paper` by scheme (see the Style table's `::selection (dark)` row); unmarked rows hold in both.
+- `--color-success` has no adjacency in the style table above; its requirement comes from its own definition (boolean-true fill, per the Color table). Same shape as `--color-highlight`: it needs 4.5:1 against whichever of `ink`/`paper` reads lighter in each scheme (`paper` in light, `ink` in dark), because it has to clear that AA bar in both schemes with a single value.
+- `--color-ink` vs `emphasis-paper`/`emphasis-paper-mix` are capped at 4.5:1 (AA), not 7:1: on the same fill, dark mode's 3:1 fill↔backdrop requirement (against `--color-paper`) and a 7:1 text requirement (against white) can't both hold, so text drops to AA here.
+- `color:visited` isn't one of the `--color-*` custom properties above; it's `a:visited`'s own `color` (default `rgb(var(--rgb-accent-purple))`, per the Color table). Its 7:1 requirement is against `--color-paper` in each scheme (`paper` reads white in light, black in dark), so a single color can't clear both — button.css switches the value under `prefers-color-scheme: dark` instead of introducing a new `--color-*` variable.
 
 ### style
 
