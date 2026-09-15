@@ -72,33 +72,33 @@ Scoped parameters contrast requirements:
 
 | Style | text | highlight | fill | border | backdrop | 
 |-|-|-|-|-|-|
-| input | color-ink | - | | color-ink-mix | |
-| input::selection | color-paper | color-highlight | | | |
+| input | color-ink | - | color-paper | color-ink-mix | |
+| input::selection | color-paper | color-highlight-ink | | | |
 | input:disabled | color-ink-mix | - | | | |
-| input:disabled::selection | color-paper | color-highlight | | | |
+| input:disabled::selection | color-paper | color-highlight-ink | | | |
 | input:user-invalid | color-ink | - | | color-error | |
-| input:user-invalid::selection | color-paper | color-highlight | | | |
+| input:user-invalid::selection | color-paper | color-highlight-ink | | | |
 | invert | color-paper | - | color-emphasis-ink | transparent | |
-| invert::selection | color-ink | color-highlight | color-emphasis-ink | | |
+| invert::selection | color-ink | color-highlight-paper | color-emphasis-ink | | |
 | invert:disabled | color-paper | - | color-ink-mix | | |
-| invert:disabled::selection | color-ink | color-highlight | color-ink-mix | | |
+| invert:disabled::selection | color-ink | color-highlight-paper | color-ink-mix | | |
 | invert:active | color-paper | - | color-emphasis-ink-mix | | |
-| invert:active::selection | color-ink | color-highlight | color-emphasis-ink-mix | | |
+| invert:active::selection | color-ink | color-highlight-paper | color-emphasis-ink-mix | | |
 | outline | color-emphasis-ink | - | color-paper | color-emphasis-ink | |
-| outline::selection | color-emphasis-paper | color-highlight | | | |
+| outline::selection | color-emphasis-paper | color-highlight-ink | | | |
 | outline:disabled | color-ink-mix | - | | color-ink-mix | |
-| outline:disabled::selection | color-paper | color-highlight | | | |
+| outline:disabled::selection | color-paper | color-highlight-ink | | | |
 | outline:active | color-emphasis-ink | - | color-paper-mix | color-emphasis-ink-mix | |
-| outline:active::selection | color-emphasis-paper | color-highlight | | | |
+| outline:active::selection | color-emphasis-paper | color-highlight-ink | | | |
 | - | color-ink | - | color-paper(-mix) | color-ink | | 
-| ::selection | color-paper | color-highlight | color-paper(-mix) | | | 
+| ::selection | color-paper | color-highlight-ink | color-paper(-mix) | | | 
 | - | color-ink | - | color-emphasis-paper-mix | - | | 
 | underline | color-{emphasis}-ink | - | color-paper | - | |
-| underline::selection | color-paper | color-highlight | | | |
+| underline::selection | color-paper | color-highlight-ink | | | |
 | underline:disabled | color-ink-mix | - | | | |
-| underline:disabled::selection | color-paper | color-highlight | | | |
+| underline:disabled::selection | color-paper | color-highlight-ink | | | |
 | underline:active | color-emphasis-ink-mix | - | | | |
-| underline:active::selection | color-paper | color-highlight | | | |
+| underline:active::selection | color-paper | color-highlight-ink | | | |
 
 ### Contrast requirements
 
@@ -106,31 +106,18 @@ Requirements come from layer adjacency (text↔fill, fill↔border, border↔bac
 
 | Property | 7:1 text (AAA 1.4.6) | 4.5:1 text (AA 1.4.3) | 3:1 non-text (AA 1.4.11) |
 |-|-|-|-|
-| `--color-ink` (light) | — | `highlight` | — |
-| `--color-ink` (dark) | `paper` | `success` | `highlight` |
-| `--color-ink-mix` | — | `paper` | `highlight` |
-| `--color-paper` (light) | `emphasis-ink`, `emphasis-ink-mix` | `success` | `emphasis-paper`, `error`, `highlight`, `ink-mix` |
-| `--color-paper` (dark) | `emphasis-ink`, `emphasis-ink-mix`, `ink` | — | `emphasis-paper`, `error`, `ink-mix` |
-| `--color-paper-mix` | `emphasis-ink-mix` | — | — |
-| `--color-emphasis-ink` | `paper` | — | — |
-| `--color-emphasis-ink-mix` | `paper` | — | `highlight` |
-| `--color-emphasis-paper` | — | — | `paper` |
+| color-ink | color(-emphasis)-paper | color(-emphasis)-paper(-mix) | color-highlight-paper |
+| color-ink-mix | color-paper | | color-highlight-paper |
+| color-paper | color-ink-mix | color-success | emphasis-paper, color-error, highlight, ink-mix |
+| color-paper-mix | emphasis-ink-mix | — | — |
+| color-emphasis-ink | paper | — | — |
+| color-emphasis-ink-mix | paper | — | highlight |
+| color-emphasis-paper | — | — | paper |
 | color-highlight-ink | color-paper | - | color(-emphasis)-paper(-mix) |
 | color-highlight-paper | color-ink | - | color(-emphasis)-ink(-mix) |
-| `--color-error` | — | — | `paper` |
-| `--color-success` (light) | — | `paper` | — |
-| `--color-success` (dark) | — | `ink` | — |
-| `color:visited` (light) | `paper` | — | — |
-| `color:visited` (dark) | `paper` | — | — |
-
-- Text contrast is 7:1 (AAA 1.4.6), or 4.5:1 for large-scale text (AA 1.4.3).
-- `--color-ink-mix` carries no 7:1 row: it is only ever text on `:disabled`.
-- `--color-emphasis-ink-mix` never touches its own base color: `invert:active`'s border is `transparent` (not `emphasis-ink`), because a color dark enough to clear 7:1 against paper as `emphasis-ink` can't also clear 3:1 against its own `-mix` variant — the self-contrast tops out around 2.3–2.7:1 regardless of hue. `--color-ink-mix` and `--color-paper-mix` likewise never touch their base. `--color-emphasis-paper` has no `-mix` variant: `invert` uses `--color-emphasis-ink` in both light and dark, so `--color-emphasis-paper` only ever appears as a flat fill (e.g. a `[data-selectable]` selected row) with no active/mix state.
-- `--color-highlight` nests inside whatever fill it's applied over (per the Color section's backdrop/border/fill/(highlight)/text diagram): its own inner `::selection` text drops the `-mix` suffix (4.5:1, against `ink` in light / `paper` in dark only — capped at AA, not 7:1, because the same fill must also clear 3:1 as a non-text patch against every outer fill it can land on: `paper`/`ink` normally, `emphasis-ink`/`emphasis-ink-mix`/`paper-mix` under invert/outline/underline `:active`; one color can't hit 7:1 text and 3:1 non-text against opposite ends of the same ink/paper pair at once). It never touches `--color-error`, since `error` is only ever a `border-color`/`outline-color` and the diagram has no border↔highlight adjacency (border meets fill, not the highlight nested inside it).
-- Rows marked (light)/(dark) hold only in that color-scheme, because `--color-highlight`'s `::selection` text swaps `ink`↔`paper` by scheme (see the Style table's `::selection (dark)` row); unmarked rows hold in both.
-- `--color-success` has no adjacency in the style table above; its requirement comes from its own definition (boolean-true fill, per the Color table). Same shape as `--color-highlight`: it needs 4.5:1 against whichever of `ink`/`paper` reads lighter in each scheme (`paper` in light, `ink` in dark), because it has to clear that AA bar in both schemes with a single value.
-- `--color-emphasis-paper` only needs 3:1 against `--color-paper`: since `invert` no longer uses it (both schemes use `--color-emphasis-ink` for that), its one remaining use (`table[data-selectable]`'s selected-row fill) never carries text, so the 4.5:1/7:1 text columns don't apply.
-- `color:visited` isn't one of the `--color-*` custom properties above; it's `a:visited`'s own `color` (default `rgb(var(--rgb-accent-purple))`, per the Color table). Its 7:1 requirement is against `--color-paper` in each scheme (`paper` reads white in light, black in dark), so a single color can't clear both — button.css switches the value under `prefers-color-scheme: dark` instead of introducing a new `--color-*` variable.
+| color-error | — | — | paper |
+| color-success | — | paper | — |
+| color:visited | paper | — | — |
 
 ### style
 
