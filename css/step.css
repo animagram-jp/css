@@ -291,42 +291,35 @@
         border-end-end-radius: var(--2xl-border-radius);
     }
 
-    /* === sort (th > label > input[type="radio"]) === */
+    /* === sort button === */
 
-    /* 
-        <table>
-            <thead>
-                <tr>
-                    <th scope="col" aria-sort="ascending">Head
-                        <span data-axis="block">
-                            <label>
-                                <input type="radio" name="sort-{table}" value="{col1}-asc"
-                                       aria-label="Sort ascending" checked></label>
-                            <label>
-                                <input type="radio" name="sort-{table}" value="{col1}-desc"
-                                       aria-label="Sort descending"></label></span></th>
-                    <th scope="col" aria-sort="none">Head
-                        <span data-axis="block">
-                            <label>
-                                <input type="radio" name="sort-{table}" value="{col2}-asc"
-                                       aria-label="Sort ascending"></label>
-                            <label>
-                                <input type="radio" name="sort-{table}" value="{col2}-desc"
-                                       aria-label="Sort descending"></label></span></th></tr></thead>
-        </table>
+    /*
+        <th scope="col" aria-sort="ascending">
+            <span data-axis="block">
+                <label>
+                    <input type="radio" name="sort-table" value="1-asc"
+                            aria-label="Sort ascending" checked></label>
+                <label>
+                    <input type="radio" name="sort-table" value="1-desc"
+                            aria-label="Sort descending"></label></span></th>
     */
+
+    /*  the pair is not table-specific: it is [data-axis="block"] stacking two
+        radios, same as any other consumer of that marker. a th is only where
+        it happens to live in this usage -- the nowrap rule below is the one
+        genuinely table-cell-specific thing here. */
 
     th:has(> [data-axis="block"] input[type="radio"]) {
         white-space: nowrap;
     }
 
-    th > [data-axis="block"]:has(input[type="radio"]) {
-        display:              inline flow-root;
-        padding-inline-start: calc(var(--md-border-radius) / 2);
-        vertical-align:       middle;
+    [data-axis="block"]:has(> label > input[type="radio"]) {
+        display:             inline flow-root;
+        margin-inline-start: calc(var(--md-border-radius) / 2);
+        vertical-align:      middle;
     }
 
-    th > [data-axis="block"] > label:has(> input[type="radio"]) {
+    [data-axis="block"] > label:has(> input[type="radio"]) {
         cursor:  pointer;
         display: block;
     }
@@ -334,7 +327,7 @@
     /*  the radio itself is not drawn: the triangle stands for it. the input
         keeps its box so it still takes focus and the hit area stays whole. */
 
-    th > [data-axis="block"] > label > input[type="radio"] {
+    [data-axis="block"] > label > input[type="radio"] {
         appearance:       none;
         background-color: var(--color-paper);
         border:           0;
@@ -351,7 +344,7 @@
     /*  css.radio rounds this pseudo-element into the inner circle of a radio;
         the triangle needs its corners back. */
 
-    th > [data-axis="block"] > label > input[type="radio"]::after {
+    [data-axis="block"] > label > input[type="radio"]::after {
         background-color: transparent;
         block-size:       0;
         border-inline:    calc(var(--md-line-height) / 4) solid transparent;
@@ -367,16 +360,16 @@
         order of the values, so the shape follows the position rather than a
         value attribute. */
 
-    th > [data-axis="block"] > label:first-child > input[type="radio"]::after {
+    [data-axis="block"] > label:first-child > input[type="radio"]::after {
         border-block-end: calc(var(--md-line-height) / 4) solid currentColor;
     }
-    th > [data-axis="block"] > label:last-child > input[type="radio"]::after {
+    [data-axis="block"] > label:last-child > input[type="radio"]::after {
         border-block-start: calc(var(--md-line-height) / 4) solid currentColor;
     }
 
     /* the direction in force is the one drawn in ink. */
 
-    th > [data-axis="block"] > label > input[type="radio"]:checked {
+    [data-axis="block"] > label > input[type="radio"]:checked {
         color: var(--color-ink);
     }
 
@@ -384,7 +377,7 @@
         the ring is the width of a border here: the control is smaller than a
         box height, so the ring used elsewhere would swallow it. */
 
-    th > [data-axis="block"] > label > input[type="radio"]:focus-visible {
+    [data-axis="block"] > label > input[type="radio"]:focus-visible {
         outline-color:  var(--color-focus);
         outline-offset: 0;
         outline-style:  solid;
@@ -393,20 +386,20 @@
     }
 
     @media (forced-colors: active) {
-        th > [data-axis="block"] > label > input[type="radio"] {
+        [data-axis="block"] > label > input[type="radio"] {
             color: ButtonText;
         }
-        th > [data-axis="block"] > label > input[type="radio"]:checked {
+        [data-axis="block"] > label > input[type="radio"]:checked {
             color: Highlight;
         }
-        th > [data-axis="block"] > label > input[type="radio"]:focus-visible {
+        [data-axis="block"] > label > input[type="radio"]:focus-visible {
             outline-color: Highlight;
         }
     }
 
     /* :disabled, [aria-disabled="true"] */
 
-    th > [data-axis="block"] > label > input[type="radio"]:where(
+    [data-axis="block"] > label > input[type="radio"]:where(
         :disabled,
         [aria-disabled="true"]
     ) {
@@ -416,7 +409,7 @@
     }
 
     @media (forced-colors: active) {
-        th > [data-axis="block"] > label > input[type="radio"]:where(
+        [data-axis="block"] > label > input[type="radio"]:where(
             :disabled,
             [aria-disabled="true"]
         ) {
