@@ -15,12 +15,10 @@
     *:where(h1, h2, h3, h4, h5, h6),
     hgroup,
     hgroup > p {
-        color:  var(--color-ink);
         margin: 0;
     }
 
     hgroup > p {
-        color:          var(--color-ink);
         font-size:      var(--sm-font-size);
         font-weight:    bold;
         letter-spacing: var(--sm-letter-spacing);

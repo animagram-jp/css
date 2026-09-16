@@ -46,12 +46,6 @@
         margin-inline: auto; /* data_sign.css は inset-inline-start: 0 なので中央揃えに戻す */
     }
 
-    @media (prefers-color-scheme: dark) {
-        label > input[type="checkbox"]:not([role="switch"])::before {
-            border-color: var(--color-ink);
-        }
-    }
-
     /* ─ : 下辺のみを残し、回転しない。下辺のインク分だけ上へずらして重心を中央に揃える */
     label > input[type="checkbox"]:not([role="switch"]):indeterminate::before {
         border-width: 0 0 0.1875rem 0;

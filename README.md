@@ -42,7 +42,8 @@ Override the `--color-*` variables on any scope to restyle.
 | | `--color-ink-mix` | Default mixed to contrast with paper. |
 | | `--color-paper-mix` | Default mixed to contrast with ink. |
 | | `--color-error` | `:user-invalid` default. |
-| | `--color-highlight` | `::selection` default to contrast with ink. |
+| | `--color-highlight-ink` | `::selection` default to contrast with paper. |
+| | `--color-highlight-ink` | `::selection` default to contrast with ink. |
 | | `--color-success` | boolean true default to contrast with ink. |
 | | `--color-emphasis-ink` | Emphasis color to contrast with paper. |
 | | `--color-emphasis-ink-mix` | Emphasis mixed to contrast with paper. |
@@ -282,6 +283,6 @@ Direction in which a component lays its parts out. Each value below is opt-in; o
 
 | Selector | Attribute | Description |
 |-|-|-|
-| `table` | `data-border`, `data-stripe`, `data-hover`, `data-selectable` | boolean; rules, zebra striping, row hover, row selection ([table.css](./css/table.css)) |
-| `label > input[type="range"]` | `data-text-min`, `data-text-max` | labels for the limits of the range ([slider.css](./css/slider.css)) |
+| `table` | `data-border` | `sectioned` (default) / `grid` / `booktabs`; rule style ([table.css](./css/table.css)) |
+| `table` | `data-stripe`, `data-selectable` | boolean; zebra striping, row selection ([table.css](./css/table.css)) |
 | `button` (step) | `data-action` | `increment` / `decrement` ([step.css](./css/step.css)) |

@@ -58,7 +58,7 @@
 
     *[data-style="outline"] {
         appearance:       none;
-        background-color: transparent;
+        background-color: var(--color-paper);
         border-color:     var(--color-emphasis-ink);
         border-style:     solid;
         color:            var(--color-emphasis-ink);

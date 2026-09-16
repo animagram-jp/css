@@ -424,13 +424,17 @@
             <input type="range" data-size="xl" value="80">
             <input type="range" data-size="2xl" value="90"></section>
         <section data-style="rule-indent">
-            <h3>label &gt; input[type="range"] ([data-text-min], [data-text-max])</h3>
-            <label data-axis="block" data-text-min="0" data-text-max="100">
+            <h3>label &gt; input[type="range"] &gt; span (min, max)</h3>
+            <label data-axis="block">
                 <span>inline</span>
-                <input type="range" min="0" max="100" step="10" value="20"></label>
-            <label data-axis="block" data-text-min="less expensive" data-text-max="more expensive">
+                <input type="range" min="0" max="100" step="10" value="20">
+                <span>0</span>
+                <span>100</span></label>
+            <label data-axis="block">
                 <span>inline</span>
-                <input type="range" min="0" max="100" step="20" value="40"></label></section>
+                <input type="range" min="0" max="100" step="20" value="40">
+                <span>less expensive</span>
+                <span>more expensive</span></label></section>
         <section data-style="rule-indent">
             <h3>:user-invalid, [aria-invalid="true"]</h3>
             <input type="range" value="50" aria-invalid="true"></section>
@@ -728,8 +732,8 @@
                         <td>Cell</td></tr></tbody></table></section>
         <section data-style="rule-indent">
             <h3>[data-border]</h3>
-            <table data-border="">
-                <caption>All four edges of every cell</caption>
+            <table>
+                <caption>sectioned (default): header underrule, footer overrule, row-header rule</caption>
                 <thead>
                     <tr>
                         <th scope="col">Head</th>
@@ -748,8 +752,8 @@
                         <th scope="row">Row</th>
                         <td>Cell</td>
                         <td>Cell</td></tr></tbody></table>
-            <table data-border="block-start">
-                <caption>Top edge of every cell: rules between rows</caption>
+            <table data-border="grid">
+                <caption>grid: every edge ruled, outer edge in ink, inner grid in ink-mix</caption>
                 <thead>
                     <tr>
                         <th scope="col">Head</th>
@@ -768,68 +772,8 @@
                         <th scope="row">Row</th>
                         <td>Cell</td>
                         <td>Cell</td></tr></tbody></table>
-            <table data-border="block-end">
-                <caption>Bottom edge of every cell: rules between rows</caption>
-                <thead>
-                    <tr>
-                        <th scope="col">Head</th>
-                        <th scope="col">Head</th>
-                        <th scope="col">Head</th></tr></thead>
-                <tbody>
-                    <tr>
-                        <th scope="row">Row</th>
-                        <td>Cell</td>
-                        <td>Cell</td></tr>
-                    <tr>
-                        <th scope="row">Row</th>
-                        <td>Cell</td>
-                        <td>Cell</td></tr>
-                    <tr>
-                        <th scope="row">Row</th>
-                        <td>Cell</td>
-                        <td>Cell</td></tr></tbody></table>
-            <table data-border="inline-start">
-                <caption>Leading edge of every cell: rules between columns</caption>
-                <thead>
-                    <tr>
-                        <th scope="col">Head</th>
-                        <th scope="col">Head</th>
-                        <th scope="col">Head</th></tr></thead>
-                <tbody>
-                    <tr>
-                        <th scope="row">Row</th>
-                        <td>Cell</td>
-                        <td>Cell</td></tr>
-                    <tr>
-                        <th scope="row">Row</th>
-                        <td>Cell</td>
-                        <td>Cell</td></tr>
-                    <tr>
-                        <th scope="row">Row</th>
-                        <td>Cell</td>
-                        <td>Cell</td></tr></tbody></table>
-            <table data-border="inline-end">
-                <caption>Trailing edge of every cell: rules between columns</caption>
-                <thead>
-                    <tr>
-                        <th scope="col">Head</th>
-                        <th scope="col">Head</th>
-                        <th scope="col">Head</th></tr></thead>
-                <tbody>
-                    <tr>
-                        <th scope="row">Row</th>
-                        <td>Cell</td>
-                        <td>Cell</td></tr>
-                    <tr>
-                        <th scope="row">Row</th>
-                        <td>Cell</td>
-                        <td>Cell</td></tr>
-                    <tr>
-                        <th scope="row">Row</th>
-                        <td>Cell</td>
-                        <td>Cell</td></tr></tbody></table>
-            <table data-border="block-end inline-end">
-                <caption>Two edges combined: space-separated values</caption>
+            <table data-border="booktabs">
+                <caption>booktabs: top/bottom outer rule and header underrule only, no verticals</caption>
                 <thead>
                     <tr>
                         <th scope="col">Head</th>
@@ -849,7 +793,7 @@
                         <td>Cell</td>
                         <td>Cell</td></tr></tbody></table></section>
         <section data-style="rule-indent">
-            <h3>[data-stripe], [data-hover], [data-selectable]</h3>
+            <h3>[data-stripe], [data-selectable]</h3>
             <table data-stripe>
                 <caption>Caption</caption>
                 <thead>
@@ -870,27 +814,7 @@
                         <th scope="row">Row</th>
                         <td>Cell</td>
                         <td>Cell</td></tr></tbody></table>
-            <table data-hover>
-                <caption>Caption</caption>
-                <thead>
-                    <tr>
-                        <th scope="col">Head</th>
-                        <th scope="col">Head</th>
-                        <th scope="col">Head</th></tr></thead>
-                <tbody>
-                    <tr>
-                        <th scope="row">Row</th>
-                        <td>Cell</td>
-                        <td>Cell</td></tr>
-                    <tr>
-                        <th scope="row">Row</th>
-                        <td>Cell</td>
-                        <td>Cell</td></tr>
-                    <tr>
-                        <th scope="row">Row</th>
-                        <td>Cell</td>
-                        <td>Cell</td></tr></tbody></table>
-            <table data-border="" data-selectable>
+            <table data-border="grid" data-selectable>
                 <caption>Caption</caption>
                 <thead>
                     <tr>
@@ -914,7 +838,7 @@
                         <td>Cell</td></tr></tbody></table></section>
         <section data-style="rule-indent">
             <h3>th > label > input[type="radio"] (sort)</h3>
-            <table data-border="">
+            <table data-border="grid">
                 <caption>Caption</caption>
                 <thead>
                     <tr>
@@ -939,7 +863,7 @@
                         <td>Cell</td></tr></tbody></table></section>
         <section data-style="rule-indent">
             <h3>[data-size]</h3>
-            <table data-border="" data-size="xs">
+            <table data-border="grid" data-size="xs">
                 <caption>Caption</caption>
                 <thead>
                     <tr>
@@ -959,7 +883,7 @@
                         <th scope="row">Row</th>
                         <td>Cell</td>
                         <td>Cell</td></tr></tbody></table>
-            <table data-border="" data-size="sm">
+            <table data-border="grid" data-size="sm">
                 <caption>Caption</caption>
                 <thead>
                     <tr>
@@ -979,7 +903,7 @@
                         <th scope="row">Row</th>
                         <td>Cell</td>
                         <td>Cell</td></tr></tbody></table>
-            <table data-border="" data-size="lg">
+            <table data-border="grid" data-size="lg">
                 <caption>Caption</caption>
                 <thead>
                     <tr>
@@ -999,7 +923,7 @@
                         <th scope="row">Row</th>
                         <td>Cell</td>
                         <td>Cell</td></tr></tbody></table>
-            <table data-border="" data-size="2xl">
+            <table data-border="grid" data-size="2xl">
                 <caption>Caption</caption>
                 <thead>
                     <tr>

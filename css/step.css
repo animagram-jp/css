@@ -372,7 +372,7 @@
 
     th > [data-axis="block"] > label > input[type="radio"] {
         appearance:       none;
-        background-color: transparent;
+        background-color: var(--color-paper);
         border:           0;
         color:            var(--color-ink-mix);
         cursor:           pointer;
@@ -414,12 +414,6 @@
 
     th > [data-axis="block"] > label > input[type="radio"]:checked {
         color: var(--color-ink);
-    }
-
-    @media (hover: hover) {
-        th > [data-axis="block"] > label > input[type="radio"]:hover {
-            color: var(--color-ink);
-        }
     }
 
     /*  an outline, not a box-shadow, which is not painted under forced-colors.

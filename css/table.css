@@ -119,23 +119,50 @@
         font-size: var(--2xl-font-size);
     }
 
-    /* === header cells === */
+    /* === [data-border] === */
 
     /*
     * Header cells are told apart by weight and by the rule under the header
     * row, not by a fill: a fill would have to survive forced-colors, where a
     * background is replaced and the distinction is lost.
     */
-    table thead tr:last-of-type *:where(td, th) {
+    table:where(:not([data-border]), [data-border="sectioned"]) thead tr:last-of-type *:where(td, th) {
         border-block-end: var(--md-border-width) solid var(--color-ink);
     }
 
-    table tbody th[scope="row"] {
+    table:where(:not([data-border]), [data-border="sectioned"]) tbody th[scope="row"] {
         border-inline-end: var(--md-border-width) solid var(--color-ink);
     }
 
-    table tfoot tr:first-of-type *:where(td, th) {
+    table:where(:not([data-border]), [data-border="sectioned"]) tfoot tr:first-of-type *:where(td, th) {
         border-block-start: var(--md-border-width) solid var(--color-ink);
+    }
+
+    /* --- grid: every cell ruled; outer edge in ink, inner grid in ink-mix --- */
+
+    table[data-border="grid"] *:where(td, th) {
+        border: var(--md-border-width) solid var(--color-ink-mix);
+    }
+    table[data-border="grid"] tr:first-child *:where(td, th) {
+        border-block-start-color: var(--color-ink);
+    }
+    table[data-border="grid"] tr:last-child *:where(td, th) {
+        border-block-end-color: var(--color-ink);
+    }
+    table[data-border="grid"] *:where(td, th):first-child {
+        border-inline-start-color: var(--color-ink);
+    }
+    table[data-border="grid"] *:where(td, th):last-child {
+        border-inline-end-color: var(--color-ink);
+    }
+
+    /* --- booktabs: top/bottom outer rule plus the header underrule, no verticals --- */
+
+    table[data-border="booktabs"] {
+        border-block: var(--md-border-width) solid var(--color-ink);
+    }
+    table[data-border="booktabs"] thead tr:last-of-type *:where(td, th) {
+        border-block-end: var(--md-border-width) solid var(--color-ink);
     }
 
     /* === [data-stripe] === */
@@ -150,16 +177,6 @@
         background-color: var(--color-paper-mix);
     }
 
-    /* === [data-hover] === */
-
-    /* --- hover --- */
-
-    @media (hover: hover) {
-        table[data-hover] tbody tr:hover {
-            background-color: var(--color-paper-mix);
-        }
-    }
-
     /* === [data-selectable] === */
 
     /*
@@ -172,7 +189,6 @@
 
     @media (forced-colors: active) {
         table[data-stripe] tbody tr:nth-child(even),
-        table[data-hover] tbody tr:hover,
         table[data-selectable] tbody tr:has(:checked) {
             background-color: revert;
         }
@@ -197,24 +213,6 @@
         [type="radio"]
     )) {
         display: inline flow-root;
-    }
-
-    /* === [data-border] === */
-
-    table[data-border=""] *:where(td, th) {
-        border: var(--md-border-width) solid var(--color-ink-mix);
-    }
-    table[data-border~="block-start"] *:where(td, th) {
-        border-block-start: var(--md-border-width) solid var(--color-ink-mix);
-    }
-    table[data-border~="block-end"] *:where(td, th) {
-        border-block-end: var(--md-border-width) solid var(--color-ink-mix);
-    }
-    table[data-border~="inline-start"] *:where(td, th) {
-        border-inline-start: var(--md-border-width) solid var(--color-ink-mix);
-    }
-    table[data-border~="inline-end"] *:where(td, th) {
-        border-inline-end: var(--md-border-width) solid var(--color-ink-mix);
     }
 
     @media (forced-colors: active) {

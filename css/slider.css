@@ -11,11 +11,15 @@
     precision, keep the step coarse (10-20% of the total range), and label the
     limits of the range. those need markup, hence the label form below.
 
-    to label the limits and show the current value, wrap it in a label:
+    to label the limits, wrap it in a label with a span after the input for
+    each limit; being plain elements rather than attr()-driven content, they
+    stay free for userland to keep live (e.g. an <output> updated on `input`):
 
-    <label data-axis="block" data-text-min="quiet" data-text-max="loud">
+    <label data-axis="block">
         <span>Volume</span>
-        <input type="range" min="0" max="100" step="10" value="20"></label> */
+        <input type="range" min="0" max="100" step="10" value="20">
+        <span>quiet</span>
+        <span>loud</span></label> */
 
 @layer css.slider {
 
@@ -110,49 +114,50 @@
 
     /*  the input box height is the full box height, so the touch target keeps
         the size of every other control (WCAG 2.5.8 Target Size).
-        the rail is drawn at --*-border-width * 3, centered by background-size.
-        the thumb is sized from the box height and overhangs the rail.
+        the rail is drawn at --*-line-height, centered by background-size.
+        the thumb is the full box height, same as checkbox/radio, so it
+        overhangs the rail at every size.
         the inline size is not stepped here: see the width policy above. */
 
     input[type="range"][data-size="xs"] {
-        background-size: 100% calc(var(--xs-border-width) * 3);
+        background-size: 100% var(--xs-line-height);
         block-size:      var(--xs-box-height);
         border-radius:   var(--xs-border-radius);
     }
     input[type="range"][data-size="xs"]::-webkit-slider-thumb {
-        block-size:   calc(var(--xs-box-height) - var(--xs-border-width) * 4);
+        block-size:   var(--xs-box-height);
         border-width: var(--xs-border-width);
-        inline-size:  calc(var(--xs-box-height) - var(--xs-border-width) * 4);
+        inline-size:  var(--xs-box-height);
         margin-top:   0;
     }
     input[type="range"][data-size="xs"]::-moz-range-thumb {
-        block-size:   calc(var(--xs-box-height) - var(--xs-border-width) * 4);
+        block-size:   var(--xs-box-height);
         border-width: var(--xs-border-width);
-        inline-size:  calc(var(--xs-box-height) - var(--xs-border-width) * 4);
+        inline-size:  var(--xs-box-height);
     }
 
     input[type="range"][data-size="sm"] {
-        background-size: 100% calc(var(--sm-border-width) * 3);
+        background-size: 100% var(--sm-line-height);
         block-size:      var(--sm-box-height);
         border-radius:   var(--sm-border-radius);
     }
     input[type="range"][data-size="sm"]::-webkit-slider-thumb {
-        block-size:   calc(var(--sm-box-height) - var(--sm-border-width) * 4);
+        block-size:   var(--sm-box-height);
         border-width: var(--sm-border-width);
-        inline-size:  calc(var(--sm-box-height) - var(--sm-border-width) * 4);
+        inline-size:  var(--sm-box-height);
         margin-top:   0;
     }
     input[type="range"][data-size="sm"]::-moz-range-thumb {
-        block-size:   calc(var(--sm-box-height) - var(--sm-border-width) * 4);
+        block-size:   var(--sm-box-height);
         border-width: var(--sm-border-width);
-        inline-size:  calc(var(--sm-box-height) - var(--sm-border-width) * 4);
+        inline-size:  var(--sm-box-height);
     }
 
     input[type="range"]:where(
         [data-size="md"],
         :not([data-size])
     ) {
-        background-size: 100% calc(var(--md-border-width) * 3);
+        background-size: 100% var(--md-line-height);
         block-size:      var(--md-box-height);
         border-radius:   var(--md-border-radius);
     }
@@ -160,69 +165,69 @@
         [data-size="md"],
         :not([data-size])
     )::-webkit-slider-thumb {
-        block-size:   calc(var(--md-box-height) - var(--md-border-width) * 4);
+        block-size:   var(--md-box-height);
         border-width: var(--md-border-width);
-        inline-size:  calc(var(--md-box-height) - var(--md-border-width) * 4);
+        inline-size:  var(--md-box-height);
         margin-top:   0;
     }
     input[type="range"]:where(
         [data-size="md"],
         :not([data-size])
     )::-moz-range-thumb {
-        block-size:   calc(var(--md-box-height) - var(--md-border-width) * 4);
+        block-size:   var(--md-box-height);
         border-width: var(--md-border-width);
-        inline-size:  calc(var(--md-box-height) - var(--md-border-width) * 4);
+        inline-size:  var(--md-box-height);
     }
 
     input[type="range"][data-size="lg"] {
-        background-size: 100% calc(var(--lg-border-width) * 3);
+        background-size: 100% var(--lg-line-height);
         block-size:      var(--lg-box-height);
         border-radius:   var(--lg-border-radius);
     }
     input[type="range"][data-size="lg"]::-webkit-slider-thumb {
-        block-size:   calc(var(--lg-box-height) - var(--lg-border-width) * 4);
+        block-size:   var(--lg-box-height);
         border-width: var(--lg-border-width);
-        inline-size:  calc(var(--lg-box-height) - var(--lg-border-width) * 4);
+        inline-size:  var(--lg-box-height);
         margin-top:   0;
     }
     input[type="range"][data-size="lg"]::-moz-range-thumb {
-        block-size:   calc(var(--lg-box-height) - var(--lg-border-width) * 4);
+        block-size:   var(--lg-box-height);
         border-width: var(--lg-border-width);
-        inline-size:  calc(var(--lg-box-height) - var(--lg-border-width) * 4);
+        inline-size:  var(--lg-box-height);
     }
 
     input[type="range"][data-size="xl"] {
-        background-size: 100% calc(var(--xl-border-width) * 3);
+        background-size: 100% var(--xl-line-height);
         block-size:      var(--xl-box-height);
         border-radius:   var(--xl-border-radius);
     }
     input[type="range"][data-size="xl"]::-webkit-slider-thumb {
-        block-size:   calc(var(--xl-box-height) - var(--xl-border-width) * 4);
+        block-size:   var(--xl-box-height);
         border-width: var(--xl-border-width);
-        inline-size:  calc(var(--xl-box-height) - var(--xl-border-width) * 4);
+        inline-size:  var(--xl-box-height);
         margin-top:   0;
     }
     input[type="range"][data-size="xl"]::-moz-range-thumb {
-        block-size:   calc(var(--xl-box-height) - var(--xl-border-width) * 4);
+        block-size:   var(--xl-box-height);
         border-width: var(--xl-border-width);
-        inline-size:  calc(var(--xl-box-height) - var(--xl-border-width) * 4);
+        inline-size:  var(--xl-box-height);
     }
 
     input[type="range"][data-size="2xl"] {
-        background-size: 100% calc(var(--2xl-border-width) * 3);
+        background-size: 100% var(--2xl-line-height);
         block-size:      var(--2xl-box-height);
         border-radius:   var(--2xl-border-radius);
     }
     input[type="range"][data-size="2xl"]::-webkit-slider-thumb {
-        block-size:   calc(var(--2xl-box-height) - var(--2xl-border-width) * 4);
+        block-size:   var(--2xl-box-height);
         border-width: var(--2xl-border-width);
-        inline-size:  calc(var(--2xl-box-height) - var(--2xl-border-width) * 4);
+        inline-size:  var(--2xl-box-height);
         margin-top:   0;
     }
     input[type="range"][data-size="2xl"]::-moz-range-thumb {
-        block-size:   calc(var(--2xl-box-height) - var(--2xl-border-width) * 4);
+        block-size:   var(--2xl-box-height);
         border-width: var(--2xl-border-width);
-        inline-size:  calc(var(--2xl-box-height) - var(--2xl-border-width) * 4);
+        inline-size:  var(--2xl-box-height);
     }
 
     /* === :hover, :active, :focus-visible === */
@@ -279,60 +284,45 @@
         the slider's inline-size:100% circular and collapses it to the
         min-inline-size floor. */
 
-    label:has(> input[type="range"])[data-axis="block"] {
+    label:has(> input[type="range"]):where([data-axis="block"]:not(:has(> input[type="range"] ~ *))) {
         display: block;
     }
     label:has(> input[type="range"])[data-axis="block"] > *:first-child {
         display: block;
     }
 
-    /*  the limits of the range, per USWDS ("0/100", "small/large").
-        attr() on a pseudo-element reads the attribute of its own originating
-        element, so the words go on the label, not on the input.
+    /*  the limits of the range, per USWDS ("0/100", "small/large"), are plain
+        elements after the input rather than attr()-driven pseudo-elements: a
+        real element leaves room for userland to keep it live (e.g. an
+        <output> updated on `input`), which a CSS-only attr() value cannot do.
+        named grid rows pin both limits to the row under the slider instead:
+        the label text takes "name", the slider spans "track", and the two
+        elements after it share "limit". */
 
-        ::before always generates before the content and ::after always after,
-        so the rows cannot be reordered by source. named grid rows pin both
-        limits to the row under the slider instead: the label text takes "name",
-        the slider spans "track", and the limits share "limit". */
-
-    label:has(> input[type="range"]):is(
-        [data-text-min],
-        [data-text-max]
-    ) {
+    label:has(> input[type="range"] ~ *) {
         column-gap:            0.5rem;
         display:               grid;
         grid-template-areas:   "name  name"
                                "track track"
                                "min   max";
-        grid-template-columns: auto auto;
-        justify-content:       space-between;
+        grid-template-columns: 1fr 1fr;
     }
-    label:has(> input[type="range"]):is(
-        [data-text-min],
-        [data-text-max]
-    ) > input[type="range"] {
+    label:has(> input[type="range"] ~ *) > input[type="range"] {
         grid-area: track;
     }
-    label:has(> input[type="range"]):is(
-        [data-text-min],
-        [data-text-max]
-    ) > *:not(input[type="range"]) {
+    label:has(> input[type="range"] ~ *) > *:first-child {
         grid-area: name;
     }
-
-    label[data-text-min]:has(> input[type="range"])::before {
-        content:      attr(data-text-min);
+    label:has(> input[type="range"] ~ *) > input[type="range"] + * {
         grid-area:    min;
         justify-self: start;
     }
-    label[data-text-max]:has(> input[type="range"])::after {
-        content:      attr(data-text-max);
+    label:has(> input[type="range"] ~ *) > input[type="range"] ~ *:last-child {
         grid-area:    max;
         justify-self: end;
     }
 
-    label:has(> input[type="range"])::before,
-    label:has(> input[type="range"])::after {
+    label:has(> input[type="range"] ~ *) > input[type="range"] ~ * {
         color:          var(--color-ink-mix);
         font-size:      var(--md-font-size);
         letter-spacing: var(--md-letter-spacing);

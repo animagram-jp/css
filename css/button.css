@@ -95,17 +95,15 @@
         [data-style="fill"],
         [data-style="outline"]
     ):visited:not(:hover):not(:focus-visible):not([aria-disabled="true"]) {
-        color: rgb(var(--rgb-accent-purple));
+        color: color-mix(in srgb, rgb(var(--rgb-accent-purple)) 74%, rgb(0,0,0));
     }
 
     @media (prefers-color-scheme: dark) {
-        /* Lightened toward white to clear color:visited's 7:1 vs rgb(0,0,0), with margin to also
-           clear it against the least-contrast scheme's darker paper (per README "Contrast requirements"). */
         *:where(a):not(
             [data-style="fill"],
             [data-style="outline"]
         ):visited:not(:hover):not(:focus-visible):not([aria-disabled="true"]) {
-            color: color-mix(in srgb, rgb(var(--rgb-accent-purple)) 35%, rgb(255,255,255));
+            color: color-mix(in srgb, rgb(var(--rgb-accent-purple)) 19%, rgb(255,255,255));
         }
     }
 
@@ -165,18 +163,16 @@
         border-color:     transparent;
     }
 
-    *:where(a, button, summary):where(
-        [data-style="outline"],
-        [data-style="underline"]
-    ):active,
-    *:where(a:any-link):not([data-style]):active,
-    summary:not([data-style]):active {
+    *:where(a, button, summary)[data-style="outline"]:active {
         background-color: var(--color-paper-mix);
-        color:            var(--color-emphasis-ink-mix);
+        border-color:     var(--color-emphasis-ink-mix);
+        color:            var(--color-emphasis-ink);
     }
 
-    *:where(a, button, summary)[data-style="outline"]:active {
-        border-color: var(--color-emphasis-ink-mix);
+    *:where(a, button, summary)[data-style="underline"]:active,
+    *:where(a:any-link):not([data-style]):active,
+    summary:not([data-style]):active {
+        color: var(--color-emphasis-ink-mix);
     }
 
     @media (forced-colors: active) {
