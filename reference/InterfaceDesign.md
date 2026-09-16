@@ -222,46 +222,6 @@ Sign (符号)は、その幾何学的性質を利用して、なるべく依存�
 
 ---
 
-## Color
-
-グローバル系:
-
-- black: 系全体で最も黒に近い色値。
-- white: 系全体で最も白に近い色値。
-
-スコープ系:
-
-- ink   : 系内で最も(濃い | 薄い)文字色。
-- paper : 系内で最も(薄い | 濃い)背景色。
-- mute  : inkとpaperの混文字色。
-- emphasis: 系内に1つ、印象を表現する色。背景/文字の他、各コントラスト要件に応じたバリアント値の集合。
-- error:     赤の背景色。
-- highlight: 黄の背景色。
-- success:   緑の背景色。
-- focus:     境界線色。
-- transparent: 透明の背景色。各コンポーネントは、paper(または--rgb-base-*)色上に載る前提とする。
-
-コンポーネント系:
-
-- backdrop: コンポーネントに隣接する外部の背景色。
-- border:     コンポーネントが持つ、境界線色。
-- fill:       コンポーネントが持つ、内部の背景色。
-- text:       コンポーネントが持つ、内部の文字色。
-
-textに対して背景色を当てることは出来ない。
-
-| Style | Static | Focus | Hover | Focus hover | Invalid | Invalid focus | Disabled |
-|-|-|-|-|-|-|-|-|
-| select | border: mute, background: transparent, text: mute | outline: emphasis, border: ink | cursor: pointer | - | border: error | error border, error outline | mute border, mute text, cursor: not-allowd |
-| input | border: mute, background: transparent, text: mute, caret: mute, text: ink |  | cursor: text | - | | | |
-| outline | border: emphasis, background: transparent, text: emphasis | outline: emphasis | underline: emphasis, cursor: pointer | - | - | - |  |
-| fill | border: transparent, background: emphasis, text: paper | outline: emphasis | emphasis background: emphasis, underline: bold paper | - | - | - | background: mute, cursor: not-allowd |
-| underline | background: transparent, text: ink, underline: ink | outline: emphasis | underline: bold | - | - | - | text: mute, underline: mute, cursor: not-allowd |
-| icon | all: unset | - | - | - | - | - | - |
-| rule-indent | background(縦棒): emphasis | - | - | - | - | - | - |
-
----
-
 ## forced-colors: active
 
 forced-colorで失われる要素は、使用しない。色要素で伝える情報は、形またはテキストを常に併用する。

@@ -17,7 +17,7 @@
     <search aria-labelledby="">
         <span id=""></span>
         <label>
-            <select>
+            <select data-facet="chevron">
                 <option></option>
                 <option></option></select></label>
         <label>
@@ -27,7 +27,7 @@
     <form role="search" aria-labelledby="">
         <span id=""></span>
         <label>
-            <select>
+            <select data-facet="chevron">
                 <option></option>
                 <option></option></select></label>
         <label>
@@ -51,7 +51,12 @@
 
     /* === label === */
 
-    label:has(> input[type="search"], > select[data-facet="chevron"]) {
+    label:has(> input[type="search"]) {
+        display:  inline flow-root;
+        position: relative;
+    }
+
+    label:has(> select[data-facet="chevron"]) {
         display:  inline flow-root;
         position: relative;
     }
@@ -216,7 +221,9 @@
        wanting its native marker replaced. appearance:none and the extra
        end padding below only make sense together with that replacement
        marker, so both stay scoped to it too -- an ordinary labelled select
-       here keeps its native appearance untouched. */
+       here keeps its native appearance untouched. select itself can't take
+       the ::after chevron (data_sign.css), so that part is drawn on the
+       enclosing label, reached via label:has(> select[data-facet="chevron"]). */
 
     label > select[data-facet="chevron"] {
         appearance: none;

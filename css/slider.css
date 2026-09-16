@@ -112,13 +112,6 @@
 
     /* === [data-size] === */
 
-    /*  the input box height is the full box height, so the touch target keeps
-        the size of every other control (WCAG 2.5.8 Target Size).
-        the rail is drawn at --*-line-height, centered by background-size.
-        the thumb is the full box height, same as checkbox/radio, so it
-        overhangs the rail at every size.
-        the inline size is not stepped here: see the width policy above. */
-
     input[type="range"][data-size="xs"] {
         background-size: 100% var(--xs-line-height);
         block-size:      var(--xs-box-height);
@@ -231,9 +224,6 @@
     }
 
     /* === :hover, :active, :focus-visible === */
-
-    /*  the thumb color follows the emphasis fill on interaction, mirroring the
-        active state of the other controls. */
 
     input[type="range"]:hover::-webkit-slider-thumb,
     input[type="range"]:active::-webkit-slider-thumb,

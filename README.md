@@ -34,7 +34,7 @@ Override the `--color-*` variables on any scope to restyle.
 | Category | Name | Meaning |
 |-|-|-|
 | channel | `--rgb-accent-red` | `--color-error` default. |
-| | `--rgb-accent-yellow` | `--color-higlight` default. |
+| | `--rgb-accent-yellow` | `--color-highlight-paper` default. |
 | | `--rgb-accent-green` | `--color-success` default. |
 | | `--rgb-accent-purple` | `a:visited` default (light mode). |
 | global parameter | `--color-ink` | Default text color in the scheme. |
@@ -93,7 +93,7 @@ Scoped parameters contrast requirements:
 | outline:active::selection | color-emphasis-paper | color-highlight-ink | | | |
 | - | color-ink | - | color-paper(-mix) | color-ink | | 
 | ::selection | color-paper | color-highlight-ink | color-paper(-mix) | | | 
-| - | color-ink | - | color-emphasis-paper-mix | - | | 
+| - | color-ink | - | color-emphasis-paper | - | | 
 | underline | color-{emphasis}-ink | - | color-paper | - | |
 | underline::selection | color-paper | color-highlight-ink | | | |
 | underline:disabled | color-ink-mix | - | | | |
