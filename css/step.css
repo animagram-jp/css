@@ -293,28 +293,7 @@
 
     /* === sort (th > label > input[type="radio"]) === */
 
-    /*  a column sorter: the pair picks a sort direction, so it is a radio group
-        and not a pair of buttons. the browser then does the work that would
-        otherwise fall to script.
-
-        the name is shared by every sorter in ONE TABLE, not by one column:
-        a single-column sort is one choice made across the whole table, so
-        picking a direction in another column releases this one by itself. give
-        each table its own name; reusing a name across tables would tie them
-        together, and a name per column would break the exclusivity.
-
-        there is no control for "unsorted": a radio cannot be cleared, and the
-        state is only reachable before the first choice is made. a table that
-        has to return to its original order offers one command for that outside
-        the group.
-
-        the direction in force is held by aria-sort on the th, which is what
-        assistive technology reads; :checked is the same fact for the eye. both
-        are set, and they must agree.
-
-        the radio has no visible text of its own -- the triangle is the label --
-        so the name of each direction is carried by aria-label on the input.
-
+    /* 
         <table>
             <thead>
                 <tr>
@@ -335,22 +314,7 @@
                                 <input type="radio" name="sort-{table}" value="{col2}-desc"
                                        aria-label="Sort descending"></label></span></th></tr></thead>
         </table>
-
-        the glyph is a triangle, not a bar: a sorter names a direction, where a
-        spinbutton names an amount. it is drawn with the border trick, a
-        zero-sized box whose side borders are transparent and whose remaining
-        border is the fill, because a mask-image is dropped under forced-colors
-        and would take the only cue for direction with it.
-
-        this is a stacked pair too, like [data-axis="block"] above, but it
-        carries no border/fill of its own -- there is nothing for
-        [data-group="inline"] to share here, so it uses [data-axis="block"]
-        alone as a plain layout marker, with its own layout below rather than
-        data_group.css's. */
-
-    /*  the header text and its sorter stay on one line: the sorter is part of
-        the label, not a second line under it. (moved here from css.table with
-        the rest of the sort styling.) */
+    */
 
     th:has(> [data-axis="block"] input[type="radio"]) {
         white-space: nowrap;
