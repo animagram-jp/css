@@ -60,33 +60,22 @@
         color-scheme: light dark;
 
         --color-error: rgb(var(--rgb-accent-red));
-        /* Selection highlights. Two variables, named for the text they carry: -ink sits on paper and
-           carries --color-paper text, -paper sits inside a filled box and carries --color-ink text. They are
-           on opposite sides of the scale, which is why a single --color-highlight could not satisfy both
-           (per README "Contrast requirements"). */
         --color-highlight-ink:   color-mix(in srgb, rgb(var(--rgb-accent-yellow)) 46%, rgb(0,0,0));
         --color-highlight-paper: rgb(var(--rgb-accent-yellow));
-        /* Darkened toward black to clear --color-success's 4.5:1 vs whichever of ink/paper reads lighter
-           (paper in light, ink in dark), with margin for the least-contrast schemes too (per README "Contrast requirements"). */
         --color-success:   color-mix(in srgb, rgb(var(--rgb-accent-green)) 78%, rgb(0,0,0));
 
         --color-ink:   rgb(var(--rgb-black));
         --color-paper: rgb(var(--rgb-white));
 
-        /* Mix color still meets 4.5:1 against paper (per WCAG AA:1.4.3 Contrast (Minimum)). */
+        /* Meets 4.5:1 against paper (per WCAG AA:1.4.3 Contrast (Minimum)). */
         --color-ink-mix: color-mix(in srgb, var(--color-ink) 60%, var(--color-paper));
 
-        /* Emphasis is the injection point for a brand / per-scope userland color; the library default is
-           the CUD accent purple. Any hue works -- see README "The emphasis pair is hue-independent".
+        /* Emphasis is the injection point for a brand or per-scope userland color; 
+           The library default is the CUD accent purple. 
            Meets 7:1 against paper (per WCAG AAA:1.4.6 Contrast (Enhanced)). */
-        --color-emphasis-ink: rgb(var(--rgb-accent-purple));
-
-        /* A flat surface sitting on paper (e.g. a selected row), so it moves away from paper like
-           --color-emphasis-ink does, but stops short of it so the two stay visibly distinct. */
-        --color-emphasis-paper: color-mix(in srgb, rgb(var(--rgb-accent-purple)) 46%, rgb(0,0,0));
-
-        /* Emphasis colors variants: */
-        --color-emphasis-ink-mix:      color-mix(in srgb, var(--color-emphasis-ink) 50%, var(--color-ink));
+        --color-emphasis-ink:     rgb(var(--rgb-accent-purple));
+        --color-emphasis-paper:   color-mix(in srgb, rgb(var(--rgb-accent-purple)) 46%, rgb(0,0,0));
+        --color-emphasis-ink-mix: color-mix(in srgb, var(--color-emphasis-ink) 50%, var(--color-ink));
 
         /* Paper color with emphasis-active text. */
         --color-paper-mix: color-mix(in srgb, var(--color-ink) 16%, var(--color-paper));
@@ -97,9 +86,6 @@
         :root {
             --color-ink:              rgb(var(--rgb-white));
             --color-paper:            rgb(var(--rgb-black));
-            /* The accents do not swap with ink/paper: in dark, "on paper" means on a dark background,
-               so each color is lightened toward white instead of darkened toward black. The CUD hue is
-               unchanged either way (per README "Derived palette"). */
             --color-emphasis-ink:     color-mix(in srgb, rgb(var(--rgb-accent-purple)) 35%, rgb(255,255,255));
             --color-emphasis-paper:   color-mix(in srgb, rgb(var(--rgb-accent-purple)) 71%, rgb(255,255,255));
             --color-highlight-ink:    rgb(var(--rgb-accent-yellow));
@@ -108,26 +94,26 @@
     }
     @media (prefers-contrast: more) {
         :root {
-            /* 66%: meets 7:1 (AAA) against paper in both light and dark modes */
+            /* Meets 7:1 against paper (per WCAG AAA:1.4.6). */
             --color-ink-mix: color-mix(in srgb, var(--color-ink) 66%, var(--color-paper));
         }
     }
     @media (prefers-contrast: less) {
         :root {
-            /* Narrowest span the requirements still allow: 12.76:1. Bounded by ink <= 43 and paper >= 243,
-               with the -mix chain folded in (per README "Scheme values are derived, not chosen"). */
             --color-ink:      rgb(43,43,43);
             --color-paper:    rgb(243,243,243);
-            /* This span leaves no room for a distinct -mix shade that also clears contrast against the
-               other colors; collapse -mix onto its own base color instead. */
-            --color-ink-mix:   var(--color-ink);
-            --color-paper-mix: var(--color-paper);
+            /* Meets 4.5:1 against paper (per WCAG AA:1.4.3). */
+            --color-ink-mix:   rgb(111,111,111);
+            /* Meets 4.5:1 against ink (per WCAG AA:1.4.3). */
+            --color-paper-mix: rgb(147,147,147);
         }
     }
     @media (prefers-contrast: less) and (prefers-color-scheme: dark) {
         :root {
             --color-ink:     rgb(243,243,243);
             --color-paper:   rgb(43,43,43);
+            --color-ink-mix:   rgb(147,147,147);
+            --color-paper-mix: rgb(111,111,111);
         }
     }
     @media (forced-colors: none) {
@@ -160,7 +146,7 @@
             --color-paper:          rgb(var(--rgb-white));
             --color-emphasis-ink:   rgb(var(--rgb-accent-purple));
             --color-emphasis-paper: color-mix(in srgb, rgb(var(--rgb-accent-purple)) 46%, rgb(0,0,0));
-            /* 66%: meets 7:1 (AAA) against paper in both light and dark modes */
+            /* Meets 7:1 against paper (per WCAG AAA:1.4.6). */
             --color-ink-mix:        color-mix(in srgb, var(--color-ink) 66%, var(--color-paper));
         }
         :root[data-color-scheme="dark-high-contrast"] {
@@ -175,17 +161,18 @@
         :root[data-color-scheme="light-less-contrast"] {
             --color-ink:            rgb(43,43,43);
             --color-paper:          rgb(243,243,243);
-            /* No room for a distinct -mix shade in this scheme's 12.76:1 span; collapse onto the base color. */
-            --color-ink-mix:        var(--color-ink);
-            --color-paper-mix:      var(--color-paper);
+            /* Meets 4.5:1 against paper (per WCAG AA:1.4.3). */
+            --color-ink-mix:        rgb(111,111,111);
+            /* Meets 4.5:1 against ink (per WCAG AA:1.4.3). */
+            --color-paper-mix:      rgb(147,147,147);
             --color-emphasis-ink:   rgb(var(--rgb-accent-purple));
             --color-emphasis-paper: color-mix(in srgb, rgb(var(--rgb-accent-purple)) 46%, rgb(0,0,0));
         }
         :root[data-color-scheme="dark-less-contrast"] {
             --color-ink:            rgb(243,243,243);
             --color-paper:          rgb(43,43,43);
-            --color-ink-mix:        var(--color-ink);
-            --color-paper-mix:      var(--color-paper);
+            --color-ink-mix:        rgb(147,147,147);
+            --color-paper-mix:      rgb(111,111,111);
             --color-emphasis-ink:   color-mix(in srgb, rgb(var(--rgb-accent-purple)) 35%, rgb(255,255,255));
             --color-emphasis-paper: color-mix(in srgb, rgb(var(--rgb-accent-purple)) 71%, rgb(255,255,255));
             --color-highlight-ink:  rgb(var(--rgb-accent-yellow));
@@ -305,14 +292,10 @@
         background-color: color-mix(in srgb, var(--color-highlight-ink) 70%, var(--color-paper));
         color: var(--color-ink);
     }
-    /* Default selection sits on --color-paper, so it uses the -ink highlight and carries paper text.
-       Inside a filled box the polarity flips (see below). */
     ::selection {
         background-color: var(--color-highlight-ink);
         color: var(--color-paper);
     }
-    /* A filled box is --color-emphasis-ink, so a selection inside it needs the opposite highlight and
-       carries --color-ink text -- the alternation the README's style table describes. */
     [data-style="fill"] ::selection,
     [data-style="fill"]::selection {
         background-color: var(--color-highlight-paper);

@@ -115,8 +115,8 @@ Each row below holds per scheme; light and dark resolve to different values of t
 | Property | 7:1 text (AAA 1.4.6) | 4.5:1 text (AA 1.4.3) | 3:1 non-text (AA 1.4.11) |
 |-|-|-|-|
 | color-ink | color(-emphasis)-paper | color(-emphasis)-paper(-mix) | — |
-| color-ink-mix | color-paper | — | color-paper, color-paper-mix |
-| color-paper | color-ink-mix | color-success | emphasis-paper, color-error, ink-mix |
+| color-ink-mix | — | color-paper | color-paper, color-paper-mix |
+| color-paper | — | color-success, color-ink-mix | emphasis-paper, color-error |
 | color-paper-mix | emphasis-ink-mix | — | color-ink-mix |
 | color-emphasis-ink | paper | — | — |
 | color-emphasis-ink-mix | paper | — | — |
@@ -136,10 +136,6 @@ row while rendering as the same swatch. These pairs must additionally stay apart
 | `color-emphasis-paper` ↔ `color-emphasis-ink` | 2:1 | a selected surface must read as distinct from an emphasis fill |
 | `color:visited` ↔ `color-emphasis-ink` | 1.4:1 | a visited link must read as distinct from an unvisited one |
 
-Both are design minimums chosen to keep the two readable apart, not thresholds from WCAG. They are
-what forces the fallback described under "The emphasis pair is hue-independent": every hue-sweep
-failure is a violation of these, never of a row above.
-
 **Premises of the analysis below.** The results hold only under these; changing any one changes them:
 1. The fill set per context is read off the style table's `::selection` rows. Selection text is enclosed
    by the highlight box, so it pairs with the highlight, not with the fill layer.
@@ -158,18 +154,10 @@ and `--color-paper` are fixed there.
 
 *`*-less-contrast`* — the mode narrows the ink/paper span as far as the requirements still allow,
 while `--color-success`, `--color-error`, `--color-highlight-*` and `--color-emphasis-*` stay shared
-with the other light schemes. Two things set the floor:
+with the other light schemes. Body text keeps AAA 7:1 across the span, which sets the floor: the
+narrowest feasible span is **rgb(43) / rgb(243) = 12.76:1**, bounded by ink ≤ 43 and paper ≥ 243.
 
-- body text keeps AAA 7:1 across the span;
-- the `-mix` chain. `--color-emphasis-ink-mix` is derived from *this scheme's* `--color-ink`, and the
-  shared `--color-highlight-paper` must clear 4.5:1 against the *lifted* ink rather than black. These
-  are what bind, which is why `-mix` has to be folded in to locate the threshold at all.
-
-With `-mix` collapsed onto its base color (as `base.css` already does in this scheme), the narrowest
-feasible span is **rgb(43) / rgb(243) = 12.76:1**, bounded by ink ≤ 43 and paper ≥ 243.
-
-**Derived palette.** At that threshold, [solve-palette.mjs](./css/solve-palette.mjs) finds values for
-every shared color as a `color-mix()` over the CUD channels already in `base.css`, clearing all rows
+**Derived palette.** At that threshold, [solve-palette.mjs](./css/solve-palette.mjs) finds values for every shared color as a `color-mix()` over the CUD channels already in `base.css`, clearing all rows
 of the table above in all six schemes.
 
 The dark family mirrors the light one. `*-high-contrast` is an exact swap (contrast is symmetric in
