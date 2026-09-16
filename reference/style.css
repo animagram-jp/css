@@ -1,3 +1,35 @@
+/* Project theme color (#5B2F91).
+   base.css ships the CUD accent purple as the library default; --color-emphasis-* is the injection
+   point for a brand colour, so this file overrides it without touching the library.
+   Percentages are solved per family by css/solve-palette.mjs (`node solve-palette.mjs 5B2F91`) and
+   clear every row of README's "Contrast requirements" in all six schemes. */
+:root {
+    --rgb-theme-purple: 91 47 145;
+
+    --color-emphasis-ink:   rgb(var(--rgb-theme-purple));
+    --color-emphasis-paper: color-mix(in srgb, rgb(var(--rgb-theme-purple)) 27%, rgb(0,0,0));
+}
+@media (prefers-color-scheme: dark) {
+    :root {
+        --color-emphasis-ink:   color-mix(in srgb, rgb(var(--rgb-theme-purple)) 38%, rgb(255,255,255));
+        --color-emphasis-paper: color-mix(in srgb, rgb(var(--rgb-theme-purple)) 74%, rgb(255,255,255));
+    }
+}
+@media (forced-colors: none) {
+    :root[data-color-scheme="light"],
+    :root[data-color-scheme="light-high-contrast"],
+    :root[data-color-scheme="light-less-contrast"] {
+        --color-emphasis-ink:   rgb(var(--rgb-theme-purple));
+        --color-emphasis-paper: color-mix(in srgb, rgb(var(--rgb-theme-purple)) 27%, rgb(0,0,0));
+    }
+    :root[data-color-scheme="dark"],
+    :root[data-color-scheme="dark-high-contrast"],
+    :root[data-color-scheme="dark-less-contrast"] {
+        --color-emphasis-ink:   color-mix(in srgb, rgb(var(--rgb-theme-purple)) 38%, rgb(255,255,255));
+        --color-emphasis-paper: color-mix(in srgb, rgb(var(--rgb-theme-purple)) 74%, rgb(255,255,255));
+    }
+}
+
 html {
     overflow-x: hidden;
 }

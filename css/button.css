@@ -213,18 +213,6 @@
         color:            var(--color-paper);
         pointer-events:   none;
     }
-    @media (prefers-color-scheme: dark) {
-        *:where(
-            [data-style="fill"],
-            button:not([data-style])
-        ):where(
-            :disabled,
-            [aria-disabled="true"]
-        ) {
-            color: var(--color-ink);
-        }
-    }
-
     @media (forced-colors: active) {
         *:where(:disabled, [aria-disabled="true"]) {
             border-color: GrayText;
