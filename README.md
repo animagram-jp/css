@@ -103,10 +103,7 @@ Scoped parameters contrast requirements:
 
 ### Contrast requirements
 
-Requirements come from layer adjacency (text↔highlight↔fill, fill↔border, border↔backdrop) in the
-style table above. Selection text is fully enclosed by the highlight box and never touches the fill
-layer, so it pairs only with the highlight (4.5:1, 1.4.3); the highlight box edge is what sits on the
-fill (3:1, 1.4.11).
+Requirements come from layer adjacency (text↔highlight↔fill, fill↔border↔backdrop) in the style table above. 
 
 Layers alternate polarity outward from the backdrop — `-paper` → `-ink` → `-paper` → … — so each
 layer contrasts with the one enclosing it. All 27 rows of the style table satisfy this.
