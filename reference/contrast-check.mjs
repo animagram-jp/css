@@ -1,4 +1,13 @@
 // Checks base.css against README's "Contrast requirements", per [data-color-scheme].
+//
+// This does NOT duplicate audit.mjs. axe-core resolves a background by walking
+// the rendered stacking context, so any element under an absolutely-positioned
+// ::before — every control inside [data-sign="rule"] — comes back as
+// `incomplete` rather than pass/fail: 309 of 430 elements in index.html, in
+// every scheme. Those are checked here instead, from the declared values.
+// audit.mjs covers the rendered page; this covers the palette itself.
+//
+// Values below are transcribed from base.css by hand — keep them in sync.
 // Not part of the build; run manually with:
 //   docker run --rm -v "$PWD":/w -w /w node:lts-slim node contrast-check.mjs
 
@@ -40,7 +49,8 @@ const THEME_INK_DARK = mix(RGB.accentPurple, RGB.white, 35);
 const THEME_PAPER_LIGHT = mix(RGB.accentPurple, RGB.black, 46);
 const THEME_PAPER_DARK = mix(RGB.accentPurple, RGB.white, 71);
 
-const VISITED_DARK = mix(RGB.accentPurple, RGB.white, 35);
+const VISITED_LIGHT = mix(RGB.accentPurple, RGB.black, 74);
+const VISITED_DARK = mix(RGB.accentPurple, RGB.white, 19);
 
 const SUCCESS = mix(RGB.accentGreen, RGB.black, 78);
 const HIGHLIGHT_INK_LIGHT = mix(RGB.accentYellow, RGB.black, 46);
@@ -52,7 +62,7 @@ const HIGHLIGHT_PAPER_DARK = mix(RGB.accentYellow, RGB.black, 41);
 function buildScheme(name, { ink, paper, emphasisInk, emphasisPaper, inkMix, paperMix }) {
     const resolvedPaperMix = paperMix ?? mix(ink, paper, 16);
     const emphasisInkMix = mix(emphasisInk, ink, 50);
-    const visited = name.startsWith('dark') ? VISITED_DARK : RGB.accentPurple;
+    const visited = name.startsWith('dark') ? VISITED_DARK : VISITED_LIGHT;
 
     return {
         name,

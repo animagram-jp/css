@@ -27,6 +27,49 @@
         );
     }
 
+    /* === rule: indent with block-start rule === */
+
+    *[data-sign="rule"] {
+        padding-inline-start: 1.5rem;
+    }
+    *[data-sign="rule"]::before {
+        background-color:   var(--color-emphasis-ink);
+        content:            "";
+        inset-block:        0;
+        inset-inline-start: 0;
+        position:           absolute;
+        inline-size:        0.5rem;
+    }
+    @media (forced-colors: active) {
+        *[data-sign="rule"]::before {
+            background-color: CanvasText;
+        }
+    }
+
+    /* --- size --- */
+
+    *[data-sign="rule"][data-size="xs"]::before {
+        inset-block: calc((var(--xs-box-height) - var(--xs-line-height)) / 2);
+    }
+    *[data-sign="rule"][data-size="sm"]::before {
+        inset-block: calc((var(--sm-box-height) - var(--sm-line-height)) / 2);
+    }
+    *[data-sign="rule"]:where(
+        [data-size="md"],
+        :not([data-size])
+    )::before {
+        inset-block: calc((var(--md-box-height) - var(--md-line-height)) / 2);
+    }
+    *[data-sign="rule"][data-size="lg"]::before {
+        inset-block: calc((var(--lg-box-height) - var(--lg-line-height)) / 2);
+    }
+    *[data-sign="rule"][data-size="xl"]::before {
+        inset-block: calc((var(--xl-box-height) - var(--xl-line-height)) / 2);
+    }
+    *[data-sign="rule"][data-size="2xl"]::before {
+        inset-block: calc((var(--2xl-box-height) - var(--2xl-line-height)) / 2);
+    }
+
     /* === check === */
 
     *:where(
@@ -36,8 +79,6 @@
         appearance: none;
         position:   relative;
     }
-
-    /* ✓ : border 2辺を回転させて描く。線の太さは size-variant に依らず一定。 */
 
     *:where(
         input[data-sign="check"],

@@ -113,7 +113,7 @@ cite {
 
 /*  Usage:
 
-    <figure data-style="rule-indent">
+    <figure data-sign="rule">
         <blockquote>Block contents</blockquote>
         <figcaption>Author. YYYY. 
             <cite>Title</cite>. Publisher, Location.</figcaption></figure> 

@@ -33,27 +33,28 @@ Override the `--color-*` variables on any scope to restyle.
 
 | Category | Name | Meaning |
 |-|-|-|
-| channel | `--rgb-accent-red` | `--color-error` default. |
-| | `--rgb-accent-yellow` | `--color-highlight-paper` default. |
-| | `--rgb-accent-green` | `--color-success` default. |
-| | `--rgb-accent-purple` | `a:visited` default (light mode). |
+| channel | `--rgb-accent-red` | Default channel for `--color-error`. |
+| | `--rgb-accent-yellow` | Default color for `--color-highlight-paper`. |
+| | `--rgb-accent-green` | Default background for `--color-success`. |
+| | `--rgb-accent-purple` | Default channel for `--color-emphasis-*` and `--color-visited`. |
 | global parameter | `--color-ink` | Default text color in the scheme. |
 | | `--color-paper` | Default background color in the scheme. |
 | | `--color-ink-mix` | Default mixed to contrast with paper. |
-| | `--color-paper-mix` | Default mixed to contrast with ink. |
-| | `--color-error` | `:user-invalid` default. |
-| | `--color-highlight-ink` | `::selection` default to contrast with paper. |
-| | `--color-highlight-ink` | `::selection` default to contrast with ink. |
-| | `--color-success` | boolean true default to contrast with ink. |
+| | `--color-paper-mix` | Default mixed color to contrast with ink. |
+| | `--color-error` | Default color for `:user-invalid`. |
+| | `--color-highlight-ink` | Default for `::selection` to contrast with paper. |
+| | `--color-highlight-paper` | Default for `::selection` to contrast with ink. |
+| | `--color-success` | Default color for success/true states to contrast with ink. |
+| | `--color-visited` | Default `a:visited` color to contrast with paper. |
 | | `--color-emphasis-ink` | Emphasis color to contrast with paper. |
 | | `--color-emphasis-ink-mix` | Emphasis mixed to contrast with paper. |
-| | `--color-emphasis-paper` | Emphasis color for surfaces that stay the same across schemes (e.g. a `[data-selectable]` selected row); not used by `fill`, which uses `--color-emphasis-ink` in both light and dark. |
-| scoped parameter | `color` | text color in the scope. |
-| | `background-color` | fill color in the scope. |
-| | `border-color` | border color in the scope. |
-| | `outline-color` | focus color in the scope. |
+| | `--color-emphasis-paper` | Emphasis color contrast with ink. |
+| scoped parameter | `color` | Text color in the scope. |
+| | `background-color` | Fill color in the scope. |
+| | `border-color` | Border color in the scope. |
+| | `outline-color` | Focus color in the scope. |
 
-Scoped parameters contrast requirements:
+Scoped parameters:
 
 ```
 ┌ backdrop ──────────┐
@@ -68,11 +69,14 @@ Scoped parameters contrast requirements:
 ```
 
 - :focus outline's requirements is equal to border and it is not nessesary to differ with border.
-- :hover does not have any color difference.
+- :hover does not have any color difference in basic styles.
 - Empty cells mean as above.
 
 | Style | text | highlight | fill | border | backdrop | 
 |-|-|-|-|-|-|
+| - | color-ink | - | color-paper(-mix) | color-ink | | 
+| ::selection | color-paper | color-highlight-ink | color-paper(-mix) | | | 
+| - | color-ink | - | color-emphasis-paper | - | | 
 | input | color-ink | - | color-paper | color-ink-mix | |
 | input::selection | color-paper | color-highlight-ink | | | |
 | input:disabled | color-ink-mix | - | | | |
@@ -91,9 +95,6 @@ Scoped parameters contrast requirements:
 | outline:disabled::selection | color-paper | color-highlight-ink | | | |
 | outline:active | color-emphasis-ink | - | color-paper-mix | color-emphasis-ink-mix | |
 | outline:active::selection | color-emphasis-paper | color-highlight-ink | | | |
-| - | color-ink | - | color-paper(-mix) | color-ink | | 
-| ::selection | color-paper | color-highlight-ink | color-paper(-mix) | | | 
-| - | color-ink | - | color-emphasis-paper | - | | 
 | underline | color-{emphasis}-ink | - | color-paper | - | |
 | underline::selection | color-paper | color-highlight-ink | | | |
 | underline:disabled | color-ink-mix | - | | | |
@@ -108,7 +109,9 @@ Requirements come from layer adjacency (text↔highlight↔fill, fill↔border�
 Layers alternate polarity outward from the backdrop — `-paper` → `-ink` → `-paper` → … — so each
 layer contrasts with the one enclosing it. All 27 rows of the style table satisfy this.
 
-Each row below holds per scheme; light and dark resolve to different values of the same parameter.
+Each row below holds per light or dark scheme.
+Emphasis colors are the injection point for a brand or per-scope users' color.
+The library default is the CUD accent purple. 
 
 | Property | 7:1 text (AAA 1.4.6) | 4.5:1 text (AA 1.4.3) | 3:1 non-text (AA 1.4.11) |
 |-|-|-|-|
@@ -123,49 +126,19 @@ Each row below holds per scheme; light and dark resolve to different values of t
 | color-highlight-paper | — | color-ink | color-emphasis-ink, color-emphasis-ink-mix |
 | color-error | — | — | paper |
 | color-success | — | paper | — |
-| color:visited | paper | — | — |
+| color-visited | paper | — | — |
 
-**Distinctness (not a WCAG rule).** The rows above only constrain each color against the layer
-enclosing it, so colors that never touch are free to converge — two of them legitimately clear every
-row while rendering as the same swatch. These pairs must additionally stay apart:
+Solved by [solve-palette.mjs](./reference/solve-palette.mjs), which searches each channel for the
+first `color-mix()` percentage meeting the requirements above. Pass a hex argument to re-solve the
+table for a brand color.
 
-| Pair | Ratio | Why |
-|-|-|-|
-| `color-emphasis-paper` ↔ `color-emphasis-ink` | 2:1 | a selected surface must read as distinct from an emphasis fill |
-| `color:visited` ↔ `color-emphasis-ink` | 1.4:1 | a visited link must read as distinct from an unvisited one |
+Verified by two complementary tools — neither alone covers the palette:
 
-**Premises of the analysis below.** The results hold only under these; changing any one changes them:
-1. The fill set per context is read off the style table's `::selection` rows. Selection text is enclosed
-   by the highlight box, so it pairs with the highlight, not with the fill layer.
-2. Contrast is sRGB relative luminance per WCAG 2.x, ignoring alpha, `color-mix` in non-sRGB spaces,
-   subpixel rendering and user stylesheets.
-3. `--color-*` values are still being tuned, so the table states requirements a palette must satisfy,
-   not properties of today's `base.css` literals. `forced-colors` is out of scope (UA-controlled).
-4. `:hover` adds no color change and `:focus` reuses the border requirement, per the notes above.
-5. 1.4.11 exempts inactive components, so `:disabled` fills (`color-ink-mix`) carry no 3:1 requirement.
-
-**Scheme values are derived, not chosen.**
-
-*`*-high-contrast`* — the mode's purpose is maximum separation, and rgb(0,0,0) / rgb(255,255,255) is
-the unique sRGB pair reaching the 21:1 ceiling. Nothing else satisfies the intent, so `--color-ink`
-and `--color-paper` are fixed there.
-
-*`*-less-contrast`* — the mode narrows the ink/paper span as far as the requirements still allow,
-while `--color-success`, `--color-error`, `--color-highlight-*` and `--color-emphasis-*` stay shared
-with the other light schemes. Body text keeps AAA 7:1 across the span, which sets the floor: the
-narrowest feasible span is **rgb(43) / rgb(243) = 12.76:1**, bounded by ink ≤ 43 and paper ≥ 243.
-
-**Derived palette.** At that threshold, [solve-palette.mjs](./css/solve-palette.mjs) finds values for every shared color as a `color-mix()` over the CUD channels already in `base.css`, clearing all rows
-of the table above in all six schemes.
-
-The dark family mirrors the light one. `*-high-contrast` is an exact swap (contrast is symmetric in
-the pair). For `*-less-contrast` the swapped rgb(243)/rgb(43) is feasible and is what the table below
-assumes, but it is not dark's own threshold: because the dark accents are lightened rather than
-darkened, dark can compress further, to rgb(220)/rgb(43) = **10.33:1**. Keeping the light span keeps
-the two families symmetric at the cost of 2.4:1 of available compression. The accents do
-**not** swap: in dark, "on paper" means on a *dark* background, so every color that was darkened
-toward black in light is instead lightened toward white. The CUD hue is unchanged either way — mixing
-toward pure black or white moves lightness only (measured drift ≤ 1°, from rounding).
+- [audit.mjs](./reference/audit.mjs) runs axe-core over `index.html` once per `[data-color-scheme]`.
+  It checks the rendered page, so it catches anything the declared values miss, but axe reports
+  `incomplete` for elements whose background it cannot resolve through a positioned `::before`.
+- [contrast-check.mjs](./reference/contrast-check.mjs) checks the declared values from this table
+  directly, covering the elements axe leaves `incomplete`.
 
 | Variable | light | dark |
 |-|-|-|
@@ -175,23 +148,7 @@ toward pure black or white moves lightness only (measured drift ≤ 1°, from ro
 | `--color-highlight-paper` | `accent-yellow` 100% → rgb(250,245,0) | `accent-yellow` 41% + black → rgb(103,100,0) |
 | `--color-success` | `accent-green` 78% + black → rgb(41,126,83) | `accent-green` 97% + white → rgb(59,164,111) |
 | `--color-error` | `accent-red` 100% → rgb(255,40,0) | `accent-red` 100% → rgb(255,40,0) |
-| `color:visited` | `accent-purple` 74% + black → rgb(114,0,90) | `accent-purple` 19% + white → rgb(236,207,230) |
-
-Note the two highlight variables trade places between families: what is the dark member in light is
-the light member in dark, since `-ink` always carries `color-paper` text and `-paper` always carries
-`color-ink` text.
-
-**The emphasis pair is hue-independent.** `--color-emphasis-*` is the injection point for a brand or
-per-scope userland color, so the solve must not depend on one particular hue. Passing a hue to the
-solver (`node solve-palette.mjs 5B2F91`) re-solves for it; sweeping 288 combinations across the hue
-circle (24 hues × 4 saturations × 3 lightnesses) yields a solution for every one.
-
-This needs one refinement. `emphasis-paper` and `visited` normally mix *away* from paper, but when the
-brand hue is already saturated at that end — a light hue in dark, a dark one in light — `emphasis-ink`
-lands at 100% and mixing further cannot separate them: from pure yellow in dark, every mix toward white
-stays within 1.03:1 of `emphasis-ink`. The solver then mixes the other way instead. Without that
-fallback, 44 of the 288 combinations fail, all in the yellow-green band (45°–90°) and all on the
-distinctness rules above rather than on a WCAG row.
+| `--color-visited` | `accent-purple` 74% + black → rgb(114,0,90) | `accent-purple` 19% + white → rgb(236,207,230) |
 
 For this project's theme #5B2F91 (hsl 267°), both families solve with more headroom than the CUD
 default — 8.37:1 against light paper, since the theme purple is dark enough to clear 7:1 unmixed:
@@ -200,7 +157,7 @@ default — 8.37:1 against light paper, since the theme purple is dark enough to
 |-|-|-|
 | `--color-emphasis-ink` | `#5B2F91` 100% → rgb(91,47,145) | `#5B2F91` 38% + white → rgb(193,176,213) |
 | `--color-emphasis-paper` | `#5B2F91` 27% + black → rgb(25,13,39) | `#5B2F91` 74% + white → rgb(134,101,174) |
-| `color:visited` | `#5B2F91` 69% + black → rgb(63,32,100) | `#5B2F91` 20% + white → rgb(222,213,233) |
+| `--color-visited` | `#5B2F91` 69% + black → rgb(63,32,100) | `#5B2F91` 20% + white → rgb(222,213,233) |
 
 No `*-less-contrast` exemption is needed. An earlier draft claimed one, on the grounds that a single
 highlight carrying text on both sides would need a 4.5 × 4.5 = 20.25:1 span. That followed from
@@ -208,18 +165,19 @@ treating `--color-highlight` as one value; with `--color-highlight-ink` and `--c
 as separate variables each carrying one text color, the product no longer applies and every row is
 satisfiable within the 12.76:1 span derived above.
 
-### style
-
-Appearance of a box or of text. Applied by [button.css](./css/button.css) and [part.css](./css/part.css).
-
-| Selector | Value | Description |
-|-|-|-|
-| `button`, `a`, `details > summary` | `fill` | filled with `--color-emphasis-ink`, transparent border (default for `button`) |
-| | `outline` | transparent background, `--color-emphasis-ink` border and text |
-| | `underline` | no box, underlined `--color-emphasis-ink` text (default for a bare `a:any-link` and a bare `summary`) |
-| any element | `rule-indent` | indented block with an accent rule down the inline start edge |
-
 ## Size
+
+- Default width is left unset (auto / content-driven) everywhere.
+- Padding-block is derived from `--{size}-box-height` and  `--{size}-line-height`.
+
+| Scoped parameter | Meaning |
+|-|-|
+| `--{xs/sm/md/lg/xl/2xl}-border-width` | Border radius for the scope. |
+| `--{xs/sm/md/lg/xl/2xl}-border-width` | Border width for the scope. |
+| `--{xs/sm/md/lg/xl/2xl}-box-height` | Block height (border top to bottom) when with 1 line content. |
+| `--{xs/sm/md/lg/xl/2xl}-font-size` | Font size for the scope. |
+| `--{xs/sm/md/lg/xl/2xl}-letter-spacing` | Letter spacing for the scope. |
+| `--{xs/sm/md/lg/xl/2xl}-line-height` | Line height for the scope. |
 
 ```
 ↑ margin-block: 0 (default)
@@ -238,33 +196,14 @@ Appearance of a box or of text. Applied by [button.css](./css/button.css) and [p
 ───
 ```
 
-| `data-size`   | box-height | Typography |
-|-|-|-|
-| `xs`          | 1.75rem    | small     |
-| `sm`          | 2.5rem     | small     |
-| `md`(default) | 3rem       | medium    |
-| `lg`          | 3.5rem     | large     |
-| `xl`          | 4rem       | heading 2 |
-| `2xl`         | 4.75rem    | heading 1 |
-
-| Typography  | font-size | letter-spacing | line-height |
-|-|-|-|-|
-| small     | 0.85rem | 0.02rem | 1.5rem      |
-| medium    | 1rem    | 0       | 1.5rem      |
-| large     | 1.15rem | 0       | 1.725rem    |
-| heading 2 | 1.5rem  | 0       | 2.25rem     |
-| heading 1 | 2rem    | 0       | 3rem        |
-
-- **`data-size` fallback**: omitting `data-size` defaults to `md` everywhere. Only `heading` (`h1`–`h6`, or via a wrapping `hgroup`) defaults by element: `h1`→`2xl`, `h2`→`xl`, `h3`→`lg`, `h4`/`h5`/`h6`→`md`.
-- **`padding-block`**, wherever a component consumes a `box-height`, is derived as `calc((var(--{size}-box-height) - var(--{size}-line-height)) / 2)` — this centers the line box inside the scale's box-height regardless of component. How `box-height` itself is applied differs by component's native sizing behavior:
-    - `button`: `min-height` (grows with content)
-    - `input(text, number)`, `select`, `toggle`: `height` (fixed)
-    - `checkbox`, `radio`: label is box-height, input is line-height.
-    - `textarea`: `height: auto; resize: vertical`(grows with content). `box-height` is only ever read to derive `padding-block`
-    - `disclosure`(`summary`): `height: auto`(grows with content). Same rule as textarea.
-    - `heading`: `padding-block: 0`
-- **`padding-inline`**, component has of its own (an icon, a stepper button, a dropdown arrow) is a component-local decision, so hardcoded in `rem`, not unified across components.
-- **`width`** is left unset (auto / content-driven) everywhere. Nothing hardcodes a fixed width or `100%`; give an element a width via the surrounding markup (a wrapping `style`/class) when one is needed.
+| `data-size`   | heading | box-height | font-size | letter-spacing | line-height |
+|-|-|-|-|-|-|
+| `xs`          | - | 1.75rem  | 0.85rem | 0.02rem | 1.5rem   |
+| `sm`          | - | | | | |
+| `md`(default) | h4~h6 | 3rem | 1rem    | 0       | 1.5rem   |
+| `lg`          | h3 | 3.5rem  | 1.15rem | 0       | 1.725rem |
+| `xl`          | h2 | 4rem    | 1.5rem  | 0       | 2.25rem  |
+| `2xl`         | h1 | 4.75rem | 2rem    | 0       | 3rem     |
 
 ### data-axis
 

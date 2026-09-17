@@ -96,63 +96,25 @@
         position:    relative;
     }
 
-    /* --- focus --- */
+    /* === focus ===
+
+       all: unset (0,2,0) outranks the common :focus-visible rule (0,1,0),
+       so the shared outline has to be restated here. Outline follows the
+       1em box, not the glyph drawn in ::before/::after -- the hit area is
+       the rectangle. */
 
     *[data-style="icon"]:focus-visible {
-
+        outline-color:  var(--color-focus);
+        outline-offset: 0;
+        outline-style:  solid;
+        outline-width:  0.25rem;
+        z-index:        1;
     }
 
     @media (forced-colors: active) {
         *[data-style="icon"]:focus-visible {
             outline-color: Highlight;
         }
-    }
-
-    /* --- hover --- */
-
-    @media (hover: hover) {
-
-    }
-
-    /* === rule indent style: indent block with emphasis rule === */
-
-    *[data-style="rule-indent"] {
-        padding-inline-start: 1.5rem;
-        position:             relative;
-    }
-    *[data-style="rule-indent"]::before {
-        background-color:   var(--color-emphasis-ink);
-        content:            "";
-        inset-block:        0;
-        inset-inline-start: 0;
-        position:           absolute;
-        width:              0.5rem;
-    }
-    @media (forced-colors: active) {
-        *[data-style="rule-indent"]::before {
-            background-color: CanvasText;
-        }
-    }
-
-    /* --- size --- */
-
-    *[data-style="rule-indent"][data-size="xs"]::before {
-        inset-block: calc((var(--xs-box-height) - var(--xs-line-height)) / 2);
-    }
-    *[data-style="rule-indent"][data-size="sm"]::before {
-        inset-block: calc((var(--sm-box-height) - var(--sm-line-height)) / 2);
-    }
-    *[data-style="rule-indent"][data-size="md"]::before {
-        inset-block: calc((var(--md-box-height) - var(--md-line-height)) / 2);
-    }
-    *[data-style="rule-indent"][data-size="lg"]::before {
-        inset-block: calc((var(--lg-box-height) - var(--lg-line-height)) / 2);
-    }
-    *[data-style="rule-indent"][data-size="xl"]::before {
-        inset-block: calc((var(--xl-box-height) - var(--xl-line-height)) / 2);
-    }
-    *[data-style="rule-indent"][data-size="2xl"]::before {
-        inset-block: calc((var(--2xl-box-height) - var(--2xl-line-height)) / 2);
     }
 
 }

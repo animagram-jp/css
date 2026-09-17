@@ -49,7 +49,7 @@
         }
     }
 
-    /* --- size --- */
+    /* === size === */
 
     summary[data-size="xs"] {
         padding-inline-end: calc(var(--xs-border-radius) * 2 + var(--xs-font-size) * 0.75 * 1.06);
@@ -76,7 +76,7 @@
         padding-inline-end: calc(var(--2xl-border-radius) * 2 + var(--2xl-font-size) * 0.6 * 1.06);
     }
 
-    /* --- focus --- */
+    /* === focus === */
 
     *:where(
         a,
@@ -89,22 +89,13 @@
         font-weight: bold;
     }
 
-    /* --- visited --- */
+    /* === visited === */
 
     *:where(a):not(
         [data-style="fill"],
         [data-style="outline"]
     ):visited:not(:hover):not(:focus-visible):not([aria-disabled="true"]) {
-        color: color-mix(in srgb, rgb(var(--rgb-accent-purple)) 74%, rgb(0,0,0));
-    }
-
-    @media (prefers-color-scheme: dark) {
-        *:where(a):not(
-            [data-style="fill"],
-            [data-style="outline"]
-        ):visited:not(:hover):not(:focus-visible):not([aria-disabled="true"]) {
-            color: color-mix(in srgb, rgb(var(--rgb-accent-purple)) 19%, rgb(255,255,255));
-        }
+        color: var(--color-visited);
     }
 
     @media (forced-colors: active) {
@@ -113,18 +104,18 @@
         }
     }
 
-    /* --- hover --- */
+    /* === hover === */
 
     @media (hover: hover) {
         *:where(a, button, summary):hover {
             text-decoration-color:     currentColor;
             text-decoration-line:      underline;
-            text-decoration-thickness: max(0.1875rem, 0.12em); /* per GOV.UK (max(3px, 0.1875rem, 0.12em) の 3px = 0.1875rem) */
-            text-underline-offset:     0.3em; /* 成立範囲 0.25em < x <= 0.351em (上限は md の half-leading) の中央 */
+            text-decoration-thickness: max(0.1875rem, 0.12em);
+            text-underline-offset:     0.3em; /* font requirement: 0.25em < x <= 0.351em */
         }
     }
 
-    /* --- invalid --- */
+    /* === invalid === */
 
     *:where(a, button, summary):where(
         :user-invalid,
@@ -155,7 +146,7 @@
         }
     }
 
-    /* --- active --- */
+    /* === active === */
 
     *:where(a, button, summary)[data-style="fill"]:active,
     button:not([data-style]):active {
@@ -181,7 +172,7 @@
         }
     }
 
-    /* --- disabled --- */
+    /* === disabled === */
 
     *:where(
         [data-style="outline"],

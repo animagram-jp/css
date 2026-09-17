@@ -28,7 +28,7 @@
     <script src="./reference/style.js" type="module"></script></head>
 <body>
     <header>
-        <hgroup data-axis="inline" data-style="rule-indent">
+        <hgroup data-axis="inline" data-sign="rule">
             <h1>CSS library</h1>
             <p>Universal design CSS library.</p></hgroup>
         <p>
@@ -67,7 +67,7 @@
         <section>
             <span>span</span>
             <a href="#anchor">a</a>
-            <div data-style="rule-indent">div</div></section></section>
+            <div data-sign="rule">div</div></section></section>
 
     <section>
         <h2>Select</h2>
@@ -79,7 +79,7 @@
 
     <section>
         <h2>input, select, textarea</h2>
-        <section data-style="rule-indent">
+        <section data-sign="rule">
             <input type="text">
             <input type="email">
             <input type="password">
@@ -90,7 +90,7 @@
                 <option>1</option>
                 <option>2</option></select>
             <textarea></textarea></section>
-        <section data-style="rule-indent">
+        <section data-sign="rule">
             <h3>[data-size]</h3>
             <input type="text" data-size="xs">
             <input type="text" data-size="sm">
@@ -98,7 +98,7 @@
             <input type="text" data-size="lg">
             <input type="text" data-size="xl">
             <textarea type="text" data-size="2xl"></textarea></section>
-        <section data-style="rule-indent">
+        <section data-sign="rule">
             <h3>:user-invalid, [aria-invalid="true"]</h3>
             <input type="text" aria-invalid="true">
             <select aria-invalid="true">
@@ -108,7 +108,7 @@
 
     <section>
         <h2>button, a, details > summary</h2>
-        <section data-style="rule-indent">
+        <section data-sign="rule">
             <button type="button">Button</button>
             <button type="submit">Button</button>
             <button type="cancel">Button</button>
@@ -116,7 +116,7 @@
             <details>
                 <summary>Summary</summary>
                 <p>Details</p></details></section>
-        <section data-style="rule-indent">
+        <section data-sign="rule">
             <h3>[data-size]</h3>
             <button data-size="xs">Button</button>
             <button data-size="sm">Button</button>
@@ -148,7 +148,7 @@
             <details>
                 <summary data-size="2xl">Summary</summary>
                 <p>Details</p></details></section>
-        <section data-style="rule-indent">
+        <section data-sign="rule">
             <h3>[data-style="fill"], [data-style="outline"], [data-style="underline"]</h3>
             <button type="button" data-style="outline">Button</button>
             <button type="button" data-style="underline">Button</button>
@@ -160,7 +160,7 @@
             <details>
                 <summary data-style="outline">Summary</summary>
                 <p>Details</p></details></section>
-        <section data-style="rule-indent">
+        <section data-sign="rule">
             <h3>:disabled, [aria-disabled="true"]</h3>
             <button disabled>Button</button>
             <a href="#anchor" aria-disabled="true" tabindex="-1">Anchor</a>
@@ -169,7 +169,7 @@
                 <p>Details</p></details></section></section>
     <section>
         <h2>List box</h2>
-        <section data-style="rule-indent">
+        <section data-sign="rule">
             <button type="button" id="list-box-1-trigger" popovertarget="list-box-1" aria-haspopup="listbox" aria-controls="list-box-1">button[aria-haspopup="listbox"]</button>
             <ul id="list-box-1" popover="auto" role="listbox" aria-labelledby="list-box-1-trigger">
                 <li role="presentation">li[role="presentation"]</li>
@@ -195,14 +195,14 @@
                     <button>button</button></li></ul></section></section>
     <section>
         <h2>Toggle button (input[type="checkbox"][role="switch"])</h2>
-        <section data-style="rule-indent">
+        <section data-sign="rule">
             <label>
                 <span>inline</span>
                 <input type="checkbox" role="switch"></label>
             <label data-axis="block" data-type="knob-only">
                 <span>inline</span>
                 <input type="checkbox" role="switch"></label></section>
-        <section data-style="rule-indent">
+        <section data-sign="rule">
             <h3>[data-size]</h3>
             <label>
                 <span>inline</span>
@@ -222,7 +222,7 @@
             <label>
                 <span>inline</span>
                 <input type="checkbox" role="switch" data-size="2xl"></label></section>
-        <section data-style="rule-indent">
+        <section data-sign="rule">
             <h3>:disabled, [aria-disabled="true"]</h3>
             <label>
                 <span>inline</span>
@@ -235,7 +235,7 @@
 
     <section>
         <h2>Checkbox</h2>
-        <section data-style="rule-indent">
+        <section data-sign="rule">
             <label>
                 <span>inline</span>
                 <input type="checkbox"></label>
@@ -245,7 +245,7 @@
             <label>
                 <span>inline</span>
                 <input type="checkbox" data-indeterminate></label></section>
-        <section data-style="rule-indent">
+        <section data-sign="rule">
             <label>
                 <span>inline</span>
                 <input type="checkbox" data-size="xs"></label>
@@ -264,7 +264,7 @@
             <label>
                 <span>inline</span>
                 <input type="checkbox" data-size="2xl"></label></section>
-        <section data-style="rule-indent">
+        <section data-sign="rule">
             <label>
                 <span>inline</span>
                 <input type="checkbox" aria-invalid="true"></label>
@@ -280,14 +280,14 @@
 
     <section>
         <h2>Radio button</h2>
-        <section data-style="rule-indent">
+        <section data-sign="rule">
             <label>
                 <span>inline</span>
                 <input type="radio" name="r"></label>
             <label>
                 <span>inline</span>
                 <input type="radio" name="r" checked></label></section>
-        <section data-style="rule-indent">
+        <section data-sign="rule">
             <label>
                 <span>inline</span>
                 <input type="radio" name="r-size" data-size="xs"></label>
@@ -306,7 +306,7 @@
             <label>
                 <span>inline</span>
                 <input type="radio" name="r-size" data-size="2xl"></label></section>
-        <section data-style="rule-indent">
+        <section data-sign="rule">
             <label>
                 <span>inline</span>
                 <input type="radio" name="r-state" aria-invalid="true"></label>
@@ -321,7 +321,7 @@
                 <input type="radio" name="r-disabled" checked disabled></label></section>
 
         <h3 id="h3-radio-button-field">Radio button fieldset</h3>
-        <section data-style="rule-indent" aria-labelledby="h3-radio-button-field">
+        <section data-sign="rule" aria-labelledby="h3-radio-button-field">
             <fieldset id="section_fieldset" style="grid-template-columns: repeat(3, minmax(0, max-content));">
                 <legend>
                     <span>repeat(3, max-content)</span></legend>
@@ -412,10 +412,10 @@
 
     <section>
         <h2>Slider (input[type="range"])</h2>
-        <section data-style="rule-indent">
+        <section data-sign="rule">
             <input type="range" min="0" max="100" step="10" value="20">
             <input type="range" min="0" max="100" step="10" value="60"></section>
-        <section data-style="rule-indent">
+        <section data-sign="rule">
             <h3>[data-size]</h3>
             <input type="range" data-size="xs" value="20">
             <input type="range" data-size="sm" value="30">
@@ -423,7 +423,7 @@
             <input type="range" data-size="lg" value="60">
             <input type="range" data-size="xl" value="80">
             <input type="range" data-size="2xl" value="90"></section>
-        <section data-style="rule-indent">
+        <section data-sign="rule">
             <h3>label &gt; input[type="range"] &gt; span (min, max)</h3>
             <label data-axis="block">
                 <span>inline</span>
@@ -435,22 +435,22 @@
                 <input type="range" min="0" max="100" step="20" value="40">
                 <span>less expensive</span>
                 <span>more expensive</span></label></section>
-        <section data-style="rule-indent">
+        <section data-sign="rule">
             <h3>:user-invalid, [aria-invalid="true"]</h3>
             <input type="range" value="50" aria-invalid="true"></section>
-        <section data-style="rule-indent">
+        <section data-sign="rule">
             <h3>:disabled, [aria-disabled="true"]</h3>
             <input type="range" value="50" disabled>
             <input type="range" value="50" aria-disabled="true"></section></section>
 
     <section>
         <h2>Step button (button[data-action] + input[role="spinbutton"])</h2>
-        <section data-style="rule-indent">
+        <section data-sign="rule">
             <label data-group="inline">
                 <button type="button" data-action="decrement"></button>
                 <input type="text" inputmode="numeric" pattern="[0-9]*" role="spinbutton" value="10" size="4">
                 <button type="button" data-action="increment"></button></label></section>
-        <section data-style="rule-indent">
+        <section data-sign="rule">
             <h3>[data-size]</h3>
             <label data-group="inline">
                 <button type="button" data-action="decrement" data-size="xs"></button>
@@ -476,7 +476,7 @@
                 <button type="button" data-action="decrement" data-size="2xl"></button>
                 <input type="text" inputmode="numeric" pattern="[0-9]*" role="spinbutton" value="10" size="3" data-size="2xl">
                 <button type="button" data-action="increment" data-size="2xl"></button></label></section>
-        <section data-style="rule-indent">
+        <section data-sign="rule">
             <h3>label[data-axis="block"]</h3>
             <label data-group="inline" data-axis="block">
                 <input type="text" inputmode="numeric" pattern="[0-9]*" role="spinbutton" value="10" size="4">
@@ -486,25 +486,25 @@
                 <input type="text" inputmode="numeric" pattern="[0-9]*" role="spinbutton" value="10" size="4" data-size="lg">
                 <button type="button" data-action="increment" data-size="lg"></button>
                 <button type="button" data-action="decrement" data-size="lg"></button></label></section>
-        <section data-style="rule-indent">
+        <section data-sign="rule">
             <h3>button[data-action] (:empty ではない場合、記号は描かない)</h3>
             <label data-group="inline">
                 <button type="button" data-action="decrement">減</button>
                 <input type="text" inputmode="numeric" pattern="[0-9]*" role="spinbutton" value="10" size="4">
                 <button type="button" data-action="increment">増</button></label></section>
-        <section data-style="rule-indent">
+        <section data-sign="rule">
             <h3>[data-style="outline"]</h3>
             <label data-group="inline">
                 <button type="button" data-action="decrement" data-style="outline"></button>
                 <input type="text" inputmode="numeric" pattern="[0-9]*" role="spinbutton" value="10" size="4">
                 <button type="button" data-action="increment" data-style="outline"></button></label></section>
-        <section data-style="rule-indent">
+        <section data-sign="rule">
             <h3>:user-invalid, [aria-invalid="true"]</h3>
             <label data-group="inline">
                 <button type="button" data-action="decrement"></button>
                 <input type="text" inputmode="numeric" pattern="[0-9]*" role="spinbutton" value="10" size="4" aria-invalid="true">
                 <button type="button" data-action="increment"></button></label></section>
-        <section data-style="rule-indent">
+        <section data-sign="rule">
             <h3>:disabled, [aria-disabled="true"]</h3>
             <label data-group="inline">
                 <button type="button" data-action="decrement" disabled></button>
@@ -517,7 +517,7 @@
 
     <section>
         <h2>Error (section[data-type="error-summary"], p[data-type="error"])</h2>
-        <section data-style="rule-indent">
+        <section data-sign="rule">
             <h3><code>section[data-type="error-summary"] &gt; (h2, p, ul > li)</code></h3>
             <section role="alert" data-type="error-summary" aria-labelledby="error-summary-heading-1">
                 <h2 id="error-summary-heading-1">There is a problem</h2>
@@ -526,46 +526,46 @@
                     <li><a href="#error-name">Enter your full name</a></li>
                     <li><a href="#error-dob">Date of birth must be a real date</a></li></ul></section></section>
 
-        <section data-style="rule-indent">
+        <section data-sign="rule">
             <h3>p[data-type="error"][data-size]</h3>
             <label for="error-name-xs">氏名 (xs)</label>
-            <p data-type="error" data-size="xs" id="error-name-xs-message"><strong>エラー:</strong> 氏名を入力してください</p>
+            <p data-type="error" data-sign="rule" data-size="xs" id="error-name-xs-message"><strong>エラー:</strong> 氏名を入力してください</p>
             <input type="text" data-size="xs" id="error-name-xs" aria-describedby="error-name-xs-message" aria-invalid="true">
             <label for="error-name-sm">氏名 (sm)</label>
-            <p data-type="error" data-size="sm" id="error-name-sm-message"><strong>エラー:</strong> 氏名を入力してください</p>
+            <p data-type="error" data-sign="rule" data-size="sm" id="error-name-sm-message"><strong>エラー:</strong> 氏名を入力してください</p>
             <input type="text" data-size="sm" id="error-name-sm" aria-describedby="error-name-sm-message" aria-invalid="true">
             <label for="error-name-md">氏名 (md)</label>
-            <p data-type="error" data-size="md" id="error-name-md-message"><strong>エラー:</strong> 氏名を入力してください</p>
+            <p data-type="error" data-sign="rule" data-size="md" id="error-name-md-message"><strong>エラー:</strong> 氏名を入力してください</p>
             <input type="text" data-size="md" id="error-name-md" aria-describedby="error-name-md-message" aria-invalid="true">
             <label for="error-name-lg">氏名 (lg)</label>
-            <p data-type="error" data-size="lg" id="error-name-lg-message"><strong>エラー:</strong> 氏名を入力してください</p>
+            <p data-type="error" data-sign="rule" data-size="lg" id="error-name-lg-message"><strong>エラー:</strong> 氏名を入力してください</p>
             <input type="text" data-size="lg" id="error-name-lg" aria-describedby="error-name-lg-message" aria-invalid="true">
             <label for="error-name-xl">氏名 (xl)</label>
-            <p data-type="error" data-size="xl" id="error-name-xl-message"><strong>エラー:</strong> 氏名を入力してください</p>
+            <p data-type="error" data-sign="rule" data-size="xl" id="error-name-xl-message"><strong>エラー:</strong> 氏名を入力してください</p>
             <input type="text" data-size="xl" id="error-name-xl" aria-describedby="error-name-xl-message" aria-invalid="true">
             <label for="error-name-2xl">氏名 (2xl)</label>
-            <p data-type="error" data-size="2xl" id="error-name-2xl-message"><strong>エラー:</strong> 氏名を入力してください</p>
+            <p data-type="error" data-sign="rule" data-size="2xl" id="error-name-2xl-message"><strong>エラー:</strong> 氏名を入力してください</p>
             <input type="text" data-size="2xl" id="error-name-2xl" aria-describedby="error-name-2xl-message" aria-invalid="true"></section>
-        <section data-style="rule-indent">
+        <section data-sign="rule">
             <h3>label &gt; (p[data-type="error"], input)</h3>
             <label>氏名
-                <p data-type="error" id="error-name-nested-message"><strong>エラー:</strong> 氏名を入力してください</p>
+                <p data-type="error" data-sign="rule" id="error-name-nested-message"><strong>エラー:</strong> 氏名を入力してください</p>
                 <input type="text" aria-describedby="error-name-nested-message" aria-invalid="true"></label></section>
-        <section data-style="rule-indent">
+        <section data-sign="rule">
             <h3>label[for] + p[data-type="error"]</h3>
             <label for="error-name">氏名</label>
-            <p data-type="error" id="error-name-message"><strong>エラー:</strong> 氏名を入力してください</p>
+            <p data-type="error" data-sign="rule" id="error-name-message"><strong>エラー:</strong> 氏名を入力してください</p>
             <input type="text" id="error-name" aria-describedby="error-name-message" aria-invalid="true"></section>
-        <section data-style="rule-indent">
+        <section data-sign="rule">
             <h3>legend + p[data-type="error"]</h3>
             <fieldset aria-describedby="error-dob-message" aria-invalid="true">
                 <legend>生年月日</legend>
-                <p data-type="error" id="error-dob-message"><strong>エラー:</strong> 生年月日は実在する日付を入力してください</p>
+                <p data-type="error" data-sign="rule" id="error-dob-message"><strong>エラー:</strong> 生年月日は実在する日付を入力してください</p>
                 <input type="text" id="error-dob" inputmode="numeric" pattern="[0-9]*" size="4" aria-invalid="true"></fieldset></section></section>
 
     <section>
         <h2>Heading</h2>
-        <section data-style="rule-indent">
+        <section data-sign="rule">
             <h1>H1</h1>
             <h2>H2</h2>
             <h3>H3</h3>
@@ -575,7 +575,7 @@
             <hgroup>
                 <h1>H1</h1>
                 <p>P</p></hgroup></section>
-        <section data-style="rule-indent">
+        <section data-sign="rule">
             <h3>[data-axis="inline"]</h3>
             <hgroup data-axis="inline">
                 <h1>H1</h1>
@@ -589,7 +589,7 @@
             <hgroup data-axis="inline">
                 <h4>H4</h4>
                 <p>Subtitle</p></hgroup></section>
-        <section data-style="rule-indent">
+        <section data-sign="rule">
             <h3>[data-size]</h3>
             <hgroup data-axis="inline" data-size="sm">
                 <h1>H1 sm</h1>
@@ -600,7 +600,7 @@
 
     <section>
         <h2>Search</h2>
-        <section data-style="rule-indent">
+        <section data-sign="rule">
 
             <label>
                 <input type="search" value='label > input[type="search"]'></label>
@@ -637,7 +637,7 @@
                     <input type="search" name='input[type="search"]'></label>
                 <button type="submit">button</button></form></section>
                 
-        <section data-style="rule-indent">
+        <section data-sign="rule">
             <h3>size</h3>
             <label>
                 <input type="search" data-size="xs"></label>
@@ -708,7 +708,7 @@
 
     <section>
         <h2>Table</h2>
-        <section data-style="rule-indent">
+        <section data-sign="rule">
             <table>
                 <caption>Caption</caption>
                 <thead>
@@ -729,7 +729,7 @@
                         <th scope="row">Row</th>
                         <td>Cell</td>
                         <td>Cell</td></tr></tbody></table></section>
-        <section data-style="rule-indent">
+        <section data-sign="rule">
             <h3>[data-border]</h3>
             <table>
                 <caption>sectioned (default): header underrule, footer overrule, row-header rule</caption>
@@ -791,7 +791,7 @@
                         <th scope="row">Row</th>
                         <td>Cell</td>
                         <td>Cell</td></tr></tbody></table></section>
-        <section data-style="rule-indent">
+        <section data-sign="rule">
             <h3>[data-stripe], [data-selectable]</h3>
             <table data-stripe>
                 <caption>Caption</caption>
@@ -835,7 +835,7 @@
                                 <input type="checkbox" checked aria-label="Select row" data-size="sm"></label></td>
                         <td>Cell</td>
                         <td>Cell</td></tr></tbody></table></section>
-        <section data-style="rule-indent">
+        <section data-sign="rule">
             <h3>th > label > input[type="radio"] (sort)</h3>
             <table data-border="grid">
                 <caption>Caption</caption>
@@ -860,7 +860,7 @@
                     <tr>
                         <td>Cell</td>
                         <td>Cell</td></tr></tbody></table></section>
-        <section data-style="rule-indent">
+        <section data-sign="rule">
             <h3>[data-size]</h3>
             <table data-border="grid" data-size="xs">
                 <caption>Caption</caption>
@@ -945,14 +945,14 @@
 
     <section>
         <h2>Blockquote</h2>
-        <figure data-style="rule-indent">
+        <figure data-sign="rule">
             <blockquote>
                 <p>"I will cast the dark shadows of human life over you without reserve. But you must not be afraid."</p></blockquote>
             <figcaption>Soseki Natsume. 1914. <cite>Kokoro</cite>. Iwanami Shoten, Tokyo, Japan. Translated by Andyou, 2026.</figcaption></figure></section>
 
     <section>
         <h2>Icon badge</h2>
-        <section data-style="rule-indent">
+        <section data-sign="rule">
             <label>
                 <span>none</span>
                 <input type="radio" name="icon-badge" value="none" checked></label>

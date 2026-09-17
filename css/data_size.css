@@ -42,11 +42,7 @@
         line-height:    var(--2xl-line-height);
     }
 
-    /* === size variants for elements not inline flow ===
-
-       output is listed alongside button/select/etc. so toast.css's
-       <output> gets this box model the same way a bare button does,
-       whether or not it also carries [data-style]. */
+    /* === common for elements not inline flow === */
 
     *:where(
         *[data-style="fill"],
@@ -60,13 +56,15 @@
             [type="url"],
             [type="tel"]
         ),
-        summary,
         select,
+        summary,
         textarea,
         output,
         [role="option"],
         [role="presentation"],
-        input[data-facet="check"]
+        input[data-facet="check"],
+        section[data-type="error-summary"],
+        p[data-type="error"]
     )[data-size="xs"] {
         border-radius:  var(--xs-border-radius);
         border-width:   var(--xs-border-width);
@@ -87,13 +85,15 @@
             [type="url"],
             [type="tel"]
         ),
-        summary,
         select,
+        summary,
         textarea,
         output,
         [role="option"],
         [role="presentation"],
-        input[data-facet="check"]
+        input[data-facet="check"],
+        section[data-type="error-summary"],
+        p[data-type="error"]
     )[data-size="sm"] {
         border-radius:  var(--sm-border-radius);
         border-width:   var(--sm-border-width);
@@ -114,13 +114,15 @@
             [type="url"],
             [type="tel"]
         ),
-        summary,
         select,
+        summary,
         textarea,
         output,
         [role="option"],
         [role="presentation"],
-        input[data-facet="check"]
+        input[data-facet="check"],
+        section[data-type="error-summary"],
+        p[data-type="error"]
     ):where(
         [data-size="md"],
         :not([data-size])
@@ -144,13 +146,15 @@
             [type="url"],
             [type="tel"]
         ),
-        summary,
         select,
+        summary,
         textarea,
         output,
         [role="option"],
         [role="presentation"],
-        input[data-facet="check"]
+        input[data-facet="check"],
+        section[data-type="error-summary"],
+        p[data-type="error"]
     )[data-size="lg"] {
         border-radius:  var(--lg-border-radius);
         border-width:   var(--lg-border-width);
@@ -171,13 +175,15 @@
             [type="url"],
             [type="tel"]
         ),
-        summary,
         select,
+        summary,
         textarea,
         output,
         [role="option"],
         [role="presentation"],
-        input[data-facet="check"]
+        input[data-facet="check"],
+        section[data-type="error-summary"],
+        p[data-type="error"]
     )[data-size="xl"] {
         border-radius:  var(--xl-border-radius);
         border-width:   var(--xl-border-width);
@@ -198,13 +204,15 @@
             [type="url"],
             [type="tel"]
         ),
-        summary,
         select,
+        summary,
         textarea,
         output,
         [role="option"],
         [role="presentation"],
-        input[data-facet="check"]
+        input[data-facet="check"],
+        section[data-type="error-summary"],
+        p[data-type="error"]
     )[data-size="2xl"] {
         border-radius:  var(--2xl-border-radius);
         border-width:   var(--2xl-border-width);
@@ -213,7 +221,7 @@
         padding-inline: var(--2xl-border-radius);
     }
 
-    /* === size variants for elements inline flow and focusable === */
+    /* === common for elements inline flow and focusable === */
 
     a:not([data-style="fill"], [data-style="outline"])[data-size="xs"]:focus-visible {
         outline-offset: calc(((var(--xs-box-height) - var(--xs-line-height)) / 2) - var(--xs-border-width));

@@ -1,12 +1,10 @@
-// Solves for color-mix() expressions over base.css's CUD channels that clear every row of README's
-// "Contrast requirements". Pass a hex to solve for an arbitrary brand hue, e.g. `... 5B2F91`.
-//   docker run --rm -v "$PWD":/w -w /w node:lts-slim node solve-palette.mjs
+// docker run --rm -v "$PWD":/w -w /w node:lts-slim node solve-palette.mjs
 
 function relLum([r,g,b]){const f=c=>{c/=255;return c<=0.03928?c/12.92:Math.pow((c+0.055)/1.055,2.4)};const[a,b2,c2]=[r,g,b].map(f);return 0.2126*a+0.7152*b2+0.0722*c2}
 function cr(A,B){const a=relLum(A),b=relLum(B);const[h,l]=a>=b?[a,b]:[b,a];return (h+0.05)/(l+0.05)}
 function mix(A,B,p){p/=100;return[0,1,2].map(i=>Math.round(A[i]*p+B[i]*(1-p)))}
 
-// --- CUD channels, verbatim from base.css :root ---
+// --- channels ---
 const CH={
   accentRed:[255,40,0], accentYellow:[250,245,0], accentGreen:[53,161,107],
   accentBlue:[0,65,255], accentPurple:[154,0,121], baseLightPurple:[199,178,222],
@@ -72,28 +70,6 @@ function checkAll(P){
   }
   return bad;
 }
-
-const DARKEST_PAPER=SCHEMES['light-less-contrast'].paper;
-const LIGHTEST_INK=SCHEMES['light-less-contrast'].ink;
-
-const P={};
-P.emphasisInkSrc = findMix(CH.accentPurple, CH.black, c => cr(c,DARKEST_PAPER)>=7);
-P.emphasisInk = P.emphasisInkSrc.rgb;
-P.emphasisPaperSrc = findMix(CH.accentPurple, CH.white,
-  c => cr(c,DARKEST_PAPER)>=3 && cr(c,P.emphasisInk)>=DISTINCT_EMPHASIS_PAPER);
-P.emphasisPaper = P.emphasisPaperSrc.rgb;
-P.highlightInkSrc = findMix(CH.accentYellow, CH.black, c => cr(c,DARKEST_PAPER)>=4.5);
-P.highlightInk = P.highlightInkSrc.rgb;
-P.highlightPaperSrc = findMix(CH.accentYellow, CH.white,
-  c => cr(c,LIGHTEST_INK)>=4.5 && cr(c,P.emphasisInk)>=3);
-P.highlightPaper = P.highlightPaperSrc.rgb;
-P.successSrc = findMix(CH.accentGreen, CH.black, c => cr(c,DARKEST_PAPER)>=4.5);
-P.success = P.successSrc.rgb;
-P.errorSrc = findMix(CH.accentRed, CH.black, c => cr(c,DARKEST_PAPER)>=3);
-P.error = P.errorSrc.rgb;
-P.visitedSrc = findMix(CH.accentPurple, CH.black,
-  c => cr(c,DARKEST_PAPER)>=7 && cr(c,P.emphasisInk)>=DISTINCT_VISITED);
-P.visited = P.visitedSrc.rgb;
 
 function solveFamily(fam){
   SCHEMES = FAMILIES[fam];

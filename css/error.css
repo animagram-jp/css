@@ -1,6 +1,5 @@
-/* error: a summary of what went wrong, and the message beside each answer. */
+/*  Usage:
 
-/*
     <section role="alert" data-type="error-summary" aria-labelledby="error-heading">
         <h2 id="error-heading">There is a problem</h2>
         <p>optional description</p>
@@ -23,18 +22,14 @@
 
     /* === color, layout === */
 
+    /* 箱 (border-width, min-height, padding, border-radius) は data_size.css。
+       角丸なしと枠色のみ固有。 */
     section[data-type="error-summary"] {
-        border-color:   var(--color-error);
-        border-style:   solid;
-        border-width:   var(--md-border-width);
-        color:          var(--color-ink);
-        font-size:      var(--md-font-size);
-        letter-spacing: var(--md-letter-spacing);
-        line-height:    var(--md-line-height);
-        margin:         0;
-        min-height:     var(--md-box-height);
-        padding-block:  calc(((var(--md-box-height) - var(--md-line-height)) / 2) - var(--md-border-width));
-        padding-inline: var(--md-border-radius);
+        border-color:  var(--color-error);
+        border-style:  solid;
+        border-radius: 0;
+        color:         var(--color-ink);
+        margin:        0;
     }
 
     section[data-type="error-summary"] > h2 {
@@ -76,13 +71,9 @@
         text-underline-offset:     0.3em;
     }
 
-    /* --- focus ---
+    /* --- focus --- */
 
-       :focus-visible は data_style.css (通常時) / base.css (forced-colors) でカバー済み。 */
-
-    /* --- visited, hover, active ---
-
-       button.css / data_style.css styles every a:any-link without [data-style] in --color-emphasis-ink */
+    /* --- visited, hover, active --- */
 
     section[data-type="error-summary"] > ul > li > a:where(:visited, :hover, :active) {
         color: var(--color-ink);
@@ -96,74 +87,15 @@
 
     /* === color, layout === */
 
+    /* 罫と箱は data-sign="rule" / data_size.css。色と font-weight のみ固有。 */
     p[data-type="error"] {
-        clear:        both; /* per govuk: stay clear of a floated hint */
-        color:        var(--color-ink);
-        font-weight:  bold;
-        margin:       0 0 0.5rem 0;
-        padding-left: 1.5rem;
-        position:     relative;
+        clear:       both; /* per govuk: stay clear of a floated hint */
+        color:       var(--color-ink);
+        font-weight: bold;
+        margin:      0 0 0.5rem 0;
     }
     p[data-type="error"]::before {
         background-color: var(--color-error);
-        content:          "";
-        left:             0;
-        position:         absolute;
-        width:            0.5rem;
-    }
-
-    /* --- size ---
-
-       font-size, letter-spacing, line-height は data_size.css でカバー済み。
-       min-height, padding-block のみ固有実装。 */
-
-    p[data-type="error"][data-size="xs"] {
-        min-height:    var(--xs-box-height);
-        padding-block: calc((var(--xs-box-height) - var(--xs-line-height)) / 2);
-    }
-    p[data-type="error"][data-size="xs"]::before {
-        inset-block: calc((var(--xs-box-height) - var(--xs-line-height)) / 2);
-    }
-    p[data-type="error"][data-size="sm"] {
-        min-height:    var(--sm-box-height);
-        padding-block: calc((var(--sm-box-height) - var(--sm-line-height)) / 2);
-    }
-    p[data-type="error"][data-size="sm"]::before {
-        inset-block: calc((var(--sm-box-height) - var(--sm-line-height)) / 2);
-    }
-    p[data-type="error"]:where(
-        [data-size="md"],
-        :not([data-size])
-    ) {
-        min-height:    var(--md-box-height);
-        padding-block: calc((var(--md-box-height) - var(--md-line-height)) / 2);
-    }
-    p[data-type="error"]:where(
-        [data-size="md"],
-        :not([data-size])
-    )::before {
-        inset-block: calc((var(--md-box-height) - var(--md-line-height)) / 2);
-    }
-    p[data-type="error"][data-size="lg"] {
-        min-height:    var(--lg-box-height);
-        padding-block: calc((var(--lg-box-height) - var(--lg-line-height)) / 2);
-    }
-    p[data-type="error"][data-size="lg"]::before {
-        inset-block: calc((var(--lg-box-height) - var(--lg-line-height)) / 2);
-    }
-    p[data-type="error"][data-size="xl"] {
-        min-height:    var(--xl-box-height);
-        padding-block: calc((var(--xl-box-height) - var(--xl-line-height)) / 2);
-    }
-    p[data-type="error"][data-size="xl"]::before {
-        inset-block: calc((var(--xl-box-height) - var(--xl-line-height)) / 2);
-    }
-    p[data-type="error"][data-size="2xl"] {
-        min-height:    var(--2xl-box-height);
-        padding-block: calc((var(--2xl-box-height) - var(--2xl-line-height)) / 2);
-    }
-    p[data-type="error"][data-size="2xl"]::before {
-        inset-block: calc((var(--2xl-box-height) - var(--2xl-line-height)) / 2);
     }
 
     /* === forced-colors === */
@@ -171,9 +103,6 @@
     @media (forced-colors: active) {
         p[data-type="error"] {
             color: CanvasText;
-        }
-        p[data-type="error"]::before {
-            background-color: CanvasText;
         }
         section[data-type="error-summary"] {
             border-color: Mark;

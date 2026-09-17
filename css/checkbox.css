@@ -1,5 +1,3 @@
-/* checkbox: input widget that allows users to choose one or more values. */
-
 /*  Usage:
 
     <label>
@@ -40,17 +38,17 @@
     /* === sign === */
 
     label > input[type="checkbox"]:not([role="switch"])::before {
-        /* --color-emphasis-ink は paper に対して 7:1 (AAA) を満たす塗り色なので、前景は paper */
         border-color:  var(--color-paper);
         inset-inline:  0;
-        margin-inline: auto; /* data_sign.css は inset-inline-start: 0 なので中央揃えに戻す */
+        margin-inline: auto; /* Overwrite data_sign.css:51 */
     }
 
-    /* ─ : 下辺のみを残し、回転しない。下辺のインク分だけ上へずらして重心を中央に揃える */
+    /* --- indeterminate --- */
+    
     label > input[type="checkbox"]:not([role="switch"]):indeterminate::before {
         border-width: 0 0 0.1875rem 0;
         rotate:       0deg;
-        translate:    0 -0.09375rem; /* 下辺のインク (太さ 0.1875rem) の半分だけ上へ */
+        translate:    0 -0.09375rem;
     }
 
     @media (forced-colors: active) {
@@ -62,7 +60,7 @@
             background-color: CanvasText;
         }
         label > input[type="checkbox"]:not([role="switch"])::before {
-            border-color: Canvas; /* ✓/─ は border で描くため background ではなく border-color */
+            border-color: Canvas;
         }
     }
 
@@ -204,7 +202,7 @@
         }
     }
 
-    /* --- disabled --- */
+    /* === disabled === */
 
     label:has(> input[type="checkbox"]:not([role="switch"]):where(
         :disabled,
