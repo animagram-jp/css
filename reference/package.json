@@ -1,0 +1,12 @@
+{
+  "name": "css",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "audit": "node audit.mjs"
+  },
+  "dependencies": {
+    "axe-core": "^4",
+    "playwright-core": "^1"
+  }
+}

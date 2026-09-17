@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Accessibility Report — light/dark × static/hover/active/focus states</title>
+<style>
+:root {
+  --bg: #f5f6f8; --surface: #fff; --text: #1a1a1a; --text-sub: #555;
+  --border: #d0d4da; --th-bg: #eef1f4; --ok: #1a7f37;
+  --critical: #c0392b; --critical-bg: #fdecea;
+  --serious: #d35400; --serious-bg: #fef3e8;
+  --moderate: #b8860b; --moderate-bg: #fefadf;
+  --minor: #27ae60; --minor-bg: #eafaf1;
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #0f1216; --surface: #1a1e26; --text: #e8eaf0; --text-sub: #9aa0ad;
+    --border: #2e3340; --th-bg: #222630; --ok: #6bcf89;
+    --critical: #ff6b6b; --critical-bg: #2d1515;
+    --serious: #ff9966; --serious-bg: #2d1e0f;
+    --moderate: #ffd966; --moderate-bg: #2a2410;
+    --minor: #6bcf89; --minor-bg: #0f2117;
+  }
+}
+* { box-sizing: border-box; }
+body { margin: 0; padding: 24px 32px 64px; background: var(--bg); color: var(--text); font: 14px/1.6 system-ui, sans-serif; }
+h1 { font-size: 22px; margin: 0 0 4px; }
+.meta { color: var(--text-sub); font-size: 12px; margin: 0 0 32px; }
+h2 { font-size: 16px; margin: 40px 0 10px; }
+table { width: 100%; border-collapse: collapse; background: var(--surface); font-size: 13px; }
+th, td { border: 1px solid var(--border); padding: 7px 10px; text-align: left; vertical-align: top; }
+th { background: var(--th-bg); white-space: nowrap; }
+td.num { text-align: right; white-space: nowrap; }
+code { font-family: ui-monospace, monospace; background: var(--th-bg); padding: 1px 4px; border-radius: 3px; font-size: 12px; }
+pre { margin: 4px 0; white-space: pre-wrap; word-break: break-all; font-size: 12px; }
+ul { margin: 0; padding-left: 18px; }
+.impact { font-weight: bold; padding: 3px 8px; border-radius: 4px; white-space: nowrap; }
+.impact-critical { color: var(--critical); background: var(--critical-bg); }
+.impact-serious { color: var(--serious); background: var(--serious-bg); }
+.impact-moderate { color: var(--moderate); background: var(--moderate-bg); }
+.impact-minor { color: var(--minor); background: var(--minor-bg); }
+section { margin-bottom: 56px; }
+.ok { color: var(--ok); font-weight: bold; margin-top: 24px; }
+</style>
+</head>
+<body>
+<h1>axe-core report — light/dark × static/hover/active/focus-visible</h1>
+<p class="meta"></p>
+
+<h2>Summary</h2>
+<table id="summary">
+<thead><tr><th>Scheme</th><th>Button</th><th>State</th><th>Violation rules</th><th>Violating nodes</th></tr></thead>
+<tbody></tbody>
+</table>
+
+<div id="detail"></div>
+
+<template id="detail-tpl">
+<section>
+  <h2></h2>
+  <table>
+    <thead><tr><th>Rule ID</th><th>Impact</th><th>Description</th><th>Nodes</th><th>Selectors / HTML</th></tr></thead>
+    <tbody></tbody>
+  </table>
+</section>
+</template>
+
+<script type="module">
+const el = (tag, text) => {
+    const node = document.createElement(tag);
+    if (text !== undefined) node.textContent = text;
+    return node;
+};
+const row = (cells) => {
+    const tr = document.createElement('tr');
+    cells.forEach(c => tr.append(c instanceof Node ? c : el('td', c)));
+    return tr;
+};
+
+const report = await fetch('./audit.json').then(r => {
+    if (!r.ok) throw new Error(`audit.json: ${r.status}`);
+    return r.json();
+});
+
+document.querySelector('.meta').textContent =
+    `Generated: ${report.generated} — ${report.schemes.length} schemes ` +
+    `× (1 static scan + enabled buttons × 3 states) — ${report.tags.join(', ')}`;
+
+const nodeCount = (r) => r.violations.reduce((n, v) => n + v.nodes.length, 0);
+
+document.querySelector('#summary tbody').append(...report.results.map(r =>
+    row([r.scheme, r.label, r.state, String(r.violations.length), String(nodeCount(r))])));
+
+const failed = report.results.filter(r => r.violations.length);
+const detail = document.querySelector('#detail');
+const tpl = document.querySelector('#detail-tpl');
+
+if (!failed.length) {
+    const ok = el('p', '✓ No violations found in any scheme/state combination.');
+    ok.className = 'ok';
+    detail.append(ok);
+} else {
+    for (const r of failed) {
+        const frag = tpl.content.cloneNode(true);
+        frag.querySelector('h2').textContent = `[${r.scheme}] ${r.label} — ${r.state}`;
+        frag.querySelector('tbody').append(...r.violations.map(v => {
+            const impact = el('td', v.impact || '');
+            impact.className = `impact impact-${v.impact || 'unknown'}`;
+
+            const count = el('td', String(v.nodes.length));
+            count.className = 'num';
+
+            const list = el('ul');
+            list.append(...v.nodes.map(n => {
+                const li = el('li');
+                li.append(el('code', (n.target || []).flat().join(', ')),
+                          el('pre', n.html || ''),
+                          el('p', n.failureSummary || ''));
+                return li;
+            }));
+            const nodes = el('td');
+            nodes.append(list);
+
+            const id = el('td');
+            id.append(el('code', v.id));
+
+            return row([id, impact, v.description, count, nodes]);
+        }));
+        detail.append(frag);
+    }
+}
+</script>
+</body>
+</html>
