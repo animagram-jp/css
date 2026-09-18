@@ -45,8 +45,31 @@
         }
     }
 
-    output > span {
+    /* The icon slot is left empty unless userland fills it; an empty flex item
+       is zero-width but still takes a `gap` before the message. A slot drawn
+       by [data-sign] is still :empty (its mark is a pseudo-element), so it is
+       excluded here rather than collapsed away. */
+    output > span:empty:not([data-sign]) {
+        display: none;
+    }
+
+    /* The message is the one item that takes the slack, so it sits flush
+       against the inline-start padding edge. */
+    output > p {
         flex: 1;
+    }
+
+    /*  The icon slot and the dismiss button each center on the message's
+        *first* line box, not on the whole item: align-items is flex-start so
+        a message that wraps grows downward while both stay put. Matching the
+        line height (rather than the shared single-line control box-height) is
+        what makes 1-line and 2-line toasts align identically. */
+
+    output > span,
+    output > button {
+        align-items:     center;
+        display:         inline flex;
+        justify-content: center;
     }
 
     output.show {
@@ -67,32 +90,14 @@
         }
     }
 
-    /* [data-style="outline"], [data-style="fill"]
-
-       Colour and box model are both delegated entirely to the common files:
-       data_style.css gives a bare (no [data-style]) output the same
-       implicit fill as a bare button, plus explicit outline; data_size.css
-       gives it border-radius/border-width/min-height/padding for
-       [data-size] (or its md default) the same way it already does for
-       button. Nothing status-specific is left -- see index.html and
-       style.js for the current (fill vs. outline) demo. */
-
+    /* === forced-colors === */
     @media (forced-colors: active) {
         output {
             background-color: Canvas;
             border-color:     ButtonBorder;
             color:            CanvasText;
         }
-        output:is(
-            [data-style="fill"],
-            :not([data-style])
-        ) {
-            background-color: ButtonFace;
-            color:            ButtonText;
-        }
     }
-
-    /* --- size --- */
 
     /* === dismiss button (output > button) ===
 
@@ -103,5 +108,25 @@
 
     output > button {
         flex-shrink: 0;
+    }
+
+    /* --- size ---
+
+       data_size.css gives every control a min-height of the *box* height (a
+       single-line control's full height) -- correct for a standalone button,
+       but inside a toast it makes the × twice as tall as the text's line box,
+       so its glyph centers below a 1-line message and above a 2-line one.
+
+       Both declarations anchor the slots to the message's own line box rather
+       than to a [data-size] step: data_size.css keys off [data-size] on the
+       element itself, and neither the slots nor the message carry one, so a
+       toast's inner text stays at the inherited line-height even when the
+       [data-size] on <output> scales its padding. Sizing to a step here would
+       re-introduce the same drift at lg and above. */
+
+    output > :where(span, button) {
+        block-size:     1lh;
+        font-size:      inherit;
+        min-block-size: 0;
     }
 }

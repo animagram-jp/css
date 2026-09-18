@@ -22,8 +22,6 @@
 
     /* === color, layout === */
 
-    /* 箱 (border-width, min-height, padding, border-radius) は data_size.css。
-       角丸なしと枠色のみ固有。 */
     section[data-type="error-summary"] {
         border-color:  var(--color-error);
         border-style:  solid;
@@ -51,11 +49,11 @@
     }
 
     section[data-type="error-summary"] > ul > li {
-        padding-block-end: 0.25rem; /* focus-visible の outline-width 分の余白を確保 */
+        padding-block-end: 0.25rem; /* = outline-width */
     }
 
     section[data-type="error-summary"] > ul > li + li {
-        padding-block-start: 0.25rem; /* 前後 li の outline 分と合わせて計 0.5rem の間隔 */
+        padding-block-start: 0.25rem; /* = outline-width *2 */
     }
 
     section[data-type="error-summary"] > *:last-child {
@@ -87,7 +85,6 @@
 
     /* === color, layout === */
 
-    /* 罫と箱は data-sign="rule" / data_size.css。色と font-weight のみ固有。 */
     p[data-type="error"] {
         clear:       both; /* per govuk: stay clear of a floated hint */
         color:       var(--color-ink);
