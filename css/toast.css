@@ -45,25 +45,13 @@
         }
     }
 
-    /* The icon slot is left empty unless userland fills it; an empty flex item
-       is zero-width but still takes a `gap` before the message. A slot drawn
-       by [data-sign] is still :empty (its mark is a pseudo-element), so it is
-       excluded here rather than collapsed away. */
     output > span:empty:not([data-sign]) {
         display: none;
     }
 
-    /* The message is the one item that takes the slack, so it sits flush
-       against the inline-start padding edge. */
     output > p {
         flex: 1;
     }
-
-    /*  The icon slot and the dismiss button each center on the message's
-        *first* line box, not on the whole item: align-items is flex-start so
-        a message that wraps grows downward while both stay put. Matching the
-        line height (rather than the shared single-line control box-height) is
-        what makes 1-line and 2-line toasts align identically. */
 
     output > span,
     output > button {
@@ -99,30 +87,11 @@
         }
     }
 
-    /* === dismiss button (output > button) ===
-
-       [data-style="icon"] (data_style.css) is the generic icon-only-button
-       reset -- chrome, sizing, focus ring, hover. [data-sign="close"]
-       (part.css) draws the × itself. Only being a flex item is toast's own;
-       the markup carries both attributes (see style.js). */
-
     output > button {
         flex-shrink: 0;
     }
 
-    /* --- size ---
-
-       data_size.css gives every control a min-height of the *box* height (a
-       single-line control's full height) -- correct for a standalone button,
-       but inside a toast it makes the × twice as tall as the text's line box,
-       so its glyph centers below a 1-line message and above a 2-line one.
-
-       Both declarations anchor the slots to the message's own line box rather
-       than to a [data-size] step: data_size.css keys off [data-size] on the
-       element itself, and neither the slots nor the message carry one, so a
-       toast's inner text stays at the inherited line-height even when the
-       [data-size] on <output> scales its padding. Sizing to a step here would
-       re-introduce the same drift at lg and above. */
+    /* --- size --- */
 
     output > :where(span, button) {
         block-size:     1lh;
