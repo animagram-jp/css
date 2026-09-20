@@ -3,24 +3,24 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Accessibility Report — light/dark × static/hover/active/focus states</title>
+<title>Accessibility Report — WCAG 2.2 (A, AA) × [data-color-scheme]</title>
 <style>
 :root {
   --bg: #f5f6f8; --surface: #fff; --text: #1a1a1a; --text-sub: #555;
   --border: #d0d4da; --th-bg: #eef1f4; --ok: #1a7f37;
-  --critical: #c0392b; --critical-bg: #fdecea;
-  --serious: #d35400; --serious-bg: #fef3e8;
-  --moderate: #b8860b; --moderate-bg: #fefadf;
-  --minor: #27ae60; --minor-bg: #eafaf1;
+  --fail: #c0392b; --fail-bg: #fdecea;
+  --potential: #b8860b; --potential-bg: #fefadf;
+  --a: #1a4f8f; --a-bg: #e8f0fa;
+  --aa: #6b3fa0; --aa-bg: #f0e9fa;
 }
 @media (prefers-color-scheme: dark) {
   :root {
     --bg: #0f1216; --surface: #1a1e26; --text: #e8eaf0; --text-sub: #9aa0ad;
     --border: #2e3340; --th-bg: #222630; --ok: #6bcf89;
-    --critical: #ff6b6b; --critical-bg: #2d1515;
-    --serious: #ff9966; --serious-bg: #2d1e0f;
-    --moderate: #ffd966; --moderate-bg: #2a2410;
-    --minor: #6bcf89; --minor-bg: #0f2117;
+    --fail: #ff6b6b; --fail-bg: #2d1515;
+    --potential: #ffd966; --potential-bg: #2a2410;
+    --a: #7fb3ec; --a-bg: #14202e;
+    --aa: #c4a3ee; --aa-bg: #221a2e;
   }
 }
 * { box-sizing: border-box; }
@@ -36,23 +36,29 @@ caption { color: var(--text-sub); font-size: 12px; text-align: left; padding-bot
 code { font-family: ui-monospace, monospace; background: var(--th-bg); padding: 1px 4px; border-radius: 3px; font-size: 12px; }
 pre { margin: 4px 0; white-space: pre-wrap; word-break: break-all; font-size: 12px; }
 ul { margin: 0; padding-left: 18px; }
-.impact { font-weight: bold; padding: 3px 8px; border-radius: 4px; white-space: nowrap; }
-.impact-critical { color: var(--critical); background: var(--critical-bg); }
-.impact-serious { color: var(--serious); background: var(--serious-bg); }
-.impact-moderate { color: var(--moderate); background: var(--moderate-bg); }
-.impact-minor { color: var(--minor); background: var(--minor-bg); }
+li { margin-bottom: 8px; }
+.badge { font-weight: bold; padding: 3px 8px; border-radius: 4px; white-space: nowrap; }
+.outcome-FAIL { color: var(--fail); background: var(--fail-bg); }
+.outcome-POTENTIAL { color: var(--potential); background: var(--potential-bg); }
+.level-A { color: var(--a); background: var(--a-bg); }
+.level-AA { color: var(--aa); background: var(--aa-bg); }
+.sc { white-space: nowrap; font-weight: bold; }
+.where { color: var(--text-sub); font-size: 11px; }
 section { margin-bottom: 56px; }
 .ok { color: var(--ok); font-weight: bold; margin-top: 24px; }
 </style>
 </head>
 <body>
-<h1>axe-core report — light/dark × static/hover/active/focus-visible</h1>
+<h1>Accessibility report — WCAG 2.2 (A, AA) × [data-color-scheme]</h1>
 <p class="meta"></p>
 
-<h2>Summary</h2>
+<h2>By success criterion</h2>
 <table id="summary">
 <caption></caption>
-<thead><tr><th>Scheme</th><th>Button</th><th>State</th><th>Violation rules</th><th>Violating nodes</th></tr></thead>
+<thead><tr>
+  <th>SC</th><th>Level</th><th>Name</th><th>Rule</th>
+  <th>Outcome</th><th>Schemes</th><th class="num">Nodes</th>
+</tr></thead>
 <tbody></tbody>
 </table>
 
@@ -62,7 +68,7 @@ section { margin-bottom: 56px; }
 <section>
   <h2></h2>
   <table>
-    <thead><tr><th>Rule ID</th><th>Impact</th><th>Description</th><th>Nodes</th><th>Selectors / HTML</th></tr></thead>
+    <thead><tr><th>Rule</th><th>Outcome</th><th>Message</th><th class="num">Nodes</th><th>Elements</th></tr></thead>
     <tbody></tbody>
   </table>
 </section>
@@ -73,6 +79,16 @@ const el = (tag, text) => {
     const node = document.createElement(tag);
     if (text !== undefined) node.textContent = text;
     return node;
+};
+const badge = (cls, text) => {
+    const node = el('span', text);
+    node.className = `badge ${cls}`;
+    return node;
+};
+const cell = (...children) => {
+    const td = el('td');
+    td.append(...children);
+    return td;
 };
 const row = (cells) => {
     const tr = document.createElement('tr');
@@ -86,56 +102,113 @@ const report = await fetch('./audit.json').then(r => {
 });
 
 document.querySelector('.meta').textContent =
-    `Generated: ${report.generated} — ${report.schemes.length} schemes ` +
-    `× (1 static scan + enabled buttons × 3 states) — ${report.tags.join(', ')}`;
+    `Generated: ${report.generated} — ${report.guideline} — ` +
+    `${report.schemes.length} schemes — FAIL is a breach, ` +
+    `POTENTIAL needs manual confirmation`;
 
-const nodeCount = (r) => r.violations.reduce((n, v) => n + v.nodes.length, 0);
+// A finding repeats across schemes whenever the cause is markup rather than
+// palette, so rows are keyed by criterion+rule+reason and the schemes that hit
+// them are collapsed into one cell. A row listing every scheme is a structural
+// problem; a row listing one is palette-specific.
+const groups = new Map();
+for (const result of report.results) {
+    for (const f of result.findings) {
+        // A rule can map to several criteria; it is listed under each.
+        const criteria = f.criteria.length ? f.criteria : [{ num: '—', level: '', name: 'Unmapped' }];
+        for (const c of criteria) {
+            const key = `${c.num}|${f.ruleId}|${f.reasonId}|${f.outcome}`;
+            let g = groups.get(key);
+            if (!g) {
+                g = { sc: c, ruleId: f.ruleId, reasonId: f.reasonId, outcome: f.outcome,
+                      message: f.message, schemes: new Set(), nodes: [] };
+                groups.set(key, g);
+            }
+            g.schemes.add(result.scheme);
+            g.nodes.push({ ...f, scheme: result.scheme });
+        }
+    }
+}
 
-// Clean scans are the overwhelming majority; listing them buries the failures.
-// Only the count survives, in the caption.
-const failed = report.results.filter(r => r.violations.length);
+const scKey = (num) => num.split('.').map(n => String(n).padStart(3, '0')).join('.');
+const all = [...groups.values()].sort((a, b) =>
+    scKey(a.sc.num).localeCompare(scKey(b.sc.num)) ||
+    (a.outcome === b.outcome ? 0 : a.outcome === 'FAIL' ? -1 : 1) ||
+    b.nodes.length - a.nodes.length);
+
+// An element that fails in every scheme is one problem, not six, so each group
+// counts distinct elements rather than raw findings.
+for (const g of all) {
+    g.elements = [...new Map(g.nodes.map(n => [n.path, n])).values()];
+}
+
+const scanned = report.results.length;
+const failing = all.filter(g => g.outcome === 'FAIL').length;
 
 document.querySelector('#summary caption').textContent =
-    `${failed.length} of ${report.results.length} scans reported violations` +
-    ` — ${report.results.length - failed.length} clean scans omitted`;
+    `${all.length} findings across ${scanned} scans — ` +
+    `${failing} failing, ${all.length - failing} needing review`;
 
-document.querySelector('#summary tbody').append(...failed.map(r =>
-    row([r.scheme, r.label, r.state, String(r.violations.length), String(nodeCount(r))])));
+const summary = document.querySelector('#summary tbody');
+const allSchemes = report.schemes.length;
+
+for (const g of all) {
+    const schemes = g.schemes.size === allSchemes
+        ? 'all'
+        : [...g.schemes].join(', ');
+    summary.append(row([
+        Object.assign(el('td', g.sc.num), { className: 'sc' }),
+        g.sc.level ? cell(badge(`level-${g.sc.level}`, g.sc.level)) : el('td', ''),
+        g.sc.name,
+        cell(el('code', g.ruleId)),
+        cell(badge(`outcome-${g.outcome}`, g.outcome)),
+        schemes,
+        Object.assign(el('td', String(g.elements.length)), { className: 'num' }),
+    ]));
+}
 
 const detail = document.querySelector('#detail');
 const tpl = document.querySelector('#detail-tpl');
 
-if (!failed.length) {
+if (!all.length) {
     document.querySelector('#summary').hidden = true;
-    const ok = el('p', '✓ No violations found in any scheme/state combination.');
+    const ok = el('p', '✓ No failures or unresolved checks in any scheme.');
     ok.className = 'ok';
     detail.append(ok);
 } else {
-    for (const r of failed) {
+    // Detail is grouped by criterion so a reader fixing "1.4.3" sees every
+    // element involved in one place.
+    const byCriterion = new Map();
+    for (const g of all) {
+        const key = `${g.sc.num} ${g.sc.name}`;
+        if (!byCriterion.has(key)) byCriterion.set(key, { sc: g.sc, groups: [] });
+        byCriterion.get(key).groups.push(g);
+    }
+
+    for (const [title, { sc, groups: gs }] of byCriterion) {
         const frag = tpl.content.cloneNode(true);
-        frag.querySelector('h2').textContent = `[${r.scheme}] ${r.label} — ${r.state}`;
-        frag.querySelector('tbody').append(...r.violations.map(v => {
-            const impact = el('td', v.impact || '');
-            impact.className = `impact impact-${v.impact || 'unknown'}`;
-
-            const count = el('td', String(v.nodes.length));
-            count.className = 'num';
-
+        frag.querySelector('h2').textContent =
+            sc.level ? `${title} (${sc.level})` : title;
+        frag.querySelector('tbody').append(...gs.map(g => {
             const list = el('ul');
-            list.append(...v.nodes.map(n => {
+            list.append(...g.elements.map(n => {
                 const li = el('li');
-                li.append(el('code', (n.target || []).flat().join(', ')),
-                          el('pre', n.html || ''),
-                          el('p', n.failureSummary || ''));
+                li.append(el('code', n.snippet || ''), el('pre', n.path));
+                if (n.bounds) {
+                    li.append(Object.assign(
+                        el('p', `at ${n.bounds.left},${n.bounds.top} ` +
+                                `(${n.bounds.width}×${n.bounds.height})`),
+                        { className: 'where' }));
+                }
                 return li;
             }));
-            const nodes = el('td');
-            nodes.append(list);
 
-            const id = el('td');
-            id.append(el('code', v.id));
-
-            return row([id, impact, v.description, count, nodes]);
+            return row([
+                cell(el('code', g.ruleId), el('pre', g.reasonId)),
+                cell(badge(`outcome-${g.outcome}`, g.outcome)),
+                g.message,
+                Object.assign(el('td', String(g.elements.length)), { className: 'num' }),
+                cell(list),
+            ]);
         }));
         detail.append(frag);
     }

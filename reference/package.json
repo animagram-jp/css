@@ -3,10 +3,12 @@
   "private": true,
   "type": "module",
   "scripts": {
-    "audit": "node audit.mjs"
+    "audit": "node audit.mjs",
+    "validate": "csstree-validator ../css"
   },
   "dependencies": {
-    "axe-core": "^4",
+    "accessibility-checker-engine": "^4",
+    "csstree-validator": "^4.0.1",
     "playwright-core": "^1"
   }
 }

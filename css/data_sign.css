@@ -261,12 +261,12 @@
     [data-sign="x"][data-size="xs"]::before,
     [data-sign="x"][data-size="xs"]::after {
         block-size:  var(--xs-border-width);
-        inline-size: var(--xs-line-height);
+        inline-size: calc(var(--xs-line-height) / 1.4142);
     }
     [data-sign="x"][data-size="sm"]::before,
     [data-sign="x"][data-size="sm"]::after {
         block-size:  var(--sm-border-width);
-        inline-size: var(--sm-line-height);
+        inline-size: calc(var(--sm-line-height) / 1.4142);
     }
     [data-sign="x"]:where(
         [data-size="md"],
@@ -277,22 +277,22 @@
         :not([data-size])
     )::after {
         block-size:  var(--md-border-width);
-        inline-size: var(--md-line-height);
+        inline-size: calc(var(--md-line-height) / 1.4142);
     }
     [data-sign="x"][data-size="lg"]::before,
     [data-sign="x"][data-size="lg"]::after {
         block-size:  var(--lg-border-width);
-        inline-size: var(--lg-line-height);
+        inline-size: calc(var(--lg-line-height) / 1.4142);
     }
     [data-sign="x"][data-size="xl"]::before,
     [data-sign="x"][data-size="xl"]::after {
         block-size:  var(--xl-border-width);
-        inline-size: var(--xl-line-height);
+        inline-size: calc(var(--xl-line-height) / 1.4142);
     }
     [data-sign="x"][data-size="2xl"]::before,
     [data-sign="x"][data-size="2xl"]::after {
         block-size:  var(--2xl-border-width);
-        inline-size: var(--2xl-line-height);
+        inline-size: calc(var(--2xl-line-height) / 1.4142);
     }
 
     /* === chevron === */

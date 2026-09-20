@@ -132,13 +132,10 @@ Solved by [solve-palette.mjs](./reference/solve-palette.mjs), which searches eac
 first `color-mix()` percentage meeting the requirements above. Pass a hex argument to re-solve the
 table for a brand color.
 
-Verified by two complementary tools — neither alone covers the palette:
-
-- [audit.mjs](./reference/audit.mjs) runs axe-core over `index.html` once per `[data-color-scheme]`.
-  It checks the rendered page, so it catches anything the declared values miss, but axe reports
-  `incomplete` for elements whose background it cannot resolve through a positioned `::before`.
-- [contrast-check.mjs](./reference/contrast-check.mjs) checks the declared values from this table
-  directly, covering the elements axe leaves `incomplete`.
+Verified by [audit.mjs](./reference/audit.mjs), which runs the IBM Equal Access engine over
+`index.html` once per `[data-color-scheme]` and reports findings against WCAG 2.2 (A, AA).
+It composites the rendered background, so the contrast of every control is measured — including
+those under the positioned `::before` of `[data-sign="rule"]`.
 
 | Variable | light | dark |
 |-|-|-|

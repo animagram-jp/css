@@ -15,7 +15,7 @@
     }
 
     *[data-size="md"],
-    *:not([data-size]) {
+    *:not([data-size]):not([data-size] *)  {
         font-size:      var(--md-font-size);
         letter-spacing: var(--md-letter-spacing);
         line-height:    var(--md-line-height);
@@ -59,7 +59,7 @@
         select,
         summary,
         textarea,
-        output,
+        [data-type="toast"] > *,
         [role="option"],
         [role="presentation"],
         input[data-sign="check"],
@@ -88,7 +88,7 @@
         select,
         summary,
         textarea,
-        output,
+        [data-type="toast"] > *,
         [role="option"],
         [role="presentation"],
         input[data-sign="check"],
@@ -117,7 +117,7 @@
         select,
         summary,
         textarea,
-        output,
+        [data-type="toast"] > *,
         [role="option"],
         [role="presentation"],
         section[data-type="error-summary"],
@@ -148,7 +148,7 @@
         select,
         summary,
         textarea,
-        output,
+        [data-type="toast"] > *,
         [role="option"],
         [role="presentation"],
         input[data-sign="check"],
@@ -177,7 +177,7 @@
         select,
         summary,
         textarea,
-        output,
+        [data-type="toast"] > *,
         [role="option"],
         [role="presentation"],
         input[data-sign="check"],
@@ -206,7 +206,7 @@
         select,
         summary,
         textarea,
-        output,
+        [data-type="toast"] > *,
         [role="option"],
         [role="presentation"],
         input[data-sign="check"],

@@ -26,7 +26,7 @@
 
     @media (prefers-reduced-motion: no-preference) {
         label > input[type="checkbox"]:not([role="switch"]) {
-            transition: background-color 150ms ease;
+            transition: background-color 0.15s ease;
         }
     }
 

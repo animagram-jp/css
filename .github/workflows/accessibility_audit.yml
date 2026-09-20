@@ -45,7 +45,7 @@ jobs:
           if: steps.playwright-cache.outputs.cache-hit == 'true'
           run: npx --yes "playwright@$PW" install-deps chromium
 
-        - name: "run axe over ./index.html"
+        - name: "run the accessibility engine over ./index.html"
           working-directory: reference
           run: npm run audit
 

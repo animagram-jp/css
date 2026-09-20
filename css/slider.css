@@ -103,10 +103,10 @@
 
     @media (prefers-reduced-motion: no-preference) {
         input[type="range"]::-webkit-slider-thumb {
-            transition: background-color 150ms ease, scale 150ms ease;
+            transition: background-color 0.15s ease, scale 0.15s ease;
         }
         input[type="range"]::-moz-range-thumb {
-            transition: background-color 150ms ease, scale 150ms ease;
+            transition: background-color 0.15s ease, scale 0.15s ease;
         }
     }
 

@@ -936,12 +936,10 @@
 
     <section id="toast" data-type="toast">
         <output id="toast_output-1" class="hidden">
-            <span id="toast_output-1_span"></span>
-            <p id="toast_output-1_p">(data-style="fill")</p>
-            <button type="button" data-style="transparent" data-sign="x" aria-label="Dismiss notification" onclick="jsFn.hide(this.closest('output'))"></button></output>
-        <output id="toast_output-2" data-style="outline" class="hidden">
-            <span id="toast_output-2_span"></span>
-            <p id="toast_output-2_p">data-style="outline"</p>
-            <button type="button" data-style="transparent" data-sign="x" aria-label="Dismiss notification" onclick="jsFn.hide(this.closest('output'))"></button></output></section>
+            <span id="toast_output-1_span">span:</span>
+            <p id="toast_output-1_p">(data-style="fill")</p></output>
+        <button data-sign="x"  data-size="2xl" data-style="outline" id="toast_output-2" class="hidden" onclick="jsFn.hide(this.closest('button'))">
+            <span id="toast_output-2_span">span:</span>
+            <p id="toast_output-2_p">data-style="outline"</p></button></section>
 
 </body></html>

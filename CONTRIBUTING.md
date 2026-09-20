@@ -13,10 +13,13 @@ curl -fsSL -H "Accept: application/vnd.github.raw+json" "https://api.github.com/
 ## Commands
 
 ```bash
-# Audit by axe-core (WCAG 2.2 A+AA)
+# Audit by IBM Equal Access engine (WCAG 2.2 A+AA)
 docker run -d --name accessibility-audit -v .:/work -w /work/reference node:lts-slim tail -f /dev/null
 docker exec accessibility-audit bash -lc "npm ci && npx --yes playwright@\$(node -p \"require('playwright-core/package.json').version\") install --with-deps chromium"
 docker exec accessibility-audit npm run audit
+
+# Validate ./css against the CSS syntax definitions
+docker exec accessibility-audit npm run validate
 ```
 
 ---

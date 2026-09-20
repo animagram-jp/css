@@ -32,7 +32,7 @@ const FAMILIES={
 };
 let SCHEMES=FAMILIES.light;
 
-// README "Distinctness (not a WCAG rule)".
+// README "Distinctness".
 const DISTINCT_EMPHASIS_PAPER = 2;
 const DISTINCT_VISITED = 1.4;
 

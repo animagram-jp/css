@@ -3,7 +3,7 @@
     /* === fill style === */
 
     *[data-style="fill"],
-    *:where(button, output):not([data-style]) {
+    *:where(button, [data-type="toast"] > *):not([data-style]) {
         appearance:       none;
         background-color: var(--color-emphasis-ink);
         border-color:     transparent;
