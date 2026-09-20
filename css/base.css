@@ -15,7 +15,7 @@
     css.table,
     css.slider,
     css.step,
-    css.list-box,
+    css.list-box, /* order dependency: radio, list-box */
     css.error,
     css.toast;
 
