@@ -1,78 +1,34 @@
-/* slider: input widget that allows users to choose an approximate value from a range. */
+/*  Usage:
 
-/*  <input type="range" min="0" max="100" step="10" value="20">
-
-    per GDS (question-pages), a range slider must offer a way to select a value
-    that does not rely on 'click and drag' (WCAG 2.5.1 Pointer Gestures).
-    the native input[type="range"] is keyboard operable by itself, so it is kept
-    native here; pair it with a number input when a precise value is required.
-
-    per USWDS (range-slider), use it only when the range matters more than
-    precision, keep the step coarse (10-20% of the total range), and label the
-    limits of the range. those need markup, hence the label form below.
-
-    to label the limits, wrap it in a label with a span after the input for
-    each limit; being plain elements rather than attr()-driven content, they
-    stay free for userland to keep live (e.g. an <output> updated on `input`):
-
-    <label data-axis="block">
-        <span>Volume</span>
-        <input type="range" min="0" max="100" step="10" value="20">
-        <span>quiet</span>
-        <span>loud</span></label> */
+    <input type="range" min="0" max="100" step="10" value="20"> 
+*/
 
 @layer css.slider {
 
     /* === track === */
 
-    /*  the track is the input's own box. the thumb is a vendor pseudo-element,
-        which cannot be grouped in a selector list: an unknown pseudo-element
-        drops the whole rule. every thumb rule below is therefore repeated
-        per engine, and must be kept in sync. */
-
-    /*  the width is a layout concern, not a size step: it follows the parent the
-        way input.css leaves the inline size to the caller. only a lower bound is
-        set here, so the thumb always has room to travel. */
-
     input[type="range"] {
         appearance:       none;
-        background-color: transparent;
-        border:           0;
+        background-color: var(--color-paper);
         cursor:           pointer;
         display:          inline-block;
         inline-size:      100%;
-        margin:           0;
         max-inline-size:  100%;
         min-inline-size:  calc(var(--md-box-height) * 4);
-        padding:          0;
         touch-action:     manipulation;
         vertical-align:   middle;
-    }
-
-    /*  the visible rail is painted on the input box as a centered background,
-        sized by background-size, so the thumb can overhang it without changing
-        the hit area. the box itself keeps the full box height for the target. */
-    input[type="range"] {
-        background-color:    var(--color-paper);
-        background-image:    linear-gradient(var(--color-ink-mix), var(--color-ink-mix));
-        background-position: center;
-        background-repeat:   no-repeat;
     }
 
     /* --- track: webkit, blink --- */
 
     input[type="range"]::-webkit-slider-runnable-track {
-        background-color: transparent;
-        border:           0;
-        inline-size:      100%;
+        background-color: var(--color-ink-mix);
     }
 
     /* --- track: gecko --- */
 
     input[type="range"]::-moz-range-track {
-        background-color: transparent;
-        border:           0;
-        inline-size:      100%;
+        background-color: var(--color-ink-mix);
     }
 
     /* === thumb === */
@@ -113,15 +69,22 @@
     /* === [data-size] === */
 
     input[type="range"][data-size="xs"] {
-        background-size: 100% var(--xs-line-height);
-        block-size:      var(--xs-box-height);
-        border-radius:   var(--xs-border-radius);
+        block-size:    var(--xs-box-height);
+        border-radius: var(--xs-border-radius);
+    }
+    input[type="range"][data-size="xs"]::-webkit-slider-runnable-track {
+        block-size:    var(--xs-line-height);
+        border-radius: var(--xs-border-radius);
+    }
+    input[type="range"][data-size="xs"]::-moz-range-track {
+        block-size:    var(--xs-line-height);
+        border-radius: var(--xs-border-radius);
     }
     input[type="range"][data-size="xs"]::-webkit-slider-thumb {
         block-size:   var(--xs-box-height);
         border-width: var(--xs-border-width);
         inline-size:  var(--xs-box-height);
-        margin-top:   0;
+        margin-top:   calc((var(--xs-line-height) - var(--xs-box-height)) / 2);
     }
     input[type="range"][data-size="xs"]::-moz-range-thumb {
         block-size:   var(--xs-box-height);
@@ -130,15 +93,22 @@
     }
 
     input[type="range"][data-size="sm"] {
-        background-size: 100% var(--sm-line-height);
-        block-size:      var(--sm-box-height);
-        border-radius:   var(--sm-border-radius);
+        block-size:    var(--sm-box-height);
+        border-radius: var(--sm-border-radius);
+    }
+    input[type="range"][data-size="sm"]::-webkit-slider-runnable-track {
+        block-size:    var(--sm-line-height);
+        border-radius: var(--sm-border-radius);
+    }
+    input[type="range"][data-size="sm"]::-moz-range-track {
+        block-size:    var(--sm-line-height);
+        border-radius: var(--sm-border-radius);
     }
     input[type="range"][data-size="sm"]::-webkit-slider-thumb {
         block-size:   var(--sm-box-height);
         border-width: var(--sm-border-width);
         inline-size:  var(--sm-box-height);
-        margin-top:   0;
+        margin-top:   calc((var(--sm-line-height) - var(--sm-box-height)) / 2);
     }
     input[type="range"][data-size="sm"]::-moz-range-thumb {
         block-size:   var(--sm-box-height);
@@ -150,9 +120,22 @@
         [data-size="md"],
         :not([data-size])
     ) {
-        background-size: 100% var(--md-line-height);
-        block-size:      var(--md-box-height);
-        border-radius:   var(--md-border-radius);
+        block-size:    var(--md-box-height);
+        border-radius: var(--md-border-radius);
+    }
+    input[type="range"]:where(
+        [data-size="md"],
+        :not([data-size])
+    )::-webkit-slider-runnable-track {
+        block-size:    var(--md-line-height);
+        border-radius: var(--md-border-radius);
+    }
+    input[type="range"]:where(
+        [data-size="md"],
+        :not([data-size])
+    )::-moz-range-track {
+        block-size:    var(--md-line-height);
+        border-radius: var(--md-border-radius);
     }
     input[type="range"]:where(
         [data-size="md"],
@@ -161,7 +144,7 @@
         block-size:   var(--md-box-height);
         border-width: var(--md-border-width);
         inline-size:  var(--md-box-height);
-        margin-top:   0;
+        margin-top:   calc((var(--md-line-height) - var(--md-box-height)) / 2);
     }
     input[type="range"]:where(
         [data-size="md"],
@@ -173,15 +156,22 @@
     }
 
     input[type="range"][data-size="lg"] {
-        background-size: 100% var(--lg-line-height);
-        block-size:      var(--lg-box-height);
-        border-radius:   var(--lg-border-radius);
+        block-size:    var(--lg-box-height);
+        border-radius: var(--lg-border-radius);
+    }
+    input[type="range"][data-size="lg"]::-webkit-slider-runnable-track {
+        block-size:    var(--lg-line-height);
+        border-radius: var(--lg-border-radius);
+    }
+    input[type="range"][data-size="lg"]::-moz-range-track {
+        block-size:    var(--lg-line-height);
+        border-radius: var(--lg-border-radius);
     }
     input[type="range"][data-size="lg"]::-webkit-slider-thumb {
         block-size:   var(--lg-box-height);
         border-width: var(--lg-border-width);
         inline-size:  var(--lg-box-height);
-        margin-top:   0;
+        margin-top:   calc((var(--lg-line-height) - var(--lg-box-height)) / 2);
     }
     input[type="range"][data-size="lg"]::-moz-range-thumb {
         block-size:   var(--lg-box-height);
@@ -190,15 +180,22 @@
     }
 
     input[type="range"][data-size="xl"] {
-        background-size: 100% var(--xl-line-height);
-        block-size:      var(--xl-box-height);
-        border-radius:   var(--xl-border-radius);
+        block-size:    var(--xl-box-height);
+        border-radius: var(--xl-border-radius);
+    }
+    input[type="range"][data-size="xl"]::-webkit-slider-runnable-track {
+        block-size:    var(--xl-line-height);
+        border-radius: var(--xl-border-radius);
+    }
+    input[type="range"][data-size="xl"]::-moz-range-track {
+        block-size:    var(--xl-line-height);
+        border-radius: var(--xl-border-radius);
     }
     input[type="range"][data-size="xl"]::-webkit-slider-thumb {
         block-size:   var(--xl-box-height);
         border-width: var(--xl-border-width);
         inline-size:  var(--xl-box-height);
-        margin-top:   0;
+        margin-top:   calc((var(--xl-line-height) - var(--xl-box-height)) / 2);
     }
     input[type="range"][data-size="xl"]::-moz-range-thumb {
         block-size:   var(--xl-box-height);
@@ -207,15 +204,22 @@
     }
 
     input[type="range"][data-size="2xl"] {
-        background-size: 100% var(--2xl-line-height);
-        block-size:      var(--2xl-box-height);
-        border-radius:   var(--2xl-border-radius);
+        block-size:    var(--2xl-box-height);
+        border-radius: var(--2xl-border-radius);
+    }
+    input[type="range"][data-size="2xl"]::-webkit-slider-runnable-track {
+        block-size:    var(--2xl-line-height);
+        border-radius: var(--2xl-border-radius);
+    }
+    input[type="range"][data-size="2xl"]::-moz-range-track {
+        block-size:    var(--2xl-line-height);
+        border-radius: var(--2xl-border-radius);
     }
     input[type="range"][data-size="2xl"]::-webkit-slider-thumb {
         block-size:   var(--2xl-box-height);
         border-width: var(--2xl-border-width);
         inline-size:  var(--2xl-box-height);
-        margin-top:   0;
+        margin-top:   calc((var(--2xl-line-height) - var(--2xl-box-height)) / 2);
     }
     input[type="range"][data-size="2xl"]::-moz-range-thumb {
         block-size:   var(--2xl-box-height);
@@ -257,75 +261,19 @@
         z-index:        1;
     }
 
-    /* === label > input[type="range"] === */
-
-    /*  a slider has no text of its own, so the range limits need a wrapper.
-        the label supplies the box that ::before and ::after are attached to. */
-
-    label:has(> input[type="range"]),
-    label:has(> input[type="range"]) > * {
-        vertical-align: middle;
-    }
-
-    /*  label[data-axis="block"]: the name sits above the slider.
-
-        a slider fills its parent, so the label must be a block: an inline
-        flow-root (as toggle and checkbox use) sizes shrink-to-fit, which makes
-        the slider's inline-size:100% circular and collapses it to the
-        min-inline-size floor. */
-
-    label:has(> input[type="range"]):where([data-axis="block"]:not(:has(> input[type="range"] ~ *))) {
-        display: block;
-    }
-    label:has(> input[type="range"])[data-axis="block"] > *:first-child {
-        display: block;
-    }
-
-    /*  the limits of the range, per USWDS ("0/100", "small/large"), are plain
-        elements after the input rather than attr()-driven pseudo-elements: a
-        real element leaves room for userland to keep it live (e.g. an
-        <output> updated on `input`), which a CSS-only attr() value cannot do.
-        named grid rows pin both limits to the row under the slider instead:
-        the label text takes "name", the slider spans "track", and the two
-        elements after it share "limit". */
-
-    label:has(> input[type="range"] ~ *) {
-        column-gap:            0.5rem;
-        display:               grid;
-        grid-template-areas:   "name  name"
-                               "track track"
-                               "min   max";
-        grid-template-columns: 1fr 1fr;
-    }
-    label:has(> input[type="range"] ~ *) > input[type="range"] {
-        grid-area: track;
-    }
-    label:has(> input[type="range"] ~ *) > *:first-child {
-        grid-area: name;
-    }
-    label:has(> input[type="range"] ~ *) > input[type="range"] + * {
-        grid-area:    min;
-        justify-self: start;
-    }
-    label:has(> input[type="range"] ~ *) > input[type="range"] ~ *:last-child {
-        grid-area:    max;
-        justify-self: end;
-    }
-
-    label:has(> input[type="range"] ~ *) > input[type="range"] ~ * {
-        color:          var(--color-ink-mix);
-        font-size:      var(--md-font-size);
-        letter-spacing: var(--md-letter-spacing);
-        line-height:    var(--md-line-height);
-    }
-
     /* === :user-invalid, [aria-invalid="true"] === */
 
     input[type="range"]:where(
         :user-invalid,
         [aria-invalid="true"]
-    ) {
-        background-image: linear-gradient(var(--color-error), var(--color-error));
+    )::-webkit-slider-runnable-track {
+        background-color: var(--color-error);
+    }
+    input[type="range"]:where(
+        :user-invalid,
+        [aria-invalid="true"]
+    )::-moz-range-track {
+        background-color: var(--color-error);
     }
     input[type="range"]:where(
         :user-invalid,
@@ -352,10 +300,9 @@
         :disabled,
         [aria-disabled="true"]
     ) {
-        background-image: linear-gradient(var(--color-ink-mix), var(--color-ink-mix));
-        cursor:           not-allowed;
-        outline-color:    transparent;
-        pointer-events:   none;
+        cursor:         not-allowed;
+        outline-color:  transparent;
+        pointer-events: none;
     }
     input[type="range"]:where(
         :disabled,
@@ -373,27 +320,18 @@
         border-color:     var(--color-ink-mix);
         cursor:           not-allowed;
     }
-    label:has(> input[type="range"]:where(
-        :disabled,
-        [aria-disabled="true"]
-    ))::before,
-    label:has(> input[type="range"]:where(
-        :disabled,
-        [aria-disabled="true"]
-    ))::after {
-        color: var(--color-ink-mix);
-    }
 
     /* === forced-colors === */
-
-    /*  a background-image is dropped in forced-colors mode (per style.css), so
-        the rail is restored as a border-box color on the content box. */
 
     @media (forced-colors: active) {
         input[type="range"] {
             background-color: Canvas;
-            background-image: linear-gradient(CanvasText, CanvasText);
-            forced-color-adjust: none;
+        }
+        input[type="range"]::-webkit-slider-runnable-track {
+            background-color: CanvasText;
+        }
+        input[type="range"]::-moz-range-track {
+            background-color: CanvasText;
         }
         input[type="range"]::-webkit-slider-thumb {
             background-color: Canvas;
@@ -421,8 +359,14 @@
         input[type="range"]:where(
             :user-invalid,
             [aria-invalid="true"]
-        ) {
-            background-image: linear-gradient(Mark, Mark);
+        )::-webkit-slider-runnable-track {
+            background-color: Mark;
+        }
+        input[type="range"]:where(
+            :user-invalid,
+            [aria-invalid="true"]
+        )::-moz-range-track {
+            background-color: Mark;
         }
         input[type="range"]:where(
             :user-invalid,
@@ -439,8 +383,14 @@
         input[type="range"]:where(
             :disabled,
             [aria-disabled="true"]
-        ) {
-            background-image: linear-gradient(GrayText, GrayText);
+        )::-webkit-slider-runnable-track {
+            background-color: GrayText;
+        }
+        input[type="range"]:where(
+            :disabled,
+            [aria-disabled="true"]
+        )::-moz-range-track {
+            background-color: GrayText;
         }
         input[type="range"]:where(
             :disabled,
@@ -453,24 +403,17 @@
             [aria-disabled="true"]
         )::-moz-range-thumb {
             border-color: GrayText;
-        }
-        label:has(> input[type="range"]:where(
-            :disabled,
-            [aria-disabled="true"]
-        ))::before,
-        label:has(> input[type="range"]:where(
-            :disabled,
-            [aria-disabled="true"]
-        ))::after {
-            color: GrayText;
         }
     }
 
     /* === print === */
 
     @media print {
-        input[type="range"] {
-            background-image: linear-gradient(var(--color-ink), var(--color-ink));
+        input[type="range"]::-webkit-slider-runnable-track {
+            background-color: var(--color-ink);
+        }
+        input[type="range"]::-moz-range-track {
+            background-color: var(--color-ink);
         }
     }
 }

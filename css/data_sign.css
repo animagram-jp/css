@@ -11,13 +11,25 @@
         position: relative;
     }
 
+    *:where(
+        [data-sign="hatch"],
+        [data-sign="minus"],
+        [data-sign="plus"],
+        [data-sign="x"]
+    )::before,
+    *:where(
+        [data-sign="plus"],
+        [data-sign="x"]
+    )::after {
+        content:  "";
+        inset:    0;
+        margin:   auto;
+        position: absolute;
+    }
+
     /* === hatch === */
 
     *[data-sign="hatch"]::before {
-        content: "";
-        display: inline-block;
-        height:  1rem;
-        width:   1rem;
         background-image: repeating-linear-gradient(
             -45deg,
             currentcolor 0,
@@ -25,6 +37,36 @@
             transparent 0.125rem,
             transparent 0.25rem
         );
+    }
+
+    /* --- size --- */
+
+    [data-sign="hatch"][data-size="xs"]::before {
+        block-size:  var(--xs-line-height);
+        inline-size: var(--xs-line-height);
+    }
+    [data-sign="hatch"][data-size="sm"]::before {
+        block-size:  var(--sm-line-height);
+        inline-size: var(--sm-line-height);
+    }
+    [data-sign="hatch"]:where(
+        [data-size="md"],
+        :not([data-size])
+    )::before {
+        block-size:  var(--md-line-height);
+        inline-size: var(--md-line-height);
+    }
+    [data-sign="hatch"][data-size="lg"]::before {
+        block-size:  var(--lg-line-height);
+        inline-size: var(--lg-line-height);
+    }
+    [data-sign="hatch"][data-size="xl"]::before {
+        block-size:  var(--xl-line-height);
+        inline-size: var(--xl-line-height);
+    }
+    [data-sign="hatch"][data-size="2xl"]::before {
+        block-size:  var(--2xl-line-height);
+        inline-size: var(--2xl-line-height);
     }
 
     /* === rule: indent with block-start rule === */
@@ -244,10 +286,6 @@
     [data-sign="x"]::before,
     [data-sign="x"]::after {
         background-color: currentColor;
-        content:          "";
-        inset:            0;
-        margin:           auto;
-        position:         absolute;
     }
     [data-sign="x"]::before {
         rotate: 45deg;
@@ -293,6 +331,104 @@
     [data-sign="x"][data-size="2xl"]::after {
         block-size:  var(--2xl-border-width);
         inline-size: calc(var(--2xl-line-height) / 1.4142);
+    }
+
+    /*  === plus, minus === */
+
+    *:where(
+        [data-sign="minus"],
+        [data-sign="plus"]
+    )::before,
+    [data-sign="plus"]::after {
+        background-color: currentColor;
+    }
+    [data-sign="plus"]::after {
+        rotate: 90deg;
+    }
+
+    /* --- size --- */
+
+    *:where(
+        [data-sign="minus"],
+        [data-sign="plus"]
+    )[data-size="xs"]::before,
+    [data-sign="plus"][data-size="xs"]::after {
+        block-size:  var(--xs-border-width);
+        inline-size: var(--xs-line-height);
+    }
+    *:where(
+        [data-sign="minus"],
+        [data-sign="plus"]
+    )[data-size="sm"]::before,
+    [data-sign="plus"][data-size="sm"]::after {
+        block-size:  var(--sm-border-width);
+        inline-size: var(--sm-line-height);
+    }
+    *:where(
+        [data-sign="minus"],
+        [data-sign="plus"]
+    ):where(
+        [data-size="md"],
+        :not([data-size])
+    )::before,
+    [data-sign="plus"]:where(
+        [data-size="md"],
+        :not([data-size])
+    )::after {
+        block-size:  var(--md-border-width);
+        inline-size: var(--md-line-height);
+    }
+    *:where(
+        [data-sign="minus"],
+        [data-sign="plus"]
+    )[data-size="lg"]::before,
+    [data-sign="plus"][data-size="lg"]::after {
+        block-size:  var(--lg-border-width);
+        inline-size: var(--lg-line-height);
+    }
+    *:where(
+        [data-sign="minus"],
+        [data-sign="plus"]
+    )[data-size="xl"]::before,
+    [data-sign="plus"][data-size="xl"]::after {
+        block-size:  var(--xl-border-width);
+        inline-size: var(--xl-line-height);
+    }
+    *:where(
+        [data-sign="minus"],
+        [data-sign="plus"]
+    )[data-size="2xl"]::before,
+    [data-sign="plus"][data-size="2xl"]::after {
+        block-size:  var(--2xl-border-width);
+        inline-size: var(--2xl-line-height);
+    }
+
+    /*  === sign-style: inline === */
+
+    [data-sign-style="inline"] {
+        vertical-align: middle;
+    }
+
+    [data-sign-style="inline"]:not([data-size] *) {
+        block-size: var(--md-line-height);
+    }
+    [data-size="xs"] [data-sign-style="inline"]:not([data-size="xs"] [data-size] *) {
+        block-size: var(--xs-line-height);
+    }
+    [data-size="sm"] [data-sign-style="inline"]:not([data-size="sm"] [data-size] *) {
+        block-size: var(--sm-line-height);
+    }
+    [data-size="md"] [data-sign-style="inline"]:not([data-size="md"] [data-size] *) {
+        block-size: var(--md-line-height);
+    }
+    [data-size="lg"] [data-sign-style="inline"]:not([data-size="lg"] [data-size] *) {
+        block-size: var(--lg-line-height);
+    }
+    [data-size="xl"] [data-sign-style="inline"]:not([data-size="xl"] [data-size] *) {
+        block-size: var(--xl-line-height);
+    }
+    [data-size="2xl"] [data-sign-style="inline"]:not([data-size="2xl"] [data-size] *) {
+        block-size: var(--2xl-line-height);
     }
 
     /* === chevron === */

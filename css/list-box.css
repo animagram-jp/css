@@ -24,7 +24,6 @@
         color:            var(--color-ink);
         cursor:           pointer;
         display:          inline flow-root;
-        font:             inherit;
     }
 
     *[role="listbox"] {
@@ -48,11 +47,8 @@
         *[role="presentation"],
         *[role="option"]
     ) {
-        color:          inherit;
-        cursor:         default;
-        font:           inherit;
-        letter-spacing: inherit;
-        width:          100%;
+        cursor: default;
+        width:  100%;
     }
 
     *[role="listbox"] *[role="option"] input[data-sign="check"] {

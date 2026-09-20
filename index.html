@@ -166,10 +166,10 @@
             <ul id="list-box-1" popover="auto" role="listbox" aria-labelledby="list-box-1-trigger">
                 <li role="presentation">li[role="presentation"]</li>
                 <li role="option" aria-selected="true">
-                    <input type="radio" data-sign="check" name="" checked>
+                    <input type="radio" data-sign="check" data-sign-style="inline" name="" checked>
                     <span>span</span></li>
                 <li role="option">
-                    <input type="checkbox" data-sign="check" name="">
+                    <input type="checkbox" data-sign="check" data-sign-style="inline" name="">
                     <span>span</span></li>
                 <li role="option">
                     <button>button</button></li></ul>
@@ -405,9 +405,6 @@
     <section>
         <h2>Slider (input[type="range"])</h2>
         <section data-sign="rule">
-            <input type="range" min="0" max="100" step="10" value="20">
-            <input type="range" min="0" max="100" step="10" value="60"></section>
-        <section data-sign="rule">
             <h3>[data-size]</h3>
             <input type="range" data-size="xs" value="20">
             <input type="range" data-size="sm" value="30">
@@ -416,24 +413,11 @@
             <input type="range" data-size="xl" value="80">
             <input type="range" data-size="2xl" value="90"></section>
         <section data-sign="rule">
-            <h3>label &gt; input[type="range"] &gt; span (min, max)</h3>
-            <label data-axis="block">
-                <span>inline</span>
-                <input type="range" min="0" max="100" step="10" value="20">
-                <span>0</span>
-                <span>100</span></label>
-            <label data-axis="block">
-                <span>inline</span>
-                <input type="range" min="0" max="100" step="20" value="40">
-                <span>less expensive</span>
-                <span>more expensive</span></label></section>
-        <section data-sign="rule">
             <h3>:user-invalid, [aria-invalid="true"]</h3>
             <input type="range" value="50" aria-invalid="true"></section>
         <section data-sign="rule">
             <h3>:disabled, [aria-disabled="true"]</h3>
-            <input type="range" value="50" disabled>
-            <input type="range" value="50" aria-disabled="true"></section></section>
+            <input type="range" value="50" disabled></section></section>
 
     <section>
         <h2>Step button (button[data-action] + input[role="spinbutton"])</h2>
