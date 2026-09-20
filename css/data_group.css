@@ -8,6 +8,7 @@
         form[role="search"],
         label:has(> *[role="spinbutton"])
     ) {
+        display:     inline flow-root;
         font-size:   0;
         white-space: nowrap;
         width:       fit-content;
@@ -137,8 +138,25 @@
     ):has(*:where(
         :user-invalid,
         [aria-invalid="true"]
-    )) > button:not(:active) {
-        border-color: var(--color-error);
+    )) {
+        outline-color:  var(--color-error);
+        outline-offset: 0;
+        outline-style:  solid;
+        outline-width:  var(--md-border-width);
+    }
+
+    *:where(
+        *[data-group="inline"],
+        search,
+        form[role="search"]
+    ):has(*:where(
+        :user-invalid,
+        [aria-invalid="true"]
+    )) *:where(
+        :user-invalid,
+        [aria-invalid="true"]
+    ):not(:focus-visible) {
+        outline-color: transparent;
     }
 
     @media (forced-colors: active) {
@@ -148,6 +166,17 @@
             form[role="search"]
         ) > button:not(:active) {
             border-color: ButtonBorder;
+        }
+
+        *:where(
+            *[data-group="inline"],
+            search,
+            form[role="search"]
+        ):has(*:where(
+            :user-invalid,
+            [aria-invalid="true"]
+        )) {
+            outline-color: Mark;
         }
     }
 }

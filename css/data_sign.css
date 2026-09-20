@@ -239,23 +239,60 @@
         translate: 0 -0.35938rem;
     }
 
-    /*  === close (x) === */
+    /*  === x === */
 
-    [data-sign="close"]::before,
-    [data-sign="close"]::after {
+    [data-sign="x"]::before,
+    [data-sign="x"]::after {
         background-color: currentColor;
-        block-size:       0.125em;
         content:          "";
-        inline-size:      0.75em;
         inset:            0;
         margin:           auto;
         position:         absolute;
     }
-    [data-sign="close"]::before {
+    [data-sign="x"]::before {
         rotate: 45deg;
     }
-    [data-sign="close"]::after {
+    [data-sign="x"]::after {
         rotate: -45deg;
+    }
+
+    /* --- size --- */
+
+    [data-sign="x"][data-size="xs"]::before,
+    [data-sign="x"][data-size="xs"]::after {
+        block-size:  var(--xs-border-width);
+        inline-size: var(--xs-line-height);
+    }
+    [data-sign="x"][data-size="sm"]::before,
+    [data-sign="x"][data-size="sm"]::after {
+        block-size:  var(--sm-border-width);
+        inline-size: var(--sm-line-height);
+    }
+    [data-sign="x"]:where(
+        [data-size="md"],
+        :not([data-size])
+    )::before,
+    [data-sign="x"]:where(
+        [data-size="md"],
+        :not([data-size])
+    )::after {
+        block-size:  var(--md-border-width);
+        inline-size: var(--md-line-height);
+    }
+    [data-sign="x"][data-size="lg"]::before,
+    [data-sign="x"][data-size="lg"]::after {
+        block-size:  var(--lg-border-width);
+        inline-size: var(--lg-line-height);
+    }
+    [data-sign="x"][data-size="xl"]::before,
+    [data-sign="x"][data-size="xl"]::after {
+        block-size:  var(--xl-border-width);
+        inline-size: var(--xl-line-height);
+    }
+    [data-sign="x"][data-size="2xl"]::before,
+    [data-sign="x"][data-size="2xl"]::after {
+        block-size:  var(--2xl-border-width);
+        inline-size: var(--2xl-line-height);
     }
 
     /* === chevron === */

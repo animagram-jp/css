@@ -302,19 +302,37 @@
                 <label>
                     <input type="radio" name="sort-table" value="1-desc"
                             aria-label="Sort descending"></label></span></th>
-    */
 
-    /*  the pair is not table-specific: it is [data-axis="block"] stacking two
-        radios, same as any other consumer of that marker. a th is only where
-        it happens to live in this usage -- the nowrap rule below is the one
-        genuinely table-cell-specific thing here. */
+        <th scope="col" aria-sort="ascending">
+            <label>
+                <input type="radio" name="sort-table" value="1-asc"
+                        aria-label="Sort ascending" checked></label>
+            <span></span>
+            <label>
+                <input type="radio" name="sort-table" value="1-desc"
+                        aria-label="Sort descending"></label></th>
+
+        <th scope="col" aria-sort="ascending">
+            <span></span>
+            <label>
+                <input type="radio" name="sort-table" value="1-asc"
+                        aria-label="Sort ascending" checked></label>
+            <label>
+                <input type="radio" name="sort-table" value="1-desc"
+                        aria-label="Sort descending"></label></th>
+    */
 
     th:has(> [data-axis="block"] input[type="radio"]) {
         white-space: nowrap;
     }
 
+    /*  the pair is a box height tall against a content box that is only a
+        line-height tall, so the overhang is given back to the block padding
+        it sits in rather than to the row, which would grow. */
+
     [data-axis="block"]:has(> label > input[type="radio"]) {
         display:             inline flow-root;
+        margin-block:        calc((var(--md-line-height) - var(--md-box-height)) / 2);
         margin-inline-start: calc(var(--md-border-radius) / 2);
         vertical-align:      middle;
     }
@@ -325,20 +343,24 @@
     }
 
     /*  the radio itself is not drawn: the triangle stands for it. the input
-        keeps its box so it still takes focus and the hit area stays whole. */
+        keeps its box so it still takes focus and the hit area stays whole.
+
+        this is a label > input[type="radio"] like any other, so css.radio
+        styles it as a circle: only what the triangle contradicts is undone
+        here, and the radius has to go with the border or the focus ring is
+        drawn as an ellipse around a triangle.
+
+        half a box height each, so the pair fills the cell between its borders:
+        the row height a th gets from css.table is its line-height plus the
+        block padding on both sides, which is one box height. */
 
     [data-axis="block"] > label > input[type="radio"] {
-        appearance:       none;
-        background-color: var(--color-paper);
-        border:           0;
-        color:            var(--color-ink-mix);
-        cursor:           pointer;
-        display:          block;
-        inline-size:      var(--md-line-height);
-        block-size:       calc(var(--md-line-height) / 2);
-        margin:           0;
-        padding:          0;
-        position:         relative;
+        border:        0;
+        border-radius: 0;
+        color:         var(--color-ink-mix);
+        display:       block;
+        inline-size:   var(--md-box-height);
+        block-size:    calc(var(--md-box-height) / 2);
     }
 
     /*  css.radio rounds this pseudo-element into the inner circle of a radio;
@@ -347,7 +369,7 @@
     [data-axis="block"] > label > input[type="radio"]::after {
         background-color: transparent;
         block-size:       0;
-        border-inline:    calc(var(--md-line-height) / 4) solid transparent;
+        border-inline:    calc(var(--md-box-height) / 4) solid transparent;
         border-radius:    0;
         content:          "";
         inline-size:      0;
@@ -361,10 +383,105 @@
         value attribute. */
 
     [data-axis="block"] > label:first-child > input[type="radio"]::after {
-        border-block-end: calc(var(--md-line-height) / 4) solid currentColor;
+        border-block-end: calc(var(--md-box-height) / 4) solid currentColor;
     }
     [data-axis="block"] > label:last-child > input[type="radio"]::after {
-        border-block-start: calc(var(--md-line-height) / 4) solid currentColor;
+        border-block-start: calc(var(--md-box-height) / 4) solid currentColor;
+    }
+
+    /*  === size ===
+
+        the cell sets the height here, so the pair follows table[data-size]
+        rather than a data-size of its own. */
+
+    table[data-size="xs"] [data-axis="block"]:has(> label > input[type="radio"]) {
+        margin-block:        calc((var(--xs-line-height) - var(--xs-box-height)) / 2);
+        margin-inline-start: calc(var(--xs-border-radius) / 2);
+    }
+    table[data-size="xs"] [data-axis="block"] > label > input[type="radio"] {
+        inline-size: var(--xs-box-height);
+        block-size:  calc(var(--xs-box-height) / 2);
+    }
+    table[data-size="xs"] [data-axis="block"] > label > input[type="radio"]::after {
+        border-inline: calc(var(--xs-box-height) / 4) solid transparent;
+    }
+    table[data-size="xs"] [data-axis="block"] > label:first-child > input[type="radio"]::after {
+        border-block-end: calc(var(--xs-box-height) / 4) solid currentColor;
+    }
+    table[data-size="xs"] [data-axis="block"] > label:last-child > input[type="radio"]::after {
+        border-block-start: calc(var(--xs-box-height) / 4) solid currentColor;
+    }
+
+    table[data-size="sm"] [data-axis="block"]:has(> label > input[type="radio"]) {
+        margin-block:        calc((var(--sm-line-height) - var(--sm-box-height)) / 2);
+        margin-inline-start: calc(var(--sm-border-radius) / 2);
+    }
+    table[data-size="sm"] [data-axis="block"] > label > input[type="radio"] {
+        inline-size: var(--sm-box-height);
+        block-size:  calc(var(--sm-box-height) / 2);
+    }
+    table[data-size="sm"] [data-axis="block"] > label > input[type="radio"]::after {
+        border-inline: calc(var(--sm-box-height) / 4) solid transparent;
+    }
+    table[data-size="sm"] [data-axis="block"] > label:first-child > input[type="radio"]::after {
+        border-block-end: calc(var(--sm-box-height) / 4) solid currentColor;
+    }
+    table[data-size="sm"] [data-axis="block"] > label:last-child > input[type="radio"]::after {
+        border-block-start: calc(var(--sm-box-height) / 4) solid currentColor;
+    }
+
+    table[data-size="lg"] [data-axis="block"]:has(> label > input[type="radio"]) {
+        margin-block:        calc((var(--lg-line-height) - var(--lg-box-height)) / 2);
+        margin-inline-start: calc(var(--lg-border-radius) / 2);
+    }
+    table[data-size="lg"] [data-axis="block"] > label > input[type="radio"] {
+        inline-size: var(--lg-box-height);
+        block-size:  calc(var(--lg-box-height) / 2);
+    }
+    table[data-size="lg"] [data-axis="block"] > label > input[type="radio"]::after {
+        border-inline: calc(var(--lg-box-height) / 4) solid transparent;
+    }
+    table[data-size="lg"] [data-axis="block"] > label:first-child > input[type="radio"]::after {
+        border-block-end: calc(var(--lg-box-height) / 4) solid currentColor;
+    }
+    table[data-size="lg"] [data-axis="block"] > label:last-child > input[type="radio"]::after {
+        border-block-start: calc(var(--lg-box-height) / 4) solid currentColor;
+    }
+
+    table[data-size="xl"] [data-axis="block"]:has(> label > input[type="radio"]) {
+        margin-block:        calc((var(--xl-line-height) - var(--xl-box-height)) / 2);
+        margin-inline-start: calc(var(--xl-border-radius) / 2);
+    }
+    table[data-size="xl"] [data-axis="block"] > label > input[type="radio"] {
+        inline-size: var(--xl-box-height);
+        block-size:  calc(var(--xl-box-height) / 2);
+    }
+    table[data-size="xl"] [data-axis="block"] > label > input[type="radio"]::after {
+        border-inline: calc(var(--xl-box-height) / 4) solid transparent;
+    }
+    table[data-size="xl"] [data-axis="block"] > label:first-child > input[type="radio"]::after {
+        border-block-end: calc(var(--xl-box-height) / 4) solid currentColor;
+    }
+    table[data-size="xl"] [data-axis="block"] > label:last-child > input[type="radio"]::after {
+        border-block-start: calc(var(--xl-box-height) / 4) solid currentColor;
+    }
+
+    table[data-size="2xl"] [data-axis="block"]:has(> label > input[type="radio"]) {
+        margin-block:        calc((var(--2xl-line-height) - var(--2xl-box-height)) / 2);
+        margin-inline-start: calc(var(--2xl-border-radius) / 2);
+    }
+    table[data-size="2xl"] [data-axis="block"] > label > input[type="radio"] {
+        inline-size: var(--2xl-box-height);
+        block-size:  calc(var(--2xl-box-height) / 2);
+    }
+    table[data-size="2xl"] [data-axis="block"] > label > input[type="radio"]::after {
+        border-inline: calc(var(--2xl-box-height) / 4) solid transparent;
+    }
+    table[data-size="2xl"] [data-axis="block"] > label:first-child > input[type="radio"]::after {
+        border-block-end: calc(var(--2xl-box-height) / 4) solid currentColor;
+    }
+    table[data-size="2xl"] [data-axis="block"] > label:last-child > input[type="radio"]::after {
+        border-block-start: calc(var(--2xl-box-height) / 4) solid currentColor;
     }
 
     /* the direction in force is the one drawn in ink. */
@@ -374,8 +491,8 @@
     }
 
     /*  an outline, not a box-shadow, which is not painted under forced-colors.
-        the ring is the width of a border here: the control is smaller than a
-        box height, so the ring used elsewhere would swallow it. */
+        the ring is the width of a border here: each half is only half a box
+        height tall, so the ring used elsewhere would swallow it. */
 
     [data-axis="block"] > label > input[type="radio"]:focus-visible {
         outline-color:  var(--color-focus);

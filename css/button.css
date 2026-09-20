@@ -39,12 +39,12 @@
     }
 
     @media (forced-colors: active) {
-        button, [type="button"], [type="submit"], [type="reset"] {
+        *:where(button, [type="button"], [type="submit"], [type="reset"]) {
             background-color: ButtonFace;
             border-color:     ButtonBorder;
             color:            ButtonText;
         }
-        a:any-link {
+        *:where(a:any-link) {
             color: LinkText;
         }
     }

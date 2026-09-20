@@ -9,7 +9,6 @@
         border-color:     transparent;
         border-style:     solid;
         color:            var(--color-paper);
-        margin:           0;
     }
 
     /* === outline style === */
@@ -20,7 +19,6 @@
         border-color:     var(--color-emphasis-ink);
         border-style:     solid;
         color:            var(--color-emphasis-ink);
-        margin:           0;
         vertical-align:   middle;
         width:            auto;
     }
@@ -35,35 +33,22 @@
         border:                    none;
         box-decoration-break:      clone;
         color:                     var(--color-emphasis-ink);
-        margin:                    0;
         text-decoration-color:     currentColor;
         text-decoration-line:      underline;
         text-decoration-thickness: 0.0625rem;
         text-underline-offset:     0.3em;
     }
 
-    /* === icon style === */
+    /*  === transparent style === */
 
-    *[data-style="icon"] {
+    *[data-style="transparent"] {
         appearance:       none;
         background-color: transparent;
-        block-size:       1em;
-        border:           none;
+        border-color:     transparent;
+        border-style:     solid;
         color:            inherit;
-        cursor:           pointer;
-        display:          inline flow-root;
-        font:             inherit;
-        inline-size:      1em;
-        padding:          0;
-        position:         relative;
-    }
-
-    @media (forced-colors: active) {
-        *[data-style="icon"] {
-            background-color: transparent;
-            border-color:     transparent;
-            color:            inherit;
-        }
+        vertical-align:   middle;
+        width:            auto;
     }
 
     /* === common focus style === */

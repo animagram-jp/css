@@ -62,7 +62,7 @@
         output,
         [role="option"],
         [role="presentation"],
-        input[data-facet="check"],
+        input[data-sign="check"],
         section[data-type="error-summary"],
         p[data-type="error"]
     )[data-size="xs"] {
@@ -91,7 +91,7 @@
         output,
         [role="option"],
         [role="presentation"],
-        input[data-facet="check"],
+        input[data-sign="check"],
         section[data-type="error-summary"],
         p[data-type="error"]
     )[data-size="sm"] {
@@ -120,7 +120,6 @@
         output,
         [role="option"],
         [role="presentation"],
-        input[data-facet="check"],
         section[data-type="error-summary"],
         p[data-type="error"]
     ):where(
@@ -152,7 +151,7 @@
         output,
         [role="option"],
         [role="presentation"],
-        input[data-facet="check"],
+        input[data-sign="check"],
         section[data-type="error-summary"],
         p[data-type="error"]
     )[data-size="lg"] {
@@ -181,7 +180,7 @@
         output,
         [role="option"],
         [role="presentation"],
-        input[data-facet="check"],
+        input[data-sign="check"],
         section[data-type="error-summary"],
         p[data-type="error"]
     )[data-size="xl"] {
@@ -210,7 +209,7 @@
         output,
         [role="option"],
         [role="presentation"],
-        input[data-facet="check"],
+        input[data-sign="check"],
         section[data-type="error-summary"],
         p[data-type="error"]
     )[data-size="2xl"] {

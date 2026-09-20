@@ -57,18 +57,6 @@
 
     </header>
 
-    <dialog>
-        <nav>
-            <ul>
-                <li></li></ul></nav></dialog>
-
-    <section>
-        <h2>inline flow or not, focusable or not.</h2>
-        <section>
-            <span>span</span>
-            <a href="#anchor">a</a>
-            <div data-sign="rule">div</div></section></section>
-
     <section>
         <h2>Select</h2>
         <section>
@@ -86,12 +74,16 @@
             <input type="search">
             <input type="url">
             <input type="tel">
-            <select value="a">
-                <option>1</option>
-                <option>2</option></select>
+            <select>
+                <option>option</option>
+                <option>option</option></select>
+            <label>
+                <select data-facet="chevron">
+                    <option>option</option>
+                    <option>option</option></select></label>
             <textarea></textarea></section>
         <section data-sign="rule">
-            <h3>[data-size]</h3>
+            <h3>data-size</h3>
             <input type="text" data-size="xs">
             <input type="text" data-size="sm">
             <input type="text" data-size="md">
@@ -174,10 +166,10 @@
             <ul id="list-box-1" popover="auto" role="listbox" aria-labelledby="list-box-1-trigger">
                 <li role="presentation">li[role="presentation"]</li>
                 <li role="option" aria-selected="true">
-                    <input type="radio" data-facet="check" name="" checked>
+                    <input type="radio" data-sign="check" name="" checked>
                     <span>span</span></li>
                 <li role="option">
-                    <input type="checkbox" data-facet="check" name="">
+                    <input type="checkbox" data-sign="check" name="">
                     <span>span</span></li>
                 <li role="option">
                     <button>button</button></li></ul>
@@ -710,29 +702,7 @@
         <h2>Table</h2>
         <section data-sign="rule">
             <table>
-                <caption>Caption</caption>
-                <thead>
-                    <tr>
-                        <th scope="col">Head</th>
-                        <th scope="col">Head</th>
-                        <th scope="col">Head</th></tr></thead>
-                <tbody>
-                    <tr>
-                        <th scope="row">Row</th>
-                        <td>Cell</td>
-                        <td>Cell</td></tr>
-                    <tr>
-                        <th scope="row">Row</th>
-                        <td>Cell</td>
-                        <td>Cell</td></tr>
-                    <tr>
-                        <th scope="row">Row</th>
-                        <td>Cell</td>
-                        <td>Cell</td></tr></tbody></table></section>
-        <section data-sign="rule">
-            <h3>[data-border]</h3>
-            <table>
-                <caption>sectioned (default): header underrule, footer overrule, row-header rule</caption>
+                <caption>(data-border="sectioned")</caption>
                 <thead>
                     <tr>
                         <th scope="col">Head</th>
@@ -752,7 +722,7 @@
                         <td>Cell</td>
                         <td>Cell</td></tr></tbody></table>
             <table data-border="grid">
-                <caption>grid: every edge ruled, outer edge in ink, inner grid in ink-mix</caption>
+                <caption>data-border="grid"</caption>
                 <thead>
                     <tr>
                         <th scope="col">Head</th>
@@ -772,7 +742,7 @@
                         <td>Cell</td>
                         <td>Cell</td></tr></tbody></table>
             <table data-border="booktabs">
-                <caption>booktabs: top/bottom outer rule and header underrule only, no verticals</caption>
+                <caption>data-border="booktabs"</caption>
                 <thead>
                     <tr>
                         <th scope="col">Head</th>
@@ -790,11 +760,9 @@
                     <tr>
                         <th scope="row">Row</th>
                         <td>Cell</td>
-                        <td>Cell</td></tr></tbody></table></section>
-        <section data-sign="rule">
-            <h3>[data-stripe], [data-selectable]</h3>
+                        <td>Cell</td></tr></tbody></table>
             <table data-stripe>
-                <caption>Caption</caption>
+                <caption>data-stripe</caption>
                 <thead>
                     <tr>
                         <th scope="col">Head</th>
@@ -814,7 +782,7 @@
                         <td>Cell</td>
                         <td>Cell</td></tr></tbody></table>
             <table data-border="grid" data-selectable>
-                <caption>Caption</caption>
+                <caption>data-selectable</caption>
                 <thead>
                     <tr>
                         <th scope="col">
@@ -826,28 +794,28 @@
                     <tr>
                         <td>
                             <label>
-                                <input type="checkbox" aria-label="Select row" data-size="sm"></label></td>
+                                <input type="checkbox" aria-label="Select row" data-size="sm" checked></label></td>
                         <td>Cell</td>
                         <td>Cell</td></tr>
                     <tr>
                         <td>
                             <label>
-                                <input type="checkbox" checked aria-label="Select row" data-size="sm"></label></td>
+                                <input type="checkbox" aria-label="Select row" data-size="sm"></label></td>
                         <td>Cell</td>
-                        <td>Cell</td></tr></tbody></table></section>
-        <section data-sign="rule">
-            <h3>th > label > input[type="radio"] (sort)</h3>
-            <table data-border="grid">
-                <caption>Caption</caption>
+                        <td>Cell</td></tr></tbody></table>
+            <table>
+                <caption>Sort buttons</caption>
                 <thead>
                     <tr>
-                        <th scope="col" aria-sort="ascending">Head
+                        <th scope="col" aria-sort="ascending">
+                            Head
                             <span data-axis="block">
                                 <label>
                                     <input type="radio" name="sort-1" value="a-asc" aria-label="Sort ascending" checked></label>
                                 <label>
                                     <input type="radio" name="sort-1" value="a-desc" aria-label="Sort descending"></label></span></th>
-                        <th scope="col" aria-sort="none">Head
+                        <th scope="col" aria-sort="none">
+                            Head
                             <span data-axis="block">
                                 <label>
                                     <input type="radio" name="sort-1" value="b-asc" aria-label="Sort ascending"></label>
@@ -859,11 +827,9 @@
                         <td>Cell</td></tr>
                     <tr>
                         <td>Cell</td>
-                        <td>Cell</td></tr></tbody></table></section>
-        <section data-sign="rule">
-            <h3>[data-size]</h3>
-            <table data-border="grid" data-size="xs">
-                <caption>Caption</caption>
+                        <td>Cell</td></tr></tbody></table>
+            <table data-size="xs">
+                <caption>data-size="xs"</caption>
                 <thead>
                     <tr>
                         <th scope="col">Head</th>
@@ -882,8 +848,8 @@
                         <th scope="row">Row</th>
                         <td>Cell</td>
                         <td>Cell</td></tr></tbody></table>
-            <table data-border="grid" data-size="sm">
-                <caption>Caption</caption>
+            <table data-size="sm">
+                <caption>data-size="sm"</caption>
                 <thead>
                     <tr>
                         <th scope="col">Head</th>
@@ -902,8 +868,8 @@
                         <th scope="row">Row</th>
                         <td>Cell</td>
                         <td>Cell</td></tr></tbody></table>
-            <table data-border="grid" data-size="lg">
-                <caption>Caption</caption>
+            <table data-size="lg">
+                <caption>data-size="lg"</caption>
                 <thead>
                     <tr>
                         <th scope="col">Head</th>
@@ -922,8 +888,8 @@
                         <th scope="row">Row</th>
                         <td>Cell</td>
                         <td>Cell</td></tr></tbody></table>
-            <table data-border="grid" data-size="2xl">
-                <caption>Caption</caption>
+            <table data-size="2xl">
+                <caption>data-size="2xl"</caption>
                 <thead>
                     <tr>
                         <th scope="col">Head</th>
@@ -972,12 +938,10 @@
         <output id="toast_output-1" class="hidden">
             <span id="toast_output-1_span"></span>
             <p id="toast_output-1_p">(data-style="fill")</p>
-            <button type="button" data-style="icon" data-sign="close" aria-label="Dismiss notification" onclick="jsFn.hide(this.closest('output'))"></button></output>
+            <button type="button" data-style="transparent" data-sign="x" aria-label="Dismiss notification" onclick="jsFn.hide(this.closest('output'))"></button></output>
         <output id="toast_output-2" data-style="outline" class="hidden">
             <span id="toast_output-2_span"></span>
             <p id="toast_output-2_p">data-style="outline"</p>
-            <button type="button" data-style="icon" data-sign="close" aria-label="Dismiss notification" onclick="jsFn.hide(this.closest('output'))"></button></output></section>
+            <button type="button" data-style="transparent" data-sign="x" aria-label="Dismiss notification" onclick="jsFn.hide(this.closest('output'))"></button></output></section>
 
-
-</section>
 </body></html>

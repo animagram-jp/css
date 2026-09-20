@@ -4,16 +4,18 @@
 
     /* === color, layout === */
 
-    input:where(
-        [type="text"],
-        [type="email"],
-        [type="password"],
-        [type="search"],
-        [type="url"],
-        [type="tel"]
-    ),
-    select,
-    textarea {
+    *:where(
+        input:is(
+            [type="text"],
+            [type="email"],
+            [type="password"],
+            [type="search"],
+            [type="url"],
+            [type="tel"]
+        ),
+        select,
+        textarea
+    ) {
         background-color: var(--color-paper);
         border-color:     var(--color-ink-mix);
         border-style:     solid;
@@ -24,41 +26,21 @@
         vertical-align:   middle;
     }
 
-    input:where(
-        [type="text"],
-        [type="email"],
-        [type="password"],
-        [type="search"],
-        [type="url"],
-        [type="tel"]
+    *:where(
+        input:is(
+            [type="text"],
+            [type="email"],
+            [type="password"],
+            [type="search"],
+            [type="url"],
+            [type="tel"]
+        )
     ) {
         appearance: none;
     }
 
-    input:where(
-        [type="text"],
-        [type="email"],
-        [type="password"],
-        [type="search"],
-        [type="url"],
-        [type="tel"]
-    ),
-    textarea {
-        caret-color: var(--color-ink-mix);
-        cursor:      text;
-    }
-    select {
-        cursor: pointer;
-    }
-    input[inputmode="numeric"] {
-        text-align: right;
-    }
-    textarea {
-        resize: none;
-    }
-
-    @media (forced-colors: active) {
-        input:where(
+    *:where(
+        input:is(
             [type="text"],
             [type="email"],
             [type="password"],
@@ -66,8 +48,34 @@
             [type="url"],
             [type="tel"]
         ),
-        select,
-        textarea {
+        textarea
+    ) {
+        caret-color: var(--color-ink-mix);
+        cursor:      text;
+    }
+    *:where(select) {
+        cursor: pointer;
+    }
+    *:where(input[inputmode="numeric"]) {
+        text-align: right;
+    }
+    *:where(textarea) {
+        resize: none;
+    }
+
+    @media (forced-colors: active) {
+        *:where(
+            input:is(
+                [type="text"],
+                [type="email"],
+                [type="password"],
+                [type="search"],
+                [type="url"],
+                [type="tel"]
+            ),
+            select,
+            textarea
+        ) {
             background-color: Field;
             border-color:     FieldText;
             color:            FieldText;

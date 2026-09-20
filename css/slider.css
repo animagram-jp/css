@@ -339,8 +339,10 @@
     )::-moz-range-thumb {
         border-color: var(--color-error);
     }
-    input[type="range"]:user-invalid:focus-visible,
-    input[type="range"][aria-invalid="true"]:focus-visible {
+    input[type="range"]:where(
+        :user-invalid,
+        [aria-invalid="true"]
+    ):focus-visible {
         outline-color: var(--color-error);
     }
 
