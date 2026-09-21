@@ -74,7 +74,7 @@ Scoped parameters:
 
 | Style | text | highlight | fill | border | backdrop | 
 |-|-|-|-|-|-|
-| - | color-ink | - | color-paper(-mix) | color-ink | | 
+| - | color-ink | - | color-paper(-mix) | color-ink | color-paper |
 | ::selection | color-paper | color-highlight-ink | color-paper(-mix) | | | 
 | - | color-ink | - | color-emphasis-paper | - | | 
 | input | color-ink | - | color-paper | color-ink-mix | |
