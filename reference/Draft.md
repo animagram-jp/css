@@ -18,12 +18,6 @@ kbd {}
 /* card: [data-surround="outline"], [data-surround="fill"] */
 article > header, footer {}
 
-
-/* Remove list styles (bullets/numbers). */
-ol, ul, menu, summary {
-    list-style: none;
-}
-
 /* === aria-orientation === */
 *:where(menu):where(
     [aria-orientation="vertical"],

@@ -25,6 +25,7 @@
         border-style:     solid;
         color:            var(--color-paper);
         display:          inline flow-root;
+        vertical-align:   middle;
         width:            auto;
     }
 
@@ -194,26 +195,74 @@
 
     /* --- active --- */
 
-    *[data-surround="fill"]:active,
-    *:where(button, [type="button"], [type="submit"], [type="reset"]):not([data-surround]):active {
+    *:where(
+        a:any-link,
+        button,
+        [type="button"],
+        [type="submit"],
+        [type="reset"],
+        summary
+    )[data-surround="fill"]:active,
+    *:where(
+        button,
+        [type="button"],
+        [type="submit"],
+        [type="reset"]
+    ):not([data-surround]):active {
         background-color: var(--color-emphasis-ink-mix);
         border-color:     transparent;
     }
 
-    *[data-surround="outline"]:active {
+    /* --- pressed --- */
+
+    /*  A toggle button holds its pressed state after the pointer leaves, so it
+        needs a resting style of its own rather than :active alone. */
+
+    *:where(
+        button,
+        [type="button"]
+    )[aria-pressed="true"]:not([data-surround]) {
+        background-color: var(--color-emphasis-ink-mix);
+        border-color:     transparent;
+    }
+
+    *:where(
+        button,
+        [type="button"]
+    )[aria-pressed="true"][data-surround="outline"] {
+        background-color: var(--color-paper-mix);
+        border-color:     var(--color-emphasis-ink-mix);
+    }
+
+    *:where(
+        a:any-link,
+        button,
+        [type="button"],
+        [type="submit"],
+        [type="reset"],
+        summary
+    )[data-surround="outline"]:active {
         background-color: var(--color-paper-mix);
         border-color:     var(--color-emphasis-ink-mix);
         color:            var(--color-emphasis-ink);
     }
 
-    *[data-style="underline"]:active,
-    *:where(a:any-link):not([data-style]):active,
-    *:where(summary):not([data-style]):active {
+    *:where(
+        a:any-link,
+        summary
+    ):where([data-style="underline"], :not([data-surround])):active {
         color: var(--color-emphasis-ink-mix);
     }
 
     @media (forced-colors: active) {
-        *:active {
+        *:where(
+            a:any-link,
+            button,
+            [type="button"],
+            [type="submit"],
+            [type="reset"],
+            summary
+        ):active {
             color: ActiveText;
         }
     }

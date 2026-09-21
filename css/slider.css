@@ -1,6 +1,6 @@
 /*  Usage:
 
-    <input type="range" min="0" max="100" step="10" value="20"> 
+    <input type="range" min="0" max="100" step="10" value="20">
 */
 
 @layer css.slider {
@@ -9,13 +9,18 @@
 
     input[type="range"] {
         background-color: var(--color-paper);
-        cursor:           pointer;
         display:          inline-block;
         inline-size:      100%;
         max-inline-size:  100%;
-        min-inline-size:  calc(var(--md-box-height) * 4);
         touch-action:     manipulation;
         vertical-align:   middle;
+    }
+
+    input[type="range"]:not(:is(
+        :disabled,
+        [aria-disabled="true"]
+    )) {
+        cursor: pointer;
     }
 
     /* --- track: webkit, blink --- */
@@ -41,7 +46,13 @@
         border-radius:    50%;
         border-style:     solid;
         box-sizing:       border-box;
-        cursor:           pointer;
+    }
+
+    input[type="range"]:not(:is(
+        :disabled,
+        [aria-disabled="true"]
+    ))::-webkit-slider-thumb {
+        cursor: pointer;
     }
 
     /* --- thumb: gecko --- */
@@ -53,7 +64,13 @@
         border-radius:    50%;
         border-style:     solid;
         box-sizing:       border-box;
-        cursor:           pointer;
+    }
+
+    input[type="range"]:not(:is(
+        :disabled,
+        [aria-disabled="true"]
+    ))::-moz-range-thumb {
+        cursor: pointer;
     }
 
     @media (prefers-reduced-motion: no-preference) {
@@ -65,7 +82,7 @@
         }
     }
 
-    /* === [data-size] === */
+    /* --- size --- */
 
     input[type="range"][data-size="xs"] {
         block-size:    var(--xs-box-height);
@@ -228,25 +245,41 @@
 
     /* === :hover, :active, :focus-visible === */
 
-    input[type="range"]:hover::-webkit-slider-thumb,
-    input[type="range"]:active::-webkit-slider-thumb,
-    input[type="range"]:focus-visible::-webkit-slider-thumb {
+    input[type="range"]:not(:is(
+        :disabled,
+        [aria-disabled="true"]
+    )):where(
+        :hover,
+        :active,
+        :focus-visible
+    )::-webkit-slider-thumb {
         background-color: var(--color-emphasis-ink);
         border-color:     var(--color-emphasis-ink);
     }
-    input[type="range"]:hover::-moz-range-thumb,
-    input[type="range"]:active::-moz-range-thumb,
-    input[type="range"]:focus-visible::-moz-range-thumb {
+    input[type="range"]:not(:is(
+        :disabled,
+        [aria-disabled="true"]
+    )):where(
+        :hover,
+        :active,
+        :focus-visible
+    )::-moz-range-thumb {
         background-color: var(--color-emphasis-ink);
         border-color:     var(--color-emphasis-ink);
     }
 
-    input[type="range"]:active::-webkit-slider-thumb {
+    input[type="range"]:not(:is(
+        :disabled,
+        [aria-disabled="true"]
+    )):active::-webkit-slider-thumb {
         background-color: var(--color-emphasis-ink-mix);
         border-color:     var(--color-emphasis-ink-mix);
         scale:            1.15;
     }
-    input[type="range"]:active::-moz-range-thumb {
+    input[type="range"]:not(:is(
+        :disabled,
+        [aria-disabled="true"]
+    )):active::-moz-range-thumb {
         background-color: var(--color-emphasis-ink-mix);
         border-color:     var(--color-emphasis-ink-mix);
         scale:            1.15;
@@ -278,6 +311,7 @@
     )::-moz-range-thumb {
         border-color: var(--color-error);
     }
+
     /* === :disabled, [aria-disabled="true"] === */
 
     input[type="range"]:where(
@@ -317,15 +351,25 @@
             background-color: Canvas;
             border-color:     CanvasText;
         }
-        input[type="range"]:hover::-webkit-slider-thumb,
-        input[type="range"]:active::-webkit-slider-thumb,
-        input[type="range"]:focus-visible::-webkit-slider-thumb {
+        input[type="range"]:not(:is(
+            :disabled,
+            [aria-disabled="true"]
+        )):where(
+            :hover,
+            :active,
+            :focus-visible
+        )::-webkit-slider-thumb {
             background-color: Highlight;
             border-color:     CanvasText;
         }
-        input[type="range"]:hover::-moz-range-thumb,
-        input[type="range"]:active::-moz-range-thumb,
-        input[type="range"]:focus-visible::-moz-range-thumb {
+        input[type="range"]:not(:is(
+            :disabled,
+            [aria-disabled="true"]
+        )):where(
+            :hover,
+            :active,
+            :focus-visible
+        )::-moz-range-thumb {
             background-color: Highlight;
             border-color:     CanvasText;
         }

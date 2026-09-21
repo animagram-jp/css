@@ -12,6 +12,7 @@
     css.toggle,
     css.radio,
     css.heading,
+    css.list,
     css.search, /* dependency: input, group */
     css.table,
     css.slider,
@@ -279,7 +280,7 @@
 
     mark {
         background-color: color-mix(in srgb, var(--color-highlight-ink) 70%, var(--color-paper));
-        color: var(--color-ink);
+        color: var(--color-paper);
     }
     ::selection {
         background-color: var(--color-highlight-ink);
@@ -299,6 +300,19 @@
         [inputmode="numeric"]
     ) {
         font-family: var(--font-family-monospace);
+        font-style: normal;
+    }
+
+    /*  reset.css unsets the UA italic, so it is restored here rather than
+        removed. Japanese, Chinese and Korean faces have no true italic and
+        get synthesised obliques, so the emphasis is carried by the citation
+        being a distinct element instead. Matching on the cite itself, not an
+        ancestor, keeps an English citation inside a Japanese page italic. */
+
+    cite {
+        font-style: italic;
+    }
+    cite:is(:lang(ja), :lang(zh), :lang(ko)) {
         font-style: normal;
     }
 

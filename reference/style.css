@@ -50,6 +50,10 @@ body>footer {
     margin: 0 auto;
 }
 
+table {
+    display: inline-table;
+}
+
 /* list-box: each trigger/listbox pair needs its own anchor-name. */
 #list-box-1-trigger  { anchor-name: --list-box-1-trigger; }
 #list-box-1          { position-anchor: --list-box-1-trigger; }
@@ -67,7 +71,3 @@ body>footer {
 #list-box-7          { position-anchor: --list-box-7-trigger; }
 #list-box-8-trigger  { anchor-name: --list-box-8-trigger; }
 #list-box-8          { position-anchor: --list-box-8-trigger; }
-
-table {
-    display: inline-table;
-}

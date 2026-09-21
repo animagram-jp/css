@@ -10,6 +10,14 @@ If "ORG_CONTRIBUTING.md" does not exist in the repository root of your working e
 curl -fsSL -H "Accept: application/vnd.github.raw+json" "https://api.github.com/repos/animagram-jp/.github/contents/.github/CONTRIBUTING.md?ref=main" -o "ORG_CONTRIBUTING.md"
 ```
 
+---
+
+## See
+
+- [README.md](./README.md)
+- [common css scripts](./README.md#dependency-layers)
+- [InterfaceDesign.md](./reference/InterfaceDesign.md)
+
 ## Rule
 
 - CSSスクリプト内コメントによる仕切り線の形式は `/* === size === */`、または`/* --- size --- */`とする。セレクタ形式では無く、単語形式に統一すること。
@@ -28,18 +36,6 @@ docker exec accessibility-audit npm run audit
 # Validate ./css against the CSS syntax definitions
 docker exec accessibility-audit npm run validate
 ```
-
----
-
-## See
-
-- [InterfaceDesign.md](./reference/InterfaceDesign.md)
-
----
-
-## Todo
-
-- [ ] リファクタリング中
 
 ---
 

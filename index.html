@@ -60,7 +60,7 @@
         <figure data-sign="rule">
             <blockquote>
                 <p>"I will cast the dark shadows of human life over you without reserve. But you must not be afraid."</p></blockquote>
-            <figcaption>Soseki Natsume. 1914. <cite>Kokoro</cite>. Iwanami Shoten, Tokyo, Japan. Translated by Andyou, 2026.</figcaption></figure></section>
+            <figcaption>Soseki Natsume. 1914. <cite lang="en">Kokoro</cite>. Iwanami Shoten, Tokyo, Japan. Translated by Andyou, 2026.</figcaption></figure></section>
 
     <section>
         <h2>Icon badge</h2>
@@ -132,6 +132,49 @@
                 <span>texarea</span>
                 <textarea type="text" data-size="2xl" placeholder="2xl"></textarea></label></section>
 
+        <section data-sign="rule">
+            <h3>input[type="password"] + button[aria-pressed] - reveal toggle</h3>
+            <label>
+                <span>Password</span>
+                <input type="password" id="password-demo-1" autocomplete="current-password" value="secret">
+                <button type="button" aria-controls="password-demo-1" aria-pressed="false" hidden>Show password</button></label>
+            <label>
+                <span>label text from the caller</span>
+                <input type="password" id="password-demo-2" autocomplete="current-password" value="secret" data-size="lg">
+                <button type="button" aria-controls="password-demo-2" aria-pressed="false" data-size="lg" hidden>パスワードを表示</button></label>
+            <label>
+                <span>no button (script absent or not wired)</span>
+                <input type="password" autocomplete="current-password" value="secret"></label></section>
+
+        <section data-sign="rule">
+            <h3>:required - label &gt; span:first-child</h3>
+            <label>
+                <span>input[type="text"], required</span>
+                <input type="text" required></label>
+            <label>
+                <span>input[type="text"], optional</span>
+                <input type="text"></label>
+            <label>
+                <span>select, required</span>
+                <select required>
+                    <option>option</option></select></label>
+            <label>
+                <span>textarea, required</span>
+                <textarea required></textarea></label>
+            <label>
+                <span>input[type="checkbox"], required</span>
+                <input type="checkbox" required></label>
+            <fieldset style="grid-template-columns: max-content repeat(1, minmax(0, max-content));">
+                <legend>
+                    <span>radio group - mark the legend text yourself</span></legend>
+                <label>
+                    <span>choice A</span>
+                    <input type="radio" name="req-demo" required></label>
+                <label>
+                    <span>choice B</span>
+                    <input type="radio" name="req-demo"></label></fieldset></section>
+</section>
+
     <section>
         <h2>Surround style, underline style</h2>
         <section data-sign="rule">
@@ -158,7 +201,7 @@
             <button data-size="xl">xl</button>
             <a href="#anchor" data-size="xl">xl</a>
             <button data-size="2xl" disabled>2xl, disabled</button>
-            <a href="#anchor" data-size="2xl" aria-disabled="true">2xl, aria-disabled="true"</a></section>
+            <a href="#anchor" data-size="2xl" aria-disabled="true">2xl, aria-disabled="true"</a></section></section>
     <section>
         <h2>Listbox</h2>
         <section data-sign="rule">
@@ -538,7 +581,7 @@
                 <label>
                     <input type="search" data-size="xs"></label>
                 <button type="button" data-size="xs">button</button></search>
-            <searc>
+            <search>
                 <span>sm</span>
                 <label>
                     <select data-facet="chevron" data-size="sm">
@@ -600,6 +643,35 @@
                 <h1>hgroup[data-axis="inline"] > (h1, p)</h1>
                 <p>Subtitle</p></hgroup></section>
 
+        <section data-sign="rule">
+            <h3>hN x p size matrix (baseline alignment, no per-size correction)</h3>
+            <hgroup data-axis="inline">
+                <h1 data-size="2xl">h1 2xl</h1>
+                <p>p (none = md)</p></hgroup>
+            <hgroup data-axis="inline">
+                <h1 data-size="2xl">h1 2xl</h1>
+                <p data-size="md">p md</p></hgroup>
+            <hgroup data-axis="inline">
+                <h1 data-size="xl">h1 xl</h1>
+                <p data-size="xs">p xs</p></hgroup>
+            <hgroup data-axis="inline">
+                <h1 data-size="lg">h1 lg</h1>
+                <p data-size="md">p md</p></hgroup>
+            <hgroup data-axis="inline">
+                <h1 data-size="md">h1 md</h1>
+                <p data-size="sm">p sm</p></hgroup>
+            <hgroup data-axis="inline">
+                <h1 data-size="xs">h1 xs</h1>
+                <p data-size="2xl">p 2xl</p></hgroup></section>
+
+        <section data-sign="rule">
+            <h3>multi-line p (pre-wrap)</h3>
+            <hgroup data-axis="inline">
+                <h1 data-size="lg">h1 lg</h1>
+                <p>line1
+line2</p></hgroup></section>
+</section>
+
     <section>
         <h2>Error summary & detail</h2>
         <section data-sign="rule">
@@ -630,7 +702,7 @@
             <input type="text" data-size="xl" id="error-name-xl" aria-describedby="error-name-xl-message" aria-invalid="true">
             <label for="error-name-2xl">氏名 (2xl)</label>
             <p data-type="error" data-sign="rule" data-size="2xl" id="error-name-2xl-message"><strong>エラー:</strong> 氏名を入力してください</p>
-            <input type="text" data-size="2xl" id="error-name-2xl" aria-describedby="error-name-2xl-message" aria-invalid="true"></section>
+            <input type="text" data-size="2xl" id="error-name-2xl" aria-describedby="error-name-2xl-message" aria-invalid="true"></section></section>
 
     <section>
         <h2>Table</h2>

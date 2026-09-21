@@ -11,83 +11,24 @@
     }
 
     hgroup > p {
-        font-size:      var(--sm-font-size);
-        font-weight:    bold;
-        letter-spacing: var(--sm-letter-spacing);
-        line-height:    var(--sm-line-height);
+        font-weight: bold;
     }
 
     /* [data-axis="inline"] */
 
-    hgroup[data-axis="inline"] > *:where(h1, h2, h3, h4, h5, h6, p) {
-        display:        inline flow-root;
-        vertical-align: bottom;
+    /*  The heading is inline flow so that the line box aligns on its text
+        baseline; the p stays inline flow-root so pre-wrap newlines are kept
+        inside it. Baseline alignment needs no per-size correction, so any
+        combination of heading and p data-size lines up. */
+
+    hgroup[data-axis="inline"] > *:where(h1, h2, h3, h4, h5, h6) {
+        display:        inline flow;
+        vertical-align: baseline;
     }
 
     hgroup[data-axis="inline"] > p {
-        white-space: pre-wrap;
-    }
-
-    /* --- size --- */
-
-    hgroup[data-axis="inline"]:has(> *:where(h1, h2, h3, h4, h5, h6)[data-size="xs"])
-        > *:where(h1, h2, h3, h4, h5, h6) {
-        padding-bottom: max(0rem, calc((var(--sm-line-height) - var(--sm-font-size) - var(--xs-line-height) + var(--xs-font-size)) / 2));
-    }
-    hgroup[data-axis="inline"]:has(> *:where(h1, h2, h3, h4, h5, h6)[data-size="xs"])
-        > p {
-        padding-bottom: max(0rem, calc((var(--xs-line-height) - var(--xs-font-size) - var(--sm-line-height) + var(--sm-font-size)) / 2));
-    }
-
-    hgroup[data-axis="inline"]:has(> *:where(h1, h2, h3, h4, h5, h6)[data-size="md"])
-        > *:where(h1, h2, h3, h4, h5, h6),
-    hgroup[data-axis="inline"]:has(> *:where(h4, h5, h6):not([data-size]))
-        > *:where(h1, h2, h3, h4, h5, h6) {
-        padding-bottom: max(0rem, calc((var(--sm-line-height) - var(--sm-font-size) - var(--md-line-height) + var(--md-font-size)) / 2));
-    }
-    hgroup[data-axis="inline"]:has(> *:where(h1, h2, h3, h4, h5, h6)[data-size="md"])
-        > p,
-    hgroup[data-axis="inline"]:has(> *:where(h4, h5, h6):not([data-size]))
-        > p {
-        padding-bottom: max(0rem, calc((var(--md-line-height) - var(--md-font-size) - var(--sm-line-height) + var(--sm-font-size)) / 2));
-    }
-
-    hgroup[data-axis="inline"]:has(> *:where(h1, h2, h3, h4, h5, h6)[data-size="lg"])
-        > *:where(h1, h2, h3, h4, h5, h6),
-    hgroup[data-axis="inline"]:has(> h3:not([data-size]))
-        > *:where(h1, h2, h3, h4, h5, h6) {
-        padding-bottom: max(0rem, calc((var(--sm-line-height) - var(--sm-font-size) - var(--lg-line-height) + var(--lg-font-size)) / 2));
-    }
-    hgroup[data-axis="inline"]:has(> *:where(h1, h2, h3, h4, h5, h6)[data-size="lg"])
-        > p,
-    hgroup[data-axis="inline"]:has(> h3:not([data-size]))
-        > p {
-        padding-bottom: max(0rem, calc((var(--lg-line-height) - var(--lg-font-size) - var(--sm-line-height) + var(--sm-font-size)) / 2));
-    }
-
-    hgroup[data-axis="inline"]:has(> *:where(h1, h2, h3, h4, h5, h6)[data-size="xl"])
-        > *:where(h1, h2, h3, h4, h5, h6),
-    hgroup[data-axis="inline"]:has(> h2:not([data-size]))
-        > *:where(h1, h2, h3, h4, h5, h6) {
-        padding-bottom: max(0rem, calc((var(--sm-line-height) - var(--sm-font-size) - var(--xl-line-height) + var(--xl-font-size)) / 2));
-    }
-    hgroup[data-axis="inline"]:has(> *:where(h1, h2, h3, h4, h5, h6)[data-size="xl"])
-        > p,
-    hgroup[data-axis="inline"]:has(> h2:not([data-size]))
-        > p {
-        padding-bottom: max(0rem, calc((var(--xl-line-height) - var(--xl-font-size) - var(--sm-line-height) + var(--sm-font-size)) / 2));
-    }
-
-    hgroup[data-axis="inline"]:has(> *:where(h1, h2, h3, h4, h5, h6)[data-size="2xl"])
-        > *:where(h1, h2, h3, h4, h5, h6),
-    hgroup[data-axis="inline"]:has(> h1:not([data-size]))
-        > *:where(h1, h2, h3, h4, h5, h6) {
-        padding-bottom: max(0rem, calc((var(--sm-line-height) - var(--sm-font-size) - var(--2xl-line-height) + var(--2xl-font-size)) / 2));
-    }
-    hgroup[data-axis="inline"]:has(> *:where(h1, h2, h3, h4, h5, h6)[data-size="2xl"])
-        > p,
-    hgroup[data-axis="inline"]:has(> h1:not([data-size]))
-        > p {
-        padding-bottom: max(0rem, calc((var(--2xl-line-height) - var(--2xl-font-size) - var(--sm-line-height) + var(--sm-font-size)) / 2));
+        display:        inline flow-root;
+        vertical-align: baseline;
+        white-space:    pre-wrap;
     }
 }

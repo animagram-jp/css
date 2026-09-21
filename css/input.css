@@ -11,6 +11,21 @@
             <option></option></select></label>
 
     <textarea></textarea>
+
+    Password with a reveal toggle. The button is a plain text control, per
+    GOV.UK and USWDS, because an eye glyph cannot say whether it reports the
+    current state or the action; its label is the caller's to translate.
+    Start it hidden and let the script unhide it, so a page without script
+    keeps a working password field instead of a dead button.
+
+    The label is fixed and aria-pressed carries the state, as a control that
+    holds its place should not restyle its own sign. That also spares a live
+    region: a pressed change is announced by assistive technology already.
+
+    <label>
+        <span></span>
+        <input type="password" autocomplete="current-password" id="password">
+        <button type="button" aria-controls="password" aria-pressed="false" hidden></button></label>
 */
 
 @layer css.input {
@@ -50,6 +65,13 @@
         text-align: right;
     }
 
+    /*  Edge ships its own reveal control. Hide it so the page does not show
+        two toggles that disagree with each other. */
+
+    *:where(input[type="password"])::-ms-reveal {
+        display: none;
+    }
+
     select:not([data-facet]) {
         appearance: auto;
     }
@@ -76,5 +98,18 @@
     }
     label > select[data-facet="chevron"][data-size="2xl"] {
         padding-inline-end: calc(var(--2xl-box-height) * 0.6);
+    }
+
+    /* === required ===
+
+        Usage:
+
+        <label>
+            <span></span>
+            <input required></input></label>
+    */
+    *:where(label):has(:required) > span:first-child::after {
+        color:   var(--color-error);
+        content: "*";
     }
 }
