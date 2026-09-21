@@ -117,14 +117,6 @@
     *:where(
         input[data-sign="check"],
         label > input[type="checkbox"]:not([role="switch"])
-    ) {
-        appearance: none;
-        position:   relative;
-    }
-
-    *:where(
-        input[data-sign="check"],
-        label > input[type="checkbox"]:not([role="switch"])
     )::before {
         border-color: currentColor;
         border-style: solid;
@@ -451,6 +443,17 @@
         position:             absolute;
         z-index:              2;
     }
+
+    @media (prefers-reduced-motion: no-preference) {
+        *:where(
+            *[data-facet="chevron"]:not(select),
+            summary:not([data-facet]),
+            button[aria-haspopup="listbox"]:not([data-facet]),
+            label:has(> select[data-facet="chevron"])
+        )::after {
+            transition: transform 0.15s ease;
+        }
+    }    
 
     /* --- size --- */
 

@@ -41,12 +41,10 @@
     }
 
     label > input[type="checkbox"][role="switch"] {
-        appearance:       none;
         background-color: var(--color-ink-mix);
         border-color:     var(--color-ink);
         border-style:     solid;
         cursor:           pointer;
-        position:         relative;
         margin:           0;
     }
 
@@ -65,7 +63,7 @@
         background:      var(--color-paper);
         border-color:    var(--color-ink);
         border-style:    solid;
-        color:           var(--color-ink-mix);
+        color:           var(--color-ink);
         content:         "OFF";
         display:         flex;
         font-weight:     bold;
@@ -83,7 +81,6 @@
 
     label > input[type="checkbox"][role="switch"]:checked::after {
         content: "ON";
-        color:   var(--color-ink);
     }
 
     /* label[data-type="knob-only"] */
@@ -238,41 +235,8 @@
         transform: translateX(calc(calc(var(--2xl-box-height) - var(--2xl-border-width) * 4) * var(--toggle-dir, 1)));
     }
 
-    /* --- focus, hover, active --- */
-
-    label > input[type="checkbox"][role="switch"]:where(
-        :focus-visible,
-        :hover,
-        :active
-    ) {
-        outline-color:  var(--color-focus);
-        outline-offset: 0;
-        outline-style:  solid;
-        outline-width:  0.25rem;
-        z-index:        1;
-    }
-
-    @media (forced-colors: active) {
-        label > input[type="checkbox"][role="switch"]:where(
-            :focus-visible,
-            :hover,
-            :active
-        ) {
-            outline-color: Highlight;
-        }
-    }
-
     /* --- disabled --- */
 
-    label > input[type="checkbox"][role="switch"]:where(
-        :disabled,
-        [aria-disabled="true"]
-    ) {
-        border-color:   var(--color-ink-mix);
-        cursor:         not-allowed;
-        outline-color:  transparent;
-        pointer-events: none;
-    }
     label > input[type="checkbox"][role="switch"]:is(
         :disabled,
         [aria-disabled="true"]
@@ -282,12 +246,6 @@
     }
 
     @media (forced-colors: active) {
-        label > input[type="checkbox"][role="switch"]:where(
-            :disabled,
-            [aria-disabled="true"]
-        ) {
-            border-color: GrayText;
-        }
         label > input[type="checkbox"][role="switch"]:is(
             :disabled,
             [aria-disabled="true"]

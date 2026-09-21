@@ -8,7 +8,6 @@
     /* === track === */
 
     input[type="range"] {
-        appearance:       none;
         background-color: var(--color-paper);
         cursor:           pointer;
         display:          inline-block;
@@ -253,14 +252,6 @@
         scale:            1.15;
     }
 
-    input[type="range"]:focus-visible {
-        outline-color:  var(--color-focus);
-        outline-offset: 0;
-        outline-style:  solid;
-        outline-width:  0.25rem;
-        z-index:        1;
-    }
-
     /* === :user-invalid, [aria-invalid="true"] === */
 
     input[type="range"]:where(
@@ -287,23 +278,8 @@
     )::-moz-range-thumb {
         border-color: var(--color-error);
     }
-    input[type="range"]:where(
-        :user-invalid,
-        [aria-invalid="true"]
-    ):focus-visible {
-        outline-color: var(--color-error);
-    }
-
     /* === :disabled, [aria-disabled="true"] === */
 
-    input[type="range"]:where(
-        :disabled,
-        [aria-disabled="true"]
-    ) {
-        cursor:         not-allowed;
-        outline-color:  transparent;
-        pointer-events: none;
-    }
     input[type="range"]:where(
         :disabled,
         [aria-disabled="true"]
@@ -352,9 +328,6 @@
         input[type="range"]:focus-visible::-moz-range-thumb {
             background-color: Highlight;
             border-color:     CanvasText;
-        }
-        input[type="range"]:focus-visible {
-            outline-color: Highlight;
         }
         input[type="range"]:where(
             :user-invalid,

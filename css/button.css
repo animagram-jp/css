@@ -1,41 +1,22 @@
+/*
+    Usage:
+
+    <a></a>
+    <button></button>
+    <input type="button">
+    <input type="submit">
+    <input type="reset">
+    <summary></summary>
+*/
+
 @layer css.button {
 
-    /* === color, layout === */
-
-    summary {
-        cursor:      pointer;
-        list-style:  none;
-        position:    relative; /* summary::after {position: absolute}, :focus-visible {z-index:1} */
-        user-select: none;
+    *:where(button, [type="button"], [type="submit"], [type="reset"]) {
+        font-weight: bold;
     }
 
-    summary ~ *:first-of-type {
-        margin: 0;
-    }
-
-    @media (prefers-reduced-motion: no-preference) {
-        summary::after {
-            transition: transform 0.15s ease;
-        }
-    }
-
-    button,
-    *:where(a):where(
-        [data-style="fill"],
-        [data-style="outline"]
-    ) {
-        cursor:      pointer;
-        display:     inline flow-root;
-        user-select: none;
-        width:       auto;
-    }
-
-    *:where(summary):where(
-        [data-style="fill"],
-        [data-style="outline"]
-    ) {
-        display: inline flow-root;
-        width:   auto;
+    summary:not([data-surround]) {
+        display: block;
     }
 
     @media (forced-colors: active) {
@@ -49,51 +30,11 @@
         }
     }
 
-    /* === size === */
-
-    summary[data-size="xs"] {
-        padding-inline-end: calc(var(--xs-border-radius) * 2 + var(--xs-font-size) * 0.75 * 1.06);
-    }
-
-    summary[data-size="sm"] {
-        padding-inline-end: calc(var(--sm-border-radius) * 2 + var(--sm-font-size) * 0.75 * 1.06);
-    }
-
-    summary:not([data-size]),
-    summary[data-size="md"] {
-        padding-inline-end: calc(var(--md-border-radius) * 2 + var(--md-font-size) * 0.75 * 1.06);
-    }
-
-    summary[data-size="lg"] {
-        padding-inline-end: calc(var(--lg-border-radius) * 2 + var(--lg-font-size) * 0.6 * 1.06);
-    }
-
-    summary[data-size="xl"] {
-        padding-inline-end: calc(var(--xl-border-radius) * 2 + var(--xl-font-size) * 0.6 * 1.06);
-    }
-
-    summary[data-size="2xl"] {
-        padding-inline-end: calc(var(--2xl-border-radius) * 2 + var(--2xl-font-size) * 0.6 * 1.06);
-    }
-
-    /* === focus === */
-
-    *:where(
-        a,
-        button
-    ):where(
-        [data-style="fill"],
-        [data-style="outline"]
-    ),
-    button:not([data-style]) {
-        font-weight: bold;
-    }
-
     /* === visited === */
 
     *:where(a):not(
-        [data-style="fill"],
-        [data-style="outline"]
+        [data-surround="fill"],
+        [data-surround="outline"]
     ):visited:not(:hover):not(:focus-visible):not([aria-disabled="true"]) {
         color: var(--color-visited);
     }
@@ -101,109 +42,6 @@
     @media (forced-colors: active) {
         *:where(a):visited:not(:focus-visible):not([aria-disabled="true"]) {
             color: VisitedText;
-        }
-    }
-
-    /* === hover === */
-
-    @media (hover: hover) {
-        *:where(a, button, summary):hover {
-            text-decoration-color:     currentColor;
-            text-decoration-line:      underline;
-            text-decoration-thickness: max(0.1875rem, 0.12em);
-            text-underline-offset:     0.3em; /* font requirement: 0.25em < x <= 0.351em */
-        }
-    }
-
-    /* === invalid === */
-
-    *:where(a, button, summary):where(
-        :user-invalid,
-        [aria-invalid="true"]
-    ) {
-        border-color: var(--color-error);
-    }
-
-    *:where(a, button, summary):where(
-        :user-invalid,
-        [aria-invalid="true"]
-    ):focus-visible {
-        outline-color: var(--color-error);
-    }
-
-    @media (forced-colors: active) {
-        *:where(a, button, summary):where(
-            :user-invalid,
-            [aria-invalid="true"]
-        ) {
-            border-color: Mark;
-        }
-        *:where(a, button, summary):where(
-            :user-invalid,
-            [aria-invalid="true"]
-        ):focus-visible {
-            outline-color: Mark;
-        }
-    }
-
-    /* === active === */
-
-    *:where(a, button, summary)[data-style="fill"]:active,
-    button:not([data-style]):active {
-        background-color: var(--color-emphasis-ink-mix);
-        border-color:     transparent;
-    }
-
-    *:where(a, button, summary)[data-style="outline"]:active {
-        background-color: var(--color-paper-mix);
-        border-color:     var(--color-emphasis-ink-mix);
-        color:            var(--color-emphasis-ink);
-    }
-
-    *:where(a, button, summary)[data-style="underline"]:active,
-    *:where(a:any-link):not([data-style]):active,
-    summary:not([data-style]):active {
-        color: var(--color-emphasis-ink-mix);
-    }
-
-    @media (forced-colors: active) {
-        *:active {
-            color: ActiveText;
-        }
-    }
-
-    /* === disabled === */
-
-    *:where(
-        [data-style="outline"],
-        [data-style="underline"]
-    ):where(
-        :disabled,
-        [aria-disabled="true"]
-    ),
-    *:where(a, button, summary)[aria-disabled="true"] {
-        border-color:   var(--color-ink-mix);
-        color:          var(--color-ink-mix);
-        cursor:         not-allowed;
-        outline-color:  transparent;
-        pointer-events: none;
-    }
-
-    *:where(
-        [data-style="fill"],
-        button:not([data-style])
-    ):where(
-        :disabled,
-        [aria-disabled="true"]
-    ) {
-        background-color: var(--color-ink-mix);
-        color:            var(--color-paper);
-        pointer-events:   none;
-    }
-    @media (forced-colors: active) {
-        *:where(:disabled, [aria-disabled="true"]) {
-            border-color: GrayText;
-            color:        GrayText;
         }
     }
 }

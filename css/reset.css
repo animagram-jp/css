@@ -158,9 +158,14 @@
     }
     
     /* preformatted text - use only for this feature */
-    :where(pre) {
+    pre {
         all: revert;
         box-sizing: border-box;
+    }
+
+    /* Remove list styles (bullets/numbers). */
+    ol, ul, menu, summary {
+        list-style: none;
     }
     
     /* reset default text opacity of input placeholder. */
@@ -177,13 +182,7 @@
     :-moz-ui-invalid { /* per tailwind-preflight.css:365-371 */
         box-shadow: none;
     }
-    
-    button,
-    input:where([type='button'], [type='reset'], [type='submit']),
-    ::file-selector-button { /* per tailwind-preflight.css:373-381 */
-        appearance: button;
-    }
-    
+
     ::-webkit-inner-spin-button,
     ::-webkit-outer-spin-button { /* per tailwind-preflight.css:383-390 */
         height: auto;

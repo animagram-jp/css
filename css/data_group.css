@@ -49,9 +49,9 @@
             ),
             select,
             textarea
-        ):not([data-style]),
-        *[data-style="fill"],
-        *[data-style="outline"]
+        ):not([data-surround]),
+        *[data-surround="fill"],
+        *[data-surround="outline"]
     ):not(:last-child),
     *:where(
         search,
@@ -102,9 +102,9 @@
             ),
             select,
             textarea
-        ):not([data-style]),
-        *[data-style="fill"],
-        *[data-style="outline"]
+        ):not([data-surround]),
+        *[data-surround="fill"],
+        *[data-surround="outline"]
     ),
     *:where(
         search,

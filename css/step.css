@@ -17,7 +17,6 @@
 
     label:has(> input[role="spinbutton"]) > button {
         padding-inline: 0;
-        position:       relative;
     }
 
     label:has(> input[role="spinbutton"]) > button[data-action]:empty::after,
@@ -514,23 +513,4 @@
         }
     }
 
-    /* :disabled, [aria-disabled="true"] */
-
-    [data-axis="block"] > label > input[type="radio"]:where(
-        :disabled,
-        [aria-disabled="true"]
-    ) {
-        color:          var(--color-ink-mix);
-        cursor:         not-allowed;
-        pointer-events: none;
-    }
-
-    @media (forced-colors: active) {
-        [data-axis="block"] > label > input[type="radio"]:where(
-            :disabled,
-            [aria-disabled="true"]
-        ) {
-            color: GrayText;
-        }
-    }
 }

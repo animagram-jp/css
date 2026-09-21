@@ -12,10 +12,10 @@
 /* monospace font, block and copy button */
 pre, pre > code, pre > samp {}
 
-/* kbd: [data-style="outline"], [data-style="fill"] */
+/* kbd: [data-surround="outline"], [data-surround="fill"] */
 kbd {}
 
-/* card: [data-style="outline"], [data-style="fill"] */
+/* card: [data-surround="outline"], [data-surround="fill"] */
 article > header, footer {}
 
 

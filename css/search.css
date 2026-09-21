@@ -36,21 +36,6 @@
 */
 
 @layer css.search {
-
-    /* === color, layout, size === */
-
-    /* === container (search, form[role="search"]) ===
-
-       white-space, child vertical-align, leading-label spacing, squared
-       inner corners and the shared button border colour are all covered by
-       data_group.css's [data-group="inline"] style, which also matches
-       *:where(search, form[role="search"]) by tag. Nothing left to add
-       here for the container itself. */
-
-    /* --- focus --- */
-
-    /* === label === */
-
     label:has(> input[type="search"]) {
         display:  inline flow-root;
         position: relative;
@@ -61,17 +46,10 @@
         position: relative;
     }
 
-    /* leading label text ahead of the group (search > span) */
-
     *:where(search, form[role="search"]) > span {
         margin-inline-end: 0.5em;
     }
 
-    /* === magnifier (label:has(> input[type="search"]) pseudo-elements) === */
-
-    /*  Decorative; lens (::before) + handle (::after), drawn with
-        border/background-color rather than background-image so it survives
-        forced-colors. Sized in rem per [data-size], against --*-box-height. */
     label:has(> input[type="search"])::before,
     label:has(> input[type="search"])::after {
         color:          var(--color-ink-mix);
@@ -184,9 +162,6 @@
         }
     }
 
-    /* === search box (label > input[type="search"]) === */
-
-    /* Sizing, border, focus and disabled come from css.input. */
     label > input[type="search"][data-size="xs"] {
         padding-inline-start: calc(var(--xs-box-height) * 0.75);
     }
@@ -212,21 +187,6 @@
 
     label > input[type="search"][data-size="2xl"] {
         padding-inline-start: calc(var(--2xl-box-height) * 0.75);
-    }
-
-    /* === scope select (label > select[data-facet="chevron"]) ===
-
-       [data-facet="chevron"] is required (part.css), not implicit: a select
-       inside a label is just how you label one, and says nothing about
-       wanting its native marker replaced. appearance:none and the extra
-       end padding below only make sense together with that replacement
-       marker, so both stay scoped to it too -- an ordinary labelled select
-       here keeps its native appearance untouched. select itself can't take
-       the ::after chevron (data_sign.css), so that part is drawn on the
-       enclosing label, reached via label:has(> select[data-facet="chevron"]). */
-
-    label > select[data-facet="chevron"] {
-        appearance: none;
     }
 
     label > select[data-facet="chevron"][data-size="xs"] {

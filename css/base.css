@@ -5,6 +5,7 @@
     css.data_size,
     css.data_sign,
     css.data_group,
+    
     css.input,
     css.button,
     css.checkbox,
@@ -15,7 +16,7 @@
     css.table,
     css.slider,
     css.step,
-    css.list-box, /* order dependency: radio, list-box */
+    css.listbox, /* order dependency: radio, list-box */
     css.error,
     css.toast;
 
@@ -272,15 +273,6 @@
         display: none !important;
     }
 
-    *:focus-visible {
-        outline-color: var(--color-focus);
-    }
-    @media (forced-colors: active) {
-        *:focus-visible {
-            outline-color: Highlight;
-        }
-    }
-
     mark {
         background-color: color-mix(in srgb, var(--color-highlight-ink) 70%, var(--color-paper));
         color: var(--color-ink);
@@ -289,8 +281,8 @@
         background-color: var(--color-highlight-ink);
         color: var(--color-paper);
     }
-    [data-style="fill"] ::selection,
-    [data-style="fill"]::selection {
+    [data-surround="fill"] ::selection,
+    [data-surround="fill"]::selection {
         background-color: var(--color-highlight-paper);
         color: var(--color-ink);
     }

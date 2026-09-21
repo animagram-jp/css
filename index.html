@@ -13,7 +13,7 @@
     <link rel="stylesheet" href="./css/data_group.css">
     <link rel="stylesheet" href="./css/input.css">
     <link rel="stylesheet" href="./css/button.css">
-    <link rel="stylesheet" href="./css/list-box.css">
+    <link rel="stylesheet" href="./css/listbox.css">
     <link rel="stylesheet" href="./css/toggle.css">
     <link rel="stylesheet" href="./css/checkbox.css">
     <link rel="stylesheet" href="./css/radio.css">
@@ -53,17 +53,7 @@
                 <input type="radio" name="color-scheme" value="dark"></label>
             <label>
                 <span>dark-high-contrast</span>
-                <input type="radio" name="color-scheme" value="dark-high-contrast"></label></fieldset>
-
-    </header>
-
-    <section>
-        <h2>Select</h2>
-        <section>
-            <label>
-                <select data-facet="chevron">
-                    <option>option</option>
-                    <option>option</option></select></label></section></section>
+                <input type="radio" name="color-scheme" value="dark-high-contrast"></label></fieldset></header>
 
     <section>
         <h2>input, select, textarea</h2>
@@ -141,16 +131,16 @@
                 <summary data-size="2xl">Summary</summary>
                 <p>Details</p></details></section>
         <section data-sign="rule">
-            <h3>[data-style="fill"], [data-style="outline"], [data-style="underline"]</h3>
-            <button type="button" data-style="outline">Button</button>
+            <h3>[data-surround="fill"], [data-surround="outline"], [data-style="underline"]</h3>
+            <button type="button" data-surround="outline">Button</button>
             <button type="button" data-style="underline">Button</button>
-            <a href="#anchor" data-style="fill">Anchor</a>
-            <a href="#anchor" data-style="outline">Anchor</a>
+            <a href="#anchor" data-surround="fill">Anchor</a>
+            <a href="#anchor" data-surround="outline">Anchor</a>
             <details  data-axis="inline">
-                <summary data-style="fill">Summary</summary>
+                <summary data-surround="fill">Summary</summary>
                 <p>Details</p></details>
             <details>
-                <summary data-style="outline">Summary</summary>
+                <summary data-surround="outline">Summary</summary>
                 <p>Details</p></details></section>
         <section data-sign="rule">
             <h3>:disabled, [aria-disabled="true"]</h3>
@@ -162,7 +152,7 @@
     <section>
         <h2>List box</h2>
         <section data-sign="rule">
-            <button type="button" id="list-box-1-trigger" popovertarget="list-box-1" aria-haspopup="listbox" aria-controls="list-box-1">button[aria-haspopup="listbox"]</button>
+            <button type="button" id="list-box-1-trigger" popovertarget="list-box-1" aria-haspopup="listbox" aria-controls="list-box-1" data-surround="outline">button[aria-haspopup="listbox"]</button>
             <ul id="list-box-1" popover="auto" role="listbox" aria-labelledby="list-box-1-trigger">
                 <li role="presentation">li[role="presentation"]</li>
                 <li role="option" aria-selected="true">
@@ -174,7 +164,7 @@
                 <li role="option">
                     <button>button</button></li></ul>
             <h3>disabled</h3>
-            <button type="button" id="list-box-8-trigger" popovertarget="list-box-8" aria-haspopup="listbox" aria-controls="list-box-8" disabled>button[aria-haspopup="listbox"]:disalbed</button>
+            <button type="button" id="list-box-8-trigger" popovertarget="list-box-8" aria-haspopup="listbox" aria-controls="list-box-8" data-surround="outline" disabled>button[aria-haspopup="listbox"]:disalbed</button>
             <ul id="list-box-8" popover="auto" role="listbox" aria-labelledby="list-box-8-trigger">
                 <li role="presentation">li[role="presentation"]</li>
                 <li role="option" aria-selected="true">
@@ -469,11 +459,11 @@
                 <input type="text" inputmode="numeric" pattern="[0-9]*" role="spinbutton" value="10" size="4">
                 <button type="button" data-action="increment">増</button></label></section>
         <section data-sign="rule">
-            <h3>[data-style="outline"]</h3>
+            <h3>[data-surround="outline"]</h3>
             <label data-group="inline">
-                <button type="button" data-action="decrement" data-style="outline"></button>
+                <button type="button" data-action="decrement" data-surround="outline"></button>
                 <input type="text" inputmode="numeric" pattern="[0-9]*" role="spinbutton" value="10" size="4">
-                <button type="button" data-action="increment" data-style="outline"></button></label></section>
+                <button type="button" data-action="increment" data-surround="outline"></button></label></section>
         <section data-sign="rule">
             <h3>:user-invalid, [aria-invalid="true"]</h3>
             <label data-group="inline">
@@ -915,15 +905,15 @@
 
     <section>
         <h2>Toast</h2>
-        <button type="button" onclick="jsFn.show(document.getElementById('toast_output-1'))">show (data-style="fill")</button>
-        <button type="button" onclick="jsFn.show(document.getElementById('toast_output-2'))">show data-style="outline"</button></section>
+        <button type="button" onclick="jsFn.show(document.getElementById('toast_output-1'))">show (data-surround="fill")</button>
+        <button type="button" onclick="jsFn.show(document.getElementById('toast_output-2'))">show data-surround="outline"</button></section>
 
     <section id="toast" data-type="toast">
         <output id="toast_output-1" class="hidden">
             <span id="toast_output-1_span">span:</span>
-            <p id="toast_output-1_p">(data-style="fill")</p></output>
-        <button data-sign="x"  data-size="2xl" data-style="outline" id="toast_output-2" class="hidden" onclick="jsFn.hide(this.closest('button'))">
+            <p id="toast_output-1_p">(data-surround="fill")</p></output>
+        <button data-sign="x"  data-size="2xl" data-surround="outline" id="toast_output-2" class="hidden" onclick="jsFn.hide(this.closest('button'))">
             <span id="toast_output-2_span">span:</span>
-            <p id="toast_output-2_p">data-style="outline"</p></button></section>
+            <p id="toast_output-2_p">data-surround="outline"</p></button></section>
 
 </body></html>
