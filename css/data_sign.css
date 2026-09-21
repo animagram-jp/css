@@ -6,7 +6,8 @@
         *[data-sign],
         *[data-facet],
         summary:not([data-facet]),
-        button[aria-haspopup="listbox"]:not([data-facet])
+        button[aria-haspopup="listbox"]:not([data-facet]),
+        label:has(> select[data-facet="chevron"])
     ) {
         position: relative;
     }

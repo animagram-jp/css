@@ -1,4 +1,6 @@
 /*
+    Usage:
+
     <label>
         <input type="search"></label>
 
@@ -37,17 +39,11 @@
 
 @layer css.search {
     label:has(> input[type="search"]) {
-        display:  inline flow-root;
-        position: relative;
-    }
-
-    label:has(> select[data-facet="chevron"]) {
-        display:  inline flow-root;
         position: relative;
     }
 
     *:where(search, form[role="search"]) > span {
-        margin-inline-end: 0.5em;
+        margin-inline-end: 0.5rem;
     }
 
     label:has(> input[type="search"])::before,
@@ -71,6 +67,15 @@
         transform-origin: top center;
     }
 
+    @media (forced-colors: active) {
+        label:has(> input[type="search"])::before,
+        label:has(> input[type="search"])::after {
+            color: FieldText;
+        }
+    }
+
+    /* --- size --- */
+
     label:has(> input[type="search"][data-size="xs"])::before {
         block-size:         calc(var(--xs-box-height) / 4);
         border-width:       var(--xs-border-width);
@@ -83,7 +88,6 @@
         inset-inline-start: calc(var(--xs-box-height) * 0.375 + var(--xs-box-height) / 8 * 0.707 - var(--xs-border-width) / 2);
         transform:          translateY(calc(var(--xs-box-height) / 8 * 0.707 + var(--xs-box-height) / 12)) rotate(-45deg);
     }
-
     label:has(> input[type="search"][data-size="sm"])::before {
         block-size:         calc(var(--sm-box-height) / 4);
         border-width:       var(--sm-border-width);
@@ -96,7 +100,6 @@
         inset-inline-start: calc(var(--sm-box-height) * 0.375 + var(--sm-box-height) / 8 * 0.707 - var(--sm-border-width) / 2);
         transform:          translateY(calc(var(--sm-box-height) / 8 * 0.707 + var(--sm-box-height) / 12)) rotate(-45deg);
     }
-
     label:has(> input[type="search"]:where(
         [data-size="md"],
         :not([data-size])
@@ -115,7 +118,6 @@
         inset-inline-start: calc(var(--md-box-height) * 0.375 + var(--md-box-height) / 8 * 0.707 - var(--md-border-width) / 2);
         transform:          translateY(calc(var(--md-box-height) / 8 * 0.707 + var(--md-box-height) / 12)) rotate(-45deg);
     }
-
     label:has(> input[type="search"][data-size="lg"])::before {
         block-size:         calc(var(--lg-box-height) / 4);
         border-width:       var(--lg-border-width);
@@ -128,7 +130,6 @@
         inset-inline-start: calc(var(--lg-box-height) * 0.375 + var(--lg-box-height) / 8 * 0.707 - var(--lg-border-width) / 2);
         transform:          translateY(calc(var(--lg-box-height) / 8 * 0.707 + var(--lg-box-height) / 12)) rotate(-45deg);
     }
-
     label:has(> input[type="search"][data-size="xl"])::before {
         block-size:         calc(var(--xl-box-height) / 4);
         border-width:       var(--xl-border-width);
@@ -141,7 +142,6 @@
         inset-inline-start: calc(var(--xl-box-height) * 0.375 + var(--xl-box-height) / 8 * 0.707 - var(--xl-border-width) / 2);
         transform:          translateY(calc(var(--xl-box-height) / 8 * 0.707 + var(--xl-box-height) / 12)) rotate(-45deg);
     }
-
     label:has(> input[type="search"][data-size="2xl"])::before {
         block-size:         calc(var(--2xl-box-height) / 4);
         border-width:       var(--2xl-border-width);
@@ -153,13 +153,6 @@
         inline-size:        var(--2xl-border-width);
         inset-inline-start: calc(var(--2xl-box-height) * 0.375 + var(--2xl-box-height) / 8 * 0.707 - var(--2xl-border-width) / 2);
         transform:          translateY(calc(var(--2xl-box-height) / 8 * 0.707 + var(--2xl-box-height) / 12)) rotate(-45deg);
-    }
-
-    @media (forced-colors: active) {
-        label:has(> input[type="search"])::before,
-        label:has(> input[type="search"])::after {
-            color: FieldText;
-        }
     }
 
     label > input[type="search"][data-size="xs"] {
@@ -187,32 +180,5 @@
 
     label > input[type="search"][data-size="2xl"] {
         padding-inline-start: calc(var(--2xl-box-height) * 0.75);
-    }
-
-    label > select[data-facet="chevron"][data-size="xs"] {
-        padding-inline-end: calc(var(--xs-box-height) * 0.6);
-    }
-
-    label > select[data-facet="chevron"][data-size="sm"] {
-        padding-inline-end: calc(var(--sm-box-height) * 0.6);
-    }
-
-    label > select[data-facet="chevron"]:where(
-        [data-size="md"],
-        :not([data-size])
-    ) {
-        padding-inline-end: calc(var(--md-box-height) * 0.6);
-    }
-
-    label > select[data-facet="chevron"][data-size="lg"] {
-        padding-inline-end: calc(var(--lg-box-height) * 0.6);
-    }
-
-    label > select[data-facet="chevron"][data-size="xl"] {
-        padding-inline-end: calc(var(--xl-box-height) * 0.6);
-    }
-
-    label > select[data-facet="chevron"][data-size="2xl"] {
-        padding-inline-end: calc(var(--2xl-box-height) * 0.6);
     }
 }

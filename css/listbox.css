@@ -15,7 +15,10 @@
 
 @layer css.listbox {
 
-    button[aria-haspopup="listbox"] {
+    button[aria-haspopup="listbox"]:not(
+        :disabled,
+        [aria-disabled="true"]
+    ) {
         color: var(--color-ink);
     }
 

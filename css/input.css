@@ -5,6 +5,10 @@
     
     <select>
         <option></option></select>
+        
+    <label>
+        <select data-facet="chevron">
+            <option></option></select></label>
 
     <textarea></textarea>
 */
@@ -22,14 +26,9 @@
         select,
         textarea
     ) {
-        background-color: var(--color-paper);
-        border-color:     var(--color-ink-mix);
-        border-style:     solid;
-        color:            var(--color-ink);
         field-sizing:     content;
         max-inline-size:  100%;
         min-inline-size:  7ch; /* per https://developer.chrome.com/docs/css-ui/css-field-sizing */
-        vertical-align:   middle;
     }
 
     *:where(
@@ -55,22 +54,27 @@
         appearance: auto;
     }
 
-    @media (forced-colors: active) {
-        *:where(
-            input:is(
-                [type="text"],
-                [type="email"],
-                [type="password"],
-                [type="search"],
-                [type="url"],
-                [type="tel"]
-            ),
-            select,
-            textarea
-        ) {
-            background-color: Field;
-            border-color:     FieldText;
-            color:            FieldText;
-        }
+    /* --- size --- */
+
+    label > select[data-facet="chevron"][data-size="xs"] {
+        padding-inline-end: calc(var(--xs-box-height) * 0.75);
+    }
+    label > select[data-facet="chevron"][data-size="sm"] {
+        padding-inline-end: calc(var(--sm-box-height) * 0.6);
+    }
+    label > select[data-facet="chevron"]:where(
+        [data-size="md"],
+        :not([data-size])
+    ) {
+        padding-inline-end: calc(var(--md-box-height) * 0.6);
+    }
+    label > select[data-facet="chevron"][data-size="lg"] {
+        padding-inline-end: calc(var(--lg-box-height) * 0.6);
+    }
+    label > select[data-facet="chevron"][data-size="xl"] {
+        padding-inline-end: calc(var(--xl-box-height) * 0.6);
+    }
+    label > select[data-facet="chevron"][data-size="2xl"] {
+        padding-inline-end: calc(var(--2xl-box-height) * 0.6);
     }
 }

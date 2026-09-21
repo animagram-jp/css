@@ -12,7 +12,7 @@
     css.toggle,
     css.radio,
     css.heading,
-    css.search,
+    css.search, /* dependency: input, group */
     css.table,
     css.slider,
     css.step,
@@ -266,6 +266,10 @@
     body:has(:modal) {
         overflow: auto;
         scrollbar-gutter: stable;
+    }
+
+    label:has(> *) {
+        display: inline flow-root;
     }
 
     [hidden],

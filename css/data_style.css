@@ -40,7 +40,46 @@
         width:            auto;
     }
 
-    /* === surround input style: input.css === */
+    /* === surround input style === */
+
+    *:where(
+        input:is(
+            [type="text"],
+            [type="email"],
+            [type="password"],
+            [type="search"],
+            [type="url"],
+            [type="tel"]
+        ),
+        select,
+        textarea
+    ) {
+        background-color: var(--color-paper);
+        border-color:     var(--color-ink-mix);
+        border-style:     solid;
+        color:            var(--color-ink);
+        display:          inline flow-root;
+        vertical-align:   middle;
+    }
+
+    @media (forced-colors: active) {
+        *:where(
+            input:is(
+                [type="text"],
+                [type="email"],
+                [type="password"],
+                [type="search"],
+                [type="url"],
+                [type="tel"]
+            ),
+            select,
+            textarea
+        ) {
+            background-color: Field;
+            border-color:     FieldText;
+            color:            FieldText;
+        }
+    }
 
     /* === default inline style: nothing to define more (expected not focusable) === */
 
