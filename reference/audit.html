@@ -1,106 +1,93 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Accessibility Report — WCAG 2.2 (A, AA) × [data-color-scheme]</title>
-<link rel="icon" href="./animagram.png">
-<link rel="stylesheet" href="../css/reset.css">
-<link rel="stylesheet" href="../css/base.css">
-<link rel="stylesheet" href="../css/data_style.css">
-<link rel="stylesheet" href="../css/data_size.css">
-<link rel="stylesheet" href="../css/data_sign.css">
-<link rel="stylesheet" href="../css/data_group.css">
-<link rel="stylesheet" href="../css/heading.css">
-<link rel="stylesheet" href="../css/table.css">
-<link rel="stylesheet" href="./style.css">
-<style>
-/*  Page-local rules sit after every css.* layer so they win against component
-    defaults. Everything here is layout for this one report; colours and
-    component styling come from the library as-is. */
-@layer css, report;
-
-@layer report {
-    /*  The report is a long scan of one wide table per criterion, so it opts
-        out of the 60rem reading measure the example page uses. */
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Accessibility Report — WCAG 2.2 (A, AA)</title>
+    <link rel="icon" href="data:,">
+    <link rel="icon" href="./animagram.png">
+    <link rel="stylesheet" href="../css/reset.css">
+    <link rel="stylesheet" href="../css/base.css">
+    <link rel="stylesheet" href="../css/data_style.css">
+    <link rel="stylesheet" href="../css/data_size.css">
+    <link rel="stylesheet" href="../css/data_sign.css">
+    <link rel="stylesheet" href="../css/data_group.css">
+    <link rel="stylesheet" href="../css/heading.css">
+    <link rel="stylesheet" href="../css/table.css">
+    <link rel="stylesheet" href="./style.css">
+    <style>
     body > *:where(header, section),
     main {
         max-width: none;
     }
-
+    
     section {
         margin-block-end: 3.5rem;
     }
-
-    /*  The message wraps to a word per line if left to shrink against the
-        path column, which has no natural break points. */
+    
     #detail td:nth-child(3) {
         min-width: 16rem;
     }
-
+    
     td > ul {
         list-style:   none;
         margin-block: 0;
         padding:      0;
     }
-
+    
     td > ul > li + li {
         margin-block-start: 0.5rem;
     }
-
+    
     td > pre {
         margin:      0;
         white-space: pre-wrap;
         word-break:  break-all;
     }
-
-    /*  The bounds line is supporting detail under each element path. */
+    
     td > ul > li > p {
         color:  var(--color-ink-mix);
         margin: 0;
     }
-
-    /*  Node counts read as a column of magnitudes. */
+    
     #summary :where(td, th):nth-child(7),
     #detail  :where(td, th):nth-child(4) {
         text-align: end;
     }
-}
-</style>
+    </style>
 </head>
 <body>
-<header>
-    <hgroup data-sign="rule">
-        <h1>Accessibility report</h1>
-        <p>WCAG 2.2 (A, AA) × [data-color-scheme]</p></hgroup>
-    <p data-size="sm"></p></header>
+    <header>
+        <hgroup data-sign="rule">
+            <h1>Accessibility report</h1>
+            <p>WCAG 2.2 (A, AA) × [data-color-scheme]</p></hgroup>
+        <p data-size="sm"></p></header>
+    
+    <main>
+    <section>
+        <h2>By success criterion</h2>
+        <table id="summary" data-size="xs" data-border="grid" data-stripe>
+        <caption></caption>
+        <thead><tr>
+        <th scope="col">SC</th><th scope="col">Level</th><th scope="col">Name</th><th scope="col">Rule</th>
+        <th scope="col">Outcome</th><th scope="col">Schemes</th><th scope="col">Nodes</th>
+        </tr></thead>
+        <tbody></tbody>
+        </table></section>
+    
+    <div id="detail"></div></main>
 
-<main>
-<section>
-    <h2>By success criterion</h2>
-    <table id="summary" data-size="xs" data-border="grid" data-stripe>
-    <caption></caption>
-    <thead><tr>
-      <th scope="col">SC</th><th scope="col">Level</th><th scope="col">Name</th><th scope="col">Rule</th>
-      <th scope="col">Outcome</th><th scope="col">Schemes</th><th scope="col">Nodes</th>
-    </tr></thead>
-    <tbody></tbody>
-    </table></section>
-
-<div id="detail"></div>
-</main>
-
-<template id="detail-tpl">
-<section>
-  <h2></h2>
-  <table data-size="xs" data-border="grid">
-    <thead><tr>
-      <th scope="col">Rule</th><th scope="col">Outcome</th><th scope="col">Message</th>
-      <th scope="col">Nodes</th><th scope="col">Elements</th></tr></thead>
-    <tbody></tbody>
-  </table>
-</section>
-</template>
+    <template id="detail-tpl">
+    <section>
+    <h2></h2>
+    <table data-size="xs" data-border="grid">
+        <thead><tr>
+        <th scope="col">Rule</th><th scope="col">Outcome</th><th scope="col">Message</th>
+        <th scope="col">Nodes</th><th scope="col">Elements</th></tr></thead>
+        <tbody></tbody>
+    </table>
+    </section>
+    </template>
 
 <script type="module">
 const el = (tag, text) => {
