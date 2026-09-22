@@ -278,21 +278,14 @@
         display: none !important;
     }
 
-    ::selection {
+    ::selection, mark {
         background-color: var(--color-highlight-ink);
         color: var(--color-paper);
     }
-    mark {
-        background-color: color-mix(in srgb, var(--color-highlight-ink) 70%, var(--color-paper));
-        color: var(--color-paper);
-    }
     [data-surround="fill"] > ::selection,
-    [data-surround="fill"]::selection {
+    [data-surround="fill"]::selection,
+    [data-surround="fill"] > mark {
         background-color: var(--color-highlight-paper);
-    }
-    [data-surround="fill"] > mark,
-    [data-surround="fill"] > ::selection,
-    [data-surround="fill"]::selection {
         color: var(--color-ink);
     }
 

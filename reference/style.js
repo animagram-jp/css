@@ -183,4 +183,24 @@ document.querySelectorAll('label > input[type="password"]').forEach((input) => {
     });
 });
 
+/*  Step buttons are tabindex="-1" so the spinbutton input is the sole Tab
+    stop; this binds them as its click/tap-only increment/decrement. */
+document.querySelectorAll('input[role="spinbutton"]').forEach((input) => {
+    const label = input.closest("label");
+    if (!label) return;
+
+    const step = Number(input.step) || 1;
+    const min = input.min === "" ? -Infinity : Number(input.min);
+    const max = input.max === "" ? Infinity : Number(input.max);
+
+    label.querySelectorAll(":scope > button[data-action]").forEach((button) => {
+        const sign = button.dataset.action === "increment" ? 1 : -1;
+        button.addEventListener("click", () => {
+            const next = (Number(input.value) || 0) + sign * step;
+            input.value = Math.min(max, Math.max(min, next));
+            input.dispatchEvent(new Event("input", { bubbles: true }));
+        });
+    });
+});
+
 window.jsFn = jsFn;
