@@ -70,6 +70,122 @@
         inline-size: var(--2xl-line-height);
     }
 
+    /* === copy === */
+
+    *[data-sign="copy"]::before,
+    *[data-sign="copy"]::after {
+        border-color: currentColor;
+        border-style: solid;
+        content:      "";
+        position:     absolute;
+    }
+    *[data-sign="copy"]::before {
+        inset-block-end:    0;
+        inset-inline-start: 0;
+    }
+    *[data-sign="copy"]::after {
+        inset-block-start: 0;
+        inset-inline-end:  0;
+    }
+
+    /* --- size --- */
+
+    *[data-sign="copy"][data-size="xs"] {
+        block-size:  var(--xs-line-height);
+        inline-size: var(--xs-line-height);
+    }
+    *[data-sign="copy"][data-size="xs"]::before,
+    *[data-sign="copy"][data-size="xs"]::after {
+        block-size:   calc(var(--xs-line-height) * 0.875);
+        border-width: var(--xs-border-width);
+        inline-size:  calc(var(--xs-line-height) * 0.625);
+    }
+    *[data-sign="copy"][data-type="landscape"][data-size="xs"]::before,
+    *[data-sign="copy"][data-type="landscape"][data-size="xs"]::after {
+        block-size:  calc(var(--xs-line-height) * 0.625);
+        inline-size: calc(var(--xs-line-height) * 0.875);
+    }
+
+    *[data-sign="copy"][data-size="sm"] {
+        block-size:  var(--sm-line-height);
+        inline-size: var(--sm-line-height);
+    }
+    *[data-sign="copy"][data-size="sm"]::before,
+    *[data-sign="copy"][data-size="sm"]::after {
+        block-size:   calc(var(--sm-line-height) * 0.875);
+        border-width: var(--sm-border-width);
+        inline-size:  calc(var(--sm-line-height) * 0.625);
+    }
+    *[data-sign="copy"][data-type="landscape"][data-size="sm"]::before,
+    *[data-sign="copy"][data-type="landscape"][data-size="sm"]::after {
+        block-size:  calc(var(--sm-line-height) * 0.625);
+        inline-size: calc(var(--sm-line-height) * 0.875);
+    }
+
+    *[data-sign="copy"]:where([data-size="md"], :not([data-size])) {
+        block-size:  var(--md-line-height);
+        inline-size: var(--md-line-height);
+    }
+    *[data-sign="copy"]:where([data-size="md"], :not([data-size]))::before,
+    *[data-sign="copy"]:where([data-size="md"], :not([data-size]))::after {
+        block-size:   calc(var(--md-line-height) * 0.875);
+        border-width: var(--md-border-width);
+        inline-size:  calc(var(--md-line-height) * 0.625);
+    }
+    *[data-sign="copy"][data-type="landscape"]:where([data-size="md"], :not([data-size]))::before,
+    *[data-sign="copy"][data-type="landscape"]:where([data-size="md"], :not([data-size]))::after {
+        block-size:  calc(var(--md-line-height) * 0.625);
+        inline-size: calc(var(--md-line-height) * 0.875);
+    }
+
+    *[data-sign="copy"][data-size="lg"] {
+        block-size:  var(--lg-line-height);
+        inline-size: var(--lg-line-height);
+    }
+    *[data-sign="copy"][data-size="lg"]::before,
+    *[data-sign="copy"][data-size="lg"]::after {
+        block-size:   calc(var(--lg-line-height) * 0.875);
+        border-width: var(--lg-border-width);
+        inline-size:  calc(var(--lg-line-height) * 0.625);
+    }
+    *[data-sign="copy"][data-type="landscape"][data-size="lg"]::before,
+    *[data-sign="copy"][data-type="landscape"][data-size="lg"]::after {
+        block-size:  calc(var(--lg-line-height) * 0.625);
+        inline-size: calc(var(--lg-line-height) * 0.875);
+    }
+
+    *[data-sign="copy"][data-size="xl"] {
+        block-size:  var(--xl-line-height);
+        inline-size: var(--xl-line-height);
+    }
+    *[data-sign="copy"][data-size="xl"]::before,
+    *[data-sign="copy"][data-size="xl"]::after {
+        block-size:   calc(var(--xl-line-height) * 0.875);
+        border-width: var(--xl-border-width);
+        inline-size:  calc(var(--xl-line-height) * 0.625);
+    }
+    *[data-sign="copy"][data-type="landscape"][data-size="xl"]::before,
+    *[data-sign="copy"][data-type="landscape"][data-size="xl"]::after {
+        block-size:  calc(var(--xl-line-height) * 0.625);
+        inline-size: calc(var(--xl-line-height) * 0.875);
+    }
+
+    *[data-sign="copy"][data-size="2xl"] {
+        block-size:  var(--2xl-line-height);
+        inline-size: var(--2xl-line-height);
+    }
+    *[data-sign="copy"][data-size="2xl"]::before,
+    *[data-sign="copy"][data-size="2xl"]::after {
+        block-size:   calc(var(--2xl-line-height) * 0.875);
+        border-width: var(--2xl-border-width);
+        inline-size:  calc(var(--2xl-line-height) * 0.625);
+    }
+    *[data-sign="copy"][data-type="landscape"][data-size="2xl"]::before,
+    *[data-sign="copy"][data-type="landscape"][data-size="2xl"]::after {
+        block-size:  calc(var(--2xl-line-height) * 0.625);
+        inline-size: calc(var(--2xl-line-height) * 0.875);
+    }
+
     /* === rule: indent with block-start rule === */
 
     *[data-sign="rule"] {
