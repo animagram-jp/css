@@ -1,6 +1,5 @@
 :root {
-    --rgb-theme-purple: 91 47 145; /* Project theme color (#5B2F91). */
-
+    --rgb-theme-purple: 91 47 145;
     --color-emphasis-ink:   rgb(var(--rgb-theme-purple));
     --color-emphasis-paper: color-mix(in srgb, rgb(var(--rgb-theme-purple)) 27%, rgb(0,0,0));
 }
@@ -30,7 +29,6 @@ html {
 }
 
 body {
-    font-family: var(--font-family-sans);
     max-width: 100%;
     min-height: 100dvh;
     overflow-x: hidden;
