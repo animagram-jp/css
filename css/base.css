@@ -303,19 +303,6 @@
         font-style: normal;
     }
 
-    /*  reset.css unsets the UA italic, so it is restored here rather than
-        removed. Japanese, Chinese and Korean faces have no true italic and
-        get synthesised obliques, so the emphasis is carried by the citation
-        being a distinct element instead. Matching on the cite itself, not an
-        ancestor, keeps an English citation inside a Japanese page italic. */
-
-    cite {
-        font-style: italic;
-    }
-    cite:is(:lang(ja), :lang(zh), :lang(ko)) {
-        font-style: normal;
-    }
-
     .visually-hidden {
         clip: rect(0 0 0 0) !important;
         clip-path: inset(50%) !important;
