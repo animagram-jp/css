@@ -109,6 +109,11 @@
     ol {
         counter-reset: revert;
     }
+
+    /* Remove list styles (bullets/numbers). */
+    ol, ul, menu, summary {
+        list-style: none;
+    }
     
     /* For images to not be able to exceed their container */
     img, video { /* per tailwind-preflight.css:226-234 */
@@ -132,6 +137,12 @@
     input, textarea {
         -webkit-user-select: auto;
     }
+
+    /* revert the 'white-space' property for textarea elements on Safari */
+    textarea {
+        white-space: revert;
+        resize: vertical; /* per tailwind-preflight.css:303-309 */
+    }
     
     ::file-selector-button { /* per tailwind-preflight.css:236-257 */
         color: inherit;
@@ -139,12 +150,6 @@
         font-feature-settings: inherit;
         font-variation-settings: inherit;
         letter-spacing: inherit;
-    }
-    
-    /* revert the 'white-space' property for textarea elements on Safari */
-    textarea {
-        white-space: revert;
-        resize: vertical; /* per tailwind-preflight.css:303-309 */
     }
     
     /* minimum style to allow to style meter element */
@@ -158,9 +163,16 @@
     }
     
     /* preformatted text - use only for this feature */
-    :where(pre) {
+    pre {
         all: revert;
         box-sizing: border-box;
+    }
+
+    cite {
+        font-style: italic;
+    }
+    cite:is(:lang(ja), :lang(zh), :lang(ko)) {
+        font-style: normal;
     }
     
     /* reset default text opacity of input placeholder. */
@@ -177,13 +189,7 @@
     :-moz-ui-invalid { /* per tailwind-preflight.css:365-371 */
         box-shadow: none;
     }
-    
-    button,
-    input:where([type='button'], [type='reset'], [type='submit']),
-    ::file-selector-button { /* per tailwind-preflight.css:373-381 */
-        appearance: button;
-    }
-    
+
     ::-webkit-inner-spin-button,
     ::-webkit-outer-spin-button { /* per tailwind-preflight.css:383-390 */
         height: auto;

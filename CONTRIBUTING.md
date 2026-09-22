@@ -10,26 +10,32 @@ If "ORG_CONTRIBUTING.md" does not exist in the repository root of your working e
 curl -fsSL -H "Accept: application/vnd.github.raw+json" "https://api.github.com/repos/animagram-jp/.github/contents/.github/CONTRIBUTING.md?ref=main" -o "ORG_CONTRIBUTING.md"
 ```
 
-## Commands
-
-```bash
-# Audit by axe-core (WCAG 2.2 A+AA)
-docker run -d --name accessibility-audit -v .:/work -w /work node:lts-slim tail -f /dev/null
-docker exec accessibility-audit bash -lc "npx --yes playwright install --with-deps chromium && npm ci"
-docker exec accessibility-audit node reference/audit.mjs
-```
-
 ---
 
 ## See
 
+- [README.md](./README.md)
+- [common css scripts](./README.md#dependency-layers)
 - [InterfaceDesign.md](./reference/InterfaceDesign.md)
 
----
+## Rule
 
-## Todo
+- CSSスクリプト内コメントによる仕切り線の形式は `/* === size === */`、または`/* --- size --- */`とする。セレクタ形式では無く、単語形式に統一すること。
+- CSSセレクターは、複数記述時は:where()を用い、:whereの内部では:is()を用いること。
+- セレクタの最初のタグ定義は、無指定でも*を明示すること。
+- base.css以外の各ファイルで、個別の中間変数を定義してはならない。
 
-- [ ] リファクタリング中
+## Commands
+
+```bash
+# Audit by IBM Equal Access engine (WCAG 2.2 A+AA)
+docker run -d --name accessibility-audit -v .:/work -w /work/reference node:lts-slim tail -f /dev/null
+docker exec accessibility-audit bash -lc "npm ci && npx --yes playwright@\$(node -p \"require('playwright-core/package.json').version\") install --with-deps chromium"
+docker exec accessibility-audit npm run audit
+
+# Validate ./css against the CSS syntax definitions
+docker exec accessibility-audit npm run validate
+```
 
 ---
 

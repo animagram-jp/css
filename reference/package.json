@@ -1,0 +1,14 @@
+{
+  "name": "css",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "audit": "node audit.mjs",
+    "validate": "csstree-validator ../css"
+  },
+  "dependencies": {
+    "accessibility-checker-engine": "^4",
+    "csstree-validator": "^4.0.1",
+    "playwright-core": "^1"
+  }
+}

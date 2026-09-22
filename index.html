@@ -13,7 +13,7 @@
     <link rel="stylesheet" href="./css/data_group.css">
     <link rel="stylesheet" href="./css/input.css">
     <link rel="stylesheet" href="./css/button.css">
-    <link rel="stylesheet" href="./css/list-box.css">
+    <link rel="stylesheet" href="./css/listbox.css">
     <link rel="stylesheet" href="./css/toggle.css">
     <link rel="stylesheet" href="./css/checkbox.css">
     <link rel="stylesheet" href="./css/radio.css">
@@ -28,7 +28,7 @@
     <script src="./reference/style.js" type="module"></script></head>
 <body>
     <header>
-        <hgroup data-axis="inline" data-style="rule-indent">
+        <hgroup data-axis="inline" data-sign="rule">
             <h1>CSS library</h1>
             <p>Universal design CSS library.</p></hgroup>
         <p>
@@ -53,136 +53,144 @@
                 <input type="radio" name="color-scheme" value="dark"></label>
             <label>
                 <span>dark-high-contrast</span>
-                <input type="radio" name="color-scheme" value="dark-high-contrast"></label></fieldset>
-
-    </header>
-
-    <dialog>
-        <nav>
-            <ul>
-                <li></li></ul></nav></dialog>
+                <input type="radio" name="color-scheme" value="dark-high-contrast"></label></fieldset></header>
 
     <section>
-        <h2>inline flow or not, focusable or not.</h2>
-        <section>
-            <span>span</span>
-            <a href="#anchor">a</a>
-            <div data-style="rule-indent">div</div></section></section>
+        <h2>Blockquote</h2>
+        <figure data-sign="rule">
+            <blockquote>
+                <p>"I will cast the dark shadows of human life over you without reserve. But you must not be afraid."</p></blockquote>
+            <figcaption>Soseki Natsume. 1914. <cite lang="en">Kokoro</cite>. Iwanami Shoten, Tokyo, Japan. Translated by Andyou, 2026.</figcaption></figure></section>
 
     <section>
-        <h2>Select</h2>
-        <section>
-            <label data-facet="chevron">
+        <h2>Icon badge</h2>
+        <section data-sign="rule">
+            <label>
+                <span>none</span>
+                <input type="radio" name="icon-badge" value="none" checked></label>
+            <label>
+                <span>active</span>
+                <input type="radio" name="icon-badge" value="active"></label>
+            <label>
+                <span>information</span>
+                <input type="radio" name="icon-badge" value="information"></label></section></section>
+
+    <section>
+        <h2>Input style</h2>
+        <section data-sign="rule">
+            <label>
+                <span>input[type="text"]</span>
+                <input type="text"></label>
+            <label>
+                <span>input[type="email"] required</span>
+                <input type="email" required></label>
+            <label data-group="inline">
+                <span>input[type="password"]</span>
+                <input id="password" type="password" autocomplete="current-password" maxlength="20">
+                <button type="button" aria-controls="password" aria-pressed="false"></button></label>
+            <label>
+                <span>input[type="search"]</span>
+                <input type="search"></label>
+            <label>
+                <span>input[type="url"]</span>
+                <input type="url"></label>
+            <label>
+                <span>input[type="tel"]</span>
+                <input type="tel" readonly value="readonly"></label>
+            <label>
+                <span>select</span>
                 <select>
                     <option>option</option>
-                    <option>option</option></select></label></section></section>
+                    <option>option</option></select></label>
+            <label>
+                <span>label > select[data-facet="chevron"]</span>
+                <select data-facet="chevron">
+                    <option>option</option>
+                    <option>option</option></select></label>
+            <label>
+                <span>textarea</span>
+                <textarea></textarea></label></section>
+        <section data-sign="rule">
+            <h3>size</h3>
+            <label>
+                <span>input[type="text"]</span>
+                <input type="text" data-size="xs" value="xs"></label>
+            <label>
+                <span>input[type="email"], aria-invalid="true"</span>
+                <input type="text" data-size="sm" value="sm" aria-invalid="true"></label>
+            <label>
+                <span>input[type="url"], disabled</span>
+                <input type="url" value="(md)" disabled></label>
+            <label>
+                <span>select</span>
+                <select data-size="lg">
+                    <option checked>lg</option></select></label>
+            <label>
+                <span>label > select[data-facet="chevron"]</span>
+                <select data-facet="chevron" data-size="xl">
+                    <option>xl</option></select></label>
+            <label>
+                <span>texarea</span>
+                <textarea type="text" data-size="2xl" placeholder="2xl"></textarea></label></section>
+
+        <section data-sign="rule">
+            <h3>:required - label > span:first-child, fieldset > legend > span</h3>
+            <label>
+                <span>input[type="checkbox"], required</span>
+                <input type="checkbox" required></label>
+            <fieldset style="grid-template-columns: max-content repeat(1, minmax(0, max-content));">
+                <legend>
+                    <span>fieldset:has(:required) > legend</span></legend>
+                <label>
+                    <span>choice A</span>
+                    <input type="radio" name="req-demo" required></label>
+                <label>
+                    <span>choice B</span>
+                    <input type="radio" name="req-demo"></label></fieldset></section>
+</section>
 
     <section>
-        <h2>input, select, textarea</h2>
-        <section data-style="rule-indent">
-            <input type="text">
-            <input type="email">
-            <input type="password">
-            <input type="search">
-            <input type="url">
-            <input type="tel">
-            <select value="a">
-                <option>1</option>
-                <option>2</option></select>
-            <textarea></textarea></section>
-        <section data-style="rule-indent">
-            <h3>[data-size]</h3>
-            <input type="text" data-size="xs">
-            <input type="text" data-size="sm">
-            <input type="text" data-size="md">
-            <input type="text" data-size="lg">
-            <input type="text" data-size="xl">
-            <textarea type="text" data-size="2xl"></textarea></section>
-        <section data-style="rule-indent">
-            <h3>:user-invalid, [aria-invalid="true"]</h3>
-            <input type="text" aria-invalid="true">
-            <select aria-invalid="true">
-                <option>1</option>
-                <option>2</option></select>
-            <textarea aria-invalid="true"></textarea></section></section>
-
+        <h2>Surround style, underline style</h2>
+        <section data-sign="rule">
+            <button type="button">button (data-surround="fill")</button>
+            <a href="#dummy">a (data-style="underline")</a>
+            <details>
+                <summary>summary (data-style="underline")</summary>
+                <p>details > summary, p</p></details>
+            <button type="button" data-surround="outline">button data-surround="outline"</button>
+            <a href="#dummy" data-surround="outline">a data-surround="outline"</a>
+            <details>
+                <summary data-surround="outline">summary (data-surround="outline")</summary>
+                <p>details > summary, p</p></details></section>
+        <section data-sign="rule">
+            <h3>size</h3>
+            <button data-size="xs">xs</button>
+            <a href="#anchor" data-size="xs">xs</a>
+            <button data-size="sm">sm</button>
+            <a href="#anchor" data-size="sm">sm</a>
+            <button data-size="md">(md)</button>
+            <a href="#anchor" data-size="md">(md)</a>
+            <button data-size="lg">lg</button>
+            <a href="#anchor" data-size="lg">lg</a>
+            <button data-size="xl">xl</button>
+            <a href="#anchor" data-size="xl">xl</a>
+            <button data-size="2xl" disabled>2xl, disabled</button>
+            <a href="#anchor" data-size="2xl" aria-disabled="true">2xl, aria-disabled="true"</a></section></section>
     <section>
-        <h2>button, a, details > summary</h2>
-        <section data-style="rule-indent">
-            <button type="button">Button</button>
-            <button type="submit">Button</button>
-            <button type="cancel">Button</button>
-            <a href="#">Anchor</a>
-            <details>
-                <summary>Summary</summary>
-                <p>Details</p></details></section>
-        <section data-style="rule-indent">
-            <h3>[data-size]</h3>
-            <button data-size="xs">Button</button>
-            <button data-size="sm">Button</button>
-            <button data-size="md">Button</button>
-            <button data-size="lg">Button</button>
-            <button data-size="xl">Button</button>
-            <button data-size="2xl">Button</button>
-            <a href="#anchor" data-size="xs">Anchor</a>
-            <a href="#anchor" data-size="sm">Anchor</a>
-            <a href="#anchor" data-size="md">Anchor</a>
-            <a href="#anchor" data-size="lg">Anchor</a>
-            <a href="#anchor" data-size="xl">Anchor</a>
-            <a href="#anchor" data-size="2xl">Anchor</a>
-            <details>
-                <summary data-size="xs">Summary</summary>
-                <p>Details</p></details>
-            <details>
-                <summary data-size="sm">Summary</summary>
-                <p>Details</p></details>
-            <details>
-                <summary data-size="md">Summary</summary>
-                <p>Details</p></details>
-            <details>
-                <summary data-size="lg">Summary</summary>
-                <p>Details</p></details>
-            <details>
-                <summary data-size="xl">Summary</summary>
-                <p>Details</p></details>
-            <details>
-                <summary data-size="2xl">Summary</summary>
-                <p>Details</p></details></section>
-        <section data-style="rule-indent">
-            <h3>[data-style="fill"], [data-style="outline"], [data-style="underline"]</h3>
-            <button type="button" data-style="outline">Button</button>
-            <button type="button" data-style="underline">Button</button>
-            <a href="#anchor" data-style="fill">Anchor</a>
-            <a href="#anchor" data-style="outline">Anchor</a>
-            <details  data-axis="inline">
-                <summary data-style="fill">Summary</summary>
-                <p>Details</p></details>
-            <details>
-                <summary data-style="outline">Summary</summary>
-                <p>Details</p></details></section>
-        <section data-style="rule-indent">
-            <h3>:disabled, [aria-disabled="true"]</h3>
-            <button disabled>Button</button>
-            <a href="#anchor" aria-disabled="true" tabindex="-1">Anchor</a>
-            <details>
-                <summary aria-disabled="true" tabindex="-1">Summary</summary>
-                <p>Details</p></details></section></section>
-    <section>
-        <h2>List box</h2>
-        <section data-style="rule-indent">
-            <button type="button" id="list-box-1-trigger" popovertarget="list-box-1" aria-haspopup="listbox" aria-controls="list-box-1">button[aria-haspopup="listbox"]</button>
+        <h2>Listbox</h2>
+        <section data-sign="rule">
+            <button type="button" id="list-box-1-trigger" popovertarget="list-box-1" aria-haspopup="listbox" aria-controls="list-box-1" data-surround="outline">button[aria-haspopup="listbox"]</button>
             <ul id="list-box-1" popover="auto" role="listbox" aria-labelledby="list-box-1-trigger">
                 <li role="presentation">li[role="presentation"]</li>
                 <li role="option" aria-selected="true">
-                    <input type="radio" data-facet="check" name="" checked>
-                    <span>span</span></li>
+                    <input type="radio" data-sign="check" data-sign-style="inline" name="" checked>
+                    <span>li > (radio, span)</span></li>
                 <li role="option">
-                    <input type="checkbox" data-facet="check" name="">
-                    <span>span</span></li>
+                    <input type="checkbox" data-sign="check" data-sign-style="inline" name="">
+                    <span>li > (checkbox, span)</span></li>
                 <li role="option">
-                    <button>button</button></li></ul>
-            <h3>disabled</h3>
-            <button type="button" id="list-box-8-trigger" popovertarget="list-box-8" aria-haspopup="listbox" aria-controls="list-box-8" disabled>button[aria-haspopup="listbox"]:disalbed</button>
+                    <button>li > button</button></li></ul>
+            <button type="button" id="list-box-8-trigger" popovertarget="list-box-8" aria-haspopup="listbox" aria-controls="list-box-8" data-surround="outline" disabled>button[aria-haspopup="listbox"]:disalbed</button>
             <ul id="list-box-8" popover="auto" role="listbox" aria-labelledby="list-box-8-trigger">
                 <li role="presentation">li[role="presentation"]</li>
                 <li role="option" aria-selected="true">
@@ -193,120 +201,58 @@
                     <span>span</span></li>
                 <li role="option">
                     <button>button</button></li></ul></section></section>
-    <section>
-        <h2>Toggle button (input[type="checkbox"][role="switch"])</h2>
-        <section data-style="rule-indent">
-            <label>
-                <span>inline</span>
-                <input type="checkbox" role="switch"></label>
-            <label data-axis="block" data-type="knob-only">
-                <span>inline</span>
-                <input type="checkbox" role="switch"></label></section>
-        <section data-style="rule-indent">
-            <h3>[data-size]</h3>
-            <label>
-                <span>inline</span>
-                <input type="checkbox" role="switch" data-size="xs"></label>
-            <label>
-                <span>inline</span>
-                <input type="checkbox" role="switch" data-size="sm"></label>
-            <label>
-                <span>inline</span>
-                <input type="checkbox" role="switch" data-size="md"></label>
-            <label>
-                <span>inline</span>
-                <input type="checkbox" role="switch" data-size="lg"></label>
-            <label>
-                <span>inline</span>
-                <input type="checkbox" role="switch" data-size="xl"></label>
-            <label>
-                <span>inline</span>
-                <input type="checkbox" role="switch" data-size="2xl"></label></section>
-        <section data-style="rule-indent">
-            <h3>:disabled, [aria-disabled="true"]</h3>
-            <label>
-                <span>inline</span>
-                <input type="checkbox" role="switch" data-size="2xl" disabled></label>
-            <label>
-                <span>inline</span>
-                <input type="checkbox" role="switch" data-size="2xl" checked disabled></label></section>
-
-    </section>
 
     <section>
         <h2>Checkbox</h2>
-        <section data-style="rule-indent">
+        <section data-sign="rule">
             <label>
-                <span>inline</span>
+                <span>label > (span, label > input[type="checkbox"])</span>
                 <input type="checkbox"></label>
             <label>
-                <span>inline</span>
+                <span>checked</span>
                 <input type="checkbox" checked></label>
             <label>
-                <span>inline</span>
-                <input type="checkbox" data-indeterminate></label></section>
-        <section data-style="rule-indent">
+                <span>data-indeterminate</span>
+                <input type="checkbox" data-indeterminate></label>
             <label>
-                <span>inline</span>
-                <input type="checkbox" data-size="xs"></label>
-            <label>
-                <span>inline</span>
-                <input type="checkbox" data-size="sm"></label>
-            <label>
-                <span>inline</span>
-                <input type="checkbox" data-size="md"></label>
-            <label>
-                <span>inline</span>
-                <input type="checkbox" data-size="lg"></label>
-            <label>
-                <span>inline</span>
-                <input type="checkbox" data-size="xl"></label>
-            <label>
-                <span>inline</span>
-                <input type="checkbox" data-size="2xl"></label></section>
-        <section data-style="rule-indent">
-            <label>
-                <span>inline</span>
-                <input type="checkbox" aria-invalid="true"></label>
-            <label>
-                <span>inline</span>
+                <span>checked aria-invalid="true"</span>
                 <input type="checkbox" aria-invalid="true" checked></label>
             <label>
-                <span>inline</span>
+                <span>disabled</span>
                 <input type="checkbox" disabled></label>
             <label>
-                <span>inline</span>
-                <input type="checkbox" checked disabled></label></section></section>
+                <span>checked disabled</span>
+                <input type="checkbox" checked disabled></label></section>
+        <section data-sign="rule">
+            <h3>size</h3>
+            <label>
+                <span>xs</span>
+                <input type="checkbox" data-size="xs"></label>
+            <label>
+                <span>sm</span>
+                <input type="checkbox" data-size="sm"></label>
+            <label>
+                <span>(md)</span>
+                <input type="checkbox" data-size="md"></label>
+            <label>
+                <span>lg</span>
+                <input type="checkbox" data-size="lg"></label>
+            <label>
+                <span>xl</span>
+                <input type="checkbox" data-size="xl"></label>
+            <label>
+                <span>2xl</span>
+                <input type="checkbox" data-size="2xl"></label></section></section>
 
     <section>
-        <h2>Radio button</h2>
-        <section data-style="rule-indent">
+        <h2>Radio</h2>
+        <section data-sign="rule">
             <label>
-                <span>inline</span>
+                <span>label > (span, input[type="radio"])</span>
                 <input type="radio" name="r"></label>
             <label>
-                <span>inline</span>
-                <input type="radio" name="r" checked></label></section>
-        <section data-style="rule-indent">
-            <label>
-                <span>inline</span>
-                <input type="radio" name="r-size" data-size="xs"></label>
-            <label>
-                <span>inline</span>
-                <input type="radio" name="r-size" data-size="sm"></label>
-            <label>
-                <span>inline</span>
-                <input type="radio" name="r-size" data-size="md"></label>
-            <label>
-                <span>inline</span>
-                <input type="radio" name="r-size" data-size="lg"></label>
-            <label>
-                <span>inline</span>
-                <input type="radio" name="r-size" data-size="xl"></label>
-            <label>
-                <span>inline</span>
-                <input type="radio" name="r-size" data-size="2xl"></label></section>
-        <section data-style="rule-indent">
+                <span>checked</span>
+                <input type="radio" name="r" checked></label>
             <label>
                 <span>inline</span>
                 <input type="radio" name="r-state" aria-invalid="true"></label>
@@ -319,9 +265,28 @@
             <label>
                 <span>inline</span>
                 <input type="radio" name="r-disabled" checked disabled></label></section>
+        <section data-sign="rule">
+            <label>
+                <span>xs</span>
+                <input type="radio" name="r-size" data-size="xs" checked></label>
+            <label>
+                <span>sm</span>
+                <input type="radio" name="r-size" data-size="sm"></label>
+            <label>
+                <span>(md)</span>
+                <input type="radio" name="r-size" data-size="md"></label>
+            <label>
+                <span>lg</span>
+                <input type="radio" name="r-size" data-size="lg"></label>
+            <label>
+                <span>xl</span>
+                <input type="radio" name="r-size" data-size="xl"></label>
+            <label>
+                <span>2xl</span>
+                <input type="radio" name="r-size" data-size="2xl"></label></section></section>
 
-        <h3 id="h3-radio-button-field">Radio button fieldset</h3>
-        <section data-style="rule-indent" aria-labelledby="h3-radio-button-field">
+        <section data-sign="rule" aria-labelledby="h3-radio-button-field">
+            <h3 id="h3-radio-button-field">Fieldset</h3>
             <fieldset id="section_fieldset" style="grid-template-columns: repeat(3, minmax(0, max-content));">
                 <legend>
                     <span>repeat(3, max-content)</span></legend>
@@ -410,44 +375,54 @@
                     <span>Dark (high contrast)</span>
                     <input type="radio" name="grid-demo-3f" value="dark-high-contrast"></label></fieldset></section></section>
 
-    <section>
-        <h2>Slider (input[type="range"])</h2>
-        <section data-style="rule-indent">
-            <input type="range" min="0" max="100" step="10" value="20">
-            <input type="range" min="0" max="100" step="10" value="60"></section>
-        <section data-style="rule-indent">
-            <h3>[data-size]</h3>
-            <input type="range" data-size="xs" value="20">
-            <input type="range" data-size="sm" value="30">
-            <input type="range" data-size="md" value="40">
-            <input type="range" data-size="lg" value="60">
-            <input type="range" data-size="xl" value="80">
-            <input type="range" data-size="2xl" value="90"></section>
-        <section data-style="rule-indent">
-            <h3>label &gt; input[type="range"] ([data-text-min], [data-text-max])</h3>
-            <label data-axis="block" data-text-min="0" data-text-max="100">
-                <span>inline</span>
-                <input type="range" min="0" max="100" step="10" value="20"></label>
-            <label data-axis="block" data-text-min="less expensive" data-text-max="more expensive">
-                <span>inline</span>
-                <input type="range" min="0" max="100" step="20" value="40"></label></section>
-        <section data-style="rule-indent">
-            <h3>:user-invalid, [aria-invalid="true"]</h3>
-            <input type="range" value="50" aria-invalid="true"></section>
-        <section data-style="rule-indent">
-            <h3>:disabled, [aria-disabled="true"]</h3>
-            <input type="range" value="50" disabled>
-            <input type="range" value="50" aria-disabled="true"></section></section>
 
     <section>
-        <h2>Step button (button[data-action] + input[role="spinbutton"])</h2>
-        <section data-style="rule-indent">
+        <h2>Toggle</h2>
+        <section data-sign="rule">
+            <label>
+                <span>label > (span, input[type="checkbox"][role="switch"])</span>
+                <input type="checkbox" role="switch"></label>
+            <label data-axis="block" data-type="knob-only">
+                <span>data-axis="block", data-type="knob-only"</span>
+                <input type="checkbox" role="switch"></label></section>
+        <section data-sign="rule">
+            <h3>size</h3>
+            <label>
+                <span>xs</span>
+                <input type="checkbox" role="switch" data-size="xs"></label>
+            <label>
+                <span>sm</span>
+                <input type="checkbox" role="switch" data-size="sm"></label>
+            <label>
+                <span>(md)</span>
+                <input type="checkbox" role="switch"></label>
+            <label>
+                <span>lg</span>
+                <input type="checkbox" role="switch" data-size="lg"></label>
+            <label>
+                <span>xl disabled</span>
+                <input type="checkbox" role="switch" data-size="xl" disabled></label>
+            <label>
+                <span>2xl checked disabled</span>
+                <input type="checkbox" role="switch" data-size="2xl" checked disabled></label></section></section>
+
+    <section>
+        <h2>Step - button[data-action], input[role="spinbutton"]</h2>
+        <section data-sign="rule">
             <label data-group="inline">
                 <button type="button" data-action="decrement"></button>
                 <input type="text" inputmode="numeric" pattern="[0-9]*" role="spinbutton" value="10" size="4">
-                <button type="button" data-action="increment"></button></label></section>
-        <section data-style="rule-indent">
-            <h3>[data-size]</h3>
+                <button type="button" data-action="increment"></button></label>
+            <label data-group="inline" data-axis="block">
+                <input type="text" inputmode="numeric" pattern="[0-9]*" role="spinbutton" value="10" size="4">
+                <button type="button" data-action="increment"></button>
+                <button type="button" data-action="decrement"></button></label>
+            <label data-group="inline" data-axis="block">
+                <input type="text" inputmode="numeric" pattern="[0-9]*" role="spinbutton" value="10" size="4" data-size="lg">
+                <button type="button" data-action="increment" data-size="lg"></button>
+                <button type="button" data-action="decrement" data-size="lg"></button></label></section>
+        <section data-sign="rule">
+            <h3>size</h3>
             <label data-group="inline">
                 <button type="button" data-action="decrement" data-size="xs"></button>
                 <input type="text" inputmode="numeric" pattern="[0-9]*" role="spinbutton" value="10" size="3" data-size="xs">
@@ -472,35 +447,19 @@
                 <button type="button" data-action="decrement" data-size="2xl"></button>
                 <input type="text" inputmode="numeric" pattern="[0-9]*" role="spinbutton" value="10" size="3" data-size="2xl">
                 <button type="button" data-action="increment" data-size="2xl"></button></label></section>
-        <section data-style="rule-indent">
-            <h3>label[data-axis="block"]</h3>
-            <label data-group="inline" data-axis="block">
-                <input type="text" inputmode="numeric" pattern="[0-9]*" role="spinbutton" value="10" size="4">
-                <button type="button" data-action="increment"></button>
-                <button type="button" data-action="decrement"></button></label>
-            <label data-group="inline" data-axis="block">
-                <input type="text" inputmode="numeric" pattern="[0-9]*" role="spinbutton" value="10" size="4" data-size="lg">
-                <button type="button" data-action="increment" data-size="lg"></button>
-                <button type="button" data-action="decrement" data-size="lg"></button></label></section>
-        <section data-style="rule-indent">
-            <h3>button[data-action] (:empty ではない場合、記号は描かない)</h3>
+        <section data-sign="rule">
+            <h3>[data-surround="outline"]</h3>
             <label data-group="inline">
-                <button type="button" data-action="decrement">減</button>
+                <button type="button" data-action="decrement" data-surround="outline"></button>
                 <input type="text" inputmode="numeric" pattern="[0-9]*" role="spinbutton" value="10" size="4">
-                <button type="button" data-action="increment">増</button></label></section>
-        <section data-style="rule-indent">
-            <h3>[data-style="outline"]</h3>
-            <label data-group="inline">
-                <button type="button" data-action="decrement" data-style="outline"></button>
-                <input type="text" inputmode="numeric" pattern="[0-9]*" role="spinbutton" value="10" size="4">
-                <button type="button" data-action="increment" data-style="outline"></button></label></section>
-        <section data-style="rule-indent">
+                <button type="button" data-action="increment" data-surround="outline"></button></label></section>
+        <section data-sign="rule">
             <h3>:user-invalid, [aria-invalid="true"]</h3>
             <label data-group="inline">
                 <button type="button" data-action="decrement"></button>
                 <input type="text" inputmode="numeric" pattern="[0-9]*" role="spinbutton" value="10" size="4" aria-invalid="true">
                 <button type="button" data-action="increment"></button></label></section>
-        <section data-style="rule-indent">
+        <section data-sign="rule">
             <h3>:disabled, [aria-disabled="true"]</h3>
             <label data-group="inline">
                 <button type="button" data-action="decrement" disabled></button>
@@ -512,92 +471,31 @@
                 <button type="button" data-action="increment" aria-disabled="true"></button></label></section></section>
 
     <section>
-        <h2>Error (section[data-type="error-summary"], p[data-type="error"])</h2>
-        <section data-style="rule-indent">
-            <h3><code>section[data-type="error-summary"] &gt; (h2, p, ul > li)</code></h3>
-            <section role="alert" data-type="error-summary" aria-labelledby="error-summary-heading-1">
-                <h2 id="error-summary-heading-1">There is a problem</h2>
-                <p>次の項目を修正してから、もう一度送信してください。</p>
-                <ul>
-                    <li><a href="#error-name">Enter your full name</a></li>
-                    <section>a</section>
-                    <li><a href="#error-dob">Date of birth must be a real date</a></li></ul></section></section>
-
-        <section data-style="rule-indent">
-            <h3>p[data-type="error"][data-size]</h3>
-            <label for="error-name-xs">氏名 (xs)</label>
-            <p data-type="error" data-size="xs" id="error-name-xs-message"><strong>エラー:</strong> 氏名を入力してください</p>
-            <input type="text" data-size="xs" id="error-name-xs" aria-describedby="error-name-xs-message" aria-invalid="true">
-            <label for="error-name-sm">氏名 (sm)</label>
-            <p data-type="error" data-size="sm" id="error-name-sm-message"><strong>エラー:</strong> 氏名を入力してください</p>
-            <input type="text" data-size="sm" id="error-name-sm" aria-describedby="error-name-sm-message" aria-invalid="true">
-            <label for="error-name-md">氏名 (md)</label>
-            <p data-type="error" data-size="md" id="error-name-md-message"><strong>エラー:</strong> 氏名を入力してください</p>
-            <input type="text" data-size="md" id="error-name-md" aria-describedby="error-name-md-message" aria-invalid="true">
-            <label for="error-name-lg">氏名 (lg)</label>
-            <p data-type="error" data-size="lg" id="error-name-lg-message"><strong>エラー:</strong> 氏名を入力してください</p>
-            <input type="text" data-size="lg" id="error-name-lg" aria-describedby="error-name-lg-message" aria-invalid="true">
-            <label for="error-name-xl">氏名 (xl)</label>
-            <p data-type="error" data-size="xl" id="error-name-xl-message"><strong>エラー:</strong> 氏名を入力してください</p>
-            <input type="text" data-size="xl" id="error-name-xl" aria-describedby="error-name-xl-message" aria-invalid="true">
-            <label for="error-name-2xl">氏名 (2xl)</label>
-            <p data-type="error" data-size="2xl" id="error-name-2xl-message"><strong>エラー:</strong> 氏名を入力してください</p>
-            <input type="text" data-size="2xl" id="error-name-2xl" aria-describedby="error-name-2xl-message" aria-invalid="true"></section>
-        <section data-style="rule-indent">
-            <h3>label &gt; (p[data-type="error"], input)</h3>
-            <label>氏名
-                <p data-type="error" id="error-name-nested-message"><strong>エラー:</strong> 氏名を入力してください</p>
-                <input type="text" aria-describedby="error-name-nested-message" aria-invalid="true"></label></section>
-        <section data-style="rule-indent">
-            <h3>label[for] + p[data-type="error"]</h3>
-            <label for="error-name">氏名</label>
-            <p data-type="error" id="error-name-message"><strong>エラー:</strong> 氏名を入力してください</p>
-            <input type="text" id="error-name" aria-describedby="error-name-message" aria-invalid="true"></section>
-        <section data-style="rule-indent">
-            <h3>legend + p[data-type="error"]</h3>
-            <fieldset aria-describedby="error-dob-message" aria-invalid="true">
-                <legend>生年月日</legend>
-                <p data-type="error" id="error-dob-message"><strong>エラー:</strong> 生年月日は実在する日付を入力してください</p>
-                <input type="text" id="error-dob" inputmode="numeric" pattern="[0-9]*" size="4" aria-invalid="true"></fieldset></section></section>
-
-    <section>
-        <h2>Heading</h2>
-        <section data-style="rule-indent">
-            <h1>H1</h1>
-            <h2>H2</h2>
-            <h3>H3</h3>
-            <h4>H4</h4>
-            <h5>H5</h5>
-            <h6>H6</h6>
-            <hgroup>
-                <h1>H1</h1>
-                <p>P</p></hgroup></section>
-        <section data-style="rule-indent">
-            <h3>[data-axis="inline"]</h3>
-            <hgroup data-axis="inline">
-                <h1>H1</h1>
-                <p>Subtitle</p></hgroup>
-            <hgroup data-axis="inline">
-                <h2>H2</h2>
-                <p>Subtitle</p></hgroup>
-            <hgroup data-axis="inline">
-                <h3>H3</h3>
-                <p>Subtitle</p></hgroup>
-            <hgroup data-axis="inline">
-                <h4>H4</h4>
-                <p>Subtitle</p></hgroup></section>
-        <section data-style="rule-indent">
-            <h3>[data-size]</h3>
-            <hgroup data-axis="inline" data-size="sm">
-                <h1>H1 sm</h1>
-                <p>Subtitle</p></hgroup>
-            <hgroup data-axis="inline" data-size="2xl">
-                <h3>H3 2xl</h3>
-                <p>Subtitle</p></hgroup></section></section>
+        <h2>Slider</h2>
+        <section data-sign="rule">
+            <h3>label > (span, input[type="range"])</h3>
+            <label>
+                <span>xs</span>
+                <input type="range" data-size="xs" min="0" max="100" step="10" value="30"></label>
+            <label>
+                <span>sm</span>
+                <input type="range" data-size="sm" min="0" max="100" step="10" value="40"></label>
+            <label>
+                <span>(md)</span>
+                <input type="range" data-size="sm" min="0" max="100" step="10" value="50"></label>
+            <label>
+                <span>lg</span>
+                <input type="range" data-size="sm" min="0" max="100" step="10" value="60"></label>
+            <label>
+                <span>xl aria-invalid="true"</span>
+                <input type="range" data-size="sm" min="0" max="100" step="10" value="70" aria-invalid="true"></label>
+            <label>
+                <span>2xl disabled</span>
+                <input type="range" data-size="2xl" min="0" max="100" step="10" value="80" disabled></label></section></section>
 
     <section>
         <h2>Search</h2>
-        <section data-style="rule-indent">
+        <section data-sign="rule">
 
             <label>
                 <input type="search" value='label > input[type="search"]'></label>
@@ -616,8 +514,8 @@
         
             <search aria-labelledby="">
                 <span id="">search > (span, label > select, label > input, button)</span>
-                <label data-facet="chevron">
-                    <select>
+                <label>
+                    <select data-facet="chevron">
                         <option>option</option>
                         <option>option</option></select></label>
                 <label>
@@ -626,15 +524,15 @@
         
             <form role="search" aria-labelledby="">
                 <span id="">form[role="search"] > (span, label > select, label > input, button) </span>
-                <label data-facet="chevron">
-                    <select>
-                        <option></option>
-                        <option></option></select></label>
+                <label>
+                    <select data-facet="chevron">
+                        <option>option</option>
+                        <option>option</option></select></label>
                 <label>
                     <input type="search" name='input[type="search"]'></label>
                 <button type="submit">button</button></form></section>
                 
-        <section data-style="rule-indent">
+        <section data-sign="rule">
             <h3>size</h3>
             <label>
                 <input type="search" data-size="xs"></label>
@@ -650,17 +548,17 @@
                 <input type="search" data-size="2xl"></label>
             <search>
                 <span>xs</span>
-                <label data-facet="chevron">
-                    <select data-size="xs">
+                <label>
+                    <select data-facet="chevron" data-size="xs">
                         <option>option</option>
                         <option>option</option></select></label>
                 <label>
                     <input type="search" data-size="xs"></label>
                 <button type="button" data-size="xs">button</button></search>
-            <searc>
+            <search>
                 <span>sm</span>
-                <label data-facet="chevron">
-                    <select data-size="sm">
+                <label>
+                    <select data-facet="chevron" data-size="sm">
                         <option>option</option>
                         <option>option</option></select></label>
                 <label>
@@ -668,8 +566,8 @@
                 <button type="button" data-size="sm">button</button></search>
             <search>
                 <span>md</span>
-                <label data-facet="chevron">
-                    <select data-size="md">
+                <label>
+                    <select data-facet="chevron" data-size="md">
                         <option>All</option>
                         <option>Title</option></select></label>
                 <label>
@@ -677,8 +575,8 @@
                 <button type="button" data-size="md">Search</button></search>
             <search>
                 <span>lg</span>
-                <label data-facet="chevron">
-                    <select data-size="lg">
+                <label>
+                    <select data-facet="chevron" data-size="lg">
                         <option>option</option>
                         <option>option</option></select></label>
                 <label>
@@ -686,8 +584,8 @@
                 <button type="button" data-size="lg">Search</button></search>
             <search>
                 <span>xl</span>
-                <label data-facet="chevron">
-                    <select data-size="xl">
+                <label>
+                    <select data-facet="chevron" data-size="xl">
                         <option>option</option>
                         <option>option</option></select></label>
                 <label>
@@ -695,8 +593,8 @@
                 <button type="button" data-size="xl">Search</button></search>
             <search>
                 <span>2xl</span>
-                <label data-facet="chevron">
-                    <select data-size="2xl">
+                <label>
+                    <select data-facet="chevron" data-size="2xl">
                         <option>option</option>
                         <option>option</option></select></label>
                 <label>
@@ -704,32 +602,87 @@
                 <button type="button" data-size="2xl">button</button></search></section></section>
 
     <section>
+        <h2>Heading</h2>
+        <section data-sign="rule">
+            <h1>h1</h1>
+            <h2>h2</h2>
+            <h3>h3</h3>
+            <h4>h4</h4>
+            <h5>h5</h5>
+            <h6>h6</h6>
+            <hgroup>
+                <h1>hgroup > (h1, p)</h1>
+                <p>P</p></hgroup>
+            <hgroup data-axis="inline">
+                <h1>hgroup[data-axis="inline"] > (h1, p)</h1>
+                <p>Subtitle</p></hgroup></section>
+
+        <section data-sign="rule">
+            <h3>hN x p size matrix (baseline alignment, no per-size correction)</h3>
+            <hgroup data-axis="inline">
+                <h1 data-size="2xl">h1 2xl</h1>
+                <p>p (none = md)</p></hgroup>
+            <hgroup data-axis="inline">
+                <h1 data-size="2xl">h1 2xl</h1>
+                <p data-size="md">p md</p></hgroup>
+            <hgroup data-axis="inline">
+                <h1 data-size="xl">h1 xl</h1>
+                <p data-size="xs">p xs</p></hgroup>
+            <hgroup data-axis="inline">
+                <h1 data-size="lg">h1 lg</h1>
+                <p data-size="md">p md</p></hgroup>
+            <hgroup data-axis="inline">
+                <h1 data-size="md">h1 md</h1>
+                <p data-size="sm">p sm</p></hgroup>
+            <hgroup data-axis="inline">
+                <h1 data-size="xs">h1 xs</h1>
+                <p data-size="2xl">p 2xl</p></hgroup></section>
+
+        <section data-sign="rule">
+            <h3>multi-line p (pre-wrap)</h3>
+            <hgroup data-axis="inline">
+                <h1 data-size="lg">h1 lg</h1>
+                <p>line1
+line2</p></hgroup></section>
+</section>
+
+    <section>
+        <h2>Error summary & detail</h2>
+        <section data-sign="rule">
+            <h3>section[data-type="error-summary"] &gt; (h2, p, ul > li)</h3>
+            <section role="alert" data-type="error-summary" aria-labelledby="error-summary-heading-1">
+                <h2 id="error-summary-heading-1">There is a problem</h2>
+                <p>次の項目を修正してから、もう一度送信してください。</p>
+                <ul>
+                    <li><a href="#error-name">Enter your full name</a></li>
+                    <li><a href="#error-dob">Date of birth must be a real date</a></li></ul></section></section>
+
+        <section data-sign="rule">
+            <h3>p[data-type="error"][data-size]</h3>
+            <label for="error-name-xs">氏名 (xs)</label>
+            <p data-type="error" data-sign="rule" data-size="xs" id="error-name-xs-message"><strong>エラー:</strong> 氏名を入力してください</p>
+            <input type="text" data-size="xs" id="error-name-xs" aria-describedby="error-name-xs-message" aria-invalid="true">
+            <label for="error-name-sm">氏名 (sm)</label>
+            <p data-type="error" data-sign="rule" data-size="sm" id="error-name-sm-message"><strong>エラー:</strong> 氏名を入力してください</p>
+            <input type="text" data-size="sm" id="error-name-sm" aria-describedby="error-name-sm-message" aria-invalid="true">
+            <label for="error-name-md">氏名 (md)</label>
+            <p data-type="error" data-sign="rule" data-size="md" id="error-name-md-message"><strong>エラー:</strong> 氏名を入力してください</p>
+            <input type="text" data-size="md" id="error-name-md" aria-describedby="error-name-md-message" aria-invalid="true">
+            <label for="error-name-lg">氏名 (lg)</label>
+            <p data-type="error" data-sign="rule" data-size="lg" id="error-name-lg-message"><strong>エラー:</strong> 氏名を入力してください</p>
+            <input type="text" data-size="lg" id="error-name-lg" aria-describedby="error-name-lg-message" aria-invalid="true">
+            <label for="error-name-xl">氏名 (xl)</label>
+            <p data-type="error" data-sign="rule" data-size="xl" id="error-name-xl-message"><strong>エラー:</strong> 氏名を入力してください</p>
+            <input type="text" data-size="xl" id="error-name-xl" aria-describedby="error-name-xl-message" aria-invalid="true">
+            <label for="error-name-2xl">氏名 (2xl)</label>
+            <p data-type="error" data-sign="rule" data-size="2xl" id="error-name-2xl-message"><strong>エラー:</strong> 氏名を入力してください</p>
+            <input type="text" data-size="2xl" id="error-name-2xl" aria-describedby="error-name-2xl-message" aria-invalid="true"></section></section>
+
+    <section>
         <h2>Table</h2>
-        <section data-style="rule-indent">
+        <section data-sign="rule">
             <table>
-                <caption>Caption</caption>
-                <thead>
-                    <tr>
-                        <th scope="col">Head</th>
-                        <th scope="col">Head</th>
-                        <th scope="col">Head</th></tr></thead>
-                <tbody>
-                    <tr>
-                        <th scope="row">Row</th>
-                        <td>Cell</td>
-                        <td>Cell</td></tr>
-                    <tr>
-                        <th scope="row">Row</th>
-                        <td>Cell</td>
-                        <td>Cell</td></tr>
-                    <tr>
-                        <th scope="row">Row</th>
-                        <td>Cell</td>
-                        <td>Cell</td></tr></tbody></table></section>
-        <section data-style="rule-indent">
-            <h3>[data-border]</h3>
-            <table data-border="">
-                <caption>All four edges of every cell</caption>
+                <caption>(data-border="sectioned")</caption>
                 <thead>
                     <tr>
                         <th scope="col">Head</th>
@@ -748,150 +701,8 @@
                         <th scope="row">Row</th>
                         <td>Cell</td>
                         <td>Cell</td></tr></tbody></table>
-            <table data-border="block-start">
-                <caption>Top edge of every cell: rules between rows</caption>
-                <thead>
-                    <tr>
-                        <th scope="col">Head</th>
-                        <th scope="col">Head</th>
-                        <th scope="col">Head</th></tr></thead>
-                <tbody>
-                    <tr>
-                        <th scope="row">Row</th>
-                        <td>Cell</td>
-                        <td>Cell</td></tr>
-                    <tr>
-                        <th scope="row">Row</th>
-                        <td>Cell</td>
-                        <td>Cell</td></tr>
-                    <tr>
-                        <th scope="row">Row</th>
-                        <td>Cell</td>
-                        <td>Cell</td></tr></tbody></table>
-            <table data-border="block-end">
-                <caption>Bottom edge of every cell: rules between rows</caption>
-                <thead>
-                    <tr>
-                        <th scope="col">Head</th>
-                        <th scope="col">Head</th>
-                        <th scope="col">Head</th></tr></thead>
-                <tbody>
-                    <tr>
-                        <th scope="row">Row</th>
-                        <td>Cell</td>
-                        <td>Cell</td></tr>
-                    <tr>
-                        <th scope="row">Row</th>
-                        <td>Cell</td>
-                        <td>Cell</td></tr>
-                    <tr>
-                        <th scope="row">Row</th>
-                        <td>Cell</td>
-                        <td>Cell</td></tr></tbody></table>
-            <table data-border="inline-start">
-                <caption>Leading edge of every cell: rules between columns</caption>
-                <thead>
-                    <tr>
-                        <th scope="col">Head</th>
-                        <th scope="col">Head</th>
-                        <th scope="col">Head</th></tr></thead>
-                <tbody>
-                    <tr>
-                        <th scope="row">Row</th>
-                        <td>Cell</td>
-                        <td>Cell</td></tr>
-                    <tr>
-                        <th scope="row">Row</th>
-                        <td>Cell</td>
-                        <td>Cell</td></tr>
-                    <tr>
-                        <th scope="row">Row</th>
-                        <td>Cell</td>
-                        <td>Cell</td></tr></tbody></table>
-            <table data-border="inline-end">
-                <caption>Trailing edge of every cell: rules between columns</caption>
-                <thead>
-                    <tr>
-                        <th scope="col">Head</th>
-                        <th scope="col">Head</th>
-                        <th scope="col">Head</th></tr></thead>
-                <tbody>
-                    <tr>
-                        <th scope="row">Row</th>
-                        <td>Cell</td>
-                        <td>Cell</td></tr>
-                    <tr>
-                        <th scope="row">Row</th>
-                        <td>Cell</td>
-                        <td>Cell</td></tr>
-                    <tr>
-                        <th scope="row">Row</th>
-                        <td>Cell</td>
-                        <td>Cell</td></tr></tbody></table>
-            <table data-border="block-end inline-end">
-                <caption>Two edges combined: space-separated values</caption>
-                <thead>
-                    <tr>
-                        <th scope="col">Head</th>
-                        <th scope="col">Head</th>
-                        <th scope="col">Head</th></tr></thead>
-                <tbody>
-                    <tr>
-                        <th scope="row">Row</th>
-                        <td>Cell</td>
-                        <td>Cell</td></tr>
-                    <tr>
-                        <th scope="row">Row</th>
-                        <td>Cell</td>
-                        <td>Cell</td></tr>
-                    <tr>
-                        <th scope="row">Row</th>
-                        <td>Cell</td>
-                        <td>Cell</td></tr></tbody></table></section>
-        <section data-style="rule-indent">
-            <h3>[data-stripe], [data-hover], [data-selectable]</h3>
-            <table data-stripe>
-                <caption>Caption</caption>
-                <thead>
-                    <tr>
-                        <th scope="col">Head</th>
-                        <th scope="col">Head</th>
-                        <th scope="col">Head</th></tr></thead>
-                <tbody>
-                    <tr>
-                        <th scope="row">Row</th>
-                        <td>Cell</td>
-                        <td>Cell</td></tr>
-                    <tr>
-                        <th scope="row">Row</th>
-                        <td>Cell</td>
-                        <td>Cell</td></tr>
-                    <tr>
-                        <th scope="row">Row</th>
-                        <td>Cell</td>
-                        <td>Cell</td></tr></tbody></table>
-            <table data-hover>
-                <caption>Caption</caption>
-                <thead>
-                    <tr>
-                        <th scope="col">Head</th>
-                        <th scope="col">Head</th>
-                        <th scope="col">Head</th></tr></thead>
-                <tbody>
-                    <tr>
-                        <th scope="row">Row</th>
-                        <td>Cell</td>
-                        <td>Cell</td></tr>
-                    <tr>
-                        <th scope="row">Row</th>
-                        <td>Cell</td>
-                        <td>Cell</td></tr>
-                    <tr>
-                        <th scope="row">Row</th>
-                        <td>Cell</td>
-                        <td>Cell</td></tr></tbody></table>
-            <table data-border="" data-selectable>
-                <caption>Caption</caption>
+            <table data-border="grid" data-selectable>
+                <caption>data-border="grid" data-selectable</caption>
                 <thead>
                     <tr>
                         <th scope="col">
@@ -903,28 +714,50 @@
                     <tr>
                         <td>
                             <label>
-                                <input type="checkbox" aria-label="Select row" data-size="sm"></label></td>
+                                <input type="checkbox" aria-label="Select row" data-size="sm" checked></label></td>
                         <td>Cell</td>
                         <td>Cell</td></tr>
                     <tr>
                         <td>
                             <label>
-                                <input type="checkbox" checked aria-label="Select row" data-size="sm"></label></td>
+                                <input type="checkbox" aria-label="Select row" data-size="sm"></label></td>
                         <td>Cell</td>
-                        <td>Cell</td></tr></tbody></table></section>
-        <section data-style="rule-indent">
-            <h3>th > label > input[type="radio"] (sort)</h3>
-            <table data-border="">
-                <caption>Caption</caption>
+                        <td>Cell</td></tr></tbody></table>
+            <table data-border="booktabs" data-stripe>
+                <caption>data-border="booktabs" data-stripe</caption>
                 <thead>
                     <tr>
-                        <th scope="col" aria-sort="ascending">Head
+                        <th scope="col">Head</th>
+                        <th scope="col">Head</th>
+                        <th scope="col">Head</th></tr></thead>
+                <tbody>
+                    <tr>
+                        <th scope="row">Row</th>
+                        <td>Cell</td>
+                        <td>Cell</td></tr>
+                    <tr>
+                        <th scope="row">Row</th>
+                        <td>Cell</td>
+                        <td>Cell</td></tr>
+                    <tr>
+                        <th scope="row">Row</th>
+                        <td>Cell</td>
+                        <td>Cell</td></tr></tbody></table>
+
+            <table>
+                <caption>Sort buttons</caption>
+                <thead>
+                    <tr>
+                        <th scope="col">Head</th>
+                        <th scope="col" aria-sort="ascending">
+                            Head
                             <span data-axis="block">
                                 <label>
                                     <input type="radio" name="sort-1" value="a-asc" aria-label="Sort ascending" checked></label>
                                 <label>
                                     <input type="radio" name="sort-1" value="a-desc" aria-label="Sort descending"></label></span></th>
-                        <th scope="col" aria-sort="none">Head
+                        <th scope="col" aria-sort="none">
+                            Head
                             <span data-axis="block">
                                 <label>
                                     <input type="radio" name="sort-1" value="b-asc" aria-label="Sort ascending"></label>
@@ -932,129 +765,108 @@
                                     <input type="radio" name="sort-1" value="b-desc" aria-label="Sort descending"></label></span></th></tr></thead>
                 <tbody>
                     <tr>
+                        <th scope="row">Row</th>
                         <td>Cell</td>
                         <td>Cell</td></tr>
                     <tr>
+                        <th scope="row">Row</th>
                         <td>Cell</td>
                         <td>Cell</td></tr></tbody></table></section>
-        <section data-style="rule-indent">
-            <h3>[data-size]</h3>
-            <table data-border="" data-size="xs">
-                <caption>Caption</caption>
-                <thead>
-                    <tr>
-                        <th scope="col">Head</th>
-                        <th scope="col">Head</th>
-                        <th scope="col">Head</th></tr></thead>
-                <tbody>
-                    <tr>
-                        <th scope="row">Row</th>
-                        <td>Cell</td>
-                        <td>Cell</td></tr>
-                    <tr>
-                        <th scope="row">Row</th>
-                        <td>Cell</td>
-                        <td>Cell</td></tr>
-                    <tr>
-                        <th scope="row">Row</th>
-                        <td>Cell</td>
-                        <td>Cell</td></tr></tbody></table>
-            <table data-border="" data-size="sm">
-                <caption>Caption</caption>
-                <thead>
-                    <tr>
-                        <th scope="col">Head</th>
-                        <th scope="col">Head</th>
-                        <th scope="col">Head</th></tr></thead>
-                <tbody>
-                    <tr>
-                        <th scope="row">Row</th>
-                        <td>Cell</td>
-                        <td>Cell</td></tr>
-                    <tr>
-                        <th scope="row">Row</th>
-                        <td>Cell</td>
-                        <td>Cell</td></tr>
-                    <tr>
-                        <th scope="row">Row</th>
-                        <td>Cell</td>
-                        <td>Cell</td></tr></tbody></table>
-            <table data-border="" data-size="lg">
-                <caption>Caption</caption>
-                <thead>
-                    <tr>
-                        <th scope="col">Head</th>
-                        <th scope="col">Head</th>
-                        <th scope="col">Head</th></tr></thead>
-                <tbody>
-                    <tr>
-                        <th scope="row">Row</th>
-                        <td>Cell</td>
-                        <td>Cell</td></tr>
-                    <tr>
-                        <th scope="row">Row</th>
-                        <td>Cell</td>
-                        <td>Cell</td></tr>
-                    <tr>
-                        <th scope="row">Row</th>
-                        <td>Cell</td>
-                        <td>Cell</td></tr></tbody></table>
-            <table data-border="" data-size="2xl">
-                <caption>Caption</caption>
-                <thead>
-                    <tr>
-                        <th scope="col">Head</th>
-                        <th scope="col">Head</th>
-                        <th scope="col">Head</th></tr></thead>
-                <tbody>
-                    <tr>
-                        <th scope="row">Row</th>
-                        <td>Cell</td>
-                        <td>Cell</td></tr>
-                    <tr>
-                        <th scope="row">Row</th>
-                        <td>Cell</td>
-                        <td>Cell</td></tr>
-                    <tr>
-                        <th scope="row">Row</th>
-                        <td>Cell</td>
-                        <td>Cell</td></tr></tbody></table></section></section>
 
-    <section>
-        <h2>Blockquote</h2>
-        <figure data-style="rule-indent">
-            <blockquote>
-                <p>"I will cast the dark shadows of human life over you without reserve. But you must not be afraid."</p></blockquote>
-            <figcaption>Soseki Natsume. 1914. <cite>Kokoro</cite>. Iwanami Shoten, Tokyo, Japan. Translated by Andyou, 2026.</figcaption></figure></section>
-
-    <section>
-        <h2>Icon badge</h2>
-        <section data-style="rule-indent">
-            <label>
-                <span>none</span>
-                <input type="radio" name="icon-badge" value="none" checked></label>
-            <label>
-                <span>active</span>
-                <input type="radio" name="icon-badge" value="active"></label>
-            <label>
-                <span>information</span>
-                <input type="radio" name="icon-badge" value="information"></label></section></section>
+            <section data-sign="rule">
+                <h3>size</h3>
+                <table data-size="xs">
+                    <caption>data-size="xs"</caption>
+                    <thead>
+                        <tr>
+                            <th scope="col">Head</th>
+                            <th scope="col">Head</th>
+                            <th scope="col">Head</th></tr></thead>
+                    <tbody>
+                        <tr>
+                            <th scope="row">Row</th>
+                            <td>Cell</td>
+                            <td>Cell</td></tr>
+                        <tr>
+                            <th scope="row">Row</th>
+                            <td>Cell</td>
+                            <td>Cell</td></tr>
+                        <tr>
+                            <th scope="row">Row</th>
+                            <td>Cell</td>
+                            <td>Cell</td></tr></tbody></table>
+                <table data-size="sm">
+                    <caption>data-size="sm"</caption>
+                    <thead>
+                        <tr>
+                            <th scope="col">Head</th>
+                            <th scope="col">Head</th>
+                            <th scope="col">Head</th></tr></thead>
+                    <tbody>
+                        <tr>
+                            <th scope="row">Row</th>
+                            <td>Cell</td>
+                            <td>Cell</td></tr>
+                        <tr>
+                            <th scope="row">Row</th>
+                            <td>Cell</td>
+                            <td>Cell</td></tr>
+                        <tr>
+                            <th scope="row">Row</th>
+                            <td>Cell</td>
+                            <td>Cell</td></tr></tbody></table>
+                <table data-size="lg">
+                    <caption>data-size="lg"</caption>
+                    <thead>
+                        <tr>
+                            <th scope="col">Head</th>
+                            <th scope="col">Head</th>
+                            <th scope="col">Head</th></tr></thead>
+                    <tbody>
+                        <tr>
+                            <th scope="row">Row</th>
+                            <td>Cell</td>
+                            <td>Cell</td></tr>
+                        <tr>
+                            <th scope="row">Row</th>
+                            <td>Cell</td>
+                            <td>Cell</td></tr>
+                        <tr>
+                            <th scope="row">Row</th>
+                            <td>Cell</td>
+                            <td>Cell</td></tr></tbody></table>
+                <table data-size="2xl">
+                    <caption>data-size="2xl"</caption>
+                    <thead>
+                        <tr>
+                            <th scope="col">Head</th>
+                            <th scope="col">Head</th>
+                            <th scope="col">Head</th></tr></thead>
+                    <tbody>
+                        <tr>
+                            <th scope="row">Row</th>
+                            <td>Cell</td>
+                            <td>Cell</td></tr>
+                        <tr>
+                            <th scope="row">Row</th>
+                            <td>Cell</td>
+                            <td>Cell</td></tr>
+                        <tr>
+                            <th scope="row">Row</th>
+                            <td>Cell</td>
+                            <td>Cell</td></tr></tbody></table></section></section>
 
     <section>
         <h2>Toast</h2>
-        <button type="button" onclick="jsFn.show(document.getElementById('toast_output-1'))">show (data-style="fill")</button>
-        <button type="button" onclick="jsFn.show(document.getElementById('toast_output-2'))">show data-style="outline"</button></section>
+        <button type="button" onclick="jsFn.show(document.getElementById('toast_output-1'))">show (data-surround="fill")</button>
+        <button type="button" onclick="jsFn.show(document.getElementById('toast_output-2'))">show data-surround="outline", 2xl</button></section>
 
     <section id="toast" data-type="toast">
         <output id="toast_output-1" class="hidden">
-            <span id="toast_output-1_span"></span>
-            <p id="toast_output-1_p">(data-style="fill")</p>
-            <button type="button" data-style="icon" data-sign="close" aria-label="Dismiss notification" onclick="jsFn.hide(this.closest('output'))"></button></output>
-        <output id="toast_output-2" data-style="outline" class="hidden">
-            <span id="toast_output-2_span"></span>
-            <p id="toast_output-2_p">data-style="outline"</p>
-            <button type="button" data-style="icon" data-sign="close" aria-label="Dismiss notification" onclick="jsFn.hide(this.closest('output'))"></button></output></section>
+            <span id="toast_output-1_span">span:</span>
+            <p id="toast_output-1_p">(data-surround="fill")</p></output>
+        <button data-sign="x"  data-size="2xl" data-surround="outline" id="toast_output-2" class="hidden" onclick="jsFn.hide(this.closest('button'))">
+            <span id="toast_output-2_span">span:</span>
+            <p id="toast_output-2_p">data-surround="outline", 2xl</p></button></section>
 
-
-</section>
 </body></html>

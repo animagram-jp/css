@@ -24,9 +24,6 @@
 */
 
 @layer css.radio {
-
-    /* === color, layout === */
-
     fieldset:has(> label > input[type="radio"]) {
         display: grid;
         border:  none;
@@ -83,13 +80,11 @@
     }
 
     label > input[type="radio"] {
-        appearance:       none;
         background-color: var(--color-paper);
         border-color:     var(--color-ink);
         border-style:     solid;
         border-radius:    50%;
         cursor:           pointer;
-        position:         relative;
         margin:           0;
         padding:          0;
     }
@@ -103,12 +98,12 @@
 
     @media (prefers-reduced-motion: no-preference) {
         label > input[type="radio"]::after {
-            transition: background-color 150ms ease;
+            transition: background-color 0.15s ease;
         }
     }
 
     label > input[type="radio"]:checked::after {
-        background-color: var(--color-emphasis-fill);
+        background-color: var(--color-emphasis-ink);
     }
 
     @media (forced-colors: active) {
@@ -201,69 +196,21 @@
         inset-inline-start: calc(var(--2xl-border-width) * 2);
     }
 
-    /* --- focus, hover, active --- */
-
-    label > input[type="radio"]:where(
-        :focus-visible,
-        :hover,
-        :active
-    ) {
-        outline-color:  var(--color-focus);
-        outline-offset: 0;
-        outline-style:  solid;
-        outline-width:  0.25rem;
-        z-index:        1;
-    }
-
-    @media (forced-colors: active) {
-        label > input[type="radio"]:where(
-            :focus-visible,
-            :hover,
-            :active
-        ) {
-            outline-color: Highlight;
-        }
-    }
 
     /* --- invalid --- */
 
     label > input[type="radio"]:where(
         :user-invalid,
         [aria-invalid="true"]
-    ) {
-        border-color: var(--color-error);
-    }
-    label > input[type="radio"]:where(
-        :user-invalid,
-        [aria-invalid="true"]
     ):checked::after {
         background-color: var(--color-error);
     }
-    label > input[type="radio"]:where(
-        :user-invalid,
-        [aria-invalid="true"]
-    ):focus-visible {
-        outline-color: var(--color-error);
-    }
-
     @media (forced-colors: active) {
-        label > input[type="radio"]:where(
-            :user-invalid,
-            [aria-invalid="true"]
-        ) {
-            border-color: Mark;
-        }
         label > input[type="radio"]:where(
             :user-invalid,
             [aria-invalid="true"]
         ):checked::after {
             background-color: Mark;
-        }
-        label > input[type="radio"]:where(
-            :user-invalid,
-            [aria-invalid="true"]
-        ):focus-visible {
-            outline-color: Mark;
         }
     }
 
@@ -273,31 +220,16 @@
         :disabled,
         [aria-disabled="true"]
     )) {
-        color: var(--color-mute);
-    }
-    label > input[type="radio"]:where(
-        :disabled,
-        [aria-disabled="true"]
-    ) {
-        border-color:   var(--color-mute);
-        cursor:         not-allowed;
-        outline-color:  transparent;
-        pointer-events: none;
+        color: var(--color-ink-mix);
     }
     label > input[type="radio"]:where(
         :disabled,
         [aria-disabled="true"]
     ):checked::after {
-        background-color: var(--color-mute);
+        background-color: var(--color-ink-mix);
     }
 
     @media (forced-colors: active) {
-        label > input[type="radio"]:where(
-            :disabled,
-            [aria-disabled="true"]
-        ) {
-            border-color: GrayText;
-        }
         label > input[type="radio"]:where(
             :disabled,
             [aria-disabled="true"]

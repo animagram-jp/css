@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Accessibility Report — WCAG 2.2 (A, AA) × [data-color-scheme]</title>
+<link rel="icon" href="./animagram.png">
+<link rel="stylesheet" href="../css/reset.css">
+<link rel="stylesheet" href="../css/base.css">
+<link rel="stylesheet" href="../css/data_style.css">
+<link rel="stylesheet" href="../css/data_size.css">
+<link rel="stylesheet" href="../css/data_sign.css">
+<link rel="stylesheet" href="../css/data_group.css">
+<link rel="stylesheet" href="../css/heading.css">
+<link rel="stylesheet" href="../css/table.css">
+<link rel="stylesheet" href="./style.css">
+<style>
+/*  Page-local rules sit after every css.* layer so they win against component
+    defaults. Everything here is layout for this one report; colours and
+    component styling come from the library as-is. */
+@layer css, report;
+
+@layer report {
+    /*  The report is a long scan of one wide table per criterion, so it opts
+        out of the 60rem reading measure the example page uses. */
+    body > *:where(header, section),
+    main {
+        max-width: none;
+    }
+
+    section {
+        margin-block-end: 3.5rem;
+    }
+
+    /*  The message wraps to a word per line if left to shrink against the
+        path column, which has no natural break points. */
+    #detail td:nth-child(3) {
+        min-width: 16rem;
+    }
+
+    td > ul {
+        list-style:   none;
+        margin-block: 0;
+        padding:      0;
+    }
+
+    td > ul > li + li {
+        margin-block-start: 0.5rem;
+    }
+
+    td > pre {
+        margin:      0;
+        white-space: pre-wrap;
+        word-break:  break-all;
+    }
+
+    /*  The bounds line is supporting detail under each element path. */
+    td > ul > li > p {
+        color:  var(--color-ink-mix);
+        margin: 0;
+    }
+
+    /*  Node counts read as a column of magnitudes. */
+    #summary :where(td, th):nth-child(7),
+    #detail  :where(td, th):nth-child(4) {
+        text-align: end;
+    }
+}
+</style>
+</head>
+<body>
+<header>
+    <hgroup data-sign="rule">
+        <h1>Accessibility report</h1>
+        <p>WCAG 2.2 (A, AA) × [data-color-scheme]</p></hgroup>
+    <p data-size="sm"></p></header>
+
+<main>
+<section>
+    <h2>By success criterion</h2>
+    <table id="summary" data-size="xs" data-border="grid" data-stripe>
+    <caption></caption>
+    <thead><tr>
+      <th scope="col">SC</th><th scope="col">Level</th><th scope="col">Name</th><th scope="col">Rule</th>
+      <th scope="col">Outcome</th><th scope="col">Schemes</th><th scope="col">Nodes</th>
+    </tr></thead>
+    <tbody></tbody>
+    </table></section>
+
+<div id="detail"></div>
+</main>
+
+<template id="detail-tpl">
+<section>
+  <h2></h2>
+  <table data-size="xs" data-border="grid">
+    <thead><tr>
+      <th scope="col">Rule</th><th scope="col">Outcome</th><th scope="col">Message</th>
+      <th scope="col">Nodes</th><th scope="col">Elements</th></tr></thead>
+    <tbody></tbody>
+  </table>
+</section>
+</template>
+
+<script type="module">
+const el = (tag, text) => {
+    const node = document.createElement(tag);
+    if (text !== undefined) node.textContent = text;
+    return node;
+};
+//  A FAIL is a definite breach, so it is marked; a POTENTIAL and the
+//  conformance levels are weaker signals and are merely strong. Neither is
+//  interactive, so neither borrows the surround styles that read as a control.
+const badge = (text, marked) =>
+    el(marked ? 'mark' : 'strong', text);
+const cell = (...children) => {
+    const td = el('td');
+    td.append(...children);
+    return td;
+};
+const row = (cells) => {
+    const tr = document.createElement('tr');
+    cells.forEach(c => tr.append(c instanceof Node ? c : el('td', c)));
+    return tr;
+};
+
+const report = await fetch('./audit.json').then(r => {
+    if (!r.ok) throw new Error(`audit.json: ${r.status}`);
+    return r.json();
+});
+
+document.querySelector('header > p').textContent =
+    `Generated: ${report.generated} — ${report.guideline} — ` +
+    `${report.schemes.length} schemes — FAIL is a breach, ` +
+    `POTENTIAL needs manual confirmation`;
+
+// A finding repeats across schemes whenever the cause is markup rather than
+// palette, so rows are keyed by criterion+rule+reason and the schemes that hit
+// them are collapsed into one cell. A row listing every scheme is a structural
+// problem; a row listing one is palette-specific.
+const groups = new Map();
+for (const result of report.results) {
+    for (const f of result.findings) {
+        // A rule can map to several criteria; it is listed under each.
+        const criteria = f.criteria.length ? f.criteria : [{ num: '—', level: '', name: 'Unmapped' }];
+        for (const c of criteria) {
+            const key = `${c.num}|${f.ruleId}|${f.reasonId}|${f.outcome}`;
+            let g = groups.get(key);
+            if (!g) {
+                g = { sc: c, ruleId: f.ruleId, reasonId: f.reasonId, outcome: f.outcome,
+                      message: f.message, schemes: new Set(), nodes: [] };
+                groups.set(key, g);
+            }
+            g.schemes.add(result.scheme);
+            g.nodes.push({ ...f, scheme: result.scheme });
+        }
+    }
+}
+
+const scKey = (num) => num.split('.').map(n => String(n).padStart(3, '0')).join('.');
+const all = [...groups.values()].sort((a, b) =>
+    scKey(a.sc.num).localeCompare(scKey(b.sc.num)) ||
+    (a.outcome === b.outcome ? 0 : a.outcome === 'FAIL' ? -1 : 1) ||
+    b.nodes.length - a.nodes.length);
+
+// An element that fails in every scheme is one problem, not six, so each group
+// counts distinct elements rather than raw findings.
+for (const g of all) {
+    g.elements = [...new Map(g.nodes.map(n => [n.path, n])).values()];
+}
+
+const scanned = report.results.length;
+const failing = all.filter(g => g.outcome === 'FAIL').length;
+
+document.querySelector('#summary caption').textContent =
+    `${all.length} findings across ${scanned} scans — ` +
+    `${failing} failing, ${all.length - failing} needing review`;
+
+const summary = document.querySelector('#summary tbody');
+const allSchemes = report.schemes.length;
+
+for (const g of all) {
+    const schemes = g.schemes.size === allSchemes
+        ? 'all'
+        : [...g.schemes].join(', ');
+    summary.append(row([
+        el('th', g.sc.num),
+        g.sc.level ? cell(badge(g.sc.level)) : el('td', ''),
+        g.sc.name,
+        cell(el('code', g.ruleId)),
+        cell(badge(g.outcome, g.outcome === 'FAIL')),
+        schemes,
+        el('td', String(g.elements.length)),
+    ]));
+    summary.lastElementChild.firstElementChild.scope = 'row';
+}
+
+const detail = document.querySelector('#detail');
+const tpl = document.querySelector('#detail-tpl');
+
+if (!all.length) {
+    document.querySelector('#summary').hidden = true;
+    const ok = el('p');
+    ok.append(el('strong', '✓ No failures or unresolved checks in any scheme.'));
+    detail.append(ok);
+} else {
+    // Detail is grouped by criterion so a reader fixing "1.4.3" sees every
+    // element involved in one place.
+    const byCriterion = new Map();
+    for (const g of all) {
+        const key = `${g.sc.num} ${g.sc.name}`;
+        if (!byCriterion.has(key)) byCriterion.set(key, { sc: g.sc, groups: [] });
+        byCriterion.get(key).groups.push(g);
+    }
+
+    for (const [title, { sc, groups: gs }] of byCriterion) {
+        const frag = tpl.content.cloneNode(true);
+        frag.querySelector('h2').textContent =
+            sc.level ? `${title} (${sc.level})` : title;
+        frag.querySelector('tbody').append(...gs.map(g => {
+            const list = el('ul');
+            list.append(...g.elements.map(n => {
+                const li = el('li');
+                li.append(el('code', n.snippet || ''), el('pre', n.path));
+                if (n.bounds) {
+                    li.append(el('p', `at ${n.bounds.left},${n.bounds.top} ` +
+                                      `(${n.bounds.width}×${n.bounds.height})`));
+                }
+                return li;
+            }));
+
+            return row([
+                cell(el('code', g.ruleId), el('pre', g.reasonId)),
+                cell(badge(g.outcome, g.outcome === 'FAIL')),
+                g.message,
+                el('td', String(g.elements.length)),
+                cell(list),
+            ]);
+        }));
+        detail.append(frag);
+    }
+}
+</script>
+</body>
+</html>

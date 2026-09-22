@@ -32,7 +32,7 @@ document.querySelectorAll('input[type="checkbox"][data-indeterminate]')
 // --- radio event for icon badge at the bottom right corner ---
 
 const ICON_BADGE = {
-    active:      { fill: "rgb(53,161,107)",  stroke: "rgb(255,255,255)" }, // --rgb-accent-green
+    active:      { fill: "rgb(44,134,89)",  stroke: "rgb(255,255,255)" }, // --color-success (rgb(var(--rgb-accent-green)) mixed 83% with rgb(0,0,0))
     information: { fill: "rgb(127,135,143)", stroke: "rgb(255,255,255)" }, // --rgb-grey
 };
 
@@ -158,5 +158,29 @@ const jsFn = {
         toastCycles.set(el, { timer: fallback, controller });
     },
 };
+
+
+/*  Password reveal. The button is markup-hidden so a page without this script
+    keeps a plain password field; unhiding it here is what enables the toggle.
+    The label stays put and aria-pressed carries the state, per the toggle
+    button rule in InterfaceDesign.md: a control that holds its place should
+    not restyle its own sign. Assistive technology announces the pressed
+    change on its own, so no live region is needed. */
+document.querySelectorAll('label > input[type="password"]').forEach((input) => {
+    const button = input.parentElement.querySelector(":scope > button[aria-controls]");
+    if (!button) return;
+    button.hidden = false;
+    button.addEventListener("click", () => {
+        const revealed = button.getAttribute("aria-pressed") === "true";
+        button.setAttribute("aria-pressed", String(!revealed));
+        input.type = revealed ? "password" : "text";
+    });
+    /*  A submitted form must not leave the value as a plain text field, or the
+        browser may remember it and offer it as autofill elsewhere. */
+    input.form?.addEventListener("submit", () => {
+        input.type = "password";
+        button.setAttribute("aria-pressed", "false");
+    });
+});
 
 window.jsFn = jsFn;

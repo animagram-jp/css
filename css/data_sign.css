@@ -6,18 +6,31 @@
         *[data-sign],
         *[data-facet],
         summary:not([data-facet]),
-        button[aria-haspopup="listbox"]:not([data-facet])
+        button[aria-haspopup="listbox"]:not([data-facet]),
+        label:has(> select[data-facet="chevron"])
     ) {
         position: relative;
+    }
+
+    *:where(
+        [data-sign="hatch"],
+        [data-sign="minus"],
+        [data-sign="plus"],
+        [data-sign="x"]
+    )::before,
+    *:where(
+        [data-sign="plus"],
+        [data-sign="x"]
+    )::after {
+        content:  "";
+        inset:    0;
+        margin:   auto;
+        position: absolute;
     }
 
     /* === hatch === */
 
     *[data-sign="hatch"]::before {
-        content: "";
-        display: inline-block;
-        height:  1rem;
-        width:   1rem;
         background-image: repeating-linear-gradient(
             -45deg,
             currentcolor 0,
@@ -27,17 +40,80 @@
         );
     }
 
-    /* === check === */
+    /* --- size --- */
 
-    *:where(
-        input[data-sign="check"],
-        label > input[type="checkbox"]:not([role="switch"])
-    ) {
-        appearance: none;
-        position:   relative;
+    [data-sign="hatch"][data-size="xs"]::before {
+        block-size:  var(--xs-line-height);
+        inline-size: var(--xs-line-height);
+    }
+    [data-sign="hatch"][data-size="sm"]::before {
+        block-size:  var(--sm-line-height);
+        inline-size: var(--sm-line-height);
+    }
+    [data-sign="hatch"]:where(
+        [data-size="md"],
+        :not([data-size])
+    )::before {
+        block-size:  var(--md-line-height);
+        inline-size: var(--md-line-height);
+    }
+    [data-sign="hatch"][data-size="lg"]::before {
+        block-size:  var(--lg-line-height);
+        inline-size: var(--lg-line-height);
+    }
+    [data-sign="hatch"][data-size="xl"]::before {
+        block-size:  var(--xl-line-height);
+        inline-size: var(--xl-line-height);
+    }
+    [data-sign="hatch"][data-size="2xl"]::before {
+        block-size:  var(--2xl-line-height);
+        inline-size: var(--2xl-line-height);
     }
 
-    /* ✓ : border 2辺を回転させて描く。線の太さは size-variant に依らず一定。 */
+    /* === rule: indent with block-start rule === */
+
+    *[data-sign="rule"] {
+        padding-inline-start: 1.5rem;
+    }
+    *[data-sign="rule"]::before {
+        background-color:   var(--color-emphasis-ink);
+        content:            "";
+        inset-block:        0;
+        inset-inline-start: 0;
+        position:           absolute;
+        inline-size:        0.5rem;
+    }
+    @media (forced-colors: active) {
+        *[data-sign="rule"]::before {
+            background-color: CanvasText;
+        }
+    }
+
+    /* --- size --- */
+
+    *[data-sign="rule"][data-size="xs"]::before {
+        inset-block: calc((var(--xs-box-height) - var(--xs-line-height)) / 2);
+    }
+    *[data-sign="rule"][data-size="sm"]::before {
+        inset-block: calc((var(--sm-box-height) - var(--sm-line-height)) / 2);
+    }
+    *[data-sign="rule"]:where(
+        [data-size="md"],
+        :not([data-size])
+    )::before {
+        inset-block: calc((var(--md-box-height) - var(--md-line-height)) / 2);
+    }
+    *[data-sign="rule"][data-size="lg"]::before {
+        inset-block: calc((var(--lg-box-height) - var(--lg-line-height)) / 2);
+    }
+    *[data-sign="rule"][data-size="xl"]::before {
+        inset-block: calc((var(--xl-box-height) - var(--xl-line-height)) / 2);
+    }
+    *[data-sign="rule"][data-size="2xl"]::before {
+        inset-block: calc((var(--2xl-box-height) - var(--2xl-line-height)) / 2);
+    }
+
+    /* === check === */
 
     *:where(
         input[data-sign="check"],
@@ -198,31 +274,163 @@
         translate: 0 -0.35938rem;
     }
 
-    /*  === close (x) === */
+    /*  === x === */
 
-    [data-sign="close"]::before,
-    [data-sign="close"]::after {
+    [data-sign="x"]::before,
+    [data-sign="x"]::after {
         background-color: currentColor;
-        block-size:       0.125em;
-        content:          "";
-        inline-size:      0.75em;
-        inset:            0;
-        margin:           auto;
-        position:         absolute;
     }
-    [data-sign="close"]::before {
+    [data-sign="x"]::before {
         rotate: 45deg;
     }
-    [data-sign="close"]::after {
+    [data-sign="x"]::after {
         rotate: -45deg;
+    }
+
+    /* --- size --- */
+
+    [data-sign="x"][data-size="xs"]::before,
+    [data-sign="x"][data-size="xs"]::after {
+        block-size:  var(--xs-border-width);
+        inline-size: calc(var(--xs-line-height) / 1.4142);
+    }
+    [data-sign="x"][data-size="sm"]::before,
+    [data-sign="x"][data-size="sm"]::after {
+        block-size:  var(--sm-border-width);
+        inline-size: calc(var(--sm-line-height) / 1.4142);
+    }
+    [data-sign="x"]:where(
+        [data-size="md"],
+        :not([data-size])
+    )::before,
+    [data-sign="x"]:where(
+        [data-size="md"],
+        :not([data-size])
+    )::after {
+        block-size:  var(--md-border-width);
+        inline-size: calc(var(--md-line-height) / 1.4142);
+    }
+    [data-sign="x"][data-size="lg"]::before,
+    [data-sign="x"][data-size="lg"]::after {
+        block-size:  var(--lg-border-width);
+        inline-size: calc(var(--lg-line-height) / 1.4142);
+    }
+    [data-sign="x"][data-size="xl"]::before,
+    [data-sign="x"][data-size="xl"]::after {
+        block-size:  var(--xl-border-width);
+        inline-size: calc(var(--xl-line-height) / 1.4142);
+    }
+    [data-sign="x"][data-size="2xl"]::before,
+    [data-sign="x"][data-size="2xl"]::after {
+        block-size:  var(--2xl-border-width);
+        inline-size: calc(var(--2xl-line-height) / 1.4142);
+    }
+
+    /*  === plus, minus === */
+
+    *:where(
+        [data-sign="minus"],
+        [data-sign="plus"]
+    )::before,
+    [data-sign="plus"]::after {
+        background-color: currentColor;
+    }
+    [data-sign="plus"]::after {
+        rotate: 90deg;
+    }
+
+    /* --- size --- */
+
+    *:where(
+        [data-sign="minus"],
+        [data-sign="plus"]
+    )[data-size="xs"]::before,
+    [data-sign="plus"][data-size="xs"]::after {
+        block-size:  var(--xs-border-width);
+        inline-size: var(--xs-line-height);
+    }
+    *:where(
+        [data-sign="minus"],
+        [data-sign="plus"]
+    )[data-size="sm"]::before,
+    [data-sign="plus"][data-size="sm"]::after {
+        block-size:  var(--sm-border-width);
+        inline-size: var(--sm-line-height);
+    }
+    *:where(
+        [data-sign="minus"],
+        [data-sign="plus"]
+    ):where(
+        [data-size="md"],
+        :not([data-size])
+    )::before,
+    [data-sign="plus"]:where(
+        [data-size="md"],
+        :not([data-size])
+    )::after {
+        block-size:  var(--md-border-width);
+        inline-size: var(--md-line-height);
+    }
+    *:where(
+        [data-sign="minus"],
+        [data-sign="plus"]
+    )[data-size="lg"]::before,
+    [data-sign="plus"][data-size="lg"]::after {
+        block-size:  var(--lg-border-width);
+        inline-size: var(--lg-line-height);
+    }
+    *:where(
+        [data-sign="minus"],
+        [data-sign="plus"]
+    )[data-size="xl"]::before,
+    [data-sign="plus"][data-size="xl"]::after {
+        block-size:  var(--xl-border-width);
+        inline-size: var(--xl-line-height);
+    }
+    *:where(
+        [data-sign="minus"],
+        [data-sign="plus"]
+    )[data-size="2xl"]::before,
+    [data-sign="plus"][data-size="2xl"]::after {
+        block-size:  var(--2xl-border-width);
+        inline-size: var(--2xl-line-height);
+    }
+
+    /*  === sign-style: inline === */
+
+    [data-sign-style="inline"] {
+        vertical-align: middle;
+    }
+
+    [data-sign-style="inline"]:not([data-size] *) {
+        block-size: var(--md-line-height);
+    }
+    [data-size="xs"] [data-sign-style="inline"]:not([data-size="xs"] [data-size] *) {
+        block-size: var(--xs-line-height);
+    }
+    [data-size="sm"] [data-sign-style="inline"]:not([data-size="sm"] [data-size] *) {
+        block-size: var(--sm-line-height);
+    }
+    [data-size="md"] [data-sign-style="inline"]:not([data-size="md"] [data-size] *) {
+        block-size: var(--md-line-height);
+    }
+    [data-size="lg"] [data-sign-style="inline"]:not([data-size="lg"] [data-size] *) {
+        block-size: var(--lg-line-height);
+    }
+    [data-size="xl"] [data-sign-style="inline"]:not([data-size="xl"] [data-size] *) {
+        block-size: var(--xl-line-height);
+    }
+    [data-size="2xl"] [data-sign-style="inline"]:not([data-size="2xl"] [data-size] *) {
+        block-size: var(--2xl-line-height);
     }
 
     /* === chevron === */
 
     *:where(
-        *[data-facet="chevron"],
+        *[data-facet="chevron"]:not(select),
         summary:not([data-facet]),
-        button[aria-haspopup="listbox"]:not([data-facet])
+        button[aria-haspopup="listbox"]:not([data-facet]),
+        label:has(> select[data-facet="chevron"])
     )::after {
         border-style:         solid;
         border-top-width:     0;
@@ -237,10 +445,21 @@
         z-index:              2;
     }
 
+    @media (prefers-reduced-motion: no-preference) {
+        *:where(
+            *[data-facet="chevron"]:not(select),
+            summary:not([data-facet]),
+            button[aria-haspopup="listbox"]:not([data-facet]),
+            label:has(> select[data-facet="chevron"])
+        )::after {
+            transition: transform 0.15s ease;
+        }
+    }    
+
     /* --- size --- */
 
     *:where(
-        *[data-facet="chevron"],
+        *[data-facet="chevron"]:not(select),
         summary:not([data-facet]),
         button[aria-haspopup="listbox"]:not([data-facet])
     )[data-size="xs"] {
@@ -248,7 +467,7 @@
     }
 
     *:where(
-        *[data-facet="chevron"],
+        *[data-facet="chevron"]:not(select),
         summary:not([data-facet]),
         button[aria-haspopup="listbox"]:not([data-facet])
     )[data-size="sm"] {
@@ -256,7 +475,7 @@
     }
 
     *:where(
-        *[data-facet="chevron"],
+        *[data-facet="chevron"]:not(select),
         summary:not([data-facet]),
         button[aria-haspopup="listbox"]:not([data-facet])
     ):where(
@@ -267,7 +486,7 @@
     }
 
     *:where(
-        *[data-facet="chevron"],
+        *[data-facet="chevron"]:not(select),
         summary:not([data-facet]),
         button[aria-haspopup="listbox"]:not([data-facet])
     )[data-size="lg"] {
@@ -275,7 +494,7 @@
     }
 
     *:where(
-        *[data-facet="chevron"],
+        *[data-facet="chevron"]:not(select),
         summary:not([data-facet]),
         button[aria-haspopup="listbox"]:not([data-facet])
     )[data-size="xl"] {
@@ -283,7 +502,7 @@
     }
 
     *:where(
-        *[data-facet="chevron"],
+        *[data-facet="chevron"]:not(select),
         summary:not([data-facet]),
         button[aria-haspopup="listbox"]:not([data-facet])
     )[data-size="2xl"] {
@@ -291,10 +510,11 @@
     }
 
     *:where(
-        *[data-facet="chevron"],
-        summary:not([data-facet]),
-        button[aria-haspopup="listbox"]:not([data-facet])
-    )[data-size="xs"]::after {
+        *[data-facet="chevron"]:not(select)[data-size="xs"],
+        summary:not([data-facet])[data-size="xs"],
+        button[aria-haspopup="listbox"]:not([data-facet])[data-size="xs"],
+        label:has(> select[data-facet="chevron"][data-size="xs"])
+    )::after {
         block-size:          calc(var(--xs-font-size) * 0.75 * 1.06);
         border-bottom-width: var(--xs-border-width);
         border-right-width:  var(--xs-border-width);
@@ -303,19 +523,20 @@
         transform:           translateY(-0.125rem) rotate(45deg);
     }
     *:where(
-        *[data-facet="chevron"][aria-expanded="true"],
-        details[open] > summary:not([data-facet]),
-        button[aria-haspopup="listbox"]:not([data-facet]):has(+ [role="listbox"]:popover-open),
-        label[data-facet="chevron"]:has(> select:open)
-    )[data-size="xs"]::after {
+        *[data-facet="chevron"]:not(select)[aria-expanded="true"][data-size="xs"],
+        details[open] > summary:not([data-facet])[data-size="xs"],
+        button[aria-haspopup="listbox"]:not([data-facet])[data-size="xs"]:has(+ [role="listbox"]:popover-open),
+        label:has(> select[data-facet="chevron"][data-size="xs"]:open)
+    )::after {
         transform: translateY(calc(2 / 16 * 1rem)) rotate(225deg);
     }
 
     *:where(
-        *[data-facet="chevron"],
-        summary:not([data-facet]),
-        button[aria-haspopup="listbox"]:not([data-facet])
-    )[data-size="sm"]::after {
+        *[data-facet="chevron"]:not(select)[data-size="sm"],
+        summary:not([data-facet])[data-size="sm"],
+        button[aria-haspopup="listbox"]:not([data-facet])[data-size="sm"],
+        label:has(> select[data-facet="chevron"][data-size="sm"])
+    )::after {
         block-size:          calc(var(--sm-font-size) * 0.75 * 1.06);
         border-bottom-width: var(--sm-border-width);
         border-right-width:  var(--sm-border-width);
@@ -324,21 +545,19 @@
         transform:           translateY(-0.125rem) rotate(45deg);
     }
     *:where(
-        *[data-facet="chevron"][aria-expanded="true"],
-        details[open] > summary:not([data-facet]),
-        button[aria-haspopup="listbox"]:not([data-facet]):has(+ [role="listbox"]:popover-open),
-        label[data-facet="chevron"]:has(> select:open)
-    )[data-size="sm"]::after {
+        *[data-facet="chevron"]:not(select)[aria-expanded="true"][data-size="sm"],
+        details[open] > summary:not([data-facet])[data-size="sm"],
+        button[aria-haspopup="listbox"]:not([data-facet])[data-size="sm"]:has(+ [role="listbox"]:popover-open),
+        label:has(> select[data-facet="chevron"][data-size="sm"]:open)
+    )::after {
         transform: translateY(calc(2 / 16 * 1rem)) rotate(225deg);
     }
 
     *:where(
-        *[data-facet="chevron"],
-        summary:not([data-facet]),
-        button[aria-haspopup="listbox"]:not([data-facet])
-    ):where(
-        *[data-size="md"],
-        *:not([data-size])
+        *[data-facet="chevron"]:not(select):where([data-size="md"], :not([data-size])),
+        summary:not([data-facet]):where([data-size="md"], :not([data-size])),
+        button[aria-haspopup="listbox"]:not([data-facet]):where([data-size="md"], :not([data-size])),
+        label:has(> select[data-facet="chevron"]:where([data-size="md"], :not([data-size])))
     )::after {
         block-size:         calc(var(--md-font-size) * 0.75 * 1.06);
         inline-size:        calc(var(--md-font-size) * 0.75 * 1.06);
@@ -346,22 +565,20 @@
         transform:          translateY(-0.1875rem) rotate(45deg);
     }
     *:where(
-        *[data-facet="chevron"][aria-expanded="true"],
-        details[open] > summary:not([data-facet]),
-        button[aria-haspopup="listbox"]:not([data-facet]):has(+ [role="listbox"]:popover-open),
-        label[data-facet="chevron"]:has(> select:open)
-    ):where(
-        *[data-size="md"],
-        *:not([data-size])
+        *[data-facet="chevron"]:not(select)[aria-expanded="true"]:where([data-size="md"], :not([data-size])),
+        details[open] > summary:not([data-facet]):where([data-size="md"], :not([data-size])),
+        button[aria-haspopup="listbox"]:not([data-facet]):where([data-size="md"], :not([data-size])):has(+ [role="listbox"]:popover-open),
+        label:has(> select[data-facet="chevron"]:where([data-size="md"], :not([data-size])):open)
     )::after {
         transform: translateY(calc(3 / 16 * 1rem)) rotate(225deg);
     }
 
     *:where(
-        *[data-facet="chevron"],
-        summary:not([data-facet]),
-        button[aria-haspopup="listbox"]:not([data-facet])
-    )[data-size="lg"]::after {
+        *[data-facet="chevron"]:not(select)[data-size="lg"],
+        summary:not([data-facet])[data-size="lg"],
+        button[aria-haspopup="listbox"]:not([data-facet])[data-size="lg"],
+        label:has(> select[data-facet="chevron"][data-size="lg"])
+    )::after {
         block-size:          calc(var(--lg-font-size) * 0.6 * 1.06);
         border-bottom-width: var(--lg-border-width);
         border-right-width:  var(--lg-border-width);
@@ -371,19 +588,20 @@
     }
 
     *:where(
-        *[data-facet="chevron"][aria-expanded="true"],
-        details[open] > summary:not([data-facet]),
-        button[aria-haspopup="listbox"]:not([data-facet]):has(+ [role="listbox"]:popover-open),
-        label[data-facet="chevron"]:has(> select:open)
-    )[data-size="lg"]::after {
+        *[data-facet="chevron"]:not(select)[aria-expanded="true"][data-size="lg"],
+        details[open] > summary:not([data-facet])[data-size="lg"],
+        button[aria-haspopup="listbox"]:not([data-facet])[data-size="lg"]:has(+ [role="listbox"]:popover-open),
+        label:has(> select[data-facet="chevron"][data-size="lg"]:open)
+    )::after {
         transform: translateY(calc(2 / 16 * 1rem)) rotate(225deg);
     }
 
     *:where(
-        *[data-facet="chevron"],
-        summary:not([data-facet]),
-        button[aria-haspopup="listbox"]:not([data-facet])
-    )[data-size="xl"]::after {
+        *[data-facet="chevron"]:not(select)[data-size="xl"],
+        summary:not([data-facet])[data-size="xl"],
+        button[aria-haspopup="listbox"]:not([data-facet])[data-size="xl"],
+        label:has(> select[data-facet="chevron"][data-size="xl"])
+    )::after {
         block-size:          calc(var(--xl-font-size) * 0.6 * 1.06);
         border-bottom-width: var(--xl-border-width);
         border-right-width:  var(--xl-border-width);
@@ -393,19 +611,20 @@
     }
 
     *:where(
-        *[data-facet="chevron"][aria-expanded="true"],
-        details[open] > summary:not([data-facet]),
-        button[aria-haspopup="listbox"]:not([data-facet]):has(+ [role="listbox"]:popover-open),
-        label[data-facet="chevron"]:has(> select:open)
-    )[data-size="xl"]::after {
+        *[data-facet="chevron"]:not(select)[aria-expanded="true"][data-size="xl"],
+        details[open] > summary:not([data-facet])[data-size="xl"],
+        button[aria-haspopup="listbox"]:not([data-facet])[data-size="xl"]:has(+ [role="listbox"]:popover-open),
+        label:has(> select[data-facet="chevron"][data-size="xl"]:open)
+    )::after {
         transform: translateY(calc(3 / 16 * 1rem)) rotate(225deg);
     }
 
     *:where(
-        *[data-facet="chevron"],
-        summary:not([data-facet]),
-        button[aria-haspopup="listbox"]:not([data-facet])
-    )[data-size="2xl"]::after {
+        *[data-facet="chevron"]:not(select)[data-size="2xl"],
+        summary:not([data-facet])[data-size="2xl"],
+        button[aria-haspopup="listbox"]:not([data-facet])[data-size="2xl"],
+        label:has(> select[data-facet="chevron"][data-size="2xl"])
+    )::after {
         block-size:          calc(var(--2xl-font-size) * 0.6 * 1.06);
         border-bottom-width: var(--2xl-border-width);
         border-right-width:  var(--2xl-border-width);
@@ -415,11 +634,11 @@
     }
 
     *:where(
-        *[data-facet="chevron"][aria-expanded="true"],
-        details[open] > summary:not([data-facet]),
-        button[aria-haspopup="listbox"]:not([data-facet]):has(+ [role="listbox"]:popover-open),
-        label[data-facet="chevron"]:has(> select:open)
-    )[data-size="2xl"]::after {
+        *[data-facet="chevron"]:not(select)[aria-expanded="true"][data-size="2xl"],
+        details[open] > summary:not([data-facet])[data-size="2xl"],
+        button[aria-haspopup="listbox"]:not([data-facet])[data-size="2xl"]:has(+ [role="listbox"]:popover-open),
+        label:has(> select[data-facet="chevron"][data-size="2xl"]:open)
+    )::after {
         transform: translateY(calc(4 / 16 * 1rem)) rotate(225deg);
     }
 }

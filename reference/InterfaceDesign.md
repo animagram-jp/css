@@ -114,21 +114,21 @@ tap ==  long press → (show context menu) → option 1 long press
 
 | 名前 | 既存例 | P1 | P1' | P2 | P2' | P3 | P3' |
 |-|-|-|-|-|-|-|-|
-| toggle switch | Switch(ARIA APG) | フォーカス, ポインターホバー | 表示(ラベル)とフォーカスリング, ホバーハイライト | | 表示(トラック・つまみ) | Enter, 表示へのタップ | 表示(トラック・つまみ) |
-| command button | Button(ARIA APG), 押ボタン(JIS C 0447) | フォーカス, ポインターホバー | 表示(ラベル)とフォーカスリング, ホバーハイライト |  | 表示(囲み・ラベル) | Enter, Space, タップ | |
-| immediate slider | Sliders(Material 3, 連続型), ハンドホイール・ノブ(JIS C 0447) | ポインターホバー / フォーカス, ポインターダウン | 表示(ラベル)とホバーハイライト / 表示(ラベル)とフォーカスリング, 表示(トラック・つまみ)の押し込み表現 | 矢印キーダウン, ポインタームーブ | 表示(トラック・つまみ) | | |
-| rating | Rate(Ant Design), Rating(Fluent 2) | フォーカス, ポインターホバー | 表示(ラベル)・フォーカスリング, ホバーハイライト | 矢印キー, ポインタームーブ | 表示(星の充填)のプレビュー表現 | Enter, タップ | 表示(星の充填数) |
+| toggle switch | Switch(ARIA APG) | フォーカス, hover | 表示(ラベル)とフォーカスリング, ホバーハイライト | | 表示(トラック・つまみ) | Enter, 表示へのタップ | 表示(トラック・つまみ) |
+| command button | Button(ARIA APG), 押ボタン(JIS C 0447) | フォーカス, hover | 表示(ラベル)とフォーカスリング, ホバーハイライト |  | 表示(囲み・ラベル) | Enter, Space, タップ | |
+| immediate slider | Sliders(Material 3, 連続型), ハンドホイール・ノブ(JIS C 0447) | hover / フォーカス, ポインターダウン | 表示(ラベル)とホバーハイライト / 表示(ラベル)とフォーカスリング, 表示(トラック・つまみ)の押し込み表現 | 矢印キーダウン, ポインタームーブ | 表示(トラック・つまみ) | | |
+| rating | Rate(Ant Design), Rating(Fluent 2) | フォーカス, hover | 表示(ラベル)・フォーカスリング, ホバーハイライト | 矢印キー, ポインタームーブ | 表示(星の充填)のプレビュー表現 | Enter, タップ | 表示(星の充填数) |
 | inline edit | Inline edit(Atlassian Design System), Treegrid(ARIA APG) | フォーカス, タップ | 表示(ラベル)へのフォーカスリング, 表示(インラインコンテンツ)の入力枠・キャレット表現 | テキスト入力・選択 | 表示(インラインコンテンツ) | Enter, フォーカスアウト | 表示(ラベル・インラインコンテンツ) |
 | drag and drop reordering | Drag and drop(Apple HIG) | 表示(つまみ)へのポインターダウン | 表示(コンテンツ・囲み)の掴み表現 | ポインタームーブ | 表示(コンテンツのリスト)の挿入箇所プレビュー表現 | ポインターアップ, 境界外ポインタームーブ(キャンセル) | 表示(コンテンツのリスト) |
-| command menu | Menu and Menubar(ARIA APG), Pull-down buttons(Apple HIG) | メニューへのフォーカス, ポインターホバー / ポインターダウン | 表示(メニューラベル)とフォーカスリング, ホバーハイライト / 表示(オプションリスト) | オプションへのフォーカス, ポインターホバー | オプションのフォーカスリング, ホバーハイライト | オプションへのEnter, タップ | |
-| immediate select | Pop-up buttons(Apple HIG), Menus(Material 3) | トリガーへのフォーカス, ポインターホバー / ポインターダウン | フォーカスリング, ホバーハイライト / 表示(オプションリスト) | オプションへのフォーカス, ポインターホバー | オプションのフォーカスリング, ホバーハイライト | オプションへのEnter, タップ | 表示(値) |
-| undo action | Snackbarのアクション(Material 3) | フォーカス, ポインターホバー | 表示(ラベル)とフォーカスリング, ホバーハイライト | | 表示(ラベル) | Enter, タップ | |
-| emergency stop | 非常（緊急）停止(JIS C 0447) | フォーカス, ポインターホバー | 表示とフォーカスリング, ホバーハイライト | | 表示 | Enter, ポインターダウン | 表示の押下状態表現 |
-| hold-to-run control | インチング（寸動）操作(JIS C 0447) | フォーカス/ポインターホバー | 表示(ラベル)とフォーカスリング, ホバーハイライト | | | Enter, ポインターダウン | 表示(メーター) |
+| command menu | Menu and Menubar(ARIA APG), Pull-down buttons(Apple HIG) | メニューへのフォーカス, hover / ポインターダウン | 表示(メニューラベル)とフォーカスリング, ホバーハイライト / 表示(オプションリスト) | オプションへのフォーカス, hover | オプションのフォーカスリング, ホバーハイライト | オプションへのEnter, タップ | |
+| immediate select | Pop-up buttons(Apple HIG), Menus(Material 3) | トリガーへのフォーカス, hover / ポインターダウン | フォーカスリング, ホバーハイライト / 表示(オプションリスト) | オプションへのフォーカス, hover | オプションのフォーカスリング, ホバーハイライト | オプションへのEnter, タップ | 表示(値) |
+| undo action | Snackbarのアクション(Material 3) | フォーカス, hover | 表示(ラベル)とフォーカスリング, ホバーハイライト | | 表示(ラベル) | Enter, タップ | |
+| emergency stop | 非常（緊急）停止(JIS C 0447) | フォーカス, hover | 表示とフォーカスリング, ホバーハイライト | | 表示 | Enter, ポインターダウン | 表示の押下状態表現 |
+| hold-to-run control | インチング（寸動）操作(JIS C 0447) | フォーカス/hover | 表示(ラベル)とフォーカスリング, ホバーハイライト | | | Enter, ポインターダウン | 表示(メーター) |
 | command palette | Spotlight(Apple), Combobox(ARIA APG) | 表示(検索ボックス)へのフォーカス, タップ | 表示(検索ボックス)へのフォーカスリング, ハイライト | 表示(検索ボックス)への入力 | 表示(候補)へのフォーカスリング, ハイライト | Enter, 表示(候補)へのタップ | |
 | form submission | form(HTML Living Standard), 多機能の3ステップ動作順序(JIS C 0447) | 各P2部品依存 | 表示(囲み・formの見出し) | 各P2部品依存 | 表示(囲み・formの見出し・各P2部品) | submit buttonへのenter, タップ | 表示(バリデーションエラーサマリー・メッセージ) |
 | wizard | Steps+Form(Ant Design), Progress indicator(Carbon Design System) | 各P2部品依存 | 表示(囲み・step indicator) | 各P2部品依存・proceedボタンとbackボタン | 表示(囲み・step indicator・各P2部品), 表示(バリデーションエラーサマリー・メッセージ) | submit buttonへのenter, タップ | 表示(バリデーションエラーサマリー・メッセージ) |
-| tooltip | Tooltip(ARIA APG), Tooltip(Material 3) | フォーカス, ポインターホバー | | | | | 表示(コンテンツ・囲み) |
+| tooltip | Tooltip(ARIA APG), Tooltip(Material 3) | フォーカス, hover | | | | | 表示(コンテンツ・囲み) |
 
 - multi-select apply | Transfer(Ant Design)
 - dialog
@@ -219,55 +219,6 @@ Sign (符号)は、その幾何学的性質を利用して、なるべく依存�
 ⧉ (U+29C9 TWO JOINED SQUARES)
 長短2直線/曲線の組み合わせ
 ```
-
----
-
-## Color
-
-グローバル系:
-
-- black: 系全体で最も黒に近い色値。
-- white: 系全体で最も白に近い色値。
-
-スコープ系:
-
-- ink   : 系内で最も(濃い | 薄い)文字色。
-- paper : 系内で最も(薄い | 濃い)背景色。
-- mute  : inkとpaperの混文字色。
-- emphasis: 系内に1つ、印象を表現する色。背景/文字の他、各コントラスト要件に応じたバリアント値の集合。
-- error:     赤の背景色。
-- highlight: 黄の背景色。
-- success:   緑の背景色。
-- focus:     境界線色。
-- transparent: 透明の背景色。各コンポーネントは、paper(または--rgb-base-*)色上に載る前提とする。
-
-コンポーネント系:
-
-- background: コンポーネントに隣接する外部の背景色。
-- border:     コンポーネントが持つ、境界線色。
-- fill:       コンポーネントが持つ、内部の背景色。
-- text:       コンポーネントが持つ、内部の文字色。
-
-textに対して背景色を当てることは出来ない。
-
-```
-┌ background ─────┐
-│  ┏ border ━━━┓  │
-│  ┃  fill     ┃  │
-│  ┃  -text-   ┃  │
-│  ┗━━━━━━━━━━━┛  │
-└─────────────────┘
-```
-
-| Style | Static | Focus | Hover | Focus hover | Invalid | Invalid focus | Disabled |
-|-|-|-|-|-|-|-|-|
-| select | border: mute, background: transparent, text: mute | outline: emphasis, border: ink | cursor: pointer | - | border: error | error border, error outline | mute border, mute text, cursor: not-allowd |
-| input | border: mute, background: transparent, text: mute, caret: mute, text: ink |  | cursor: text | - | | | |
-| outline | border: emphasis, background: transparent, text: emphasis | outline: emphasis | underline: emphasis, cursor: pointer | - | - | - |  |
-| fill | border: transparent, background: emphasis, text: paper | outline: emphasis | emphasis background: emphasis, underline: bold paper | - | - | - | background: mute, cursor: not-allowd |
-| underline | background: transparent, text: ink, underline: ink | outline: emphasis | underline: bold | - | - | - | text: mute, underline: mute, cursor: not-allowd |
-| icon | all: unset | - | - | - | - | - | - |
-| rule-indent | background(縦棒): emphasis | - | - | - | - | - | - |
 
 ---
 

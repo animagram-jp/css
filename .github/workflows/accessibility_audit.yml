@@ -19,6 +19,7 @@ jobs:
           uses: actions/checkout@v7
 
         - name: "install runner deps"
+          working-directory: reference
           run: npm ci
 
         - name: "cache playwright browsers"
@@ -26,18 +27,27 @@ jobs:
           id: playwright-cache
           with:
             path: ~/.cache/ms-playwright
-            key: playwright-chromium-${{ runner.os }}-${{ hashFiles('**/package-lock.json') }}
+            key: playwright-chromium-${{ runner.os }}-${{ hashFiles('reference/package-lock.json') }}
+
+        # playwright-core ships no install CLI, so the browser comes from the
+        # standalone `playwright` package. Its version must match the resolved
+        # playwright-core exactly — a mismatch downloads a chromium build that
+        # playwright-core then refuses to launch.
+        - name: "resolve playwright version"
+          working-directory: reference
+          run: echo "PW=$(node -p "require('playwright-core/package.json').version")" >> "$GITHUB_ENV"
 
         - name: "install playwright browser"
           if: steps.playwright-cache.outputs.cache-hit != 'true'
-          run: npx playwright install --with-deps chromium
+          run: npx --yes "playwright@$PW" install --with-deps chromium
 
         - name: "install playwright os deps only (cache hit)"
           if: steps.playwright-cache.outputs.cache-hit == 'true'
-          run: npx playwright install-deps chromium
+          run: npx --yes "playwright@$PW" install-deps chromium
 
-        - name: "run axe over ./index.html"
-          run: node reference/audit.mjs
+        - name: "run the accessibility engine over ./index.html"
+          working-directory: reference
+          run: npm run audit
 
         - name: "upload report artifact"
           uses: actions/upload-artifact@v7

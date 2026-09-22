@@ -4,7 +4,6 @@
 
 node_modules/
 
-reference/audit.html
 reference/audit.json
 
 .claude/

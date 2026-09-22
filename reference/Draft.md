@@ -1,16 +1,6 @@
 # Draft
 
 ```css
-/*
-    Remove all the styles of the "User-Agent-Stylesheet", except for the 'display' property
-    - The "symbol *" part is to solve Firefox SVG sprite bug
-    - The "html" element is excluded, otherwise a bug in Chrome breaks the CSS hyphens property (https://github.com/elad2412/the-new-css-reset/issues/36)
- */
-*:where(:not(html, iframe, canvas, img, svg, video, audio):not(svg *, symbol *)) {
-    all: unset;
-    display: revert;
-}
-
 /* per tailwind-preflight.css:259-273 */
 :where(select:is([multiple], [size])) optgroup {
     font-weight: bolder;
@@ -22,17 +12,11 @@
 /* monospace font, block and copy button */
 pre, pre > code, pre > samp {}
 
-/* kbd: [data-style="outline"], [data-style="fill"] */
+/* kbd: [data-surround="outline"], [data-surround="fill"] */
 kbd {}
 
-/* card: [data-style="outline"], [data-style="fill"] */
+/* card: [data-surround="outline"], [data-surround="fill"] */
 article > header, footer {}
-
-
-/* Remove list styles (bullets/numbers). */
-ol, ul, menu, summary {
-    list-style: none;
-}
 
 /* === aria-orientation === */
 *:where(menu):where(
@@ -41,83 +25,11 @@ ol, ul, menu, summary {
 ) {}
 *:where(menu)[aria-orientation="horizontal"] {}
 
-/* Reference: https://github.com/yuto-hasegawa/sashimi-ui/blob/main/src/css/key-value.css */
-dl {
-    display: grid;
-    grid-template-columns: auto 1fr;
-    column-gap: 0.5rem;
-    row-gap: 0.5rem;
-    list-style: none;
-    overflow-wrap: anywhere;
-}
-dl dd {
-    margin: 0;
-    justify-self: end;
-}
-:is(ul, ol) {
-    --gap: 0;
-    margin-top: 0;
-    margin-bottom: 0;
-    padding-left: 2rem;
-    list-style-type: revert;
-}
-:is(ul, ol) > li {
-    padding-top: var(--gap);
-    padding-bottom: var(--gap);
-}
-ol {
-    display: grid;
-    grid-template-columns: minmax(2rem, auto) 1fr;
-    padding-left: 0;
-    list-style-type: none;
-}
-ol > li,
-ol > li > a {
-    display: grid;
-    grid-column: 1 / -1;
-    grid-template-columns: inherit;
-    align-items: baseline;
-}
-ol > li > a > span {
-    text-decoration-thickness: inherit;
-}
-ol > li > :not(a, span) {
-    grid-column: 2;
-}
-@supports (grid-template-columns: subgrid) {
-    ol > li,
-    ol > li > a {
-        grid-template-columns: subgrid;
-    }
-}
-:is(ul, ol) :is(ul, ol) {
-    margin-top: var(--gap);
-    margin-bottom: calc(-1 * var(--gap));
-}
-
 @media (prefers-reduced-motion: no-preference) {
     [aria-busy="true"] {
 
     }
 }
-
-/* === cite === */
-cite {
-    font-style: italic;
-}
-:lang(ja), :lang(zh), :lang(ko) {
-    cite {
-        font-style: normal;
-    }
-}
-
-/*  Usage:
-
-    <figure data-style="rule-indent">
-        <blockquote>Block contents</blockquote>
-        <figcaption>Author. YYYY. 
-            <cite>Title</cite>. Publisher, Location.</figcaption></figure> 
-*/
 
 /* footnote 
 
