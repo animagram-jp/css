@@ -757,4 +757,97 @@
     )::after {
         transform: translateY(calc(4 / 16 * 1rem)) rotate(225deg);
     }
+
+    /* === reload, sync === */
+
+    *:where(
+        [data-facet="reload"],
+        [data-facet="sync"]
+    )::before {
+        background-color: currentColor;
+        content:           "";
+        inset:             0;
+        margin:            auto;
+        position:          absolute;
+    }
+
+    /* --- size --- */
+
+    *:where(
+        [data-facet="reload"],
+        [data-facet="sync"]
+    )[data-size="xs"]::before {
+        block-size:  var(--xs-line-height);
+        inline-size: var(--xs-line-height);
+    }
+    *:where(
+        [data-facet="reload"],
+        [data-facet="sync"]
+    )[data-size="sm"]::before {
+        block-size:  var(--sm-line-height);
+        inline-size: var(--sm-line-height);
+    }
+    *:where(
+        [data-facet="reload"],
+        [data-facet="sync"]
+    ):where(
+        [data-size="md"],
+        :not([data-size])
+    )::before {
+        block-size:  var(--md-line-height);
+        inline-size: var(--md-line-height);
+    }
+    *:where(
+        [data-facet="reload"],
+        [data-facet="sync"]
+    )[data-size="lg"]::before {
+        block-size:  var(--lg-line-height);
+        inline-size: var(--lg-line-height);
+    }
+    *:where(
+        [data-facet="reload"],
+        [data-facet="sync"]
+    )[data-size="xl"]::before {
+        block-size:  var(--xl-line-height);
+        inline-size: var(--xl-line-height);
+    }
+    *:where(
+        [data-facet="reload"],
+        [data-facet="sync"]
+    )[data-size="2xl"]::before {
+        block-size:  var(--2xl-line-height);
+        inline-size: var(--2xl-line-height);
+    }
+
+    /* === reload === */
+
+    *[data-facet="reload"]::before {
+        clip-path: shape(
+            from 71% 13.63%,
+            arc to 29% 13.63% of 42% 42% cw large,
+            line to 52.78% 6.83%,
+            line to 35% 24.02%,
+            arc to 65% 24.02% of 30% 30% ccw large,
+            close
+        );
+    }
+
+    /* === sync === */
+
+    *[data-facet="sync"]::before {
+        clip-path: shape(
+            from 71% 13.63%,
+            arc to 71% 86.37% of 42% 42% cw small,
+            line to 47.22% 93.18%,
+            line to 65% 75.98%,
+            arc to 65% 24.02% of 30% 30% ccw small,
+            close,
+            move to 29% 86.37%,
+            arc to 29% 13.63% of 42% 42% cw small,
+            line to 52.78% 6.83%,
+            line to 35% 24.02%,
+            arc to 35% 75.98% of 30% 30% ccw small,
+            close
+        );
+    }
 }
