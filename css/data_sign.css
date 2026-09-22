@@ -850,4 +850,97 @@
             close
         );
     }
+
+    /* === visible === */
+
+    *[data-facet="visible"]::before {
+        border-color:  currentColor;
+        border-radius: 50%;
+        border-style:  solid;
+        content:       "";
+        inset:         0;
+        margin:        auto;
+        position:      absolute;
+    }
+    *[data-facet="visible"]::after {
+        background-color: currentColor;
+        content:           "";
+        inset:             0;
+        margin:            auto;
+        position:          absolute;
+    }
+    *[data-facet="visible"]:where(:checked, [aria-pressed="true"])::before {
+        background-color: currentColor;
+    }
+    *[data-facet="visible"]:where(:checked, [aria-pressed="true"])::after {
+        display: none;
+    }
+
+    /* --- size --- */
+
+    *[data-facet="visible"][data-size="xs"]::before {
+        block-size:   calc(var(--xs-line-height) / 2);
+        border-width: var(--xs-border-width);
+        inline-size:  var(--xs-line-height);
+    }
+    *[data-facet="visible"][data-size="xs"]::after {
+        block-size:  var(--xs-border-width);
+        inline-size: var(--xs-line-height);
+    }
+
+    *[data-facet="visible"][data-size="sm"]::before {
+        block-size:   calc(var(--sm-line-height) / 2);
+        border-width: var(--sm-border-width);
+        inline-size:  var(--sm-line-height);
+    }
+    *[data-facet="visible"][data-size="sm"]::after {
+        block-size:  var(--sm-border-width);
+        inline-size: var(--sm-line-height);
+    }
+
+    *[data-facet="visible"]:where(
+        [data-size="md"],
+        :not([data-size])
+    )::before {
+        block-size:   calc(var(--md-line-height) / 2);
+        border-width: var(--md-border-width);
+        inline-size:  var(--md-line-height);
+    }
+    *[data-facet="visible"]:where(
+        [data-size="md"],
+        :not([data-size])
+    )::after {
+        block-size:  var(--md-border-width);
+        inline-size: var(--md-line-height);
+    }
+
+    *[data-facet="visible"][data-size="lg"]::before {
+        block-size:   calc(var(--lg-line-height) / 2);
+        border-width: var(--lg-border-width);
+        inline-size:  var(--lg-line-height);
+    }
+    *[data-facet="visible"][data-size="lg"]::after {
+        block-size:  var(--lg-border-width);
+        inline-size: var(--lg-line-height);
+    }
+
+    *[data-facet="visible"][data-size="xl"]::before {
+        block-size:   calc(var(--xl-line-height) / 2);
+        border-width: var(--xl-border-width);
+        inline-size:  var(--xl-line-height);
+    }
+    *[data-facet="visible"][data-size="xl"]::after {
+        block-size:  var(--xl-border-width);
+        inline-size: var(--xl-line-height);
+    }
+
+    *[data-facet="visible"][data-size="2xl"]::before {
+        block-size:   calc(var(--2xl-line-height) / 2);
+        border-width: var(--2xl-border-width);
+        inline-size:  var(--2xl-line-height);
+    }
+    *[data-facet="visible"][data-size="2xl"]::after {
+        block-size:  var(--2xl-border-width);
+        inline-size: var(--2xl-line-height);
+    }
 }
