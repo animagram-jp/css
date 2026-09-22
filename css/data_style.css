@@ -193,7 +193,10 @@
         }
     }
 
-    /* --- active --- */
+    /* --- active, pressed --- */
+
+    /*  A toggle button holds its pressed state after the pointer leaves, so
+        [aria-pressed="true"] shares the :active styling as a resting state. */
 
     *:where(
         a:any-link,
@@ -202,36 +205,15 @@
         [type="submit"],
         [type="reset"],
         summary
-    )[data-surround="fill"]:active,
+    )[data-surround="fill"]:where(:active, [aria-pressed="true"]),
     *:where(
         button,
         [type="button"],
         [type="submit"],
         [type="reset"]
-    ):not([data-surround]):active {
+    ):not([data-surround]):where(:active, [aria-pressed="true"]) {
         background-color: var(--color-emphasis-ink-mix);
         border-color:     transparent;
-    }
-
-    /* --- pressed --- */
-
-    /*  A toggle button holds its pressed state after the pointer leaves, so it
-        needs a resting style of its own rather than :active alone. */
-
-    *:where(
-        button,
-        [type="button"]
-    )[aria-pressed="true"]:not([data-surround]) {
-        background-color: var(--color-emphasis-ink-mix);
-        border-color:     transparent;
-    }
-
-    *:where(
-        button,
-        [type="button"]
-    )[aria-pressed="true"][data-surround="outline"] {
-        background-color: var(--color-paper-mix);
-        border-color:     var(--color-emphasis-ink-mix);
     }
 
     *:where(
@@ -241,7 +223,7 @@
         [type="submit"],
         [type="reset"],
         summary
-    )[data-surround="outline"]:active {
+    )[data-surround="outline"]:where(:active, [aria-pressed="true"]) {
         background-color: var(--color-paper-mix);
         border-color:     var(--color-emphasis-ink-mix);
         color:            var(--color-emphasis-ink);
@@ -250,7 +232,10 @@
     *:where(
         a:any-link,
         summary
-    ):where([data-style="underline"], :not([data-surround])):active {
+    ):where(
+        [data-style="underline"],
+        :not([data-surround])
+    ):where(:active, [aria-pressed="true"]) {
         color: var(--color-emphasis-ink-mix);
     }
 
@@ -262,7 +247,7 @@
             [type="submit"],
             [type="reset"],
             summary
-        ):active {
+        ):where(:active, [aria-pressed="true"]) {
             color: ActiveText;
         }
     }

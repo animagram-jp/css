@@ -82,11 +82,12 @@
                 <span>input[type="text"]</span>
                 <input type="text"></label>
             <label>
-                <span>input[type="email"]</span>
-                <input type="email"></label>
-            <label>
+                <span>input[type="email"] required</span>
+                <input type="email" required></label>
+            <label data-group="inline">
                 <span>input[type="password"]</span>
-                <input type="password"></label>
+                <input id="password" type="password" autocomplete="current-password" maxlength="20">
+                <button type="button" aria-controls="password" aria-pressed="false"></button></label>
             <label>
                 <span>input[type="search"]</span>
                 <input type="search"></label>
@@ -133,40 +134,13 @@
                 <textarea type="text" data-size="2xl" placeholder="2xl"></textarea></label></section>
 
         <section data-sign="rule">
-            <h3>input[type="password"] + button[aria-pressed] - reveal toggle</h3>
-            <label>
-                <span>Password</span>
-                <input type="password" id="password-demo-1" autocomplete="current-password" value="secret">
-                <button type="button" aria-controls="password-demo-1" aria-pressed="false" hidden>Show password</button></label>
-            <label>
-                <span>label text from the caller</span>
-                <input type="password" id="password-demo-2" autocomplete="current-password" value="secret" data-size="lg">
-                <button type="button" aria-controls="password-demo-2" aria-pressed="false" data-size="lg" hidden>パスワードを表示</button></label>
-            <label>
-                <span>no button (script absent or not wired)</span>
-                <input type="password" autocomplete="current-password" value="secret"></label></section>
-
-        <section data-sign="rule">
-            <h3>:required - label &gt; span:first-child</h3>
-            <label>
-                <span>input[type="text"], required</span>
-                <input type="text" required></label>
-            <label>
-                <span>input[type="text"], optional</span>
-                <input type="text"></label>
-            <label>
-                <span>select, required</span>
-                <select required>
-                    <option>option</option></select></label>
-            <label>
-                <span>textarea, required</span>
-                <textarea required></textarea></label>
+            <h3>:required - label > span:first-child, fieldset > legend > span</h3>
             <label>
                 <span>input[type="checkbox"], required</span>
                 <input type="checkbox" required></label>
             <fieldset style="grid-template-columns: max-content repeat(1, minmax(0, max-content));">
                 <legend>
-                    <span>radio group - mark the legend text yourself</span></legend>
+                    <span>fieldset:has(:required) > legend</span></legend>
                 <label>
                     <span>choice A</span>
                     <input type="radio" name="req-demo" required></label>

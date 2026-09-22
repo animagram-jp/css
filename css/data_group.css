@@ -1,3 +1,13 @@
+/*
+    Usage:
+
+    <label data-group="inline">
+        <span>label text inline flow</span>
+        <input></input>
+        <select></select>
+        <button></button></label>
+*/
+
 @layer css.data_group {
 
     /* === layout === */
@@ -28,6 +38,17 @@
         label:has(> *[role="spinbutton"])
     ) * {
         vertical-align: middle;
+    }
+
+    /* --- label text --- */
+
+    *:where(
+        *[data-group="inline"],
+        search,
+        form[role="search"],
+        label:has(> *[role="spinbutton"])
+    ) > span:first-child {
+        padding-inline-end: var(--md-border-radius);
     }
 
     /* --- corner control --- */
@@ -134,7 +155,7 @@
         *[data-group="inline"],
         search,
         form[role="search"]
-    ) > button:not(:active) {
+    ) > button:not(:where(:active, [aria-pressed="true"])) {
         border-color: var(--color-ink-mix);
     }
 
@@ -171,7 +192,7 @@
             *[data-group="inline"],
             search,
             form[role="search"]
-        ) > button:not(:active) {
+        ) > button:not(:where(:active, [aria-pressed="true"])) {
             border-color: ButtonBorder;
         }
 

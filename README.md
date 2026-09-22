@@ -28,8 +28,9 @@ Interface design system and DOM implements.
 
 ## Color
 
-Defined in [base.css](./css/base.css) (`@layer css.base`). 
-Override the `--color-*` variables on any scope to restyle.
+Color custom properties are defined in [base.css](./css/base.css).
+Color custom styles are defined in [data_style.css](./css/data_style.css).
+Override the `--color-*` properties on any scope to restyle.
 
 | Category | Name | Meaning |
 |-|-|-|
@@ -54,10 +55,10 @@ Override the `--color-*` variables on any scope to restyle.
 | | `border-color` | Border color in the scope. |
 | | `outline-color` | Focus color in the scope. |
 
-Scoped parameters:
+Scoped colors:
 
 ```
-┌ backdrop ──────────┐
+┌ (backdrop) ────────┐
 │  ┏ border ━━━━━━━┓ │
 │  ┃  fill         ┃ │
 │  ┃ ┌(highlight)┐ ┃ │
@@ -75,27 +76,28 @@ Scoped parameters:
 | Style | text | highlight | fill | border | backdrop | 
 |-|-|-|-|-|-|
 | - | color-ink | - | color-paper(-mix) | color-ink | color-paper |
+| | color-ink | - | color-emphasis-paper | - | | 
 | ::selection | color-paper | color-highlight-ink | color-paper(-mix) | | | 
-| - | color-ink | - | color-emphasis-paper | - | | 
-| input | color-ink | - | color-paper | color-ink-mix | |
+| `data-surround="transparent"` | color-ink | - | transparent | - | |
+| `data-surround="input"` | color-ink | - | color-paper | color-ink-mix | |
 | input::selection | color-paper | color-highlight-ink | | | |
 | input:disabled | color-ink-mix | - | | | |
 | input:disabled::selection | color-paper | color-highlight-ink | | | |
 | input:user-invalid | color-ink | - | | color-error | |
 | input:user-invalid::selection | color-paper | color-highlight-ink | | | |
-| fill | color-paper | - | color-emphasis-ink | transparent | |
+| `data-surround="fill"` | color-paper | - | color-emphasis-ink | transparent | |
 | fill::selection | color-ink | color-highlight-paper | color-emphasis-ink | | |
 | fill:disabled | color-paper | - | color-ink-mix | | |
 | fill:disabled::selection | color-ink | color-highlight-paper | color-ink-mix | | |
 | fill:active | color-paper | - | color-emphasis-ink-mix | | |
 | fill:active::selection | color-ink | color-highlight-paper | color-emphasis-ink-mix | | |
-| outline | color-emphasis-ink | - | color-paper | color-emphasis-ink | |
+| `data-surround="outline"` | color-emphasis-ink | - | color-paper | color-emphasis-ink | |
 | outline::selection | color-emphasis-paper | color-highlight-ink | | | |
 | outline:disabled | color-ink-mix | - | | color-ink-mix | |
 | outline:disabled::selection | color-paper | color-highlight-ink | | | |
 | outline:active | color-emphasis-ink | - | color-paper-mix | color-emphasis-ink-mix | |
 | outline:active::selection | color-emphasis-paper | color-highlight-ink | | | |
-| underline | color-{emphasis}-ink | - | color-paper | - | |
+| `data-style="underline"` | color-{emphasis}-ink | - | color-paper | - | |
 | underline::selection | color-paper | color-highlight-ink | | | |
 | underline:disabled | color-ink-mix | - | | | |
 | underline:disabled::selection | color-paper | color-highlight-ink | | | |
@@ -128,44 +130,11 @@ The library default is the CUD accent purple.
 | color-success | — | paper | — |
 | color-visited | paper | — | — |
 
-Solved by [solve-palette.mjs](./reference/solve-palette.mjs), which searches each channel for the
-first `color-mix()` percentage meeting the requirements above. Pass a hex argument to re-solve the
-table for a brand color.
-
-Verified by [audit.mjs](./reference/audit.mjs), which runs the IBM Equal Access engine over
-`index.html` once per `[data-color-scheme]` and reports findings against WCAG 2.2 (A, AA).
-It composites the rendered background, so the contrast of every control is measured — including
-those under the positioned `::before` of `[data-sign="rule"]`.
-
-| Variable | light | dark |
-|-|-|-|
-| `--color-emphasis-ink` | `accent-purple` 100% → rgb(154,0,121) | `accent-purple` 35% + white → rgb(220,166,208) |
-| `--color-emphasis-paper` | `accent-purple` 46% + black → rgb(71,0,56) | `accent-purple` 71% + white → rgb(183,74,160) |
-| `--color-highlight-ink` | `accent-yellow` 46% + black → rgb(115,113,0) | `accent-yellow` 100% → rgb(250,245,0) |
-| `--color-highlight-paper` | `accent-yellow` 100% → rgb(250,245,0) | `accent-yellow` 41% + black → rgb(103,100,0) |
-| `--color-success` | `accent-green` 78% + black → rgb(41,126,83) | `accent-green` 97% + white → rgb(59,164,111) |
-| `--color-error` | `accent-red` 100% → rgb(255,40,0) | `accent-red` 100% → rgb(255,40,0) |
-| `--color-visited` | `accent-purple` 74% + black → rgb(114,0,90) | `accent-purple` 19% + white → rgb(236,207,230) |
-
-For this project's theme #5B2F91 (hsl 267°), both families solve with more headroom than the CUD
-default — 8.37:1 against light paper, since the theme purple is dark enough to clear 7:1 unmixed:
-
-| Variable | light | dark |
-|-|-|-|
-| `--color-emphasis-ink` | `#5B2F91` 100% → rgb(91,47,145) | `#5B2F91` 38% + white → rgb(193,176,213) |
-| `--color-emphasis-paper` | `#5B2F91` 27% + black → rgb(25,13,39) | `#5B2F91` 74% + white → rgb(134,101,174) |
-| `--color-visited` | `#5B2F91` 69% + black → rgb(63,32,100) | `#5B2F91` 20% + white → rgb(222,213,233) |
-
-No `*-less-contrast` exemption is needed. An earlier draft claimed one, on the grounds that a single
-highlight carrying text on both sides would need a 4.5 × 4.5 = 20.25:1 span. That followed from
-treating `--color-highlight` as one value; with `--color-highlight-ink` and `--color-highlight-paper`
-as separate variables each carrying one text color, the product no longer applies and every row is
-satisfiable within the 12.76:1 span derived above.
-
 ## Size
 
 - Default width is left unset (auto / content-driven) everywhere.
-- Padding-block is derived from `--{size}-box-height` and  `--{size}-line-height`.
+- Default margin width is 0.
+- Padding-block is derived from `--{size}-box-height` and  `--{size}-line-height` and only when border is not none, `--{size}-border-width`.
 
 | Scoped parameter | Meaning |
 |-|-|
@@ -176,23 +145,6 @@ satisfiable within the 12.76:1 span derived above.
 | `--{xs/sm/md/lg/xl/2xl}-letter-spacing` | Letter spacing for the scope. |
 | `--{xs/sm/md/lg/xl/2xl}-line-height` | Line height for the scope. |
 
-```
-↑ margin-block: 0 (default)
-↓
-───
-↑ border-width: --{size}-border-width
-↓
-───
-↑
-  padding-block: (--{size}-box-height - --{size}-line-height) / 2 - --{size}-border-width
-↓ 
-───
-↑
-  line-height: --{size}-line-height
-↓  
-───
-```
-
 | `data-size`   | heading | box-height | font-size | letter-spacing | line-height |
 |-|-|-|-|-|-|
 | `xs`          | - | 1.75rem  | 0.85rem | 0.02rem | 1.5rem   |
@@ -202,6 +154,8 @@ satisfiable within the 12.76:1 span derived above.
 | `xl`          | h2 | 4rem    | 1.5rem  | 0       | 2.25rem  |
 | `2xl`         | h1 | 4.75rem | 2rem    | 0       | 3rem     |
 
+## Other custom attributes
+
 ### data-axis
 
 Direction in which a component lays its parts out. Each value below is opt-in; omitting the attribute keeps the component's own default arrangement.
@@ -210,12 +164,12 @@ Direction in which a component lays its parts out. Each value below is opt-in; o
 |-|-|-|
 | `hgroup` | `inline` | [heading.css](./css/heading.css) |
 | `details` | `inline` | [button.css](./css/button.css) |
-| `label` (toggle, step) | `block` | [toggle.css](./css/toggle.css), [step.css](./css/step.css) |
+| `label` | `block` | [toggle.css](./css/toggle.css), [step.css](./css/step.css) |
 
-### Component-local attributes
+### Tag unique attributes
 
 | Selector | Attribute | Description |
 |-|-|-|
 | `table` | `data-border` | `sectioned` (default) / `grid` / `booktabs`; rule style ([table.css](./css/table.css)) |
 | `table` | `data-stripe`, `data-selectable` | boolean; zebra striping, row selection ([table.css](./css/table.css)) |
-| `button` (step) | `data-action` | `increment` / `decrement` ([step.css](./css/step.css)) |
+| `button` | `data-action` | `increment` / `decrement` ([step.css](./css/step.css)) |

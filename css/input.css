@@ -12,20 +12,9 @@
 
     <textarea></textarea>
 
-    Password with a reveal toggle. The button is a plain text control, per
-    GOV.UK and USWDS, because an eye glyph cannot say whether it reports the
-    current state or the action; its label is the caller's to translate.
-    Start it hidden and let the script unhide it, so a page without script
-    keeps a working password field instead of a dead button.
-
-    The label is fixed and aria-pressed carries the state, as a control that
-    holds its place should not restyle its own sign. That also spares a live
-    region: a pressed change is announced by assistive technology already.
-
-    <label>
-        <span></span>
-        <input type="password" autocomplete="current-password" id="password">
-        <button type="button" aria-controls="password" aria-pressed="false" hidden></button></label>
+    <label data-group="inline">
+        <input id="" type="password" autocomplete="current-password">
+        <button type="button" aria-controls="password" aria-pressed="false"></button></label>
 */
 
 @layer css.input {

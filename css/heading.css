@@ -1,8 +1,16 @@
-/*  <h1></h1>
+/*
+    Usage:
+
+    <h1></h1>
 
     <hgroup>
         <h1>block</h1>
-        <p>block</p></hgroup> */
+        <p>block</p></hgroup> 
+
+    <hgroup data-axis="inline">
+        <h1>block</h1>
+        <p>block</p></hgroup> 
+*/
 
 @layer css.heading {
 
@@ -14,12 +22,7 @@
         font-weight: bold;
     }
 
-    /* [data-axis="inline"] */
-
-    /*  The heading is inline flow so that the line box aligns on its text
-        baseline; the p stays inline flow-root so pre-wrap newlines are kept
-        inside it. Baseline alignment needs no per-size correction, so any
-        combination of heading and p data-size lines up. */
+    /* --- data-axis="inline" --- */
 
     hgroup[data-axis="inline"] > *:where(h1, h2, h3, h4, h5, h6) {
         display:        inline flow;
