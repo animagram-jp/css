@@ -1,15 +1,60 @@
+/*  Usage:
+
+    <data-surround="fill|outline|transparent"
+        data-sign|facet="minus|plus|x|..."
+        (data-inline-axis="start|end|center")></>
+
+    <data-surround="fill|outline|transparent">
+        <data-sign-style="inline"
+            data-sign|facet="minus|plus|x|..."
+            (data-inline-axis="start|end|center")></></>
+
+    <summary></summary>
+
+    <label>
+        <select data-facet="chevron"></select></label>
+*/
+
 @layer css.data_sign {
-
-    /* === sign, facet === */
-
     *:where(
         *[data-sign],
         *[data-facet],
         summary:not([data-facet]),
-        button[aria-haspopup="listbox"]:not([data-facet]),
+        button[aria-haspopup="listbox"],
         label:has(> select[data-facet="chevron"])
     ) {
         position: relative;
+    }
+
+    *:where(
+        [data-sign="minus"],
+        [data-sign="plus"],
+        [data-sign="x"]
+    )::before,
+    *:where(
+        [data-sign="hatch"],
+        [data-sign="plus"],
+        [data-sign="x"]
+    )::after {
+        inset-block:  0;
+        margin-block: auto;
+    }
+
+    /* === data-inline-align === */
+
+    *:where(
+        [data-sign="minus"],
+        [data-sign="plus"],
+        [data-sign="x"]
+    )::before,
+    *:where(
+        [data-sign="hatch"],
+        [data-sign="plus"],
+        [data-sign="rule"],
+        [data-sign="x"]
+    )::after {
+        content:  "";
+        position: absolute;
     }
 
     *:where(
@@ -17,216 +62,94 @@
         [data-sign="minus"],
         [data-sign="plus"],
         [data-sign="x"]
+    ):where(
+        [data-inline-align="center"],
+        :not([data-inline-align])
     )::before,
     *:where(
+        [data-sign="hatch"],
+        [data-sign="minus"],
         [data-sign="plus"],
         [data-sign="x"]
-    )::after {
-        content:  "";
-        inset:    0;
-        margin:   auto;
-        position: absolute;
+    ):where(
+        [data-inline-align="center"],
+        :not([data-inline-align])
+    )::after,
+    *[data-sign="rule"][data-inline-align="center"]::after {
+        inset-inline:  0;
+        margin-inline: auto;
     }
 
-    /* === hatch === */
+    /* --- start --- */
 
-    *[data-sign="hatch"]::before {
-        background-image: repeating-linear-gradient(
-            -45deg,
-            currentcolor 0,
-            currentcolor 0.125rem,
-            transparent 0.125rem,
-            transparent 0.25rem
-        );
-    }
-
-    /* --- size --- */
-
-    [data-sign="hatch"][data-size="xs"]::before {
-        block-size:  var(--xs-line-height);
-        inline-size: var(--xs-line-height);
-    }
-    [data-sign="hatch"][data-size="sm"]::before {
-        block-size:  var(--sm-line-height);
-        inline-size: var(--sm-line-height);
-    }
-    [data-sign="hatch"]:where(
-        [data-size="md"],
-        :not([data-size])
-    )::before {
-        block-size:  var(--md-line-height);
-        inline-size: var(--md-line-height);
-    }
-    [data-sign="hatch"][data-size="lg"]::before {
-        block-size:  var(--lg-line-height);
-        inline-size: var(--lg-line-height);
-    }
-    [data-sign="hatch"][data-size="xl"]::before {
-        block-size:  var(--xl-line-height);
-        inline-size: var(--xl-line-height);
-    }
-    [data-sign="hatch"][data-size="2xl"]::before {
-        block-size:  var(--2xl-line-height);
-        inline-size: var(--2xl-line-height);
-    }
-
-    /* === copy === */
-
-    *[data-sign="copy"]::before,
-    *[data-sign="copy"]::after {
-        border-color: currentColor;
-        border-style: solid;
-        content:      "";
-        position:     absolute;
-    }
-    *[data-sign="copy"]::before {
-        inset-block-end:    0;
-        inset-inline-start: 0;
-    }
-    *[data-sign="copy"]::after {
-        inset-block-start: 0;
-        inset-inline-end:  0;
-    }
-
-    /* --- size --- */
-
-    *[data-sign="copy"][data-size="xs"] {
-        block-size:  var(--xs-line-height);
-        inline-size: var(--xs-line-height);
-    }
-    *[data-sign="copy"][data-size="xs"]::before,
-    *[data-sign="copy"][data-size="xs"]::after {
-        block-size:   calc(var(--xs-line-height) * 0.875);
-        border-width: var(--xs-border-width);
-        inline-size:  calc(var(--xs-line-height) * 0.625);
-    }
-    *[data-sign="copy"][data-type="landscape"][data-size="xs"]::before,
-    *[data-sign="copy"][data-type="landscape"][data-size="xs"]::after {
-        block-size:  calc(var(--xs-line-height) * 0.625);
-        inline-size: calc(var(--xs-line-height) * 0.875);
-    }
-
-    *[data-sign="copy"][data-size="sm"] {
-        block-size:  var(--sm-line-height);
-        inline-size: var(--sm-line-height);
-    }
-    *[data-sign="copy"][data-size="sm"]::before,
-    *[data-sign="copy"][data-size="sm"]::after {
-        block-size:   calc(var(--sm-line-height) * 0.875);
-        border-width: var(--sm-border-width);
-        inline-size:  calc(var(--sm-line-height) * 0.625);
-    }
-    *[data-sign="copy"][data-type="landscape"][data-size="sm"]::before,
-    *[data-sign="copy"][data-type="landscape"][data-size="sm"]::after {
-        block-size:  calc(var(--sm-line-height) * 0.625);
-        inline-size: calc(var(--sm-line-height) * 0.875);
-    }
-
-    *[data-sign="copy"]:where([data-size="md"], :not([data-size])) {
-        block-size:  var(--md-line-height);
-        inline-size: var(--md-line-height);
-    }
-    *[data-sign="copy"]:where([data-size="md"], :not([data-size]))::before,
-    *[data-sign="copy"]:where([data-size="md"], :not([data-size]))::after {
-        block-size:   calc(var(--md-line-height) * 0.875);
-        border-width: var(--md-border-width);
-        inline-size:  calc(var(--md-line-height) * 0.625);
-    }
-    *[data-sign="copy"][data-type="landscape"]:where([data-size="md"], :not([data-size]))::before,
-    *[data-sign="copy"][data-type="landscape"]:where([data-size="md"], :not([data-size]))::after {
-        block-size:  calc(var(--md-line-height) * 0.625);
-        inline-size: calc(var(--md-line-height) * 0.875);
-    }
-
-    *[data-sign="copy"][data-size="lg"] {
-        block-size:  var(--lg-line-height);
-        inline-size: var(--lg-line-height);
-    }
-    *[data-sign="copy"][data-size="lg"]::before,
-    *[data-sign="copy"][data-size="lg"]::after {
-        block-size:   calc(var(--lg-line-height) * 0.875);
-        border-width: var(--lg-border-width);
-        inline-size:  calc(var(--lg-line-height) * 0.625);
-    }
-    *[data-sign="copy"][data-type="landscape"][data-size="lg"]::before,
-    *[data-sign="copy"][data-type="landscape"][data-size="lg"]::after {
-        block-size:  calc(var(--lg-line-height) * 0.625);
-        inline-size: calc(var(--lg-line-height) * 0.875);
-    }
-
-    *[data-sign="copy"][data-size="xl"] {
-        block-size:  var(--xl-line-height);
-        inline-size: var(--xl-line-height);
-    }
-    *[data-sign="copy"][data-size="xl"]::before,
-    *[data-sign="copy"][data-size="xl"]::after {
-        block-size:   calc(var(--xl-line-height) * 0.875);
-        border-width: var(--xl-border-width);
-        inline-size:  calc(var(--xl-line-height) * 0.625);
-    }
-    *[data-sign="copy"][data-type="landscape"][data-size="xl"]::before,
-    *[data-sign="copy"][data-type="landscape"][data-size="xl"]::after {
-        block-size:  calc(var(--xl-line-height) * 0.625);
-        inline-size: calc(var(--xl-line-height) * 0.875);
-    }
-
-    *[data-sign="copy"][data-size="2xl"] {
-        block-size:  var(--2xl-line-height);
-        inline-size: var(--2xl-line-height);
-    }
-    *[data-sign="copy"][data-size="2xl"]::before,
-    *[data-sign="copy"][data-size="2xl"]::after {
-        block-size:   calc(var(--2xl-line-height) * 0.875);
-        border-width: var(--2xl-border-width);
-        inline-size:  calc(var(--2xl-line-height) * 0.625);
-    }
-    *[data-sign="copy"][data-type="landscape"][data-size="2xl"]::before,
-    *[data-sign="copy"][data-type="landscape"][data-size="2xl"]::after {
-        block-size:  calc(var(--2xl-line-height) * 0.625);
-        inline-size: calc(var(--2xl-line-height) * 0.875);
-    }
-
-    /* === rule: indent with block-start rule === */
-
-    *[data-sign="rule"] {
-        padding-inline-start: 1.5rem;
-    }
-    *[data-sign="rule"]::before {
-        background-color:   var(--color-emphasis-ink);
-        content:            "";
-        inset-block:        0;
-        inset-inline-start: 0;
-        position:           absolute;
-        inline-size:        0.5rem;
-    }
-    @media (forced-colors: active) {
-        *[data-sign="rule"]::before {
-            background-color: CanvasText;
-        }
-    }
-
-    /* --- size --- */
-
-    *[data-sign="rule"][data-size="xs"]::before {
-        inset-block: calc((var(--xs-box-height) - var(--xs-line-height)) / 2);
-    }
-    *[data-sign="rule"][data-size="sm"]::before {
-        inset-block: calc((var(--sm-box-height) - var(--sm-line-height)) / 2);
-    }
+    *:where(
+        [data-sign="hatch"],
+        [data-sign="minus"],
+        [data-sign="plus"],
+        [data-sign="x"]
+    )[data-inline-align="start"]::before,
+    *:where(
+        [data-sign="hatch"],
+        [data-sign="minus"],
+        [data-sign="plus"],
+        [data-sign="x"]
+    )[data-inline-align="start"]::after,
     *[data-sign="rule"]:where(
-        [data-size="md"],
-        :not([data-size])
-    )::before {
-        inset-block: calc((var(--md-box-height) - var(--md-line-height)) / 2);
+        [data-inline-align="start"],
+        :not([data-inline-align])
+    )::after {
+        inset-inline-start: var(--md-border-radius);
+        inset-inline-end:   auto;
+        margin-inline:      0;
     }
-    *[data-sign="rule"][data-size="lg"]::before {
-        inset-block: calc((var(--lg-box-height) - var(--lg-line-height)) / 2);
+
+    /* --- end --- */
+
+    *:where(
+        [data-sign="hatch"],
+        [data-sign="minus"],
+        [data-sign="plus"],
+        [data-sign="rule"],
+        [data-sign="x"]
+    )[data-inline-align="end"]::before,
+    *:where(
+        [data-sign="hatch"],
+        [data-sign="minus"],
+        [data-sign="plus"],
+        [data-sign="rule"],
+        [data-sign="x"]
+    )[data-inline-align="end"]::after {
+        inset-inline-start: auto;
+        inset-inline-end:   var(--md-border-radius);
+        margin-inline:      0;
     }
-    *[data-sign="rule"][data-size="xl"]::before {
-        inset-block: calc((var(--xl-box-height) - var(--xl-line-height)) / 2);
+
+    /*  === sign-style: inline === */
+
+    [data-sign-style="inline"] {
+        vertical-align: middle;
     }
-    *[data-sign="rule"][data-size="2xl"]::before {
-        inset-block: calc((var(--2xl-box-height) - var(--2xl-line-height)) / 2);
+
+    [data-sign-style="inline"]:not([data-size] *) {
+        block-size: var(--md-line-height);
+    }
+    [data-size="xs"] [data-sign-style="inline"]:not([data-size="xs"] [data-size] *) {
+        block-size: var(--xs-line-height);
+    }
+    [data-size="sm"] [data-sign-style="inline"]:not([data-size="sm"] [data-size] *) {
+        block-size: var(--sm-line-height);
+    }
+    [data-size="md"] [data-sign-style="inline"]:not([data-size="md"] [data-size] *) {
+        block-size: var(--md-line-height);
+    }
+    [data-size="lg"] [data-sign-style="inline"]:not([data-size="lg"] [data-size] *) {
+        block-size: var(--lg-line-height);
+    }
+    [data-size="xl"] [data-sign-style="inline"]:not([data-size="xl"] [data-size] *) {
+        block-size: var(--xl-line-height);
+    }
+    [data-size="2xl"] [data-sign-style="inline"]:not([data-size="2xl"] [data-size] *) {
+        block-size: var(--2xl-line-height);
     }
 
     /* === check === */
@@ -390,6 +313,346 @@
         translate: 0 -0.35938rem;
     }
 
+    /* === copy === */
+
+    *[data-sign="copy"]::before,
+    *[data-sign="copy"]::after {
+        border-color: currentColor;
+        border-style: solid;
+        content:      "";
+        inset:        0;
+        margin:       auto;
+        position:     absolute;
+    }
+    *[data-sign="copy"]::after {
+        background-color: inherit;
+    }
+
+    /* --- size --- */
+
+    *[data-sign="copy"][data-size="xs"] {
+        block-size:  var(--xs-line-height);
+        inline-size: var(--xs-line-height);
+    }
+    *[data-sign="copy"][data-size="xs"]::before,
+    *[data-sign="copy"][data-size="xs"]::after {
+        block-size:   calc(var(--xs-line-height) * 0.875);
+        border-width: var(--xs-border-width);
+        inline-size:  calc(var(--xs-line-height) * 0.625);
+    }
+    *[data-sign="copy"][data-size="xs"]::before {
+        translate: calc(var(--xs-line-height) * 0.1875) calc(var(--xs-line-height) * -0.0625);
+    }
+    *[data-sign="copy"][data-size="xs"]::after {
+        translate: calc(var(--xs-line-height) * -0.1875) calc(var(--xs-line-height) * 0.0625);
+    }
+    *[data-sign="copy"][data-type="landscape"][data-size="xs"]::before,
+    *[data-sign="copy"][data-type="landscape"][data-size="xs"]::after {
+        block-size:  calc(var(--xs-line-height) * 0.625);
+        inline-size: calc(var(--xs-line-height) * 0.875);
+    }
+    *[data-sign="copy"][data-type="landscape"][data-size="xs"]::before {
+        translate: calc(var(--xs-line-height) * 0.0625) calc(var(--xs-line-height) * -0.1875);
+    }
+    *[data-sign="copy"][data-type="landscape"][data-size="xs"]::after {
+        translate: calc(var(--xs-line-height) * -0.0625) calc(var(--xs-line-height) * 0.1875);
+    }
+
+    *[data-sign="copy"][data-size="sm"] {
+        block-size:  var(--sm-line-height);
+        inline-size: var(--sm-line-height);
+    }
+    *[data-sign="copy"][data-size="sm"]::before,
+    *[data-sign="copy"][data-size="sm"]::after {
+        block-size:   calc(var(--sm-line-height) * 0.875);
+        border-width: var(--sm-border-width);
+        inline-size:  calc(var(--sm-line-height) * 0.625);
+    }
+    *[data-sign="copy"][data-size="sm"]::before {
+        translate: calc(var(--sm-line-height) * 0.1875) calc(var(--sm-line-height) * -0.0625);
+    }
+    *[data-sign="copy"][data-size="sm"]::after {
+        translate: calc(var(--sm-line-height) * -0.1875) calc(var(--sm-line-height) * 0.0625);
+    }
+    *[data-sign="copy"][data-type="landscape"][data-size="sm"]::before,
+    *[data-sign="copy"][data-type="landscape"][data-size="sm"]::after {
+        block-size:  calc(var(--sm-line-height) * 0.625);
+        inline-size: calc(var(--sm-line-height) * 0.875);
+    }
+    *[data-sign="copy"][data-type="landscape"][data-size="sm"]::before {
+        translate: calc(var(--sm-line-height) * 0.0625) calc(var(--sm-line-height) * -0.1875);
+    }
+    *[data-sign="copy"][data-type="landscape"][data-size="sm"]::after {
+        translate: calc(var(--sm-line-height) * -0.0625) calc(var(--sm-line-height) * 0.1875);
+    }
+
+    *[data-sign="copy"]:where([data-size="md"], :not([data-size])) {
+        block-size:  var(--md-line-height);
+        inline-size: var(--md-line-height);
+    }
+    *[data-sign="copy"]:where([data-size="md"], :not([data-size]))::before,
+    *[data-sign="copy"]:where([data-size="md"], :not([data-size]))::after {
+        block-size:   calc(var(--md-line-height) * 0.875);
+        border-width: var(--md-border-width);
+        inline-size:  calc(var(--md-line-height) * 0.625);
+    }
+    *[data-sign="copy"]:where([data-size="md"], :not([data-size]))::before {
+        translate: calc(var(--md-line-height) * 0.1875) calc(var(--md-line-height) * -0.0625);
+    }
+    *[data-sign="copy"]:where([data-size="md"], :not([data-size]))::after {
+        translate: calc(var(--md-line-height) * -0.1875) calc(var(--md-line-height) * 0.0625);
+    }
+    *[data-sign="copy"][data-type="landscape"]:where([data-size="md"], :not([data-size]))::before,
+    *[data-sign="copy"][data-type="landscape"]:where([data-size="md"], :not([data-size]))::after {
+        block-size:  calc(var(--md-line-height) * 0.625);
+        inline-size: calc(var(--md-line-height) * 0.875);
+    }
+    *[data-sign="copy"][data-type="landscape"]:where([data-size="md"], :not([data-size]))::before {
+        translate: calc(var(--md-line-height) * 0.0625) calc(var(--md-line-height) * -0.1875);
+    }
+    *[data-sign="copy"][data-type="landscape"]:where([data-size="md"], :not([data-size]))::after {
+        translate: calc(var(--md-line-height) * -0.0625) calc(var(--md-line-height) * 0.1875);
+    }
+
+    *[data-sign="copy"][data-size="lg"] {
+        block-size:  var(--lg-line-height);
+        inline-size: var(--lg-line-height);
+    }
+    *[data-sign="copy"][data-size="lg"]::before,
+    *[data-sign="copy"][data-size="lg"]::after {
+        block-size:   calc(var(--lg-line-height) * 0.875);
+        border-width: var(--lg-border-width);
+        inline-size:  calc(var(--lg-line-height) * 0.625);
+    }
+    *[data-sign="copy"][data-size="lg"]::before {
+        translate: calc(var(--lg-line-height) * 0.1875) calc(var(--lg-line-height) * -0.0625);
+    }
+    *[data-sign="copy"][data-size="lg"]::after {
+        translate: calc(var(--lg-line-height) * -0.1875) calc(var(--lg-line-height) * 0.0625);
+    }
+    *[data-sign="copy"][data-type="landscape"][data-size="lg"]::before,
+    *[data-sign="copy"][data-type="landscape"][data-size="lg"]::after {
+        block-size:  calc(var(--lg-line-height) * 0.625);
+        inline-size: calc(var(--lg-line-height) * 0.875);
+    }
+    *[data-sign="copy"][data-type="landscape"][data-size="lg"]::before {
+        translate: calc(var(--lg-line-height) * 0.0625) calc(var(--lg-line-height) * -0.1875);
+    }
+    *[data-sign="copy"][data-type="landscape"][data-size="lg"]::after {
+        translate: calc(var(--lg-line-height) * -0.0625) calc(var(--lg-line-height) * 0.1875);
+    }
+
+    *[data-sign="copy"][data-size="xl"] {
+        block-size:  var(--xl-line-height);
+        inline-size: var(--xl-line-height);
+    }
+    *[data-sign="copy"][data-size="xl"]::before,
+    *[data-sign="copy"][data-size="xl"]::after {
+        block-size:   calc(var(--xl-line-height) * 0.875);
+        border-width: var(--xl-border-width);
+        inline-size:  calc(var(--xl-line-height) * 0.625);
+    }
+    *[data-sign="copy"][data-size="xl"]::before {
+        translate: calc(var(--xl-line-height) * 0.1875) calc(var(--xl-line-height) * -0.0625);
+    }
+    *[data-sign="copy"][data-size="xl"]::after {
+        translate: calc(var(--xl-line-height) * -0.1875) calc(var(--xl-line-height) * 0.0625);
+    }
+    *[data-sign="copy"][data-type="landscape"][data-size="xl"]::before,
+    *[data-sign="copy"][data-type="landscape"][data-size="xl"]::after {
+        block-size:  calc(var(--xl-line-height) * 0.625);
+        inline-size: calc(var(--xl-line-height) * 0.875);
+    }
+    *[data-sign="copy"][data-type="landscape"][data-size="xl"]::before {
+        translate: calc(var(--xl-line-height) * 0.0625) calc(var(--xl-line-height) * -0.1875);
+    }
+    *[data-sign="copy"][data-type="landscape"][data-size="xl"]::after {
+        translate: calc(var(--xl-line-height) * -0.0625) calc(var(--xl-line-height) * 0.1875);
+    }
+
+    *[data-sign="copy"][data-size="2xl"] {
+        block-size:  var(--2xl-line-height);
+        inline-size: var(--2xl-line-height);
+    }
+    *[data-sign="copy"][data-size="2xl"]::before,
+    *[data-sign="copy"][data-size="2xl"]::after {
+        block-size:   calc(var(--2xl-line-height) * 0.875);
+        border-width: var(--2xl-border-width);
+        inline-size:  calc(var(--2xl-line-height) * 0.625);
+    }
+    *[data-sign="copy"][data-size="2xl"]::before {
+        translate: calc(var(--2xl-line-height) * 0.1875) calc(var(--2xl-line-height) * -0.0625);
+    }
+    *[data-sign="copy"][data-size="2xl"]::after {
+        translate: calc(var(--2xl-line-height) * -0.1875) calc(var(--2xl-line-height) * 0.0625);
+    }
+    *[data-sign="copy"][data-type="landscape"][data-size="2xl"]::before,
+    *[data-sign="copy"][data-type="landscape"][data-size="2xl"]::after {
+        block-size:  calc(var(--2xl-line-height) * 0.625);
+        inline-size: calc(var(--2xl-line-height) * 0.875);
+    }
+    *[data-sign="copy"][data-type="landscape"][data-size="2xl"]::before {
+        translate: calc(var(--2xl-line-height) * 0.0625) calc(var(--2xl-line-height) * -0.1875);
+    }
+    *[data-sign="copy"][data-type="landscape"][data-size="2xl"]::after {
+        translate: calc(var(--2xl-line-height) * -0.0625) calc(var(--2xl-line-height) * 0.1875);
+    }
+
+    /* === hatch === */
+
+    *[data-sign="hatch"]::after {
+        background-image: repeating-linear-gradient(
+            -45deg,
+            currentcolor 0,
+            currentcolor 0.125rem,
+            transparent 0.125rem,
+            transparent 0.25rem
+        );
+    }
+
+    /* --- size --- */
+
+    [data-sign="hatch"][data-size="xs"]::after {
+        block-size:  var(--xs-line-height);
+        inline-size: var(--xs-line-height);
+    }
+    [data-sign="hatch"][data-size="sm"]::after {
+        block-size:  var(--sm-line-height);
+        inline-size: var(--sm-line-height);
+    }
+    [data-sign="hatch"]:where(
+        [data-size="md"],
+        :not([data-size])
+    )::after {
+        block-size:  var(--md-line-height);
+        inline-size: var(--md-line-height);
+    }
+    [data-sign="hatch"][data-size="lg"]::after {
+        block-size:  var(--lg-line-height);
+        inline-size: var(--lg-line-height);
+    }
+    [data-sign="hatch"][data-size="xl"]::after {
+        block-size:  var(--xl-line-height);
+        inline-size: var(--xl-line-height);
+    }
+    [data-sign="hatch"][data-size="2xl"]::after {
+        block-size:  var(--2xl-line-height);
+        inline-size: var(--2xl-line-height);
+    }
+
+    /*  === minus, plus === */
+
+    [data-sign="plus"]::before,
+    *:where(
+        [data-sign="minus"],
+        [data-sign="plus"]
+    )::after {
+        background-color: currentColor;
+    }
+    [data-sign="plus"]::after {
+        rotate: 90deg;
+    }
+
+    /* --- size --- */
+
+    [data-sign="plus"][data-size="xs"]::before,
+    *:where(
+        [data-sign="minus"],
+        [data-sign="plus"]
+    )[data-size="xs"]::after {
+        block-size:  var(--xs-border-width);
+        inline-size: var(--xs-line-height);
+    }
+    [data-sign="plus"][data-size="sm"]::before,
+    *:where(
+        [data-sign="minus"],
+        [data-sign="plus"]
+    )[data-size="sm"]::after {
+        block-size:  var(--sm-border-width);
+        inline-size: var(--sm-line-height);
+    }
+    [data-sign="plus"]:where(
+        [data-size="md"],
+        :not([data-size])
+    )::before,
+    *:where(
+        [data-sign="minus"],
+        [data-sign="plus"]
+    ):where(
+        [data-size="md"],
+        :not([data-size])
+    )::after {
+        block-size:  var(--md-border-width);
+        inline-size: var(--md-line-height);
+    }
+    [data-sign="plus"][data-size="lg"]::before,
+    *:where(
+        [data-sign="minus"],
+        [data-sign="plus"]
+    )[data-size="lg"]::after {
+        block-size:  var(--lg-border-width);
+        inline-size: var(--lg-line-height);
+    }
+    [data-sign="plus"][data-size="xl"]::before,
+    *:where(
+        [data-sign="minus"],
+        [data-sign="plus"]
+    )[data-size="xl"]::after {
+        block-size:  var(--xl-border-width);
+        inline-size: var(--xl-line-height);
+    }
+    [data-sign="plus"][data-size="2xl"]::before,
+    *:where(
+        [data-sign="minus"],
+        [data-sign="plus"]
+    )[data-size="2xl"]::after {
+        block-size:  var(--2xl-border-width);
+        inline-size: var(--2xl-line-height);
+    }
+
+    /* === rule: indent with a rule bar === */
+
+    *[data-sign="rule"]:where(
+        [data-inline-align="start"],
+        :not([data-inline-align])
+    ) {
+        padding-inline-start: 1.5rem;
+    }
+
+    *[data-sign="rule"]::after {
+        background-color: var(--color-emphasis-ink);
+        inline-size:       0.5rem;
+    }
+    @media (forced-colors: active) {
+        *[data-sign="rule"]::after {
+            background-color: CanvasText;
+        }
+    }
+
+    /* --- size: when explicit, inset-block stops short of the full box-height --- */
+
+    *[data-sign="rule"][data-size="xs"]::after {
+        inset-block: calc((var(--xs-box-height) - var(--xs-line-height)) / 2);
+    }
+    *[data-sign="rule"][data-size="sm"]::after {
+        inset-block: calc((var(--sm-box-height) - var(--sm-line-height)) / 2);
+    }
+    *[data-sign="rule"]:where(
+        [data-size="md"],
+        :not([data-size])
+    )::after {
+        inset-block: calc((var(--md-box-height) - var(--md-line-height)) / 2);
+    }
+    *[data-sign="rule"][data-size="lg"]::after {
+        inset-block: calc((var(--lg-box-height) - var(--lg-line-height)) / 2);
+    }
+    *[data-sign="rule"][data-size="xl"]::after {
+        inset-block: calc((var(--xl-box-height) - var(--xl-line-height)) / 2);
+    }
+    *[data-sign="rule"][data-size="2xl"]::after {
+        inset-block: calc((var(--2xl-box-height) - var(--2xl-line-height)) / 2);
+    }
+
     /*  === x === */
 
     [data-sign="x"]::before,
@@ -442,104 +705,6 @@
         inline-size: calc(var(--2xl-line-height) / 1.4142);
     }
 
-    /*  === plus, minus === */
-
-    *:where(
-        [data-sign="minus"],
-        [data-sign="plus"]
-    )::before,
-    [data-sign="plus"]::after {
-        background-color: currentColor;
-    }
-    [data-sign="plus"]::after {
-        rotate: 90deg;
-    }
-
-    /* --- size --- */
-
-    *:where(
-        [data-sign="minus"],
-        [data-sign="plus"]
-    )[data-size="xs"]::before,
-    [data-sign="plus"][data-size="xs"]::after {
-        block-size:  var(--xs-border-width);
-        inline-size: var(--xs-line-height);
-    }
-    *:where(
-        [data-sign="minus"],
-        [data-sign="plus"]
-    )[data-size="sm"]::before,
-    [data-sign="plus"][data-size="sm"]::after {
-        block-size:  var(--sm-border-width);
-        inline-size: var(--sm-line-height);
-    }
-    *:where(
-        [data-sign="minus"],
-        [data-sign="plus"]
-    ):where(
-        [data-size="md"],
-        :not([data-size])
-    )::before,
-    [data-sign="plus"]:where(
-        [data-size="md"],
-        :not([data-size])
-    )::after {
-        block-size:  var(--md-border-width);
-        inline-size: var(--md-line-height);
-    }
-    *:where(
-        [data-sign="minus"],
-        [data-sign="plus"]
-    )[data-size="lg"]::before,
-    [data-sign="plus"][data-size="lg"]::after {
-        block-size:  var(--lg-border-width);
-        inline-size: var(--lg-line-height);
-    }
-    *:where(
-        [data-sign="minus"],
-        [data-sign="plus"]
-    )[data-size="xl"]::before,
-    [data-sign="plus"][data-size="xl"]::after {
-        block-size:  var(--xl-border-width);
-        inline-size: var(--xl-line-height);
-    }
-    *:where(
-        [data-sign="minus"],
-        [data-sign="plus"]
-    )[data-size="2xl"]::before,
-    [data-sign="plus"][data-size="2xl"]::after {
-        block-size:  var(--2xl-border-width);
-        inline-size: var(--2xl-line-height);
-    }
-
-    /*  === sign-style: inline === */
-
-    [data-sign-style="inline"] {
-        vertical-align: middle;
-    }
-
-    [data-sign-style="inline"]:not([data-size] *) {
-        block-size: var(--md-line-height);
-    }
-    [data-size="xs"] [data-sign-style="inline"]:not([data-size="xs"] [data-size] *) {
-        block-size: var(--xs-line-height);
-    }
-    [data-size="sm"] [data-sign-style="inline"]:not([data-size="sm"] [data-size] *) {
-        block-size: var(--sm-line-height);
-    }
-    [data-size="md"] [data-sign-style="inline"]:not([data-size="md"] [data-size] *) {
-        block-size: var(--md-line-height);
-    }
-    [data-size="lg"] [data-sign-style="inline"]:not([data-size="lg"] [data-size] *) {
-        block-size: var(--lg-line-height);
-    }
-    [data-size="xl"] [data-sign-style="inline"]:not([data-size="xl"] [data-size] *) {
-        block-size: var(--xl-line-height);
-    }
-    [data-size="2xl"] [data-sign-style="inline"]:not([data-size="2xl"] [data-size] *) {
-        block-size: var(--2xl-line-height);
-    }
-
     /* === chevron === */
 
     *:where(
@@ -570,7 +735,7 @@
         )::after {
             transition: transform 0.15s ease;
         }
-    }    
+    }
 
     /* --- size --- */
 
@@ -763,7 +928,7 @@
     *:where(
         [data-facet="reload"],
         [data-facet="sync"]
-    )::before {
+    )::after {
         background-color: currentColor;
         content:           "";
         inset:             0;
@@ -776,14 +941,14 @@
     *:where(
         [data-facet="reload"],
         [data-facet="sync"]
-    )[data-size="xs"]::before {
+    )[data-size="xs"]::after {
         block-size:  var(--xs-line-height);
         inline-size: var(--xs-line-height);
     }
     *:where(
         [data-facet="reload"],
         [data-facet="sync"]
-    )[data-size="sm"]::before {
+    )[data-size="sm"]::after {
         block-size:  var(--sm-line-height);
         inline-size: var(--sm-line-height);
     }
@@ -793,35 +958,35 @@
     ):where(
         [data-size="md"],
         :not([data-size])
-    )::before {
+    )::after {
         block-size:  var(--md-line-height);
         inline-size: var(--md-line-height);
     }
     *:where(
         [data-facet="reload"],
         [data-facet="sync"]
-    )[data-size="lg"]::before {
+    )[data-size="lg"]::after {
         block-size:  var(--lg-line-height);
         inline-size: var(--lg-line-height);
     }
     *:where(
         [data-facet="reload"],
         [data-facet="sync"]
-    )[data-size="xl"]::before {
+    )[data-size="xl"]::after {
         block-size:  var(--xl-line-height);
         inline-size: var(--xl-line-height);
     }
     *:where(
         [data-facet="reload"],
         [data-facet="sync"]
-    )[data-size="2xl"]::before {
+    )[data-size="2xl"]::after {
         block-size:  var(--2xl-line-height);
         inline-size: var(--2xl-line-height);
     }
 
     /* === reload === */
 
-    *[data-facet="reload"]::before {
+    *[data-facet="reload"]::after {
         clip-path: shape(
             from 71% 13.63%,
             arc to 29% 13.63% of 42% 42% cw large,
@@ -834,7 +999,7 @@
 
     /* === sync === */
 
-    *[data-facet="sync"]::before {
+    *[data-facet="sync"]::after {
         clip-path: shape(
             from 71% 13.63%,
             arc to 71% 86.37% of 42% 42% cw small,

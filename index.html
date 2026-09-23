@@ -147,8 +147,7 @@
                     <input type="radio" name="req-demo" required></label>
                 <label>
                     <span>choice B</span>
-                    <input type="radio" name="req-demo"></label></fieldset></section>
-</section>
+                    <input type="radio" name="req-demo"></label></fieldset></section></section>
 
     <section>
         <h2>Surround style, underline style</h2>
@@ -177,6 +176,18 @@
             <a href="#anchor" data-size="xl">xl</a>
             <button data-size="2xl" disabled>2xl, disabled</button>
             <a href="#anchor" data-size="2xl" aria-disabled="true">2xl, aria-disabled="true"</a></section></section>
+
+    <section>
+        <h2>Sign</h2>
+        <section data-sign="rule">
+            <button data-facet="chevron"></button>
+            <button data-sign="copy"></button>
+            <input type="checkbox" data-sign="copy">
+            <input type="checkbox" data-facet="chevron">
+            <input type="radio" data-facet="chevron" data-inline-align="center" name="sign-radio" checked>
+            <input type="radio" data-facet="chevron" data-inline-align="center" name="sign-radio"></section>
+        </section>
+
     <section>
         <h2>Listbox</h2>
         <section data-sign="rule">
@@ -859,15 +870,15 @@ line2</p></hgroup></section>
 
     <section>
         <h2>Toast</h2>
-        <button type="button" onclick="jsFn.show(document.getElementById('toast_output-1'))">show (data-surround="fill")</button>
-        <button type="button" onclick="jsFn.show(document.getElementById('toast_output-2'))">show data-surround="outline", 2xl</button></section>
+        <button type="button" onclick="jsFn.showToast(document.getElementById('toast_output'))">show (data-surround="fill")</button>
+        <button type="button" onclick="jsFn.showToast(document.getElementById('toast_button'))">show data-surround="outline", 2xl</button></section>
 
     <section id="toast" data-type="toast">
-        <output id="toast_output-1" class="hidden">
-            <span id="toast_output-1_span">span:</span>
-            <p id="toast_output-1_p">(data-surround="fill")</p></output>
-        <button data-sign="x"  data-size="2xl" data-surround="outline" id="toast_output-2" class="hidden" onclick="jsFn.hide(this.closest('button'))">
-            <span id="toast_output-2_span">span:</span>
-            <p id="toast_output-2_p">data-surround="outline", 2xl</p></button></section>
+        <output id="toast_output" class="hidden">
+            <span id="toast_output_span">span:</span>
+            <p id="toast_output_p">(data-surround="fill")</p></output>
+        <button data-sign="x"  data-size="2xl" data-surround="outline" id="toast_button" class="hidden" onclick="jsFn.hideToast(this.closest('button'))">
+            <span id="toast_button_span">span:</span>
+            <p id="toast_button_p">data-surround="outline", 2xl</p></button></section>
 
 </body></html>

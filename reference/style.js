@@ -88,7 +88,7 @@ function drawIconBadge(name, { link, canvas, context, base, geometry, originalHr
 }
 
 (() => {
-    const link = document.querySelector("link[rel~='icon']");
+    const link = document.querySelector('link[rel~="icon"]');
     const radios = document.querySelectorAll('input[name="icon-badge"]');
     if (!link || !radios.length) return;
 
@@ -135,16 +135,16 @@ const cancelToastCycle = (el) => {
 };
 
 const jsFn = {
-    show: (el) => {
+    showToast: (el) => {
         cancelToastCycle(el);
         el.classList.remove("hidden", "hide");
         requestAnimationFrame(() => requestAnimationFrame(() => {
             el.classList.add("show");
-            const timer = setTimeout(() => jsFn.hide(el), 3000);
+            const timer = setTimeout(() => jsFn.hideToast(el), 3000);
             toastCycles.set(el, { timer, controller: new AbortController() });
         }));
     },
-    hide: (el) => {
+    hideToast: (el) => {
         cancelToastCycle(el);
         const controller = new AbortController();
         const finish = () => {
