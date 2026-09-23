@@ -1,7 +1,12 @@
 /*
     Usage:
 
-    <input type="text|email|password|search|url|tel"></input>
+    <input type="text|email|password|search|url|tel">
+    <textarea></textarea>
+
+    <label>
+        <input type="password" autocomplete="current-password">
+        <input type="checkbox" aria-controls="password"></label>
     
     <select>
         <option></option></select>
@@ -9,12 +14,6 @@
     <label>
         <select data-facet="chevron">
             <option></option></select></label>
-
-    <textarea></textarea>
-
-    <label data-group="inline">
-        <input id="" type="password" autocomplete="current-password">
-        <button type="button" aria-controls="password" aria-pressed="false"></button></label>
 */
 
 @layer css.input {
@@ -54,8 +53,29 @@
         text-align: right;
     }
 
-    /*  Edge ships its own reveal control. Hide it so the page does not show
-        two toggles that disagree with each other. */
+    /* === password === */
+
+    label:has(> input[type="password"][data-facet="eye"]) {
+        display:  inline flow-root;
+        position: relative;
+    }
+
+    label:has(> input[type="password"]) > input[type="checkbox"] {
+        inset-block:      0;
+        inset-inline-end: 0;
+        min-block-size:   auto;
+        min-inline-size:  auto;
+        position:         absolute;
+    }
+
+    /* --- size --- */
+
+    label:has(> input[type="password"]:where([data-size="md"], :not([data-size]))) > input {
+        padding-inline-end: calc(var(--md-box-height) * 0.6);
+    }
+    label:has(> input[type="password"]) > input[type="checkbox"]:where([data-size="md"], :not([data-size])) {
+        padding-inline-end: var(--md-border-radius);
+    }
 
     *:where(input[type="password"])::-ms-reveal {
         display: none;

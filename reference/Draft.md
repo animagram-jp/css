@@ -1,6 +1,48 @@
 # Draft
 
 ```css
+@layer css.table {
+
+    /* === caption: heading start, nav end === */
+
+    table > caption {
+        display:    flow-root;
+        text-align: start;
+    }
+    table > caption > *:where(hgroup, h1, h2, h3, h4, h5, h6) {
+        float:  inline-start;
+        margin: 0;
+    }
+    table > caption > nav {
+        align-items: center;
+        display:     flex;
+        float:       inline-end;
+        gap:         0.75rem;
+    }
+}
+
+@layer css.data_sign {
+    /* === progress === */
+}
+
+@layer css.data_style {
+
+    /*
+        Usage:
+        <button popovertarget="" data-surround="transparent">
+        <* popover id="" data-surround="transparent">
+    */
+    *[popover][data-surround="transparent"] {
+        inset:   auto;
+        margin:  0;
+        padding: 0;
+    }
+
+    *[popover][data-surround="transparent"]::backdrop {
+        background-color: color-mix(in srgb, var(--color-ink) 35%, transparent);
+    }
+}
+
 /* per tailwind-preflight.css:259-273 */
 :where(select:is([multiple], [size])) optgroup {
     font-weight: bolder;

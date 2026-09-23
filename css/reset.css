@@ -182,7 +182,7 @@
     
     /* fix the feature of 'hidden' attribute.
        display:revert; revert to element instead of attribute */
-    :where([hidden]):where(:not([hidden='until-found'])) { /* per tailwind-preflight.css:392-398 */
+    :where([hidden]):where(:not([hidden="until-found"])) { /* per tailwind-preflight.css:392-398 */
         display: none !important;
     }
     

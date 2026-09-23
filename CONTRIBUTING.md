@@ -17,6 +17,7 @@ curl -fsSL -H "Accept: application/vnd.github.raw+json" "https://api.github.com/
 - セレクタの最初のタグ定義は、無指定でも*を明示すること。
 - base.css以外の各ファイルで、個別の中間変数を定義してはならない。
 - Javascriptのクォートは"を優先して使用すること。
+- _sign.cssのsign・facetの疑似要素は、高さを--{size}-box-heightとする仮想のカンバスの重心に対して配置する。facet要素は、この仮想が想定するtext(--{size}-line-heightに従う)と水平方向で人間の視覚に合わせて光学調整をrem単位で行う。本体をrelative, 疑似要素をabsoluteにすると、border内側左上が相対原点(0,0)に取られる。_signでは、inline方向はdata-inline-align="start|end|center"バリアント別にinset-inline-{start|end}: 0を指定して配置し、block方向は({size}-line-height - {size}-box-height)までを許容して配置する。これにより、`button[data-facet="..."]`(デフォルトのsurround stykeに従う)と、`label[surround=outline] > button[data-sign-style="inline"][data-facet="..."]`が同じサイズのsignを表示する。左右方向には正方形を課さず、それぞれのsignに必要な最低限の幅を確保する。すべてのsign・facetはdata-inline-align="start|end|center"の3値と、無指定時のフォールバック値を持つ。無指定時のフォールバックは、テキストと同居しない単独記号(hatch/reload/sync/visible等)はcenter、テキストや他要素と同居する記号(chevron/rule/copy等)はそのsignの慣用位置(chevronはend)とする。中央揃え(center・無指定含む)は疑似要素のmargin-inlineをauto、start/endは要素本体のpadding-inline-(start/end)と疑似要素側のinset-inline-{start/end}で、ユーザーランドから増方向に調整可能とする。単一の疑似要素しか使わないsign・facetは、data-inline-alignがstartの時は::before、end/centerの時は::afterを使う。DOM生成順で::afterは::beforeや本来のコンテンツより後に生成されるため、重畳時は::afterが手前に描画される既定のスタッキング順序に従う(centerは他要素と被った際に手前に出るべきという判断、endはstartとの対比としてafter側に統一)。
 
 ---
 

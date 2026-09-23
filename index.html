@@ -87,8 +87,8 @@
                 <input type="email" required></label>
             <label data-group="inline">
                 <span>input[type="password"]</span>
-                <input id="password" type="password" autocomplete="current-password" maxlength="20">
-                <button type="button" aria-controls="password" aria-pressed="false"></button></label>
+                <input id="password" type="password" autocomplete="current-password" maxlength="20" value="password">
+                <input type="checkbox" aria-controls="password" data-facet="eye"></label>
             <label>
                 <span>input[type="search"]</span>
                 <input type="search"></label>
@@ -147,8 +147,7 @@
                     <input type="radio" name="req-demo" required></label>
                 <label>
                     <span>choice B</span>
-                    <input type="radio" name="req-demo"></label></fieldset></section>
-</section>
+                    <input type="radio" name="req-demo"></label></fieldset></section></section>
 
     <section>
         <h2>Surround style, underline style</h2>
@@ -177,6 +176,36 @@
             <a href="#anchor" data-size="xl">xl</a>
             <button data-size="2xl" disabled>2xl, disabled</button>
             <a href="#anchor" data-size="2xl" aria-disabled="true">2xl, aria-disabled="true"</a></section></section>
+
+    <section>
+        <h2>Sign</h2>
+        <section data-sign="rule">
+            <label><button data-sign="check"></button></label>
+            <label><input type="checkbox" data-sign="check"></label>
+            <label><button data-sign="copy"></button></label>
+            <label><input type="checkbox" data-sign="copy"></label>
+            <label><button data-sign="hatch"></button></label>
+            <label><input type="checkbox" data-sign="hatch"></label>
+            <label><button data-sign="minus"></button></label>
+            <label><input type="checkbox" data-sign="minus"></label>
+            <label><button data-sign="plus"></button></label>
+            <label><input type="checkbox" data-sign="plus"></label>
+            <label><button data-sign="x"></button></label>
+            <label><input type="checkbox" data-sign="x"></label>
+            <label><button data-sign="x"></button></label>
+            <label><input type="checkbox" data-sign="x"></label>
+            <label><button data-facet="chevron" data-inline-align="center"></button></label>
+            <label><input type="checkbox" data-facet="chevron" data-inline-align="center"></label>
+            <label><button data-facet="reload"></button></label>
+            <label><input type="checkbox" data-facet="reload"></label>
+            <label><button data-facet="sync"></button></label>
+            <label><input type="checkbox" data-facet="sync"></label>
+            <label><button data-facet="eye"></button></label>
+            <label><input type="checkbox" data-facet="eye"></label>
+            <label><input type="radio" data-facet="chevron" name="sign-radio" checked></label>
+            <label><input type="radio" data-facet="chevron" name="sign-radio"></label></section>
+        </section>
+
     <section>
         <h2>Listbox</h2>
         <section data-sign="rule">
@@ -408,68 +437,68 @@
                 <input type="checkbox" role="switch" data-size="2xl" checked disabled></label></section></section>
 
     <section>
-        <h2>Step - button[data-action], input[role="spinbutton"]</h2>
+        <h2>Step - button, input[role="spinbutton"]</h2>
         <section data-sign="rule">
             <label data-group="inline">
-                <button type="button" data-action="decrement" tabindex="-1" aria-label="decrement"></button>
+                <button type="button" data-sign="minus" tabindex="-1" aria-label="decrement"></button>
                 <input type="text" inputmode="numeric" pattern="[0-9]*" role="spinbutton" value="10" size="4">
-                <button type="button" data-action="increment" tabindex="-1" aria-label="increment"></button></label>
+                <button type="button" data-sign="plus" tabindex="-1" aria-label="increment"></button></label>
             <label data-group="inline" data-axis="block">
                 <input type="text" inputmode="numeric" pattern="[0-9]*" role="spinbutton" value="10" size="4">
-                <button type="button" data-action="increment" tabindex="-1" aria-label="increment"></button>
-                <button type="button" data-action="decrement" tabindex="-1" aria-label="decrement"></button></label>
+                <button type="button" data-sign="plus" tabindex="-1" aria-label="increment"></button>
+                <button type="button" data-sign="minus" tabindex="-1" aria-label="decrement"></button></label>
             <label data-group="inline" data-axis="block">
                 <input type="text" inputmode="numeric" pattern="[0-9]*" role="spinbutton" value="10" size="4" data-size="lg">
-                <button type="button" data-action="increment" data-size="lg" tabindex="-1" aria-label="increment"></button>
-                <button type="button" data-action="decrement" data-size="lg" tabindex="-1" aria-label="decrement"></button></label></section>
+                <button type="button" data-sign="plus" data-size="lg" tabindex="-1" aria-label="increment"></button>
+                <button type="button" data-sign="minus" data-size="lg" tabindex="-1" aria-label="decrement"></button></label></section>
         <section data-sign="rule">
             <h3>size</h3>
             <label data-group="inline">
-                <button type="button" data-action="decrement" data-size="xs" tabindex="-1" aria-label="decrement"></button>
+                <button type="button" data-sign="minus" data-size="xs" tabindex="-1" aria-label="decrement"></button>
                 <input type="text" inputmode="numeric" pattern="[0-9]*" role="spinbutton" value="10" size="3" data-size="xs">
-                <button type="button" data-action="increment" data-size="xs" tabindex="-1" aria-label="increment"></button></label>
+                <button type="button" data-sign="plus" data-size="xs" tabindex="-1" aria-label="increment"></button></label>
             <label data-group="inline">
-                <button type="button" data-action="decrement" data-size="sm" tabindex="-1" aria-label="decrement"></button>
+                <button type="button" data-sign="minus" data-size="sm" tabindex="-1" aria-label="decrement"></button>
                 <input type="text" inputmode="numeric" pattern="[0-9]*" role="spinbutton" value="10" size="3" data-size="sm">
-                <button type="button" data-action="increment" data-size="sm" tabindex="-1" aria-label="increment"></button></label>
+                <button type="button" data-sign="plus" data-size="sm" tabindex="-1" aria-label="increment"></button></label>
             <label data-group="inline">
-                <button type="button" data-action="decrement" data-size="md" tabindex="-1" aria-label="decrement"></button>
+                <button type="button" data-sign="minus" data-size="md" tabindex="-1" aria-label="decrement"></button>
                 <input type="text" inputmode="numeric" pattern="[0-9]*" role="spinbutton" value="10" size="3" data-size="md">
-                <button type="button" data-action="increment" data-size="md" tabindex="-1" aria-label="increment"></button></label>
+                <button type="button" data-sign="plus" data-size="md" tabindex="-1" aria-label="increment"></button></label>
             <label data-group="inline">
-                <button type="button" data-action="decrement" data-size="lg" tabindex="-1" aria-label="decrement"></button>
+                <button type="button" data-sign="minus" data-size="lg" tabindex="-1" aria-label="decrement"></button>
                 <input type="text" inputmode="numeric" pattern="[0-9]*" role="spinbutton" value="10" size="3" data-size="lg">
-                <button type="button" data-action="increment" data-size="lg" tabindex="-1" aria-label="increment"></button></label>
+                <button type="button" data-sign="plus" data-size="lg" tabindex="-1" aria-label="increment"></button></label>
             <label data-group="inline">
-                <button type="button" data-action="decrement" data-size="xl" tabindex="-1" aria-label="decrement"></button>
+                <button type="button" data-sign="minus" data-size="xl" tabindex="-1" aria-label="decrement"></button>
                 <input type="text" inputmode="numeric" pattern="[0-9]*" role="spinbutton" value="10" size="3" data-size="xl">
-                <button type="button" data-action="increment" data-size="xl" tabindex="-1" aria-label="increment"></button></label>
+                <button type="button" data-sign="plus" data-size="xl" tabindex="-1" aria-label="increment"></button></label>
             <label data-group="inline">
-                <button type="button" data-action="decrement" data-size="2xl" tabindex="-1" aria-label="decrement"></button>
+                <button type="button" data-sign="minus" data-size="2xl" tabindex="-1" aria-label="decrement"></button>
                 <input type="text" inputmode="numeric" pattern="[0-9]*" role="spinbutton" value="10" size="3" data-size="2xl">
-                <button type="button" data-action="increment" data-size="2xl" tabindex="-1" aria-label="increment"></button></label></section>
+                <button type="button" data-sign="plus" data-size="2xl" tabindex="-1" aria-label="increment"></button></label></section>
         <section data-sign="rule">
             <h3>[data-surround="outline"]</h3>
             <label data-group="inline">
-                <button type="button" data-action="decrement" data-surround="outline" tabindex="-1" aria-label="decrement"></button>
+                <button type="button" data-sign="minus" data-surround="outline" tabindex="-1" aria-label="decrement"></button>
                 <input type="text" inputmode="numeric" pattern="[0-9]*" role="spinbutton" value="10" size="4">
-                <button type="button" data-action="increment" data-surround="outline" tabindex="-1" aria-label="increment"></button></label></section>
+                <button type="button" data-sign="plus" data-surround="outline" tabindex="-1" aria-label="increment"></button></label></section>
         <section data-sign="rule">
             <h3>:user-invalid, [aria-invalid="true"]</h3>
             <label data-group="inline">
-                <button type="button" data-action="decrement" tabindex="-1" aria-label="decrement"></button>
+                <button type="button" data-sign="minus" tabindex="-1" aria-label="decrement"></button>
                 <input type="text" inputmode="numeric" pattern="[0-9]*" role="spinbutton" value="10" size="4" aria-invalid="true">
-                <button type="button" data-action="increment" tabindex="-1" aria-label="increment"></button></label></section>
+                <button type="button" data-sign="plus" tabindex="-1" aria-label="increment"></button></label></section>
         <section data-sign="rule">
             <h3>:disabled, [aria-disabled="true"]</h3>
             <label data-group="inline">
-                <button type="button" data-action="decrement" disabled tabindex="-1" aria-label="decrement"></button>
+                <button type="button" data-sign="minus" disabled tabindex="-1" aria-label="decrement"></button>
                 <input type="text" inputmode="numeric" pattern="[0-9]*" role="spinbutton" value="10" size="4" disabled>
-                <button type="button" data-action="increment" disabled tabindex="-1" aria-label="increment"></button></label>
+                <button type="button" data-sign="plus" disabled tabindex="-1" aria-label="increment"></button></label>
             <label data-group="inline">
-                <button type="button" data-action="decrement" aria-disabled="true" tabindex="-1" aria-label="decrement"></button>
+                <button type="button" data-sign="minus" aria-disabled="true" tabindex="-1" aria-label="decrement"></button>
                 <input type="text" inputmode="numeric" pattern="[0-9]*" role="spinbutton" value="10" size="4" aria-disabled="true">
-                <button type="button" data-action="increment" aria-disabled="true" tabindex="-1" aria-label="increment"></button></label></section></section>
+                <button type="button" data-sign="plus" aria-disabled="true" tabindex="-1" aria-label="increment"></button></label></section></section>
 
     <section>
         <h2>Slider</h2>
@@ -859,15 +888,15 @@ line2</p></hgroup></section>
 
     <section>
         <h2>Toast</h2>
-        <button type="button" onclick="jsFn.show(document.getElementById('toast_output-1'))">show (data-surround="fill")</button>
-        <button type="button" onclick="jsFn.show(document.getElementById('toast_output-2'))">show data-surround="outline", 2xl</button></section>
+        <button type="button" onclick="js_fn.showToast(document.getElementById('toast_output'))">show (data-surround="fill")</button>
+        <button type="button" onclick="js_fn.showToast(document.getElementById('toast_button'))">show data-surround="outline", 2xl</button></section>
 
     <section id="toast" data-type="toast">
-        <output id="toast_output-1" class="hidden">
-            <span id="toast_output-1_span">span:</span>
-            <p id="toast_output-1_p">(data-surround="fill")</p></output>
-        <button data-sign="x"  data-size="2xl" data-surround="outline" id="toast_output-2" class="hidden" onclick="jsFn.hide(this.closest('button'))">
-            <span id="toast_output-2_span">span:</span>
-            <p id="toast_output-2_p">data-surround="outline", 2xl</p></button></section>
+        <output id="toast_output" class="hidden">
+            <span id="toast_output_span">span:</span>
+            <p id="toast_output_p">(data-surround="fill")</p></output>
+        <button data-sign="x"  data-size="2xl" data-surround="outline" id="toast_button" class="hidden" onclick="js_fn.hideToast(this.closest('button'))">
+            <span id="toast_button_span">span:</span>
+            <p id="toast_button_p">data-surround="outline", 2xl</p></button></section>
 
 </body></html>

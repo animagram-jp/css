@@ -99,24 +99,24 @@ const el = (tag, text) => {
 //  conformance levels are weaker signals and are merely strong. Neither is
 //  interactive, so neither borrows the surround styles that read as a control.
 const badge = (text, marked) =>
-    el(marked ? 'mark' : 'strong', text);
+    el(marked ? "mark" : "strong", text);
 const cell = (...children) => {
-    const td = el('td');
+    const td = el("td");
     td.append(...children);
     return td;
 };
 const row = (cells) => {
-    const tr = document.createElement('tr');
-    cells.forEach(c => tr.append(c instanceof Node ? c : el('td', c)));
+    const tr = document.createElement("tr");
+    cells.forEach(c => tr.append(c instanceof Node ? c : el("td", c)));
     return tr;
 };
 
-const report = await fetch('./audit.json').then(r => {
+const report = await fetch("./audit.json").then(r => {
     if (!r.ok) throw new Error(`audit.json: ${r.status}`);
     return r.json();
 });
 
-document.querySelector('header > p').textContent =
+document.querySelector("header > p").textContent =
     `Generated: ${report.generated} — ${report.guideline} — ` +
     `${report.schemes.length} schemes — FAIL is a breach, ` +
     `POTENTIAL needs manual confirmation`;
@@ -129,7 +129,7 @@ const groups = new Map();
 for (const result of report.results) {
     for (const f of result.findings) {
         // A rule can map to several criteria; it is listed under each.
-        const criteria = f.criteria.length ? f.criteria : [{ num: '—', level: '', name: 'Unmapped' }];
+        const criteria = f.criteria.length ? f.criteria : [{ num: "—", level: "", name: "Unmapped" }];
         for (const c of criteria) {
             const key = `${c.num}|${f.ruleId}|${f.reasonId}|${f.outcome}`;
             let g = groups.get(key);
@@ -144,10 +144,10 @@ for (const result of report.results) {
     }
 }
 
-const scKey = (num) => num.split('.').map(n => String(n).padStart(3, '0')).join('.');
+const scKey = (num) => num.split(".").map(n => String(n).padStart(3, "0")).join(".");
 const all = [...groups.values()].sort((a, b) =>
     scKey(a.sc.num).localeCompare(scKey(b.sc.num)) ||
-    (a.outcome === b.outcome ? 0 : a.outcome === 'FAIL' ? -1 : 1) ||
+    (a.outcome === b.outcome ? 0 : a.outcome === "FAIL" ? -1 : 1) ||
     b.nodes.length - a.nodes.length);
 
 // An element that fails in every scheme is one problem, not six, so each group
@@ -157,38 +157,38 @@ for (const g of all) {
 }
 
 const scanned = report.results.length;
-const failing = all.filter(g => g.outcome === 'FAIL').length;
+const failing = all.filter(g => g.outcome === "FAIL").length;
 
-document.querySelector('#summary caption').textContent =
+document.querySelector("#summary caption").textContent =
     `${all.length} findings across ${scanned} scans — ` +
     `${failing} failing, ${all.length - failing} needing review`;
 
-const summary = document.querySelector('#summary tbody');
+const summary = document.querySelector("#summary tbody");
 const allSchemes = report.schemes.length;
 
 for (const g of all) {
     const schemes = g.schemes.size === allSchemes
-        ? 'all'
-        : [...g.schemes].join(', ');
+        ? "all"
+        : [...g.schemes].join(", ");
     summary.append(row([
-        el('th', g.sc.num),
-        g.sc.level ? cell(badge(g.sc.level)) : el('td', ''),
+        el("th", g.sc.num),
+        g.sc.level ? cell(badge(g.sc.level)) : el("td", ""),
         g.sc.name,
-        cell(el('code', g.ruleId)),
-        cell(badge(g.outcome, g.outcome === 'FAIL')),
+        cell(el("code", g.ruleId)),
+        cell(badge(g.outcome, g.outcome === "FAIL")),
         schemes,
-        el('td', String(g.elements.length)),
+        el("td", String(g.elements.length)),
     ]));
-    summary.lastElementChild.firstElementChild.scope = 'row';
+    summary.lastElementChild.firstElementChild.scope = "row";
 }
 
-const detail = document.querySelector('#detail');
-const tpl = document.querySelector('#detail-tpl');
+const detail = document.querySelector("#detail");
+const tpl = document.querySelector("#detail-tpl");
 
 if (!all.length) {
-    document.querySelector('#summary').hidden = true;
-    const ok = el('p');
-    ok.append(el('strong', '✓ No failures or unresolved checks in any scheme.'));
+    document.querySelector("#summary").hidden = true;
+    const ok = el("p");
+    ok.append(el("strong", "✓ No failures or unresolved checks in any scheme."));
     detail.append(ok);
 } else {
     // Detail is grouped by criterion so a reader fixing "1.4.3" sees every
@@ -202,25 +202,25 @@ if (!all.length) {
 
     for (const [title, { sc, groups: gs }] of byCriterion) {
         const frag = tpl.content.cloneNode(true);
-        frag.querySelector('h2').textContent =
+        frag.querySelector("h2").textContent =
             sc.level ? `${title} (${sc.level})` : title;
-        frag.querySelector('tbody').append(...gs.map(g => {
-            const list = el('ul');
+        frag.querySelector("tbody").append(...gs.map(g => {
+            const list = el("ul");
             list.append(...g.elements.map(n => {
-                const li = el('li');
-                li.append(el('code', n.snippet || ''), el('pre', n.path));
+                const li = el("li");
+                li.append(el("code", n.snippet || ""), el("pre", n.path));
                 if (n.bounds) {
-                    li.append(el('p', `at ${n.bounds.left},${n.bounds.top} ` +
+                    li.append(el("p", `at ${n.bounds.left},${n.bounds.top} ` +
                                       `(${n.bounds.width}×${n.bounds.height})`));
                 }
                 return li;
             }));
 
             return row([
-                cell(el('code', g.ruleId), el('pre', g.reasonId)),
-                cell(badge(g.outcome, g.outcome === 'FAIL')),
+                cell(el("code", g.ruleId), el("pre", g.reasonId)),
+                cell(badge(g.outcome, g.outcome === "FAIL")),
                 g.message,
-                el('td', String(g.elements.length)),
+                el("td", String(g.elements.length)),
                 cell(list),
             ]);
         }));
