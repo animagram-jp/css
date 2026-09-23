@@ -107,7 +107,7 @@ bindIconBadge(
 // === password ===
 
 document.querySelectorAll('label > input[type="password"]').forEach((input) => {
-    const button = input.parentElement.querySelector(":scope > button[aria-controls]");
+    const button = input.parentElement.querySelector(":scope > input[aria-controls]");
     if (!button) return;
     button.hidden = false;
     button.addEventListener("click", () => {
