@@ -87,8 +87,8 @@
                 <input type="email" required></label>
             <label data-group="inline">
                 <span>input[type="password"]</span>
-                <input id="password" type="password" autocomplete="current-password" maxlength="20">
-                <button type="button" aria-controls="password" aria-pressed="false"></button></label>
+                <input id="password" type="password" autocomplete="current-password" maxlength="20" value="password">
+                <input type="checkbox" aria-controls="password" data-facet="eye"></label>
             <label>
                 <span>input[type="search"]</span>
                 <input type="search"></label>
@@ -184,9 +184,26 @@
             <label><input type="checkbox" data-sign="check"></label>
             <label><button data-sign="copy"></button></label>
             <label><input type="checkbox" data-sign="copy"></label>
-            <label><input type="checkbox" data-facet="chevron"></label>
-            <input type="radio" data-facet="chevron" data-inline-align="center" name="sign-radio" checked>
-            <input type="radio" data-facet="chevron" data-inline-align="center" name="sign-radio"></section>
+            <label><button data-sign="hatch"></button></label>
+            <label><input type="checkbox" data-sign="hatch"></label>
+            <label><button data-sign="minus"></button></label>
+            <label><input type="checkbox" data-sign="minus"></label>
+            <label><button data-sign="plus"></button></label>
+            <label><input type="checkbox" data-sign="plus"></label>
+            <label><button data-sign="x"></button></label>
+            <label><input type="checkbox" data-sign="x"></label>
+            <label><button data-sign="x"></button></label>
+            <label><input type="checkbox" data-sign="x"></label>
+            <label><button data-facet="chevron" data-inline-align="center"></button></label>
+            <label><input type="checkbox" data-facet="chevron" data-inline-align="center"></label>
+            <label><button data-facet="reload"></button></label>
+            <label><input type="checkbox" data-facet="reload"></label>
+            <label><button data-facet="sync"></button></label>
+            <label><input type="checkbox" data-facet="sync"></label>
+            <label><button data-facet="eye"></button></label>
+            <label><input type="checkbox" data-facet="eye"></label>
+            <label><input type="radio" data-facet="chevron" name="sign-radio" checked></label>
+            <label><input type="radio" data-facet="chevron" name="sign-radio"></label></section>
         </section>
 
     <section>
@@ -871,14 +888,14 @@ line2</p></hgroup></section>
 
     <section>
         <h2>Toast</h2>
-        <button type="button" onclick="jsFn.showToast(document.getElementById('toast_output'))">show (data-surround="fill")</button>
-        <button type="button" onclick="jsFn.showToast(document.getElementById('toast_button'))">show data-surround="outline", 2xl</button></section>
+        <button type="button" onclick="js_fn.showToast(document.getElementById('toast_output'))">show (data-surround="fill")</button>
+        <button type="button" onclick="js_fn.showToast(document.getElementById('toast_button'))">show data-surround="outline", 2xl</button></section>
 
     <section id="toast" data-type="toast">
         <output id="toast_output" class="hidden">
             <span id="toast_output_span">span:</span>
             <p id="toast_output_p">(data-surround="fill")</p></output>
-        <button data-sign="x"  data-size="2xl" data-surround="outline" id="toast_button" class="hidden" onclick="jsFn.hideToast(this.closest('button'))">
+        <button data-sign="x"  data-size="2xl" data-surround="outline" id="toast_button" class="hidden" onclick="js_fn.hideToast(this.closest('button'))">
             <span id="toast_button_span">span:</span>
             <p id="toast_button_p">data-surround="outline", 2xl</p></button></section>
 

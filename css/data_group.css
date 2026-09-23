@@ -1,15 +1,16 @@
 /*
     Usage:
 
-    <label data-group="inline">
-        <span>label text inline flow</span>
+    <label>
+        <span></span>
         <input></input>
         <select></select>
         <button></button></label>
-    <* data-group="inline|block">
+        
+    <data-group="inline|block">
       <span></span>
-      <label><input|select|button></label>
-      ...</*>
+      <label><input|select|button|...></label>
+      ...</>
 */
 
 @layer css.data_group {
@@ -178,7 +179,7 @@
         border-start-start-radius: 0;
     }
 
-    /* === color === */
+    /* --- color --- */
 
     *:where(
         *[data-group="inline"],

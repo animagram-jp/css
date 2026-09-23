@@ -1,18 +1,15 @@
 /*  Usage:
 
-    <data-surround="fill|outline|transparent"
-        data-sign|facet="minus|plus|x|..."
-        (data-inline-axis="start|end|center")></>
+    <* data-surround="" data-sign|facet="" (data-inline-axis="start|end|center")></>
 
-    <data-surround="fill|outline|transparent">
-        <data-sign-style="inline"
-            data-sign|facet="minus|plus|x|..."
-            (data-inline-axis="start|end|center")></></>
+    <* data-surround="">
+        <* data-sign-style="inline" data-sign|facet="" (data-inline-axis="start|end|center")></*></*>
 
-    <summary></summary>
+    <summary (data-facet="chevron")></summary>
 
     <label>
-        <select data-facet="chevron"></select></label>
+        <select data-facet="chevron">
+            <option></option></select></label>
 */
 
 @layer css.data_sign {
@@ -26,14 +23,7 @@
         position: relative;
     }
 
-    /*  === min-inline-size: no sign/facet orientation is wider than tall ===
-
-        select/checkbox/radio already carry their own explicit inline-size
-        (or, for select, rely on native content-driven sizing), so they are
-        excluded here to avoid a redundant or conflicting min. A checkbox
-        with role="switch" (toggle.css) is intentionally wide already, so
-        it is not excluded — same :not([role="switch"]) split checkbox.css
-        uses for the same reason. */
+    /* --- min inline size --- */
 
     *:where(
         [data-sign],
@@ -80,6 +70,8 @@
         min-inline-size: var(--2xl-box-height);
     }
 
+    /* --- block align center --- */
+
     *:where(
         [data-sign="minus"],
         [data-sign="plus"],
@@ -87,6 +79,7 @@
     )::before,
     *:where(
         [data-sign="hatch"],
+        [data-sign="minus"],
         [data-sign="plus"],
         [data-sign="x"]
     )::after {
@@ -96,6 +89,8 @@
 
     /* === data-inline-align === */
 
+    /* --- center --- */
+
     *:where(
         [data-sign="minus"],
         [data-sign="plus"],
@@ -103,6 +98,7 @@
     )::before,
     *:where(
         [data-sign="hatch"],
+        [data-sign="minus"],
         [data-sign="plus"],
         [data-sign="rule"],
         [data-sign="x"]
@@ -112,10 +108,15 @@
     }
 
     *:where(
+        [data-sign="check"],
         [data-sign="hatch"],
         [data-sign="minus"],
         [data-sign="plus"],
-        [data-sign="x"]
+        [data-sign="x"],
+        label > input[type="checkbox"]:not([role="switch"]):is(
+            :not([data-sign]):not([data-facet]),
+            [data-sign="check"]
+        )
     ):where(
         [data-inline-align="center"],
         :not([data-inline-align])
@@ -137,10 +138,15 @@
     /* --- start --- */
 
     *:where(
+        [data-sign="check"],
         [data-sign="hatch"],
         [data-sign="minus"],
         [data-sign="plus"],
-        [data-sign="x"]
+        [data-sign="x"],
+        label > input[type="checkbox"]:not([role="switch"]):is(
+            :not([data-sign]):not([data-facet]),
+            [data-sign="check"]
+        )
     )[data-inline-align="start"]::before,
     *:where(
         [data-sign="hatch"],
@@ -160,11 +166,16 @@
     /* --- end --- */
 
     *:where(
+        [data-sign="check"],
         [data-sign="hatch"],
         [data-sign="minus"],
         [data-sign="plus"],
         [data-sign="rule"],
-        [data-sign="x"]
+        [data-sign="x"],
+        label > input[type="checkbox"]:not([role="switch"]):is(
+            :not([data-sign]):not([data-facet]),
+            [data-sign="check"]
+        )
     )[data-inline-align="end"]::before,
     *:where(
         [data-sign="hatch"],
@@ -220,37 +231,8 @@
         rotate:       45deg;
     }
 
-    /*  input[type="checkbox"] hides the mark until checked; a bare
-        data-sign="check" (e.g. on a button) shows it unconditionally. */
-
     label > input[type="checkbox"]:not([role="switch"]):is(:not([data-sign]):not([data-facet]), [data-sign="check"]):not(:checked)::before {
         border-width: 0;
-    }
-
-    /* --- data-inline-align --- */
-
-    *:where(
-        *[data-sign="check"],
-        label > input[type="checkbox"]:not([role="switch"]):is(:not([data-sign]):not([data-facet]), [data-sign="check"])
-    )[data-inline-align="start"]::before {
-        inset-inline-start: 0;
-        inset-inline-end:   auto;
-        margin-inline:      0;
-    }
-    *:where(
-        *[data-sign="check"],
-        label > input[type="checkbox"]:not([role="switch"]):is(:not([data-sign]):not([data-facet]), [data-sign="check"])
-    ):where([data-inline-align="center"], :not([data-inline-align]))::before {
-        inset-inline:  0;
-        margin-inline: auto;
-    }
-    *:where(
-        *[data-sign="check"],
-        label > input[type="checkbox"]:not([role="switch"]):is(:not([data-sign]):not([data-facet]), [data-sign="check"])
-    )[data-inline-align="end"]::before {
-        inset-inline-start: auto;
-        inset-inline-end:   0;
-        margin-inline:      0;
     }
 
     /* --- size --- */
@@ -845,12 +827,12 @@
         transform:           translateY(-0.125rem) rotate(45deg);
     }
     *:where(
-        *[data-facet="chevron"]:not(select)[aria-expanded="true"][data-size="xs"],
-        details[open] > summary:not([data-facet])[data-size="xs"],
-        button[aria-haspopup="listbox"]:not([data-facet])[data-size="xs"]:has(+ [role="listbox"]:popover-open),
+        *[data-facet="chevron"]:not(select)[data-size="xs"]:where(:open, :checked, :has(+ [popover]:popover-open)),
+        details:open > summary:not([data-facet])[data-size="xs"],
+        button[aria-haspopup="listbox"]:not([data-facet])[data-size="xs"]:has(+ [popover]:popover-open),
         label:has(> select[data-facet="chevron"][data-size="xs"]:open)
     )::after {
-        transform: translateY(calc(2 / 16 * 1rem)) rotate(225deg);
+        transform: translateY(0.125rem) rotate(225deg);
     }
 
     *:where(
@@ -867,12 +849,12 @@
         transform:           translateY(-0.125rem) rotate(45deg);
     }
     *:where(
-        *[data-facet="chevron"]:not(select)[aria-expanded="true"][data-size="sm"],
-        details[open] > summary:not([data-facet])[data-size="sm"],
-        button[aria-haspopup="listbox"]:not([data-facet])[data-size="sm"]:has(+ [role="listbox"]:popover-open),
+        *[data-facet="chevron"]:not(select)[data-size="sm"]:where(:open, :checked, :has(+ [popover]:popover-open)),
+        details:open > summary:not([data-facet])[data-size="sm"],
+        button[aria-haspopup="listbox"]:not([data-facet])[data-size="sm"]:has(+ [popover]:popover-open),
         label:has(> select[data-facet="chevron"][data-size="sm"]:open)
     )::after {
-        transform: translateY(calc(2 / 16 * 1rem)) rotate(225deg);
+        transform: translateY(0.125rem) rotate(225deg);
     }
 
     *:where(
@@ -887,12 +869,12 @@
         transform:          translateY(-0.1875rem) rotate(45deg);
     }
     *:where(
-        *[data-facet="chevron"]:not(select)[aria-expanded="true"]:where([data-size="md"], :not([data-size])),
-        details[open] > summary:not([data-facet]):where([data-size="md"], :not([data-size])),
-        button[aria-haspopup="listbox"]:not([data-facet]):where([data-size="md"], :not([data-size])):has(+ [role="listbox"]:popover-open),
+        *[data-facet="chevron"]:not(select):where([data-size="md"], :not([data-size])):where(:open, :checked, :has(+ [popover]:popover-open)),
+        details:open > summary:not([data-facet]):where([data-size="md"], :not([data-size])),
+        button[aria-haspopup="listbox"]:not([data-facet]):where([data-size="md"], :not([data-size])):has(+ [popover]:popover-open),
         label:has(> select[data-facet="chevron"]:where([data-size="md"], :not([data-size])):open)
     )::after {
-        transform: translateY(calc(3 / 16 * 1rem)) rotate(225deg);
+        transform: translateY(0.1875rem) rotate(225deg);
     }
 
     *:where(
@@ -910,12 +892,12 @@
     }
 
     *:where(
-        *[data-facet="chevron"]:not(select)[aria-expanded="true"][data-size="lg"],
-        details[open] > summary:not([data-facet])[data-size="lg"],
-        button[aria-haspopup="listbox"]:not([data-facet])[data-size="lg"]:has(+ [role="listbox"]:popover-open),
+        *[data-facet="chevron"]:not(select)[data-size="lg"]:where(:open, :checked, :has(+ [popover]:popover-open)),
+        details:open > summary:not([data-facet])[data-size="lg"],
+        button[aria-haspopup="listbox"]:not([data-facet])[data-size="lg"]:has(+ [popover]:popover-open),
         label:has(> select[data-facet="chevron"][data-size="lg"]:open)
     )::after {
-        transform: translateY(calc(2 / 16 * 1rem)) rotate(225deg);
+        transform: translateY(0.125rem) rotate(225deg);
     }
 
     *:where(
@@ -933,12 +915,12 @@
     }
 
     *:where(
-        *[data-facet="chevron"]:not(select)[aria-expanded="true"][data-size="xl"],
-        details[open] > summary:not([data-facet])[data-size="xl"],
-        button[aria-haspopup="listbox"]:not([data-facet])[data-size="xl"]:has(+ [role="listbox"]:popover-open),
+        *[data-facet="chevron"]:not(select)[data-size="xl"]:where(:open, :checked, :has(+ [popover]:popover-open)),
+        details:open > summary:not([data-facet])[data-size="xl"],
+        button[aria-haspopup="listbox"]:not([data-facet])[data-size="xl"]:has(+ [popover]:popover-open),
         label:has(> select[data-facet="chevron"][data-size="xl"]:open)
     )::after {
-        transform: translateY(calc(3 / 16 * 1rem)) rotate(225deg);
+        transform: translateY(0.1875rem) rotate(225deg);
     }
 
     *:where(
@@ -956,12 +938,12 @@
     }
 
     *:where(
-        *[data-facet="chevron"]:not(select)[aria-expanded="true"][data-size="2xl"],
-        details[open] > summary:not([data-facet])[data-size="2xl"],
-        button[aria-haspopup="listbox"]:not([data-facet])[data-size="2xl"]:has(+ [role="listbox"]:popover-open),
+        *[data-facet="chevron"]:not(select)[data-size="2xl"]:where(:open, :checked, :has(+ [popover]:popover-open)),
+        details:open > summary:not([data-facet])[data-size="2xl"],
+        button[aria-haspopup="listbox"]:not([data-facet])[data-size="2xl"]:has(+ [popover]:popover-open),
         label:has(> select[data-facet="chevron"][data-size="2xl"]:open)
     )::after {
-        transform: translateY(calc(4 / 16 * 1rem)) rotate(225deg);
+        transform: translateY(0.25rem) rotate(225deg);
     }
 
     /* === reload, sync === */
@@ -1029,11 +1011,17 @@
 
     *[data-facet="reload"]::after {
         clip-path: shape(
-            from 71% 13.63%,
-            arc to 29% 13.63% of 42% 42% cw large,
-            line to 52.78% 6.83%,
-            line to 35% 24.02%,
-            arc to 65% 24.02% of 30% 30% ccw large,
+            from 50% 18.75%,
+            arc to 78.412% 36.962% of 31.25% 31.25% ccw large,
+            arc to 84.087% 34.356% of 3.125% 3.125% cw small,
+            arc to 50% 12.5% of 37.5% 37.5% cw large,
+            line to 50% 3.338%,
+            arc to 52.562% 2.138% of 1.562% 1.562% cw small,
+            line to 67.312% 14.425%,
+            curve to 67.312% 16.825% with 68.062% 15.05% / 68.062% 16.2%,
+            line to 52.562% 29.113%,
+            arc to 50% 27.913% of 1.562% 1.562% cw small,
+            line to 50% 18.75%,
             close
         );
     }
@@ -1042,111 +1030,107 @@
 
     *[data-facet="sync"]::after {
         clip-path: shape(
-            from 71% 13.63%,
-            arc to 71% 86.37% of 42% 42% cw small,
-            line to 47.22% 93.18%,
-            line to 65% 75.98%,
-            arc to 65% 24.02% of 30% 30% ccw small,
+            from 50% 18.75%,
+            curve to 25.894% 30.112% with 40.3% 18.75% / 31.625% 23.169%,
+            arc to 21.075% 26.137% of 3.125% 3.125% cw large,
+            arc to 86.981% 43.75% of 37.512% 37.512% cw small,
+            line to 96.663% 43.75%,
+            arc to 97.863% 46.312% of 1.562% 1.562% cw small,
+            line to 85.575% 61.062%,
+            arc to 83.175% 61.062% of 1.562% 1.562% cw small,
+            line to 70.888% 46.312%,
+            arc to 72.088% 43.75% of 1.562% 1.562% cw small,
+            line to 80.625% 43.75%,
+            arc to 50% 18.75% of 31.25% 31.25% ccw small,
             close,
-            move to 29% 86.37%,
-            arc to 29% 13.63% of 42% 42% cw small,
-            line to 52.78% 6.83%,
-            line to 35% 24.02%,
-            arc to 35% 75.98% of 30% 30% ccw small,
+            move to 19.375% 56.25%,
+            arc to 74.106% 69.888% of 31.262% 31.262% ccw small,
+            arc to 78.925% 73.862% of 3.125% 3.125% cw large,
+            arc to 13.019% 56.25% of 37.512% 37.512% cw small,
+            line to 3.75% 56.25%,
+            line to 28.325% 56.25%,
+            arc to 29.525% 58.812% of 1.562% 1.562% cw small,
+            line to 17.238% 73.562%,
+            arc to 14.838% 73.562% of 1.562% 1.562% cw small,
+            line to 2.55% 58.812%,
+            arc to 3.75% 56.25% of 1.562% 1.562% cw small,
+            line to 19.375% 56.25%,
             close
         );
     }
 
     /* === visible === */
 
-    *[data-facet="visible"]::before {
-        border-color:  currentColor;
-        border-radius: 50%;
-        border-style:  solid;
-        content:       "";
-        inset:         0;
-        margin:        auto;
-        position:      absolute;
-    }
-    *[data-facet="visible"]::after {
+    *[data-facet="eye"]::before {
         background-color: currentColor;
-        content:           "";
-        inset:             0;
-        margin:            auto;
-        position:          absolute;
+        content:          "";
+        inset:            0;
+        margin:           auto;
+        position:         absolute;
+        clip-path: shape(
+            from 100% 50%,
+            curve to 50% 15.625% with 100% 50% / 81.25% 15.625%,
+            curve to 0% 50% with 18.75% 15.625% / 0% 50%,
+            curve to 50% 84.375% with 0% 50% / 18.75% 84.375%,
+            curve to 100% 50% with 81.25% 84.375% / 100% 50%,
+            close,
+            move to 92.5% 50%,
+            curve to 50% 79.219% with 92.5% 50% / 76.562% 79.219%,
+            curve to 7.5% 50% with 23.438% 79.219% / 7.5% 50%,
+            curve to 50% 20.781% with 7.5% 50% / 23.438% 20.781%,
+            curve to 92.5% 50% with 76.562% 20.781% / 92.5% 50%,
+            close,
+            move to -10.828% -5.172%,
+            line to 105.172% 110.828%,
+            line to 110.828% 105.172%,
+            line to -5.172% -10.828%,
+            close
+        );
     }
-    *[data-facet="visible"]:where(:checked, [aria-pressed="true"])::before {
-        background-color: currentColor;
-    }
-    *[data-facet="visible"]:where(:checked, [aria-pressed="true"])::after {
-        display: none;
+
+    *[data-facet="eye"]:where(:checked, [aria-pressed="true"])::before {
+        clip-path: shape(
+            from 100% 50%,
+            curve to 50% 15.625% with 100% 50% / 81.25% 15.625%,
+            curve to 0% 50% with 18.75% 15.625% / 0% 50%,
+            curve to 50% 84.375% with 0% 50% / 18.75% 84.375%,
+            curve to 100% 50% with 81.25% 84.375% / 100% 50%,
+            close
+        );
     }
 
     /* --- size --- */
 
-    *[data-facet="visible"][data-size="xs"]::before {
-        block-size:   calc(var(--xs-line-height) / 2);
-        border-width: var(--xs-border-width);
-        inline-size:  var(--xs-line-height);
-    }
-    *[data-facet="visible"][data-size="xs"]::after {
-        block-size:  var(--xs-border-width);
+    *[data-facet="eye"][data-size="xs"]::before {
+        block-size:  var(--xs-line-height);
         inline-size: var(--xs-line-height);
     }
 
-    *[data-facet="visible"][data-size="sm"]::before {
-        block-size:   calc(var(--sm-line-height) / 2);
-        border-width: var(--sm-border-width);
-        inline-size:  var(--sm-line-height);
-    }
-    *[data-facet="visible"][data-size="sm"]::after {
-        block-size:  var(--sm-border-width);
+    *[data-facet="eye"][data-size="sm"]::before {
+        block-size:  var(--sm-line-height);
         inline-size: var(--sm-line-height);
     }
 
-    *[data-facet="visible"]:where(
+    *[data-facet="eye"]:where(
         [data-size="md"],
         :not([data-size])
     )::before {
-        block-size:   calc(var(--md-line-height) / 2);
-        border-width: var(--md-border-width);
-        inline-size:  var(--md-line-height);
-    }
-    *[data-facet="visible"]:where(
-        [data-size="md"],
-        :not([data-size])
-    )::after {
-        block-size:  var(--md-border-width);
+        block-size:  var(--md-line-height);
         inline-size: var(--md-line-height);
     }
 
-    *[data-facet="visible"][data-size="lg"]::before {
-        block-size:   calc(var(--lg-line-height) / 2);
-        border-width: var(--lg-border-width);
-        inline-size:  var(--lg-line-height);
-    }
-    *[data-facet="visible"][data-size="lg"]::after {
-        block-size:  var(--lg-border-width);
+    *[data-facet="eye"][data-size="lg"]::before {
+        block-size:  var(--lg-line-height);
         inline-size: var(--lg-line-height);
     }
 
-    *[data-facet="visible"][data-size="xl"]::before {
-        block-size:   calc(var(--xl-line-height) / 2);
-        border-width: var(--xl-border-width);
-        inline-size:  var(--xl-line-height);
-    }
-    *[data-facet="visible"][data-size="xl"]::after {
-        block-size:  var(--xl-border-width);
+    *[data-facet="eye"][data-size="xl"]::before {
+        block-size:  var(--xl-line-height);
         inline-size: var(--xl-line-height);
     }
 
-    *[data-facet="visible"][data-size="2xl"]::before {
-        block-size:   calc(var(--2xl-line-height) / 2);
-        border-width: var(--2xl-border-width);
-        inline-size:  var(--2xl-line-height);
-    }
-    *[data-facet="visible"][data-size="2xl"]::after {
-        block-size:  var(--2xl-border-width);
+    *[data-facet="eye"][data-size="2xl"]::before {
+        block-size:  var(--2xl-line-height);
         inline-size: var(--2xl-line-height);
     }
 }
