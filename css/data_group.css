@@ -14,21 +14,36 @@
 
 @layer css.data_group {
 
-    /* === layout === */
-
     *:where(
-        *[data-group="inline"],
+        [data-group="inline"],
+        form[role="search"],
         search,
-        form[role="search"]
+        button, 
+        input:not([type=hidden]), 
+        meter, 
+        output, 
+        progress, 
+        select, 
+        textarea
     ) {
         display: inline flow-root;
     }
 
     *:where(
-        *[data-group="inline"],
-        search,
-        form[role="search"],
-        label:has(> *[role="spinbutton"])
+        [data-group="inline"],
+        :is(
+            search, 
+            form[role="search"]
+            label:has(
+                button, 
+                input:not([type=hidden]), 
+                meter, 
+                output, 
+                progress, 
+                select, 
+                textarea
+            )
+        ):not([data-group])
     ) {
         font-size:   0;
         white-space: nowrap;
@@ -36,10 +51,10 @@
     }
 
     *:where(
-        *[data-group="inline"],
+        [data-group="inline"],
         search,
         form[role="search"],
-        label:has(> *[role="spinbutton"])
+        label
     ) * {
         vertical-align: middle;
     }
@@ -47,10 +62,20 @@
     /* --- label text --- */
 
     *:where(
-        *[data-group="inline"],
-        search,
-        form[role="search"],
-        label:has(> *[role="spinbutton"])
+        [data-group="inline"],
+        :is(
+            search, 
+            form[role="search"]
+            label:has(
+                button, 
+                input:not([type=hidden]), 
+                meter, 
+                output, 
+                progress, 
+                select, 
+                textarea
+            )
+        ):not([data-group])
     ) > span:first-child {
         padding-inline-end: var(--md-border-radius);
     }
