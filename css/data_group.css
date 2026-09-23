@@ -6,6 +6,10 @@
         <input></input>
         <select></select>
         <button></button></label>
+    <* data-group="inline|block">
+      <span></span>
+      <label><input|select|button></label>
+      ...</*>
 */
 
 @layer css.data_group {
