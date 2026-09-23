@@ -193,8 +193,8 @@ document.querySelectorAll('input[role="spinbutton"]').forEach((input) => {
     const min = input.min === "" ? -Infinity : Number(input.min);
     const max = input.max === "" ? Infinity : Number(input.max);
 
-    label.querySelectorAll(":scope > button[data-action]").forEach((button) => {
-        const sign = button.dataset.action === "increment" ? 1 : -1;
+    label.querySelectorAll(":scope > button[data-sign]").forEach((button) => {
+        const sign = button.dataset.sign === "plus" ? 1 : -1;
         button.addEventListener("click", () => {
             const next = (Number(input.value) || 0) + sign * step;
             input.value = Math.min(max, Math.max(min, next));
