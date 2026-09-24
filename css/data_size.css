@@ -341,30 +341,66 @@
 
     /* === surround transparent style: focus === */
 
-    *:where([data-surround="transparent"], tr:not([data-style], [data-surround]))[data-size="xs"]:is(:focus-visible, :has(:checked)) {
+    *:where(
+        [data-surround="transparent"],
+        tr:not([data-style], [data-surround]),
+        li[role],
+        li > [role]:where(a, button),
+        li > label:has(> input[role])
+    )[data-size="xs"]:is(:focus-visible, :has(:checked)) {
         outline-offset: calc(var(--xs-border-width) * -1);
     }
 
-    *:where([data-surround="transparent"], tr:not([data-style], [data-surround]))[data-size="sm"]:is(:focus-visible, :has(:checked)) {
+    *:where(
+        [data-surround="transparent"],
+        tr:not([data-style], [data-surround]),
+        li[role],
+        li > [role]:where(a, button),
+        li > label:has(> input[role])
+    )[data-size="sm"]:is(:focus-visible, :has(:checked)) {
         outline-offset: calc(var(--sm-border-width) * -1);
     }
 
-    *:where([data-surround="transparent"], tr:not([data-style], [data-surround])):where(
+    *:where(
+        [data-surround="transparent"],
+        tr:not([data-style], [data-surround]),
+        li[role],
+        li > [role]:where(a, button),
+        li > label:has(> input[role])
+    ):where(
         [data-size="md"],
         :not([data-size])
     ):is(:focus-visible, :has(:checked)) {
         outline-offset: calc(var(--md-border-width) * -1);
     }
 
-    *:where([data-surround="transparent"], tr:not([data-style], [data-surround]))[data-size="lg"]:is(:focus-visible, :has(:checked)) {
+    *:where(
+        [data-surround="transparent"],
+        tr:not([data-style], [data-surround]),
+        li[role],
+        li > [role]:where(a, button),
+        li > label:has(> input[role])
+    )[data-size="lg"]:is(:focus-visible, :has(:checked)) {
         outline-offset: calc(var(--lg-border-width) * -1);
     }
 
-    *:where([data-surround="transparent"], tr:not([data-style], [data-surround]))[data-size="xl"]:is(:focus-visible, :has(:checked)) {
+    *:where(
+        [data-surround="transparent"],
+        tr:not([data-style], [data-surround]),
+        li[role],
+        li > [role]:where(a, button),
+        li > label:has(> input[role])
+    )[data-size="xl"]:is(:focus-visible, :has(:checked)) {
         outline-offset: calc(var(--xl-border-width) * -1);
     }
 
-    *:where([data-surround="transparent"], tr:not([data-style], [data-surround]))[data-size="2xl"]:is(:focus-visible, :has(:checked)) {
+    *:where(
+        [data-surround="transparent"],
+        tr:not([data-style], [data-surround]),
+        li[role],
+        li > [role]:where(a, button),
+        li > label:has(> input[role])
+    )[data-size="2xl"]:is(:focus-visible, :has(:checked)) {
         outline-offset: calc(var(--2xl-border-width) * -1);
     }
 }

@@ -55,7 +55,7 @@
 
     /* === password === */
 
-    label:has(> input[type="password"][data-facet="eye"]) {
+    label:has(> input[type="password"]) {
         display:  inline flow-root;
         position: relative;
     }

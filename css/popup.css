@@ -119,13 +119,19 @@
     }
 
     /* undo checkbox.css/radio.css's own surrounding box (square/circle outline, border), but
-       keep box size and the data_sign.css ::before/::after check mark, which are sized off that
-       box: mark data-sign="check" in HTML so the input just sits inline, left of its label text,
-       instead of standing alone as a checkbox/radio. focus is left to data_style.css's global
-       *:focus-visible outline (fired on the input itself, since it's the focusable element), not
-       reimplemented here as a fill. */
+       keep the data_sign.css ::before/::after check mark: mark data-sign="check" in HTML so the
+       input just sits inline, left of its label text, instead of standing alone as a
+       checkbox/radio. focus is left to data_style.css's global *:focus-visible outline (fired on
+       the input itself, since it's the focusable element), not reimplemented here as a fill.
+
+       the row (li > label) already carries the box-height via data_style.css/data_size.css's
+       transparent padding; the input itself should not also claim a full box-height, or the row
+       grows taller than its text. size it to data-sign-style="inline"'s line-height square instead
+       of checkbox.css/radio.css's box-height square. */
     li > label > input[role] {
-        cursor: pointer;
+        block-size:  var(--md-line-height);
+        cursor:      pointer;
+        inline-size: var(--md-line-height);
     }
 
     /* === hover === */
