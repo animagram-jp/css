@@ -280,6 +280,9 @@ forced-colorで失われる要素は、使用しない。色要素で伝える�
 - [Pico CSS](https://picocss.com/docs)
 - [Gov UK Design System: Repository](https://github.com/alphagov/govuk-frontend)
 - [U.S. Web Design System (USWDS)](https://designsystem.digital.gov/)
+- [Ant Design: Repository](https://github.com/ant-design/ant-design)
+- [ARIA Authoring Practices Guide (APG): Repository](https://github.com/w3c/aria-practices)
+- [shadcn Astro Track Landing Page (Free): Repository](https://github.com/shadcnstudio/shadcn-astro-track-landing-page-free)
 
 ---
 

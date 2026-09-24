@@ -1,0 +1,160 @@
+/* Usage:
+
+    === popover ===
+
+    <button type="button" id="popover_button-1" popovertarget="popover-1">
+    <* id="popover-1" popover="auto">
+
+    #popover_button-1 {anchor-name: --popover_button-1;}
+    #popover-1        {position-anchor: --popover_button-1;}
+
+    === dialog ===
+
+    <button type="button" onclick="dialog-1.showModal()"></button>
+    <dialog id="dialog-1">
+        <button type="button" formmethod="dialog"></button></dialog>
+
+    === menu / listbox ===
+
+    <button type="button" id="popover_button-2" popovertarget="popover-2" aria-expanded="false">
+    <menu|ol|ul id="popover-2" popover="auto" role="menu/listbox">
+        <li role="separator"></li>
+        <li>
+            <a role="menuitem/option"></a></li>
+        <li>
+            <a role="menuitem/option" aria-disabled="true"></a></li>
+        <li>
+            <label>
+                <input type="checkbox" role="menuitemcheckbox/option" data-sign="check">
+                <span></span></label></li>
+        <li>
+            <label>
+                <input type="radio" role="menuitemradio/option" data-sign="check">
+                <span></span></label></li>
+        <li>
+            <button role="menuitem/option"></button></li>
+        <li>
+            <label>
+                <span></span>
+                <input type="text">
+                <button role="menuitem/option"></button></label></li></menu|ol|ul>
+
+    #popover_button-2 {anchor-name: --popover_button-2;}
+    #popover-2        {position-anchor: --popover_button-2;}
+
+    --- combobox (listbox + typeable input) ---
+
+    <label>
+        <span></span>
+        <input type="text" id="combobox" role="combobox" aria-expanded="false" aria-controls="listbox-2">
+        <button type="button" popovertarget="listbox-2"></button></label>
+    <ol|ul id="listbox-2" popover="auto" role="listbox">...</ol|ul>
+
+    #combobox  {anchor-name: --combobox;}
+    #listbox-2 {position-anchor: --combobox;}
+
+    === tooltip ===
+
+    <button type="button" id="tooltip_trigger-1" popovertarget="tooltip-1" aria-describedby="tooltip-1">
+    <* id="tooltip-1" popover="auto|manual" role="tooltip"></*>
+
+    #tooltip_trigger-1 {anchor-name: --tooltip_trigger-1;}
+    #tooltip-1         {position-anchor: --tooltip_trigger-1;}
+*/
+
+@layer css.popup {
+
+    *[popover] {
+        margin:                 0.25rem 0;
+        position-area:          block-end span-inline-start;
+        position-try-fallbacks: flip-block, flip-inline, flip-block flip-inline;
+    }
+
+    *[popovertarget]:not(
+        :disabled,
+        [aria-disabled="true"]
+    ) {
+        color: var(--color-ink);
+    }
+
+    *:where(*[role="menu"], *[role="listbox"]) {
+        background-color: var(--color-paper);
+        border-color:     var(--color-ink-mix);
+        border-style:     solid;
+        border-width:     var(--md-border-width);
+        border-radius:    var(--md-border-radius);
+        color:            var(--color-ink);
+        list-style-type:  none;
+        max-height:       calc(var(--md-border-width) * 0.2 + var(--md-box-height) * 6.5);
+        overflow-y:       auto;
+        padding-inline:   0.25rem; /* for scrollbar width and symmetory */
+        width:            max-content;
+    }
+    @media (forced-colors: active) {
+        *:where(*[role="menu"], *[role="listbox"]) {
+            background-color: Canvas;
+            border-color:     ButtonBorder;
+            color:            CanvasText;
+        }
+    }
+
+    /* the li itself carries no role and no box; the role-bearing element (a, button, label) is
+       styled directly as the visual row. an empty li (e.g. role="separator", with no children to
+       take over the row) keeps its own box instead. */
+    *:where(*[role="menu"], *[role="listbox"]) > li {
+        display: contents;
+    }
+    *:where(*[role="menu"], *[role="listbox"]) > li:not(:has(*)) {
+        display: block;
+    }
+
+    /* background/border/color transparency comes from data_style.css's li > [role] rule;
+       here only the parts specific to this row layout. */
+    li > [role]:where(a, button),
+    li > label:has(> input[role]) {
+        cursor:      pointer;
+        display:     block;
+        white-space: nowrap;
+        width:       100%;
+    }
+
+    /* undo checkbox.css/radio.css's own surrounding box (square/circle outline, border), but
+       keep box size and the data_sign.css ::before/::after check mark, which are sized off that
+       box: mark data-sign="check" in HTML so the input just sits inline, left of its label text,
+       instead of standing alone as a checkbox/radio. focus is left to data_style.css's global
+       *:focus-visible outline (fired on the input itself, since it's the focusable element), not
+       reimplemented here as a fill. */
+    li > label > input[role] {
+        cursor: pointer;
+    }
+
+    /* === hover === */
+
+    @media (hover: hover) {
+        li > [role]:where(a, button):hover:not(:focus-visible),
+        li > label:has(> input[role]:hover):not(:has(> input[role]:focus-visible)) {
+            background-color: var(--color-paper-mix);
+        }
+    }
+
+    dialog {
+        background-color: var(--color-paper);
+        border-color:     var(--color-ink-mix);
+        border-style:     solid;
+        border-width:     var(--md-border-width);
+        border-radius:    var(--md-border-radius);
+        color:            var(--color-ink);
+    }
+
+    dialog::backdrop {
+        background-color: color-mix(in srgb, var(--color-ink) 35%, transparent);
+    }
+
+    @media (forced-colors: active) {
+        dialog {
+            background-color: Canvas;
+            border-color:     ButtonBorder;
+            color:            CanvasText;
+        }
+    }
+}

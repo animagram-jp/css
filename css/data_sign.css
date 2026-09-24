@@ -113,7 +113,7 @@
         [data-sign="minus"],
         [data-sign="plus"],
         [data-sign="x"],
-        label > input[type="checkbox"]:not([role="switch"]):is(
+        input[type="checkbox"]:not([role="switch"]):is(
             :not([data-sign]):not([data-facet]),
             [data-sign="check"]
         )
@@ -143,7 +143,7 @@
         [data-sign="minus"],
         [data-sign="plus"],
         [data-sign="x"],
-        label > input[type="checkbox"]:not([role="switch"]):is(
+        input[type="checkbox"]:not([role="switch"]):is(
             :not([data-sign]):not([data-facet]),
             [data-sign="check"]
         )
@@ -172,7 +172,7 @@
         [data-sign="plus"],
         [data-sign="rule"],
         [data-sign="x"],
-        label > input[type="checkbox"]:not([role="switch"]):is(
+        input[type="checkbox"]:not([role="switch"]):is(
             :not([data-sign]):not([data-facet]),
             [data-sign="check"]
         )
@@ -220,7 +220,7 @@
     /* === check === */
 
     *[data-sign="check"]::before,
-    label > input[type="checkbox"]:not([role="switch"]):is(:not([data-sign]):not([data-facet]), [data-sign="check"])::before {
+    input[type="checkbox"]:not([role="switch"]):is(:not([data-sign]):not([data-facet]), [data-sign="check"])::before {
         border-color: currentColor;
         border-style: solid;
         border-width: 0 0.1875rem 0.1875rem 0;
@@ -231,7 +231,7 @@
         rotate:       45deg;
     }
 
-    label > input[type="checkbox"]:not([role="switch"]):is(:not([data-sign]):not([data-facet]), [data-sign="check"]):not(:checked)::before {
+    input[type="checkbox"]:not([role="switch"]):is(:not([data-sign]):not([data-facet]), [data-sign="check"]):not(:checked)::before {
         border-width: 0;
     }
 
@@ -239,14 +239,14 @@
 
     *:where(
         *[data-sign="check"],
-        label > input[type="checkbox"]:not([role="switch"]):is(:not([data-sign]):not([data-facet]), [data-sign="check"])
+        input[type="checkbox"]:not([role="switch"]):is(:not([data-sign]):not([data-facet]), [data-sign="check"])
     )[data-size="xs"] {
         block-size:  var(--xs-box-height);
         inline-size: var(--xs-box-height);
     }
     *:where(
         *[data-sign="check"],
-        label > input[type="checkbox"]:not([role="switch"]):is(:not([data-sign]):not([data-facet]), [data-sign="check"])
+        input[type="checkbox"]:not([role="switch"]):is(:not([data-sign]):not([data-facet]), [data-sign="check"])
     )[data-size="xs"]::before {
         block-size:  calc(var(--xs-box-height) / 2);
         inline-size: calc(var(--xs-box-height) / 4);
@@ -255,14 +255,14 @@
 
     *:where(
         *[data-sign="check"],
-        label > input[type="checkbox"]:not([role="switch"]):is(:not([data-sign]):not([data-facet]), [data-sign="check"])
+        input[type="checkbox"]:not([role="switch"]):is(:not([data-sign]):not([data-facet]), [data-sign="check"])
     )[data-size="sm"] {
         block-size:  var(--sm-box-height);
         inline-size: var(--sm-box-height);
     }
     *:where(
         *[data-sign="check"],
-        label > input[type="checkbox"]:not([role="switch"]):is(:not([data-sign]):not([data-facet]), [data-sign="check"])
+        input[type="checkbox"]:not([role="switch"]):is(:not([data-sign]):not([data-facet]), [data-sign="check"])
     )[data-size="sm"]::before {
         block-size:  calc(var(--sm-box-height) / 2);
         inline-size: calc(var(--sm-box-height) / 4);
@@ -271,7 +271,7 @@
 
     *:where(
         *[data-sign="check"],
-        label > input[type="checkbox"]:not([role="switch"]):is(:not([data-sign]):not([data-facet]), [data-sign="check"])
+        input[type="checkbox"]:not([role="switch"]):is(:not([data-sign]):not([data-facet]), [data-sign="check"])
     ):where(
         [data-size="md"],
         :not([data-size])
@@ -281,7 +281,7 @@
     }
     *:where(
         *[data-sign="check"],
-        label > input[type="checkbox"]:not([role="switch"]):is(:not([data-sign]):not([data-facet]), [data-sign="check"])
+        input[type="checkbox"]:not([role="switch"]):is(:not([data-sign]):not([data-facet]), [data-sign="check"])
     ):where([data-size="md"], :not([data-size]))::before {
         block-size:  calc(var(--md-box-height) / 2);
         inline-size: calc(var(--md-box-height) / 4);
@@ -290,14 +290,14 @@
 
     *:where(
         *[data-sign="check"],
-        label > input[type="checkbox"]:not([role="switch"]):is(:not([data-sign]):not([data-facet]), [data-sign="check"])
+        input[type="checkbox"]:not([role="switch"]):is(:not([data-sign]):not([data-facet]), [data-sign="check"])
     )[data-size="lg"] {
         block-size:  var(--lg-box-height);
         inline-size: var(--lg-box-height);
     }
     *:where(
         *[data-sign="check"],
-        label > input[type="checkbox"]:not([role="switch"]):is(:not([data-sign]):not([data-facet]), [data-sign="check"])
+        input[type="checkbox"]:not([role="switch"]):is(:not([data-sign]):not([data-facet]), [data-sign="check"])
     )[data-size="lg"]::before {
         block-size:  calc(var(--lg-box-height) / 2);
         inline-size: calc(var(--lg-box-height) / 4);
@@ -306,14 +306,14 @@
 
     *:where(
         *[data-sign="check"],
-        label > input[type="checkbox"]:not([role="switch"]):is(:not([data-sign]):not([data-facet]), [data-sign="check"])
+        input[type="checkbox"]:not([role="switch"]):is(:not([data-sign]):not([data-facet]), [data-sign="check"])
     )[data-size="xl"] {
         block-size:  var(--xl-box-height);
         inline-size: var(--xl-box-height);
     }
     *:where(
         *[data-sign="check"],
-        label > input[type="checkbox"]:not([role="switch"]):is(:not([data-sign]):not([data-facet]), [data-sign="check"])
+        input[type="checkbox"]:not([role="switch"]):is(:not([data-sign]):not([data-facet]), [data-sign="check"])
     )[data-size="xl"]::before {
         block-size:  calc(var(--xl-box-height) / 2);
         inline-size: calc(var(--xl-box-height) / 4);
@@ -322,14 +322,14 @@
 
     *:where(
         *[data-sign="check"],
-        label > input[type="checkbox"]:not([role="switch"]):is(:not([data-sign]):not([data-facet]), [data-sign="check"])
+        input[type="checkbox"]:not([role="switch"]):is(:not([data-sign]):not([data-facet]), [data-sign="check"])
     )[data-size="2xl"] {
         block-size:  var(--2xl-box-height);
         inline-size: var(--2xl-box-height);
     }
     *:where(
         *[data-sign="check"],
-        label > input[type="checkbox"]:not([role="switch"]):is(:not([data-sign]):not([data-facet]), [data-sign="check"])
+        input[type="checkbox"]:not([role="switch"]):is(:not([data-sign]):not([data-facet]), [data-sign="check"])
     )[data-size="2xl"]::before {
         block-size:  calc(var(--2xl-box-height) / 2);
         inline-size: calc(var(--2xl-box-height) / 4);

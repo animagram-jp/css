@@ -86,7 +86,7 @@
         vertical-align: middle;
     }
 
-    label > input[type="radio"] {
+    input[type="radio"] {
         background-color: var(--color-paper);
         border-color:     var(--color-ink);
         border-style:     solid;
@@ -96,7 +96,7 @@
         padding:          0;
     }
 
-    label > input[type="radio"]::after {
+    input[type="radio"]::after {
         background-color: transparent;
         border-radius:    50%;
         content:          "";
@@ -104,52 +104,52 @@
     }
 
     @media (prefers-reduced-motion: no-preference) {
-        label > input[type="radio"]::after {
+        input[type="radio"]::after {
             transition: background-color 0.15s ease;
         }
     }
 
-    label > input[type="radio"]:checked::after {
+    input[type="radio"]:checked::after {
         background-color: var(--color-emphasis-ink);
     }
 
     @media (forced-colors: active) {
-        label > input[type="radio"] {
+        input[type="radio"] {
             background-color: Canvas;
             border-color:     CanvasText;
         }
-        label > input[type="radio"]:checked::after {
+        input[type="radio"]:checked::after {
             background-color: CanvasText;
         }
     }
 
     /* --- size --- */
 
-    label > input[type="radio"][data-size="xs"] {
+    input[type="radio"][data-size="xs"] {
         border-width: var(--xs-border-width);
         block-size:   var(--xs-box-height);
         inline-size:  var(--xs-box-height);
     }
-    label > input[type="radio"][data-size="xs"]::after {
+    input[type="radio"][data-size="xs"]::after {
         block-size:         calc(var(--xs-box-height) - var(--xs-border-width) * 6);
         inline-size:        calc(var(--xs-box-height) - var(--xs-border-width) * 6);
         inset-block-start:  calc(var(--xs-border-width) * 2);
         inset-inline-start: calc(var(--xs-border-width) * 2);
     }
 
-    label > input[type="radio"][data-size="sm"] {
+    input[type="radio"][data-size="sm"] {
         border-width: var(--sm-border-width);
         block-size:   var(--sm-box-height);
         inline-size:  var(--sm-box-height);
     }
-    label > input[type="radio"][data-size="sm"]::after {
+    input[type="radio"][data-size="sm"]::after {
         block-size:         calc(var(--sm-box-height) - var(--sm-border-width) * 6);
         inline-size:        calc(var(--sm-box-height) - var(--sm-border-width) * 6);
         inset-block-start:  calc(var(--sm-border-width) * 2);
         inset-inline-start: calc(var(--sm-border-width) * 2);
     }
 
-    label > input[type="radio"]:where(
+    input[type="radio"]:where(
         [data-size="md"],
         :not([data-size])
     ) {
@@ -157,7 +157,7 @@
         block-size:   var(--md-box-height);
         inline-size:  var(--md-box-height);
     }
-    label > input[type="radio"]:where(
+    input[type="radio"]:where(
         [data-size="md"],
         :not([data-size])
     )::after {
@@ -167,36 +167,36 @@
         inset-inline-start: calc(var(--md-border-width) * 2);
     }
 
-    label > input[type="radio"][data-size="lg"] {
+    input[type="radio"][data-size="lg"] {
         border-width: var(--lg-border-width);
         block-size:   var(--lg-box-height);
         inline-size:  var(--lg-box-height);
     }
-    label > input[type="radio"][data-size="lg"]::after {
+    input[type="radio"][data-size="lg"]::after {
         block-size:         calc(var(--lg-box-height) - var(--lg-border-width) * 6);
         inline-size:        calc(var(--lg-box-height) - var(--lg-border-width) * 6);
         inset-block-start:  calc(var(--lg-border-width) * 2);
         inset-inline-start: calc(var(--lg-border-width) * 2);
     }
 
-    label > input[type="radio"][data-size="xl"] {
+    input[type="radio"][data-size="xl"] {
         border-width: var(--xl-border-width);
         block-size:   var(--xl-box-height);
         inline-size:  var(--xl-box-height);
     }
-    label > input[type="radio"][data-size="xl"]::after {
+    input[type="radio"][data-size="xl"]::after {
         block-size:         calc(var(--xl-box-height) - var(--xl-border-width) * 6);
         inline-size:        calc(var(--xl-box-height) - var(--xl-border-width) * 6);
         inset-block-start:  calc(var(--xl-border-width) * 2);
         inset-inline-start: calc(var(--xl-border-width) * 2);
     }
 
-    label > input[type="radio"][data-size="2xl"] {
+    input[type="radio"][data-size="2xl"] {
         border-width: var(--2xl-border-width);
         block-size:   var(--2xl-box-height);
         inline-size:  var(--2xl-box-height);
     }
-    label > input[type="radio"][data-size="2xl"]::after {
+    input[type="radio"][data-size="2xl"]::after {
         block-size:         calc(var(--2xl-box-height) - var(--2xl-border-width) * 6);
         inline-size:        calc(var(--2xl-box-height) - var(--2xl-border-width) * 6);
         inset-block-start:  calc(var(--2xl-border-width) * 2);
@@ -206,14 +206,14 @@
 
     /* --- invalid --- */
 
-    label > input[type="radio"]:where(
+    input[type="radio"]:where(
         :user-invalid,
         [aria-invalid="true"]
     ):checked::after {
         background-color: var(--color-error);
     }
     @media (forced-colors: active) {
-        label > input[type="radio"]:where(
+        input[type="radio"]:where(
             :user-invalid,
             [aria-invalid="true"]
         ):checked::after {
@@ -229,7 +229,7 @@
     )) {
         color: var(--color-ink-mix);
     }
-    label > input[type="radio"]:where(
+    input[type="radio"]:where(
         :disabled,
         [aria-disabled="true"]
     ):checked::after {
@@ -237,7 +237,7 @@
     }
 
     @media (forced-colors: active) {
-        label > input[type="radio"]:where(
+        input[type="radio"]:where(
             :disabled,
             [aria-disabled="true"]
         ):checked::after {
@@ -257,12 +257,7 @@
         display: none;
     }
 
-    /* --- color --- */
-
     *[role="tab"]:has( input[type="radio"]:checked) {
-        background-color: var(--color-emphasis-paper);
-        border-inline-start-color: var(--color-emphasis-ink);
-        color:       var(--color-emphasis-ink);
         font-weight: bold;
     }
 

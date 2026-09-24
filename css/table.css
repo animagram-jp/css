@@ -121,16 +121,17 @@
 
     /* === data-selectable === */
     table[data-selectable] tbody tr:has(:checked) {
-        background-color: var(--color-emphasis-paper);
+        outline-color: var(--color-emphasis-ink);
+        outline-style: solid;
+        outline-width: var(--md-border-width);
     }
 
     @media (forced-colors: active) {
-        table[data-stripe] tbody tr:nth-child(even),
-        table[data-selectable] tbody tr:has(:checked) {
+        table[data-stripe] tbody tr:nth-child(even) {
             background-color: revert;
         }
-        table[data-selectable] tbody tr:has(:checked) *:where(td, th) {
-            border-block: var(--md-border-width) solid Highlight;
+        table[data-selectable] tbody tr:has(:checked) {
+            outline-color: Highlight;
         }
     }
 

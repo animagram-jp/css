@@ -14,10 +14,10 @@
     <link rel="stylesheet" href="./css/data_group.css">
     <link rel="stylesheet" href="./css/input.css">
     <link rel="stylesheet" href="./css/button.css">
-    <link rel="stylesheet" href="./css/listbox.css">
     <link rel="stylesheet" href="./css/toggle.css">
     <link rel="stylesheet" href="./css/checkbox.css">
     <link rel="stylesheet" href="./css/radio.css">
+    <link rel="stylesheet" href="./css/popup.css">
     <link rel="stylesheet" href="./css/heading.css">
     <link rel="stylesheet" href="./css/search.css">
     <link rel="stylesheet" href="./css/table.css">
@@ -211,26 +211,30 @@
         <section data-sign="rule">
             <button type="button" id="listbox-1-trigger" popovertarget="listbox-1" aria-haspopup="listbox" aria-controls="listbox-1" data-surround="outline">button[aria-haspopup="listbox"]</button>
             <ul id="listbox-1" popover="auto" role="listbox" aria-labelledby="listbox-1-trigger">
-                <li role="presentation">li[role="presentation"]</li>
-                <li role="option" aria-selected="true">
-                    <input type="radio" data-sign="check" data-sign-style="inline" name="" checked>
-                    <span>li > (radio, span)</span></li>
-                <li role="option">
-                    <input type="checkbox" data-sign="check" data-sign-style="inline" name="">
-                    <span>li > (checkbox, span)</span></li>
-                <li role="option">
-                    <button>li > button</button></li></ul>
+                <li role="separator">li[role="separator"]</li>
+                <li>
+                    <label>
+                        <input type="radio" role="option" data-sign="check" data-sign-style="inline" name="" checked>
+                        <span>li > label > (radio[role="option"], span)</span></label></li>
+                <li>
+                    <label>
+                        <input type="checkbox" role="option" data-sign="check" data-sign-style="inline" name="">
+                        <span>li > label > (checkbox[role="option"], span)</span></label></li>
+                <li>
+                    <button role="option">li > button[role="option"]</button></li></ul>
             <button type="button" id="listbox-8-trigger" popovertarget="listbox-8" aria-haspopup="listbox" aria-controls="listbox-8" data-surround="outline" disabled>button[aria-haspopup="listbox"]:disalbed</button>
             <ul id="listbox-8" popover="auto" role="listbox" aria-labelledby="listbox-8-trigger">
-                <li role="presentation">li[role="presentation"]</li>
-                <li role="option" aria-selected="true">
-                    <input type="radio" name="">
-                    <span>span</span></li>
-                <li role="option">
-                    <input type="checkbox" name="">
-                    <span>span</span></li>
-                <li role="option">
-                    <button>button</button></li></ul></section></section>
+                <li role="separator">li[role="separator"]</li>
+                <li>
+                    <label>
+                        <input type="radio" role="option" data-sign="check" name="">
+                        <span>span</span></label></li>
+                <li>
+                    <label>
+                        <input type="checkbox" role="option" data-sign="check" name="">
+                        <span>span</span></label></li>
+                <li>
+                    <button role="option">button</button></li></ul></section></section>
 
     <section>
         <h2>Checkbox</h2>

@@ -1,15 +1,4 @@
 @layer css.data_style {
-
-    /* === surround transparent style === */
-
-    *[data-surround="transparent"] {
-        background-color: transparent;
-        border:           none;
-        color:            inherit;
-        vertical-align:   middle;
-        width:            auto;
-    }
-
     /* === surround fill style === */
 
     *:where([data-surround="fill"]),
@@ -19,7 +8,7 @@
         [type="submit"],
         [type="reset"],
         [data-type="toast"] > *
-    ):not([data-surround]) {
+    ):where(not([data-surround])) {
         background-color: var(--color-emphasis-ink);
         border-color:     transparent;
         border-style:     solid;
@@ -80,6 +69,21 @@
             border-color:     FieldText;
             color:            FieldText;
         }
+    }
+
+    /* === surround transparent style === */
+
+    *:where(
+        *[data-surround="transparent"],
+        li[role],
+        li > [role]:where(a, button),
+        li > label:has(> input[role])
+    ) {
+        background-color: transparent;
+        border:           none;
+        color:            inherit;
+        vertical-align:   middle;
+        width:            auto;
     }
 
     /* === default inline style: nothing to define more (expected not focusable) === */
@@ -194,9 +198,6 @@
     }
 
     /* --- active, pressed --- */
-
-    /*  A toggle button holds its pressed state after the pointer leaves, so
-        [aria-pressed="true"] shares the :active styling as a resting state. */
 
     *:where(
         a:any-link,

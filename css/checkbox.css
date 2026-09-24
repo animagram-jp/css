@@ -14,7 +14,7 @@
         vertical-align: middle;
     }
 
-    label > input[type="checkbox"]:not([role="switch"]) {
+    input[type="checkbox"]:not([role="switch"]) {
         background-color: var(--color-paper);
         border-color:     var(--color-ink);
         border-style:     solid;
@@ -23,58 +23,58 @@
     }
 
     @media (prefers-reduced-motion: no-preference) {
-        label > input[type="checkbox"]:not([role="switch"]) {
+        input[type="checkbox"]:not([role="switch"]) {
             transition: background-color 0.15s ease;
         }
     }
 
-    label > input[type="checkbox"]:not([role="switch"]):where(:checked, :indeterminate) {
+    input[type="checkbox"]:not([role="switch"]):where(:checked, :indeterminate) {
         background-color: var(--color-emphasis-ink);
         color:            var(--color-paper);
     }
 
     /* === sign === */
 
-    label > input[type="checkbox"]:not([role="switch"]):is(:not([data-sign]):not([data-facet]), [data-sign="check"])::before {
+    input[type="checkbox"]:not([role="switch"]):is(:not([data-sign]):not([data-facet]), [data-sign="check"])::before {
         border-color: var(--color-paper);
     }
 
     /* --- indeterminate --- */
 
-    label > input[type="checkbox"]:not([role="switch"]):is(:not([data-sign]):not([data-facet]), [data-sign="check"]):indeterminate::before {
+    input[type="checkbox"]:not([role="switch"]):is(:not([data-sign]):not([data-facet]), [data-sign="check"]):indeterminate::before {
         border-width: 0 0 0.1875rem 0;
         rotate:       0deg;
         translate:    0 -0.09375rem;
     }
 
     @media (forced-colors: active) {
-        label > input[type="checkbox"]:not([role="switch"]) {
+        input[type="checkbox"]:not([role="switch"]) {
             background-color: Canvas;
             border-color:     CanvasText;
         }
-        label > input[type="checkbox"]:not([role="switch"]):where(:checked, :indeterminate) {
+        input[type="checkbox"]:not([role="switch"]):where(:checked, :indeterminate) {
             background-color: CanvasText;
         }
-        label > input[type="checkbox"]:not([role="switch"]):is(:not([data-sign]):not([data-facet]), [data-sign="check"])::before {
+        input[type="checkbox"]:not([role="switch"]):is(:not([data-sign]):not([data-facet]), [data-sign="check"])::before {
             border-color: Canvas;
         }
     }
 
     /* === size === */
 
-    label > input[type="checkbox"]:not([role="switch"])[data-size="xs"] {
+    input[type="checkbox"]:not([role="switch"])[data-size="xs"] {
         border-radius: var(--xs-border-radius);
         border-width:  var(--xs-border-width);
         block-size:    var(--xs-box-height);
         inline-size:   var(--xs-box-height);
     }
-    label > input[type="checkbox"]:not([role="switch"])[data-size="sm"] {
+    input[type="checkbox"]:not([role="switch"])[data-size="sm"] {
         border-radius: var(--sm-border-radius);
         border-width:  var(--sm-border-width);
         block-size:    var(--sm-box-height);
         inline-size:   var(--sm-box-height);
     }
-    label > input[type="checkbox"]:not([role="switch"]):where(
+    input[type="checkbox"]:not([role="switch"]):where(
         [data-size="md"],
         :not([data-size])
     ) {
@@ -83,19 +83,19 @@
         block-size:    var(--md-box-height);
         inline-size:   var(--md-box-height);
     }
-    label > input[type="checkbox"]:not([role="switch"])[data-size="lg"] {
+    input[type="checkbox"]:not([role="switch"])[data-size="lg"] {
         border-radius: var(--lg-border-radius);
         border-width:  var(--lg-border-width);
         block-size:    var(--lg-box-height);
         inline-size:   var(--lg-box-height);
     }
-    label > input[type="checkbox"]:not([role="switch"])[data-size="xl"] {
+    input[type="checkbox"]:not([role="switch"])[data-size="xl"] {
         border-radius: var(--xl-border-radius);
         border-width:  var(--xl-border-width);
         block-size:    var(--xl-box-height);
         inline-size:   var(--xl-box-height);
     }
-    label > input[type="checkbox"]:not([role="switch"])[data-size="2xl"] {
+    input[type="checkbox"]:not([role="switch"])[data-size="2xl"] {
         border-radius: var(--2xl-border-radius);
         border-width:  var(--2xl-border-width);
         block-size:    var(--2xl-box-height);
@@ -104,30 +104,30 @@
 
     /* --- indeterminate --- */
 
-    label > input[type="checkbox"]:not([role="switch"]):is(:not([data-sign]):not([data-facet]), [data-sign="check"])[data-size="xs"]:indeterminate::before {
+    input[type="checkbox"]:not([role="switch"]):is(:not([data-sign]):not([data-facet]), [data-sign="check"])[data-size="xs"]:indeterminate::before {
         block-size:  0;
         inline-size: calc(var(--xs-box-height) / 2);
     }
-    label > input[type="checkbox"]:not([role="switch"]):is(:not([data-sign]):not([data-facet]), [data-sign="check"])[data-size="sm"]:indeterminate::before {
+    input[type="checkbox"]:not([role="switch"]):is(:not([data-sign]):not([data-facet]), [data-sign="check"])[data-size="sm"]:indeterminate::before {
         block-size:  0;
         inline-size: calc(var(--sm-box-height) / 2);
     }
-    label > input[type="checkbox"]:not([role="switch"]):is(:not([data-sign]):not([data-facet]), [data-sign="check"]):where(
+    input[type="checkbox"]:not([role="switch"]):is(:not([data-sign]):not([data-facet]), [data-sign="check"]):where(
         [data-size="md"],
         :not([data-size])
     ):indeterminate::before {
         block-size:  0;
         inline-size: calc(var(--md-box-height) / 2);
     }
-    label > input[type="checkbox"]:not([role="switch"]):is(:not([data-sign]):not([data-facet]), [data-sign="check"])[data-size="lg"]:indeterminate::before {
+    input[type="checkbox"]:not([role="switch"]):is(:not([data-sign]):not([data-facet]), [data-sign="check"])[data-size="lg"]:indeterminate::before {
         block-size:  0;
         inline-size: calc(var(--lg-box-height) / 2);
     }
-    label > input[type="checkbox"]:not([role="switch"]):is(:not([data-sign]):not([data-facet]), [data-sign="check"])[data-size="xl"]:indeterminate::before {
+    input[type="checkbox"]:not([role="switch"]):is(:not([data-sign]):not([data-facet]), [data-sign="check"])[data-size="xl"]:indeterminate::before {
         block-size:  0;
         inline-size: calc(var(--xl-box-height) / 2);
     }
-    label > input[type="checkbox"]:not([role="switch"]):is(:not([data-sign]):not([data-facet]), [data-sign="check"])[data-size="2xl"]:indeterminate::before {
+    input[type="checkbox"]:not([role="switch"]):is(:not([data-sign]):not([data-facet]), [data-sign="check"])[data-size="2xl"]:indeterminate::before {
         block-size:  0;
         inline-size: calc(var(--2xl-box-height) / 2);
     }
@@ -135,14 +135,14 @@
 
     /* === invalid === */
 
-    label > input[type="checkbox"]:not([role="switch"]):where(
+    input[type="checkbox"]:not([role="switch"]):where(
         :user-invalid,
         [aria-invalid="true"]
     ):where(:checked, :indeterminate) {
         background-color: var(--color-error);
     }
     @media (forced-colors: active) {
-        label > input[type="checkbox"]:not([role="switch"]):where(
+        input[type="checkbox"]:not([role="switch"]):where(
             :user-invalid,
             [aria-invalid="true"]
         ):where(:checked, :indeterminate) {
@@ -158,7 +158,7 @@
     )) {
         color: var(--color-ink-mix);
     }
-    label > input[type="checkbox"]:not([role="switch"]):where(
+    input[type="checkbox"]:not([role="switch"]):where(
         :disabled,
         [aria-disabled="true"]
     ):where(:checked, :indeterminate) {
@@ -166,7 +166,7 @@
     }
 
     @media (forced-colors: active) {
-        label > input[type="checkbox"]:not([role="switch"]):where(
+        input[type="checkbox"]:not([role="switch"]):where(
             :disabled,
             [aria-disabled="true"]
         ):where(:checked, :indeterminate) {

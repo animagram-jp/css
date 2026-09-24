@@ -38,8 +38,20 @@ const DISTINCT_VISITED = 1.4;
 
 // Search a color-mix(base, toward, pct) over a channel, returning the first pct meeting `test`.
 function findMix(base, toward, test, step=1){
-  for(let p=100;p>=0;p-=step){ const c=mix(base,toward,p); if(test(c)) return {pct:p,rgb:c}; }
+  for(let p=100;p>=0;p-=step){ const c=mix(base,toward,p); if(test(c)) return {pct:p,rgb:c,toward}; }
   return null;
+}
+
+// Among all pct meeting `must`, return the one maximizing `score` (ties broken by highest pct).
+function bestMix(base, toward, must, score, step=1){
+  let best=null, bestScore=-Infinity;
+  for(let p=100;p>=0;p-=step){
+    const c=mix(base,toward,p);
+    if(!must(c)) continue;
+    const s=score(c);
+    if(s>bestScore){ bestScore=s; best={pct:p,rgb:c,toward}; }
+  }
+  return best;
 }
 
 // Requirements that must hold in EVERY scheme of the family.
@@ -56,6 +68,7 @@ function checkAll(P){
       ["emphasis-ink vs paper (7:1)", P.emphasisInk, s.paper, 7],
       ["eMix vs paper (7:1)",         eMix,    s.paper, 7],
       ["emphasis-paper vs paper (3:1)",P.emphasisPaper,s.paper,3],
+      ["emphasis-paper vs ink (4.5:1)",P.emphasisPaper,s.ink,4.5],
       ["hl-ink vs its text (4.5:1)",  P.highlightInk,  s.paper, 4.5],
       ["hl-ink vs paper fill (3:1)",  P.highlightInk,  s.paper, 3],
       ["hl-ink vs paper-mix (3:1)",   P.highlightInk,  paperMix,3],
@@ -84,10 +97,18 @@ function solveFamily(fam){
   const P={};
   P.emphasisInkSrc = findMix(EMPHASIS_SRC, AWAY, c => cr(c,BIND_PAPER)>=7);
   P.emphasisInk = P.emphasisInkSrc.rgb;
+  const emphasisPaperMust = c => cr(c,BIND_INK)>=4.5 && cr(c,P.emphasisInk)>=DISTINCT_EMPHASIS_PAPER;
   P.emphasisPaperSrc = findMix(EMPHASIS_SRC, AWAY,
-      c => cr(c,BIND_PAPER)>=3 && cr(c,P.emphasisInk)>=DISTINCT_EMPHASIS_PAPER)
+      c => cr(c,BIND_PAPER)>=3 && emphasisPaperMust(c))
     || findMix(EMPHASIS_SRC, TOWARD,
-      c => cr(c,BIND_PAPER)>=3 && cr(c,P.emphasisInk)>=DISTINCT_EMPHASIS_PAPER);
+      c => cr(c,BIND_PAPER)>=3 && emphasisPaperMust(c));
+  if(!P.emphasisPaperSrc){
+    // No pct satisfies both paper (3:1) and ink (4.5:1); ink wins, paper maximized as a tiebreak.
+    const awayBest = bestMix(EMPHASIS_SRC, AWAY, emphasisPaperMust, c => cr(c,BIND_PAPER));
+    const towardBest = bestMix(EMPHASIS_SRC, TOWARD, emphasisPaperMust, c => cr(c,BIND_PAPER));
+    P.emphasisPaperSrc = [awayBest, towardBest].filter(Boolean)
+      .sort((a,b)=> cr(b.rgb,BIND_PAPER)-cr(a.rgb,BIND_PAPER))[0];
+  }
   P.emphasisPaper = P.emphasisPaperSrc.rgb;
   P.highlightInkSrc = findMix(CH.accentYellow, AWAY, c => cr(c,BIND_PAPER)>=4.5);
   P.highlightInk = P.highlightInkSrc.rgb;
@@ -117,7 +138,7 @@ for(const fam of ["light","dark"]){
   for(const k of Object.keys(CHNAME)){
     const src=P[k+"Src"];
     if(!src){console.log(`--color-${k}: NO SOLUTION`);continue}
-    const end = AWAY_KEYS.has(k) ? AWAY : TOWARD;
+    const end = src.toward ?? (AWAY_KEYS.has(k) ? AWAY : TOWARD);
     const endName = end===CH.black ? "rgb(0,0,0)" : "rgb(255,255,255)";
     const varName="--color-"+k.replace(/[A-Z]/g,m=>"-"+m.toLowerCase());
     const chan = CHNAME[k].startsWith("#") ? CHNAME[k] : `rgb(var(--rgb-${CHNAME[k]}))`;

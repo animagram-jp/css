@@ -17,7 +17,7 @@
     css.table,
     css.slider,
     css.step,
-    css.listbox, /* order dependency: radio, listbox */
+    css.popup, /* order dependency: radio, popup */
     css.error,
     css.toast;
 
@@ -73,7 +73,7 @@
         --color-visited: color-mix(in srgb, rgb(var(--rgb-accent-purple)) 74%, rgb(0,0,0));
 
         --color-emphasis-ink:     rgb(var(--rgb-accent-purple));
-        --color-emphasis-paper:   color-mix(in srgb, rgb(var(--rgb-accent-purple)) 46%, rgb(0,0,0));
+        --color-emphasis-paper:   color-mix(in srgb, rgb(var(--rgb-accent-purple)) 54%, rgb(255,255,255));
         --color-emphasis-ink-mix: color-mix(in srgb, var(--color-emphasis-ink) 50%, var(--color-ink));
 
         --color-focus: var(--color-emphasis-ink);
@@ -86,7 +86,7 @@
             --color-highlight-paper:  color-mix(in srgb, rgb(var(--rgb-accent-yellow)) 41%, rgb(0,0,0));
             --color-visited:          color-mix(in srgb, rgb(var(--rgb-accent-purple)) 19%, rgb(255,255,255));
             --color-emphasis-ink:     color-mix(in srgb, rgb(var(--rgb-accent-purple)) 35%, rgb(255,255,255));
-            --color-emphasis-paper:   color-mix(in srgb, rgb(var(--rgb-accent-purple)) 71%, rgb(255,255,255));
+            --color-emphasis-paper:   color-mix(in srgb, rgb(var(--rgb-accent-purple)) 74%, rgb(255,255,255));
         }
     }
     @media (prefers-contrast: more) {
@@ -125,7 +125,7 @@
             --color-ink:            rgb(var(--rgb-black));
             --color-paper:          rgb(var(--rgb-white));
             --color-emphasis-ink:   rgb(var(--rgb-accent-purple));
-            --color-emphasis-paper: color-mix(in srgb, rgb(var(--rgb-accent-purple)) 46%, rgb(0,0,0));
+            --color-emphasis-paper: color-mix(in srgb, rgb(var(--rgb-accent-purple)) 54%, rgb(255,255,255));
         }
         :root[data-color-scheme="dark"] {
             --color-ink:             rgb(var(--rgb-white));
@@ -134,14 +134,14 @@
             --color-highlight-paper: color-mix(in srgb, rgb(var(--rgb-accent-yellow)) 41%, rgb(0,0,0));
             --color-visited:         color-mix(in srgb, rgb(var(--rgb-accent-purple)) 19%, rgb(255,255,255));
             --color-emphasis-ink:    color-mix(in srgb, rgb(var(--rgb-accent-purple)) 35%, rgb(255,255,255));
-            --color-emphasis-paper:  color-mix(in srgb, rgb(var(--rgb-accent-purple)) 71%, rgb(255,255,255));
+            --color-emphasis-paper:  color-mix(in srgb, rgb(var(--rgb-accent-purple)) 74%, rgb(255,255,255));
         }
         :root[data-color-scheme="light-high-contrast"] {
             --color-ink:            rgb(var(--rgb-black));
             --color-paper:          rgb(var(--rgb-white));
             --color-ink-mix:        color-mix(in srgb, var(--color-ink) 66%, var(--color-paper));
             --color-emphasis-ink:   rgb(var(--rgb-accent-purple));
-            --color-emphasis-paper: color-mix(in srgb, rgb(var(--rgb-accent-purple)) 46%, rgb(0,0,0));
+            --color-emphasis-paper: color-mix(in srgb, rgb(var(--rgb-accent-purple)) 54%, rgb(255,255,255));
         }
         :root[data-color-scheme="dark-high-contrast"] {
             --color-ink:             rgb(var(--rgb-white));
@@ -151,7 +151,7 @@
             --color-highlight-paper: color-mix(in srgb, rgb(var(--rgb-accent-yellow)) 41%, rgb(0,0,0));
             --color-visited:         color-mix(in srgb, rgb(var(--rgb-accent-purple)) 19%, rgb(255,255,255));
             --color-emphasis-ink:    color-mix(in srgb, rgb(var(--rgb-accent-purple)) 35%, rgb(255,255,255));
-            --color-emphasis-paper:  color-mix(in srgb, rgb(var(--rgb-accent-purple)) 71%, rgb(255,255,255));
+            --color-emphasis-paper:  color-mix(in srgb, rgb(var(--rgb-accent-purple)) 74%, rgb(255,255,255));
         }
         :root[data-color-scheme="light-less-contrast"] {
             --color-ink:            rgb(43,43,43);
@@ -159,7 +159,7 @@
             --color-ink-mix:        rgb(111,111,111);
             --color-paper-mix:      rgb(147,147,147);
             --color-emphasis-ink:   rgb(var(--rgb-accent-purple));
-            --color-emphasis-paper: color-mix(in srgb, rgb(var(--rgb-accent-purple)) 46%, rgb(0,0,0));
+            --color-emphasis-paper: color-mix(in srgb, rgb(var(--rgb-accent-purple)) 54%, rgb(255,255,255));
         }
         :root[data-color-scheme="dark-less-contrast"] {
             --color-ink:            rgb(243,243,243);
@@ -170,7 +170,7 @@
             --color-highlight-paper: color-mix(in srgb, rgb(var(--rgb-accent-yellow)) 41%, rgb(0,0,0));
             --color-visited:         color-mix(in srgb, rgb(var(--rgb-accent-purple)) 19%, rgb(255,255,255));
             --color-emphasis-ink:    color-mix(in srgb, rgb(var(--rgb-accent-purple)) 35%, rgb(255,255,255));
-            --color-emphasis-paper:  color-mix(in srgb, rgb(var(--rgb-accent-purple)) 71%, rgb(255,255,255));
+            --color-emphasis-paper:  color-mix(in srgb, rgb(var(--rgb-accent-purple)) 74%, rgb(255,255,255));
         }
     }
     @media (forced-colors: active) {
@@ -184,7 +184,7 @@
             --color-ink:            rgb(var(--rgb-black));
             --color-paper:          rgb(var(--rgb-white));
             --color-emphasis-ink:   rgb(var(--rgb-accent-purple));
-            --color-emphasis-paper: color-mix(in srgb, rgb(var(--rgb-accent-purple)) 46%, rgb(0,0,0));
+            --color-emphasis-paper: color-mix(in srgb, rgb(var(--rgb-accent-purple)) 54%, rgb(255,255,255));
             --color-visited:        color-mix(in srgb, rgb(var(--rgb-accent-purple)) 74%, rgb(0,0,0));
         }
     }

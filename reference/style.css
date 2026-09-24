@@ -1,7 +1,7 @@
 :root {
     --rgb-theme-purple: 91 47 145;
     --color-emphasis-ink:   rgb(var(--rgb-theme-purple));
-    --color-emphasis-paper: color-mix(in srgb, rgb(var(--rgb-theme-purple)) 27%, rgb(0,0,0));
+    --color-emphasis-paper: color-mix(in srgb, rgb(var(--rgb-theme-purple)) 73%, rgb(255,255,255));
 }
 @media (prefers-color-scheme: dark) {
     :root {
@@ -14,7 +14,7 @@
     :root[data-color-scheme="light-high-contrast"],
     :root[data-color-scheme="light-less-contrast"] {
         --color-emphasis-ink:   rgb(var(--rgb-theme-purple));
-        --color-emphasis-paper: color-mix(in srgb, rgb(var(--rgb-theme-purple)) 27%, rgb(0,0,0));
+        --color-emphasis-paper: color-mix(in srgb, rgb(var(--rgb-theme-purple)) 73%, rgb(255,255,255));
     }
     :root[data-color-scheme="dark"],
     :root[data-color-scheme="dark-high-contrast"],
