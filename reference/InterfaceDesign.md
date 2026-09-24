@@ -114,7 +114,7 @@ tap ==  long press → (show context menu) → option 1 long press
 
 | Name | Reference | P1 対象選択 | P1' 選択確認信号 | P2 コマンド構成 | P2' 構成確認信号 | P3 執行命令 | P3' 結果信号 |
 |-|-|-|-|-|-|-|-|
-| toggle | Switch(ARIA APG) | focus, hover | 表示(ラベル)とフォーカスリング, ホバーハイライト | | 表示(トラック・つまみ) | Enter, 表示へのタップ | 表示(トラック・つまみ) |
+| toggle | Switch(ARIA APG) | focus, hover | label, :focus, :hover | - | (default), :checked | Enter, Tap | (default), :checked |
 | command button | Button(ARIA APG), 押ボタン(JIS C 0447) | フォーカス, hover | 表示(ラベル)とフォーカスリング, ホバーハイライト |  | 表示(囲み・ラベル) | Enter, Space, タップ | |
 | immediate slider | Sliders(Material 3, 連続型), ハンドホイール・ノブ(JIS C 0447) | hover / フォーカス, ポインターダウン | 表示(ラベル)とホバーハイライト / 表示(ラベル)とフォーカスリング, 表示(トラック・つまみ)の押し込み表現 | 矢印キーダウン, ポインタームーブ | 表示(トラック・つまみ) | | |
 | rating | Rate(Ant Design), Rating(Fluent 2) | フォーカス, hover | 表示(ラベル)・フォーカスリング, ホバーハイライト | 矢印キー, ポインタームーブ | 表示(星の充填)のプレビュー表現 | Enter, タップ | 表示(星の充填数) |
