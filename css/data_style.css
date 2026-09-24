@@ -87,7 +87,7 @@
     /* === underline inline style === */
 
     *[data-style="underline"],
-    *:where(summary, a):not([data-surround]) {
+    *:where(summary, a, [role="tab"]):not([data-surround]) {
         background-color:          var(--color-paper);
         border:                    none;
         box-decoration-break:      clone;
