@@ -209,8 +209,8 @@
     <section>
         <h2>Listbox</h2>
         <section data-sign="rule">
-            <button type="button" id="list-box-1-trigger" popovertarget="list-box-1" aria-haspopup="listbox" aria-controls="list-box-1" data-surround="outline">button[aria-haspopup="listbox"]</button>
-            <ul id="list-box-1" popover="auto" role="listbox" aria-labelledby="list-box-1-trigger">
+            <button type="button" id="listbox-1-trigger" popovertarget="listbox-1" aria-haspopup="listbox" aria-controls="listbox-1" data-surround="outline">button[aria-haspopup="listbox"]</button>
+            <ul id="listbox-1" popover="auto" role="listbox" aria-labelledby="listbox-1-trigger">
                 <li role="presentation">li[role="presentation"]</li>
                 <li role="option" aria-selected="true">
                     <input type="radio" data-sign="check" data-sign-style="inline" name="" checked>
@@ -220,8 +220,8 @@
                     <span>li > (checkbox, span)</span></li>
                 <li role="option">
                     <button>li > button</button></li></ul>
-            <button type="button" id="list-box-8-trigger" popovertarget="list-box-8" aria-haspopup="listbox" aria-controls="list-box-8" data-surround="outline" disabled>button[aria-haspopup="listbox"]:disalbed</button>
-            <ul id="list-box-8" popover="auto" role="listbox" aria-labelledby="list-box-8-trigger">
+            <button type="button" id="listbox-8-trigger" popovertarget="listbox-8" aria-haspopup="listbox" aria-controls="listbox-8" data-surround="outline" disabled>button[aria-haspopup="listbox"]:disalbed</button>
+            <ul id="listbox-8" popover="auto" role="listbox" aria-labelledby="listbox-8-trigger">
                 <li role="presentation">li[role="presentation"]</li>
                 <li role="option" aria-selected="true">
                     <input type="radio" name="">
@@ -296,6 +296,7 @@
                 <span>inline</span>
                 <input type="radio" name="r-disabled" checked disabled></label></section>
         <section data-sign="rule">
+            <h2>size</h2>
             <label>
                 <span>xs</span>
                 <input type="radio" name="r-size" data-size="xs" checked></label>
@@ -405,6 +406,17 @@
                     <span>Dark (high contrast)</span>
                     <input type="radio" name="grid-demo-3f" value="dark-high-contrast"></label></fieldset></section></section>
 
+    <section>
+        <h2>Tab</h2>
+        <section data-sign="rule">
+            <label id="tab-1" role="tab" aria-controls="tabpanel-1">
+                <span>span</span>
+                <input type="radio" name="tab" checked></label>
+            <label id="tab-2" role="tab" aria-controls="tabpanel-2">
+                <span>span</span>
+                <input type="radio" name="tab"></label></section>
+        <section role="tabpanel" aria-labelledby="tab-1"></section>
+        <section role="tabpanel" aria-labelledby="tab-2"></section></section>
 
     <section>
         <h2>Toggle</h2>
@@ -865,6 +877,26 @@ line2</p></hgroup></section>
                             <th scope="row">Row</th>
                             <td>Cell</td>
                             <td>Cell</td></tr></tbody></table>
+                <table data-size="xl">
+                    <caption>data-size="xl"</caption>
+                    <thead>
+                        <tr>
+                            <th scope="col">Head</th>
+                            <th scope="col">Head</th>
+                            <th scope="col">Head</th></tr></thead>
+                    <tbody>
+                        <tr>
+                            <th scope="row">Row</th>
+                            <td>Cell</td>
+                            <td>Cell</td></tr>
+                        <tr>
+                            <th scope="row">Row</th>
+                            <td>Cell</td>
+                            <td>Cell</td></tr>
+                        <tr>
+                            <th scope="row">Row</th>
+                            <td>Cell</td>
+                            <td>Cell</td></tr></tbody></table>
                 <table data-size="2xl">
                     <caption>data-size="2xl"</caption>
                     <thead>
@@ -888,14 +920,14 @@ line2</p></hgroup></section>
 
     <section>
         <h2>Toast</h2>
-        <button type="button" onclick="js_fn.showToast(document.getElementById('toast_output'))">show (data-surround="fill")</button>
-        <button type="button" onclick="js_fn.showToast(document.getElementById('toast_button'))">show data-surround="outline", 2xl</button></section>
+        <button type="button" onclick="js_fn.show_toast(document.getElementById('toast_output'))">show (data-surround="fill")</button>
+        <button type="button" onclick="js_fn.show_toast(document.getElementById('toast_button'))">show data-surround="outline", 2xl</button></section>
 
     <section id="toast" data-type="toast">
         <output id="toast_output" class="hidden">
             <span id="toast_output_span">span:</span>
             <p id="toast_output_p">(data-surround="fill")</p></output>
-        <button data-sign="x"  data-size="2xl" data-surround="outline" id="toast_button" class="hidden" onclick="js_fn.hideToast(this.closest('button'))">
+        <button data-sign="x"  data-size="2xl" data-surround="outline" id="toast_button" class="hidden" onclick="js_fn.hide_toast(this.closest('button'))">
             <span id="toast_button_span">span:</span>
             <p id="toast_button_p">data-surround="outline", 2xl</p></button></section>
 

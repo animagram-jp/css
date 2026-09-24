@@ -52,20 +52,22 @@ table {
     display: inline-table;
 }
 
-/* list-box: each trigger/listbox pair needs its own anchor-name. */
-#list-box-1-trigger  { anchor-name: --list-box-1-trigger; }
-#list-box-1          { position-anchor: --list-box-1-trigger; }
-#list-box-2-trigger  { anchor-name: --list-box-2-trigger; }
-#list-box-2          { position-anchor: --list-box-2-trigger; }
-#list-box-3-trigger  { anchor-name: --list-box-3-trigger; }
-#list-box-3          { position-anchor: --list-box-3-trigger; }
-#list-box-4-trigger  { anchor-name: --list-box-4-trigger; }
-#list-box-4          { position-anchor: --list-box-4-trigger; }
-#list-box-5-trigger  { anchor-name: --list-box-5-trigger; }
-#list-box-5          { position-anchor: --list-box-5-trigger; }
-#list-box-6-trigger  { anchor-name: --list-box-6-trigger; }
-#list-box-6          { position-anchor: --list-box-6-trigger; }
-#list-box-7-trigger  { anchor-name: --list-box-7-trigger; }
-#list-box-7          { position-anchor: --list-box-7-trigger; }
-#list-box-8-trigger  { anchor-name: --list-box-8-trigger; }
-#list-box-8          { position-anchor: --list-box-8-trigger; }
+
+
+/* listbox: each trigger/listbox pair needs its own anchor-name. */
+#listbox-1-trigger  { anchor-name: --listbox-1-trigger; }
+#listbox-1          { position-anchor: --listbox-1-trigger; }
+#listbox-2-trigger  { anchor-name: --listbox-2-trigger; }
+#listbox-2          { position-anchor: --listbox-2-trigger; }
+#listbox-3-trigger  { anchor-name: --listbox-3-trigger; }
+#listbox-3          { position-anchor: --listbox-3-trigger; }
+#listbox-4-trigger  { anchor-name: --listbox-4-trigger; }
+#listbox-4          { position-anchor: --listbox-4-trigger; }
+#listbox-5-trigger  { anchor-name: --listbox-5-trigger; }
+#listbox-5          { position-anchor: --listbox-5-trigger; }
+#listbox-6-trigger  { anchor-name: --listbox-6-trigger; }
+#listbox-6          { position-anchor: --listbox-6-trigger; }
+#listbox-7-trigger  { anchor-name: --listbox-7-trigger; }
+#listbox-7          { position-anchor: --listbox-7-trigger; }
+#listbox-8-trigger  { anchor-name: --listbox-8-trigger; }
+#listbox-8          { position-anchor: --listbox-8-trigger; }
