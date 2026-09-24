@@ -52,7 +52,9 @@ table {
     display: inline-table;
 }
 
-
+/* tabpanel: show only the panel labelled by the checked tab. */
+body:has(#tab-1 > input:checked) #tabpanel-1,
+body:has(#tab-2 > input:checked) #tabpanel-2 { display: block; }
 
 /* listbox: each trigger/listbox pair needs its own anchor-name. */
 #listbox-1-trigger  { anchor-name: --listbox-1-trigger; }

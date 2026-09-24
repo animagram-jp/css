@@ -253,6 +253,10 @@
         position:       absolute;
     }
 
+    *[role="tabpanel"] {
+        display: none;
+    }
+
     /* --- color --- */
 
     *[role="tab"]:has( input[type="radio"]:checked) {
