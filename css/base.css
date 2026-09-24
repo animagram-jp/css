@@ -124,6 +124,7 @@
         :root[data-color-scheme="light"] {
             --color-ink:            rgb(var(--rgb-black));
             --color-paper:          rgb(var(--rgb-white));
+            --color-visited:        color-mix(in srgb, rgb(var(--rgb-accent-purple)) 74%, rgb(0,0,0));
             --color-emphasis-ink:   rgb(var(--rgb-accent-purple));
             --color-emphasis-paper: color-mix(in srgb, rgb(var(--rgb-accent-purple)) 54%, rgb(255,255,255));
         }
@@ -140,6 +141,7 @@
             --color-ink:            rgb(var(--rgb-black));
             --color-paper:          rgb(var(--rgb-white));
             --color-ink-mix:        color-mix(in srgb, var(--color-ink) 66%, var(--color-paper));
+            --color-visited:        color-mix(in srgb, rgb(var(--rgb-accent-purple)) 74%, rgb(0,0,0));
             --color-emphasis-ink:   rgb(var(--rgb-accent-purple));
             --color-emphasis-paper: color-mix(in srgb, rgb(var(--rgb-accent-purple)) 54%, rgb(255,255,255));
         }
@@ -158,6 +160,7 @@
             --color-paper:          rgb(243,243,243);
             --color-ink-mix:        rgb(111,111,111);
             --color-paper-mix:      rgb(147,147,147);
+            --color-visited:        color-mix(in srgb, rgb(var(--rgb-accent-purple)) 74%, rgb(0,0,0));
             --color-emphasis-ink:   rgb(var(--rgb-accent-purple));
             --color-emphasis-paper: color-mix(in srgb, rgb(var(--rgb-accent-purple)) 54%, rgb(255,255,255));
         }

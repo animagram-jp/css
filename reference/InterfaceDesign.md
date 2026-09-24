@@ -43,7 +43,7 @@ UD(個人や状況に依らず機能する)の網羅性の程度も、機能品�
 1. 人間の所作と装置の構成機能: 操作意思表明 (P0)
 2. 装置の信号機能: システム状態信号 (P0')
 3. 人間の所作と装置の構成機能: 対象選択 (P1)
-4. 装置の信号機能: 選択確認信号 (P1')
+4. 装置の信号機能: 対象確認信号 (P1')
 5. 人間の所作と装置の構成機能: コマンド構成 (P2)
 6. 装置の信号機能: 構成確認信号 (P2')
 7. 人間の所作と装置の構成機能: 執行命令 (P3)
@@ -111,20 +111,19 @@ tap ==  long press → (show context menu) → option 1 long press
 - 表中「タップ」はショートクリック・ショートタップ(ポインターダウンからポインターアップまで)を指す。
 - 長押し時・ドラッグ時の挙動については、定義を別途必要とする行がある。
 - P3' 結果信号については、エラー時の定義を別途必要とする行がある。
+- CSS表記(:hover等)で信号の差分を表記する。
 
-| Name | Reference | P1 対象選択 | P1' 選択確認信号 | P2 コマンド構成 | P2' 構成確認信号 | P3 執行命令 | P3' 結果信号 |
+| Name | Reference | P1 対象選択 | P1' 対象確認信号 | P2 コマンド構成 | P2' 構成確認信号 | P3 執行命令 | P3' 結果信号 |
 |-|-|-|-|-|-|-|-|
-| toggle | Switch(ARIA APG) | focus, hover | label, :focus, :hover | - | (default), :checked | Enter, Tap | (default), :checked |
-| command button | Button(ARIA APG), 押ボタン(JIS C 0447) | フォーカス, hover | 表示(ラベル)とフォーカスリング, ホバーハイライト |  | 表示(囲み・ラベル) | Enter, Space, タップ | |
-| immediate slider | Sliders(Material 3, 連続型), ハンドホイール・ノブ(JIS C 0447) | hover / フォーカス, ポインターダウン | 表示(ラベル)とホバーハイライト / 表示(ラベル)とフォーカスリング, 表示(トラック・つまみ)の押し込み表現 | 矢印キーダウン, ポインタームーブ | 表示(トラック・つまみ) | | |
-| rating | Rate(Ant Design), Rating(Fluent 2) | フォーカス, hover | 表示(ラベル)・フォーカスリング, ホバーハイライト | 矢印キー, ポインタームーブ | 表示(星の充填)のプレビュー表現 | Enter, タップ | 表示(星の充填数) |
-| inline edit | Inline edit(Atlassian Design System), Treegrid(ARIA APG) | フォーカス, タップ | 表示(ラベル)へのフォーカスリング, 表示(インラインコンテンツ)の入力枠・キャレット表現 | テキスト入力・選択 | 表示(インラインコンテンツ) | Enter, フォーカスアウト | 表示(ラベル・インラインコンテンツ) |
-| drag and drop reordering | Drag and drop(Apple HIG) | 表示(つまみ)へのポインターダウン | 表示(コンテンツ・囲み)の掴み表現 | ポインタームーブ | 表示(コンテンツのリスト)の挿入箇所プレビュー表現 | ポインターアップ, 境界外ポインタームーブ(キャンセル) | 表示(コンテンツのリスト) |
-| command menu | Menu and Menubar(ARIA APG), Pull-down buttons(Apple HIG) | メニューへのフォーカス, hover / ポインターダウン | 表示(メニューラベル)とフォーカスリング, ホバーハイライト / 表示(オプションリスト) | オプションへのフォーカス, hover | オプションのフォーカスリング, ホバーハイライト | オプションへのEnter, タップ | |
-| immediate select | Pop-up buttons(Apple HIG), Menus(Material 3) | トリガーへのフォーカス, hover / ポインターダウン | フォーカスリング, ホバーハイライト / 表示(オプションリスト) | オプションへのフォーカス, hover | オプションのフォーカスリング, ホバーハイライト | オプションへのEnter, タップ | 表示(値) |
-| undo action | Snackbarのアクション(Material 3) | フォーカス, hover | 表示(ラベル)とフォーカスリング, ホバーハイライト | | 表示(ラベル) | Enter, タップ | |
-| emergency stop | 非常（緊急）停止(JIS C 0447) | フォーカス, hover | 表示とフォーカスリング, ホバーハイライト | | 表示 | Enter, ポインターダウン | 表示の押下状態表現 |
-| hold-to-run control | インチング（寸動）操作(JIS C 0447) | フォーカス/hover | 表示(ラベル)とフォーカスリング, ホバーハイライト | | | Enter, ポインターダウン | 表示(メーター) |
+| toggle | Switch(ARIA APG) | hover, focus | label, :hover, :focus | - | label, :checked | enter, tap | (default), :checked |
+| command button | - | hover, focus | label, :hover, :focus | - | label(undo sign, etc.) | enter, space, tap | - |
+| immediate slider | - | hover / focus, pointer down | label, :hover / :focus, :active | arrow key, pointer move | track & knob | - | - |
+| rate | Rate(Ant Design) | hover, focus | label, :hover, :focus | arrow key, pointer move | :hover (preview) | enter, tap | fill / outline elements |
+| inline edit | InlineEdit(React Suite) | focus, tap(edit button) | :focus, caret | key input, option tap | :active(track, text) | enter, focus out | (default) |
+| drag and drop reordering | Drag and drop(Apple HIG) | pointer down | :active(grab) | pointer down + move | insert preview | pointer up, pointer down + move(out) | (default) |
+| command select | Menu and Menubar(ARIA APG) | hover, focus / pointer down (menu) | label, :hover, :focus / :open | hover, focus(option) | :focus, :focus(option) | enter, tap(option) | - (default) |
+| command checkbox | 非常停止(JIS C 0447) | hover, focus | label, :hover, :focus | - | (default), :checked | enter, pointer down | :checked |
+| command button (hold-to-run) | 寸動操作(JIS C 0447) | hover, focus | label, :hover, :focus | - | - | enter, pointer down | label(meter) |
 | command palette | Spotlight(Apple), Combobox(ARIA APG) | 表示(検索ボックス)へのフォーカス, タップ | 表示(検索ボックス)へのフォーカスリング, ハイライト | 表示(検索ボックス)への入力 | 表示(候補)へのフォーカスリング, ハイライト | Enter, 表示(候補)へのタップ | |
 | form submission | form(HTML Living Standard), 多機能の3ステップ動作順序(JIS C 0447) | 各P2部品依存 | 表示(囲み・formの見出し) | 各P2部品依存 | 表示(囲み・formの見出し・各P2部品) | submit buttonへのenter, タップ | 表示(バリデーションエラーサマリー・メッセージ) |
 | wizard | Steps+Form(Ant Design), Progress indicator(Carbon Design System) | 各P2部品依存 | 表示(囲み・step indicator) | 各P2部品依存・proceedボタンとbackボタン | 表示(囲み・step indicator・各P2部品), 表示(バリデーションエラーサマリー・メッセージ) | submit buttonへのenter, タップ | 表示(バリデーションエラーサマリー・メッセージ) |
