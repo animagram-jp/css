@@ -21,6 +21,12 @@ curl -fsSL -H "Accept: application/vnd.github.raw+json" "https://api.github.com/
 
 ---
 
+## TODO
+
+- input css inline scroll bar 確実に出したい
+
+---
+
 ## See
 
 - [README.md](./README.md)
@@ -42,3 +48,16 @@ docker exec accessibility-audit npm run validate
 
 ---
 
+## References
+
+- [CUDO: Color Universal Design Recommended Color Set ver.3](https://cudo.jp/wp-content/uploads/2016/07/CUD%E6%8E%A8%E5%A5%A8%E9%85%8D%E8%89%B2%E3%82%BB%E3%83%83%E3%83%88%E3%82%AC%E3%82%A4%E3%83%89%E3%83%96%E3%83%83%E3%82%AF.pdf)
+- JIS C 0447:1997 (IEC60447:1993) Man-machine-interface (MMI) - Actuating principles
+- XForms 1.1, W3C Recommendation 20 October 2009
+- [Kelp CSS: Repository](https://github.com/cferdinandi/kelp)
+- [Pico CSS: Repository](https://github.com/picocss/pico)
+- [Gov UK Design System: Repository](https://github.com/alphagov/govuk-frontend)
+- [U.S. Web Design System (USWDS): Repository](https://github.com/uswds/uswds)
+- [Ant Design: Repository](https://github.com/ant-design/ant-design)
+- [ARIA Authoring Practices Guide (APG): Repository](https://github.com/w3c/aria-practices)
+- [React Suite: InlineEdit](https://www.rsuitejs.com/components/inline-edit/)
+- [shadcn Astro Track Landing Page (Free): Repository](https://github.com/shadcnstudio/shadcn-astro-track-landing-page-free)

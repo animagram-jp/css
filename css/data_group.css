@@ -1,30 +1,40 @@
 /*
     Usage:
 
+    <* data-group="inline|block">
+      <span></span>
+      <label><input|select|button...></label></>
+
     <label>
         <span></span>
         <input></input>
         <select></select>
         <button></button></label>
-        
-    <data-group="inline|block">
-      <span></span>
-      <label><input|select|button|...></label>
-      ...</>
 */
 
 @layer css.data_group {
+
+    label:has(> *) {
+        display: inline flow-root;
+    }
+
+    label:has(> :where(
+        :disabled,
+        [aria-disabled="true"]
+    )) {
+        color: var(--color-ink-mix);
+    }
 
     *:where(
         [data-group="inline"],
         form[role="search"],
         search,
-        button, 
-        input:not([type=hidden]), 
-        meter, 
-        output, 
-        progress, 
-        select, 
+        button,
+        input:not([type=hidden]),
+        meter,
+        output,
+        progress,
+        select,
         textarea
     ) {
         display: inline flow-root;
@@ -33,22 +43,18 @@
     *:where(
         [data-group="inline"],
         :is(
-            search, 
-            form[role="search"]
-            label:has(
-                button, 
-                input:not([type=hidden]), 
-                meter, 
-                output, 
-                progress, 
-                select, 
-                textarea
-            )
+            search,
+            form[role="search"],
+            label:has(input[type="password"])
         ):not([data-group])
     ) {
         font-size:   0;
         white-space: nowrap;
         width:       fit-content;
+
+        & > span:first-child {
+            padding-inline-end: var(--md-border-radius);
+        }
     }
 
     *:where(
@@ -56,29 +62,14 @@
         search,
         form[role="search"],
         label
-    ) * {
-        vertical-align: middle;
-    }
-
-    /* --- label text --- */
-
+    ),
     *:where(
         [data-group="inline"],
-        :is(
-            search, 
-            form[role="search"]
-            label:has(
-                button, 
-                input:not([type=hidden]), 
-                meter, 
-                output, 
-                progress, 
-                select, 
-                textarea
-            )
-        ):not([data-group])
-    ) > span:first-child {
-        padding-inline-end: var(--md-border-radius);
+        search,
+        form[role="search"],
+        label
+    ) * {
+        vertical-align: middle;
     }
 
     /* --- corner control --- */
@@ -185,56 +176,42 @@
         *[data-group="inline"],
         search,
         form[role="search"]
-    ) > button:not(:where(:active, [aria-pressed="true"])) {
-        border-color: var(--color-ink-mix);
-    }
-
-    *:where(
-        *[data-group="inline"],
-        search,
-        form[role="search"]
-    ):has(*:where(
-        :user-invalid,
-        [aria-invalid="true"]
-    )) {
-        outline-color:  var(--color-error);
-        outline-offset: 0;
-        outline-style:  solid;
-        outline-width:  var(--md-border-width);
-    }
-
-    *:where(
-        *[data-group="inline"],
-        search,
-        form[role="search"]
-    ):has(*:where(
-        :user-invalid,
-        [aria-invalid="true"]
-    )) *:where(
-        :user-invalid,
-        [aria-invalid="true"]
-    ):not(:focus-visible) {
-        outline-color: transparent;
-    }
-
-    @media (forced-colors: active) {
-        *:where(
-            *[data-group="inline"],
-            search,
-            form[role="search"]
-        ) > button:not(:where(:active, [aria-pressed="true"])) {
-            border-color: ButtonBorder;
+    ) {
+        & > button:not(:where(:active, [aria-pressed="true"])) {
+            border-color: var(--color-ink-mix);
         }
 
-        *:where(
-            *[data-group="inline"],
-            search,
-            form[role="search"]
-        ):has(*:where(
+        &:has(*:where(
             :user-invalid,
             [aria-invalid="true"]
         )) {
-            outline-color: Mark;
+            outline-color:  var(--color-error);
+            outline-offset: 0;
+            outline-style:  solid;
+            outline-width:  var(--md-border-width);
+        }
+
+        &:has(*:where(
+            :user-invalid,
+            [aria-invalid="true"]
+        )) *:where(
+            :user-invalid,
+            [aria-invalid="true"]
+        ):not(:focus-visible) {
+            outline-color: transparent;
+        }
+
+        @media (forced-colors: active) {
+            & > button:not(:where(:active, [aria-pressed="true"])) {
+                border-color: ButtonBorder;
+            }
+
+            &:has(*:where(
+                :user-invalid,
+                [aria-invalid="true"]
+            )) {
+                outline-color: Mark;
+            }
         }
     }
 }

@@ -39,8 +39,11 @@
             [type="password"],
             [type="search"],
             [type="url"],
-            [type="tel"]
-        ),
+            [type="tel"],
+            [type="checkbox"]:not([role="switch"]),
+            [type="checkbox"][role="switch"],
+            [type="radio"]
+        ):not([data-sign], [data-facet], [data-surround]),
         select,
         textarea
     ) {
@@ -60,8 +63,11 @@
                 [type="password"],
                 [type="search"],
                 [type="url"],
-                [type="tel"]
-            ),
+                [type="tel"],
+                [type="checkbox"]:not([role="switch"]),
+                [type="checkbox"][role="switch"],
+                [type="radio"]
+            ):not([data-sign], [data-facet], [data-surround]),
             select,
             textarea
         ) {

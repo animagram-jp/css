@@ -17,6 +17,17 @@
 */
 
 @layer css.input {
+
+    /* === color, layout: checkbox, radio, toggle === */
+
+    *:where(
+        input[type="checkbox"]:not([role="switch"]),
+        input[type="checkbox"][role="switch"],
+        input[type="radio"]
+    ):not([data-sign], [data-facet], [data-surround]) {
+        cursor: pointer;
+    }
+
     *:where(
         input:is(
             [type="text"],
@@ -56,7 +67,6 @@
     /* === password === */
 
     label:has(> input[type="password"]) {
-        display:  inline flow-root;
         position: relative;
     }
 

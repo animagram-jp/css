@@ -8,9 +8,9 @@
     
     css.input,
     css.button,
-    css.checkbox,
-    css.toggle,
-    css.radio,
+    css.checkbox, /* dependency: data_style */
+    css.toggle, /* dependency: data_style, input */
+    css.radio, /* dependency: data_style */
     css.heading,
     css.list,
     css.search, /* dependency: input, group */
@@ -239,10 +239,6 @@
         font-family: var(--font-family-sans-serif);
     }
 
-    ::placeholder {
-        color: var(--color-ink-mix);
-    }
-
     html {
         scrollbar-gutter: stable;
     }
@@ -269,13 +265,13 @@
         scrollbar-gutter: stable;
     }
 
-    label:has(> *) {
-        display: inline flow-root;
-    }
-
     [hidden],
     .hidden {
         display: none !important;
+    }
+
+    ::placeholder {
+        color: var(--color-ink-mix);
     }
 
     ::selection, mark {
