@@ -106,63 +106,60 @@ tap ==  long press → (show context menu) → option 1 long press
 
 ---
 
-## P1~P3'パターン具体例 (draft)
+## P1~P3' Pattern Examples (draft)
 
 - 表中「タップ」はショートクリック・ショートタップ(ポインターダウンからポインターアップまで)を指す。
 - 長押し時・ドラッグ時の挙動については、定義を別途必要とする行がある。
 - P3' 結果信号については、エラー時の定義を別途必要とする行がある。
 - CSS表記(:hover等)で信号の差分を表記する。
+- toggle: 非常停止ボタン(JIS C 0447)のように、操作を1方向に制限する差分が存在する。
+- toggle (sort) | column sorter(Ant Design Table)
+- filter chip | filter chip(Material 3)
+- tabs | tabs(ARIA APG)
 
 | Name | Reference | P1 対象選択 | P1' 対象確認信号 | P2 コマンド構成 | P2' 構成確認信号 | P3 執行命令 | P3' 結果信号 |
 |-|-|-|-|-|-|-|-|
-| toggle | Switch(ARIA APG) | hover, focus | label, :hover, :focus | - | label, :checked | enter, tap | (default), :checked |
-| command button | - | hover, focus | label, :hover, :focus | - | label(undo sign, etc.) | enter, space, tap | - |
-| immediate slider | - | hover / focus, pointer down | label, :hover / :focus, :active | arrow key, pointer move | track & knob | - | - |
-| rate | Rate(Ant Design) | hover, focus | label, :hover, :focus | arrow key, pointer move | :hover (preview) | enter, tap | fill / outline elements |
-| inline edit | InlineEdit(React Suite) | focus, tap(edit button) | :focus, caret | key input, option tap | :active(track, text) | enter, focus out | (default) |
 | drag and drop reordering | Drag and drop(Apple HIG) | pointer down | :active(grab) | pointer down + move | insert preview | pointer up, pointer down + move(out) | (default) |
-| command select | Menu and Menubar(ARIA APG) | hover, focus / pointer down (menu) | label, :hover, :focus / :open | hover, focus(option) | :focus, :focus(option) | enter, tap(option) | - (default) |
-| command checkbox | 非常停止(JIS C 0447) | hover, focus | label, :hover, :focus | - | (default), :checked | enter, pointer down | :checked |
-| command button (hold-to-run) | 寸動操作(JIS C 0447) | hover, focus | label, :hover, :focus | - | - | enter, pointer down | label(meter) |
-| command palette | Spotlight(Apple), Combobox(ARIA APG) | 表示(検索ボックス)へのフォーカス, タップ | 表示(検索ボックス)へのフォーカスリング, ハイライト | 表示(検索ボックス)への入力 | 表示(候補)へのフォーカスリング, ハイライト | Enter, 表示(候補)へのタップ | |
-| form submission | form(HTML Living Standard), 多機能の3ステップ動作順序(JIS C 0447) | 各P2部品依存 | 表示(囲み・formの見出し) | 各P2部品依存 | 表示(囲み・formの見出し・各P2部品) | submit buttonへのenter, タップ | 表示(バリデーションエラーサマリー・メッセージ) |
-| wizard | Steps+Form(Ant Design), Progress indicator(Carbon Design System) | 各P2部品依存 | 表示(囲み・step indicator) | 各P2部品依存・proceedボタンとbackボタン | 表示(囲み・step indicator・各P2部品), 表示(バリデーションエラーサマリー・メッセージ) | submit buttonへのenter, タップ | 表示(バリデーションエラーサマリー・メッセージ) |
-| tooltip | Tooltip(ARIA APG), Tooltip(Material 3) | フォーカス, hover | | | | | 表示(コンテンツ・囲み) |
+| toggle | Switch(ARIA APG) | hover, focus | label, :hover, :focus | - | label, :checked | enter, tap | (default), :checked |
+| tooltip | Tooltip(Material 3) | hover, focus(tip sign) | - | - | - | - | :visible |
+| immediate button | - | hover, focus | label, :hover, :focus | - | label(undo sign, etc.) | enter, space, tap | - |
+| immediate button (hold-to-run) | 寸動操作(JIS C 0447) | hover, focus | label, :hover, :focus | - | - | enter, pointer down | label(meter) |
+| immediate input | InlineEdit(React Suite) | focus, tap(edit button) | :focus, caret | key input, option tap | :active(track, text) | enter, focus out | (default) |
+| immediate select | Menu and Menubar(ARIA APG) | hover, focus / pointer down (menu) | label, :hover, :focus / :open | hover, focus(option) | :focus, :focus(option) | enter, tap(option) | - (default) |
+| immediate select (search) | Combobox(ARIA APG) | hover, focus, tap (track) | :hover, :focus | key input, arrow key | highlight (option) | enter, tap(option) | - |
+| immediate slider | - | hover / focus, pointer down | label, :hover / :focus, :active | arrow key, pointer move | track & knob | - | - |
+| immediate slider (rate) | Rate(Ant Design) | hover, focus | label, :hover, :focus | arrow key, pointer move | :hover (preview) | enter, tap | fill / outline elements |
+| form | form(HTML Living Standard) | (P2 components) | label, boundary | (P2 components) | (confirm dialog) | enter, tap(submit button) | error summary, detail |
+| multi-step form | Steps+Form(Ant Design) | (P2 components) | label, boundary, step indicator | (P2 components), proceed & back button | label, bondary, step indicator, error summary, detail | enter, tap(submit button) | (success toast, error modal) |
 
-- multi-select apply | Transfer(Ant Design)
 - dialog
-- tabs | tabs(ARIA APG), セレクタスイッチ・機器選択群(JIS C 0447 図2 ステップ1)
-- link | link(ARIA APG), breadcrumb(ARIA APG)
+- button structure | breadcrumb(ARIA APG)
 - pagination | pagination(Bootstrap), Pagination(Ant Design)
-- navigation menu | navigation bar／drawer(Material 3): command menuのlink機能実装
-- search | search(Material 3), search field(Apple HIG): command palletのlinkまたは表示切替機能実装
-- filter chip | filter chip(Material 3), CheckableTag(Ant Design)
-- sort control | column sorter(Ant Design Table), sort menu(Fluent 2)
 - disclosure | disclosure(ARIA APG), Collapse(Ant Design)
-- tree view | tree view(ARIA APG), Tree(Ant Design)
+- disclosure (tree view) | tree view(ARIA APG), Tree(Ant Design)
 - carousel | carousel(ARIA APG), carousel(Bootstrap)
 - window splitter | window splitter(ARIA APG), split view(Apple HIG)
-- scrolling feed | feed(ARIA APG), infinite scroll(各実装)
+- scroll list | feed(ARIA APG)
 
-## P2部品
+## P2 Component examples
 
-- フォーカスリング・ホバーハイライトを要する
+- multi-select apply | Transfer(Ant Design)
+- :hover, :focus
 
-| 名前 | 既存例 | 構成 |
+| Name | Reference | Parts |
 |-|-|-|
 | checkbox | checkbox(ARIA APG), checkbox(Material 3) | 表示(ラベル, ボックス), 真偽値表現 |
 | radio button | radio group(ARIA APG), Radio(Ant Design) | 表示(ラベル, リスト(ラベル, ボタン)), 真偽値表現 |
-| text field | text field(Material 3), 英数字キーボード(JIS C 0447 3.2.2) | 表示(ラベル, 入力枠), キャレット表現 |
-| text area | textarea(HTML Living Standard) | 表示(ラベル, 入力枠), キャレット表現, Enter時改行機能 |
-| select | select(HTML Living Standard), dropdown(Fluent 2) | 表示(ラベル, オプションリスト, 無効オプション行ラベル, オプションボタン), 閉時の値表現 |
-| listbox | listbox(ARIA APG), list box(Fluent 2) | 表示(ラベル, 囲い, オプションリスト, オプションボタン), オプションの有効表現 |
-| slider | slider(ARIA APG), Slider(Ant Design) | 表示(ラベル, トラック, つまみ) |
-| date picker | date picker(Material 3), DatePicker(Ant Design) | 表示(ラベル, カレンダー) |
-| time picker | time picker(Material 3), TimePicker(Ant Design) | 表示(ラベル, 時間入力枠, 分数入力枠) |
+| input | textarea(HTML Living Standard) | 表示(ラベル, 入力枠), キャレット表現, (Enter時改行) |
+| select | select(HTML Living Standard) | 表示(ラベル, オプションリスト, 無効オプション行ラベル, オプションボタン), 閉時の値表現 |
+| listbox | listbox(ARIA APG) | 表示(ラベル, 囲い, オプションリスト, オプションボタン), オプションの有効表現 |
+| slider | slider(ARIA APG) | 表示(ラベル, トラック, つまみ) |
+| date picker | date picker(Material 3) | 表示(ラベル, カレンダー) |
+| time picker | time picker(Material 3) | 表示(ラベル, 時間入力枠, 分数入力枠) |
 | file uploader | input type=file(HTML Living Standard), Upload(Ant Design) | 表示(ラベル, 実行ボタン) |
 | input chip | input chip(Material 3), Tag(Ant Design 入力用途) | 表示(ラベル, トラック, 左又は右アイコン) (Material 3: "The stroke color was softened to improve visual hierarchy between chips and buttons") |
 | enabling button | 許可装置(JIS C 0447 7.7.3) | |
-| spin button | spinbutton(ARIA APG), stepper(Apple HIG) | 表示(増方向ボタン, 減方向ボタン) (JIS 5.1: 増減ジェスチャの反対動作対) |
+| step button | spinbutton(ARIA APG) | 表示(増方向ボタン, 減方向ボタン) (JIS 5.1: 増減ジェスチャの反対動作対) |
 
 ## P3部品
 
