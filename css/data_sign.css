@@ -90,31 +90,34 @@
         [data-sign="x"]
     )::before,
     *:where(
+        [data-sign="check"],
         [data-sign="hatch"],
         [data-sign="minus"],
         [data-sign="plus"],
         [data-sign="rule"],
         [data-sign="x"]
-    )::after {
+    ):not([data-inline-align="start"])::after,
+    input[type="checkbox"]:not([role="switch"]):not([data-sign]):not([data-facet])::after {
+        content:  "";
+        position: absolute;
+    }
+
+    *[data-sign="check"][data-inline-align="start"]::before {
         content:  "";
         position: absolute;
     }
 
     *:where(
-        [data-sign="check"],
         [data-sign="hatch"],
         [data-sign="minus"],
         [data-sign="plus"],
-        [data-sign="x"],
-        input[type="checkbox"]:not([role="switch"]):is(
-            :not([data-sign]):not([data-facet]),
-            [data-sign="check"]
-        )
+        [data-sign="x"]
     ):where(
         [data-inline-align="center"],
         :not([data-inline-align])
     )::before,
     *:where(
+        [data-sign="check"],
         [data-sign="hatch"],
         [data-sign="minus"],
         [data-sign="plus"],
@@ -123,7 +126,8 @@
         [data-inline-align="center"],
         :not([data-inline-align])
     )::after,
-    *[data-sign="rule"][data-inline-align="center"]::after {
+    *[data-sign="rule"][data-inline-align="center"]::after,
+    input[type="checkbox"]:not([role="switch"]):not([data-sign]):not([data-facet])::after {
         inset-inline:  0;
         margin-inline: auto;
     }
@@ -135,11 +139,7 @@
         [data-sign="hatch"],
         [data-sign="minus"],
         [data-sign="plus"],
-        [data-sign="x"],
-        input[type="checkbox"]:not([role="switch"]):is(
-            :not([data-sign]):not([data-facet]),
-            [data-sign="check"]
-        )
+        [data-sign="x"]
     )[data-inline-align="start"]::before,
     *:where(
         [data-sign="hatch"],
@@ -159,18 +159,14 @@
     /* --- end --- */
 
     *:where(
-        [data-sign="check"],
         [data-sign="hatch"],
         [data-sign="minus"],
         [data-sign="plus"],
         [data-sign="rule"],
-        [data-sign="x"],
-        input[type="checkbox"]:not([role="switch"]):is(
-            :not([data-sign]):not([data-facet]),
-            [data-sign="check"]
-        )
+        [data-sign="x"]
     )[data-inline-align="end"]::before,
     *:where(
+        [data-sign="check"],
         [data-sign="hatch"],
         [data-sign="minus"],
         [data-sign="plus"],
@@ -212,20 +208,27 @@
 
     /* === check === */
 
-    *[data-sign="check"]::before,
-    input[type="checkbox"]:not([role="switch"]):is(:not([data-sign]):not([data-facet]), [data-sign="check"])::before {
+    input[type="checkbox"]:not([role="switch"]):not([data-sign]):not([data-facet])::before {
+        content:  "";
+        inset:    0;
+        position: absolute;
+    }
+
+    *[data-sign="check"]:where([data-inline-align="start"])::before,
+    *[data-sign="check"]:not([data-inline-align="start"])::after,
+    input[type="checkbox"]:not([role="switch"]):not([data-sign]):not([data-facet])::after {
         border-color:  currentColor;
         border-radius: 0;
         border-style:  solid;
         border-width:  0 0.1875rem 0.1875rem 0;
-        content:       "";
         inset-block:   0;
         margin-block:  auto;
-        position:      absolute;
         rotate:        45deg;
     }
 
-    input[type="checkbox"]:not([role="switch"]):is(:not([data-sign]):not([data-facet]), [data-sign="check"]):not(:checked)::before {
+    *[data-sign="check"]:not(:checked):where([data-inline-align="start"])::before,
+    *[data-sign="check"]:not(:checked):not([data-inline-align="start"])::after,
+    input[type="checkbox"]:not([role="switch"]):not([data-sign]):not([data-facet]):not(:checked)::after {
         border-width: 0;
     }
 
@@ -233,28 +236,16 @@
 
     *:where(
         *[data-sign="check"],
-        input[type="checkbox"]:not([role="switch"]):is(:not([data-sign]):not([data-facet]), [data-sign="check"])
+        input[type="checkbox"]:not([role="switch"]):not([data-sign]):not([data-facet])
     ) {
         &[data-size="xs"] {
             block-size:  var(--xs-box-height);
             inline-size: var(--xs-box-height);
-
-            &::before {
-                block-size:  calc(var(--xs-box-height) / 2);
-                inline-size: calc(var(--xs-box-height) / 4);
-                translate:   0 -0.09375rem;
-            }
         }
 
         &[data-size="sm"] {
             block-size:  var(--sm-box-height);
             inline-size: var(--sm-box-height);
-
-            &::before {
-                block-size:  calc(var(--sm-box-height) / 2);
-                inline-size: calc(var(--sm-box-height) / 4);
-                translate:   0 -0.15625rem;
-            }
         }
 
         &:where(
@@ -263,46 +254,70 @@
         ) {
             block-size:  var(--md-box-height);
             inline-size: var(--md-box-height);
-
-            &::before {
-                block-size:  calc(var(--md-box-height) / 2);
-                inline-size: calc(var(--md-box-height) / 4);
-                translate:   0 -0.20312rem;
-            }
         }
 
         &[data-size="lg"] {
             block-size:  var(--lg-box-height);
             inline-size: var(--lg-box-height);
-
-            &::before {
-                block-size:  calc(var(--lg-box-height) / 2);
-                inline-size: calc(var(--lg-box-height) / 4);
-                translate:   0 -0.25rem;
-            }
         }
 
         &[data-size="xl"] {
             block-size:  var(--xl-box-height);
             inline-size: var(--xl-box-height);
-
-            &::before {
-                block-size:  calc(var(--xl-box-height) / 2);
-                inline-size: calc(var(--xl-box-height) / 4);
-                translate:   0 -0.28125rem;
-            }
         }
 
         &[data-size="2xl"] {
             block-size:  var(--2xl-box-height);
             inline-size: var(--2xl-box-height);
-
-            &::before {
-                block-size:  calc(var(--2xl-box-height) / 2);
-                inline-size: calc(var(--2xl-box-height) / 4);
-                translate:   0 -0.35938rem;
-            }
         }
+    }
+
+    *[data-sign="check"][data-size="xs"]:where([data-inline-align="start"])::before,
+    *[data-sign="check"][data-size="xs"]:not([data-inline-align="start"])::after,
+    input[type="checkbox"]:not([role="switch"]):not([data-sign]):not([data-facet])[data-size="xs"]::after {
+        block-size:  calc(var(--xs-box-height) / 2);
+        inline-size: calc(var(--xs-box-height) / 4);
+        translate:   0 -0.09375rem;
+    }
+
+    *[data-sign="check"][data-size="sm"]:where([data-inline-align="start"])::before,
+    *[data-sign="check"][data-size="sm"]:not([data-inline-align="start"])::after,
+    input[type="checkbox"]:not([role="switch"]):not([data-sign]):not([data-facet])[data-size="sm"]::after {
+        block-size:  calc(var(--sm-box-height) / 2);
+        inline-size: calc(var(--sm-box-height) / 4);
+        translate:   0 -0.15625rem;
+    }
+
+    *[data-sign="check"]:where([data-size="md"], :not([data-size])):where([data-inline-align="start"])::before,
+    *[data-sign="check"]:where([data-size="md"], :not([data-size])):not([data-inline-align="start"])::after,
+    input[type="checkbox"]:not([role="switch"]):not([data-sign]):not([data-facet]):where([data-size="md"], :not([data-size]))::after {
+        block-size:  calc(var(--md-box-height) / 2);
+        inline-size: calc(var(--md-box-height) / 4);
+        translate:   0 -0.20312rem;
+    }
+
+    *[data-sign="check"][data-size="lg"]:where([data-inline-align="start"])::before,
+    *[data-sign="check"][data-size="lg"]:not([data-inline-align="start"])::after,
+    input[type="checkbox"]:not([role="switch"]):not([data-sign]):not([data-facet])[data-size="lg"]::after {
+        block-size:  calc(var(--lg-box-height) / 2);
+        inline-size: calc(var(--lg-box-height) / 4);
+        translate:   0 -0.25rem;
+    }
+
+    *[data-sign="check"][data-size="xl"]:where([data-inline-align="start"])::before,
+    *[data-sign="check"][data-size="xl"]:not([data-inline-align="start"])::after,
+    input[type="checkbox"]:not([role="switch"]):not([data-sign]):not([data-facet])[data-size="xl"]::after {
+        block-size:  calc(var(--xl-box-height) / 2);
+        inline-size: calc(var(--xl-box-height) / 4);
+        translate:   0 -0.28125rem;
+    }
+
+    *[data-sign="check"][data-size="2xl"]:where([data-inline-align="start"])::before,
+    *[data-sign="check"][data-size="2xl"]:not([data-inline-align="start"])::after,
+    input[type="checkbox"]:not([role="switch"]):not([data-sign]):not([data-facet])[data-size="2xl"]::after {
+        block-size:  calc(var(--2xl-box-height) / 2);
+        inline-size: calc(var(--2xl-box-height) / 4);
+        translate:   0 -0.35938rem;
     }
 
     /* === copy === */

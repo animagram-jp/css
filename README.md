@@ -164,7 +164,15 @@ Direction in which a component lays its parts out. Each value below is opt-in; o
 |-|-|-|
 | `hgroup` | `inline` | [heading.css](./css/heading.css) |
 | `details` | `inline` | [button.css](./css/button.css) |
-| `label` | `block` | [toggle.css](./css/toggle.css), [step.css](./css/step.css) |
+| `label` | `block` | [toggle.css](./css/toggle.css) |
+
+### data-step
+
+Layout for the pair of controls a spinbutton or a sortable table header carries. Applied to the `span` wrapping the pair, not the `label`/`th` itself.
+
+| Selector | Value | Applied by |
+|-|-|-|
+| `span` | `block` | [step.css](./css/step.css) |
 
 ### Tag unique attributes
 

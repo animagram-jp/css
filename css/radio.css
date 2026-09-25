@@ -87,25 +87,18 @@
     }
 
     input[type="radio"]:not([data-sign], [data-facet], [data-surround])::after {
+        border-radius: 50%;
+        content:       "";
+        position:      absolute;
+    }
+
+    input[type="radio"]:not([data-sign], [data-facet], [data-surround]):not(:checked)::after {
         background-color: transparent;
-        border-radius:    50%;
-        content:          "";
-        position:         absolute;
     }
 
     @media (prefers-reduced-motion: no-preference) {
         input[type="radio"]:not([data-sign], [data-facet], [data-surround])::after {
             transition: background-color 0.15s ease;
-        }
-    }
-
-    input[type="radio"]:not([data-sign], [data-facet], [data-surround]):checked::after {
-        background-color: var(--color-emphasis-ink);
-    }
-
-    @media (forced-colors: active) {
-        input[type="radio"]:not([data-sign], [data-facet], [data-surround]):checked::after {
-            background-color: CanvasText;
         }
     }
 
@@ -194,41 +187,6 @@
         }
     }
 
-
-    /* --- invalid --- */
-
-    input[type="radio"]:where(
-        :user-invalid,
-        [aria-invalid="true"]
-    ):checked::after {
-        background-color: var(--color-error);
-    }
-    @media (forced-colors: active) {
-        input[type="radio"]:where(
-            :user-invalid,
-            [aria-invalid="true"]
-        ):checked::after {
-            background-color: Mark;
-        }
-    }
-
-    /* --- disabled --- */
-
-    input[type="radio"]:where(
-        :disabled,
-        [aria-disabled="true"]
-    ):checked::after {
-        background-color: var(--color-ink-mix);
-    }
-
-    @media (forced-colors: active) {
-        input[type="radio"]:where(
-            :disabled,
-            [aria-disabled="true"]
-        ):checked::after {
-            background-color: GrayText;
-        }
-    }
 
     /* === tablist === */
 

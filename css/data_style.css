@@ -77,6 +77,44 @@
         }
     }
 
+    /* === surround input style: checkbox, radio state === */
+
+    input[type="checkbox"]:not([role="switch"]):not([data-sign]):not([data-facet]):where(:checked, :indeterminate)::before,
+    input[type="radio"]:not([data-sign], [data-facet], [data-surround]):checked::after {
+        background-color: var(--color-emphasis-ink);
+    }
+
+    @media (forced-colors: active) {
+        input[type="checkbox"]:not([role="switch"]):not([data-sign]):not([data-facet]):where(:checked, :indeterminate)::before,
+        input[type="radio"]:not([data-sign], [data-facet], [data-surround]):checked::after {
+            background-color: CanvasText;
+        }
+    }
+
+    input[type="checkbox"]:not([role="switch"]):not([data-sign]):not([data-facet]):where(:user-invalid, [aria-invalid="true"]):where(:checked, :indeterminate)::before,
+    input[type="radio"]:not([data-sign], [data-facet], [data-surround]):where(:user-invalid, [aria-invalid="true"]):checked::after {
+        background-color: var(--color-error);
+    }
+
+    @media (forced-colors: active) {
+        input[type="checkbox"]:not([role="switch"]):not([data-sign]):not([data-facet]):where(:user-invalid, [aria-invalid="true"]):where(:checked, :indeterminate)::before,
+        input[type="radio"]:not([data-sign], [data-facet], [data-surround]):where(:user-invalid, [aria-invalid="true"]):checked::after {
+            background-color: Mark;
+        }
+    }
+
+    input[type="checkbox"]:not([role="switch"]):not([data-sign]):not([data-facet]):where(:disabled, [aria-disabled="true"]):where(:checked, :indeterminate)::before,
+    input[type="radio"]:not([data-sign], [data-facet], [data-surround]):where(:disabled, [aria-disabled="true"]):checked::after {
+        background-color: var(--color-ink-mix);
+    }
+
+    @media (forced-colors: active) {
+        input[type="checkbox"]:not([role="switch"]):not([data-sign]):not([data-facet]):where(:disabled, [aria-disabled="true"]):where(:checked, :indeterminate)::before,
+        input[type="radio"]:not([data-sign], [data-facet], [data-surround]):where(:disabled, [aria-disabled="true"]):checked::after {
+            background-color: GrayText;
+        }
+    }
+
     /* === surround transparent style === */
 
     *:where(

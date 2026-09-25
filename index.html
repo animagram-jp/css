@@ -460,14 +460,16 @@
                 <button type="button" data-sign="minus" tabindex="-1" aria-label="decrement"></button>
                 <input type="text" inputmode="numeric" pattern="[0-9]*" role="spinbutton" value="10" size="4">
                 <button type="button" data-sign="plus" tabindex="-1" aria-label="increment"></button></label>
-            <label data-group="inline" data-axis="block">
+            <label data-group="inline">
                 <input type="text" inputmode="numeric" pattern="[0-9]*" role="spinbutton" value="10" size="4">
-                <button type="button" data-sign="plus" tabindex="-1" aria-label="increment"></button>
-                <button type="button" data-sign="minus" tabindex="-1" aria-label="decrement"></button></label>
-            <label data-group="inline" data-axis="block">
+                <span data-step="block">
+                    <button type="button" data-sign="plus" tabindex="-1" aria-label="increment"></button>
+                    <button type="button" data-sign="minus" tabindex="-1" aria-label="decrement"></button></span></label>
+            <label data-group="inline">
                 <input type="text" inputmode="numeric" pattern="[0-9]*" role="spinbutton" value="10" size="4" data-size="lg">
-                <button type="button" data-sign="plus" data-size="lg" tabindex="-1" aria-label="increment"></button>
-                <button type="button" data-sign="minus" data-size="lg" tabindex="-1" aria-label="decrement"></button></label></section>
+                <span data-step="block">
+                    <button type="button" data-sign="plus" data-size="lg" tabindex="-1" aria-label="increment"></button>
+                    <button type="button" data-sign="minus" data-size="lg" tabindex="-1" aria-label="decrement"></button></span></label></section>
         <section data-sign="rule">
             <h3>size</h3>
             <label data-group="inline">
@@ -798,14 +800,14 @@ line2</p></hgroup></section>
                         <th scope="col">Head</th>
                         <th scope="col" aria-sort="ascending">
                             Head
-                            <span data-axis="block">
+                            <span data-step="block">
                                 <label>
                                     <input type="radio" name="sort-1" value="a-asc" aria-label="Sort ascending" checked></label>
                                 <label>
                                     <input type="radio" name="sort-1" value="a-desc" aria-label="Sort descending"></label></span></th>
                         <th scope="col" aria-sort="none">
                             Head
-                            <span data-axis="block">
+                            <span data-step="block">
                                 <label>
                                     <input type="radio" name="sort-1" value="b-asc" aria-label="Sort ascending"></label>
                                 <label>
