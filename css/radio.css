@@ -200,14 +200,7 @@
         display: none;
     }
 
-    *[role="tab"]:has( input[type="radio"]:checked) {
+    *[role="tab"]:has(input[type="radio"]:checked) {
         font-weight: bold;
-    }
-
-    @media (forced-colors: active) {
-        *[role="tab"]:has( input[type="radio"]:checked) {
-            background-color: revert;
-            border-inline-start-color: Highlight;
-        }
     }
 }

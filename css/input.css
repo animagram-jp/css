@@ -126,8 +126,20 @@
         <label>
             <span></span>
             <input required></input></label>
+
+        
     */
-    *:where(label):has(:required) > span:first-child::after {
+    *:where(label):not(fieldset > label):has(:required) > span:first-child::after {
+        color:   var(--color-error);
+        content: "*";
+    }
+
+    fieldset:has(> label > :required) > legend > *::after {
+        color:   var(--color-error);
+        content: "*";
+    }
+
+    label:has(+ :required)::after {
         color:   var(--color-error);
         content: "*";
     }

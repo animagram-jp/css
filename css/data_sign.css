@@ -23,6 +23,13 @@
         position: relative;
     }
 
+    *:where(
+        [data-sign],
+        [data-facet]
+    ):not([data-surround]) {
+        color: inherit;
+    }
+
     /* --- min inline size, min block size --- */
 
     *:where(
