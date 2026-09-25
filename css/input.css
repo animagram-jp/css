@@ -24,7 +24,7 @@
         input[type="checkbox"]:not([role="switch"]),
         input[type="checkbox"][role="switch"],
         input[type="radio"]
-    ):not([data-sign], [data-facet], [data-surround]) {
+    ) {
         cursor: pointer;
     }
 
