@@ -61,7 +61,7 @@
 
     /* === surround style without border === */
 
-    *:where(
+    :where(
         [data-surround="transparent"],
         li[role],
         li > [role]:where(a, button),
@@ -109,7 +109,7 @@
 
     /* === surround style with border === */
 
-    *:where(
+    :where(
         [data-surround="fill"],
         [data-surround="outline"],
         :is(
@@ -224,7 +224,7 @@
 
     /* === surround transparent style: focus === */
 
-    *:where(
+    :where(
         [data-surround="transparent"],
         tr:not([data-style], [data-surround]),
         li[role],

@@ -2,32 +2,32 @@
 
     <label>
         <span></span>
-        <input type="radio" name="" value=""></label>
+        <input type="radio"></label>
 
     <fieldset data-axis="block | inline">
         <legend><span></span></legend>
         <label>
             <span></span>
-            <input type="radio" name="" value=""></label>
+            <input type="radio"></label>
         <label>
             <span></span>
-            <input type="radio" name="" value=""></label></fieldset>
+            <input type="radio"></label></fieldset>
 
-    <fieldset aria-labelledby="">
-        <*:not(legend, label) id=""></*:not(legend, label)>
+    <fieldset>
+        <*:not(legend, label)></*:not(legend, label)>
         <label>
             <span></span>
-            <input type="radio" name="" value=""></label>
+            <input type="radio"></label>
         <label>
             <span></span>
-            <input type="radio" name="" value=""></label></fieldset>
+            <input type="radio"></label></fieldset>
 
     <* role="tablist">
         <label role="tab">
             <span></span>
-            <input type="radio" name="" aria-controls=""></*>
+            <input type="radio"></*>
         </*>
-    <* role="tabpanel" aria-labelledby=""></*>
+    <* role="tabpanel"></*>
 */
 
 @layer css.radio {
@@ -190,17 +190,17 @@
 
     /* === tablist === */
 
-    *[role="tab"] input[type="radio"] {
+    [role="tab"] input[type="radio"] {
         opacity:        0;
         pointer-events: none;
         position:       absolute;
     }
 
-    *[role="tabpanel"] {
+    [role="tabpanel"] {
         display: none;
     }
 
-    *[role="tab"]:has(input[type="radio"]:checked) {
+    [role="tab"]:has(input[type="radio"]:checked) {
         font-weight: bold;
     }
 }

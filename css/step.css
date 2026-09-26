@@ -2,11 +2,11 @@
 
     <label>
         <button type="button" data-sign="minus"></button>
-        <input type="text" inputmode="numeric" pattern="[0-9]*" role="spinbutton">
+        <input type="text" inputmode="numeric" role="spinbutton">
         <button type="button" data-sign="plus"></button></label>
 
     <label>
-        <input type="text" inputmode="numeric" pattern="[0-9]*" role="spinbutton">
+        <input type="text" inputmode="numeric" role="spinbutton">
         <span data-step="block">
             <button type="button" data-sign="plus"></button>
             <button type="button" data-sign="minus"></button></span></label>

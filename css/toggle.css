@@ -1,8 +1,9 @@
-/* toggle: input widget that allows users to choose one of two values: on or off.  */
+/*  Usage:
 
-/*  <label>
+    <label>
         <span>inline</span>
-        <input type="checkbox" role="switch"></label> */
+        <input type="checkbox" role="switch"></label>
+*/
 
 @layer css.toggle {
 
@@ -22,11 +23,6 @@
         border-width:   var(--md-border-width);
         padding-bottom: calc(((var(--md-box-height) - var(--md-line-height)) / 2) - var(--md-border-width));
     }
-
-    /*  the knob offset is logical (inset-inline-start), but translateX is not:
-        it does not flip in rtl, so the shift carries a direction flag.
-        transform is kept (not the translate property) because ::after already
-        uses `translate` for vertical centring. */
 
     label > input[type="checkbox"][role="switch"] {
         --toggle-dir: 1;

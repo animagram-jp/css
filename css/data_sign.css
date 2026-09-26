@@ -13,9 +13,9 @@
 */
 
 @layer css.data_sign {
-    *:where(
-        *[data-sign],
-        *[data-facet],
+    :where(
+        [data-sign],
+        [data-facet],
         summary:not([data-facet]),
         button[aria-haspopup="listbox"],
         label:has(> select[data-facet="chevron"])
@@ -23,7 +23,7 @@
         position: relative;
     }
 
-    *:where(
+    :where(
         [data-sign],
         [data-facet]
     ):not([data-surround]) {
@@ -32,7 +32,7 @@
 
     /* --- min inline size, min block size --- */
 
-    *:where(
+    :where(
         [data-sign],
         [data-facet]
     ):not(select, [data-sign-style="inline"]) {
@@ -72,12 +72,12 @@
 
     /* --- block align center --- */
 
-    *:where(
+    :where(
         [data-sign="minus"],
         [data-sign="plus"],
         [data-sign="x"]
     )::before,
-    *:where(
+    :where(
         [data-sign="hatch"],
         [data-sign="minus"],
         [data-sign="plus"],
@@ -91,12 +91,12 @@
 
     /* --- center --- */
 
-    *:where(
+    :where(
         [data-sign="minus"],
         [data-sign="plus"],
         [data-sign="x"]
     )::before,
-    *:where(
+    :where(
         [data-sign="check"],
         [data-sign="hatch"],
         [data-sign="minus"],
@@ -109,12 +109,12 @@
         position: absolute;
     }
 
-    *[data-sign="check"][data-inline-align="start"]::before {
+    [data-sign="check"][data-inline-align="start"]::before {
         content:  "";
         position: absolute;
     }
 
-    *:where(
+    :where(
         [data-sign="hatch"],
         [data-sign="minus"],
         [data-sign="plus"],
@@ -123,7 +123,7 @@
         [data-inline-align="center"],
         :not([data-inline-align])
     )::before,
-    *:where(
+    :where(
         [data-sign="check"],
         [data-sign="hatch"],
         [data-sign="minus"],
@@ -133,7 +133,7 @@
         [data-inline-align="center"],
         :not([data-inline-align])
     )::after,
-    *[data-sign="rule"][data-inline-align="center"]::after,
+    [data-sign="rule"][data-inline-align="center"]::after,
     input[type="checkbox"]:not([role="switch"]):not([data-sign]):not([data-facet])::after {
         inset-inline:  0;
         margin-inline: auto;
@@ -141,20 +141,20 @@
 
     /* --- start --- */
 
-    *:where(
+    :where(
         [data-sign="check"],
         [data-sign="hatch"],
         [data-sign="minus"],
         [data-sign="plus"],
         [data-sign="x"]
     )[data-inline-align="start"]::before,
-    *:where(
+    :where(
         [data-sign="hatch"],
         [data-sign="minus"],
         [data-sign="plus"],
         [data-sign="x"]
     )[data-inline-align="start"]::after,
-    *[data-sign="rule"]:where(
+    [data-sign="rule"]:where(
         [data-inline-align="start"],
         :not([data-inline-align])
     )::after {
@@ -165,14 +165,14 @@
 
     /* --- end --- */
 
-    *:where(
+    :where(
         [data-sign="hatch"],
         [data-sign="minus"],
         [data-sign="plus"],
         [data-sign="rule"],
         [data-sign="x"]
     )[data-inline-align="end"]::before,
-    *:where(
+    :where(
         [data-sign="check"],
         [data-sign="hatch"],
         [data-sign="minus"],
@@ -221,8 +221,8 @@
         position: absolute;
     }
 
-    *[data-sign="check"]:where([data-inline-align="start"])::before,
-    *[data-sign="check"]:not([data-inline-align="start"])::after,
+    [data-sign="check"]:where([data-inline-align="start"])::before,
+    [data-sign="check"]:not([data-inline-align="start"])::after,
     input[type="checkbox"]:not([role="switch"]):not([data-sign]):not([data-facet])::after {
         border-color:  currentColor;
         border-radius: 0;
@@ -233,16 +233,16 @@
         rotate:        45deg;
     }
 
-    *[data-sign="check"]:not(:checked):where([data-inline-align="start"])::before,
-    *[data-sign="check"]:not(:checked):not([data-inline-align="start"])::after,
+    [data-sign="check"]:not(:checked):where([data-inline-align="start"])::before,
+    [data-sign="check"]:not(:checked):not([data-inline-align="start"])::after,
     input[type="checkbox"]:not([role="switch"]):not([data-sign]):not([data-facet]):not(:checked)::after {
         border-width: 0;
     }
 
     /* --- size --- */
 
-    *:where(
-        *[data-sign="check"],
+    :where(
+        [data-sign="check"],
         input[type="checkbox"]:not([role="switch"]):not([data-sign]):not([data-facet])
     ) {
         &[data-size="xs"] {
@@ -279,48 +279,48 @@
         }
     }
 
-    *[data-sign="check"][data-size="xs"]:where([data-inline-align="start"])::before,
-    *[data-sign="check"][data-size="xs"]:not([data-inline-align="start"])::after,
+    [data-sign="check"][data-size="xs"]:where([data-inline-align="start"])::before,
+    [data-sign="check"][data-size="xs"]:not([data-inline-align="start"])::after,
     input[type="checkbox"]:not([role="switch"]):not([data-sign]):not([data-facet])[data-size="xs"]::after {
         block-size:  calc(var(--xs-box-height) / 2);
         inline-size: calc(var(--xs-box-height) / 4);
         translate:   0 -0.09375rem;
     }
 
-    *[data-sign="check"][data-size="sm"]:where([data-inline-align="start"])::before,
-    *[data-sign="check"][data-size="sm"]:not([data-inline-align="start"])::after,
+    [data-sign="check"][data-size="sm"]:where([data-inline-align="start"])::before,
+    [data-sign="check"][data-size="sm"]:not([data-inline-align="start"])::after,
     input[type="checkbox"]:not([role="switch"]):not([data-sign]):not([data-facet])[data-size="sm"]::after {
         block-size:  calc(var(--sm-box-height) / 2);
         inline-size: calc(var(--sm-box-height) / 4);
         translate:   0 -0.15625rem;
     }
 
-    *[data-sign="check"]:where([data-size="md"], :not([data-size])):where([data-inline-align="start"])::before,
-    *[data-sign="check"]:where([data-size="md"], :not([data-size])):not([data-inline-align="start"])::after,
+    [data-sign="check"]:where([data-size="md"], :not([data-size])):where([data-inline-align="start"])::before,
+    [data-sign="check"]:where([data-size="md"], :not([data-size])):not([data-inline-align="start"])::after,
     input[type="checkbox"]:not([role="switch"]):not([data-sign]):not([data-facet]):where([data-size="md"], :not([data-size]))::after {
         block-size:  calc(var(--md-box-height) / 2);
         inline-size: calc(var(--md-box-height) / 4);
         translate:   0 -0.20312rem;
     }
 
-    *[data-sign="check"][data-size="lg"]:where([data-inline-align="start"])::before,
-    *[data-sign="check"][data-size="lg"]:not([data-inline-align="start"])::after,
+    [data-sign="check"][data-size="lg"]:where([data-inline-align="start"])::before,
+    [data-sign="check"][data-size="lg"]:not([data-inline-align="start"])::after,
     input[type="checkbox"]:not([role="switch"]):not([data-sign]):not([data-facet])[data-size="lg"]::after {
         block-size:  calc(var(--lg-box-height) / 2);
         inline-size: calc(var(--lg-box-height) / 4);
         translate:   0 -0.25rem;
     }
 
-    *[data-sign="check"][data-size="xl"]:where([data-inline-align="start"])::before,
-    *[data-sign="check"][data-size="xl"]:not([data-inline-align="start"])::after,
+    [data-sign="check"][data-size="xl"]:where([data-inline-align="start"])::before,
+    [data-sign="check"][data-size="xl"]:not([data-inline-align="start"])::after,
     input[type="checkbox"]:not([role="switch"]):not([data-sign]):not([data-facet])[data-size="xl"]::after {
         block-size:  calc(var(--xl-box-height) / 2);
         inline-size: calc(var(--xl-box-height) / 4);
         translate:   0 -0.28125rem;
     }
 
-    *[data-sign="check"][data-size="2xl"]:where([data-inline-align="start"])::before,
-    *[data-sign="check"][data-size="2xl"]:not([data-inline-align="start"])::after,
+    [data-sign="check"][data-size="2xl"]:where([data-inline-align="start"])::before,
+    [data-sign="check"][data-size="2xl"]:not([data-inline-align="start"])::after,
     input[type="checkbox"]:not([role="switch"]):not([data-sign]):not([data-facet])[data-size="2xl"]::after {
         block-size:  calc(var(--2xl-box-height) / 2);
         inline-size: calc(var(--2xl-box-height) / 4);
@@ -329,8 +329,8 @@
 
     /* === copy === */
 
-    *[data-sign="copy"]::before,
-    *[data-sign="copy"]::after {
+    [data-sign="copy"]::before,
+    [data-sign="copy"]::after {
         border-color: currentColor;
         border-style: solid;
         content:      "";
@@ -338,13 +338,13 @@
         margin:       auto;
         position:     absolute;
     }
-    *[data-sign="copy"]::after {
+    [data-sign="copy"]::after {
         background-color: inherit;
     }
 
     /* --- size --- */
 
-    *[data-sign="copy"] {
+    [data-sign="copy"] {
         &[data-size="xs"] {
             block-size:  var(--xs-line-height);
             inline-size: var(--xs-line-height);
@@ -528,7 +528,7 @@
 
     /* === hatch === */
 
-    *[data-sign="hatch"]::after {
+    [data-sign="hatch"]::after {
         background-image: repeating-linear-gradient(
             -45deg,
             currentcolor 0,
@@ -574,7 +574,7 @@
     /*  === minus, plus === */
 
     [data-sign="plus"]::before,
-    *:where(
+    :where(
         [data-sign="minus"],
         [data-sign="plus"]
     )::after {
@@ -622,7 +622,7 @@
             inline-size: calc(var(--2xl-line-height) * 0.625);
         }
     }
-    *:where(
+    :where(
         [data-sign="minus"],
         [data-sign="plus"]
     ) {
@@ -657,27 +657,27 @@
 
     /* === rule: indent with a rule bar === */
 
-    *[data-sign="rule"]:where(
+    [data-sign="rule"]:where(
         [data-inline-align="start"],
         :not([data-inline-align])
     ) {
         padding-inline-start: 1.5rem;
     }
 
-    *[data-sign="rule"]::after {
+    [data-sign="rule"]::after {
         background-color: var(--color-emphasis-ink);
         border-radius:     0;
         inline-size:       0.5rem;
     }
     @media (forced-colors: active) {
-        *[data-sign="rule"]::after {
+        [data-sign="rule"]::after {
             background-color: CanvasText;
         }
     }
 
     /* --- size --- */
 
-    *[data-sign="rule"] {
+    [data-sign="rule"] {
         &[data-size="xs"]::after {
             inset-block: calc((var(--xs-box-height) - var(--xs-line-height)) / 2);
         }
@@ -758,8 +758,8 @@
 
     /* === chevron === */
 
-    *:where(
-        *[data-facet="chevron"]:not(select),
+    :where(
+        [data-facet="chevron"]:not(select),
         summary:not([data-facet]),
         button[aria-haspopup="listbox"]:not([data-facet]),
         label:has(> select[data-facet="chevron"])
@@ -779,8 +779,8 @@
     }
 
     @media (prefers-reduced-motion: no-preference) {
-        *:where(
-            *[data-facet="chevron"]:not(select),
+        :where(
+            [data-facet="chevron"]:not(select),
             summary:not([data-facet]),
             button[aria-haspopup="listbox"]:not([data-facet]),
             label:has(> select[data-facet="chevron"])
@@ -791,8 +791,8 @@
 
     /* --- size --- */
 
-    *:where(
-        *[data-facet="chevron"]:not(select),
+    :where(
+        [data-facet="chevron"]:not(select),
         summary:not([data-facet]),
         button[aria-haspopup="listbox"]:not([data-facet])
     ) {
@@ -805,7 +805,7 @@
         }
 
         &:where(
-            *[data-size="md"],
+            [data-size="md"],
             :not([data-size])
         ) {
             padding-inline-end: calc(var(--md-border-radius) * 2 + var(--md-font-size) * 0.75 * 1.06);
@@ -824,8 +824,8 @@
         }
     }
 
-    *:where(
-        *[data-facet="chevron"]:not(select)[data-size="xs"],
+    :where(
+        [data-facet="chevron"]:not(select)[data-size="xs"],
         summary:not([data-facet])[data-size="xs"],
         button[aria-haspopup="listbox"]:not([data-facet])[data-size="xs"],
         label:has(> select[data-facet="chevron"][data-size="xs"])
@@ -837,8 +837,8 @@
         inset-inline-end:    var(--xs-border-radius);
         transform:           translateY(-0.125rem) rotate(45deg);
     }
-    *:where(
-        *[data-facet="chevron"]:not(select)[data-size="xs"]:where(:open, :checked, :has(+ [popover]:popover-open)),
+    :where(
+        [data-facet="chevron"]:not(select)[data-size="xs"]:where(:open, :checked, :has(+ [popover]:popover-open)),
         details:open > summary:not([data-facet])[data-size="xs"],
         button[aria-haspopup="listbox"]:not([data-facet])[data-size="xs"]:has(+ [popover]:popover-open),
         label:has(> select[data-facet="chevron"][data-size="xs"]:open)
@@ -846,8 +846,8 @@
         transform: translateY(0.125rem) rotate(225deg);
     }
 
-    *:where(
-        *[data-facet="chevron"]:not(select)[data-size="sm"],
+    :where(
+        [data-facet="chevron"]:not(select)[data-size="sm"],
         summary:not([data-facet])[data-size="sm"],
         button[aria-haspopup="listbox"]:not([data-facet])[data-size="sm"],
         label:has(> select[data-facet="chevron"][data-size="sm"])
@@ -859,8 +859,8 @@
         inset-inline-end:    var(--sm-border-radius);
         transform:           translateY(-0.125rem) rotate(45deg);
     }
-    *:where(
-        *[data-facet="chevron"]:not(select)[data-size="sm"]:where(:open, :checked, :has(+ [popover]:popover-open)),
+    :where(
+        [data-facet="chevron"]:not(select)[data-size="sm"]:where(:open, :checked, :has(+ [popover]:popover-open)),
         details:open > summary:not([data-facet])[data-size="sm"],
         button[aria-haspopup="listbox"]:not([data-facet])[data-size="sm"]:has(+ [popover]:popover-open),
         label:has(> select[data-facet="chevron"][data-size="sm"]:open)
@@ -868,8 +868,8 @@
         transform: translateY(0.125rem) rotate(225deg);
     }
 
-    *:where(
-        *[data-facet="chevron"]:not(select):where([data-size="md"], :not([data-size])),
+    :where(
+        [data-facet="chevron"]:not(select):where([data-size="md"], :not([data-size])),
         summary:not([data-facet]):where([data-size="md"], :not([data-size])),
         button[aria-haspopup="listbox"]:not([data-facet]):where([data-size="md"], :not([data-size])),
         label:has(> select[data-facet="chevron"]:where([data-size="md"], :not([data-size])))
@@ -879,8 +879,8 @@
         inset-inline-end:   var(--md-border-radius);
         transform:          translateY(-0.1875rem) rotate(45deg);
     }
-    *:where(
-        *[data-facet="chevron"]:not(select):where([data-size="md"], :not([data-size])):where(:open, :checked, :has(+ [popover]:popover-open)),
+    :where(
+        [data-facet="chevron"]:not(select):where([data-size="md"], :not([data-size])):where(:open, :checked, :has(+ [popover]:popover-open)),
         details:open > summary:not([data-facet]):where([data-size="md"], :not([data-size])),
         button[aria-haspopup="listbox"]:not([data-facet]):where([data-size="md"], :not([data-size])):has(+ [popover]:popover-open),
         label:has(> select[data-facet="chevron"]:where([data-size="md"], :not([data-size])):open)
@@ -888,8 +888,8 @@
         transform: translateY(0.1875rem) rotate(225deg);
     }
 
-    *:where(
-        *[data-facet="chevron"]:not(select)[data-size="lg"],
+    :where(
+        [data-facet="chevron"]:not(select)[data-size="lg"],
         summary:not([data-facet])[data-size="lg"],
         button[aria-haspopup="listbox"]:not([data-facet])[data-size="lg"],
         label:has(> select[data-facet="chevron"][data-size="lg"])
@@ -902,8 +902,8 @@
         transform:           translateY(-0.125rem) rotate(45deg);
     }
 
-    *:where(
-        *[data-facet="chevron"]:not(select)[data-size="lg"]:where(:open, :checked, :has(+ [popover]:popover-open)),
+    :where(
+        [data-facet="chevron"]:not(select)[data-size="lg"]:where(:open, :checked, :has(+ [popover]:popover-open)),
         details:open > summary:not([data-facet])[data-size="lg"],
         button[aria-haspopup="listbox"]:not([data-facet])[data-size="lg"]:has(+ [popover]:popover-open),
         label:has(> select[data-facet="chevron"][data-size="lg"]:open)
@@ -911,8 +911,8 @@
         transform: translateY(0.125rem) rotate(225deg);
     }
 
-    *:where(
-        *[data-facet="chevron"]:not(select)[data-size="xl"],
+    :where(
+        [data-facet="chevron"]:not(select)[data-size="xl"],
         summary:not([data-facet])[data-size="xl"],
         button[aria-haspopup="listbox"]:not([data-facet])[data-size="xl"],
         label:has(> select[data-facet="chevron"][data-size="xl"])
@@ -925,8 +925,8 @@
         transform:           translateY(-0.1875rem) rotate(45deg);
     }
 
-    *:where(
-        *[data-facet="chevron"]:not(select)[data-size="xl"]:where(:open, :checked, :has(+ [popover]:popover-open)),
+    :where(
+        [data-facet="chevron"]:not(select)[data-size="xl"]:where(:open, :checked, :has(+ [popover]:popover-open)),
         details:open > summary:not([data-facet])[data-size="xl"],
         button[aria-haspopup="listbox"]:not([data-facet])[data-size="xl"]:has(+ [popover]:popover-open),
         label:has(> select[data-facet="chevron"][data-size="xl"]:open)
@@ -934,8 +934,8 @@
         transform: translateY(0.1875rem) rotate(225deg);
     }
 
-    *:where(
-        *[data-facet="chevron"]:not(select)[data-size="2xl"],
+    :where(
+        [data-facet="chevron"]:not(select)[data-size="2xl"],
         summary:not([data-facet])[data-size="2xl"],
         button[aria-haspopup="listbox"]:not([data-facet])[data-size="2xl"],
         label:has(> select[data-facet="chevron"][data-size="2xl"])
@@ -948,8 +948,8 @@
         transform:           translateY(-0.25rem) rotate(45deg);
     }
 
-    *:where(
-        *[data-facet="chevron"]:not(select)[data-size="2xl"]:where(:open, :checked, :has(+ [popover]:popover-open)),
+    :where(
+        [data-facet="chevron"]:not(select)[data-size="2xl"]:where(:open, :checked, :has(+ [popover]:popover-open)),
         details:open > summary:not([data-facet])[data-size="2xl"],
         button[aria-haspopup="listbox"]:not([data-facet])[data-size="2xl"]:has(+ [popover]:popover-open),
         label:has(> select[data-facet="chevron"][data-size="2xl"]:open)
@@ -959,7 +959,7 @@
 
     /* === reload, sync === */
 
-    *:where(
+    :where(
         [data-facet="reload"],
         [data-facet="sync"]
     )::after {
@@ -972,7 +972,7 @@
 
     /* --- size --- */
 
-    *:where(
+    :where(
         [data-facet="reload"],
         [data-facet="sync"]
     ) {
@@ -1007,7 +1007,7 @@
 
     /* === reload === */
 
-    *[data-facet="reload"]::after {
+    [data-facet="reload"]::after {
         clip-path: shape(
             from 50% 18.75%,
             arc to 78.412% 36.962% of 31.25% 31.25% ccw large,
@@ -1026,7 +1026,7 @@
 
     /* === sync === */
 
-    *[data-facet="sync"]::after {
+    [data-facet="sync"]::after {
         clip-path: shape(
             from 50% 18.75%,
             curve to 25.894% 30.112% with 40.3% 18.75% / 31.625% 23.169%,
@@ -1059,7 +1059,7 @@
 
     /* === visible === */
 
-    *[data-facet="eye"]::before {
+    [data-facet="eye"]::before {
         background-color: currentColor;
         content:          "";
         inset:            0;
@@ -1086,7 +1086,7 @@
         );
     }
 
-    *[data-facet="eye"]:where(:checked, [aria-pressed="true"])::before {
+    [data-facet="eye"]:where(:checked, [aria-pressed="true"])::before {
         clip-path: shape(
             from 100% 50%,
             curve to 50% 15.625% with 100% 50% / 81.25% 15.625%,
@@ -1099,7 +1099,7 @@
 
     /* --- size --- */
 
-    *[data-facet="eye"] {
+    [data-facet="eye"] {
         &[data-size="xs"]::before {
             block-size:  var(--xs-line-height);
             inline-size: var(--xs-line-height);

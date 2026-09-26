@@ -25,7 +25,7 @@
         color: var(--color-ink-mix);
     }
 
-    *:where(
+    :where(
         [data-group="inline"],
         form[role="search"],
         search,
@@ -40,7 +40,7 @@
         display: inline flow-root;
     }
 
-    *:where(
+    :where(
         [data-group="inline"],
         :is(
             search,
@@ -57,13 +57,13 @@
         }
     }
 
-    *:where(
+    :where(
         [data-group="inline"],
         search,
         form[role="search"],
         label
     ),
-    *:where(
+    :where(
         [data-group="inline"],
         search,
         form[role="search"],
@@ -74,7 +74,7 @@
 
     /* --- corner control --- */
 
-    *[data-group="inline"] > label:not(:last-child) > *:where(
+    [data-group="inline"] > label:not(:last-child) > :where(
         input:is(
             [type="text"],
             [type="email"],
@@ -85,7 +85,7 @@
         ),
         select
     ),
-    *[data-group="inline"] > *:where(
+    [data-group="inline"] > :where(
         :is(
             button,
             input:is(
@@ -99,17 +99,17 @@
             select,
             textarea
         ):not([data-surround]),
-        *[data-surround="fill"],
-        *[data-surround="outline"]
+        [data-surround="fill"],
+        [data-surround="outline"]
     ):not(:last-child),
-    *:where(
+    :where(
         search,
         form[role="search"]
-    ) > label:not(:last-child) > *:where(
+    ) > label:not(:last-child) > :where(
         input,
         select
     ),
-    *:where(
+    :where(
         search,
         form[role="search"]
     ) > button:not(:last-child) {
@@ -117,12 +117,12 @@
         border-start-end-radius: 0;
     }
 
-    *[data-group="inline"] > *:where(
+    [data-group="inline"] > :where(
         label,
         button,
         input,
         select
-    ) ~ label > *:where(
+    ) ~ label > :where(
         input:is(
             [type="text"],
             [type="email"],
@@ -133,12 +133,12 @@
         ),
         select
     ),
-    *[data-group="inline"] > *:where(
+    [data-group="inline"] > :where(
         label,
         button,
         input,
         select
-    ) ~ *:where(
+    ) ~ :where(
         :is(
             button,
             input:is(
@@ -152,17 +152,17 @@
             select,
             textarea
         ):not([data-surround]),
-        *[data-surround="fill"],
-        *[data-surround="outline"]
+        [data-surround="fill"],
+        [data-surround="outline"]
     ),
-    *:where(
+    :where(
         search,
         form[role="search"]
-    ) > label ~ label > *:where(
+    ) > label ~ label > :where(
         input,
         select
     ),
-    *:where(
+    :where(
         search,
         form[role="search"]
     ) > label ~ button {
@@ -172,8 +172,8 @@
 
     /* --- color --- */
 
-    *:where(
-        *[data-group="inline"],
+    :where(
+        [data-group="inline"],
         search,
         form[role="search"]
     ) {
@@ -181,7 +181,7 @@
             border-color: var(--color-ink-mix);
         }
 
-        &:has(*:where(
+        &:has(:where(
             :user-invalid,
             [aria-invalid="true"]
         )) {
@@ -191,10 +191,10 @@
             outline-width:  var(--md-border-width);
         }
 
-        &:has(*:where(
+        &:has(:where(
             :user-invalid,
             [aria-invalid="true"]
-        )) *:where(
+        )) :where(
             :user-invalid,
             [aria-invalid="true"]
         ):not(:focus-visible) {
@@ -206,7 +206,7 @@
                 border-color: ButtonBorder;
             }
 
-            &:has(*:where(
+            &:has(:where(
                 :user-invalid,
                 [aria-invalid="true"]
             )) {

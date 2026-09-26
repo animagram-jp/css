@@ -8,16 +8,16 @@
     
     css.input,
     css.button,
-    css.checkbox, /* dependency: data_style */
-    css.toggle, /* dependency: data_style, input */
-    css.radio, /* dependency: data_style */
+    css.checkbox,
+    css.toggle, /* dependency: input */
+    css.radio,
     css.heading,
     css.list,
     css.search, /* dependency: input, group */
     css.table,
     css.slider,
     css.step,
-    css.popup, /* order dependency: radio, popup */
+    css.popup, /* dependency: radio */
     css.error,
     css.toast;
 

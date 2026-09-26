@@ -1,8 +1,8 @@
 @layer css.data_style {
     /* === surround fill style === */
 
-    *:where([data-surround="fill"]),
-    *:where(
+    :where([data-surround="fill"]),
+    :where(
         button,
         [type="button"],
         [type="submit"],
@@ -20,7 +20,7 @@
 
     /* === surround outline style  === */
 
-    *[data-surround="outline"] {
+    [data-surround="outline"] {
         background-color: var(--color-paper);
         border-color:     currentColor;
         border-style:     solid;
@@ -32,7 +32,7 @@
 
     /* === surround input style === */
 
-    *:where(
+    :where(
         input:is(
             [type="text"],
             [type="email"],
@@ -56,7 +56,7 @@
     }
 
     @media (forced-colors: active) {
-        *:where(
+        :where(
             input:is(
                 [type="text"],
                 [type="email"],
@@ -117,8 +117,8 @@
 
     /* === surround transparent style === */
 
-    *:where(
-        *[data-surround="transparent"],
+    :where(
+        [data-surround="transparent"],
         li[role],
         li > [role]:where(a, button),
         li > label:has(> input[role])
@@ -134,8 +134,8 @@
 
     /* === underline inline style === */
 
-    *[data-style="underline"],
-    *:where(summary, a, [role="tab"]):not([data-surround]) {
+    [data-style="underline"],
+    :where(summary, a, [role="tab"]):not([data-surround]) {
         background-color:          var(--color-paper);
         border:                    none;
         box-decoration-break:      clone;
@@ -150,7 +150,7 @@
     /* -- forced color--- */
 
     @media (forced-colors: active) {
-        *:where(
+        :where(
             [data-surround=fill], 
             [data-surround=outline]
         ) {
@@ -161,7 +161,7 @@
 
     /* --- focus --- */
 
-    *:where(
+    :where(
         a,
         button,
         [type="button"],
@@ -176,7 +176,7 @@
     }
 
     *:focus-visible,
-    *:where(input[type="checkbox"], input[type="radio"]):where(
+    :where(input[type="checkbox"], input[type="radio"]):where(
         :hover,
         :active
     ) {
@@ -189,7 +189,7 @@
 
     @media (forced-colors: active) {
         *:focus-visible,
-        *:where(input[type="checkbox"], input[type="radio"]):where(
+        :where(input[type="checkbox"], input[type="radio"]):where(
             :hover,
             :active
         ) {
@@ -199,7 +199,7 @@
 
     /* --- hover --- */
 
-    *:where(
+    :where(
         a:any-link,
         button,
         [type="button"],
@@ -213,7 +213,7 @@
     }
 
     @media (hover: hover) {
-        *:where(a, button, [type="button"], [type="submit"], [type="reset"], summary):hover {
+        :where(a, button, [type="button"], [type="submit"], [type="reset"], summary):hover {
             text-decoration-color:     currentColor;
             text-decoration-line:      underline;
             text-decoration-thickness: max(0.1875rem, 0.12em);
@@ -223,27 +223,27 @@
 
     /* --- invalid --- */
 
-    *:where(:user-invalid, [aria-invalid="true"]) {
+    :where(:user-invalid, [aria-invalid="true"]) {
         border-color: var(--color-error);
     }
 
-    *:where(:user-invalid, [aria-invalid="true"]):focus-visible {
+    :where(:user-invalid, [aria-invalid="true"]):focus-visible {
         outline-color: var(--color-error);
     }
 
     @media (forced-colors: active) {
-        *:where(:user-invalid, [aria-invalid="true"]) {
+        :where(:user-invalid, [aria-invalid="true"]) {
             border-color: Mark;
         }
 
-        *:where(:user-invalid, [aria-invalid="true"]):focus-visible {
+        :where(:user-invalid, [aria-invalid="true"]):focus-visible {
             outline-color: Mark;
         }
     }
 
     /* --- active, pressed --- */
 
-    *:where(
+    :where(
         a:any-link,
         button,
         [type="button"],
@@ -251,7 +251,7 @@
         [type="reset"],
         summary
     )[data-surround="fill"]:where(:active, [aria-pressed="true"]),
-    *:where(
+    :where(
         button,
         [type="button"],
         [type="submit"],
@@ -261,7 +261,7 @@
         border-color:     transparent;
     }
 
-    *:where(
+    :where(
         a:any-link,
         button,
         [type="button"],
@@ -274,7 +274,7 @@
         color:            var(--color-emphasis-ink);
     }
 
-    *:where(
+    :where(
         a:any-link,
         summary
     ):where(
@@ -285,7 +285,7 @@
     }
 
     @media (forced-colors: active) {
-        *:where(
+        :where(
             a:any-link,
             button,
             [type="button"],
@@ -299,14 +299,14 @@
 
     /* --- disabled --- */
 
-    *:where(:disabled, [aria-disabled="true"]) {
+    :where(:disabled, [aria-disabled="true"]) {
         cursor:         not-allowed;
         pointer-events: none;
     }
 
     /* --- disabled, readonly --- */
 
-    *:is(
+    :is(
         :not(
             [data-surround="fill"],
             :is(
@@ -325,9 +325,9 @@
         color:        var(--color-ink-mix);
     }
 
-    *:is(
-        *[data-surround="fill"],
-        *:is(
+    :is(
+        [data-surround="fill"],
+        :is(
             button,
             [type="button"],
             [type="submit"],
@@ -345,8 +345,8 @@
     }
 
     @media (forced-colors: active) {
-        *:is(
-            :disabled, 
+        :is(
+            :disabled,
             [aria-disabled="true"],
             [readonly]
         ) {

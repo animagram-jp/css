@@ -16,13 +16,13 @@
 
     === menu / listbox ===
 
-    <button type="button" id="popover_button-2" popovertarget="popover-2" aria-expanded="false">
+    <button type="button" id="popover_button-2" popovertarget="popover-2">
     <menu|ol|ul id="popover-2" popover="auto" role="menu/listbox">
-        <li role="separator"></li>
+        <li></li>
         <li>
-            <a role="menuitem/option"></a></li>
+            <a></a></li>
         <li>
-            <a role="menuitem/option" aria-disabled="true"></a></li>
+            <a aria-disabled="true"></a></li>
         <li>
             <label>
                 <input type="checkbox" role="menuitemcheckbox/option" data-sign="check">
@@ -46,7 +46,7 @@
 
     <label>
         <span></span>
-        <input type="text" id="combobox" role="combobox" aria-expanded="false" aria-controls="listbox-2">
+        <input type="text" id="combobox">
         <button type="button" popovertarget="listbox-2"></button></label>
     <ol|ul id="listbox-2" popover="auto" role="listbox">...</ol|ul>
 
@@ -55,8 +55,8 @@
 
     === tooltip ===
 
-    <button type="button" id="tooltip_trigger-1" popovertarget="tooltip-1" aria-describedby="tooltip-1">
-    <* id="tooltip-1" popover="auto|manual" role="tooltip"></*>
+    <button type="button" id="tooltip_trigger-1" popovertarget="tooltip-1">
+    <* id="tooltip-1" popover="auto|manual"></*>
 
     #tooltip_trigger-1 {anchor-name: --tooltip_trigger-1;}
     #tooltip-1         {position-anchor: --tooltip_trigger-1;}
@@ -64,20 +64,20 @@
 
 @layer css.popup {
 
-    *[popover] {
+    [popover] {
         margin:                 0.25rem 0;
         position-area:          block-end span-inline-start;
         position-try-fallbacks: flip-block, flip-inline, flip-block flip-inline;
     }
 
-    *[popovertarget]:not(
+    [popovertarget]:not(
         :disabled,
         [aria-disabled="true"]
     ) {
         color: var(--color-ink);
     }
 
-    *:where(*[role="menu"], *[role="listbox"]) {
+    :where([role="menu"], [role="listbox"]) {
         background-color: var(--color-paper);
         border-color:     var(--color-ink-mix);
         border-style:     solid;
@@ -91,7 +91,7 @@
         width:            max-content;
     }
     @media (forced-colors: active) {
-        *:where(*[role="menu"], *[role="listbox"]) {
+        :where([role="menu"], [role="listbox"]) {
             background-color: Canvas;
             border-color:     ButtonBorder;
             color:            CanvasText;
@@ -101,10 +101,10 @@
     /* the li itself carries no role and no box; the role-bearing element (a, button, label) is
        styled directly as the visual row. an empty li (e.g. role="separator", with no children to
        take over the row) keeps its own box instead. */
-    *:where(*[role="menu"], *[role="listbox"]) > li {
+    :where([role="menu"], [role="listbox"]) > li {
         display: contents;
     }
-    *:where(*[role="menu"], *[role="listbox"]) > li:not(:has(*)) {
+    :where([role="menu"], [role="listbox"]) > li:not(:has(*)) {
         display: block;
     }
 
