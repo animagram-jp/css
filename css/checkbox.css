@@ -7,14 +7,6 @@
 
 @layer css.checkbox {
 
-    /* === color, layout === */
-
-    @media (prefers-reduced-motion: no-preference) {
-        input[type="checkbox"]:not([role="switch"]):not([data-sign], [data-facet], [data-surround]) {
-            transition: background-color 0.15s ease;
-        }
-    }
-
     input[type="checkbox"]:not([role="switch"]):where(:checked, :indeterminate) {
         color: var(--color-paper);
     }
