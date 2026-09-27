@@ -526,6 +526,61 @@
         }
     }
 
+    /* === file === */
+
+    [data-sign="file"]::after {
+        border-color: currentColor;
+        border-style: solid;
+        content:      "";
+        inset:        0;
+        margin:       auto;
+        position:     absolute;
+    }
+
+    /* --- size --- */
+
+    [data-sign="file"] {
+        &[data-size="xs"]::after {
+            block-size:    var(--xs-line-height);
+            border-radius: calc(var(--xs-line-height) * 0.125);
+            border-width:  calc(var(--xs-line-height) * 0.0625);
+            inline-size:   calc(var(--xs-line-height) * 0.75);
+        }
+        &[data-size="sm"]::after {
+            block-size:    var(--sm-line-height);
+            border-radius: calc(var(--sm-line-height) * 0.125);
+            border-width:  calc(var(--sm-line-height) * 0.0625);
+            inline-size:   calc(var(--sm-line-height) * 0.75);
+        }
+        &:where(
+            [data-size="md"],
+            :not([data-size])
+        )::after {
+            block-size:    var(--md-line-height);
+            border-radius: calc(var(--md-line-height) * 0.125);
+            border-width:  calc(var(--md-line-height) * 0.0625);
+            inline-size:   calc(var(--md-line-height) * 0.75);
+        }
+        &[data-size="lg"]::after {
+            block-size:    var(--lg-line-height);
+            border-radius: calc(var(--lg-line-height) * 0.125);
+            border-width:  calc(var(--lg-line-height) * 0.0625);
+            inline-size:   calc(var(--lg-line-height) * 0.75);
+        }
+        &[data-size="xl"]::after {
+            block-size:    var(--xl-line-height);
+            border-radius: calc(var(--xl-line-height) * 0.125);
+            border-width:  calc(var(--xl-line-height) * 0.0625);
+            inline-size:   calc(var(--xl-line-height) * 0.75);
+        }
+        &[data-size="2xl"]::after {
+            block-size:    var(--2xl-line-height);
+            border-radius: calc(var(--2xl-line-height) * 0.125);
+            border-width:  calc(var(--2xl-line-height) * 0.0625);
+            inline-size:   calc(var(--2xl-line-height) * 0.75);
+        }
+    }
+
     /* === hatch === */
 
     [data-sign="hatch"]::after {
