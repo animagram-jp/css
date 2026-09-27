@@ -2,12 +2,13 @@
     Usage:
 
     <input type="text|email|password|search|url|tel|checkbox|radio">
-    <textarea></textarea>
 
     <label>
         <span></span>
         <input type="password">
         <input type="checkbox"></label>
+
+    <textarea placeholder=""></textarea>
     
     <select>
         <option></option></select>
@@ -16,14 +17,7 @@
         <select data-facet="chevron">
             <option></option></select></label>
 */
-
 @layer css.input {
-    :where(
-        input[type="checkbox"],
-        input[type="radio"]
-    ) {
-        cursor: pointer;
-    }
 
     :where(
         input:is(
@@ -55,6 +49,17 @@
     ) {
         caret-color: var(--color-ink-mix);
         cursor:      text;
+
+        &::placeholder {
+            color: var(--color-ink-mix);        
+        }
+    }
+
+    :where(
+        input[type="checkbox"],
+        input[type="radio"]
+    ) {
+        cursor: pointer;
     }
     
     input[inputmode="numeric"] {
@@ -62,6 +67,10 @@
     }
 
     /* === password === */
+
+    input[type="password"]::-ms-reveal {
+        display: none;
+    }
 
     label:has(> input[type="password"]) {
         position: relative;
@@ -82,10 +91,6 @@
     }
     label:has(> input[type="password"]) > input[type="checkbox"]:where([data-size="md"], :not([data-size])) {
         padding-inline-end: var(--md-border-radius);
-    }
-
-    input[type="password"]::-ms-reveal {
-        display: none;
     }
 
     select:not([data-facet]) {

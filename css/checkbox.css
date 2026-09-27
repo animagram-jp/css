@@ -11,8 +11,6 @@
         color: var(--color-paper);
     }
 
-    /* === sign === */
-
     input[type="checkbox"]:not([role="switch"]):is(:not([data-sign]):not([data-facet]), [data-sign="check"])::before {
         border-color: var(--color-paper);
     }
