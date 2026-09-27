@@ -256,11 +256,6 @@
 
     html {
         scrollbar-gutter: stable;
-
-        &:has(:modal) {
-            overflow: clip;
-            scrollbar-gutter: auto;        
-        }
     }
 
     @media print {
@@ -273,11 +268,6 @@
         color: var(--color-ink);
         background: var(--color-paper);
         margin: 0;
-
-        &:has(:modal) {
-            overflow: auto;
-            scrollbar-gutter: stable;
-        }
     }
 
     ::selection, mark {
@@ -300,6 +290,9 @@
     ) {
         font-family: var(--font-family-monospace);
         font-style: normal;
+        font-feature-settings: initial; /* per kiso.css:193 */
+        font-variation-settings: initial; /* per kiso.css:194 */
+        font-variant-ligatures: none; /* per kiso.css:203 */
     }
 
     /* --- forced-color --- */
