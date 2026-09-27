@@ -41,8 +41,7 @@
             [type="search"],
             [type="url"],
             [type="tel"],
-            [type="checkbox"]:not([role="switch"]),
-            [type="checkbox"][role="switch"],
+            [type="checkbox"],
             [type="radio"]
         ):not([data-sign], [data-facet], [data-surround]),
         select,
@@ -65,8 +64,7 @@
                 [type="search"],
                 [type="url"],
                 [type="tel"],
-                [type="checkbox"]:not([role="switch"]),
-                [type="checkbox"][role="switch"],
+                [type="checkbox"],
                 [type="radio"]
             ):not([data-sign], [data-facet], [data-surround]),
             select,

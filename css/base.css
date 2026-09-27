@@ -310,7 +310,7 @@
 
     /* --- class, attribute --- */
 
-    [hidden], .hidden {
+    .hidden {
         display: none !important;
     }
 
