@@ -528,15 +528,7 @@
 
     /* === file === */
 
-    /* the folded corner (inline-end/block-start) matches the bootstrap-icons
-       "file-earmark" glyph: the notch removed from ::after is a right
-       triangle whose two legs are equal in physical length (a 45deg cut),
-       and ::before fills that notch with a crease line of its own, the
-       same thickness as the border. Since the border-width is always the
-       same fraction of the line-height across every size, both clip-path
-       polygons stay correct at every size without a per-size override. */
-
-    [data-sign="file"]::after {
+    [data-sign="file"]::before {
         border-color:            currentColor;
         border-style:            solid;
         border-top-right-radius: 0;
@@ -547,7 +539,7 @@
         position:                absolute;
     }
 
-    [data-sign="file"]::before {
+    [data-sign="file"]::after {
         background-color: currentColor;
         clip-path:        polygon(62.5% 0%, 100% 28.125%, 94.1074% 32.5444%, 56.6074% 4.4194%);
         content:          "";
@@ -565,7 +557,7 @@
                 block-size:  var(--xs-line-height);
                 inline-size: calc(var(--xs-line-height) * 0.75);
             }
-            &::after {
+            &::before {
                 border-radius: calc(var(--xs-line-height) * 0.125);
                 border-top-right-radius: 0;
                 border-width:  calc(var(--xs-line-height) * 0.0625);
@@ -577,7 +569,7 @@
                 block-size:  var(--sm-line-height);
                 inline-size: calc(var(--sm-line-height) * 0.75);
             }
-            &::after {
+            &::before {
                 border-radius: calc(var(--sm-line-height) * 0.125);
                 border-top-right-radius: 0;
                 border-width:  calc(var(--sm-line-height) * 0.0625);
@@ -592,7 +584,7 @@
                 block-size:  var(--md-line-height);
                 inline-size: calc(var(--md-line-height) * 0.75);
             }
-            &::after {
+            &::before {
                 border-radius: calc(var(--md-line-height) * 0.125);
                 border-top-right-radius: 0;
                 border-width:  calc(var(--md-line-height) * 0.0625);
@@ -604,7 +596,7 @@
                 block-size:  var(--lg-line-height);
                 inline-size: calc(var(--lg-line-height) * 0.75);
             }
-            &::after {
+            &::before {
                 border-radius: calc(var(--lg-line-height) * 0.125);
                 border-top-right-radius: 0;
                 border-width:  calc(var(--lg-line-height) * 0.0625);
@@ -616,7 +608,7 @@
                 block-size:  var(--xl-line-height);
                 inline-size: calc(var(--xl-line-height) * 0.75);
             }
-            &::after {
+            &::before {
                 border-radius: calc(var(--xl-line-height) * 0.125);
                 border-top-right-radius: 0;
                 border-width:  calc(var(--xl-line-height) * 0.0625);
@@ -628,7 +620,7 @@
                 block-size:  var(--2xl-line-height);
                 inline-size: calc(var(--2xl-line-height) * 0.75);
             }
-            &::after {
+            &::before {
                 border-radius: calc(var(--2xl-line-height) * 0.125);
                 border-top-right-radius: 0;
                 border-width:  calc(var(--2xl-line-height) * 0.0625);
