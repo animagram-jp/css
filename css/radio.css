@@ -49,13 +49,11 @@
     fieldset:has(> label > input[type="radio"]) > legend > * {
         grid-column:     1 / -1;
         min-inline-size: 0;
-        overflow-wrap:   anywhere;
     }
 
     fieldset:has(> label > input[type="radio"]) > *:not(legend, label) {
         grid-column:     1 / -1;
         min-inline-size: 0;
-        overflow-wrap:   anywhere;
         margin:          0;
     }
 
