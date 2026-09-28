@@ -61,7 +61,15 @@
     ) {
         cursor: pointer;
     }
-    
+
+    :where(
+        input[type="checkbox"],
+        input[type="radio"]
+    ):is([data-sign]):not([data-sign-style="inline"], [data-surround]):where(:checked, :indeterminate) {
+        background-color: var(--color-emphasis-ink);
+        color:             var(--color-paper);
+    }
+
     input[inputmode="numeric"] {
         text-align: right;
     }

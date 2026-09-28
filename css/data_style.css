@@ -9,7 +9,7 @@
         [type="submit"],
         [type="reset"],
         [data-type="toast"] > *
-    ):where(not([data-surround])) {
+    ):not([data-surround]) {
         background-color: var(--color-emphasis-ink);
         border-color:     transparent;
         border-style:     solid;
