@@ -80,6 +80,34 @@
         margin-block: auto;
     }
 
+    /*  === sign-style: inline === */
+
+    [data-sign-style="inline"] {
+        vertical-align: middle;
+    }
+
+    [data-sign-style="inline"]:not([data-size] *) {
+        block-size: var(--md-line-height);
+    }
+    [data-size="xs"] [data-sign-style="inline"]:not([data-size="xs"] [data-size] *) {
+        block-size: var(--xs-line-height);
+    }
+    [data-size="sm"] [data-sign-style="inline"]:not([data-size="sm"] [data-size] *) {
+        block-size: var(--sm-line-height);
+    }
+    [data-size="md"] [data-sign-style="inline"]:not([data-size="md"] [data-size] *) {
+        block-size: var(--md-line-height);
+    }
+    [data-size="lg"] [data-sign-style="inline"]:not([data-size="lg"] [data-size] *) {
+        block-size: var(--lg-line-height);
+    }
+    [data-size="xl"] [data-sign-style="inline"]:not([data-size="xl"] [data-size] *) {
+        block-size: var(--xl-line-height);
+    }
+    [data-size="2xl"] [data-sign-style="inline"]:not([data-size="2xl"] [data-size] *) {
+        block-size: var(--2xl-line-height);
+    }
+
     /* === data-inline-align === */
 
     /* --- center --- */
@@ -176,34 +204,6 @@
         inset-inline-start: auto;
         inset-inline-end:   0;
         margin-inline:      0;
-    }
-
-    /*  === sign-style: inline === */
-
-    [data-sign-style="inline"] {
-        vertical-align: middle;
-    }
-
-    [data-sign-style="inline"]:not([data-size] *) {
-        block-size: var(--md-line-height);
-    }
-    [data-size="xs"] [data-sign-style="inline"]:not([data-size="xs"] [data-size] *) {
-        block-size: var(--xs-line-height);
-    }
-    [data-size="sm"] [data-sign-style="inline"]:not([data-size="sm"] [data-size] *) {
-        block-size: var(--sm-line-height);
-    }
-    [data-size="md"] [data-sign-style="inline"]:not([data-size="md"] [data-size] *) {
-        block-size: var(--md-line-height);
-    }
-    [data-size="lg"] [data-sign-style="inline"]:not([data-size="lg"] [data-size] *) {
-        block-size: var(--lg-line-height);
-    }
-    [data-size="xl"] [data-sign-style="inline"]:not([data-size="xl"] [data-size] *) {
-        block-size: var(--xl-line-height);
-    }
-    [data-size="2xl"] [data-sign-style="inline"]:not([data-size="2xl"] [data-size] *) {
-        block-size: var(--2xl-line-height);
     }
 
     /* === check === */
