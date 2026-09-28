@@ -7,7 +7,7 @@
 
 @layer css.checkbox {
 
-    input[type="checkbox"]:not([role="switch"]):where(:checked, :indeterminate) {
+    input[type="checkbox"]:not([role="switch"]):not([data-sign]):not([data-facet]):where(:checked, :indeterminate) {
         color: var(--color-paper);
     }
 
