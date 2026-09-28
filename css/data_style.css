@@ -2,14 +2,16 @@
 
     /* === surround fill style === */
 
-    :where([data-surround="fill"]),
     :where(
-        button,
-        [type="button"],
-        [type="submit"],
-        [type="reset"],
-        [data-type="toast"] > *
-    ):not([data-surround]) {
+        [data-surround="fill"],
+        :is(
+            button,
+            [type="button"],
+            [type="submit"],
+            [type="reset"],
+            [data-type="toast"] > *
+        ):not([data-surround])
+    ) {
         background-color: var(--color-emphasis-ink);
         border-color:     transparent;
         border-style:     solid;
@@ -17,6 +19,40 @@
         display:          inline flow-root;
         vertical-align:   middle;
         width:            auto;
+    }
+
+    :where(
+        [data-surround="fill"],
+        :is(
+            button,
+            [type="button"],
+            [type="submit"],
+            [type="reset"],
+            [data-type="toast"] > *
+        ):not([data-surround])
+    ) > ::selection,
+    :where(
+        [data-surround="fill"],
+        :is(
+            button,
+            [type="button"],
+            [type="submit"],
+            [type="reset"],
+            [data-type="toast"] > *
+        ):not([data-surround])
+    )::selection,
+    :where(
+        [data-surround="fill"],
+        :is(
+            button,
+            [type="button"],
+            [type="submit"],
+            [type="reset"],
+            [data-type="toast"] > *
+        ):not([data-surround])
+    ) > mark {
+        background-color: var(--color-highlight-paper);
+        color:             var(--color-ink);
     }
 
     /* === surround outline style  === */
@@ -104,7 +140,8 @@
         [data-surround="transparent"],
         li[role],
         li > [role]:where(a, button),
-        li > label:has(> input[role])
+        li > label:has(> input[role]),
+        [popovertarget]:not([data-surround])
     ) {
         background-color: transparent;
         border:           none;

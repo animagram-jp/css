@@ -11,7 +11,7 @@ Interface design system and DOM implements.
 
 | Version | Status    | Date       | Description |
 |---------|-----------|------------|-------------|
-| 0.1.0   | Scheduled | 2026-09-30 | 1st release |
+| 0.1.0   | Scheduled | 2026-09-28 | 1st release |
 
 ---
 

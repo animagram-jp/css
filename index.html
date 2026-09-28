@@ -2,30 +2,30 @@
 <html lang="ja">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <meta content="width=device-width,initial-scale=1" name="viewport">
     <title>css examples</title>
-    <link rel="icon" href="data:,">
-    <link rel="icon" href="reference/animagram.png">
-    <link rel="stylesheet" href="./css/reset.css">
-    <link rel="stylesheet" href="./css/base.css">
-    <link rel="stylesheet" href="./css/data_style.css">
-    <link rel="stylesheet" href="./css/data_size.css">
-    <link rel="stylesheet" href="./css/data_sign.css">
-    <link rel="stylesheet" href="./css/data_group.css">
-    <link rel="stylesheet" href="./css/input.css">
-    <link rel="stylesheet" href="./css/button.css">
-    <link rel="stylesheet" href="./css/toggle.css">
-    <link rel="stylesheet" href="./css/checkbox.css">
-    <link rel="stylesheet" href="./css/radio.css">
-    <link rel="stylesheet" href="./css/popup.css">
-    <link rel="stylesheet" href="./css/heading.css">
-    <link rel="stylesheet" href="./css/search.css">
-    <link rel="stylesheet" href="./css/table.css">
-    <link rel="stylesheet" href="./css/slider.css">
-    <link rel="stylesheet" href="./css/step.css">
-    <link rel="stylesheet" href="./css/error.css">
-    <link rel="stylesheet" href="./css/toast.css">
-    <link rel="stylesheet" href="./reference/style.css">
+    <link href="data:," rel="icon">
+    <link href="reference/animagram.png" rel="icon">
+    <link href="./css/reset.css" rel="stylesheet">
+    <link href="./css/base.css" rel="stylesheet">
+    <link href="./css/data_style.css" rel="stylesheet">
+    <link href="./css/data_size.css" rel="stylesheet">
+    <link href="./css/data_sign.css" rel="stylesheet">
+    <link href="./css/data_group.css" rel="stylesheet">
+    <link href="./css/input.css" rel="stylesheet">
+    <link href="./css/button.css" rel="stylesheet">
+    <link href="./css/toggle.css" rel="stylesheet">
+    <link href="./css/checkbox.css" rel="stylesheet">
+    <link href="./css/radio.css" rel="stylesheet">
+    <link href="./css/popup.css" rel="stylesheet">
+    <link href="./css/heading.css" rel="stylesheet">
+    <link href="./css/search.css" rel="stylesheet">
+    <link href="./css/table.css" rel="stylesheet">
+    <link href="./css/slider.css" rel="stylesheet">
+    <link href="./css/step.css" rel="stylesheet">
+    <link href="./css/error.css" rel="stylesheet">
+    <link href="./css/toast.css" rel="stylesheet">
+    <link href="./reference/style.css" rel="stylesheet">
     <script src="./reference/style.js" type="module"></script></head>
 <body>
     <header>
@@ -39,901 +39,917 @@
                 <span>data-color-scheme</span></legend>
             <label>
                 <span>light-less-contrast</span>
-                <input type="radio" name="color-scheme" value="light-less-contrast"></label>
+                <input name="color-scheme" type="radio" value="light-less-contrast"></label>
             <label>
                 <span>light</span>
-                <input type="radio" name="color-scheme" value="light"></label>
+                <input name="color-scheme" type="radio" value="light"></label>
             <label>
                 <span>light-high-contrast</span>
-                <input type="radio" name="color-scheme" value="light-high-contrast"></label>
+                <input name="color-scheme" type="radio" value="light-high-contrast"></label>
             <label>
                 <span>dark-less-contrast</span>
-                <input type="radio" name="color-scheme" value="dark-less-contrast"></label>
+                <input name="color-scheme" type="radio" value="dark-less-contrast"></label>
             <label>
                 <span>dark</span>
-                <input type="radio" name="color-scheme" value="dark"></label>
+                <input name="color-scheme" type="radio" value="dark"></label>
             <label>
                 <span>dark-high-contrast</span>
-                <input type="radio" name="color-scheme" value="dark-high-contrast"></label></fieldset></header>
+                <input name="color-scheme" type="radio" value="dark-high-contrast"></label></fieldset></header>
 
-    <section>
-        <h2>Blockquote</h2>
-        <figure data-sign="rule">
-            <blockquote>
-                <p>"I will cast the dark shadows of human life over you without reserve. But you must not be afraid."</p></blockquote>
-            <figcaption>Soseki Natsume. 1914. <cite lang="en">Kokoro</cite>. Iwanami Shoten, Tokyo, Japan. Translated by Andyou, 2026.</figcaption></figure></section>
+    <main>
+        <section>
+            <h2>Blockquote</h2>
+            <figure data-sign="rule">
+                <blockquote>
+                    <p>"I will cast the dark shadows of human life over you without reserve. But you must not be afraid."</p></blockquote>
+                <figcaption>Soseki Natsume. 1914. <cite lang="en">Kokoro</cite>. Iwanami Shoten, Tokyo, Japan. Translated by Andyou, 2026.</figcaption></figure></section>
 
-    <section>
-        <h2>Icon badge</h2>
-        <section data-sign="rule">
-            <label>
-                <span>none</span>
-                <input type="radio" name="icon-badge" value="none" checked></label>
-            <label>
-                <span>active</span>
-                <input type="radio" name="icon-badge" value="active"></label>
-            <label>
-                <span>information</span>
-                <input type="radio" name="icon-badge" value="information"></label></section></section>
-
-    <section>
-        <h2>Input style</h2>
-        <section data-sign="rule">
-            <label>
-                <span>input[type="text"]</span>
-                <input type="text"></label>
-            <label>
-                <span>input[type="email"] required</span>
-                <input type="email" required></label>
-            <label data-group="inline">
-                <span>input[type="password"]</span>
-                <input id="password" type="password" autocomplete="current-password" maxlength="20" value="password">
-                <input type="checkbox" aria-controls="password" data-facet="eye"></label>
-            <label>
-                <span>input[type="search"]</span>
-                <input type="search"></label>
-            <label>
-                <span>input[type="url"]</span>
-                <input type="url"></label>
-            <label>
-                <span>input[type="tel"]</span>
-                <input type="tel" readonly value="readonly"></label>
-            <label>
-                <span>select</span>
-                <select>
-                    <option>option</option>
-                    <option>option</option></select></label>
-            <label>
-                <span>label > select[data-facet="chevron"]</span>
-                <select data-facet="chevron">
-                    <option>option</option>
-                    <option>option</option></select></label>
-            <label>
-                <span>textarea</span>
-                <textarea></textarea></label></section>
-        <section data-sign="rule">
-            <h3>size</h3>
-            <label>
-                <span>input[type="text"]</span>
-                <input type="text" data-size="xs" value="xs"></label>
-            <label>
-                <span>input[type="email"], aria-invalid="true"</span>
-                <input type="text" data-size="sm" value="sm" aria-invalid="true"></label>
-            <label>
-                <span>input[type="url"], disabled</span>
-                <input type="url" value="(md)" disabled></label>
-            <label>
-                <span>select</span>
-                <select data-size="lg">
-                    <option checked>lg</option></select></label>
-            <label>
-                <span>label > select[data-facet="chevron"]</span>
-                <select data-facet="chevron" data-size="xl">
-                    <option>xl</option></select></label>
-            <label>
-                <span>texarea</span>
-                <textarea type="text" data-size="2xl" placeholder="2xl"></textarea></label></section>
-
-        <section data-sign="rule">
-            <h3>:required - label > span:first-child, fieldset > legend > span</h3>
-            <label>
-                <span>input[type="checkbox"], required</span>
-                <input type="checkbox" required></label>
-            <fieldset style="grid-template-columns: max-content repeat(1, minmax(0, max-content));">
+        <section>
+            <h2>Icon badge</h2>
+            <fieldset data-axis="inline" data-sign="rule">
                 <legend>
-                    <span>fieldset:has(:required) > legend</span></legend>
+                    <span>Icon badge</span></legend>
                 <label>
-                    <span>choice A</span>
-                    <input type="radio" name="req-demo" required></label>
+                    <span>none</span>
+                    <input checked name="icon-badge" type="radio" value="none"></label>
                 <label>
-                    <span>choice B</span>
-                    <input type="radio" name="req-demo"></label></fieldset></section></section>
+                    <span>active</span>
+                    <input name="icon-badge" type="radio" value="active"></label>
+                <label>
+                    <span>information</span>
+                    <input name="icon-badge" type="radio" value="information"></label></fieldset></section>
 
-    <section>
-        <h2>Surround style, underline style</h2>
-        <section data-sign="rule">
-            <button type="button">button (data-surround="fill")</button>
-            <a href="#dummy">a (data-style="underline")</a>
-            <details>
-                <summary>summary (data-style="underline")</summary>
-                <p>details > summary, p</p></details>
-            <button type="button" data-surround="outline">button data-surround="outline"</button>
-            <a href="#dummy" data-surround="outline">a data-surround="outline"</a>
-            <details>
-                <summary data-surround="outline">summary (data-surround="outline")</summary>
-                <p>details > summary, p</p></details></section>
-        <section data-sign="rule">
-            <h3>size</h3>
-            <button data-size="xs">xs</button>
-            <a href="#anchor" data-size="xs">xs</a>
-            <button data-size="sm">sm</button>
-            <a href="#anchor" data-size="sm">sm</a>
-            <button data-size="md">(md)</button>
-            <a href="#anchor" data-size="md">(md)</a>
-            <button data-size="lg">lg</button>
-            <a href="#anchor" data-size="lg">lg</a>
-            <button data-size="xl">xl</button>
-            <a href="#anchor" data-size="xl">xl</a>
-            <button data-size="2xl" disabled>2xl, disabled</button>
-            <a href="#anchor" data-size="2xl" aria-disabled="true">2xl, aria-disabled="true"</a></section></section>
-
-    <section>
-        <h2>Sign</h2>
-        <section data-sign="rule">
-            <label><button data-sign="check"></button></label>
-            <label><input type="checkbox" data-sign="check"></label>
-            <label><input type="checkbox" data-sign="check" data-surround="transparent"></label>
-            <label><button data-sign="copy"></button></label>
-            <label><input type="checkbox" data-sign="copy"></label>
-            <label><button data-sign="file"></button></label>
-            <label><input type="checkbox" data-sign="file"></label>
-            <label><button data-sign="hatch"></button></label>
-            <label><input type="checkbox" data-sign="hatch"></label>
-            <label><button data-sign="minus"></button></label>
-            <label><input type="checkbox" data-sign="minus"></label>
-            <label><button data-sign="plus"></button></label>
-            <label><input type="checkbox" data-sign="plus"></label>
-            <label><button data-sign="x"></button></label>
-            <label><input type="checkbox" data-sign="x"></label>
-            <label><button data-sign="x"></button></label>
-            <label><input type="checkbox" data-sign="x"></label>
-            <label><button data-facet="chevron" data-inline-align="center"></button></label>
-            <label><input type="checkbox" data-facet="chevron" data-inline-align="center"></label>
-            <label><button data-facet="reload"></button></label>
-            <label><input type="checkbox" data-facet="reload"></label>
-            <label><button data-facet="sync"></button></label>
-            <label><input type="checkbox" data-facet="sync"></label>
-            <label><button data-facet="eye"></button></label>
-            <label><input type="checkbox" data-facet="eye"></label>
-            <label><input type="radio" data-facet="chevron" name="sign-radio" checked></label>
-            <label><input type="radio" data-facet="chevron" name="sign-radio"></label></section>
-        </section>
-
-    <section>
-        <h2>Popup</h2>
-        <section data-sign="rule">
-            <button type="button" id="listbox-1-trigger" popovertarget="listbox-1" aria-haspopup="listbox" aria-controls="listbox-1" data-surround="outline">button[aria-haspopup="listbox"]</button>
-            <ul id="listbox-1" popover="auto" role="listbox" aria-labelledby="listbox-1-trigger">
-                <li role="separator">li[role="separator"]</li>
-                <li>
-                    <label>
-                        <input type="radio" role="option" data-sign="check" data-sign-style="inline" name="listbox-radio" checked>
-                        <span>li > label > (radio[role="option"], span)</span></label></li>
-                <li>
-                    <label>
-                        <input type="radio" role="option" data-sign="check" data-sign-style="inline" name="listbox-radio">
-                        <span>span</span></label></li>
-                <li>
-                    <label>
-                        <input type="checkbox" role="option" data-sign="check" data-sign-style="inline">
-                        <span>li > label > (checkbox[role="option"], span)</span></label></li>
-                <li>
-                    <button role="option">li > button[role="option"]</button></li></ul>
-            <button type="button" id="listbox-8-trigger" popovertarget="listbox-8" aria-haspopup="listbox" aria-controls="listbox-8" data-surround="outline" disabled>button[aria-haspopup="listbox"]:disalbed</button>
-            <ul id="listbox-8" popover="auto" role="listbox" aria-labelledby="listbox-8-trigger">
-                <li role="separator">li[role="separator"]</li>
-                <li>
-                    <label>
-                        <input type="radio" role="option" data-sign="check" data-sign-style="inline" name=""></li></ul></section></section>
-
-    <section>
-        <h2>Checkbox</h2>
-        <section data-sign="rule">
-            <label>
-                <span>label > (span, label > input[type="checkbox"])</span>
-                <input type="checkbox"></label>
-            <label>
-                <span>checked</span>
-                <input type="checkbox" checked></label>
-            <label>
-                <span>data-indeterminate</span>
-                <input type="checkbox" data-indeterminate></label>
-            <label>
-                <span>checked aria-invalid="true"</span>
-                <input type="checkbox" aria-invalid="true" checked></label>
-            <label>
-                <span>disabled</span>
-                <input type="checkbox" disabled></label>
-            <label>
-                <span>checked disabled</span>
-                <input type="checkbox" checked disabled></label></section>
-        <section data-sign="rule">
-            <h3>size</h3>
-            <label>
-                <span>xs</span>
-                <input type="checkbox" data-size="xs"></label>
-            <label>
-                <span>sm</span>
-                <input type="checkbox" data-size="sm"></label>
-            <label>
-                <span>(md)</span>
-                <input type="checkbox" data-size="md"></label>
-            <label>
-                <span>lg</span>
-                <input type="checkbox" data-size="lg"></label>
-            <label>
-                <span>xl</span>
-                <input type="checkbox" data-size="xl"></label>
-            <label>
-                <span>2xl</span>
-                <input type="checkbox" data-size="2xl"></label></section></section>
-
-    <section>
-        <h2>Radio</h2>
-        <section data-sign="rule">
-            <label>
-                <span>label > (span, input[type="radio"])</span>
-                <input type="radio" name="r"></label>
-            <label>
-                <span>checked</span>
-                <input type="radio" name="r" checked></label>
-            <label>
-                <span>inline</span>
-                <input type="radio" name="r-state" aria-invalid="true"></label>
-            <label>
-                <span>inline</span>
-                <input type="radio" name="r-state" aria-invalid="true" checked></label>
-            <label>
-                <span>inline</span>
-                <input type="radio" name="r-disabled" disabled></label>
-            <label>
-                <span>inline</span>
-                <input type="radio" name="r-disabled" checked disabled></label></section>
-        <section data-sign="rule">
-            <h2>size</h2>
-            <label>
-                <span>xs</span>
-                <input type="radio" name="r-size" data-size="xs" checked></label>
-            <label>
-                <span>sm</span>
-                <input type="radio" name="r-size" data-size="sm"></label>
-            <label>
-                <span>(md)</span>
-                <input type="radio" name="r-size" data-size="md"></label>
-            <label>
-                <span>lg</span>
-                <input type="radio" name="r-size" data-size="lg"></label>
-            <label>
-                <span>xl</span>
-                <input type="radio" name="r-size" data-size="xl"></label>
-            <label>
-                <span>2xl</span>
-                <input type="radio" name="r-size" data-size="2xl"></label></section></section>
-
-        <section data-sign="rule" aria-labelledby="h3-radio-button-field">
-            <h3 id="h3-radio-button-field">Fieldset</h3>
-            <fieldset id="section_fieldset" style="grid-template-columns: repeat(3, minmax(0, max-content));">
-                <legend>
-                    <span>repeat(3, max-content)</span></legend>
+        <section>
+            <h2>Input style</h2>
+            <section data-sign="rule">
                 <label>
-                    <span>Light (less contrast)</span>
-                    <input type="radio" name="grid-demo-2b" value="light-less-contrast"></label>
+                    <span>input[type="text"]</span>
+                    <input type="text"></label>
                 <label>
-                    <span>Light</span>
-                    <input type="radio" name="grid-demo-2b" value="light"></label>
+                    <span>input[type="email"] required</span>
+                    <input required type="email"></label>
+                <label data-group="inline">
+                    <span>input[type="password"]</span>
+                    <input id="password" autocomplete="current-password" maxlength="20" type="password" value="password">
+                    <input type="checkbox" aria-controls="password" aria-label="show password" data-facet="eye"></label>
                 <label>
-                    <span>Light (high contrast)</span>
-                    <input type="radio" name="grid-demo-2b" value="light-high-contrast"></label>
+                    <span>input[type="search"]</span>
+                    <input type="search"></label>
                 <label>
-                    <span>Dark (less contrast)</span>
-                    <input type="radio" name="grid-demo-2b" value="dark-less-contrast"></label>
+                    <span>input[type="url"]</span>
+                    <input type="url"></label>
                 <label>
-                    <span>Dark</span>
-                    <input type="radio" name="grid-demo-2b" value="dark"></label>
+                    <span>input[type="tel"]</span>
+                    <input readonly type="tel" value="readonly"></label>
                 <label>
-                    <span>Dark (high contrast)</span>
-                    <input type="radio" name="grid-demo-2b" value="dark-high-contrast"></label></fieldset>
-    
-            <fieldset style="grid-template-columns: repeat(3, 10rem);">
-                <legend>
-                    <span>repeat(3, 10rem)</span></legend>
+                    <span>select</span>
+                    <select>
+                        <option>option</option>
+                        <option>option</option></select></label>
                 <label>
-                    <span>Light (less contrast)</span>
-                    <input type="radio" name="grid-demo-2d" value="light-less-contrast"></label>
-                <label>
-                    <span>Light</span>
-                    <input type="radio" name="grid-demo-2d" value="light"></label>
-                <label>
-                    <span>Light (high contrast)</span>
-                    <input type="radio" name="grid-demo-2d" value="light-high-contrast"></label>
-                <label>
-                    <span>Dark (less contrast)</span>
-                    <input type="radio" name="grid-demo-2d" value="dark-less-contrast"></label>
-                <label>
-                    <span>Dark</span>
-                    <input type="radio" name="grid-demo-2d" value="dark"></label>
-                <label>
-                    <span>Dark (high contrast)</span>
-                    <input type="radio" name="grid-demo-2d" value="dark-high-contrast"></label></fieldset>
-    
-            <fieldset data-axis="inline" style="grid-template-columns: auto repeat(3, minmax(0, max-content)); grid-template-rows: repeat(2, auto);">
-                <legend>
-                    <span>axis=inline, grid-auto-columns: max-content</span></legend>
-                <label>
-                    <span>Light (less contrast)</span>
-                    <input type="radio" name="grid-demo-3e" value="light-less-contrast"></label>
-                <label>
-                    <span>Light</span>
-                    <input type="radio" name="grid-demo-3e" value="light"></label>
-                <label>
-                    <span>Light (high contrast)</span>
-                    <input type="radio" name="grid-demo-3e" value="light-high-contrast"></label>
-                <label>
-                    <span>Dark (less contrast)</span>
-                    <input type="radio" name="grid-demo-3e" value="dark-less-contrast"></label>
-                <label>
-                    <span>Dark</span>
-                    <input type="radio" name="grid-demo-3e" value="dark"></label>
-                <label>
-                    <span>Dark (high contrast)</span>
-                    <input type="radio" name="grid-demo-3e" value="dark-high-contrast"></label></fieldset>
-    
-            <fieldset data-axis="inline" style="grid-template-columns: auto repeat(3, 10rem); grid-template-rows: repeat(2, auto);">
-                <legend>
-                    <span>axis=inline, grid-auto-columns: 10rem</span></legend>
-                <label>
-                    <span>Light (less contrast)</span>
-                    <input type="radio" name="grid-demo-3f" value="light-less-contrast"></label>
-                <label>
-                    <span>Light</span>
-                    <input type="radio" name="grid-demo-3f" value="light"></label>
-                <label>
-                    <span>Light (high contrast)</span>
-                    <input type="radio" name="grid-demo-3f" value="light-high-contrast"></label>
-                <label>
-                    <span>Dark (less contrast)</span>
-                    <input type="radio" name="grid-demo-3f" value="dark-less-contrast"></label>
-                <label>
-                    <span>Dark</span>
-                    <input type="radio" name="grid-demo-3f" value="dark"></label>
-                <label>
-                    <span>Dark (high contrast)</span>
-                    <input type="radio" name="grid-demo-3f" value="dark-high-contrast"></label></fieldset></section></section>
-
-    <section>
-        <h2>Tab</h2>
-        <section data-sign="rule">
-            <label id="tab-1" role="tab" aria-controls="tabpanel-1">
-                <span>span</span>
-                <input type="radio" name="tab" checked></label>
-            <label id="tab-2" role="tab" aria-controls="tabpanel-2">
-                <span>span</span>
-                <input type="radio" name="tab"></label></section>
-        <section id="tabpanel-1" role="tabpanel" aria-labelledby="tab-1">tabpanel-1</section>
-        <section id="tabpanel-2" role="tabpanel" aria-labelledby="tab-2">tabpanel-2</section></section>
-
-    <section>
-        <h2>Toggle</h2>
-        <section data-sign="rule">
-            <label>
-                <span>label > (span, input[type="checkbox"][role="switch"])</span>
-                <input type="checkbox" role="switch"></label>
-            <label data-axis="block" data-type="knob-only">
-                <span>data-axis="block", data-type="knob-only"</span>
-                <input type="checkbox" role="switch"></label></section>
-        <section data-sign="rule">
-            <h3>size</h3>
-            <label>
-                <span>xs</span>
-                <input type="checkbox" role="switch" data-size="xs"></label>
-            <label>
-                <span>sm</span>
-                <input type="checkbox" role="switch" data-size="sm"></label>
-            <label>
-                <span>(md)</span>
-                <input type="checkbox" role="switch"></label>
-            <label>
-                <span>lg</span>
-                <input type="checkbox" role="switch" data-size="lg"></label>
-            <label>
-                <span>xl disabled</span>
-                <input type="checkbox" role="switch" data-size="xl" disabled></label>
-            <label>
-                <span>2xl checked disabled</span>
-                <input type="checkbox" role="switch" data-size="2xl" checked disabled></label></section></section>
-
-    <section>
-        <h2>Step - button, input[role="spinbutton"]</h2>
-        <section data-sign="rule">
-            <label data-group="inline">
-                <button type="button" data-sign="minus" tabindex="-1" aria-label="decrement"></button>
-                <input type="text" inputmode="numeric" pattern="[0-9]*" role="spinbutton" value="10" size="4">
-                <button type="button" data-sign="plus" tabindex="-1" aria-label="increment"></button></label>
-            <label data-group="inline">
-                <input type="text" inputmode="numeric" pattern="[0-9]*" role="spinbutton" value="10" size="4">
-                <span data-step="block">
-                    <button type="button" data-sign="plus" tabindex="-1" aria-label="increment"></button>
-                    <button type="button" data-sign="minus" tabindex="-1" aria-label="decrement"></button></span></label>
-            <label data-group="inline">
-                <input type="text" inputmode="numeric" pattern="[0-9]*" role="spinbutton" value="10" size="4" data-size="lg">
-                <span data-step="block">
-                    <button type="button" data-sign="plus" data-size="lg" tabindex="-1" aria-label="increment"></button>
-                    <button type="button" data-sign="minus" data-size="lg" tabindex="-1" aria-label="decrement"></button></span></label></section>
-        <section data-sign="rule">
-            <h3>size</h3>
-            <label data-group="inline">
-                <button type="button" data-sign="minus" data-size="xs" tabindex="-1" aria-label="decrement"></button>
-                <input type="text" inputmode="numeric" pattern="[0-9]*" role="spinbutton" value="10" size="3" data-size="xs">
-                <button type="button" data-sign="plus" data-size="xs" tabindex="-1" aria-label="increment"></button></label>
-            <label data-group="inline">
-                <button type="button" data-sign="minus" data-size="sm" tabindex="-1" aria-label="decrement"></button>
-                <input type="text" inputmode="numeric" pattern="[0-9]*" role="spinbutton" value="10" size="3" data-size="sm">
-                <button type="button" data-sign="plus" data-size="sm" tabindex="-1" aria-label="increment"></button></label>
-            <label data-group="inline">
-                <button type="button" data-sign="minus" data-size="md" tabindex="-1" aria-label="decrement"></button>
-                <input type="text" inputmode="numeric" pattern="[0-9]*" role="spinbutton" value="10" size="3" data-size="md">
-                <button type="button" data-sign="plus" data-size="md" tabindex="-1" aria-label="increment"></button></label>
-            <label data-group="inline">
-                <button type="button" data-sign="minus" data-size="lg" tabindex="-1" aria-label="decrement"></button>
-                <input type="text" inputmode="numeric" pattern="[0-9]*" role="spinbutton" value="10" size="3" data-size="lg">
-                <button type="button" data-sign="plus" data-size="lg" tabindex="-1" aria-label="increment"></button></label>
-            <label data-group="inline">
-                <button type="button" data-sign="minus" data-size="xl" tabindex="-1" aria-label="decrement"></button>
-                <input type="text" inputmode="numeric" pattern="[0-9]*" role="spinbutton" value="10" size="3" data-size="xl">
-                <button type="button" data-sign="plus" data-size="xl" tabindex="-1" aria-label="increment"></button></label>
-            <label data-group="inline">
-                <button type="button" data-sign="minus" data-size="2xl" tabindex="-1" aria-label="decrement"></button>
-                <input type="text" inputmode="numeric" pattern="[0-9]*" role="spinbutton" value="10" size="3" data-size="2xl">
-                <button type="button" data-sign="plus" data-size="2xl" tabindex="-1" aria-label="increment"></button></label></section>
-        <section data-sign="rule">
-            <h3>[data-surround="outline"]</h3>
-            <label data-group="inline">
-                <button type="button" data-sign="minus" data-surround="outline" tabindex="-1" aria-label="decrement"></button>
-                <input type="text" inputmode="numeric" pattern="[0-9]*" role="spinbutton" value="10" size="4">
-                <button type="button" data-sign="plus" data-surround="outline" tabindex="-1" aria-label="increment"></button></label></section>
-        <section data-sign="rule">
-            <h3>:user-invalid, [aria-invalid="true"]</h3>
-            <label data-group="inline">
-                <button type="button" data-sign="minus" tabindex="-1" aria-label="decrement"></button>
-                <input type="text" inputmode="numeric" pattern="[0-9]*" role="spinbutton" value="10" size="4" aria-invalid="true">
-                <button type="button" data-sign="plus" tabindex="-1" aria-label="increment"></button></label></section>
-        <section data-sign="rule">
-            <h3>:disabled, [aria-disabled="true"]</h3>
-            <label data-group="inline">
-                <button type="button" data-sign="minus" disabled tabindex="-1" aria-label="decrement"></button>
-                <input type="text" inputmode="numeric" pattern="[0-9]*" role="spinbutton" value="10" size="4" disabled>
-                <button type="button" data-sign="plus" disabled tabindex="-1" aria-label="increment"></button></label>
-            <label data-group="inline">
-                <button type="button" data-sign="minus" aria-disabled="true" tabindex="-1" aria-label="decrement"></button>
-                <input type="text" inputmode="numeric" pattern="[0-9]*" role="spinbutton" value="10" size="4" aria-disabled="true">
-                <button type="button" data-sign="plus" aria-disabled="true" tabindex="-1" aria-label="increment"></button></label></section></section>
-
-    <section>
-        <h2>Slider</h2>
-        <section data-sign="rule">
-            <h3>label > (span, input[type="range"])</h3>
-            <label>
-                <span>xs</span>
-                <input type="range" data-size="xs" min="0" max="100" step="10" value="30"></label>
-            <label>
-                <span>sm</span>
-                <input type="range" data-size="sm" min="0" max="100" step="10" value="40"></label>
-            <label>
-                <span>(md)</span>
-                <input type="range" data-size="sm" min="0" max="100" step="10" value="50"></label>
-            <label>
-                <span>lg</span>
-                <input type="range" data-size="sm" min="0" max="100" step="10" value="60"></label>
-            <label>
-                <span>xl aria-invalid="true"</span>
-                <input type="range" data-size="sm" min="0" max="100" step="10" value="70" aria-invalid="true"></label>
-            <label>
-                <span>2xl disabled</span>
-                <input type="range" data-size="2xl" min="0" max="100" step="10" value="80" disabled></label></section></section>
-
-    <section>
-        <h2>Search</h2>
-        <section data-sign="rule">
-
-            <label>
-                <input type="search" value='label > input[type="search"]'></label>
-        
-            <search aria-labelledby="">
-                <span id="">search > (span, label > input, button)</span>
-                <label>
-                    <input type="search" value='input[type="search"]'></label>
-                <button type="button">button</button></search>
-        
-            <form role="search" aria-labelledby="">
-                <span id="">form[role="search"] > (span, label > input, button)</span>
-                <label>
-                    <input type="search" name='input[type="search"]'></label>
-                <button type="submit">button</button></form>
-        
-            <search aria-labelledby="">
-                <span id="">search > (span, label > select, label > input, button)</span>
-                <label>
+                    <span>label > select[data-facet="chevron"]</span>
                     <select data-facet="chevron">
                         <option>option</option>
                         <option>option</option></select></label>
                 <label>
-                    <input type="search" value='input[type="search"]'></label>
-                <button type="button">button</button></search>
-        
-            <form role="search" aria-labelledby="">
-                <span id="">form[role="search"] > (span, label > select, label > input, button) </span>
+                    <span>textarea</span>
+                    <textarea></textarea></label></section>
+            <section data-sign="rule">
+                <h3>size</h3>
                 <label>
-                    <select data-facet="chevron">
-                        <option>option</option>
-                        <option>option</option></select></label>
+                    <span>input[type="text"]</span>
+                    <input type="text" value="xs" data-size="xs"></label>
                 <label>
-                    <input type="search" name='input[type="search"]'></label>
-                <button type="submit">button</button></form></section>
-                
-        <section data-sign="rule">
-            <h3>size</h3>
-            <label>
-                <input type="search" data-size="xs"></label>
-            <label>
-                <input type="search" data-size="sm"></label>
-            <label>
-                <input type="search" data-size="md"></label>
-            <label>
-                <input type="search" data-size="lg"></label>
-            <label>
-                <input type="search" data-size="xl"></label>
-            <label>
-                <input type="search" data-size="2xl"></label>
-            <search>
-                <span>xs</span>
+                    <span>input[type="email"], aria-invalid="true"</span>
+                    <input type="text" value="sm" aria-invalid="true" data-size="sm"></label>
                 <label>
-                    <select data-facet="chevron" data-size="xs">
-                        <option>option</option>
-                        <option>option</option></select></label>
+                    <span>input[type="url"], disabled</span>
+                    <input disabled type="url" value="(md)"></label>
                 <label>
-                    <input type="search" data-size="xs"></label>
-                <button type="button" data-size="xs">button</button></search>
-            <search>
-                <span>sm</span>
+                    <span>select</span>
+                    <select data-size="lg">
+                        <option checked>lg</option></select></label>
                 <label>
-                    <select data-facet="chevron" data-size="sm">
-                        <option>option</option>
-                        <option>option</option></select></label>
-                <label>
-                    <input type="search" data-size="sm"></label>
-                <button type="button" data-size="sm">button</button></search>
-            <search>
-                <span>md</span>
-                <label>
-                    <select data-facet="chevron" data-size="md">
-                        <option>All</option>
-                        <option>Title</option></select></label>
-                <label>
-                    <input type="search" data-size="md"></label>
-                <button type="button" data-size="md">Search</button></search>
-            <search>
-                <span>lg</span>
-                <label>
-                    <select data-facet="chevron" data-size="lg">
-                        <option>option</option>
-                        <option>option</option></select></label>
-                <label>
-                    <input type="search" data-size="lg"></label>
-                <button type="button" data-size="lg">Search</button></search>
-            <search>
-                <span>xl</span>
-                <label>
+                    <span>label > select[data-facet="chevron"]</span>
                     <select data-facet="chevron" data-size="xl">
-                        <option>option</option>
-                        <option>option</option></select></label>
+                        <option>xl</option></select></label>
                 <label>
-                    <input type="search" data-size="xl"></label>
-                <button type="button" data-size="xl">Search</button></search>
-            <search>
-                <span>2xl</span>
+                    <span>texarea</span>
+                    <textarea placeholder="2xl" type="text" data-size="2xl"></textarea></label></section>
+
+            <section data-sign="rule">
+                <h3>:required - label > span:first-child, fieldset > legend > span</h3>
                 <label>
-                    <select data-facet="chevron" data-size="2xl">
-                        <option>option</option>
-                        <option>option</option></select></label>
+                    <span>input[type="checkbox"], required</span>
+                    <input required type="checkbox"></label>
+                <fieldset style="grid-template-columns: max-content repeat(1, minmax(0, max-content));">
+                    <legend>
+                        <span>fieldset:has(:required) > legend</span></legend>
+                    <label>
+                        <span>choice A</span>
+                        <input name="req-demo" required type="radio"></label>
+                    <label>
+                        <span>choice B</span>
+                        <input name="req-demo" type="radio"></label></fieldset></section></section>
+
+        <section>
+            <h2>Surround style, underline style</h2>
+            <section data-sign="rule">
+                <button type="button">button (data-surround="fill")</button>
+                <a href="#dummy">a (data-style="underline")</a>
+                <details>
+                    <summary>summary (data-style="underline")</summary>
+                    <p>details > summary, p</p></details>
+                <button type="button" data-surround="outline">button data-surround="outline"</button>
+                <a href="#dummy" data-surround="outline">a data-surround="outline"</a>
+                <details>
+                    <summary data-surround="outline">summary (data-surround="outline")</summary>
+                    <p>details > summary, p</p></details></section>
+            <section data-sign="rule">
+                <h3>size</h3>
+                <button data-size="xs">xs</button>
+                <a href="#anchor" data-size="xs">xs</a>
+                <button data-size="sm">sm</button>
+                <a href="#anchor" data-size="sm">sm</a>
+                <button data-size="md">(md)</button>
+                <a href="#anchor" data-size="md">(md)</a>
+                <button data-size="lg">lg</button>
+                <a href="#anchor" data-size="lg">lg</a>
+                <button data-size="xl">xl</button>
+                <a href="#anchor" data-size="xl">xl</a>
+                <button disabled data-size="2xl">2xl, disabled</button>
+                <a href="#anchor" aria-disabled="true" data-size="2xl">2xl, aria-disabled="true"</a></section></section>
+
+        <section>
+            <h2>Sign</h2>
+            <section data-sign="rule">
+                <label aria-label="check"><button data-sign="check"></button></label>
+                <label aria-label="check"><input type="checkbox" data-sign="check"></label>
+                <label aria-label="check"><input type="checkbox" data-sign="check" data-surround="transparent"></label>
+                <label aria-label="copy"><button data-sign="copy"></button></label>
+                <label aria-label="copy"><input type="checkbox" data-sign="copy"></label>
+                <label aria-label="file"><button data-sign="file"></button></label>
+                <label aria-label="file"><input type="checkbox" data-sign="file"></label>
+                <label aria-label="hatch"><button data-sign="hatch"></button></label>
+                <label aria-label="hatch"><input type="checkbox" data-sign="hatch"></label>
+                <label aria-label="minus"><button data-sign="minus"></button></label>
+                <label aria-label="minus"><input type="checkbox" data-sign="minus"></label>
+                <label aria-label="plus"><button data-sign="plus"></button></label>
+                <label aria-label="plus"><input type="checkbox" data-sign="plus"></label>
+                <label aria-label="x"><button data-sign="x"></button></label>
+                <label aria-label="x"><input type="checkbox" data-sign="x"></label>
+                <label aria-label="x"><button data-sign="x"></button></label>
+                <label aria-label="x"><input type="checkbox" data-sign="x"></label>
+                <label aria-label="chevron"><button data-facet="chevron" data-inline-align="center"></button></label>
+                <label aria-label="chevron"><input type="checkbox" data-facet="chevron" data-inline-align="center"></label>
+                <label aria-label="reload"><button data-facet="reload"></button></label>
+                <label aria-label="reload"><input type="checkbox" data-facet="reload"></label>
+                <label aria-label="sync"><button data-facet="sync"></button></label>
+                <label aria-label="sync"><input type="checkbox" data-facet="sync"></label>
+                <label aria-label="eye"><button data-facet="eye"></button></label>
+                <label aria-label="eye"><input type="checkbox" data-facet="eye"></label>
+                <label aria-label="chevron"><input checked name="sign-radio" type="radio" data-facet="chevron"></label>
+                <label aria-label="chevron"><input name="sign-radio" type="radio" data-facet="chevron"></label></section>
+            </section>
+
+        <section>
+            <h2>Popup</h2>
+            <section data-sign="rule">
+                <button id="listbox-1-trigger" popovertarget="listbox-1" type="button" aria-controls="listbox-1" aria-haspopup="listbox" data-surround="outline">button[aria-haspopup="listbox"]</button>
+                <ul id="listbox-1" popover="auto" role="listbox" aria-labelledby="listbox-1-trigger">
+                    <li role="separator">li[role="separator"]</li>
+                    <li>
+                        <label>
+                            <input checked name="listbox-radio" role="option" type="radio" data-sign="check" data-sign-style="inline">
+                            <span>li > label > (radio[role="option"], span)</span></label></li>
+                    <li>
+                        <label>
+                            <input name="listbox-radio" role="option" type="radio" data-sign="check" data-sign-style="inline">
+                            <span>span</span></label></li>
+                    <li>
+                        <label>
+                            <input role="option" type="checkbox" data-sign="check" data-sign-style="inline">
+                            <span>li > label > (checkbox[role="option"], span)</span></label></li>
+                    <li>
+                        <button role="option">li > button[role="option"]</button></li></ul>
+                <button id="listbox-8-trigger" disabled popovertarget="listbox-8" type="button" aria-controls="listbox-8" aria-haspopup="listbox" data-surround="outline">button[aria-haspopup="listbox"]:disalbed</button>
+                <ul id="listbox-8" popover="auto" role="listbox" aria-labelledby="listbox-8-trigger">
+                    <li role="separator">li[role="separator"]</li>
+                    <li>
+                        <label>
+                            <input name="" role="option" type="radio" data-sign="check" data-sign-style="inline"></li></ul></section></section>
+
+        <section>
+            <h2>Checkbox</h2>
+            <section data-sign="rule">
                 <label>
-                    <input type="search" data-size="2xl"></label>
-                <button type="button" data-size="2xl">button</button></search></section></section>
+                    <span>label > (span, label > input[type="checkbox"])</span>
+                    <input type="checkbox"></label>
+                <label>
+                    <span>checked</span>
+                    <input checked type="checkbox"></label>
+                <label>
+                    <span>data-indeterminate</span>
+                    <input type="checkbox" data-indeterminate></label>
+                <label>
+                    <span>checked aria-invalid="true"</span>
+                    <input checked type="checkbox" aria-invalid="true"></label>
+                <label>
+                    <span>disabled</span>
+                    <input disabled type="checkbox"></label>
+                <label>
+                    <span>checked disabled</span>
+                    <input checked disabled type="checkbox"></label></section>
+            <section data-sign="rule">
+                <h3>size</h3>
+                <label>
+                    <span>xs</span>
+                    <input type="checkbox" data-size="xs"></label>
+                <label>
+                    <span>sm</span>
+                    <input type="checkbox" data-size="sm"></label>
+                <label>
+                    <span>(md)</span>
+                    <input type="checkbox" data-size="md"></label>
+                <label>
+                    <span>lg</span>
+                    <input type="checkbox" data-size="lg"></label>
+                <label>
+                    <span>xl</span>
+                    <input type="checkbox" data-size="xl"></label>
+                <label>
+                    <span>2xl</span>
+                    <input type="checkbox" data-size="2xl"></label></section></section>
 
-    <section>
-        <h2>Heading</h2>
-        <section data-sign="rule">
-            <h1>h1</h1>
-            <h2>h2</h2>
-            <h3>h3</h3>
-            <h4>h4</h4>
-            <h5>h5</h5>
-            <h6>h6</h6>
-            <hgroup>
-                <h1>hgroup > (h1, p)</h1>
-                <p>P</p></hgroup>
-            <hgroup data-axis="inline">
-                <h1>hgroup[data-axis="inline"] > (h1, p)</h1>
-                <p>Subtitle</p></hgroup></section>
+        <section>
+            <h2>Radio</h2>
+            <section data-sign="rule">
+                <fieldset data-axis="inline">
+                    <legend>
+                        <span>label > (span, input[type="radio"])</span></legend>
+                    <label>
+                        <span>label > (span, input[type="radio"])</span>
+                        <input name="r" type="radio"></label>
+                    <label>
+                        <span>checked</span>
+                        <input checked name="r" type="radio"></label></fieldset>
+                <fieldset data-axis="inline">
+                    <legend>
+                        <span>:user-invalid, [aria-invalid="true"]</span></legend>
+                    <label>
+                        <span>inline</span>
+                        <input name="r-state" type="radio" aria-invalid="true"></label>
+                    <label>
+                        <span>inline</span>
+                        <input checked name="r-state" type="radio" aria-invalid="true"></label></fieldset>
+                <fieldset data-axis="inline">
+                    <legend>
+                        <span>:disabled, [aria-disabled="true"]</span></legend>
+                    <label>
+                        <span>inline</span>
+                        <input disabled name="r-disabled" type="radio"></label>
+                    <label>
+                        <span>inline</span>
+                        <input checked disabled name="r-disabled" type="radio"></label></fieldset></section>
+            <section data-sign="rule">
+                <h2>size</h2>
+                <fieldset data-axis="inline">
+                    <legend>
+                        <span>size</span></legend>
+                    <label>
+                        <span>xs</span>
+                        <input checked name="r-size" type="radio" data-size="xs"></label>
+                    <label>
+                        <span>sm</span>
+                        <input name="r-size" type="radio" data-size="sm"></label>
+                    <label>
+                        <span>(md)</span>
+                        <input name="r-size" type="radio" data-size="md"></label>
+                    <label>
+                        <span>lg</span>
+                        <input name="r-size" type="radio" data-size="lg"></label>
+                    <label>
+                        <span>xl</span>
+                        <input name="r-size" type="radio" data-size="xl"></label>
+                    <label>
+                        <span>2xl</span>
+                        <input name="r-size" type="radio" data-size="2xl"></label></fieldset></section></section>
 
-        <section data-sign="rule">
-            <h3>hN x p size matrix (baseline alignment, no per-size correction)</h3>
-            <hgroup data-axis="inline">
-                <h1 data-size="2xl">h1 2xl</h1>
-                <p>p (none = md)</p></hgroup>
-            <hgroup data-axis="inline">
-                <h1 data-size="2xl">h1 2xl</h1>
-                <p data-size="md">p md</p></hgroup>
-            <hgroup data-axis="inline">
-                <h1 data-size="xl">h1 xl</h1>
-                <p data-size="xs">p xs</p></hgroup>
-            <hgroup data-axis="inline">
-                <h1 data-size="lg">h1 lg</h1>
-                <p data-size="md">p md</p></hgroup>
-            <hgroup data-axis="inline">
-                <h1 data-size="md">h1 md</h1>
-                <p data-size="sm">p sm</p></hgroup>
-            <hgroup data-axis="inline">
-                <h1 data-size="xs">h1 xs</h1>
-                <p data-size="2xl">p 2xl</p></hgroup></section>
+            <section aria-labelledby="h3-radio-button-field" data-sign="rule">
+                <h3 id="h3-radio-button-field">Fieldset</h3>
+                <fieldset id="section_fieldset" style="grid-template-columns: repeat(3, minmax(0, max-content));">
+                    <legend>
+                        <span>repeat(3, max-content)</span></legend>
+                    <label>
+                        <span>Light (less contrast)</span>
+                        <input name="grid-demo-2b" type="radio" value="light-less-contrast"></label>
+                    <label>
+                        <span>Light</span>
+                        <input name="grid-demo-2b" type="radio" value="light"></label>
+                    <label>
+                        <span>Light (high contrast)</span>
+                        <input name="grid-demo-2b" type="radio" value="light-high-contrast"></label>
+                    <label>
+                        <span>Dark (less contrast)</span>
+                        <input name="grid-demo-2b" type="radio" value="dark-less-contrast"></label>
+                    <label>
+                        <span>Dark</span>
+                        <input name="grid-demo-2b" type="radio" value="dark"></label>
+                    <label>
+                        <span>Dark (high contrast)</span>
+                        <input name="grid-demo-2b" type="radio" value="dark-high-contrast"></label></fieldset>
+    
+                <fieldset style="grid-template-columns: repeat(3, 10rem);">
+                    <legend>
+                        <span>repeat(3, 10rem)</span></legend>
+                    <label>
+                        <span>Light (less contrast)</span>
+                        <input name="grid-demo-2d" type="radio" value="light-less-contrast"></label>
+                    <label>
+                        <span>Light</span>
+                        <input name="grid-demo-2d" type="radio" value="light"></label>
+                    <label>
+                        <span>Light (high contrast)</span>
+                        <input name="grid-demo-2d" type="radio" value="light-high-contrast"></label>
+                    <label>
+                        <span>Dark (less contrast)</span>
+                        <input name="grid-demo-2d" type="radio" value="dark-less-contrast"></label>
+                    <label>
+                        <span>Dark</span>
+                        <input name="grid-demo-2d" type="radio" value="dark"></label>
+                    <label>
+                        <span>Dark (high contrast)</span>
+                        <input name="grid-demo-2d" type="radio" value="dark-high-contrast"></label></fieldset>
+    
+                <fieldset data-axis="inline" style="grid-template-columns: auto repeat(3, minmax(0, max-content)); grid-template-rows: repeat(2, auto);">
+                    <legend>
+                        <span>axis=inline, grid-auto-columns: max-content</span></legend>
+                    <label>
+                        <span>Light (less contrast)</span>
+                        <input name="grid-demo-3e" type="radio" value="light-less-contrast"></label>
+                    <label>
+                        <span>Light</span>
+                        <input name="grid-demo-3e" type="radio" value="light"></label>
+                    <label>
+                        <span>Light (high contrast)</span>
+                        <input name="grid-demo-3e" type="radio" value="light-high-contrast"></label>
+                    <label>
+                        <span>Dark (less contrast)</span>
+                        <input name="grid-demo-3e" type="radio" value="dark-less-contrast"></label>
+                    <label>
+                        <span>Dark</span>
+                        <input name="grid-demo-3e" type="radio" value="dark"></label>
+                    <label>
+                        <span>Dark (high contrast)</span>
+                        <input name="grid-demo-3e" type="radio" value="dark-high-contrast"></label></fieldset>
+    
+                <fieldset data-axis="inline" style="grid-template-columns: auto repeat(3, 10rem); grid-template-rows: repeat(2, auto);">
+                    <legend>
+                        <span>axis=inline, grid-auto-columns: 10rem</span></legend>
+                    <label>
+                        <span>Light (less contrast)</span>
+                        <input name="grid-demo-3f" type="radio" value="light-less-contrast"></label>
+                    <label>
+                        <span>Light</span>
+                        <input name="grid-demo-3f" type="radio" value="light"></label>
+                    <label>
+                        <span>Light (high contrast)</span>
+                        <input name="grid-demo-3f" type="radio" value="light-high-contrast"></label>
+                    <label>
+                        <span>Dark (less contrast)</span>
+                        <input name="grid-demo-3f" type="radio" value="dark-less-contrast"></label>
+                    <label>
+                        <span>Dark</span>
+                        <input name="grid-demo-3f" type="radio" value="dark"></label>
+                    <label>
+                        <span>Dark (high contrast)</span>
+                        <input name="grid-demo-3f" type="radio" value="dark-high-contrast"></label></fieldset></section></section>
 
-        <section data-sign="rule">
-            <h3>multi-line p (pre-wrap)</h3>
-            <hgroup data-axis="inline">
-                <h1 data-size="lg">h1 lg</h1>
-                <p>line1　
-                line2</p></hgroup></section></section>
+        <section>
+            <h2>Tab</h2>
+            <section data-sign="rule">
+                <label id="tab-1" role="tab" aria-controls="tabpanel-1">
+                    <span>span</span>
+                    <input checked name="tab" type="radio"></label>
+                <label id="tab-2" role="tab" aria-controls="tabpanel-2">
+                    <span>span</span>
+                    <input name="tab" type="radio"></label></section>
+            <section id="tabpanel-1" role="tabpanel" aria-labelledby="tab-1">tabpanel-1</section>
+            <section id="tabpanel-2" role="tabpanel" aria-labelledby="tab-2">tabpanel-2</section></section>
 
-    <section>
-        <h2>Error summary & detail</h2>
-        <section data-sign="rule">
-            <h3>section[data-type="error-summary"] &gt; (h2, p, ul > li)</h3>
-            <section role="alert" data-type="error-summary" aria-labelledby="error-summary-heading-1">
-                <h2 id="error-summary-heading-1">There is a problem</h2>
-                <p>次の項目を修正してから、もう一度送信してください。</p>
-                <ul>
-                    <li><a href="#error-name">Enter your full name</a></li>
-                    <li><a href="#error-dob">Date of birth must be a real date</a></li></ul></section></section>
+        <section>
+            <h2>Toggle</h2>
+            <section data-sign="rule">
+                <label>
+                    <span>label > (span, input[type="checkbox"][role="switch"])</span>
+                    <input role="switch" type="checkbox"></label>
+                <label data-axis="block" data-type="knob-only">
+                    <span>data-axis="block", data-type="knob-only"</span>
+                    <input role="switch" type="checkbox"></label></section>
+            <section data-sign="rule">
+                <h3>size</h3>
+                <label>
+                    <span>xs</span>
+                    <input role="switch" type="checkbox" data-size="xs"></label>
+                <label>
+                    <span>sm</span>
+                    <input role="switch" type="checkbox" data-size="sm"></label>
+                <label>
+                    <span>(md)</span>
+                    <input role="switch" type="checkbox"></label>
+                <label>
+                    <span>lg</span>
+                    <input role="switch" type="checkbox" data-size="lg"></label>
+                <label>
+                    <span>xl disabled</span>
+                    <input disabled role="switch" type="checkbox" data-size="xl"></label>
+                <label>
+                    <span>2xl checked disabled</span>
+                    <input checked disabled role="switch" type="checkbox" data-size="2xl"></label></section></section>
 
-        <section data-sign="rule">
-            <h3>p[data-type="error"][data-size]</h3>
-            <label for="error-name-xs">氏名 (xs)</label>
-            <p data-type="error" data-sign="rule" data-size="xs" id="error-name-xs-message"><strong>エラー:</strong> 氏名を入力してください</p>
-            <input type="text" data-size="xs" id="error-name-xs" aria-describedby="error-name-xs-message" aria-invalid="true">
-            <label for="error-name-sm">氏名 (sm)</label>
-            <p data-type="error" data-sign="rule" data-size="sm" id="error-name-sm-message"><strong>エラー:</strong> 氏名を入力してください</p>
-            <input type="text" data-size="sm" id="error-name-sm" aria-describedby="error-name-sm-message" aria-invalid="true">
-            <label for="error-name-md">氏名 (md)</label>
-            <p data-type="error" data-sign="rule" data-size="md" id="error-name-md-message"><strong>エラー:</strong> 氏名を入力してください</p>
-            <input type="text" data-size="md" id="error-name-md" aria-describedby="error-name-md-message" aria-invalid="true">
-            <label for="error-name-lg">氏名 (lg)</label>
-            <p data-type="error" data-sign="rule" data-size="lg" id="error-name-lg-message"><strong>エラー:</strong> 氏名を入力してください</p>
-            <input type="text" data-size="lg" id="error-name-lg" aria-describedby="error-name-lg-message" aria-invalid="true">
-            <label for="error-name-xl">氏名 (xl)</label>
-            <p data-type="error" data-sign="rule" data-size="xl" id="error-name-xl-message"><strong>エラー:</strong> 氏名を入力してください</p>
-            <input type="text" data-size="xl" id="error-name-xl" aria-describedby="error-name-xl-message" aria-invalid="true">
-            <label for="error-name-2xl">氏名 (2xl)</label>
-            <p data-type="error" data-sign="rule" data-size="2xl" id="error-name-2xl-message"><strong>エラー:</strong> 氏名を入力してください</p>
-            <input type="text" data-size="2xl" id="error-name-2xl" aria-describedby="error-name-2xl-message" aria-invalid="true"></section></section>
+        <section>
+            <h2>Step - button, input[role="spinbutton"]</h2>
+            <section data-sign="rule">
+                <label aria-label="value" data-group="inline">
+                    <button tabindex="-1" type="button" aria-label="decrement" data-sign="minus"></button>
+                    <input inputmode="numeric" pattern="[0-9]*" role="spinbutton" size="4" type="text" value="10" aria-label="value">
+                    <button tabindex="-1" type="button" aria-label="increment" data-sign="plus"></button></label>
+                <label aria-label="value" data-group="inline">
+                    <input inputmode="numeric" pattern="[0-9]*" role="spinbutton" size="4" type="text" value="10" aria-label="value">
+                    <span data-step="block">
+                        <button tabindex="-1" type="button" aria-label="increment" data-sign="plus"></button>
+                        <button tabindex="-1" type="button" aria-label="decrement" data-sign="minus"></button></span></label>
+                <label aria-label="value" data-group="inline">
+                    <input inputmode="numeric" pattern="[0-9]*" role="spinbutton" size="4" type="text" value="10" aria-label="value" data-size="lg">
+                    <span data-step="block">
+                        <button tabindex="-1" type="button" aria-label="increment" data-sign="plus" data-size="lg"></button>
+                        <button tabindex="-1" type="button" aria-label="decrement" data-sign="minus" data-size="lg"></button></span></label></section>
+            <section data-sign="rule">
+                <h3>size</h3>
+                <label aria-label="value" data-group="inline">
+                    <button tabindex="-1" type="button" aria-label="decrement" data-sign="minus" data-size="xs"></button>
+                    <input inputmode="numeric" pattern="[0-9]*" role="spinbutton" size="3" type="text" value="10" aria-label="value" data-size="xs">
+                    <button tabindex="-1" type="button" aria-label="increment" data-sign="plus" data-size="xs"></button></label>
+                <label aria-label="value" data-group="inline">
+                    <button tabindex="-1" type="button" aria-label="decrement" data-sign="minus" data-size="sm"></button>
+                    <input inputmode="numeric" pattern="[0-9]*" role="spinbutton" size="3" type="text" value="10" aria-label="value" data-size="sm">
+                    <button tabindex="-1" type="button" aria-label="increment" data-sign="plus" data-size="sm"></button></label>
+                <label aria-label="value" data-group="inline">
+                    <button tabindex="-1" type="button" aria-label="decrement" data-sign="minus" data-size="md"></button>
+                    <input inputmode="numeric" pattern="[0-9]*" role="spinbutton" size="3" type="text" value="10" aria-label="value" data-size="md">
+                    <button tabindex="-1" type="button" aria-label="increment" data-sign="plus" data-size="md"></button></label>
+                <label aria-label="value" data-group="inline">
+                    <button tabindex="-1" type="button" aria-label="decrement" data-sign="minus" data-size="lg"></button>
+                    <input inputmode="numeric" pattern="[0-9]*" role="spinbutton" size="3" type="text" value="10" aria-label="value" data-size="lg">
+                    <button tabindex="-1" type="button" aria-label="increment" data-sign="plus" data-size="lg"></button></label>
+                <label aria-label="value" data-group="inline">
+                    <button tabindex="-1" type="button" aria-label="decrement" data-sign="minus" data-size="xl"></button>
+                    <input inputmode="numeric" pattern="[0-9]*" role="spinbutton" size="3" type="text" value="10" aria-label="value" data-size="xl">
+                    <button tabindex="-1" type="button" aria-label="increment" data-sign="plus" data-size="xl"></button></label>
+                <label aria-label="value" data-group="inline">
+                    <button tabindex="-1" type="button" aria-label="decrement" data-sign="minus" data-size="2xl"></button>
+                    <input inputmode="numeric" pattern="[0-9]*" role="spinbutton" size="3" type="text" value="10" aria-label="value" data-size="2xl">
+                    <button tabindex="-1" type="button" aria-label="increment" data-sign="plus" data-size="2xl"></button></label></section>
+            <section data-sign="rule">
+                <h3>[data-surround="outline"]</h3>
+                <label aria-label="value" data-group="inline">
+                    <button tabindex="-1" type="button" aria-label="decrement" data-sign="minus" data-surround="outline"></button>
+                    <input inputmode="numeric" pattern="[0-9]*" role="spinbutton" size="4" type="text" value="10" aria-label="value">
+                    <button tabindex="-1" type="button" aria-label="increment" data-sign="plus" data-surround="outline"></button></label></section>
+            <section data-sign="rule">
+                <h3>:user-invalid, [aria-invalid="true"]</h3>
+                <label aria-label="value" data-group="inline">
+                    <button tabindex="-1" type="button" aria-label="decrement" data-sign="minus"></button>
+                    <input inputmode="numeric" pattern="[0-9]*" role="spinbutton" size="4" type="text" value="10" aria-invalid="true" aria-label="value">
+                    <button tabindex="-1" type="button" aria-label="increment" data-sign="plus"></button></label></section>
+            <section data-sign="rule">
+                <h3>:disabled, [aria-disabled="true"]</h3>
+                <label aria-label="value" data-group="inline">
+                    <button disabled tabindex="-1" type="button" aria-label="decrement" data-sign="minus"></button>
+                    <input disabled inputmode="numeric" pattern="[0-9]*" role="spinbutton" size="4" type="text" value="10" aria-label="value">
+                    <button disabled tabindex="-1" type="button" aria-label="increment" data-sign="plus"></button></label>
+                <label aria-label="value" data-group="inline">
+                    <button tabindex="-1" type="button" aria-disabled="true" aria-label="decrement" data-sign="minus"></button>
+                    <input inputmode="numeric" pattern="[0-9]*" role="spinbutton" size="4" type="text" value="10" aria-disabled="true" aria-label="value">
+                    <button tabindex="-1" type="button" aria-disabled="true" aria-label="increment" data-sign="plus"></button></label></section></section>
 
-    <section>
-        <h2>Table</h2>
-        <section data-sign="rule">
-            <table>
-                <caption>(data-border="sectioned")</caption>
-                <thead>
-                    <tr>
-                        <th scope="col">Head</th>
-                        <th scope="col">Head</th>
-                        <th scope="col">Head</th></tr></thead>
-                <tbody>
-                    <tr>
-                        <th scope="row">Row</th>
-                        <td>Cell</td>
-                        <td>Cell</td></tr>
-                    <tr>
-                        <th scope="row">Row</th>
-                        <td>Cell</td>
-                        <td>Cell</td></tr>
-                    <tr>
-                        <th scope="row">Row</th>
-                        <td>Cell</td>
-                        <td>Cell</td></tr></tbody></table>
-            <table data-border="grid" data-selectable>
-                <caption>data-border="grid" data-selectable</caption>
-                <thead>
-                    <tr>
-                        <th scope="col">
-                            <label>
-                                <input type="checkbox" aria-label="Select all" data-size="sm"></label></th>
-                        <th scope="col">Head</th>
-                        <th scope="col">Head</th></tr></thead>
-                <tbody>
-                    <tr>
-                        <td>
-                            <label>
-                                <input type="checkbox" aria-label="Select row" data-size="sm" checked></label></td>
-                        <td>Cell</td>
-                        <td>Cell</td></tr>
-                    <tr>
-                        <td>
-                            <label>
-                                <input type="checkbox" aria-label="Select row" data-size="sm"></label></td>
-                        <td>Cell</td>
-                        <td>Cell</td></tr></tbody></table>
-            <table data-border="booktabs" data-stripe>
-                <caption>data-border="booktabs" data-stripe</caption>
-                <thead>
-                    <tr>
-                        <th scope="col">Head</th>
-                        <th scope="col">Head</th>
-                        <th scope="col">Head</th></tr></thead>
-                <tbody>
-                    <tr>
-                        <th scope="row">Row</th>
-                        <td>Cell</td>
-                        <td>Cell</td></tr>
-                    <tr>
-                        <th scope="row">Row</th>
-                        <td>Cell</td>
-                        <td>Cell</td></tr>
-                    <tr>
-                        <th scope="row">Row</th>
-                        <td>Cell</td>
-                        <td>Cell</td></tr></tbody></table>
+        <section>
+            <h2>Slider</h2>
+            <section data-sign="rule">
+                <h3>label > (span, input[type="range"])</h3>
+                <label>
+                    <span>xs</span>
+                    <input max="100" min="0" step="10" type="range" value="30" data-size="xs"></label>
+                <label>
+                    <span>sm</span>
+                    <input max="100" min="0" step="10" type="range" value="40" data-size="sm"></label>
+                <label>
+                    <span>(md)</span>
+                    <input max="100" min="0" step="10" type="range" value="50" data-size="sm"></label>
+                <label>
+                    <span>lg</span>
+                    <input max="100" min="0" step="10" type="range" value="60" data-size="sm"></label>
+                <label>
+                    <span>xl aria-invalid="true"</span>
+                    <input max="100" min="0" step="10" type="range" value="70" aria-invalid="true" data-size="sm"></label>
+                <label>
+                    <span>2xl disabled</span>
+                    <input disabled max="100" min="0" step="10" type="range" value="80" data-size="2xl"></label></section></section>
 
-            <table>
-                <caption>Sort buttons</caption>
-                <thead>
-                    <tr>
-                        <th scope="col">Head</th>
-                        <th scope="col" aria-sort="ascending">
-                            Head
-                            <span data-step="block">
-                                <label>
-                                    <input type="radio" name="sort-1" value="a-asc" aria-label="Sort ascending" checked></label>
-                                <label>
-                                    <input type="radio" name="sort-1" value="a-desc" aria-label="Sort descending"></label></span></th>
-                        <th scope="col" aria-sort="none">
-                            Head
-                            <span data-step="block">
-                                <label>
-                                    <input type="radio" name="sort-1" value="b-asc" aria-label="Sort ascending"></label>
-                                <label>
-                                    <input type="radio" name="sort-1" value="b-desc" aria-label="Sort descending"></label></span></th></tr></thead>
-                <tbody>
-                    <tr>
-                        <th scope="row">Row</th>
-                        <td>Cell</td>
-                        <td>Cell</td></tr>
-                    <tr>
-                        <th scope="row">Row</th>
-                        <td>Cell</td>
-                        <td>Cell</td></tr></tbody></table></section>
+        <section>
+            <h2>Search</h2>
+            <section data-sign="rule">
+
+                <label aria-label="search">
+                    <input type="search" value='label > input[type="search"]'></label>
+
+                <search aria-labelledby="search-example-1">
+                    <span id="search-example-1">search > (span, label > input, button)</span>
+                    <label aria-label="search">
+                        <input type="search" value='input[type="search"]'></label>
+                    <button type="button">button</button></search>
+
+                <form role="search" aria-labelledby="search-example-2">
+                    <span id="search-example-2">form[role="search"] > (span, label > input, button)</span>
+                    <label aria-label="search">
+                        <input name='input[type="search"]' type="search"></label>
+                    <button type="submit">button</button></form>
+
+                <search aria-labelledby="search-example-3">
+                    <span id="search-example-3">search > (span, label > select, label > input, button)</span>
+                    <label aria-label="category">
+                        <select data-facet="chevron">
+                            <option>option</option>
+                            <option>option</option></select></label>
+                    <label aria-label="search">
+                        <input type="search" value='input[type="search"]'></label>
+                    <button type="button">button</button></search>
+
+                <form role="search" aria-labelledby="search-example-4">
+                    <span id="search-example-4">form[role="search"] > (span, label > select, label > input, button) </span>
+                    <label aria-label="category">
+                        <select data-facet="chevron">
+                            <option>option</option>
+                            <option>option</option></select></label>
+                    <label aria-label="search">
+                        <input name='input[type="search"]' type="search"></label>
+                    <button type="submit">button</button></form></section>
 
             <section data-sign="rule">
                 <h3>size</h3>
-                <table data-size="xs">
-                    <caption>data-size="xs"</caption>
-                    <thead>
-                        <tr>
-                            <th scope="col">Head</th>
-                            <th scope="col">Head</th>
-                            <th scope="col">Head</th></tr></thead>
-                    <tbody>
-                        <tr>
-                            <th scope="row">Row</th>
-                            <td>Cell</td>
-                            <td>Cell</td></tr>
-                        <tr>
-                            <th scope="row">Row</th>
-                            <td>Cell</td>
-                            <td>Cell</td></tr>
-                        <tr>
-                            <th scope="row">Row</th>
-                            <td>Cell</td>
-                            <td>Cell</td></tr></tbody></table>
-                <table data-size="sm">
-                    <caption>data-size="sm"</caption>
-                    <thead>
-                        <tr>
-                            <th scope="col">Head</th>
-                            <th scope="col">Head</th>
-                            <th scope="col">Head</th></tr></thead>
-                    <tbody>
-                        <tr>
-                            <th scope="row">Row</th>
-                            <td>Cell</td>
-                            <td>Cell</td></tr>
-                        <tr>
-                            <th scope="row">Row</th>
-                            <td>Cell</td>
-                            <td>Cell</td></tr>
-                        <tr>
-                            <th scope="row">Row</th>
-                            <td>Cell</td>
-                            <td>Cell</td></tr></tbody></table>
-                <table data-size="lg">
-                    <caption>data-size="lg"</caption>
-                    <thead>
-                        <tr>
-                            <th scope="col">Head</th>
-                            <th scope="col">Head</th>
-                            <th scope="col">Head</th></tr></thead>
-                    <tbody>
-                        <tr>
-                            <th scope="row">Row</th>
-                            <td>Cell</td>
-                            <td>Cell</td></tr>
-                        <tr>
-                            <th scope="row">Row</th>
-                            <td>Cell</td>
-                            <td>Cell</td></tr>
-                        <tr>
-                            <th scope="row">Row</th>
-                            <td>Cell</td>
-                            <td>Cell</td></tr></tbody></table>
-                <table data-size="xl">
-                    <caption>data-size="xl"</caption>
-                    <thead>
-                        <tr>
-                            <th scope="col">Head</th>
-                            <th scope="col">Head</th>
-                            <th scope="col">Head</th></tr></thead>
-                    <tbody>
-                        <tr>
-                            <th scope="row">Row</th>
-                            <td>Cell</td>
-                            <td>Cell</td></tr>
-                        <tr>
-                            <th scope="row">Row</th>
-                            <td>Cell</td>
-                            <td>Cell</td></tr>
-                        <tr>
-                            <th scope="row">Row</th>
-                            <td>Cell</td>
-                            <td>Cell</td></tr></tbody></table>
-                <table data-size="2xl">
-                    <caption>data-size="2xl"</caption>
-                    <thead>
-                        <tr>
-                            <th scope="col">Head</th>
-                            <th scope="col">Head</th>
-                            <th scope="col">Head</th></tr></thead>
-                    <tbody>
-                        <tr>
-                            <th scope="row">Row</th>
-                            <td>Cell</td>
-                            <td>Cell</td></tr>
-                        <tr>
-                            <th scope="row">Row</th>
-                            <td>Cell</td>
-                            <td>Cell</td></tr>
-                        <tr>
-                            <th scope="row">Row</th>
-                            <td>Cell</td>
-                            <td>Cell</td></tr></tbody></table></section></section>
+                <label aria-label="xs">
+                    <input type="search" data-size="xs"></label>
+                <label aria-label="sm">
+                    <input type="search" data-size="sm"></label>
+                <label aria-label="md">
+                    <input type="search" data-size="md"></label>
+                <label aria-label="lg">
+                    <input type="search" data-size="lg"></label>
+                <label aria-label="xl">
+                    <input type="search" data-size="xl"></label>
+                <label aria-label="2xl">
+                    <input type="search" data-size="2xl"></label>
+                <search aria-labelledby="search-size-xs">
+                    <span id="search-size-xs">xs</span>
+                    <label aria-label="category">
+                        <select data-facet="chevron" data-size="xs">
+                            <option>option</option>
+                            <option>option</option></select></label>
+                    <label aria-label="search">
+                        <input type="search" data-size="xs"></label>
+                    <button type="button" data-size="xs">button</button></search>
+                <search aria-labelledby="search-size-sm">
+                    <span id="search-size-sm">sm</span>
+                    <label aria-label="category">
+                        <select data-facet="chevron" data-size="sm">
+                            <option>option</option>
+                            <option>option</option></select></label>
+                    <label aria-label="search">
+                        <input type="search" data-size="sm"></label>
+                    <button type="button" data-size="sm">button</button></search>
+                <search aria-labelledby="search-size-md">
+                    <span id="search-size-md">md</span>
+                    <label aria-label="category">
+                        <select data-facet="chevron" data-size="md">
+                            <option>All</option>
+                            <option>Title</option></select></label>
+                    <label aria-label="search">
+                        <input type="search" data-size="md"></label>
+                    <button type="button" data-size="md">Search</button></search>
+                <search aria-labelledby="search-size-lg">
+                    <span id="search-size-lg">lg</span>
+                    <label aria-label="category">
+                        <select data-facet="chevron" data-size="lg">
+                            <option>option</option>
+                            <option>option</option></select></label>
+                    <label aria-label="search">
+                        <input type="search" data-size="lg"></label>
+                    <button type="button" data-size="lg">Search</button></search>
+                <search aria-labelledby="search-size-xl">
+                    <span id="search-size-xl">xl</span>
+                    <label aria-label="category">
+                        <select data-facet="chevron" data-size="xl">
+                            <option>option</option>
+                            <option>option</option></select></label>
+                    <label aria-label="search">
+                        <input type="search" data-size="xl"></label>
+                    <button type="button" data-size="xl">Search</button></search>
+                <search aria-labelledby="search-size-2xl">
+                    <span id="search-size-2xl">2xl</span>
+                    <label aria-label="category">
+                        <select data-facet="chevron" data-size="2xl">
+                            <option>option</option>
+                            <option>option</option></select></label>
+                    <label aria-label="search">
+                        <input type="search" data-size="2xl"></label>
+                    <button type="button" data-size="2xl">button</button></search></section></section>
 
-    <section>
-        <h2>Toast</h2>
-        <button type="button" onclick="js_fn.show_toast(document.getElementById('toast_output'))">show (data-surround="fill")</button>
-        <button type="button" onclick="js_fn.show_toast(document.getElementById('toast_button'))">show data-surround="outline", 2xl</button></section>
+        <section>
+            <h2>Heading</h2>
+            <section data-sign="rule">
+                <h1>h1</h1>
+                <h2>h2</h2>
+                <h3>h3</h3>
+                <h4>h4</h4>
+                <h5>h5</h5>
+                <h6>h6</h6>
+                <hgroup>
+                    <h1>hgroup > (h1, p)</h1>
+                    <p>P</p></hgroup>
+                <hgroup data-axis="inline">
+                    <h1>hgroup[data-axis="inline"] > (h1, p)</h1>
+                    <p>Subtitle</p></hgroup></section>
 
-    <section id="toast" data-type="toast">
-        <output id="toast_output" class="hidden">
-            <span id="toast_output_span">span:</span>
-            <p id="toast_output_p">(data-surround="fill")</p></output>
-        <button data-sign="x"  data-size="2xl" data-surround="outline" id="toast_button" class="hidden" onclick="js_fn.hide_toast(this.closest('button'))">
-            <span id="toast_button_span">span:</span>
-            <p id="toast_button_p">data-surround="outline", 2xl</p></button></section>
+            <section data-sign="rule">
+                <h3>hN x p size matrix (baseline alignment, no per-size correction)</h3>
+                <hgroup data-axis="inline">
+                    <h1 data-size="2xl">h1 2xl</h1>
+                    <p>p (none = md)</p></hgroup>
+                <hgroup data-axis="inline">
+                    <h1 data-size="2xl">h1 2xl</h1>
+                    <p data-size="md">p md</p></hgroup>
+                <hgroup data-axis="inline">
+                    <h1 data-size="xl">h1 xl</h1>
+                    <p data-size="xs">p xs</p></hgroup>
+                <hgroup data-axis="inline">
+                    <h1 data-size="lg">h1 lg</h1>
+                    <p data-size="md">p md</p></hgroup>
+                <hgroup data-axis="inline">
+                    <h1 data-size="md">h1 md</h1>
+                    <p data-size="sm">p sm</p></hgroup>
+                <hgroup data-axis="inline">
+                    <h1 data-size="xs">h1 xs</h1>
+                    <p data-size="2xl">p 2xl</p></hgroup></section>
+
+            <section data-sign="rule">
+                <h3>multi-line p (pre-wrap)</h3>
+                <hgroup data-axis="inline">
+                    <h1 data-size="lg">h1 lg</h1>
+                    <p>line1　
+                    line2</p></hgroup></section></section>
+
+        <section>
+            <h2>Error summary & detail</h2>
+            <section data-sign="rule">
+                <h3>section[data-type="error-summary"] &gt; (h2, p, ul > li)</h3>
+                <section role="alert" aria-labelledby="error-summary-heading-1" data-type="error-summary">
+                    <h2 id="error-summary-heading-1">There is a problem</h2>
+                    <p>次の項目を修正してから、もう一度送信してください。</p>
+                    <ul>
+                        <li><a href="#error-name">Enter your full name</a></li>
+                        <li><a href="#error-dob">Date of birth must be a real date</a></li></ul></section></section>
+
+            <section data-sign="rule">
+                <h3>p[data-type="error"][data-size]</h3>
+                <label for="error-name-xs">氏名 (xs)</label>
+                <p id="error-name-xs-message" data-sign="rule" data-size="xs" data-type="error"><strong>エラー:</strong> 氏名を入力してください</p>
+                <input id="error-name-xs" type="text" aria-describedby="error-name-xs-message" aria-invalid="true" data-size="xs">
+                <label for="error-name-sm">氏名 (sm)</label>
+                <p id="error-name-sm-message" data-sign="rule" data-size="sm" data-type="error"><strong>エラー:</strong> 氏名を入力してください</p>
+                <input id="error-name-sm" type="text" aria-describedby="error-name-sm-message" aria-invalid="true" data-size="sm">
+                <label for="error-name-md">氏名 (md)</label>
+                <p id="error-name-md-message" data-sign="rule" data-size="md" data-type="error"><strong>エラー:</strong> 氏名を入力してください</p>
+                <input id="error-name-md" type="text" aria-describedby="error-name-md-message" aria-invalid="true" data-size="md">
+                <label for="error-name-lg">氏名 (lg)</label>
+                <p id="error-name-lg-message" data-sign="rule" data-size="lg" data-type="error"><strong>エラー:</strong> 氏名を入力してください</p>
+                <input id="error-name-lg" type="text" aria-describedby="error-name-lg-message" aria-invalid="true" data-size="lg">
+                <label for="error-name-xl">氏名 (xl)</label>
+                <p id="error-name-xl-message" data-sign="rule" data-size="xl" data-type="error"><strong>エラー:</strong> 氏名を入力してください</p>
+                <input id="error-name-xl" type="text" aria-describedby="error-name-xl-message" aria-invalid="true" data-size="xl">
+                <label for="error-name-2xl">氏名 (2xl)</label>
+                <p id="error-name-2xl-message" data-sign="rule" data-size="2xl" data-type="error"><strong>エラー:</strong> 氏名を入力してください</p>
+                <input id="error-name-2xl" type="text" aria-describedby="error-name-2xl-message" aria-invalid="true" data-size="2xl"></section></section>
+
+        <section>
+            <h2>Table</h2>
+            <section data-sign="rule">
+                <table>
+                    <caption>(data-border="sectioned")</caption>
+                    <thead>
+                        <tr>
+                            <th scope="col">Head</th>
+                            <th scope="col">Head</th>
+                            <th scope="col">Head</th></tr></thead>
+                    <tbody>
+                        <tr>
+                            <th scope="row">Row</th>
+                            <td>Cell</td>
+                            <td>Cell</td></tr>
+                        <tr>
+                            <th scope="row">Row</th>
+                            <td>Cell</td>
+                            <td>Cell</td></tr>
+                        <tr>
+                            <th scope="row">Row</th>
+                            <td>Cell</td>
+                            <td>Cell</td></tr></tbody></table>
+                <table data-border="grid" data-selectable>
+                    <caption>data-border="grid" data-selectable</caption>
+                    <thead>
+                        <tr>
+                            <th scope="col">
+                                <label aria-label="Select all">
+                                    <input type="checkbox" data-size="sm"></label></th>
+                            <th scope="col">Head</th>
+                            <th scope="col">Head</th></tr></thead>
+                    <tbody>
+                        <tr>
+                            <td>
+                                <label aria-label="Select row">
+                                    <input checked type="checkbox" data-size="sm"></label></td>
+                            <td>Cell</td>
+                            <td>Cell</td></tr>
+                        <tr>
+                            <td>
+                                <label aria-label="Select row">
+                                    <input type="checkbox" data-size="sm"></label></td>
+                            <td>Cell</td>
+                            <td>Cell</td></tr></tbody></table>
+                <table data-border="booktabs" data-stripe>
+                    <caption>data-border="booktabs" data-stripe</caption>
+                    <thead>
+                        <tr>
+                            <th scope="col">Head</th>
+                            <th scope="col">Head</th>
+                            <th scope="col">Head</th></tr></thead>
+                    <tbody>
+                        <tr>
+                            <th scope="row">Row</th>
+                            <td>Cell</td>
+                            <td>Cell</td></tr>
+                        <tr>
+                            <th scope="row">Row</th>
+                            <td>Cell</td>
+                            <td>Cell</td></tr>
+                        <tr>
+                            <th scope="row">Row</th>
+                            <td>Cell</td>
+                            <td>Cell</td></tr></tbody></table>
+
+                <table>
+                    <caption>Sort buttons</caption>
+                    <thead>
+                        <tr>
+                            <th scope="col">Head</th>
+                            <th scope="col" aria-sort="ascending">
+                                Head
+                                <span data-step="block">
+                                    <label aria-label="Sort ascending">
+                                        <input checked name="sort-1" type="radio" value="a-asc"></label>
+                                    <label aria-label="Sort descending">
+                                        <input name="sort-1" type="radio" value="a-desc"></label></span></th>
+                            <th scope="col" aria-sort="none">
+                                Head
+                                <span data-step="block">
+                                    <label aria-label="Sort ascending">
+                                        <input name="sort-1" type="radio" value="b-asc"></label>
+                                    <label aria-label="Sort descending">
+                                        <input name="sort-1" type="radio" value="b-desc"></label></span></th></tr></thead>
+                    <tbody>
+                        <tr>
+                            <th scope="row">Row</th>
+                            <td>Cell</td>
+                            <td>Cell</td></tr>
+                        <tr>
+                            <th scope="row">Row</th>
+                            <td>Cell</td>
+                            <td>Cell</td></tr></tbody></table></section>
+
+                <section data-sign="rule">
+                    <h3>size</h3>
+                    <table data-size="xs">
+                        <caption>data-size="xs"</caption>
+                        <thead>
+                            <tr>
+                                <th scope="col">Head</th>
+                                <th scope="col">Head</th>
+                                <th scope="col">Head</th></tr></thead>
+                        <tbody>
+                            <tr>
+                                <th scope="row">Row</th>
+                                <td>Cell</td>
+                                <td>Cell</td></tr>
+                            <tr>
+                                <th scope="row">Row</th>
+                                <td>Cell</td>
+                                <td>Cell</td></tr>
+                            <tr>
+                                <th scope="row">Row</th>
+                                <td>Cell</td>
+                                <td>Cell</td></tr></tbody></table>
+                    <table data-size="sm">
+                        <caption>data-size="sm"</caption>
+                        <thead>
+                            <tr>
+                                <th scope="col">Head</th>
+                                <th scope="col">Head</th>
+                                <th scope="col">Head</th></tr></thead>
+                        <tbody>
+                            <tr>
+                                <th scope="row">Row</th>
+                                <td>Cell</td>
+                                <td>Cell</td></tr>
+                            <tr>
+                                <th scope="row">Row</th>
+                                <td>Cell</td>
+                                <td>Cell</td></tr>
+                            <tr>
+                                <th scope="row">Row</th>
+                                <td>Cell</td>
+                                <td>Cell</td></tr></tbody></table>
+                    <table data-size="lg">
+                        <caption>data-size="lg"</caption>
+                        <thead>
+                            <tr>
+                                <th scope="col">Head</th>
+                                <th scope="col">Head</th>
+                                <th scope="col">Head</th></tr></thead>
+                        <tbody>
+                            <tr>
+                                <th scope="row">Row</th>
+                                <td>Cell</td>
+                                <td>Cell</td></tr>
+                            <tr>
+                                <th scope="row">Row</th>
+                                <td>Cell</td>
+                                <td>Cell</td></tr>
+                            <tr>
+                                <th scope="row">Row</th>
+                                <td>Cell</td>
+                                <td>Cell</td></tr></tbody></table>
+                    <table data-size="xl">
+                        <caption>data-size="xl"</caption>
+                        <thead>
+                            <tr>
+                                <th scope="col">Head</th>
+                                <th scope="col">Head</th>
+                                <th scope="col">Head</th></tr></thead>
+                        <tbody>
+                            <tr>
+                                <th scope="row">Row</th>
+                                <td>Cell</td>
+                                <td>Cell</td></tr>
+                            <tr>
+                                <th scope="row">Row</th>
+                                <td>Cell</td>
+                                <td>Cell</td></tr>
+                            <tr>
+                                <th scope="row">Row</th>
+                                <td>Cell</td>
+                                <td>Cell</td></tr></tbody></table>
+                    <table data-size="2xl">
+                        <caption>data-size="2xl"</caption>
+                        <thead>
+                            <tr>
+                                <th scope="col">Head</th>
+                                <th scope="col">Head</th>
+                                <th scope="col">Head</th></tr></thead>
+                        <tbody>
+                            <tr>
+                                <th scope="row">Row</th>
+                                <td>Cell</td>
+                                <td>Cell</td></tr>
+                            <tr>
+                                <th scope="row">Row</th>
+                                <td>Cell</td>
+                                <td>Cell</td></tr>
+                            <tr>
+                                <th scope="row">Row</th>
+                                <td>Cell</td>
+                                <td>Cell</td></tr></tbody></table></section></section>
+
+        <section>
+            <h2>Toast</h2>
+            <button type="button" onclick="js_fn.show_toast(document.getElementById('toast_output'))">show (data-surround="fill")</button>
+            <button type="button" onclick="js_fn.show_toast(document.getElementById('toast_button'))">show data-surround="outline", 2xl</button></section>
+
+        <section id="toast" data-type="toast">
+            <output id="toast_output" class="hidden">
+                <span id="toast_output_span">span:</span>
+                <p id="toast_output_p">(data-surround="fill")</p></output>
+            <button id="toast_button" class="hidden" data-sign="x" data-size="2xl" data-surround="outline" onclick="js_fn.hide_toast(this.closest('button'))">
+                <span id="toast_button_span">span:</span>
+                <p id="toast_button_p">data-surround="outline", 2xl</p></button></section>
+    </main>
 
 </body></html>

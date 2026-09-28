@@ -39,10 +39,9 @@ body>header {
     padding-top: 0.5rem;
 }
 
-body>header, 
-body>section, 
-main, 
-aside, 
+body>header,
+main,
+aside,
 body>footer {
     max-width: 60rem;
     margin: 0 auto;

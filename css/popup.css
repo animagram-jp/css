@@ -141,7 +141,7 @@
         color:            var(--color-ink);
     }
 
-    dialog::backdrop { /* per kiso.css:514 */
+    :where(dialog, [popover][data-surround="transparent"])::backdrop { /* per kiso.css:514 */
         background-color: oklch(0% 0 0deg / 30%);
     }
 

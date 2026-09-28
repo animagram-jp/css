@@ -274,12 +274,6 @@
         background-color: var(--color-highlight-ink);
         color: var(--color-paper);
     }
-    [data-surround="fill"] > ::selection,
-    [data-surround="fill"]::selection,
-    [data-surround="fill"] > mark {
-        background-color: var(--color-highlight-paper);
-        color: var(--color-ink);
-    }
 
     code, pre, kbd, samp, var,
     input:where(
