@@ -1059,6 +1059,83 @@
         transform: translateY(0.25rem) rotate(225deg);
     }
 
+    /* === eye === */
+
+    [data-facet="eye"]::before {
+        background-color: currentColor;
+        content:          "";
+        inset:            0;
+        margin:           auto;
+        position:         absolute;
+        clip-path: shape(
+            from 100% 50%,
+            curve to 50% 15.625% with 100% 50% / 81.25% 15.625%,
+            curve to 0% 50% with 18.75% 15.625% / 0% 50%,
+            curve to 50% 84.375% with 0% 50% / 18.75% 84.375%,
+            curve to 100% 50% with 81.25% 84.375% / 100% 50%,
+            close,
+            move to 92.5% 50%,
+            curve to 50% 79.219% with 92.5% 50% / 76.562% 79.219%,
+            curve to 7.5% 50% with 23.438% 79.219% / 7.5% 50%,
+            curve to 50% 20.781% with 7.5% 50% / 23.438% 20.781%,
+            curve to 92.5% 50% with 76.562% 20.781% / 92.5% 50%,
+            close,
+            move to -10.828% -5.172%,
+            line to 105.172% 110.828%,
+            line to 110.828% 105.172%,
+            line to -5.172% -10.828%,
+            close
+        );
+    }
+
+    [data-facet="eye"]:where(:checked, [aria-pressed="true"])::before {
+        clip-path: shape(
+            from 100% 50%,
+            curve to 50% 15.625% with 100% 50% / 81.25% 15.625%,
+            curve to 0% 50% with 18.75% 15.625% / 0% 50%,
+            curve to 50% 84.375% with 0% 50% / 18.75% 84.375%,
+            curve to 100% 50% with 81.25% 84.375% / 100% 50%,
+            close
+        );
+    }
+
+    /* --- size --- */
+
+    [data-facet="eye"] {
+        &[data-size="xs"]::before {
+            block-size:  var(--xs-line-height);
+            inline-size: var(--xs-line-height);
+        }
+
+        &[data-size="sm"]::before {
+            block-size:  var(--sm-line-height);
+            inline-size: var(--sm-line-height);
+        }
+
+        &:where(
+            [data-size="md"],
+            :not([data-size])
+        )::before {
+            block-size:  var(--md-line-height);
+            inline-size: var(--md-line-height);
+        }
+
+        &[data-size="lg"]::before {
+            block-size:  var(--lg-line-height);
+            inline-size: var(--lg-line-height);
+        }
+
+        &[data-size="xl"]::before {
+            block-size:  var(--xl-line-height);
+            inline-size: var(--xl-line-height);
+        }
+
+        &[data-size="2xl"]::before {
+            block-size:  var(--2xl-line-height);
+            inline-size: var(--2xl-line-height);
+        }
+    }
+
     /* === reload, sync === */
 
     :where(
@@ -1157,82 +1234,5 @@
             line to 19.375% 56.25%,
             close
         );
-    }
-
-    /* === visible === */
-
-    [data-facet="eye"]::before {
-        background-color: currentColor;
-        content:          "";
-        inset:            0;
-        margin:           auto;
-        position:         absolute;
-        clip-path: shape(
-            from 100% 50%,
-            curve to 50% 15.625% with 100% 50% / 81.25% 15.625%,
-            curve to 0% 50% with 18.75% 15.625% / 0% 50%,
-            curve to 50% 84.375% with 0% 50% / 18.75% 84.375%,
-            curve to 100% 50% with 81.25% 84.375% / 100% 50%,
-            close,
-            move to 92.5% 50%,
-            curve to 50% 79.219% with 92.5% 50% / 76.562% 79.219%,
-            curve to 7.5% 50% with 23.438% 79.219% / 7.5% 50%,
-            curve to 50% 20.781% with 7.5% 50% / 23.438% 20.781%,
-            curve to 92.5% 50% with 76.562% 20.781% / 92.5% 50%,
-            close,
-            move to -10.828% -5.172%,
-            line to 105.172% 110.828%,
-            line to 110.828% 105.172%,
-            line to -5.172% -10.828%,
-            close
-        );
-    }
-
-    [data-facet="eye"]:where(:checked, [aria-pressed="true"])::before {
-        clip-path: shape(
-            from 100% 50%,
-            curve to 50% 15.625% with 100% 50% / 81.25% 15.625%,
-            curve to 0% 50% with 18.75% 15.625% / 0% 50%,
-            curve to 50% 84.375% with 0% 50% / 18.75% 84.375%,
-            curve to 100% 50% with 81.25% 84.375% / 100% 50%,
-            close
-        );
-    }
-
-    /* --- size --- */
-
-    [data-facet="eye"] {
-        &[data-size="xs"]::before {
-            block-size:  var(--xs-line-height);
-            inline-size: var(--xs-line-height);
-        }
-
-        &[data-size="sm"]::before {
-            block-size:  var(--sm-line-height);
-            inline-size: var(--sm-line-height);
-        }
-
-        &:where(
-            [data-size="md"],
-            :not([data-size])
-        )::before {
-            block-size:  var(--md-line-height);
-            inline-size: var(--md-line-height);
-        }
-
-        &[data-size="lg"]::before {
-            block-size:  var(--lg-line-height);
-            inline-size: var(--lg-line-height);
-        }
-
-        &[data-size="xl"]::before {
-            block-size:  var(--xl-line-height);
-            inline-size: var(--xl-line-height);
-        }
-
-        &[data-size="2xl"]::before {
-            block-size:  var(--2xl-line-height);
-            inline-size: var(--2xl-line-height);
-        }
     }
 }
