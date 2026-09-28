@@ -110,15 +110,26 @@ document.querySelectorAll('label > input[type="password"]').forEach((input) => {
     const button = input.parentElement.querySelector(":scope > input[aria-controls]");
     if (!button) return;
     button.hidden = false;
-    button.addEventListener("click", () => {
-        const revealed = button.getAttribute("aria-pressed") === "true";
-        button.setAttribute("aria-pressed", String(!revealed));
-        input.type = revealed ? "password" : "text";
-    });
-    input.form?.addEventListener("submit", () => {
-        input.type = "password";
-        button.setAttribute("aria-pressed", "false");
-    });
+
+    if ("checked" in button) {
+        button.addEventListener("change", () => {
+            input.type = button.checked ? "text" : "password";
+        });
+        input.form?.addEventListener("submit", () => {
+            input.type = "password";
+            button.checked = false;
+        });
+    } else {
+        button.addEventListener("click", () => {
+            const revealed = button.getAttribute("aria-pressed") === "true";
+            button.setAttribute("aria-pressed", String(!revealed));
+            input.type = revealed ? "password" : "text";
+        });
+        input.form?.addEventListener("submit", () => {
+            input.type = "password";
+            button.setAttribute("aria-pressed", "false");
+        });
+    }
 });
 
 // === step button ===

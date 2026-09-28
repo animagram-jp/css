@@ -72,24 +72,27 @@
         display: none;
     }
 
-    label:has(> input[type="password"]) {
+    label:has(> input[aria-controls]) {
         position: relative;
     }
 
-    label:has(> input[type="password"]) > input[type="checkbox"] {
+    label:has(> input[aria-controls]) > input:not([type="checkbox"]) {
+        field-sizing: fixed;
+        inline-size:  15rem;
+    }
+
+    label:has(> input[aria-controls]) > input[type="checkbox"] {
         inset-block:      0;
         inset-inline-end: 0;
-        min-block-size:   auto;
-        min-inline-size:  auto;
         position:         absolute;
     }
 
     /* --- size --- */
 
-    label:has(> input[type="password"]:where([data-size="md"], :not([data-size]))) > input {
-        padding-inline-end: calc(var(--md-box-height) * 0.6);
+    label:has(> input[aria-controls]:where([data-size="md"], :not([data-size]))) > input:not([type="checkbox"]) {
+        padding-inline-end: var(--md-box-height);
     }
-    label:has(> input[type="password"]) > input[type="checkbox"]:where([data-size="md"], :not([data-size])) {
+    label:has(> input[aria-controls]) > input[type="checkbox"]:where([data-size="md"], :not([data-size])) {
         padding-inline-end: var(--md-border-radius);
     }
 

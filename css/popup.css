@@ -128,6 +128,13 @@
        transparent padding; the input itself should not also claim a full box-height, or the row
        grows taller than its text. size it to data-sign-style="inline"'s line-height square instead
        of checkbox.css/radio.css's box-height square. */
+    li > label > input[role]:where(:checked, :indeterminate) {
+        color: inherit;
+    }
+    li > label > input[role]::before {
+        border-color: currentColor;
+    }
+
     li > label > input[role] {
         block-size:  var(--md-line-height);
         cursor:      pointer;
