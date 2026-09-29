@@ -277,7 +277,7 @@
     :where(
         a:any-link,
         summary
-    ):where(
+    ):is(
         [data-style="underline"],
         :not([data-surround])
     ):where(:active, [aria-pressed="true"]) {
