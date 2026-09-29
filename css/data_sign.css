@@ -1353,7 +1353,7 @@
             [aria-pressed="true"],
             :checked
         )::after {
-            animation: sign-hop 1.2s ease infinite;
+            animation: sign-hop 1.5s ease infinite;
         }
 
         @keyframes sign-hop {
