@@ -222,7 +222,44 @@
         }
     }
 
-    /* === surround transparent style: hover, active === */
+    /* === surround transparent style: focus === */
+
+    :where(
+        [data-surround="transparent"],
+        tr:not([data-style], [data-surround]),
+        li[role],
+        li > [role]:where(a, button),
+        li > label:has(> input[role])
+    ) {
+        &[data-size="xs"]:is(:focus-visible, :has(:checked)) {
+            outline-offset: calc(var(--xs-border-width) * -1);
+        }
+
+        &[data-size="sm"]:is(:focus-visible, :has(:checked)) {
+            outline-offset: calc(var(--sm-border-width) * -1);
+        }
+
+        &:where(
+            [data-size="md"],
+            :not([data-size])
+        ):is(:focus-visible, :has(:checked)) {
+            outline-offset: calc(var(--md-border-width) * -1);
+        }
+
+        &[data-size="lg"]:is(:focus-visible, :has(:checked)) {
+            outline-offset: calc(var(--lg-border-width) * -1);
+        }
+
+        &[data-size="xl"]:is(:focus-visible, :has(:checked)) {
+            outline-offset: calc(var(--xl-border-width) * -1);
+        }
+
+        &[data-size="2xl"]:is(:focus-visible, :has(:checked)) {
+            outline-offset: calc(var(--2xl-border-width) * -1);
+        }
+    }
+
+    /* --- hover, active --- */
 
     :where(
         :where(
@@ -266,43 +303,6 @@
         &[data-size="2xl"]:not(:focus-visible) {
             outline-offset: calc(var(--2xl-border-width) * -1);
             outline-width:  var(--2xl-border-width);
-        }
-    }
-
-    /* === surround transparent style: focus === */
-
-    :where(
-        [data-surround="transparent"],
-        tr:not([data-style], [data-surround]),
-        li[role],
-        li > [role]:where(a, button),
-        li > label:has(> input[role])
-    ) {
-        &[data-size="xs"]:is(:focus-visible, :has(:checked)) {
-            outline-offset: calc(var(--xs-border-width) * -1);
-        }
-
-        &[data-size="sm"]:is(:focus-visible, :has(:checked)) {
-            outline-offset: calc(var(--sm-border-width) * -1);
-        }
-
-        &:where(
-            [data-size="md"],
-            :not([data-size])
-        ):is(:focus-visible, :has(:checked)) {
-            outline-offset: calc(var(--md-border-width) * -1);
-        }
-
-        &[data-size="lg"]:is(:focus-visible, :has(:checked)) {
-            outline-offset: calc(var(--lg-border-width) * -1);
-        }
-
-        &[data-size="xl"]:is(:focus-visible, :has(:checked)) {
-            outline-offset: calc(var(--xl-border-width) * -1);
-        }
-
-        &[data-size="2xl"]:is(:focus-visible, :has(:checked)) {
-            outline-offset: calc(var(--2xl-border-width) * -1);
         }
     }
 }

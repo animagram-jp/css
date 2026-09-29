@@ -150,7 +150,7 @@
         width:            auto;
     }
 
-    /* === surround transparent style: hover, active === */
+    /* --- hover, active --- */
 
     :where(
         :where(
