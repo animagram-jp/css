@@ -150,6 +150,49 @@
         width:            auto;
     }
 
+    /* === surround transparent style: hover, active === */
+
+    :where(
+        :where(
+            a:any-link,
+            button,
+            [type="button"],
+            [type="submit"],
+            [type="reset"],
+            summary
+        )[data-surround="transparent"],
+        li[role],
+        li > [role]:where(a, button),
+        li > label:has(> input[role]:not(:disabled, [aria-disabled="true"])),
+        [popovertarget]:not([data-surround])
+    ) {
+        &:active {
+            outline-color: var(--color-focus);
+            outline-style: solid;
+        }
+
+        &:where(:user-invalid, [aria-invalid="true"]):active {
+            outline-color: var(--color-error);
+        }
+
+        @media (hover: hover) {
+            &:hover {
+                outline-color: var(--color-focus);
+                outline-style: solid;
+            }
+
+            &:where(:user-invalid, [aria-invalid="true"]):hover {
+                outline-color: var(--color-error);
+            }
+        }
+
+        @media (forced-colors: active) {
+            &:where(:user-invalid, [aria-invalid="true"]):where(:hover, :active) {
+                outline-color: Mark;
+            }
+        }
+    }
+
     /* === default inline style (not focusable): nothing to define more  === */
 
     /* === underline inline style === */
