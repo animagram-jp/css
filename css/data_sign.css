@@ -1319,4 +1319,68 @@
             close
         );
     }
+
+    /* === reload, sync: busy === */
+
+    :is(
+        [data-facet="reload"],
+        [data-facet="sync"]
+    ):where(
+        [aria-busy="true"],
+        [aria-pressed="true"],
+        :checked
+    )::after {
+        background-color:    transparent;
+        background-image:
+            radial-gradient(circle closest-side, currentColor 95%, transparent 100%),
+            radial-gradient(circle closest-side, currentColor 95%, transparent 100%),
+            radial-gradient(circle closest-side, currentColor 95%, transparent 100%);
+        background-position:
+            13.077% 62.5%,
+            50% 62.5%,
+            86.923% 62.5%;
+        background-repeat:   no-repeat;
+        background-size:     18.75% 18.75%;
+        clip-path:           none;
+    }
+
+    @media (prefers-reduced-motion: no-preference) {
+        :is(
+            [data-facet="reload"],
+            [data-facet="sync"]
+        ):where(
+            [aria-busy="true"],
+            [aria-pressed="true"],
+            :checked
+        )::after {
+            animation: sign-hop 1.2s ease infinite;
+        }
+
+        @keyframes sign-hop {
+            0%, 40%, 100% {
+                background-position:
+                    13.077% 62.5%,
+                    50% 62.5%,
+                    86.923% 62.5%;
+            }
+            10% {
+                background-position:
+                    13.077% 25%,
+                    50% 62.5%,
+                    86.923% 62.5%;
+            }
+            20% {
+                background-position:
+                    13.077% 62.5%,
+                    50% 25%,
+                    86.923% 62.5%;
+            }
+            30% {
+                background-position:
+                    13.077% 62.5%,
+                    50% 62.5%,
+                    86.923% 25%;
+            }
+        }
+    }
 }
