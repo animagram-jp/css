@@ -221,7 +221,8 @@
 
     /* --- invalid --- */
 
-    :where(:user-invalid, [aria-invalid="true"]) {
+    :where(:user-invalid, [aria-invalid="true"]),
+    [data-surround="outline"]:where(:user-invalid, [aria-invalid="true"]) {
         border-color: var(--color-error);
     }
 
@@ -230,7 +231,8 @@
     }
 
     @media (forced-colors: active) {
-        :where(:user-invalid, [aria-invalid="true"]) {
+        :where(:user-invalid, [aria-invalid="true"]),
+        [data-surround="outline"]:where(:user-invalid, [aria-invalid="true"]) {
             border-color: Mark;
         }
 
