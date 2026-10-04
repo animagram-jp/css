@@ -1,8 +1,8 @@
 // This file includes untranslated text (ja).
 
-# Contributing
+# Development
 
-## Development rule
+## Rule
 
 - Follow [ORG_CONTRIBUTING.md](./ORG_CONTRIBUTING.md)
 
