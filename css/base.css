@@ -274,7 +274,6 @@
     input:where(
         [type="tel"],
         [type="number"],
-        [type="password"],
         [inputmode="numeric"]
     ) {
         font-family: var(--font-family-monospace);
