@@ -139,7 +139,7 @@ The library default is the CUD accent purple.
 
 | Scoped parameter | Meaning |
 |-|-|
-| `--{xs/sm/md/lg/xl/2xl}-border-width` | Border radius for the scope. |
+| `--{xs/sm/md/lg/xl/2xl}-border-radius` | Border radius for the scope. |
 | `--{xs/sm/md/lg/xl/2xl}-border-width` | Border width for the scope. |
 | `--{xs/sm/md/lg/xl/2xl}-box-height` | Block height (border top to bottom) when with 1 line content. |
 | `--{xs/sm/md/lg/xl/2xl}-font-size` | Font size for the scope. |

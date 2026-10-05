@@ -241,7 +241,7 @@
                             <span>li > label > (checkbox[role="option"], span)</span></label></li>
                     <li>
                         <button role="option">li > button[role="option"]</button></li></ul>
-                <button id="listbox-8-trigger" disabled popovertarget="listbox-8" type="button" aria-controls="listbox-8" aria-haspopup="listbox" data-surround="outline">button[aria-haspopup="listbox"]:disalbed</button>
+                <button id="listbox-8-trigger" disabled popovertarget="listbox-8" type="button" aria-controls="listbox-8" aria-haspopup="listbox" data-surround="outline">button[aria-haspopup="listbox"]:disabled</button>
                 <ul id="listbox-8" popover="auto" role="listbox" aria-labelledby="listbox-8-trigger">
                     <li role="separator">li[role="separator"]</li>
                     <li>
@@ -321,7 +321,7 @@
                         <span>inline</span>
                         <input checked disabled name="r-disabled" type="radio"></label></fieldset></section>
             <section data-sign="rule">
-                <h2>size</h2>
+                <h3>size</h3>
                 <fieldset data-axis="inline">
                     <legend>
                         <span>size</span></legend>
@@ -953,10 +953,10 @@
             <button type="button" onclick="js_fn.show_toast(document.getElementById('toast_button'))">show data-surround="outline", 2xl</button></section>
 
         <section id="toast" data-type="toast">
-            <output id="toast_output" class="hidden">
+            <output id="toast_output" hidden>
                 <span id="toast_output_span">span:</span>
                 <p id="toast_output_p">(data-surround="fill")</p></output>
-            <button id="toast_button" class="hidden" data-sign="x" data-size="2xl" data-surround="outline" onclick="js_fn.hide_toast(this.closest('button'))">
+            <button id="toast_button" hidden data-sign="x" data-size="2xl" data-surround="outline" onclick="js_fn.hide_toast(this.closest('button'))">
                 <span id="toast_button_span">span:</span>
                 <p id="toast_button_p">data-surround="outline", 2xl</p></button></section>
     </main>
