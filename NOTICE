@@ -32,14 +32,6 @@ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 
-## IBM Plex Sans
-
-Source: https://github.com/IBM/plex
-
-Copyright © 2017 IBM Corp. with Reserved Font Name "Plex"
-
-License: SIL Open Font License 1.1 (OFL-1.1), https://openfontlicense.org
-
 ## CSS resets (css/reset.css)
 
 css/reset.css incorporates parts of the following MIT-licensed works.
