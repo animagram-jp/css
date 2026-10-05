@@ -19,6 +19,7 @@
     <link href="./css/radio.css" rel="stylesheet">
     <link href="./css/popup.css" rel="stylesheet">
     <link href="./css/heading.css" rel="stylesheet">
+    <link href="./css/navigation.css" rel="stylesheet">
     <link href="./css/search.css" rel="stylesheet">
     <link href="./css/table.css" rel="stylesheet">
     <link href="./css/slider.css" rel="stylesheet">
@@ -168,6 +169,16 @@
                 <details>
                     <summary data-surround="outline">summary (data-surround="outline")</summary>
                     <p>details > summary, p</p></details></section>
+            <section data-sign="rule">
+                <h3>[data-group="inline|block"]</h3>
+                <span data-group="inline">
+                    <button type="button" data-surround="outline">inline</button>
+                    <button type="button" data-surround="outline">inline</button>
+                    <button type="button" data-surround="outline">inline</button></span>
+                <span data-group="block">
+                    <button type="button" data-surround="outline">block</button>
+                    <button type="button" data-surround="outline">block</button>
+                    <button type="button" data-surround="outline">block</button></span></section>
             <section data-sign="rule">
                 <h3>size</h3>
                 <button data-size="xs">xs</button>
@@ -447,6 +458,49 @@
             <section id="tabpanel-2" role="tabpanel" aria-labelledby="tab-2">tabpanel-2</section></section>
 
         <section>
+            <h2>Navigation</h2>
+            <section data-sign="rule">
+                <h3>nav[data-group="inline"] &gt; (a, a[aria-current="page"])</h3>
+                <nav aria-label="Breadcrumb" data-group="inline">
+                    <a href="#dummy">Home</a>
+                    <a href="#dummy">Hokkaido</a>
+                    <a href="#dummy">Sapporo</a>
+                    <a aria-current="page">Current page</a></nav></section>
+            <section data-sign="rule">
+                <h3>size</h3>
+                <nav aria-label="Breadcrumb xs" data-group="inline" data-size="xs">
+                    <a href="#dummy">Home</a>
+                    <a href="#dummy">xs</a>
+                    <span aria-current="page">span[aria-current="page"]</span></nav>
+                <nav aria-label="Breadcrumb sm" data-group="inline" data-size="sm">
+                    <a href="#dummy">Home</a>
+                    <a href="#dummy">sm</a>
+                    <span aria-current="page">span[aria-current="page"]</span></nav>
+                <nav aria-label="Breadcrumb md" data-group="inline" data-size="md">
+                    <a href="#dummy">Home</a>
+                    <a href="#dummy">md</a>
+                    <span aria-current="page">span[aria-current="page"]</span></nav>
+                <nav aria-label="Breadcrumb lg" data-group="inline" data-size="lg">
+                    <a href="#dummy">Home</a>
+                    <a href="#dummy">lg</a>
+                    <span aria-current="page">span[aria-current="page"]</span></nav>
+                <nav aria-label="Breadcrumb xl" data-group="inline" data-size="xl">
+                    <a href="#dummy">Home</a>
+                    <a href="#dummy">xl</a>
+                    <span aria-current="page">span[aria-current="page"]</span></nav>
+                <nav aria-label="Breadcrumb 2xl" data-group="inline" data-size="2xl">
+                    <a href="#dummy">Home</a>
+                    <a href="#dummy">2xl</a>
+                    <span aria-current="page">span[aria-current="page"]</span></nav></section>
+            <section data-sign="rule">
+                <h3>nav[data-group="block"]</h3>
+                <nav aria-label="Breadcrumb block" data-group="block">
+                    <a href="#dummy">Home</a>
+                    <a href="#dummy">Hokkaido</a>
+                    <a href="#dummy">Sapporo</a>
+                    <a aria-current="page">Current page</a></nav></section></section>
+
+        <section>
             <h2>Toggle</h2>
             <section data-sign="rule">
                 <label>
@@ -595,7 +649,7 @@
                     <button type="button">button</button></search>
 
                 <form role="search" aria-labelledby="search-example-4">
-                    <span id="search-example-4">form[role="search"] > (span, label > select, label > input, button) </span>
+                    <span id="search-example-4">form[role="search"] > (span, label > select, label > input, button)</span>
                     <label aria-label="category">
                         <select data-facet="chevron">
                             <option>option</option>

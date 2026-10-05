@@ -13,6 +13,7 @@
     css.radio,
     css.heading,
     css.list,
+    css.navigation, /* dependency: group */
     css.search, /* dependency: input, group */
     css.table,
     css.slider,

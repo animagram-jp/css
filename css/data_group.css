@@ -14,7 +14,16 @@
 
 @layer css.data_group {
 
-    label:has(> *) {
+    :where(
+        label:has(> *),
+        button,
+        input:not([type=hidden]),
+        meter,
+        output,
+        progress,
+        select,
+        textarea
+    ) {
         display: inline flow-root;
     }
 
@@ -27,17 +36,17 @@
 
     :where(
         [data-group="inline"],
-        form[role="search"],
-        search,
-        button,
-        input:not([type=hidden]),
-        meter,
-        output,
-        progress,
-        select,
-        textarea
+        [data-group="block"],
+        :is(
+            search,
+            form[role="search"],
+            label:has(input[type="password"])
+        ):not([data-group])
     ) {
-        display: inline flow-root;
+        align-items: center;
+        display:     inline flex;
+        white-space: nowrap;
+        width:       fit-content;
     }
 
     :where(
@@ -47,24 +56,29 @@
             form[role="search"],
             label:has(input[type="password"])
         ):not([data-group])
-    ) {
-        font-size:   0;
-        white-space: nowrap;
-        width:       fit-content;
+    ) > span:first-child {
+        padding-inline-end: var(--md-border-radius);
+    }
+
+    [data-group="block"] {
+        align-items:    stretch;
+        flex-direction: column;
 
         & > span:first-child {
-            padding-inline-end: var(--md-border-radius);
+            padding-block-end: var(--md-border-radius);
         }
     }
 
     :where(
         [data-group="inline"],
+        [data-group="block"],
         search,
         form[role="search"],
         label
     ),
     :where(
         [data-group="inline"],
+        [data-group="block"],
         search,
         form[role="search"],
         label
@@ -194,10 +208,109 @@
         border-start-start-radius: 0;
     }
 
+    [data-group="block"] > label:not(:last-child) > :where(
+        input:is(
+            [type="text"],
+            [type="email"],
+            [type="password"],
+            [type="search"],
+            [type="url"],
+            [type="tel"],
+            [type="number"],
+            [type="date"],
+            [type="time"],
+            [type="datetime-local"],
+            [type="month"],
+            [type="week"]
+        ),
+        select
+    ),
+    [data-group="block"] > :where(
+        :is(
+            button,
+            input:is(
+                [type="text"],
+                [type="email"],
+                [type="password"],
+                [type="search"],
+                [type="url"],
+                [type="tel"],
+                [type="number"],
+                [type="date"],
+                [type="time"],
+                [type="datetime-local"],
+                [type="month"],
+                [type="week"]
+            ),
+            select,
+            textarea
+        ):not([data-surround]),
+        [data-surround="fill"],
+        [data-surround="outline"]
+    ):not(:last-child) {
+        border-end-end-radius:   0;
+        border-end-start-radius: 0;
+    }
+
+    [data-group="block"] > :where(
+        label,
+        button,
+        input,
+        select
+    ) ~ label > :where(
+        input:is(
+            [type="text"],
+            [type="email"],
+            [type="password"],
+            [type="search"],
+            [type="url"],
+            [type="tel"],
+            [type="number"],
+            [type="date"],
+            [type="time"],
+            [type="datetime-local"],
+            [type="month"],
+            [type="week"]
+        ),
+        select
+    ),
+    [data-group="block"] > :where(
+        label,
+        button,
+        input,
+        select
+    ) ~ :where(
+        :is(
+            button,
+            input:is(
+                [type="text"],
+                [type="email"],
+                [type="password"],
+                [type="search"],
+                [type="url"],
+                [type="tel"],
+                [type="number"],
+                [type="date"],
+                [type="time"],
+                [type="datetime-local"],
+                [type="month"],
+                [type="week"]
+            ),
+            select,
+            textarea
+        ):not([data-surround]),
+        [data-surround="fill"],
+        [data-surround="outline"]
+    ) {
+        border-start-end-radius:   0;
+        border-start-start-radius: 0;
+    }
+
     /* --- color --- */
 
     :where(
         [data-group="inline"],
+        [data-group="block"],
         search,
         form[role="search"]
     ) {

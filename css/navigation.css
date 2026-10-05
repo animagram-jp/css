@@ -1,0 +1,226 @@
+/*
+    Usage:
+
+    <nav aria-label="" data-group="inline|block">
+        <a></a>
+        <a aria-current="page"></a></nav>
+
+    <nav aria-label="" data-group="inline|block">
+        <a></a>
+        <span aria-current="page"></span></nav>
+*/
+
+@layer css.navigation {
+
+    nav[data-group="inline"] {
+        flex-wrap:   wrap;
+        white-space: normal;
+    }
+
+    nav[data-group="block"] {
+        align-items: start;
+    }
+
+    nav:where([data-group="inline"], [data-group="block"]) > * {
+        position: relative;
+    }
+
+    nav:where([data-group="inline"], [data-group="block"]) > [aria-current="page"] {
+        color:                var(--color-ink);
+        text-decoration-line: none;
+    }
+
+    nav:where([data-group="inline"], [data-group="block"]) > :not(:last-child)::after {
+        border-color:        var(--color-ink-mix);
+        border-radius:       0;
+        border-style:        solid;
+        border-top-width:    0;
+        border-left-width:   0;
+        content:             "";
+        pointer-events:      none;
+        position:            absolute;
+    }
+
+    nav[data-group="inline"] > :not(:last-child)::after {
+        inset-block:  0;
+        margin-block: auto;
+        rotate:       -45deg;
+    }
+
+    nav[data-group="inline"] > :not(:last-child):dir(rtl)::after {
+        rotate: 135deg;
+    }
+
+    nav[data-group="block"] > :not(:last-child)::after {
+        inset-inline-start: 0;
+        rotate:             45deg;
+    }
+
+    @media (forced-colors: active) {
+        nav:where([data-group="inline"], [data-group="block"]) > [aria-current="page"] {
+            color: CanvasText;
+        }
+
+        nav:where([data-group="inline"], [data-group="block"]) > :not(:last-child)::after {
+            border-color: GrayText;
+        }
+    }
+
+    /* --- size --- */
+
+    nav[data-group="inline"][data-size="xs"] {
+        column-gap: var(--xs-line-height);
+
+        & > :not(:last-child)::after {
+            block-size:          calc(var(--xs-font-size) * 0.75 * 1.06);
+            border-bottom-width: var(--xs-border-width);
+            border-right-width:  var(--xs-border-width);
+            inline-size:         calc(var(--xs-font-size) * 0.75 * 1.06);
+            inset-inline-start:  calc(100% + var(--xs-line-height) / 2);
+            margin-inline-start: calc(var(--xs-font-size) * 0.75 * 1.06 * -0.8536);
+        }
+    }
+
+    nav[data-group="block"][data-size="xs"] {
+        row-gap: var(--xs-line-height);
+
+        & > :not(:last-child)::after {
+            block-size:          calc(var(--xs-font-size) * 0.75 * 1.06);
+            border-bottom-width: var(--xs-border-width);
+            border-right-width:  var(--xs-border-width);
+            inline-size:         calc(var(--xs-font-size) * 0.75 * 1.06);
+            inset-block-start:   calc(100% + var(--xs-line-height) / 2);
+            margin-block-start:  calc(var(--xs-font-size) * 0.75 * 1.06 * -0.8536);
+        }
+    }
+
+    nav[data-group="inline"][data-size="sm"] {
+        column-gap: var(--sm-line-height);
+
+        & > :not(:last-child)::after {
+            block-size:          calc(var(--sm-font-size) * 0.75 * 1.06);
+            border-bottom-width: var(--sm-border-width);
+            border-right-width:  var(--sm-border-width);
+            inline-size:         calc(var(--sm-font-size) * 0.75 * 1.06);
+            inset-inline-start:  calc(100% + var(--sm-line-height) / 2);
+            margin-inline-start: calc(var(--sm-font-size) * 0.75 * 1.06 * -0.8536);
+        }
+    }
+
+    nav[data-group="block"][data-size="sm"] {
+        row-gap: var(--sm-line-height);
+
+        & > :not(:last-child)::after {
+            block-size:          calc(var(--sm-font-size) * 0.75 * 1.06);
+            border-bottom-width: var(--sm-border-width);
+            border-right-width:  var(--sm-border-width);
+            inline-size:         calc(var(--sm-font-size) * 0.75 * 1.06);
+            inset-block-start:   calc(100% + var(--sm-line-height) / 2);
+            margin-block-start:  calc(var(--sm-font-size) * 0.75 * 1.06 * -0.8536);
+        }
+    }
+
+    nav[data-group="inline"]:where([data-size="md"], :not([data-size])) {
+        column-gap: var(--md-line-height);
+
+        & > :not(:last-child)::after {
+            block-size:          calc(var(--md-font-size) * 0.75 * 1.06);
+            border-bottom-width: var(--md-border-width);
+            border-right-width:  var(--md-border-width);
+            inline-size:         calc(var(--md-font-size) * 0.75 * 1.06);
+            inset-inline-start:  calc(100% + var(--md-line-height) / 2);
+            margin-inline-start: calc(var(--md-font-size) * 0.75 * 1.06 * -0.8536);
+        }
+    }
+
+    nav[data-group="block"]:where([data-size="md"], :not([data-size])) {
+        row-gap: var(--md-line-height);
+
+        & > :not(:last-child)::after {
+            block-size:          calc(var(--md-font-size) * 0.75 * 1.06);
+            border-bottom-width: var(--md-border-width);
+            border-right-width:  var(--md-border-width);
+            inline-size:         calc(var(--md-font-size) * 0.75 * 1.06);
+            inset-block-start:   calc(100% + var(--md-line-height) / 2);
+            margin-block-start:  calc(var(--md-font-size) * 0.75 * 1.06 * -0.8536);
+        }
+    }
+
+    nav[data-group="inline"][data-size="lg"] {
+        column-gap: var(--lg-line-height);
+
+        & > :not(:last-child)::after {
+            block-size:          calc(var(--lg-font-size) * 0.6 * 1.06);
+            border-bottom-width: var(--lg-border-width);
+            border-right-width:  var(--lg-border-width);
+            inline-size:         calc(var(--lg-font-size) * 0.6 * 1.06);
+            inset-inline-start:  calc(100% + var(--lg-line-height) / 2);
+            margin-inline-start: calc(var(--lg-font-size) * 0.6 * 1.06 * -0.8536);
+        }
+    }
+
+    nav[data-group="block"][data-size="lg"] {
+        row-gap: var(--lg-line-height);
+
+        & > :not(:last-child)::after {
+            block-size:          calc(var(--lg-font-size) * 0.6 * 1.06);
+            border-bottom-width: var(--lg-border-width);
+            border-right-width:  var(--lg-border-width);
+            inline-size:         calc(var(--lg-font-size) * 0.6 * 1.06);
+            inset-block-start:   calc(100% + var(--lg-line-height) / 2);
+            margin-block-start:  calc(var(--lg-font-size) * 0.6 * 1.06 * -0.8536);
+        }
+    }
+
+    nav[data-group="inline"][data-size="xl"] {
+        column-gap: var(--xl-line-height);
+
+        & > :not(:last-child)::after {
+            block-size:          calc(var(--xl-font-size) * 0.6 * 1.06);
+            border-bottom-width: var(--xl-border-width);
+            border-right-width:  var(--xl-border-width);
+            inline-size:         calc(var(--xl-font-size) * 0.6 * 1.06);
+            inset-inline-start:  calc(100% + var(--xl-line-height) / 2);
+            margin-inline-start: calc(var(--xl-font-size) * 0.6 * 1.06 * -0.8536);
+        }
+    }
+
+    nav[data-group="block"][data-size="xl"] {
+        row-gap: var(--xl-line-height);
+
+        & > :not(:last-child)::after {
+            block-size:          calc(var(--xl-font-size) * 0.6 * 1.06);
+            border-bottom-width: var(--xl-border-width);
+            border-right-width:  var(--xl-border-width);
+            inline-size:         calc(var(--xl-font-size) * 0.6 * 1.06);
+            inset-block-start:   calc(100% + var(--xl-line-height) / 2);
+            margin-block-start:  calc(var(--xl-font-size) * 0.6 * 1.06 * -0.8536);
+        }
+    }
+
+    nav[data-group="inline"][data-size="2xl"] {
+        column-gap: var(--2xl-line-height);
+
+        & > :not(:last-child)::after {
+            block-size:          calc(var(--2xl-font-size) * 0.6 * 1.06);
+            border-bottom-width: var(--2xl-border-width);
+            border-right-width:  var(--2xl-border-width);
+            inline-size:         calc(var(--2xl-font-size) * 0.6 * 1.06);
+            inset-inline-start:  calc(100% + var(--2xl-line-height) / 2);
+            margin-inline-start: calc(var(--2xl-font-size) * 0.6 * 1.06 * -0.8536);
+        }
+    }
+
+    nav[data-group="block"][data-size="2xl"] {
+        row-gap: var(--2xl-line-height);
+
+        & > :not(:last-child)::after {
+            block-size:          calc(var(--2xl-font-size) * 0.6 * 1.06);
+            border-bottom-width: var(--2xl-border-width);
+            border-right-width:  var(--2xl-border-width);
+            inline-size:         calc(var(--2xl-font-size) * 0.6 * 1.06);
+            inset-block-start:   calc(100% + var(--2xl-line-height) / 2);
+            margin-block-start:  calc(var(--2xl-font-size) * 0.6 * 1.06 * -0.8536);
+        }
+    }
+}
