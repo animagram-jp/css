@@ -254,10 +254,6 @@
         font-family: var(--font-family-sans-serif);
     }
 
-    html {
-        scrollbar-gutter: stable;
-    }
-
     @media print {
         html {
             font-size: 14pt;
