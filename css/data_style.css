@@ -150,9 +150,8 @@
 
     :where(
         [data-surround="transparent"],
-        li[role],
-        li > [role]:where(a, button),
-        li > label:has(> input[role]),
+        :where([role="menu"], [role="listbox"]) > [role]:where(a, button),
+        :where([role="menu"], [role="listbox"]) > label:has(> input[role]),
         [popovertarget]:not([data-surround])
     ) {
         background-color: transparent;
@@ -173,9 +172,8 @@
             [type="reset"],
             summary
         )[data-surround="transparent"],
-        li[role],
-        li > [role]:where(a, button),
-        li > label:has(> input[role]:not(:disabled, [aria-disabled="true"])),
+        :where([role="menu"], [role="listbox"]) > [role]:where(a, button),
+        :where([role="menu"], [role="listbox"]) > label:has(> input[role]:not(:disabled, [aria-disabled="true"])),
         [popovertarget]:not([data-surround])
     ) {
         &:active {

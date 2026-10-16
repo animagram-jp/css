@@ -17,16 +17,16 @@ const EMPHASIS_SRC = /^[0-9a-fA-F]{6}$/.test(argHex)
   : CH.accentPurple;
 const EMPHASIS_NAME = /^[0-9a-fA-F]{6}$/.test(argHex) ? `#${argHex.toUpperCase()}` : "accent-purple";
 
-// --- Scheme ink/paper. high-contrast is the sRGB maximum; less-contrast the derived threshold. ---
+// --- Scheme ink/paper. more-contrast is the sRGB maximum; less-contrast the derived threshold. ---
 const FAMILIES={
   light:{
     "light":               {ink:CH.black, paper:CH.white,        inkMixPct:60},
-    "light-high-contrast": {ink:CH.black, paper:CH.white,        inkMixPct:66},
+    "light-more-contrast": {ink:CH.black, paper:CH.white,        inkMixPct:66},
     "light-less-contrast": {ink:[43,43,43], paper:[243,243,243], collapseMix:true},
   },
   dark:{
     "dark":               {ink:CH.white, paper:CH.black,         inkMixPct:60},
-    "dark-high-contrast": {ink:CH.white, paper:CH.black,         inkMixPct:66},
+    "dark-more-contrast": {ink:CH.white, paper:CH.black,         inkMixPct:66},
     "dark-less-contrast": {ink:[243,243,243], paper:[43,43,43],  collapseMix:true},
   },
 };

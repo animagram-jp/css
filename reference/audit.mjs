@@ -14,8 +14,8 @@ const GUIDELINE = "WCAG_2_2";
 const SCHEMES = [
     { name: "light",               colorScheme: "light", contrast: "no-preference" },
     { name: "dark",                colorScheme: "dark",  contrast: "no-preference" },
-    { name: "light-high-contrast", colorScheme: "light", contrast: "more" },
-    { name: "dark-high-contrast",  colorScheme: "dark",  contrast: "more" },
+    { name: "light-more-contrast", colorScheme: "light", contrast: "more" },
+    { name: "dark-more-contrast",  colorScheme: "dark",  contrast: "more" },
     { name: "light-less-contrast", colorScheme: "light", contrast: "no-preference" },
     { name: "dark-less-contrast",  colorScheme: "dark",  contrast: "no-preference" },
 ];

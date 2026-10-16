@@ -44,8 +44,8 @@
                 <span>light</span>
                 <input name="color-scheme" type="radio" value="light"></label>
             <label>
-                <span>light-high-contrast</span>
-                <input name="color-scheme" type="radio" value="light-high-contrast"></label>
+                <span>light-more-contrast</span>
+                <input name="color-scheme" type="radio" value="light-more-contrast"></label>
             <label>
                 <span>dark-less-contrast</span>
                 <input name="color-scheme" type="radio" value="dark-less-contrast"></label>
@@ -53,8 +53,8 @@
                 <span>dark</span>
                 <input name="color-scheme" type="radio" value="dark"></label>
             <label>
-                <span>dark-high-contrast</span>
-                <input name="color-scheme" type="radio" value="dark-high-contrast"></label></fieldset></header>
+                <span>dark-more-contrast</span>
+                <input name="color-scheme" type="radio" value="dark-more-contrast"></label></fieldset></header>
 
     <main>
         <section>
@@ -225,28 +225,23 @@
             <h2>Popup</h2>
             <section data-sign="rule">
                 <button id="listbox-1-trigger" popovertarget="listbox-1" type="button" aria-controls="listbox-1" aria-haspopup="listbox" data-surround="outline">button[aria-haspopup="listbox"]</button>
-                <ul id="listbox-1" popover="auto" role="listbox" aria-labelledby="listbox-1-trigger">
-                    <li role="separator">li[role="separator"]</li>
-                    <li>
-                        <label>
-                            <input checked name="listbox-radio" role="option" type="radio" data-sign="check" data-sign-style="inline">
-                            <span>li > label > (radio[role="option"], span)</span></label></li>
-                    <li>
-                        <label>
-                            <input name="listbox-radio" role="option" type="radio" data-sign="check" data-sign-style="inline">
-                            <span>span</span></label></li>
-                    <li>
-                        <label>
-                            <input role="option" type="checkbox" data-sign="check" data-sign-style="inline">
-                            <span>li > label > (checkbox[role="option"], span)</span></label></li>
-                    <li>
-                        <button role="option">li > button[role="option"]</button></li></ul>
+                <div id="listbox-1" popover="auto" role="listbox" aria-labelledby="listbox-1-trigger">
+                    <hr>
+                    <label>
+                        <input checked name="listbox-radio" role="option" type="radio" data-sign="check" data-sign-style="inline">
+                        <span>label > (radio[role="option"], span)</span></label>
+                    <label>
+                        <input name="listbox-radio" role="option" type="radio" data-sign="check" data-sign-style="inline">
+                        <span>span</span></label>
+                    <label>
+                        <input role="option" type="checkbox" data-sign="check" data-sign-style="inline">
+                        <span>label > (checkbox[role="option"], span)</span></label>
+                    <button role="option">button[role="option"]</button></div>
                 <button id="listbox-8-trigger" disabled popovertarget="listbox-8" type="button" aria-controls="listbox-8" aria-haspopup="listbox" data-surround="outline">button[aria-haspopup="listbox"]:disabled</button>
-                <ul id="listbox-8" popover="auto" role="listbox" aria-labelledby="listbox-8-trigger">
-                    <li role="separator">li[role="separator"]</li>
-                    <li>
-                        <label>
-                            <input name="" role="option" type="radio" data-sign="check" data-sign-style="inline"></li></ul></section></section>
+                <div id="listbox-8" popover="auto" role="listbox" aria-labelledby="listbox-8-trigger">
+                    <hr>
+                    <label>
+                        <input name="" role="option" type="radio" data-sign="check" data-sign-style="inline"></label></div></section></section>
 
         <section>
             <h2>Checkbox</h2>
@@ -356,8 +351,8 @@
                         <span>Light</span>
                         <input name="grid-demo-2b" type="radio" value="light"></label>
                     <label>
-                        <span>Light (high contrast)</span>
-                        <input name="grid-demo-2b" type="radio" value="light-high-contrast"></label>
+                        <span>Light (more contrast)</span>
+                        <input name="grid-demo-2b" type="radio" value="light-more-contrast"></label>
                     <label>
                         <span>Dark (less contrast)</span>
                         <input name="grid-demo-2b" type="radio" value="dark-less-contrast"></label>
@@ -365,8 +360,8 @@
                         <span>Dark</span>
                         <input name="grid-demo-2b" type="radio" value="dark"></label>
                     <label>
-                        <span>Dark (high contrast)</span>
-                        <input name="grid-demo-2b" type="radio" value="dark-high-contrast"></label></fieldset>
+                        <span>Dark (more contrast)</span>
+                        <input name="grid-demo-2b" type="radio" value="dark-more-contrast"></label></fieldset>
     
                 <fieldset style="grid-template-columns: repeat(3, 10rem);">
                     <legend>
@@ -378,8 +373,8 @@
                         <span>Light</span>
                         <input name="grid-demo-2d" type="radio" value="light"></label>
                     <label>
-                        <span>Light (high contrast)</span>
-                        <input name="grid-demo-2d" type="radio" value="light-high-contrast"></label>
+                        <span>Light (more contrast)</span>
+                        <input name="grid-demo-2d" type="radio" value="light-more-contrast"></label>
                     <label>
                         <span>Dark (less contrast)</span>
                         <input name="grid-demo-2d" type="radio" value="dark-less-contrast"></label>
@@ -387,8 +382,8 @@
                         <span>Dark</span>
                         <input name="grid-demo-2d" type="radio" value="dark"></label>
                     <label>
-                        <span>Dark (high contrast)</span>
-                        <input name="grid-demo-2d" type="radio" value="dark-high-contrast"></label></fieldset>
+                        <span>Dark (more contrast)</span>
+                        <input name="grid-demo-2d" type="radio" value="dark-more-contrast"></label></fieldset>
     
                 <fieldset data-axis="inline" style="grid-template-columns: auto repeat(3, minmax(0, max-content)); grid-template-rows: repeat(2, auto);">
                     <legend>
@@ -400,8 +395,8 @@
                         <span>Light</span>
                         <input name="grid-demo-3e" type="radio" value="light"></label>
                     <label>
-                        <span>Light (high contrast)</span>
-                        <input name="grid-demo-3e" type="radio" value="light-high-contrast"></label>
+                        <span>Light (more contrast)</span>
+                        <input name="grid-demo-3e" type="radio" value="light-more-contrast"></label>
                     <label>
                         <span>Dark (less contrast)</span>
                         <input name="grid-demo-3e" type="radio" value="dark-less-contrast"></label>
@@ -409,8 +404,8 @@
                         <span>Dark</span>
                         <input name="grid-demo-3e" type="radio" value="dark"></label>
                     <label>
-                        <span>Dark (high contrast)</span>
-                        <input name="grid-demo-3e" type="radio" value="dark-high-contrast"></label></fieldset>
+                        <span>Dark (more contrast)</span>
+                        <input name="grid-demo-3e" type="radio" value="dark-more-contrast"></label></fieldset>
     
                 <fieldset data-axis="inline" style="grid-template-columns: auto repeat(3, 10rem); grid-template-rows: repeat(2, auto);">
                     <legend>
@@ -422,8 +417,8 @@
                         <span>Light</span>
                         <input name="grid-demo-3f" type="radio" value="light"></label>
                     <label>
-                        <span>Light (high contrast)</span>
-                        <input name="grid-demo-3f" type="radio" value="light-high-contrast"></label>
+                        <span>Light (more contrast)</span>
+                        <input name="grid-demo-3f" type="radio" value="light-more-contrast"></label>
                     <label>
                         <span>Dark (less contrast)</span>
                         <input name="grid-demo-3f" type="radio" value="dark-less-contrast"></label>
@@ -431,8 +426,8 @@
                         <span>Dark</span>
                         <input name="grid-demo-3f" type="radio" value="dark"></label>
                     <label>
-                        <span>Dark (high contrast)</span>
-                        <input name="grid-demo-3f" type="radio" value="dark-high-contrast"></label></fieldset></section></section>
+                        <span>Dark (more contrast)</span>
+                        <input name="grid-demo-3f" type="radio" value="dark-more-contrast"></label></fieldset></section></section>
 
         <section>
             <h2>Tab</h2>

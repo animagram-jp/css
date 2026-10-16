@@ -11,7 +11,7 @@ document.querySelectorAll('input[type="checkbox"][data-indeterminate]').forEach(
     if (!radios.length) return;
 
     const scheme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light";
-    const contrast = window.matchMedia("(prefers-contrast: more)").matches ? "-high-contrast"
+    const contrast = window.matchMedia("(prefers-contrast: more)").matches ? "-more-contrast"
         : window.matchMedia("(prefers-contrast: less)").matches ? "-less-contrast"
         : "";
     const initial = `${scheme}${contrast}`;
