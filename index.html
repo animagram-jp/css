@@ -437,12 +437,12 @@
         <section>
             <h2>Tab</h2>
             <section data-sign="rule">
-                <label id="tab-1" role="tab" aria-controls="tabpanel-1">
+                <label>
                     <span>span</span>
-                    <input checked name="tab" type="radio"></label>
-                <label id="tab-2" role="tab" aria-controls="tabpanel-2">
+                    <input checked id="tab-1" name="tab" role="tab" type="radio" aria-controls="tabpanel-1"></label>
+                <label>
                     <span>span</span>
-                    <input name="tab" type="radio"></label></section>
+                    <input id="tab-2" name="tab" role="tab" type="radio" aria-controls="tabpanel-2"></label></section>
             <section id="tabpanel-1" role="tabpanel" aria-labelledby="tab-1">tabpanel-1</section>
             <section id="tabpanel-2" role="tabpanel" aria-labelledby="tab-2">tabpanel-2</section></section>
 
