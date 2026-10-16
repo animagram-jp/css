@@ -18,7 +18,7 @@
 
     <button type="button" id="popover_button-2" popovertarget="popover-2">
     <* id="popover-2" popover="auto" role="menu/listbox">
-        <hr>
+        <span role="presentation"></span>
         <a role="menuitem/option"></a>
         <a role="menuitem/option" aria-disabled="true"></a>
         <label>
@@ -91,12 +91,15 @@
         }
     }
 
-    :where([role="menu"], [role="listbox"]) > [role]:where(a, button),
-    :where([role="menu"], [role="listbox"]) > label:has(> input[role]) {
-        cursor:      pointer;
+    :where([role="menu"], [role="listbox"]) > * {
         display:     block;
         white-space: nowrap;
         width:       100%;
+    }
+
+    :where([role="menu"], [role="listbox"]) > [role]:where(a, button),
+    :where([role="menu"], [role="listbox"]) > label:has(> input[role]) {
+        cursor: pointer;
     }
 
     :where([role="menu"], [role="listbox"]) > label > input[role]::before {
