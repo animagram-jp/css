@@ -337,6 +337,72 @@
                         <span>2xl</span>
                         <input name="r-size" type="radio" data-size="2xl"></label></fieldset></section></section>
 
+            <section data-sign="rule">
+                <h3>fieldset[data-group="inline"]</h3>
+                <fieldset data-group="inline">
+                    <legend>
+                        <span>legend > span, label</span></legend>
+                    <label>
+                        <span>(none)</span>
+                        <input name="r-group-md" type="radio"></label>
+                    <label>
+                        <span>checked</span>
+                        <input name="r-group-md" type="radio" checked></label>
+                    <label>
+                        <span>disabled</span>
+                        <input name="r-group-md" type="radio" disabled></label>
+                    <label>
+                        <span>aria-invalid</span>
+                        <input name="r-group-md" type="radio" aria-invalid="true"></label></fieldset>
+                <fieldset data-group="inline">
+                    <legend>
+                        <span>label[data-size="sm"]</span></legend>
+                    <label data-size="sm">
+                        <span>(none)</span>
+                        <input name="r-group" type="radio"></label>
+                    <label data-size="sm">
+                        <span>checked</span>
+                        <input name="r-group" type="radio" checked></label>
+                    <label data-size="sm">
+                        <span>disabled</span>
+                        <input name="r-group" type="radio" disabled></label>
+                    <label data-size="sm">
+                        <span>aria-invalid</span>
+                        <input name="r-group" type="radio" aria-invalid="true"></label></fieldset>
+                <fieldset data-group="inline">
+                    <legend>
+                        <span>label[data-size="lg"]</span></legend>
+                    <label data-size="lg">
+                        <span>(none)</span>
+                        <input name="r-group-lg" type="radio"></label>
+                    <label data-size="lg">
+                        <span>checked</span>
+                        <input name="r-group-lg" type="radio" checked></label></fieldset>
+                <fieldset data-group="inline">
+                    <legend>
+                        <span>label[data-surround="outline"]</span></legend>
+                    <label data-size="sm" data-surround="outline">
+                        <span>(none)</span>
+                        <input name="r-group-outline" type="radio"></label>
+                    <label data-size="sm" data-surround="outline">
+                        <span>checked</span>
+                        <input name="r-group-outline" type="radio" checked></label></fieldset>
+                <fieldset data-group="inline">
+                    <legend>
+                        <span>label[data-surround="fill"]</span></legend>
+                    <label data-size="sm" data-surround="fill">
+                        <span>(none)</span>
+                        <input name="r-group-fill" type="radio"></label>
+                    <label data-size="sm" data-surround="fill">
+                        <span>checked</span>
+                        <input name="r-group-fill" type="radio" checked></label>
+                    <label data-size="sm" data-surround="fill">
+                        <span>disabled</span>
+                        <input name="r-group-fill" type="radio" disabled></label>
+                    <label data-size="sm" data-surround="fill">
+                        <span>aria-invalid</span>
+                        <input name="r-group-fill" type="radio" aria-invalid="true"></label></fieldset></section>
+
             <section aria-labelledby="h3-radio-button-field" data-sign="rule">
                 <h3 id="h3-radio-button-field">radiogroup</h3>
                 <fieldset id="section_fieldset" style="grid-template-columns: repeat(3, minmax(0, max-content));">
