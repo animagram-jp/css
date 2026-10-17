@@ -24,27 +24,13 @@
     }
 }
 
-html {
-    overflow-x: hidden;
-}
-
-body {
-    max-width: 100%;
-    min-height: 100dvh;
-    overflow-x: hidden;
-    padding: 0.25rem;
-}
-
-body>header {
-    padding-top: 0.5rem;
-}
-
-body>header,
-main,
-aside,
-body>footer {
+body > * {
     max-width: 60rem;
-    margin: 0 auto;
+    margin-inline: auto;
+}
+
+body > header {
+    margin-block-start: 1rem;
 }
 
 table {

@@ -13,6 +13,8 @@
             <span></span>
             <input type="radio"></label></fieldset>
 
+    === role="radiogroup" ===
+
     <fieldset>
         <*:not(legend, label)></*:not(legend, label)>
         <label>
@@ -21,6 +23,16 @@
         <label>
             <span></span>
             <input type="radio"></label></fieldset>
+
+    <fieldset data-group="inline">
+        <legend>
+            <span></span></legend>
+        <label>
+            <span></span>
+            <input type="radio" name=""></label>
+        <label>
+            <span></span>
+            <input type="radio" name="" checked></label></fieldset>
 
     <* role="tablist">
         <label>
