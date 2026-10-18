@@ -18,7 +18,7 @@ Interface design system and DOM implements.
 
 ## Dependency layers
 
-- [reset.css(@layer css.reset)](./css/reset.css): 1st common layer per the-new-css-reset.
+- [reset.css(@layer css.reset)](./css/reset.css): 1st common layer to unset all.
 - [base.css(@layer css.base)](./css/base.css):   2nd common layer defining defaults of all custom global/scoped parameters.
 - [data_style.css(@layer css.data_style)](./css/data_style.css): 3rd common layer defining data-style attribute.
 - [data_size.css(@layer css.data_size)](./css/data_size.css): 4th common layer defining data-size attribute.
@@ -181,4 +181,3 @@ Layout for the pair of controls a spinbutton or a sortable table header carries.
 |-|-|-|
 | `table` | `data-border` | `sectioned` (default) / `grid` / `booktabs`; rule style ([table.css](./css/table.css)) |
 | `table` | `data-stripe`, `data-selectable` | boolean; zebra striping, row selection ([table.css](./css/table.css)) |
-| `button` | `data-action` | `increment` / `decrement` ([step.css](./css/step.css)) |
