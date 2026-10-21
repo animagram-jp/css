@@ -46,7 +46,7 @@ Override the `--color-*` properties on any scope to restyle.
 | | `--color-error` | Default color for `:user-invalid`. |
 | | `--color-highlight-ink` | Default for `::selection` to contrast with paper. |
 | | `--color-highlight-paper` | Default for `::selection` to contrast with ink. |
-| | `--color-success` | Default color for success/true states to contrast with ink. |
+| | `--color-success` | Default color for success/true states to contrast with paper. |
 | | `--color-visited` | Default `a:visited` color to contrast with paper. |
 | | `--color-emphasis-ink` | Emphasis color to contrast with paper. |
 | | `--color-emphasis-ink-mix` | Emphasis mixed to contrast with paper. |
@@ -115,12 +115,13 @@ layer contrasts with the one enclosing it. All 27 rows of the style table satisf
 Each row below holds per light or dark scheme.
 Emphasis colors are the injection point for a brand or per-scope users' color.
 The library default is the CUD accent purple. 
+`color-success` is a non-text fill: it carries no text and borders only `color-paper` or `color-ink`, never other non-text colors.
 
 | Property | 7:1 text (AAA 1.4.6) | 4.5:1 text (AA 1.4.3) | 3:1 non-text (AA 1.4.11) |
 |-|-|-|-|
 | color-ink | color(-emphasis)-paper | color(-emphasis)-paper(-mix) | — |
 | color-ink-mix | — | color-paper | color-paper, color-paper-mix |
-| color-paper | — | color-success, color-ink-mix | emphasis-paper, color-error |
+| color-paper | — | color-ink-mix | emphasis-paper, color-error, color-success |
 | color-paper-mix | emphasis-ink-mix | — | color-ink-mix |
 | color-emphasis-ink | paper | — | — |
 | color-emphasis-ink-mix | paper | — | — |
@@ -128,7 +129,7 @@ The library default is the CUD accent purple.
 | color-highlight-ink | — | color-paper | color-paper, color-paper-mix |
 | color-highlight-paper | — | color-ink | color-emphasis-ink, color-emphasis-ink-mix |
 | color-error | — | — | paper |
-| color-success | — | paper | — |
+| color-success | — | — | paper |
 | color-visited | paper | — | — |
 
 ## Size

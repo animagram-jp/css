@@ -34,7 +34,6 @@ let SCHEMES=FAMILIES.light;
 
 // README "Distinctness".
 const DISTINCT_EMPHASIS_PAPER = 2;
-const DISTINCT_VISITED = 1.4;
 
 // Search a color-mix(base, toward, pct) over a channel, returning the first pct meeting `test`.
 function findMix(base, toward, test, step=1){
@@ -75,7 +74,7 @@ function checkAll(P){
       ["hl-paper vs its text (4.5:1)",P.highlightPaper,s.ink,   4.5],
       ["hl-paper vs emphasis-ink (3:1)",P.highlightPaper,P.emphasisInk,3],
       ["hl-paper vs eMix (3:1)",      P.highlightPaper,eMix,    3],
-      ["success vs paper (4.5:1)",    P.success, s.paper, 4.5],
+      ["success vs paper (3:1)",      P.success, s.paper, 3],
       ["error vs paper (3:1)",        P.error,   s.paper, 3],
       ["visited vs paper (7:1)",      P.visited, s.paper, 7],
     ];
@@ -115,20 +114,17 @@ function solveFamily(fam){
   P.highlightPaperSrc = findMix(CH.accentYellow, TOWARD,
     c => cr(c,BIND_INK)>=4.5 && cr(c,P.emphasisInk)>=3);
   P.highlightPaper = P.highlightPaperSrc.rgb;
-  P.successSrc = findMix(CH.accentGreen, AWAY, c => cr(c,BIND_PAPER)>=4.5);
+  P.successSrc = findMix(CH.accentGreen, AWAY, c => cr(c,BIND_PAPER)>=3);
   P.success = P.successSrc.rgb;
   P.errorSrc = findMix(CH.accentRed, AWAY, c => cr(c,BIND_PAPER)>=3);
   P.error = P.errorSrc.rgb;
-  P.visitedSrc = findMix(EMPHASIS_SRC, AWAY,
-      c => cr(c,BIND_PAPER)>=7 && cr(c,P.emphasisInk)>=DISTINCT_VISITED)
-    || findMix(EMPHASIS_SRC, TOWARD,
-      c => cr(c,BIND_PAPER)>=7 && cr(c,P.emphasisInk)>=DISTINCT_VISITED);
+  P.visitedSrc = findMix(CH.accentPurple, AWAY, c => cr(c,BIND_PAPER)>=7);
   P.visited = P.visitedSrc.rgb;
   return {P, AWAY, TOWARD};
 }
 
 const CHNAME={emphasisInk:EMPHASIS_NAME,emphasisPaper:EMPHASIS_NAME,highlightInk:"accent-yellow",
-  highlightPaper:"accent-yellow",success:"accent-green",error:"accent-red",visited:EMPHASIS_NAME};
+  highlightPaper:"accent-yellow",success:"accent-green",error:"accent-red",visited:"accent-purple"};
 const AWAY_KEYS=new Set(["emphasisInk","emphasisPaper","highlightInk","success","error","visited"]);
 
 console.log(`emphasis source: ${EMPHASIS_NAME} rgb(${EMPHASIS_SRC})`);
