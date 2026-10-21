@@ -24,6 +24,7 @@
     [data-type="toast"] {
         bottom:           1.5rem;
         display:          flex;
+        flex-direction:   column;
         gap:              0.75rem;
         inset-inline-end: 1.5rem;
         max-inline-size:  calc(100vw - 3rem);
