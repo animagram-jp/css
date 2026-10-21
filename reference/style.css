@@ -1,7 +1,37 @@
 :root {
     --rgb-theme-purple: 91 47 145;
-    --color-emphasis-ink:   light-dark(rgb(var(--rgb-theme-purple)), color-mix(in srgb, rgb(var(--rgb-theme-purple)) 38%, rgb(255,255,255)));
-    --color-emphasis-paper: light-dark(color-mix(in srgb, rgb(var(--rgb-theme-purple)) 73%, rgb(255,255,255)), color-mix(in srgb, rgb(var(--rgb-theme-purple)) 74%, rgb(255,255,255)));
+    --color-emphasis-ink:   light-dark(rgb(var(--rgb-theme-purple)), oklch(from rgb(var(--rgb-theme-purple)) 0.787 0.118 h));
+    --color-emphasis-paper: light-dark(color-mix(in srgb, rgb(var(--rgb-theme-purple)) 73%, rgb(255,255,255)), oklch(from rgb(var(--rgb-theme-purple)) 0.495 0.15 h));
+}
+
+:root:has(input[name="theme"][value="accent-purple"]:checked) {
+    --color-emphasis-ink:   revert-layer;
+    --color-emphasis-paper: revert-layer;
+}
+
+:root:has(input[name="theme"][value="blue"]:checked) {
+    --color-emphasis-ink:   light-dark(color-mix(in srgb, #0041FF 88%, rgb(0,0,0)), color-mix(in srgb, #0041FF 39%, rgb(255,255,255)));
+    --color-emphasis-paper: light-dark(color-mix(in srgb, #0041FF 60%, rgb(255,255,255)), color-mix(in srgb, #0041FF 84%, rgb(255,255,255)));
+}
+
+:root:has(input[name="theme"][value="sky"]:checked) {
+    --color-emphasis-ink:   light-dark(color-mix(in srgb, #66CCFF 42%, rgb(0,0,0)), #66CCFF);
+    --color-emphasis-paper: light-dark(color-mix(in srgb, #66CCFF 76%, rgb(0,0,0)), color-mix(in srgb, #66CCFF 58%, rgb(0,0,0)));
+}
+
+:root:has(input[name="theme"][value="pink"]:checked) {
+    --color-emphasis-ink:   light-dark(color-mix(in srgb, #FF99A0 45%, rgb(0,0,0)), color-mix(in srgb, #FF99A0 99%, rgb(255,255,255)));
+    --color-emphasis-paper: light-dark(color-mix(in srgb, #FF99A0 81%, rgb(0,0,0)), color-mix(in srgb, #FF99A0 61%, rgb(0,0,0)));
+}
+
+:root:has(input[name="theme"][value="orange"]:checked) {
+    --color-emphasis-ink:   light-dark(color-mix(in srgb, #FF9900 46%, rgb(0,0,0)), color-mix(in srgb, #FF9900 91%, rgb(255,255,255)));
+    --color-emphasis-paper: light-dark(color-mix(in srgb, #FF9900 83%, rgb(0,0,0)), color-mix(in srgb, #FF9900 63%, rgb(0,0,0)));
+}
+
+:root:has(input[name="theme"][value="brown"]:checked) {
+    --color-emphasis-ink:   light-dark(#663300, color-mix(in srgb, #663300 37%, rgb(255,255,255)));
+    --color-emphasis-paper: light-dark(color-mix(in srgb, #663300 56%, rgb(255,255,255)), color-mix(in srgb, #663300 75%, rgb(255,255,255)));
 }
 
 body > * {
