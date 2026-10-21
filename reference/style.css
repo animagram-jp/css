@@ -1,7 +1,7 @@
 :root {
     --rgb-theme-purple: 91 47 145;
-    --color-emphasis-ink:   light-dark(rgb(var(--rgb-theme-purple)), oklch(from rgb(var(--rgb-theme-purple)) 0.787 0.118 h));
-    --color-emphasis-paper: light-dark(color-mix(in srgb, rgb(var(--rgb-theme-purple)) 73%, rgb(255,255,255)), oklch(from rgb(var(--rgb-theme-purple)) 0.495 0.15 h));
+    --color-emphasis-ink:   light-dark(rgb(var(--rgb-theme-purple)), oklch(from rgb(var(--rgb-theme-purple)) 0.787 0.120 h));
+    --color-emphasis-paper: light-dark(oklch(from rgb(var(--rgb-theme-purple)) 0.672 0.154 h), oklch(from rgb(var(--rgb-theme-purple)) 0.557 0.154 h));
 }
 
 :root:has(input[name="theme"][value="accent-purple"]:checked) {
@@ -9,29 +9,49 @@
     --color-emphasis-paper: revert-layer;
 }
 
+:root:has(input[name="theme"][value="red"]:checked) {
+    --color-emphasis-ink:   light-dark(oklch(from #F1083C 0.463 0.186 h), oklch(from #F1083C 0.791 0.120 h));
+    --color-emphasis-paper: light-dark(oklch(from #F1083C 0.682 0.206 h), oklch(from #F1083C 0.572 0.230 h));
+}
+
+:root:has(input[name="theme"][value="yellow_red"]:checked) {
+    --color-emphasis-ink:   light-dark(oklch(from #DB7B15 0.449 0.102 h), oklch(from #DB7B15 0.785 0.133 h));
+    --color-emphasis-paper: light-dark(oklch(from #DB7B15 0.670 0.155 h), oklch(from #DB7B15 0.552 0.131 h));
+}
+
+:root:has(input[name="theme"][value="yellow"]:checked) {
+    --color-emphasis-ink:   light-dark(oklch(from #CCAC0F 0.440 0.090 h), oklch(from #CCAC0F 0.776 0.159 h));
+    --color-emphasis-paper: light-dark(oklch(from #CCAC0F 0.658 0.135 h), oklch(from #CCAC0F 0.542 0.111 h));
+}
+
+:root:has(input[name="theme"][value="green_yellow"]:checked) {
+    --color-emphasis-ink:   light-dark(oklch(from #CDF329 0.434 0.099 h), #CDF329);
+    --color-emphasis-paper: light-dark(oklch(from #CDF329 0.650 0.155 h), oklch(from #CDF329 0.536 0.124 h));
+}
+
+:root:has(input[name="theme"][value="green"]:checked) {
+    --color-emphasis-ink:   light-dark(oklch(from #18C58C 0.431 0.086 h), oklch(from #18C58C 0.757 0.158 h));
+    --color-emphasis-paper: light-dark(oklch(from #18C58C 0.643 0.138 h), oklch(from #18C58C 0.529 0.113 h));
+}
+
+:root:has(input[name="theme"][value="blue_green"]:checked) {
+    --color-emphasis-ink:   light-dark(oklch(from #29C1B4 0.432 0.069 h), oklch(from #29C1B4 0.761 0.125 h));
+    --color-emphasis-paper: light-dark(oklch(from #29C1B4 0.645 0.113 h), oklch(from #29C1B4 0.532 0.093 h));
+}
+
 :root:has(input[name="theme"][value="blue"]:checked) {
-    --color-emphasis-ink:   light-dark(color-mix(in srgb, #0041FF 88%, rgb(0,0,0)), color-mix(in srgb, #0041FF 39%, rgb(255,255,255)));
-    --color-emphasis-paper: light-dark(color-mix(in srgb, #0041FF 60%, rgb(255,255,255)), color-mix(in srgb, #0041FF 84%, rgb(255,255,255)));
+    --color-emphasis-ink:   light-dark(oklch(from #3BBCD9 0.435 0.070 h), oklch(from #3BBCD9 0.766 0.120 h));
+    --color-emphasis-paper: light-dark(oklch(from #3BBCD9 0.649 0.115 h), oklch(from #3BBCD9 0.535 0.095 h));
 }
 
-:root:has(input[name="theme"][value="sky"]:checked) {
-    --color-emphasis-ink:   light-dark(color-mix(in srgb, #66CCFF 42%, rgb(0,0,0)), #66CCFF);
-    --color-emphasis-paper: light-dark(color-mix(in srgb, #66CCFF 76%, rgb(0,0,0)), color-mix(in srgb, #66CCFF 58%, rgb(0,0,0)));
+:root:has(input[name="theme"][value="purple_blue"]:checked) {
+    --color-emphasis-ink:   light-dark(oklch(from #1796F9 0.439 0.122 h), oklch(from #1796F9 0.776 0.118 h));
+    --color-emphasis-paper: light-dark(oklch(from #1796F9 0.658 0.178 h), oklch(from #1796F9 0.543 0.151 h));
 }
 
-:root:has(input[name="theme"][value="pink"]:checked) {
-    --color-emphasis-ink:   light-dark(color-mix(in srgb, #FF99A0 45%, rgb(0,0,0)), color-mix(in srgb, #FF99A0 99%, rgb(255,255,255)));
-    --color-emphasis-paper: light-dark(color-mix(in srgb, #FF99A0 81%, rgb(0,0,0)), color-mix(in srgb, #FF99A0 61%, rgb(0,0,0)));
-}
-
-:root:has(input[name="theme"][value="orange"]:checked) {
-    --color-emphasis-ink:   light-dark(color-mix(in srgb, #FF9900 46%, rgb(0,0,0)), color-mix(in srgb, #FF9900 91%, rgb(255,255,255)));
-    --color-emphasis-paper: light-dark(color-mix(in srgb, #FF9900 83%, rgb(0,0,0)), color-mix(in srgb, #FF9900 63%, rgb(0,0,0)));
-}
-
-:root:has(input[name="theme"][value="brown"]:checked) {
-    --color-emphasis-ink:   light-dark(#663300, color-mix(in srgb, #663300 37%, rgb(255,255,255)));
-    --color-emphasis-paper: light-dark(color-mix(in srgb, #663300 56%, rgb(255,255,255)), color-mix(in srgb, #663300 75%, rgb(255,255,255)));
+:root:has(input[name="theme"][value="purple"]:checked) {
+    --color-emphasis-ink:   light-dark(oklch(from #C603F7 0.471 0.230 h), oklch(from #C603F7 0.794 0.155 h));
+    --color-emphasis-paper: light-dark(oklch(from #C603F7 0.689 0.249 h), oklch(from #C603F7 0.582 0.283 h));
 }
 
 body > * {
