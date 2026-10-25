@@ -25,8 +25,7 @@
     <link rel="stylesheet" href="./css/step.css">
     <link rel="stylesheet" href="./css/error.css">
     <link rel="stylesheet" href="./css/toast.css">
-    <link rel="stylesheet" href="./reference/style.css">
-    <script type="module" src="./reference/style.js"></script></head>
+    <script type="module" src="./reference/init.js"></script></head>
 <body>
     <header>
         <hgroup data-axis="inline">
@@ -54,46 +53,12 @@
             <label id="header_div_label-6">
                 <input name="color-scheme" role="option" type="radio" value="dark-more-contrast" data-sign="check" data-sign-style="inline">
                 <span>Dark (more contrast)</span></label></div>
+        <label>
+            <span>hue</span>
+            <input max="360" min="0" name="hue" step="1" type="range" value="300" data-size="sm"></label>
 
         <p data-surround="transparent">
-            <a href="./reference/audit.html">WCAG 2.2 auto-generated report</a></p>
-                
-        <fieldset data-axis="inline" style="grid-template-columns: max-content repeat(1, minmax(0, max-content)); grid-template-rows: auto repeat(11, auto);">
-            <legend>
-                <span>theme</span></legend>
-            <label>
-                <span>theme-purple (#5B2F91)</span>
-                <input name="theme" type="radio" value="theme-purple" checked></label>
-            <label>
-                <span>accent-purple (#9A0079)</span>
-                <input name="theme" type="radio" value="accent-purple"></label>
-            <label>
-                <span>red (5R 5/18, #F1083C)</span>
-                <input name="theme" type="radio" value="red"></label>
-            <label>
-                <span>yellow_red (5YR 6/12, #DB7B15)</span>
-                <input name="theme" type="radio" value="yellow_red"></label>
-            <label>
-                <span>yellow (5Y 7/10, #CCAC0F)</span>
-                <input name="theme" type="radio" value="yellow"></label>
-            <label>
-                <span>green_yellow (5GY 9/12, #CDF329)</span>
-                <input name="theme" type="radio" value="green_yellow"></label>
-            <label>
-                <span>green (5G 7/10, #18C58C)</span>
-                <input name="theme" type="radio" value="green"></label>
-            <label>
-                <span>blue_green (5BG 7/8, #29C1B4)</span>
-                <input name="theme" type="radio" value="blue_green"></label>
-            <label>
-                <span>blue (5B 7/8, #3BBCD9)</span>
-                <input name="theme" type="radio" value="blue"></label>
-            <label>
-                <span>purple_blue (5PB 6/14, #1796F9)</span>
-                <input name="theme" type="radio" value="purple_blue"></label>
-            <label>
-                <span>purple (5P 5/26, #C603F7)</span>
-                <input name="theme" type="radio" value="purple"></label></fieldset></header>
+            <a href="./reference/audit.html">WCAG 2.2 auto-generated report</a></p></header>
 
     <main>
         <section>
@@ -102,21 +67,6 @@
                 <blockquote>
                     <p>"I will cast the dark shadows of human life over you without reserve. But you must not be afraid."</p></blockquote>
                 <figcaption>Soseki Natsume. 1914. <cite lang="en">Kokoro</cite>. Iwanami Shoten, Tokyo, Japan. Translated by Andyou, 2026.</figcaption></figure></section>
-
-        <section>
-            <h2>Icon badge</h2>
-            <fieldset data-axis="inline" data-sign="rule">
-                <legend>
-                    <span>Icon badge</span></legend>
-                <label>
-                    <span>none</span>
-                    <input checked name="icon-badge" type="radio" value="none"></label>
-                <label>
-                    <span>active</span>
-                    <input name="icon-badge" type="radio" value="active"></label>
-                <label>
-                    <span>information</span>
-                    <input name="icon-badge" type="radio" value="information"></label></fieldset></section>
 
         <section>
             <h2>Input style</h2>
@@ -380,19 +330,17 @@
                 <h3>fieldset[data-group="inline"]</h3>
                 <fieldset data-group="inline">
                     <legend>
-                        <span>legend > span, label</span></legend>
+                        <span>Icon badge</span></legend>
                     <label>
-                        <span>(none)</span>
-                        <input name="r-group-md" type="radio"></label>
+                        <span>none</span>
+                        <input checked name="icon-badge" type="radio" value="none"></label>
                     <label>
-                        <span>checked</span>
-                        <input name="r-group-md" type="radio" checked></label>
+                        <span>active</span>
+                        <input name="icon-badge" type="radio" value="active"></label>
                     <label>
-                        <span>disabled</span>
-                        <input name="r-group-md" type="radio" disabled></label>
-                    <label>
-                        <span>aria-invalid</span>
-                        <input name="r-group-md" type="radio" aria-invalid="true"></label></fieldset>
+                        <span>information</span>
+                        <input name="icon-badge" type="radio" value="information"></label></fieldset>
+                        
                 <fieldset data-group="inline">
                     <legend>
                         <span>label[data-size="sm"]</span></legend>

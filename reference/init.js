@@ -1,5 +1,7 @@
 // example Javascript for animagram-jp/css/index.html demonstration and test
 
+import { FAMILY, FIXED_SOURCE, SOURCE_LIGHTNESS, build_grid, find_vivid_rgb, solve_every_family, format_color } from "./palette.js";
+
 // indeterminate
 document.querySelectorAll('input[type="checkbox"][data-indeterminate]').forEach((input) => { input.indeterminate = true; });
 
@@ -194,3 +196,31 @@ const js_fn = {
 };
 
 window.js_fn = js_fn;
+
+function start() {
+    const input = document.querySelector('input[name="hue"]');
+    if (!input) return null;
+
+    const fixed_grid = Object.fromEntries(Object.entries(FIXED_SOURCE).map(([role, source]) => [role, build_grid(source)]));
+    return { input, fixed_grid };
+}
+
+function bind(state) {
+    if (!state) return;
+
+    const root = document.documentElement;
+    const role_list = ["emphasis_ink", "emphasis_paper"];
+    const apply_hue = () => {
+        const emphasis_grid = build_grid(find_vivid_rgb(SOURCE_LIGHTNESS, Number(state.input.value)));
+        const result = solve_every_family(FAMILY, emphasis_grid, state.fixed_grid);
+        for (const role of role_list) {
+            const [light, dark] = [result.light.palette[role], result.dark.palette[role]];
+            if (!light || !dark) return;
+            root.style.setProperty("--color-" + role.replace(/_/g, "-"), `light-dark(${format_color(light)}, ${format_color(dark)})`);
+        }
+    };
+
+    state.input.addEventListener("change", apply_hue);
+}
+
+bind(start());

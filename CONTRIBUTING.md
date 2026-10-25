@@ -45,6 +45,9 @@ docker exec accessibility-audit npm run audit
 
 # Validate ./css against the CSS syntax definitions
 docker exec accessibility-audit npm run validate
+
+# Solve the emphasis palette for a color (default: accent-purple)
+docker run --rm -v "$PWD/reference":/w -w /w node:lts-slim node solve_palette.js [RRGGBB]
 ```
 
 ---
