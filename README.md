@@ -160,13 +160,13 @@ The library default is the CUD accent purple.
 
 ### data-axis
 
-Direction in which a component lays its parts out. Each value below is opt-in; omitting the attribute keeps the component's own default arrangement.
+Direction in which a component lays its parts out. Both `block` and `inline` are accepted on every component below; omitting the attribute is the same as writing the default.
 
-| Selector | Value | Applied by |
+| Selector | Default | Applied by |
 |-|-|-|
-| `hgroup` | `inline` | [heading.css](./css/heading.css) |
-| `details` | `inline` | [button.css](./css/button.css) |
-| `label` | `block` | [toggle.css](./css/toggle.css) |
+| `hgroup` | `block` | [heading.css](./css/heading.css) |
+| `fieldset` | `block` | [radio.css](./css/radio.css) |
+| `label` | `inline` | [toggle.css](./css/toggle.css) |
 
 ### data-step
 

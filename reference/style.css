@@ -1,0 +1,67 @@
+/*
+ * SPDX-FileCopyrightText: 2026 Andyou <andyou@animagram.jp>
+ * SPDX-License-Identifier: Apache-2.0
+ */
+
+body > header {
+    margin-block-start: 1rem;
+
+    & > * {
+        vertical-align: middle;
+    }
+}
+
+/* === css === */
+
+table {
+    display: inline-table;
+}
+
+#header_button { anchor-name: --header_button; inline-size: 13rem; text-align: start; }
+#header_div { position-anchor: --header_button; }
+
+/* tabpanel: show only the panel labelled by the checked tab. */
+body:has(#tab-1:checked) #tabpanel-1,
+body:has(#tab-2:checked) #tabpanel-2 { display: block; }
+
+/* listbox: each trigger/listbox pair needs its own anchor-name. */
+#listbox-1-trigger  { anchor-name: --listbox-1-trigger; }
+#listbox-1          { position-anchor: --listbox-1-trigger; }
+#listbox-2-trigger  { anchor-name: --listbox-2-trigger; }
+#listbox-2          { position-anchor: --listbox-2-trigger; }
+#listbox-3-trigger  { anchor-name: --listbox-3-trigger; }
+#listbox-3          { position-anchor: --listbox-3-trigger; }
+#listbox-4-trigger  { anchor-name: --listbox-4-trigger; }
+#listbox-4          { position-anchor: --listbox-4-trigger; }
+#listbox-5-trigger  { anchor-name: --listbox-5-trigger; }
+#listbox-5          { position-anchor: --listbox-5-trigger; }
+#listbox-6-trigger  { anchor-name: --listbox-6-trigger; }
+#listbox-6          { position-anchor: --listbox-6-trigger; }
+#listbox-7-trigger  { anchor-name: --listbox-7-trigger; }
+#listbox-7          { position-anchor: --listbox-7-trigger; }
+#listbox-8-trigger  { anchor-name: --listbox-8-trigger; }
+#listbox-8          { position-anchor: --listbox-8-trigger; }
+
+body > header,
+section[data-sign="rule"] {
+    container-type: inline-size;
+}
+
+@container (inline-size < 48rem) {
+    fieldset:has(> label > input[type="radio"])[data-axis="inline"] {
+        grid-template-columns: none;
+    }
+
+    fieldset:has(> label > input[type="radio"])[data-axis="inline"] > legend > *,
+    fieldset:has(> label > input[type="radio"])[data-axis="inline"] > *:not(legend, label) {
+        contain:     inline-size;
+        grid-column: 1 / -1;
+        grid-row:    auto;
+    }
+}
+
+@container (inline-size < 32rem) {
+    hgroup[data-axis="inline"] > :where(h1, h2, h3, h4, h5, h6, p) {
+        display: block flow;
+    }
+}

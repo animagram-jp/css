@@ -25,6 +25,7 @@
     <link rel="stylesheet" href="./css/step.css">
     <link rel="stylesheet" href="./css/error.css">
     <link rel="stylesheet" href="./css/toast.css">
+    <link rel="stylesheet" href="./reference/style.css">
     <script type="module" src="./reference/init.js"></script></head>
 <body>
     <header>
@@ -207,7 +208,22 @@
                 <label aria-label="eye"><input type="checkbox" data-facet="eye"></label>
                 <label aria-label="chevron"><input checked name="sign-radio" type="radio" data-facet="chevron"></label>
                 <label aria-label="chevron"><input name="sign-radio" type="radio" data-facet="chevron"></label></section>
-            </section>
+            <section data-sign="rule">
+                <h3>data-inline-align</h3>
+                <button data-sign="check" data-inline-align="start">start</button>
+                <button data-sign="check" data-inline-align="center" aria-label="center"></button>
+                <button data-sign="check" data-inline-align="end">end</button>
+                <button data-facet="chevron" data-inline-align="start">start</button>
+                <button data-facet="chevron" data-inline-align="center" aria-label="center"></button>
+                <button data-facet="chevron">(end)</button>
+                <button data-sign="hatch" data-inline-align="start">start</button>
+                <button data-sign="hatch" data-inline-align="end">end</button>
+                <button data-sign="plus" data-inline-align="start">start</button>
+                <button data-sign="x" data-inline-align="end">end</button>
+                <button data-sign="copy" data-inline-align="start">start</button>
+                <button data-facet="reload" data-inline-align="end">end</button>
+                <button data-facet="eye" data-inline-align="start">start</button>
+                <p data-sign="rule" data-inline-align="end">p[data-sign="rule"][data-inline-align="end"]</p></section></section>
 
         <section>
             <h2>Popup</h2>
@@ -365,15 +381,7 @@
                     <label data-size="lg">
                         <span>checked</span>
                         <input name="r-group-lg" type="radio" checked></label></fieldset>
-                <fieldset data-group="inline">
-                    <legend>
-                        <span>label[data-surround="outline"]</span></legend>
-                    <label data-size="sm" data-surround="outline">
-                        <span>(none)</span>
-                        <input name="r-group-outline" type="radio"></label>
-                    <label data-size="sm" data-surround="outline">
-                        <span>checked</span>
-                        <input name="r-group-outline" type="radio" checked></label></fieldset>
+                        
                 <fieldset data-group="inline">
                     <legend>
                         <span>label[data-surround="fill"]</span></legend>
@@ -392,7 +400,7 @@
 
             <section aria-labelledby="h3-radio-button-field" data-sign="rule">
                 <h3 id="h3-radio-button-field">radiogroup</h3>
-                <fieldset id="section_fieldset" style="grid-template-columns: repeat(3, minmax(0, max-content));">
+                <fieldset id="section_fieldset" data-axis="block" style="grid-template-columns: repeat(3, minmax(0, max-content));">
                     <legend>
                         <span>repeat(3, max-content)</span></legend>
                     <label>
@@ -414,7 +422,7 @@
                         <span>Dark (more contrast)</span>
                         <input name="grid-demo-2b" type="radio" value="dark-more-contrast"></label></fieldset>
     
-                <fieldset style="grid-template-columns: repeat(3, 10rem);">
+                <fieldset data-axis="block" style="grid-template-columns: repeat(3, 10rem);">
                     <legend>
                         <span>repeat(3, 10rem)</span></legend>
                     <label>
@@ -436,9 +444,9 @@
                         <span>Dark (more contrast)</span>
                         <input name="grid-demo-2d" type="radio" value="dark-more-contrast"></label></fieldset>
     
-                <fieldset data-axis="inline" style="grid-template-columns: auto repeat(3, minmax(0, max-content)); grid-template-rows: repeat(2, auto);">
+                <fieldset data-axis="inline" style="grid-template-columns: max-content repeat(3, minmax(0, max-content)); grid-template-rows: repeat(2, auto);">
                     <legend>
-                        <span>axis=inline, grid-auto-columns: max-content</span></legend>
+                        <span>axis=inline, max-content repeat(3, max-content)</span></legend>
                     <label>
                         <span>Light (less contrast)</span>
                         <input name="grid-demo-3e" type="radio" value="light-less-contrast"></label>
@@ -458,9 +466,9 @@
                         <span>Dark (more contrast)</span>
                         <input name="grid-demo-3e" type="radio" value="dark-more-contrast"></label></fieldset>
     
-                <fieldset data-axis="inline" style="grid-template-columns: auto repeat(3, 10rem); grid-template-rows: repeat(2, auto);">
+                <fieldset data-axis="inline" style="grid-template-columns: max-content repeat(3, 10rem); grid-template-rows: repeat(2, auto);">
                     <legend>
-                        <span>axis=inline, grid-auto-columns: 10rem</span></legend>
+                        <span>axis=inline, max-content repeat(3, 10rem)</span></legend>
                     <label>
                         <span>Light (less contrast)</span>
                         <input name="grid-demo-3f" type="radio" value="light-less-contrast"></label>
@@ -495,8 +503,8 @@
         <section>
             <h2>Toggle</h2>
             <section data-sign="rule">
-                <label>
-                    <span>label > (span, input[type="checkbox"][role="switch"])</span>
+                <label data-axis="inline">
+                    <span>data-axis="inline"</span>
                     <input role="switch" type="checkbox"></label>
                 <label data-axis="block" data-type="knob-only">
                     <span>data-axis="block", data-type="knob-only"</span>
@@ -728,8 +736,8 @@
                 <h4>h4</h4>
                 <h5>h5</h5>
                 <h6>h6</h6>
-                <hgroup>
-                    <h1>hgroup > (h1, p)</h1>
+                <hgroup data-axis="block">
+                    <h1>hgroup[data-axis="block"] > (h1, p)</h1>
                     <p>P</p></hgroup>
                 <hgroup data-axis="inline">
                     <h1>hgroup[data-axis="inline"] > (h1, p)</h1>
