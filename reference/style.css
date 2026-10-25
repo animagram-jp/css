@@ -54,18 +54,22 @@
     --color-emphasis-paper: light-dark(oklch(from #C603F7 0.689 0.249 h), oklch(from #C603F7 0.582 0.283 h));
 }
 
-body > * {
-    max-width: 60rem;
-    margin-inline: auto;
-}
-
 body > header {
     margin-block-start: 1rem;
+
+    & > * {
+        vertical-align: middle;
+    }
 }
+
+/* === css === */
 
 table {
     display: inline-table;
 }
+
+#header_button { anchor-name: --header_button; inline-size: 13rem; text-align: start; }
+#header_div { position-anchor: --header_button; }
 
 /* tabpanel: show only the panel labelled by the checked tab. */
 body:has(#tab-1 > input:checked) #tabpanel-1,

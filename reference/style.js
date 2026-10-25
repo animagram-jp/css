@@ -16,14 +16,18 @@ document.querySelectorAll('input[type="checkbox"][data-indeterminate]').forEach(
         : "";
     const initial = `${scheme}${contrast}`;
 
-    const setColorScheme = (value) => root.setAttribute("data-color-scheme", value);
+    const button = document.getElementById("header_button");
+    const setColorScheme = (radio) => {
+        root.setAttribute("data-color-scheme", radio.value);
+        if (button) button.textContent = radio.nextElementSibling.textContent;
+    };
 
-    const initialRadio = document.querySelector(`input[name="color-scheme"][value="${initial}"]`);
-    if (initialRadio) initialRadio.checked = true;
-    setColorScheme(initial);
+    const initialRadio = document.querySelector(`input[name="color-scheme"][value="${initial}"]`) ?? radios[0];
+    initialRadio.checked = true;
+    setColorScheme(initialRadio);
 
     radios.forEach((radio) => radio.addEventListener("change", () => {
-        setColorScheme(document.querySelector('input[name="color-scheme"]:checked').value);
+        setColorScheme(document.querySelector('input[name="color-scheme"]:checked'));
     }));
 })();
 

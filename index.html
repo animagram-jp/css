@@ -34,27 +34,29 @@
             <p>Universal design CSS library.</p></hgroup>
         <p>
             <a href="./reference/audit.html">WCAG 2.2 auto-generated report</a></p>
-        <fieldset data-axis="inline" style="grid-template-columns: max-content repeat(1, minmax(0, max-content)); grid-template-rows: auto repeat(6, auto);">
-            <legend>
-                <span>data-color-scheme</span></legend>
-            <label>
-                <span>light-less-contrast</span>
-                <input name="color-scheme" type="radio" value="light-less-contrast"></label>
-            <label>
-                <span>light</span>
-                <input name="color-scheme" type="radio" value="light"></label>
-            <label>
-                <span>light-more-contrast</span>
-                <input name="color-scheme" type="radio" value="light-more-contrast"></label>
-            <label>
-                <span>dark-less-contrast</span>
-                <input name="color-scheme" type="radio" value="dark-less-contrast"></label>
-            <label>
-                <span>dark</span>
-                <input name="color-scheme" type="radio" value="dark"></label>
-            <label>
-                <span>dark-more-contrast</span>
-                <input name="color-scheme" type="radio" value="dark-more-contrast"></label></fieldset>
+            
+        <button id="header_button" type="button" popovertarget="header_div" aria-haspopup="listbox" aria-expanded="false" aria-controls="header_div" aria-labelledby="header_div_title header_button" data-surround="outline">Light</button>
+        <div id="header_div" popover="auto" role="listbox" aria-labelledby="header_div_title">
+            <span id="header_div_title" role="presentation">Appearance</span>
+            <label id="header_div_label-1">
+                <input name="color-scheme" role="option" type="radio" value="light-less-contrast" data-sign="check" data-sign-style="inline">
+                <span>Light (less contrast)</span></label>
+            <label id="header_div_label-2">
+                <input name="color-scheme" role="option" type="radio" value="light" data-sign="check" data-sign-style="inline">
+                <span>Light</span></label>
+            <label id="header_div_label-3">
+                <input name="color-scheme" role="option" type="radio" value="light-more-contrast" data-sign="check" data-sign-style="inline">
+                <span>Light (more contrast)</span></label>
+            <label id="header_div_label-4">
+                <input name="color-scheme" role="option" type="radio" value="dark-less-contrast" data-sign="check" data-sign-style="inline">
+                <span>Dark (less contrast)</span></label>
+            <label id="header_div_label-5">
+                <input name="color-scheme" role="option" type="radio" value="dark" data-sign="check" data-sign-style="inline">
+                <span>Dark</span></label>
+            <label id="header_div_label-6">
+                <input name="color-scheme" role="option" type="radio" value="dark-more-contrast" data-sign="check" data-sign-style="inline">
+                <span>Dark (more contrast)</span></label></div>
+                
         <fieldset data-axis="inline" style="grid-template-columns: max-content repeat(1, minmax(0, max-content)); grid-template-rows: auto repeat(11, auto);">
             <legend>
                 <span>theme</span></legend>
