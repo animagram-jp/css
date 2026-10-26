@@ -11,6 +11,8 @@ if (new URLSearchParams(location.search).has("eruda")) {
     s.crossOrigin = "anonymous";
     s.onload = () => eruda.init();
     document.body.appendChild(s);
+
+    document.addEventListener("submit", (e) => { e.preventDefault(); });
 }
 
 // indeterminate
