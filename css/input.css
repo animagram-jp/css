@@ -115,16 +115,16 @@
         padding-inline-end: var(--md-border-radius);
     }
 
-    select:not([data-facet]) {
+    select:not([data-facet]):not(label > select) {
         appearance: auto;
     }
 
     /* --- size --- */
 
-    label > select[data-facet="chevron"] {
+    label > select:is([data-facet="chevron"], :not([data-facet])) {
         padding-inline-end: calc(var(--box-height) * 0.6);
     }
-    label > select[data-facet="chevron"][data-size="xs"] {
+    label > select:is([data-facet="chevron"], :not([data-facet]))[data-size="xs"] {
         padding-inline-end: calc(var(--xs-box-height) * 0.75);
     }
 
