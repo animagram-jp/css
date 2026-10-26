@@ -64,4 +64,68 @@ section[data-sign="rule"] {
     hgroup[data-axis="inline"] > :where(h1, h2, h3, h4, h5, h6, p) {
         display: block flow;
     }
+
+    :where(search, form[role="search"]) {
+        display: block flow;
+    }
+
+    :where(search, form[role="search"]) > span {
+        display:         block flow;
+        max-inline-size: 100%;
+    }
+
+    fieldset[data-group="inline"] {
+        display:     block flow;
+        white-space: normal;
+    }
+
+    label:has(> input[aria-controls]) {
+        display:     block flow;
+        white-space: normal;
+    }
+
+    label:has(> input[aria-controls]) > input:not([type="checkbox"]),
+    input[type="file"] {
+        max-inline-size: 100%;
+    }
+
+    label:has(> input[type="file"]) {
+        display: block flow;
+    }
+
+    label:has(> select[data-facet="chevron"]):has(> span) {
+        display:     block flow;
+        inline-size: fit-content;
+    }
+
+    label:has(> select[data-facet="chevron"]) > span {
+        contain:        inline-size;
+        display:        block flow;
+        overflow-wrap:  anywhere;
+    }
+
+    label:has(> select[data-facet="chevron"]):has(> span)::after {
+        inset-block-start: auto;
+        inset-block-end:   calc((var(--md-box-height) - var(--md-font-size) * 0.75 * 1.06) / 2);
+        margin-block:      0;
+    }
+
+    table {
+        display: table;
+    }
+
+    :where(search, form[role="search"]) {
+        align-items: center;
+        display:     flex;
+        flex-wrap:   wrap;
+    }
+
+    :where(search, form[role="search"]) > label:has(> input[type="search"]) {
+        flex: 1 1 0;
+    }
+
+    :where(search, form[role="search"]) > label:has(> input[type="search"]) > input {
+        inline-size:     100%;
+        min-inline-size: 0;
+    }
 }

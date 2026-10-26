@@ -109,24 +109,24 @@
             <section data-sign="rule">
                 <h3>size</h3>
                 <label>
-                    <span>input[type="text"]</span>
+                    <span>data-size="xs"</span>
                     <input type="text" value="xs" data-size="xs"></label>
                 <label>
-                    <span>input[type="email"], aria-invalid="true"</span>
+                    <span>aria-invalid="true", data-size="sm"</span>
                     <input type="text" value="sm" aria-invalid="true" data-size="sm"></label>
                 <label>
-                    <span>input[type="url"], disabled</span>
+                    <span>disabled</span>
                     <input disabled type="url" value="(md)"></label>
                 <label>
-                    <span>select</span>
+                    <span>data-size="lg"</span>
                     <select data-size="lg">
                         <option checked>lg</option></select></label>
                 <label>
-                    <span>label > select[data-facet="chevron"]</span>
+                    <span>data-size="xl"</span>
                     <select data-facet="chevron" data-size="xl">
                         <option>xl</option></select></label>
                 <label>
-                    <span>texarea</span>
+                    <span>data-size="2xl"</span>
                     <textarea placeholder="2xl" type="text" data-size="2xl"></textarea></label></section>
 
             <section data-sign="rule">
@@ -404,89 +404,89 @@
                     <legend>
                         <span>repeat(3, max-content)</span></legend>
                     <label>
-                        <span>Light (less contrast)</span>
-                        <input name="grid-demo-2b" type="radio" value="light-less-contrast"></label>
+                        <span>A</span>
+                        <input checked name="grid-demo-2b" type="radio" value="a"></label>
                     <label>
-                        <span>Light</span>
-                        <input name="grid-demo-2b" type="radio" value="light"></label>
+                        <span>B</span>
+                        <input name="grid-demo-2b" type="radio" value="b"></label>
                     <label>
-                        <span>Light (more contrast)</span>
-                        <input name="grid-demo-2b" type="radio" value="light-more-contrast"></label>
+                        <span>C</span>
+                        <input name="grid-demo-2b" type="radio" value="c"></label>
                     <label>
-                        <span>Dark (less contrast)</span>
-                        <input name="grid-demo-2b" type="radio" value="dark-less-contrast"></label>
+                        <span>D</span>
+                        <input name="grid-demo-2b" type="radio" value="d"></label>
                     <label>
-                        <span>Dark</span>
-                        <input name="grid-demo-2b" type="radio" value="dark"></label>
+                        <span>E</span>
+                        <input name="grid-demo-2b" type="radio" value="e"></label>
                     <label>
-                        <span>Dark (more contrast)</span>
-                        <input name="grid-demo-2b" type="radio" value="dark-more-contrast"></label></fieldset>
+                        <span>F</span>
+                        <input name="grid-demo-2b" type="radio" value="f"></label></fieldset>
     
-                <fieldset data-axis="block" style="grid-template-columns: repeat(3, 10rem);">
+                <fieldset data-axis="block" style="grid-template-columns: repeat(3, 4rem);">
                     <legend>
-                        <span>repeat(3, 10rem)</span></legend>
+                        <span>repeat(3, 4rem)</span></legend>
                     <label>
-                        <span>Light (less contrast)</span>
-                        <input name="grid-demo-2d" type="radio" value="light-less-contrast"></label>
+                        <span>A</span>
+                        <input checked name="grid-demo-2d" type="radio" value="a"></label>
                     <label>
-                        <span>Light</span>
-                        <input name="grid-demo-2d" type="radio" value="light"></label>
+                        <span>B</span>
+                        <input name="grid-demo-2d" type="radio" value="b"></label>
                     <label>
-                        <span>Light (more contrast)</span>
-                        <input name="grid-demo-2d" type="radio" value="light-more-contrast"></label>
+                        <span>C</span>
+                        <input name="grid-demo-2d" type="radio" value="c"></label>
                     <label>
-                        <span>Dark (less contrast)</span>
-                        <input name="grid-demo-2d" type="radio" value="dark-less-contrast"></label>
+                        <span>D</span>
+                        <input name="grid-demo-2d" type="radio" value="d"></label>
                     <label>
-                        <span>Dark</span>
-                        <input name="grid-demo-2d" type="radio" value="dark"></label>
+                        <span>E</span>
+                        <input name="grid-demo-2d" type="radio" value="e"></label>
                     <label>
-                        <span>Dark (more contrast)</span>
-                        <input name="grid-demo-2d" type="radio" value="dark-more-contrast"></label></fieldset>
+                        <span>F</span>
+                        <input name="grid-demo-2d" type="radio" value="f"></label></fieldset>
     
                 <fieldset data-axis="inline" style="grid-template-columns: max-content repeat(3, minmax(0, max-content)); grid-template-rows: repeat(2, auto);">
                     <legend>
                         <span>axis=inline, max-content repeat(3, max-content)</span></legend>
                     <label>
-                        <span>Light (less contrast)</span>
-                        <input name="grid-demo-3e" type="radio" value="light-less-contrast"></label>
+                        <span>A</span>
+                        <input checked name="grid-demo-3e" type="radio" value="a"></label>
                     <label>
-                        <span>Light</span>
-                        <input name="grid-demo-3e" type="radio" value="light"></label>
+                        <span>B</span>
+                        <input name="grid-demo-3e" type="radio" value="b"></label>
                     <label>
-                        <span>Light (more contrast)</span>
-                        <input name="grid-demo-3e" type="radio" value="light-more-contrast"></label>
+                        <span>C</span>
+                        <input name="grid-demo-3e" type="radio" value="c"></label>
                     <label>
-                        <span>Dark (less contrast)</span>
-                        <input name="grid-demo-3e" type="radio" value="dark-less-contrast"></label>
+                        <span>D</span>
+                        <input name="grid-demo-3e" type="radio" value="d"></label>
                     <label>
-                        <span>Dark</span>
-                        <input name="grid-demo-3e" type="radio" value="dark"></label>
+                        <span>E</span>
+                        <input name="grid-demo-3e" type="radio" value="e"></label>
                     <label>
-                        <span>Dark (more contrast)</span>
-                        <input name="grid-demo-3e" type="radio" value="dark-more-contrast"></label></fieldset>
+                        <span>F</span>
+                        <input name="grid-demo-3e" type="radio" value="f"></label></fieldset>
     
-                <fieldset data-axis="inline" style="grid-template-columns: max-content repeat(3, 10rem); grid-template-rows: repeat(2, auto);">
+                <fieldset data-axis="inline" style="grid-template-columns: max-content repeat(3, 4rem); grid-template-rows: repeat(2, auto);">
                     <legend>
-                        <span>axis=inline, max-content repeat(3, 10rem)</span></legend>
+                        <span>axis=inline, max-content repeat(3, 4rem)</span></legend>
                     <label>
-                        <span>Light (less contrast)</span>
-                        <input name="grid-demo-3f" type="radio" value="light-less-contrast"></label>
+                        <span>A</span>
+                        <input checked name="grid-demo-3f" type="radio" value="a"></label>
                     <label>
-                        <span>Light</span>
-                        <input name="grid-demo-3f" type="radio" value="light"></label>
+                        <span>B</span>
+                        <input name="grid-demo-3f" type="radio" value="b"></label>
                     <label>
-                        <span>Light (more contrast)</span>
-                        <input name="grid-demo-3f" type="radio" value="light-more-contrast"></label>
+                        <span>C</span>
+                        <input name="grid-demo-3f" type="radio" value="c"></label>
                     <label>
-                        <span>Dark (less contrast)</span>
-                        <input name="grid-demo-3f" type="radio" value="dark-less-contrast"></label>
+                        <span>D</span>
+                        <input name="grid-demo-3f" type="radio" value="d"></label>
                     <label>
-                        <span>Dark</span>
-                        <input name="grid-demo-3f" type="radio" value="dark"></label>
+                        <span>E</span>
+                        <input name="grid-demo-3f" type="radio" value="e"></label>
                     <label>
-                        <span>Dark (more contrast)</span>
-                        <input name="grid-demo-3f" type="radio" value="dark-more-contrast"></label></fieldset></section></section>
+                        <span>F</span>
+                        <input name="grid-demo-3f" type="radio" value="f"></label></fieldset></section></section>
 
         <section>
             <h2>Tab</h2>
@@ -627,19 +627,19 @@
                     <input type="search" value='label > input[type="search"]'></label>
 
                 <search aria-labelledby="search-example-1">
-                    <span id="search-example-1">search > (span, label > input, button)</span>
+                    <span id="search-example-1">search</span>
                     <label aria-label="search">
                         <input type="search" value='input[type="search"]'></label>
                     <button type="button">button</button></search>
 
                 <form role="search" aria-labelledby="search-example-2">
-                    <span id="search-example-2">form[role="search"] > (span, label > input, button)</span>
+                    <span id="search-example-2">form[role="search"]</span>
                     <label aria-label="search">
                         <input name='input[type="search"]' type="search"></label>
                     <button type="submit">button</button></form>
 
                 <search aria-labelledby="search-example-3">
-                    <span id="search-example-3">search > (span, label > select, label > input, button)</span>
+                    <span id="search-example-3">search + select</span>
                     <label aria-label="category">
                         <select data-facet="chevron">
                             <option>option</option>
@@ -649,7 +649,7 @@
                     <button type="button">button</button></search>
 
                 <form role="search" aria-labelledby="search-example-4">
-                    <span id="search-example-4">form[role="search"] > (span, label > select, label > input, button) </span>
+                    <span id="search-example-4">form[role="search"] + select</span>
                     <label aria-label="category">
                         <select data-facet="chevron">
                             <option>option</option>
