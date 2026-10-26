@@ -2,6 +2,17 @@
 
 import { FAMILY, FIXED_SOURCE, SOURCE_LIGHTNESS, build_grid, find_vivid_rgb, solve_every_family, format_color } from "./palette.js";
 
+// === eruda ===
+
+if (new URLSearchParams(location.search).has("eruda")) {
+    const s = document.createElement("script");
+    s.src = "https://cdn.jsdelivr.net/npm/eruda@3.4.3/eruda.js";
+    s.integrity = "sha384-weDBY9jeIj4NqaiZF9f6PMAMMY4lIu+0CAI+TjBIE73RctCQOxDoEHltYnstRszI";
+    s.crossOrigin = "anonymous";
+    s.onload = () => eruda.init();
+    document.body.appendChild(s);
+}
+
 // indeterminate
 document.querySelectorAll('input[type="checkbox"][data-indeterminate]').forEach((input) => { input.indeterminate = true; });
 
