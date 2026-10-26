@@ -340,9 +340,6 @@
     /* --- size --- */
 
     [data-sign="copy"] {
-        block-size:      var(--line-height);
-        min-inline-size: var(--line-height);
-
         &::before,
         &::after {
             block-size:    calc(var(--line-height) * 0.875);
