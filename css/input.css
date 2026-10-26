@@ -100,11 +100,6 @@
         position: relative;
     }
 
-    label:has(> input[aria-controls]) > input:not([type="checkbox"]) {
-        field-sizing: fixed;
-        inline-size:  15rem;
-    }
-
     label:has(> input[aria-controls]) > input[type="checkbox"] {
         inset-block:      0;
         inset-inline-end: 0;

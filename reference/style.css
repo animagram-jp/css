@@ -20,6 +20,19 @@ table {
 #header_button { anchor-name: --header_button; inline-size: 13rem; text-align: start; }
 #header_div { position-anchor: --header_button; }
 
+label:has(> input[aria-controls]) {
+    inline-size: 15rem;
+
+    & > span {
+        display: block flow;
+    }
+
+    & > input[type="password"] {
+        field-sizing: fixed;
+        inline-size:  100%;
+    }
+}
+
 /* tabpanel: show only the panel labelled by the checked tab. */
 body:has(#tab-1:checked) #tabpanel-1,
 body:has(#tab-2:checked) #tabpanel-2 { display: block; }
@@ -79,12 +92,6 @@ section[data-sign="rule"] {
         white-space: normal;
     }
 
-    label:has(> input[aria-controls]) {
-        display:     block flow;
-        white-space: normal;
-    }
-
-    label:has(> input[aria-controls]) > input:not([type="checkbox"]),
     input[type="file"] {
         max-inline-size: 100%;
     }
