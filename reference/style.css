@@ -20,13 +20,9 @@ table {
 #header_button { anchor-name: --header_button; inline-size: 13rem; text-align: start; }
 #header_div { position-anchor: --header_button; }
 
-label:has(> input[aria-controls]) {
-    inline-size: 15rem;
-
-    & > input[type="password"] {
-        field-sizing: fixed;
-        inline-size:  100%;
-    }
+label:has(> input[aria-controls]) > input[type="password"] {
+    field-sizing: fixed;
+    inline-size:  15rem;
 }
 
 /* tabpanel: show only the panel labelled by the checked tab. */

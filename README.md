@@ -168,6 +168,17 @@ Direction in which a component lays its parts out. Both `block` and `inline` are
 | `fieldset` | `block` | [radio.css](./css/radio.css) |
 | `label` | `inline` | [toggle.css](./css/toggle.css) |
 
+### data-group
+
+Joins adjacent controls into one row: whitespace between children is removed, shared corners are squared off, and inner borders are drawn in `--color-ink-mix`.
+
+| Selector | Value | Applied by |
+|-|-|-|
+| `*` | `inline` | [data_group.css](./css/data_group.css) |
+| `fieldset` (with `label > input[type="radio"]`) | `inline` | [radio.css](./css/radio.css), [data_style.css](./css/data_style.css), [data_size.css](./css/data_size.css) |
+
+`search`, `form[role="search"]` and `label:has(input[type="password"])` without `data-group` are joined the same way.
+
 ### data-step
 
 Layout for the pair of controls a spinbutton or a sortable table header carries. Applied to the `span` wrapping the pair, not the `label`/`th` itself.

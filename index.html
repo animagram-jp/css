@@ -339,7 +339,7 @@
                         <input name="r-size" type="radio" data-size="xl"></label>
                     <label>
                         <span>2xl</span>
-                        <input name="r-size" type="radio" data-size="2xl"></label></fieldset></section></section>
+                        <input name="r-size" type="radio" data-size="2xl"></label></fieldset></section>
 
             <section data-sign="rule">
                 <h3>fieldset[data-group="inline"]</h3>
@@ -396,6 +396,22 @@
                     <label data-size="sm" data-surround="fill">
                         <span>aria-invalid</span>
                         <input name="r-group-fill" type="radio" aria-invalid="true"></label></fieldset></section>
+
+            <section data-sign="rule">
+                <h3>[data-group="inline"] > button[aria-pressed]</h3>
+                <div role="group" aria-label="button fill" data-group="inline">
+                    <button type="button" aria-pressed="false" data-size="sm">(none)</button>
+                    <button type="button" aria-pressed="true" data-size="sm">pressed</button>
+                    <button disabled type="button" aria-pressed="false" data-size="sm">disabled</button>
+                    <button type="button" aria-invalid="true" aria-pressed="false" data-size="sm">aria-invalid</button></div>
+                <div role="group" aria-label="button outline" data-group="inline">
+                    <button type="button" aria-pressed="false" data-size="sm" data-surround="outline">(none)</button>
+                    <button type="button" aria-pressed="true" data-size="sm" data-surround="outline">pressed</button>
+                    <button disabled type="button" aria-pressed="false" data-size="sm" data-surround="outline">disabled</button>
+                    <button type="button" aria-invalid="true" aria-pressed="false" data-size="sm" data-surround="outline">aria-invalid</button></div>
+                <div role="group" aria-label="button lg" data-group="inline">
+                    <button type="button" aria-pressed="false" data-size="lg" data-surround="outline">(none)</button>
+                    <button type="button" aria-pressed="true" data-size="lg" data-surround="outline">pressed</button></div></section>
 
             <section aria-labelledby="h3-radio-button-field" data-sign="rule">
                 <h3 id="h3-radio-button-field">radiogroup</h3>
