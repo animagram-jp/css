@@ -16,20 +16,23 @@
         color: var(--color-paper);
     }
 
-    input[type="checkbox"]:not([role="switch"]):is(:not([data-sign]):not([data-facet]), [data-sign="check"])::before {
+    input[type="checkbox"]:not([role="switch"]):is(:not([data-sign]):not([data-facet]), [data-sign="check"]:not([data-inline-align="start"]))::after,
+    input[type="checkbox"]:not([role="switch"])[data-sign="check"][data-inline-align="start"]::before {
         border-color: var(--color-paper);
     }
 
     /* --- indeterminate --- */
 
-    input[type="checkbox"]:not([role="switch"]):is(:not([data-sign]):not([data-facet]), [data-sign="check"]):indeterminate::before {
+    input[type="checkbox"]:not([role="switch"]):is(:not([data-sign]):not([data-facet]), [data-sign="check"]:not([data-inline-align="start"])):indeterminate::after,
+    input[type="checkbox"]:not([role="switch"])[data-sign="check"][data-inline-align="start"]:indeterminate::before {
         border-width: 0 0 0.1875rem 0;
         rotate:       0deg;
         translate:    0 -0.09375rem;
     }
 
     @media (forced-colors: active) {
-        input[type="checkbox"]:not([role="switch"]):is(:not([data-sign]):not([data-facet]), [data-sign="check"])::before {
+        input[type="checkbox"]:not([role="switch"]):is(:not([data-sign]):not([data-facet]), [data-sign="check"]:not([data-inline-align="start"]))::after,
+        input[type="checkbox"]:not([role="switch"])[data-sign="check"][data-inline-align="start"]::before {
             border-color: Canvas;
         }
     }
@@ -42,7 +45,7 @@
         block-size:    var(--box-height);
         inline-size:   var(--box-height);
 
-        &:indeterminate::before {
+        &:indeterminate::after {
             block-size:  0;
             inline-size: calc(var(--box-height) / 2);
         }

@@ -256,9 +256,9 @@
         rotate:        45deg;
     }
 
-    input[data-sign="check"]:not(:checked):where([data-inline-align="start"])::before,
-    input[data-sign="check"]:not(:checked):not([data-inline-align="start"])::after,
-    input[type="checkbox"]:not([role="switch"]):not([data-sign]):not([data-facet]):not(:checked)::after {
+    input[data-sign="check"]:not(:checked, :indeterminate):where([data-inline-align="start"])::before,
+    input[data-sign="check"]:not(:checked, :indeterminate):not([data-inline-align="start"])::after,
+    input[type="checkbox"]:not([role="switch"]):not([data-sign]):not([data-facet]):not(:checked, :indeterminate)::after {
         border-width: 0;
     }
 
