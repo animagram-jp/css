@@ -90,7 +90,7 @@
 
     /* === common for elements whether inline flow or not, focusable or not. === */
 
-    :where([data-size], :not([data-size] *)) {
+    :where([data-size], :not(html, [data-size] *)) {
         font-size:      var(--font-size);
         letter-spacing: var(--letter-spacing);
         line-height:    var(--line-height);
