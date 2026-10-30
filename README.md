@@ -12,11 +12,29 @@ Interface design system and DOM implements.
 | Version | Status    | Date       | Description |
 |---------|-----------|------------|-------------|
 | 0.1.0   | Released  | 2026-09-28 | 1st release |
-| 0.1.4   | Current   | 2026-10-05 | simplify scroll style |
+| 0.1.4   | Released  | 2026-10-05 | simplify scroll style |
+| 0.1.5   | Released  | 2026-10-22 | light-dark() scheme, size variants |
+| 0.1.6   | Current   | 2026-10-26 | data-inline-align, init.js |
+
+---
+
+## Browser support
+
+Rendering requires Baseline 2024 features: `@layer`, `:has()`, `light-dark()`, `color-mix()`, popover and `:user-invalid`.
+
+| Browser | Minimum |
+|-|-|
+| Chrome, Edge | 123 |
+| Firefox | 125 |
+| Safari | 17.5 |
+
+`field-sizing`, `text-wrap: pretty` and `:open` are progressive enhancements and fall back without layout breakage.
 
 ---
 
 ## Dependency layers
+
+[import.css](./css/import.css) declares the `@layer` order and imports every file below in that order. Link it alone, or link the files individually and declare the `@layer` order yourself.
 
 - [reset.css(@layer css.reset)](./css/reset.css): 1st common layer to unset all.
 - [base.css(@layer css.base)](./css/base.css):   2nd common layer defining defaults of all custom parameters.

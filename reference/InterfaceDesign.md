@@ -281,6 +281,6 @@ forced-colorで失われる要素は、使用しない。色要素で伝える�
 | Radio button, Slider | → / ← |
 
 - [ARIA APG: pattern](https://www.w3.org/WAI/ARIA/apg/patterns/)
-- [IBM Common User Guide](./references/ibm_common_user_access/)
+- [IBM Common User Guide]
 - [Microsoft: Shortcut Keys](https://learn.microsoft.com/en-us/previous-versions/windows/desktop/bb246441(v=vs.85)?redirectedfrom=MSDN)
 - [Microsoft: Keyboard Interface Summary](https://learn.microsoft.com/en-us/previous-versions/ms997427(v=msdn.10))
