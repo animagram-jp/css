@@ -21,10 +21,6 @@
     }
 }
 
-@layer css.data_sign {
-    /* === progress === */
-}
-
 @layer css.data_style {
 
     /*
@@ -191,3 +187,88 @@ sup { vertical-align: super; }
     - bdi
     - time[datetime]
     - Media: img, iframe, object, video, audio
+
+## ユーザーガイド
+
+「 ユーザーガイド > はじめる > (XXとは, インストール方法) 」
+
+- 参考: https://kanaemi-app.github.io/docs/releases/
+
+## Release note & Page layout
+
+```rust
+mod page {
+    pub enum Tab {
+        ReleaseNote,
+    }
+    impl Tab {
+        fn label(&self, language) -> static (&str, &str) {
+            match (s, l) {
+                (Self::ReleaseNote, Language::En(_)) => ("Release Notes", "See what’s new in each version.")
+                (Self::ReleaseNote, Language::Ja) => ("リリースノート", "バージョンごとの変更点を確認")            
+            }
+        }
+    }
+    pub struct Version;
+    impl Version {
+        fn read() -> (str, TimeStamp) {
+            value = 
+            timestamp = TimeStamp
+        }
+        fn display() -> (&str, &str, language) {
+            value,
+            timestamp.display([Calendar::Year, Calendar::Day], lamguage)
+        }
+    }
+}
+```
+
+```html
+<header>
+
+    <span id="header_span"></span> <!-- アイコン(あれば) -->
+
+    <hgroup> <!-- 静的な文脈情報: 画面タイトル + サブタイトル (画面情報量に余裕があれば) + テナント名... -->
+        <h1 id="header_hgroup_h1"></h1>
+        <p id="header_hgroup_p-1"></p>
+        <p id="header_hgroup_p-2"></p></hgroup>
+
+    <nav role="tablist">
+        <!-- ... -->
+        <label data-surround="transparent">
+            <span id="section-{n}_label-{n}_span"></span>
+            <input id="section-{n}_label-{n}_input" type="radio" role="tab" name="tab" value="{n}" aria-controls="main_section-{n}"></label>
+        <!-- ... -->
+        </nav>
+
+    <button id="header_button-{n}" type="button"></button> <!-- グルーバルな操作ボタンの配置場所 -->
+    <button id="header_button-{n}" type="button"></button>
+
+</header>
+
+<main>
+
+    <section id="main_section-{n}" role="tabpanel">
+        <header>
+            <hgroup>
+                <h2 id="section-{n}_header_hgroup_h2"></h2>
+                <p id="section-{n}_header_hgroup_p"></hgroup></header>
+                
+        <section id="section-{n}_section-{n}">
+            <!-- ... -->
+            <article>
+                <hgroup data-axis="inline">
+                    <h3><code>v{version}</code></h3>
+                    <p>
+                        <time></time> <!-- timeのattributeはサポートしない。 -->
+                        <span>{summary}</span></p></hgroup>
+                <ul>
+                    <li>{detail}</li>
+                    <!-- ... -->
+                    </ul>
+            </article>
+            <!-- ... -->
+        </section></section>
+    
+</main>
+```
