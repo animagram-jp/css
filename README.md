@@ -12,9 +12,7 @@ Interface design system and DOM implements.
 | Version | Status    | Date       | Description |
 |---------|-----------|------------|-------------|
 | 0.1.0   | Released  | 2026-09-28 | 1st release |
-| 0.1.4   | Released  | 2026-10-05 | simplify scroll style |
-| 0.1.5   | Released  | 2026-10-22 | light-dark() scheme, size variants |
-| 0.1.6   | Current   | 2026-10-26 | data-inline-align, init.js |
+| 0.1.6   | Current   | 2026-10-26 | - |
 
 ---
 
