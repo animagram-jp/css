@@ -6,54 +6,13 @@
     <title>Accessibility Report — WCAG 2.2 (A, AA)</title>
     <link rel="icon" href="data:,">
     <link rel="icon" href="./animagram.png">
-    <link rel="stylesheet" href="../css/reset.css">
-    <link rel="stylesheet" href="../css/base.css">
-    <link rel="stylesheet" href="../css/data_style.css">
-    <link rel="stylesheet" href="../css/data_size.css">
-    <link rel="stylesheet" href="../css/data_sign.css">
-    <link rel="stylesheet" href="../css/data_group.css">
-    <link rel="stylesheet" href="../css/heading.css">
-    <link rel="stylesheet" href="../css/table.css">
+    <link rel="stylesheet" href="../css/import.css">
     <link rel="stylesheet" href="./style.css">
     <style>
-    body > *:where(header, section),
-    main {
-        max-width: none;
-    }
-    
-    section {
-        margin-block-end: 3.5rem;
-    }
-    
-    #detail td:nth-child(3) {
-        min-width: 16rem;
-    }
-    
-    td > ul {
-        list-style:   none;
-        margin-block: 0;
-        padding:      0;
-    }
-    
-    td > ul > li + li {
-        margin-block-start: 0.5rem;
-    }
-    
-    td > pre {
-        margin:      0;
-        white-space: pre-wrap;
-        word-break:  break-all;
-    }
-    
-    td > ul > li > p {
-        color:  var(--color-ink-mix);
-        margin: 0;
-    }
-    
-    #summary :where(td, th):nth-child(7),
-    #detail  :where(td, th):nth-child(4) {
-        text-align: end;
-    }
+        #summary :where(td, th):nth-child(7),
+        #detail  :where(td, th):nth-child(4) {
+            text-align: end;
+        }
     </style>
 </head>
 <body>
