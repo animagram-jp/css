@@ -20,6 +20,31 @@ table {
 #header_button { anchor-name: --header_button; inline-size: 13rem; text-align: start; }
 #header_div { position-anchor: --header_button; }
 
+input[name="hue"] {
+    --hue-track: linear-gradient(
+        to right in oklch,
+        light-dark(oklch(0.45 0.163 0),   oklch(0.78 0.126 0)),
+        light-dark(oklch(0.45 0.162 30),  oklch(0.78 0.115 30)),
+        light-dark(oklch(0.45 0.094 60),  oklch(0.78 0.140 60)),
+        light-dark(oklch(0.45 0.081 90),  oklch(0.78 0.143 90)),
+        light-dark(oklch(0.45 0.095 120), oklch(0.78 0.166 120)),
+        light-dark(oklch(0.45 0.110 150), oklch(0.78 0.192 150)),
+        light-dark(oklch(0.45 0.072 180), oklch(0.78 0.126 180)),
+        light-dark(oklch(0.45 0.069 210), oklch(0.78 0.120 210)),
+        light-dark(oklch(0.45 0.092 240), oklch(0.78 0.111 240)),
+        light-dark(oklch(0.45 0.197 270), oklch(0.78 0.099 270)),
+        light-dark(oklch(0.45 0.216 300), oklch(0.78 0.117 300)),
+        light-dark(oklch(0.45 0.184 330), oklch(0.78 0.189 330)),
+        light-dark(oklch(0.45 0.163 360), oklch(0.78 0.126 360))
+    );
+}
+input[name="hue"]::-webkit-slider-runnable-track {
+    background-image: var(--hue-track);
+}
+input[name="hue"]::-moz-range-track {
+    background-image: var(--hue-track);
+}
+
 label:has(> input[aria-controls]) > input[type="password"] {
     field-sizing: fixed;
     inline-size:  15rem;
