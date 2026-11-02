@@ -12,7 +12,7 @@ Interface design system and DOM implements.
 | Version | Status    | Date       | Description |
 |---------|-----------|------------|-------------|
 | 0.1.0   | Released  | 2026-09-28 | 1st release |
-| 0.1.6   | Current   | 2026-10-26 | - |
+| 0.1.7   | Current   | 2026-11-02 | - |
 
 ---
 
