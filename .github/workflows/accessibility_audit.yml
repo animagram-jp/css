@@ -7,8 +7,6 @@ on:
 
 permissions:
     contents: read
-    pages: write
-    id-token: write
 
 jobs:
     audit:
@@ -24,28 +22,19 @@ jobs:
           working-directory: reference
           run: npm ci
 
+        - name: "validate ./css against the css syntax definitions"
+          working-directory: reference
+          run: npm run validate
+
         - name: "cache playwright browsers"
           uses: actions/cache@v6
-          id: playwright-cache
           with:
             path: ~/.cache/ms-playwright
             key: playwright-chromium-${{ runner.os }}-${{ hashFiles('reference/package-lock.json') }}
 
-        # playwright-core ships no install CLI, so the browser comes from the
-        # standalone `playwright` package. Its version must match the resolved
-        # playwright-core exactly — a mismatch downloads a chromium build that
-        # playwright-core then refuses to launch.
-        - name: "resolve playwright version"
-          working-directory: reference
-          run: echo "PW=$(node -p "require('playwright-core/package.json').version")" >> "$GITHUB_ENV"
-
         - name: "install playwright browser"
-          if: steps.playwright-cache.outputs.cache-hit != 'true'
-          run: npx --yes "playwright@$PW" install --with-deps chromium
-
-        - name: "install playwright os deps only (cache hit)"
-          if: steps.playwright-cache.outputs.cache-hit == 'true'
-          run: npx --yes "playwright@$PW" install-deps chromium
+          working-directory: reference
+          run: npm run setup
 
         - name: "run the accessibility engine over ./index.html"
           working-directory: reference
@@ -58,3 +47,38 @@ jobs:
             path: |
               reference/audit.html
               reference/audit.json
+
+    deploy:
+        needs: audit
+        runs-on: ubuntu-latest
+        permissions:
+            contents: read
+            pages: write
+            id-token: write
+        concurrency:
+            group: "pages"
+            cancel-in-progress: false
+        environment:
+            name: github-pages
+            url: ${{ steps.deployment.outputs.page_url }}
+        steps:
+        - name: "git checkout"
+          uses: actions/checkout@v7
+
+        - name: "setup Github Pages"
+          uses: actions/configure-pages@v6
+
+        - name: "download accessibility-report artifact"
+          uses: actions/download-artifact@v8
+          with:
+            name: accessibility-report
+            path: reference/
+
+        - name: "upload artifact as Github Pages"
+          uses: actions/upload-pages-artifact@v5
+          with:
+            path: "."
+
+        - name: "deploy to GitHub Pages"
+          id: "deployment"
+          uses: actions/deploy-pages@v5

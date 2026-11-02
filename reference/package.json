@@ -3,8 +3,9 @@
   "private": true,
   "type": "module",
   "scripts": {
+    "setup": "npx --yes playwright@$(node -p \"require('playwright-core/package.json').version\") install --with-deps --only-shell chromium",
     "audit": "node audit.mjs",
-    "validate": "csstree-validator ../css"
+    "validate": "node validate.mjs"
   },
   "dependencies": {
     "accessibility-checker-engine": "^4",

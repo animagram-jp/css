@@ -5,3 +5,7 @@ updates:
     directory: "/" # .github/workflows/*.yml
     schedule:
       interval: "weekly"
+  - package-ecosystem: "npm"
+    directory: "/reference"
+    schedule:
+      interval: "weekly"
