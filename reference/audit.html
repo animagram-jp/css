@@ -9,12 +9,12 @@
     <link rel="stylesheet" href="../css/import.css">
     <link rel="stylesheet" href="./style.css">
     <style>
-        #summary :where(td, th):nth-child(7),
-        #detail  :where(td, th):nth-child(4) {
-            text-align: end;
-        }
+    #summary :where(td, th):nth-child(7),
+    #detail  :where(td, th):nth-child(4) {
+        text-align: end;
+    }
     </style>
-</head>
+</head>    
 <body>
     <header>
         <hgroup data-sign="rule">
@@ -23,30 +23,35 @@
         <p data-size="sm"></p></header>
     
     <main>
-    <section>
-        <h2>By success criterion</h2>
-        <table id="summary" data-size="xs" data-border="grid" data-stripe>
-        <caption></caption>
-        <thead><tr>
-        <th scope="col">SC</th><th scope="col">Level</th><th scope="col">Name</th><th scope="col">Rule</th>
-        <th scope="col">Outcome</th><th scope="col">Schemes</th><th scope="col">Nodes</th>
-        </tr></thead>
-        <tbody></tbody>
-        </table></section>
+        <section>
+            <h2>By success criterion</h2>
+            <table id="summary" data-size="xs" data-border="grid" data-stripe>
+            <caption></caption>
+            <thead>
+                <tr>
+                    <th scope="col">SC</th>
+                    <th scope="col">Level</th>
+                    <th scope="col">Name</th>
+                    <th scope="col">Rule</th>
+                    <th scope="col">Outcome</th>
+                    <th scope="col">Schemes</th>
+                    <th scope="col">Nodes</th></tr></thead>
+            <tbody></tbody></table></section>
     
-    <div id="detail"></div></main>
+        <div id="detail"></div></main>
 
     <template id="detail-tpl">
-    <section>
-    <h2></h2>
-    <table data-size="xs" data-border="grid">
-        <thead><tr>
-        <th scope="col">Rule</th><th scope="col">Outcome</th><th scope="col">Message</th>
-        <th scope="col">Nodes</th><th scope="col">Elements</th></tr></thead>
-        <tbody></tbody>
-    </table>
-    </section>
-    </template>
+        <section>
+            <h2></h2>
+            <table data-size="xs" data-border="grid">
+                <thead>
+                    <tr>
+                        <th scope="col">Rule</th>
+                        <th scope="col">Outcome</th>
+                        <th scope="col">Message</th>
+                        <th scope="col">Nodes</th>
+                        <th scope="col">Elements</th></tr></thead>
+                <tbody></tbody></table></section></template>
 
 <script type="module">
 const el = (tag, text) => {
@@ -54,9 +59,7 @@ const el = (tag, text) => {
     if (text !== undefined) node.textContent = text;
     return node;
 };
-//  A FAIL is a definite breach, so it is marked; a POTENTIAL and the
-//  conformance levels are weaker signals and are merely strong. Neither is
-//  interactive, so neither borrows the surround styles that read as a control.
+
 const badge = (text, marked) =>
     el(marked ? "mark" : "strong", text);
 const cell = (...children) => {
@@ -187,5 +190,6 @@ if (!all.length) {
     }
 }
 </script>
+
 </body>
 </html>

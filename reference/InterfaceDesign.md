@@ -1,7 +1,5 @@
 // This file includes untranslated text (ja).
 
-# Interface design
-
 本プロジェクトで体系化の対象とするインターフェース装置を、以下の2種類の機能のどちらかを持つ、または両者を統合した装置と定義する。
 
 (a) 構成機能

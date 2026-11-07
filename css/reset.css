@@ -129,6 +129,12 @@
         top: -0.5em;
     }
 
+    rt {
+        font-size: 50%;
+        line-height: normal;
+        text-emphasis: none;
+    }
+
     time { /* per kiso.css:220 */
         text-autospace: no-autospace;
     }

@@ -71,7 +71,7 @@ SOFTWARE.
 
 ## Bootstrap Icons (css/data_sign.css)
 
-The shape() paths in css/data_sign.css are derived from Bootstrap Icons.
+The shape() paths in css/data_sign.css and reference/style.css are derived from Bootstrap Icons.
 
 - Source: https://github.com/twbs/icons
 
