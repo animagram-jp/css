@@ -1,5 +1,8 @@
 # css
 
+[![CI](https://github.com/animagram-jp/css/actions/workflows/ci.yml/badge.svg?branch=main)](https://github.com/animagram-jp/css/actions/workflows/ci.yml)
+[![OpenSSF Scorecard](https://api.scorecard.dev/projects/github.com/animagram-jp/css/badge)](https://scorecard.dev/viewer/?uri=github.com/animagram-jp/css)
+
 Interface design system and DOM implements.
 
 - Universal Design (variants included) based on [digital government jp design system](https://github.com/digital-go-jp/design-system-example-components-html), [Color Universal Design Recommended Color Set ver.3](https://cudo.jp/wp-content/uploads/2016/07/CUD%E6%8E%A8%E5%A5%A8%E9%85%8D%E8%89%B2%E3%82%BB%E3%83%83%E3%83%88%E3%82%AC%E3%82%A4%E3%83%89%E3%83%96%E3%83%83%E3%82%AF.pdf), GOV.UK Design System, WCAG 2.2, ARIA APG, IEC60447:1993(Man-machine-interface Principle).
