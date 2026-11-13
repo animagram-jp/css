@@ -1,4 +1,4 @@
-name: "accessibility-audit"
+name: "Audit"
 
 on:
     push:
@@ -43,7 +43,7 @@ jobs:
         - name: "upload report artifact"
           uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7.0.2
           with:
-            name: "accessibility-report"
+            name: "audit"
             path: |
               reference/audit.html
               reference/audit.json
@@ -68,10 +68,10 @@ jobs:
         - name: "setup Github Pages"
           uses: actions/configure-pages@45bfe0192ca1faeb007ade9deae92b16b8254a0d # v6.0.0
 
-        - name: "download accessibility-report artifact"
+        - name: "download audit artifact"
           uses: actions/download-artifact@9000827ccba6bdab643e8b6fd33ac0654aef8333 # v8.0.2
           with:
-            name: "accessibility-report"
+            name: "audit"
             path: "reference/"
 
         - name: "upload artifact as Github Pages"
