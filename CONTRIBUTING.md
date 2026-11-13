@@ -38,13 +38,13 @@ curl -fsSL -H "Accept: application/vnd.github.raw+json" "https://api.github.com/
 
 ```bash
 # Audit by IBM Equal Access engine (WCAG 2.2 A+AA) with 6 color schemes 
-docker run -d --name accessibility-audit -v .:/work -v "$HOME/.cache/ms-playwright":/pw \
+docker run -d --name css-audit -v .:/work -v "$HOME/.cache/ms-playwright":/pw \
   -e PLAYWRIGHT_BROWSERS_PATH=/pw -w /work/reference node:lts-slim tail -f /dev/null
-docker exec accessibility-audit bash -lc "npm ci && npm run setup"
-docker exec accessibility-audit npm run audit
+docker exec css-audit bash -lc "npm ci && npm run setup"
+docker exec css-audit npm run audit
 
 # Validate ./css against the CSS syntax definitions
-docker exec accessibility-audit npm run validate
+docker exec css-audit npm run validate
 
 # Solve the emphasis palette for a color (default: accent-purple)
 docker run --rm -v "$PWD/reference":/w -w /w node:lts-slim node solve_palette.js [RRGGBB]
