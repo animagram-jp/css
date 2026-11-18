@@ -5,6 +5,8 @@ updates:
     directory: "/" # .github/workflows/*.yml
     schedule:
       interval: "weekly"
+    commit-message:
+      prefix: "update(dependency)"
     groups:
       github-actions:
         patterns:
@@ -13,6 +15,8 @@ updates:
     directory: "/reference"
     schedule:
       interval: "weekly"
+    commit-message:
+      prefix: "update(dependency)"
     groups:
       npm:
         patterns:
