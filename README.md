@@ -2,6 +2,8 @@
 
 [![CI](https://github.com/animagram-jp/css/actions/workflows/ci.yml/badge.svg?branch=main)](https://github.com/animagram-jp/css/actions/workflows/ci.yml)
 [![OpenSSF Scorecard](https://api.scorecard.dev/projects/github.com/animagram-jp/css/badge)](https://scorecard.dev/viewer/?uri=github.com/animagram-jp/css)
+[![OpenSSF Best Practices](https://www.bestpractices.dev/projects/16852/badge)](https://www.bestpractices.dev/projects/16852)
+[![OpenSSF Baseline](https://www.bestpractices.dev/projects/16852/baseline)](https://www.bestpractices.dev/projects/16852)
 
 Interface design system and DOM implements.
 
