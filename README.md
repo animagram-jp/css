@@ -15,7 +15,8 @@ Interface design system and DOM implements.
 | Version | Status    | Date       | Description |
 |---------|-----------|------------|-------------|
 | 0.1.0   | Released  | 2026-09-28 | 1st release |
-| 0.1.7   | Current   | 2026-11-02 | - |
+
+This project adheres to [Semantic Versioning](https://semver.org/).
 
 ---
 
