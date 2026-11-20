@@ -84,7 +84,7 @@ article > header, footer {}
 - Back link, Link: a, button[role="link"]
     - Link copy button: chain(🔗) 
     - Anchor link: [Kelp: Heading anchors](https://kelpui.com/docs/components/heading-anchors)
-- Breadcrumb: nav > ol > li > a
+- Breadcrumb: nav > a
 - Pagenation: nav[aria-label="Pagination"] > (a[rel=prev] > span, ul > li > a[aria-current="page"], a[rel=next]) [GOV.UK Design System: Pagenation](https://design-system.service.gov.uk/components/pagination/)
 - Disclosure: details > (summary, div)
 - Form: form, fieldset > legend, submit button[type="submit"], button[type="reset"]
