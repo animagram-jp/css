@@ -75,6 +75,10 @@ function start() {
     if (document.querySelector('input[name="hue"]')) {
         S.fixed_grid = Object.fromEntries(Object.entries(FIXED_SOURCE).map(([role, source]) => [role, build_grid(source)]));
     }
+
+    document.addEventListener("focusin", (e) => {
+        if (e.target.matches('input[inputmode="numeric"][maxlength]')) e.target.select();
+    });
 }
 
 function bind() {

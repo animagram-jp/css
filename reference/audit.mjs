@@ -22,7 +22,85 @@ const SCHEMES = [
 
 const KEPT = ["FAIL", "POTENTIAL"];
 
-const run = (page) => page.evaluate(async ({ guideline, kept }) => {
+const CONTRAST = "text_contrast_sufficient";
+
+const STATES = [
+    { name: "default", pseudo: [], scope: null },
+    { name: "active",  pseudo: ["active"], scope: 'a:any-link, button, [type="button"], [type="submit"], [type="reset"], summary' },
+];
+
+const PROPERTIES = ["color", "background-color"];
+
+const normalize = (page) => page.evaluate((properties) => {
+    const canvas = document.createElement("canvas").getContext("2d", { willReadFrequently: true });
+    const convert = (value) => {
+        canvas.clearRect(0, 0, 1, 1);
+        canvas.fillStyle = value;
+        canvas.fillRect(0, 0, 1, 1);
+        const [r, g, b, a] = canvas.getImageData(0, 0, 1, 1).data;
+        return `rgba(${r}, ${g}, ${b}, ${+(a / 255).toFixed(3)})`;
+    };
+    const select = (element) => {
+        const steps = [];
+        for (let node = element; node !== document.documentElement; node = node.parentElement) {
+            steps.unshift(`:nth-child(${[...node.parentElement.children].indexOf(node) + 1})`);
+        }
+        return [":root", ...steps].join(" > ");
+    };
+    const rules = [];
+    let count = 0;
+    for (const element of document.querySelectorAll("*")) {
+        const style = getComputedStyle(element);
+        const declarations = [];
+        for (const property of properties) {
+            const value = style.getPropertyValue(property);
+            if (!value.startsWith("rgb")) {
+                declarations.push(`${property}: ${convert(value)} !important;`);
+            }
+        }
+        if (declarations.length > 0) {
+            rules.push(`${select(element)} { ${declarations.join(" ")} }`);
+            count += declarations.length;
+        }
+    }
+    const sheet = new CSSStyleSheet();
+    sheet.replaceSync(rules.join("\n"));
+    document.adoptedStyleSheets = [...document.adoptedStyleSheets, sheet];
+    return count;
+}, PROPERTIES);
+
+const flatten = (page) => page.evaluate(() => {
+    const sheet = new CSSStyleSheet();
+    sheet.replaceSync("* { position: static !important; }");
+    document.adoptedStyleSheets = [...document.adoptedStyleSheets, sheet];
+});
+
+const force = async (session, selector, pseudo) => {
+    await session.send("DOM.enable");
+    await session.send("CSS.enable");
+    const { root } = await session.send("DOM.getDocument", { depth: -1 });
+    const { nodeIds } = await session.send("DOM.querySelectorAll", { nodeId: root.nodeId, selector });
+    for (const nodeId of nodeIds) {
+        await session.send("CSS.forcePseudoState", { nodeId, forcedPseudoClasses: pseudo });
+    }
+    return nodeIds.length;
+};
+
+const open = async (browser, scheme) => {
+    const context = await browser.newContext({ colorScheme: scheme.colorScheme });
+    const page = await context.newPage();
+    await page.emulateMedia({
+        colorScheme: scheme.colorScheme,
+        contrast: scheme.contrast,
+    });
+    await page.goto(pathToFileURL(PAGE).href, { waitUntil: "load" });
+    await page.evaluate((name) => {
+        document.documentElement.setAttribute("data-color-scheme", name);
+    }, scheme.name);
+    return { context, page };
+};
+
+const run = (page, scope = null) => page.evaluate(async ({ guideline, kept, scope }) => {
     const checker = new window.ace.Checker();
     const criteria = {};
     const guidelineObj = checker.getGuidelines().find(g => g.id === guideline);
@@ -37,8 +115,16 @@ const run = (page) => page.evaluate(async ({ guideline, kept }) => {
     }
 
     const report = await checker.check(document, [guideline]);
+    const contains = (r) => {
+        if (!r.path?.dom) {
+            return false;
+        }
+        const node = document.evaluate(r.path.dom, document, null, XPathResult.FIRST_ORDERED_NODE_TYPE, null).singleNodeValue;
+        return node?.closest?.(scope) != null;
+    };
     const findings = report.results
         .filter(r => kept.includes(r.value[1]))
+        .filter(r => scope === null || contains(r))
         .map(r => ({
             ruleId: r.ruleId,
             reasonId: r.reasonId,
@@ -52,34 +138,48 @@ const run = (page) => page.evaluate(async ({ guideline, kept }) => {
         }));
 
     return { findings, numExecuted: report.numExecuted };
-}, { guideline: GUIDELINE, kept: KEPT });
+}, { guideline: GUIDELINE, kept: KEPT, scope });
 
 const browser = await chromium.launch();
 const results = [];
 
 for (const scheme of SCHEMES) {
-    const context = await browser.newContext({ colorScheme: scheme.colorScheme });
-    const page = await context.newPage();
-    await page.emulateMedia({
-        colorScheme: scheme.colorScheme,
-        contrast: scheme.contrast,
-    });
-    await page.goto(pathToFileURL(PAGE).href, { waitUntil: "load" });
-    await page.evaluate((name) => {
-        document.documentElement.setAttribute("data-color-scheme", name);
-    }, scheme.name);
+    const { context, page } = await open(browser, scheme);
+    const normalized = await normalize(page);
     await page.addScriptTag({ path: ACE_PATH });
+    const { findings: layout, numExecuted } = await run(page);
+    await context.close();
 
-    const { findings, numExecuted } = await run(page);
-    results.push({ scheme: scheme.name, findings, numExecuted });
+    const findings = layout
+        .filter(f => f.ruleId !== CONTRAST)
+        .map(f => ({ ...f, state: "default" }));
+    const forced = {};
+
+    for (const state of STATES) {
+        const { context, page } = await open(browser, scheme);
+        const session = await context.newCDPSession(page);
+        if (state.scope !== null) {
+            forced[state.name] = await force(session, state.scope, state.pseudo);
+        }
+        await flatten(page);
+        await normalize(page);
+        await page.addScriptTag({ path: ACE_PATH });
+        const { findings: contrast } = await run(page, state.scope);
+        findings.push(...contrast
+            .filter(f => f.ruleId === CONTRAST)
+            .map(f => ({ ...f, state: state.name })));
+        await context.close();
+    }
+
+    results.push({ scheme: scheme.name, findings, numExecuted, normalized, forced });
 
     const count = (outcome) => findings.filter(f => f.outcome === outcome).length;
+    const states = Object.entries(forced).map(([name, n]) => `${n} ${name}`).join(", ");
     console.log(
         `[${scheme.name}] ${count("FAIL")} failing, ` +
-        `${count("POTENTIAL")} needing review (${numExecuted} rules run)`
+        `${count("POTENTIAL")} needing review (${numExecuted} rules run, ` +
+        `${normalized} colors normalized, ${states} forced)`
     );
-
-    await context.close();
 }
 
 await browser.close();

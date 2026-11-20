@@ -34,6 +34,7 @@
                     <th scope="col">Name</th>
                     <th scope="col">Rule</th>
                     <th scope="col">Outcome</th>
+                    <th scope="col">State</th>
                     <th scope="col">Schemes</th>
                     <th scope="col">Nodes</th></tr></thead>
             <tbody></tbody></table></section>
@@ -48,6 +49,7 @@
                     <tr>
                         <th scope="col">Rule</th>
                         <th scope="col">Outcome</th>
+                        <th scope="col">State</th>
                         <th scope="col">Message</th>
                         <th scope="col">Nodes</th>
                         <th scope="col">Elements</th></tr></thead>
@@ -93,10 +95,11 @@ for (const result of report.results) {
         // A rule can map to several criteria; it is listed under each.
         const criteria = f.criteria.length ? f.criteria : [{ num: "—", level: "", name: "Unmapped" }];
         for (const c of criteria) {
-            const key = `${c.num}|${f.ruleId}|${f.reasonId}|${f.outcome}`;
+            const state = f.state ?? "default";
+            const key = `${c.num}|${f.ruleId}|${f.reasonId}|${f.outcome}|${state}`;
             let g = groups.get(key);
             if (!g) {
-                g = { sc: c, ruleId: f.ruleId, reasonId: f.reasonId, outcome: f.outcome,
+                g = { sc: c, ruleId: f.ruleId, reasonId: f.reasonId, outcome: f.outcome, state,
                       message: f.message, schemes: new Set(), nodes: [] };
                 groups.set(key, g);
             }
@@ -138,6 +141,7 @@ for (const g of all) {
         g.sc.name,
         cell(el("code", g.ruleId)),
         cell(badge(g.outcome, g.outcome === "FAIL")),
+        g.state,
         schemes,
         el("td", String(g.elements.length)),
     ]));
@@ -181,6 +185,7 @@ if (!all.length) {
             return row([
                 cell(el("code", g.ruleId), el("pre", g.reasonId)),
                 cell(badge(g.outcome, g.outcome === "FAIL")),
+                g.state,
                 g.message,
                 el("td", String(g.elements.length)),
                 cell(list),

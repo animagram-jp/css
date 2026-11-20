@@ -118,7 +118,7 @@ Scoped colors:
 | outline::selection | color-emphasis-paper | color-highlight-ink | | | |
 | outline:disabled | color-ink-mix | - | | color-ink-mix | |
 | outline:disabled::selection | color-paper | color-highlight-ink | | | |
-| outline:active | color-emphasis-ink | - | color-paper-mix | color-emphasis-ink-mix | |
+| outline:active | color-emphasis-ink-mix | - | | color-emphasis-ink-mix | |
 | outline:active::selection | color-emphasis-paper | color-highlight-ink | | | |
 | `data-style="underline"` | color-{emphasis}-ink | - | color-paper | - | |
 | underline::selection | color-paper | color-highlight-ink | | | |

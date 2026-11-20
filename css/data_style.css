@@ -86,11 +86,6 @@
             [type="url"],
             [type="tel"],
             [type="number"],
-            [type="date"],
-            [type="time"],
-            [type="datetime-local"],
-            [type="month"],
-            [type="week"],
             [type="checkbox"],
             [type="radio"]
         ):not([data-sign], [data-facet], [data-surround]),
@@ -115,11 +110,6 @@
                 [type="url"],
                 [type="tel"],
                 [type="number"],
-                [type="date"],
-                [type="time"],
-                [type="datetime-local"],
-                [type="month"],
-                [type="week"],
                 [type="checkbox"],
                 [type="radio"]
             ):not([data-sign], [data-facet], [data-surround]),
@@ -335,20 +325,16 @@
         [type="reset"],
         summary
     )[data-surround="outline"]:where(:active, [aria-pressed="true"]),
-    fieldset[data-group="inline"] > label:where(:not([data-surround]), [data-surround="outline"]):has(> input[type="radio"]:checked) {
-        background-color: var(--color-paper-mix);
-        border-color:     var(--color-emphasis-ink-mix);
-        color:            var(--color-emphasis-ink);
-    }
-
     :where(
         a:any-link,
         summary
     ):is(
         [data-style="underline"],
         :not([data-surround])
-    ):where(:active, [aria-pressed="true"]) {
-        color: var(--color-emphasis-ink-mix);
+    ):where(:active, [aria-pressed="true"]),
+    fieldset[data-group="inline"] > label:where(:not([data-surround]), [data-surround="outline"]):has(> input[type="radio"]:checked) {
+        border-color: var(--color-emphasis-ink-mix);
+        color:        var(--color-emphasis-ink-mix);
     }
 
     @media (forced-colors: active) {
