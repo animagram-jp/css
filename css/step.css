@@ -104,12 +104,6 @@
         border-start-start-radius: 0;
     }
 
-    /*  the one corner each button keeps (increment's outer top corner,
-        decrement's outer bottom corner) used to go unstated, left to
-        whatever border-radius default happened to still reach it. Restated
-        explicitly per size instead, so this variant stands on its own
-        regardless of what any other rule elsewhere does or stops doing. */
-
     span[data-step="block"] > button:first-child {
         border-start-end-radius: var(--border-radius);
     }

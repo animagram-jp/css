@@ -67,7 +67,7 @@
                     <span>input[type="password"]</span>
                     <input id="password" autocomplete="current-password" maxlength="20" type="password" value="password">
                     <input type="checkbox" aria-controls="password" aria-label="show password" data-facet="eye"></label>
-                <label>
+                <label aria-label="search">
                     <input type="search" value='label > input[type="search"]'></label>
                 <label>
                     <span>input[type="url"]</span>
@@ -88,6 +88,11 @@
                 <label>
                     <span>textarea</span>
                     <textarea></textarea></label></section>
+            <section data-sign="rule">
+                <h3>input[inputmode="numeric"][maxlength]</h3>
+                <input inputmode="numeric" maxlength="4" pattern="[0-9]{4}" size="4" type="text" aria-label="year">
+                <input inputmode="numeric" maxlength="2" pattern="0?[1-9]|1[0-2]" size="2" type="text" aria-label="month">
+                <input inputmode="numeric" maxlength="2" pattern="0?[1-9]|[12][0-9]|3[01]" size="2" type="text" aria-label="day"></section>
             <section data-sign="rule">
                 <h3>size</h3>
                 <label>
@@ -188,8 +193,11 @@
                 <label aria-label="sync"><input type="checkbox" data-facet="sync" checked></label>
                 <label aria-label="eye"><button data-facet="eye"></button></label>
                 <label aria-label="eye"><input type="checkbox" data-facet="eye"></label>
-                <label aria-label="chevron"><input checked name="sign-radio" type="radio" data-facet="chevron"></label>
-                <label aria-label="chevron"><input name="sign-radio" type="radio" data-facet="chevron"></label></section>
+                <fieldset data-axis="inline">
+                    <legend>
+                        <span>chevron</span></legend>
+                    <label aria-label="chevron"><input checked name="sign-radio" type="radio" data-facet="chevron"></label>
+                    <label aria-label="chevron"><input name="sign-radio" type="radio" data-facet="chevron"></label></fieldset></section>
             <section data-sign="rule">
                 <h3>data-inline-align</h3>
                 <button data-sign="check" data-inline-align="start">start</button>
