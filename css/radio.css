@@ -29,7 +29,7 @@
             <span></span>
             <input type="radio"></label></fieldset>
 
-    <fieldset data-union="inline">
+    <fieldset data-union="inline | block">
         <legend>
             <span></span></legend>
         <label>
@@ -47,7 +47,7 @@
 */
 
 @layer css.radio {
-    fieldset:has(> label > input[type="radio"]):not([data-union="inline"]) {
+    fieldset:has(> label > input[type="radio"]):not([data-union]) {
         display: grid;
         border:  none;
         gap:     0.5rem;
@@ -92,8 +92,8 @@
         margin:          0;
     }
 
-    fieldset:has(> label > input[type="radio"]):where([data-axis="block"], :not([data-axis])):not([data-union="inline"]) > legend > *,
-    fieldset:has(> label > input[type="radio"]):where([data-axis="block"], :not([data-axis])):not([data-union="inline"]) > *:not(legend, label),
+    fieldset:has(> label > input[type="radio"]):where([data-axis="block"], :not([data-axis])):not([data-union]) > legend > *,
+    fieldset:has(> label > input[type="radio"]):where([data-axis="block"], :not([data-axis])):not([data-union]) > *:not(legend, label),
     fieldset:has(> label > input[type="radio"])[data-axis="inline"]:has(> label:first-of-type:nth-last-of-type(n+9)) > legend > *,
     fieldset:has(> label > input[type="radio"])[data-axis="inline"]:has(> label:first-of-type:nth-last-of-type(n+9)) > *:not(legend, label) {
         contain: inline-size;
@@ -153,15 +153,15 @@
         }
     }
 
-    /* === data-union="inline" === */
+    /* === data-union === */
 
-    fieldset[data-union="inline"]:has(> label > input[type="radio"]) > label {
+    [data-union]:has(> label > input[type="radio"]) > label {
         display:     inline flow-root;
         inline-size: auto;
         position:    relative;
     }
 
-    fieldset[data-union="inline"] > label > input[type="radio"] {
+    [data-union] > label > input[type="radio"] {
         block-size:     100%;
         inline-size:    100%;
         inset:          0;

@@ -45,7 +45,7 @@ Rendering requires Baseline 2024 features: `@layer`, `:has()`, `light-dark()`, `
 - [data_style.css(@layer css.data_style)](./css/data_style.css): 3rd common layer defining data-style attribute.
 - [data_size.css(@layer css.data_size)](./css/data_size.css): 4th common layer defining data-size attribute.
 - [data_sign.css(@layer css.data_sign)](./css/data_sign.css): 5th common layer defining data-sign and data-facet attributes.
-- [data_union.css(@layer css.data_union)](./css/data_union.css): 6th common layer defining data-union attribute.
+- [data_union.css(@layer css.data_union)](./css/data_union.css): 6th common layer defining data-union attribute: removes the gap between adjacent controls and squares their shared corners.
 
 ---
 
@@ -192,14 +192,19 @@ Direction in which a component lays its parts out. Both `block` and `inline` are
 
 ### data-union
 
-Joins adjacent controls into one row: whitespace between children is removed, shared corners are squared off, and inner borders are drawn in `--color-ink-mix`.
+- `inline`: a horizontal row.
+- `block`: a vertical stack. Every member is stretched to the same inline size.
 
 | Selector | Value | Applied by |
 |-|-|-|
-| `*` | `inline` | [data_union.css](./css/data_union.css) |
-| `fieldset` (with `label > input[type="radio"]`) | `inline` | [radio.css](./css/radio.css), [data_style.css](./css/data_style.css), [data_size.css](./css/data_size.css) |
+| `*` | `inline`, `block` | [data_union.css](./css/data_union.css) |
+| `*` (with `label > input[type="radio"]` or `label > input[type="checkbox"]`) | `inline`, `block` | [radio.css](./css/radio.css), [checkbox.css](./css/checkbox.css), [data_style.css](./css/data_style.css), [data_size.css](./css/data_size.css) |
 
-`search`, `form[role="search"]` and `label:has(input[type="password"])` without `data-union` are joined the same way.
+`search` and `form[role="search"]` are joined the same way as `inline` without `data-union`.
+
+A radio or checkbox member is its `label`, with the `input` transparent over it. Checkboxes with `role="switch"`, `data-sign` or `data-facet`, and the `:indeterminate` state, are not supported.
+
+Without `data-union`, `[role="toolbar"]`, `[role="radiogroup"]` and `[role="tablist"]` follow `aria-orientation` (horizontal by default).
 
 ### data-step
 
