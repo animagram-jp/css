@@ -5,10 +5,10 @@
 
 /*  Usage:
 
-    <* data-surround="" data-sign|facet="" (data-inline-align="start|end|center")></>
+    <* data-surround="" data-sign | facet="" (data-inline-align="start|end|center")></*>
 
     <* data-surround="">
-        <* data-sign-style="inline" data-sign|facet="" (data-inline-align="start|end|center")></*></*>
+        <* data-sign-style="inline" data-sign | facet="" (data-inline-align="start | end | center")></*></*>
 
     <summary (data-facet="chevron")></summary>
 
@@ -16,7 +16,6 @@
         <select data-facet="chevron">
             <option></option></select></label>
 */
-
 @layer css.data_sign {
     :where(
         [data-sign],

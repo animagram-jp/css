@@ -45,7 +45,7 @@ Rendering requires Baseline 2024 features: `@layer`, `:has()`, `light-dark()`, `
 - [data_style.css(@layer css.data_style)](./css/data_style.css): 3rd common layer defining data-style attribute.
 - [data_size.css(@layer css.data_size)](./css/data_size.css): 4th common layer defining data-size attribute.
 - [data_sign.css(@layer css.data_sign)](./css/data_sign.css): 5th common layer defining data-sign and data-facet attributes.
-- [data_group.css(@layer css.data_group)](./css/data_group.css): 6th common layer defining data-group attribute.
+- [data_union.css(@layer css.data_union)](./css/data_union.css): 6th common layer defining data-union attribute.
 
 ---
 
@@ -190,16 +190,16 @@ Direction in which a component lays its parts out. Both `block` and `inline` are
 | `fieldset` | `block` | [radio.css](./css/radio.css) |
 | `label` | `inline` | [toggle.css](./css/toggle.css) |
 
-### data-group
+### data-union
 
 Joins adjacent controls into one row: whitespace between children is removed, shared corners are squared off, and inner borders are drawn in `--color-ink-mix`.
 
 | Selector | Value | Applied by |
 |-|-|-|
-| `*` | `inline` | [data_group.css](./css/data_group.css) |
+| `*` | `inline` | [data_union.css](./css/data_union.css) |
 | `fieldset` (with `label > input[type="radio"]`) | `inline` | [radio.css](./css/radio.css), [data_style.css](./css/data_style.css), [data_size.css](./css/data_size.css) |
 
-`search`, `form[role="search"]` and `label:has(input[type="password"])` without `data-group` are joined the same way.
+`search`, `form[role="search"]` and `label:has(input[type="password"])` without `data-union` are joined the same way.
 
 ### data-step
 

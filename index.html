@@ -45,14 +45,7 @@
 
     <main>
         <section>
-            <h2>Blockquote</h2>
-            <figure data-sign="rule">
-                <blockquote>
-                    <p>"I will cast the dark shadows of human life over you without reserve. But you must not be afraid."</p></blockquote>
-                <figcaption>Soseki Natsume. 1914. <cite lang="en">Kokoro</cite>. Iwanami Shoten, Tokyo, Japan. Translated by Andyou, 2026.</figcaption></figure></section>
-
-        <section>
-            <h2>Input style</h2>
+            <h2>Style input</h2>
             <section data-sign="rule">
                 <label>
                     <span>input[type="text"]</span>
@@ -63,12 +56,12 @@
                 <label>
                     <span>input[type="email"] required</span>
                     <input required type="email"></label>
-                <label data-group="inline">
+                <label data-union="inline">
                     <span>input[type="password"]</span>
                     <input id="password" autocomplete="current-password" maxlength="20" type="password" value="password">
                     <input type="checkbox" aria-controls="password" aria-label="show password" data-facet="eye"></label>
                 <label aria-label="search">
-                    <input type="search" value='label > input[type="search"]'></label>
+                    <input type="search" value='input[type="search"]'></label>
                 <label>
                     <span>input[type="url"]</span>
                     <input type="url"></label>
@@ -81,58 +74,39 @@
                         <option>option</option>
                         <option>option</option></select></label>
                 <label>
-                    <span>label > select[data-facet="chevron"]</span>
-                    <select data-facet="chevron">
-                        <option>option</option>
-                        <option>option</option></select></label>
-                <label>
                     <span>textarea</span>
-                    <textarea></textarea></label></section>
+                    <textarea></textarea></label>
+                <fieldset>
+                    <legend><span>input[inputmode="numeric"][maxlength]</span></legend>
+                    <input inputmode="numeric" maxlength="4" pattern="[0-9]{4}" size="4" type="text" aria-label="year" value="2000">
+                    <input inputmode="numeric" maxlength="2" pattern="0?[1-9]|1[0-2]" size="2" type="text" aria-label="month" value="1">
+                    <input inputmode="numeric" maxlength="2" pattern="0?[1-9]|[12][0-9]|3[01]" size="2" type="text" aria-label="day" value="1"></fieldset></section>
+
             <section data-sign="rule">
-                <h3>input[inputmode="numeric"][maxlength]</h3>
-                <input inputmode="numeric" maxlength="4" pattern="[0-9]{4}" size="4" type="text" aria-label="year">
-                <input inputmode="numeric" maxlength="2" pattern="0?[1-9]|1[0-2]" size="2" type="text" aria-label="month">
-                <input inputmode="numeric" maxlength="2" pattern="0?[1-9]|[12][0-9]|3[01]" size="2" type="text" aria-label="day"></section>
-            <section data-sign="rule">
-                <h3>size</h3>
+                <h3>Size</h3>
                 <label>
-                    <span>data-size="xs"</span>
+                    <span>text</span>
                     <input type="text" value="xs" data-size="xs"></label>
                 <label>
-                    <span>aria-invalid="true", data-size="sm"</span>
+                    <span>text, aria-invalid</span>
                     <input type="text" value="sm" aria-invalid="true" data-size="sm"></label>
                 <label>
-                    <span>disabled</span>
+                    <span>url, disabled</span>
                     <input disabled type="url" value="(md)"></label>
                 <label>
-                    <span>data-size="lg"</span>
+                    <span>select</span>
                     <select data-size="lg">
                         <option checked>lg</option></select></label>
                 <label>
-                    <span>data-size="xl"</span>
-                    <select data-facet="chevron" data-size="xl">
+                    <span>select</span>
+                    <select data-size="xl">
                         <option>xl</option></select></label>
                 <label>
-                    <span>data-size="2xl"</span>
-                    <textarea placeholder="2xl" type="text" data-size="2xl"></textarea></label></section>
-
-            <section data-sign="rule">
-                <h3>:required - label > span:first-child, fieldset > legend > span</h3>
-                <label>
-                    <span>input[type="checkbox"], required</span>
-                    <input required type="checkbox"></label>
-                <fieldset style="grid-template-columns: max-content repeat(1, minmax(0, max-content));">
-                    <legend>
-                        <span>fieldset:has(:required) > legend</span></legend>
-                    <label>
-                        <span>choice A</span>
-                        <input name="req-demo" required type="radio"></label>
-                    <label>
-                        <span>choice B</span>
-                        <input name="req-demo" type="radio"></label></fieldset></section></section>
+                    <span>2xl</span>
+                    <textarea placeholder="2xl" type="text" data-size="2xl"></textarea></label></section></section>
 
         <section>
-            <h2>Surround style, underline style</h2>
+            <h2>Style surround, underline</h2>
             <section data-sign="rule">
                 <button type="button">button (data-surround="fill")</button>
                 <a href="#dummy">a (data-style="underline")</a>
@@ -145,7 +119,7 @@
                     <summary data-surround="outline">summary (data-surround="outline")</summary>
                     <p>details > summary, p</p></details></section>
             <section data-sign="rule">
-                <h3>size</h3>
+                <h3>Size</h3>
                 <button data-size="xs">xs</button>
                 <a href="#anchor" data-size="xs">xs</a>
                 <button data-size="sm">sm</button>
@@ -257,7 +231,7 @@
                     <span>checked disabled</span>
                     <input checked disabled type="checkbox"></label></section>
             <section data-sign="rule">
-                <h3>size</h3>
+                <h3>Size</h3>
                 <label>
                     <span>xs</span>
                     <input type="checkbox" data-size="xs"></label>
@@ -308,7 +282,7 @@
                         <span>inline</span>
                         <input checked disabled name="r-disabled" type="radio"></label></fieldset></section>
             <section data-sign="rule">
-                <h3>size</h3>
+                <h3>Size</h3>
                 <fieldset data-axis="inline">
                     <legend>
                         <span>size</span></legend>
@@ -330,78 +304,6 @@
                     <label>
                         <span>2xl</span>
                         <input name="r-size" type="radio" data-size="2xl"></label></fieldset></section>
-
-            <section data-sign="rule">
-                <h3>fieldset[data-group="inline"]</h3>
-                <fieldset data-group="inline">
-                    <legend>
-                        <span>Icon badge</span></legend>
-                    <label>
-                        <span>none</span>
-                        <input checked name="icon-badge" type="radio" value="none"></label>
-                    <label>
-                        <span>active</span>
-                        <input name="icon-badge" type="radio" value="active"></label>
-                    <label>
-                        <span>information</span>
-                        <input name="icon-badge" type="radio" value="information"></label></fieldset>
-                        
-                <fieldset data-group="inline">
-                    <legend>
-                        <span>label[data-size="sm"]</span></legend>
-                    <label data-size="sm">
-                        <span>(none)</span>
-                        <input name="r-group" type="radio"></label>
-                    <label data-size="sm">
-                        <span>checked</span>
-                        <input name="r-group" type="radio" checked></label>
-                    <label data-size="sm">
-                        <span>disabled</span>
-                        <input name="r-group" type="radio" disabled></label>
-                    <label data-size="sm">
-                        <span>aria-invalid</span>
-                        <input name="r-group" type="radio" aria-invalid="true"></label></fieldset>
-                <fieldset data-group="inline">
-                    <legend>
-                        <span>label[data-size="lg"]</span></legend>
-                    <label data-size="lg">
-                        <span>(none)</span>
-                        <input name="r-group-lg" type="radio"></label>
-                    <label data-size="lg">
-                        <span>checked</span>
-                        <input name="r-group-lg" type="radio" checked></label></fieldset>
-                        
-                <fieldset data-group="inline">
-                    <legend>
-                        <span>label[data-surround="fill"]</span></legend>
-                    <label data-size="sm" data-surround="fill">
-                        <span>(none)</span>
-                        <input name="r-group-fill" type="radio"></label>
-                    <label data-size="sm" data-surround="fill">
-                        <span>checked</span>
-                        <input name="r-group-fill" type="radio" checked></label>
-                    <label data-size="sm" data-surround="fill">
-                        <span>disabled</span>
-                        <input name="r-group-fill" type="radio" disabled></label>
-                    <label data-size="sm" data-surround="fill">
-                        <span>aria-invalid</span>
-                        <input name="r-group-fill" type="radio" aria-invalid="true"></label></fieldset></section>
-
-            <section data-sign="rule">
-                <h3>[data-group="inline"] > button[aria-pressed]</h3>
-                <div role="group" aria-label="button fill" data-group="inline">
-                    <button type="button" aria-pressed="false" data-size="sm">(none)</button>
-                    <button type="button" aria-pressed="true" data-size="sm">pressed</button>
-                    <button disabled type="button" aria-pressed="false" data-size="sm">disabled</button>
-                    <button type="button" aria-invalid="true" aria-pressed="false" data-size="sm">aria-invalid</button></div>
-                <div role="group" aria-label="button outline" data-group="inline">
-                    <button type="button" aria-pressed="false" data-size="sm" data-surround="outline">(none)</button>
-                    <button type="button" aria-pressed="true" data-size="sm" data-surround="outline">pressed</button>
-                    <button disabled type="button" aria-pressed="false" data-size="sm" data-surround="outline">disabled</button>
-                    <button type="button" aria-invalid="true" aria-pressed="false" data-size="sm" data-surround="outline">aria-invalid</button></div>
-                <div role="group" aria-label="button lg" data-group="inline">
-                    <button type="button" aria-pressed="false" data-size="lg" data-surround="outline">(none)</button>
-                    <button type="button" aria-pressed="true" data-size="lg" data-surround="outline">pressed</button></div></section>
 
             <section aria-labelledby="h3-radio-button-field" data-sign="rule">
                 <h3 id="h3-radio-button-field">radiogroup</h3>
@@ -494,14 +396,110 @@
                         <input name="grid-demo-3f" type="radio" value="f"></label></fieldset></section></section>
 
         <section>
-            <h2>Tab</h2>
+            <h2>Union</h2>
             <section data-sign="rule">
+                <h3>fieldset[data-union="inline"]</h3>
+                <fieldset data-union="inline">
+                    <legend>
+                        <span>Icon badge</span></legend>
+                    <label>
+                        <span>none</span>
+                        <input checked name="icon-badge" type="radio" value="none"></label>
+                    <label>
+                        <span>active</span>
+                        <input name="icon-badge" type="radio" value="active"></label>
+                    <label>
+                        <span>information</span>
+                        <input name="icon-badge" type="radio" value="information"></label></fieldset>
+                        
+                <fieldset data-union="inline">
+                    <legend>
+                        <span>label[data-size="sm"]</span></legend>
+                    <label data-size="sm">
+                        <span>(none)</span>
+                        <input name="r-group" type="radio"></label>
+                    <label data-size="sm">
+                        <span>checked</span>
+                        <input name="r-group" type="radio" checked></label>
+                    <label data-size="sm">
+                        <span>disabled</span>
+                        <input name="r-group" type="radio" disabled></label>
+                    <label data-size="sm">
+                        <span>aria-invalid</span>
+                        <input name="r-group" type="radio" aria-invalid="true"></label></fieldset>
+                <fieldset data-union="inline">
+                    <legend>
+                        <span>label[data-size="lg"]</span></legend>
+                    <label data-size="lg">
+                        <span>(none)</span>
+                        <input name="r-group-lg" type="radio"></label>
+                    <label data-size="lg">
+                        <span>checked</span>
+                        <input name="r-group-lg" type="radio" checked></label></fieldset>
+                        
+                <fieldset data-union="inline">
+                    <legend>
+                        <span>label[data-surround="fill"]</span></legend>
+                    <label data-size="sm" data-surround="fill">
+                        <span>(none)</span>
+                        <input name="r-group-fill" type="radio"></label>
+                    <label data-size="sm" data-surround="fill">
+                        <span>checked</span>
+                        <input name="r-group-fill" type="radio" checked></label>
+                    <label data-size="sm" data-surround="fill">
+                        <span>disabled</span>
+                        <input name="r-group-fill" type="radio" disabled></label>
+                    <label data-size="sm" data-surround="fill">
+                        <span>aria-invalid</span>
+                        <input name="r-group-fill" type="radio" aria-invalid="true"></label></fieldset></section>
+
+            <section data-sign="rule">
+                <h3>[data-union="inline"] > button[aria-pressed]</h3>
+                <div role="group" aria-label="button fill" data-union="inline">
+                    <button type="button" aria-pressed="false" data-size="sm">(none)</button>
+                    <button type="button" aria-pressed="true" data-size="sm">pressed</button>
+                    <button disabled type="button" aria-pressed="false" data-size="sm">disabled</button>
+                    <button type="button" aria-invalid="true" aria-pressed="false" data-size="sm">aria-invalid</button></div>
+                <div role="group" aria-label="button outline" data-union="inline">
+                    <button type="button" aria-pressed="false" data-size="sm" data-surround="outline">(none)</button>
+                    <button type="button" aria-pressed="true" data-size="sm" data-surround="outline">pressed</button>
+                    <button disabled type="button" aria-pressed="false" data-size="sm" data-surround="outline">disabled</button>
+                    <button type="button" aria-invalid="true" aria-pressed="false" data-size="sm" data-surround="outline">aria-invalid</button></div>
+                <div role="group" aria-label="button lg" data-union="inline">
+                    <button type="button" aria-pressed="false" data-size="lg" data-surround="outline">(none)</button>
+                    <button type="button" aria-pressed="true" data-size="lg" data-surround="outline">pressed</button></div></section>
+
+            <section data-sign="rule">
+                <h3>[data-union="block"] > button[aria-pressed]</h3>
+                <div role="group" aria-labelledby="union-block-fill" data-union="block">
+                    <span id="union-block-fill">button fill</span>
+                    <button type="button" aria-pressed="false" data-size="sm">(none)</button>
+                    <button type="button" aria-pressed="true" data-size="sm">pressed</button>
+                    <button disabled type="button" aria-pressed="false" data-size="sm">disabled</button>
+                    <button type="button" aria-invalid="true" aria-pressed="false" data-size="sm">aria-invalid</button></div>
+                <div role="group" aria-labelledby="union-block-outline" data-union="block">
+                    <span id="union-block-outline">button outline</span>
+                    <button type="button" aria-pressed="false" data-size="sm" data-surround="outline">(none)</button>
+                    <button type="button" aria-pressed="true" data-size="sm" data-surround="outline">pressed</button>
+                    <button disabled type="button" aria-pressed="false" data-size="sm" data-surround="outline">disabled</button>
+                    <button type="button" aria-invalid="true" aria-pressed="false" data-size="sm" data-surround="outline">aria-invalid</button></div></section>
+
+            <section data-sign="rule">
+                <h3>[role="toolbar"][aria-orientation="vertical"]</h3>
+                <div role="toolbar" aria-label="toolbar vertical" aria-orientation="vertical">
+                    <button type="button" data-size="sm">(none)</button>
+                    <button type="button" data-size="sm">button</button>
+                    <button type="button" data-size="sm">button</button></div></section></section>
+
+        <section>
+            <h2>Tab</h2>
+            <menu data-sign="rule" role="tablist">
                 <label>
                     <span>span</span>
                     <input checked id="tab-1" name="tab" role="tab" type="radio" aria-controls="tabpanel-1"></label>
                 <label>
                     <span>span</span>
-                    <input id="tab-2" name="tab" role="tab" type="radio" aria-controls="tabpanel-2"></label></section>
+                    <input id="tab-2" name="tab" role="tab" type="radio" aria-controls="tabpanel-2"></label></menu>
             <section id="tabpanel-1" role="tabpanel" aria-labelledby="tab-1">tabpanel-1</section>
             <section id="tabpanel-2" role="tabpanel" aria-labelledby="tab-2">tabpanel-2</section></section>
 
@@ -515,7 +513,7 @@
                     <span>data-axis="block", data-type="knob-only"</span>
                     <input role="switch" type="checkbox"></label></section>
             <section data-sign="rule">
-                <h3>size</h3>
+                <h3>Size</h3>
                 <label>
                     <span>xs</span>
                     <input role="switch" type="checkbox" data-size="xs"></label>
@@ -538,65 +536,65 @@
         <section>
             <h2>Step - button, input[role="spinbutton"]</h2>
             <section data-sign="rule">
-                <label aria-label="value" data-group="inline">
+                <label aria-label="value" data-union="inline">
                     <button tabindex="-1" type="button" aria-label="decrement" data-sign="minus"></button>
                     <input inputmode="numeric" pattern="[0-9]*" role="spinbutton" size="4" type="text" value="10" aria-label="value">
                     <button tabindex="-1" type="button" aria-label="increment" data-sign="plus"></button></label>
-                <label aria-label="value" data-group="inline">
+                <label aria-label="value" data-union="inline">
                     <input inputmode="numeric" pattern="[0-9]*" role="spinbutton" size="4" type="text" value="10" aria-label="value">
                     <span data-step="block">
                         <button tabindex="-1" type="button" aria-label="increment" data-sign="plus"></button>
                         <button tabindex="-1" type="button" aria-label="decrement" data-sign="minus"></button></span></label>
-                <label aria-label="value" data-group="inline">
+                <label aria-label="value" data-union="inline">
                     <input inputmode="numeric" pattern="[0-9]*" role="spinbutton" size="4" type="text" value="10" aria-label="value" data-size="lg">
                     <span data-step="block">
                         <button tabindex="-1" type="button" aria-label="increment" data-sign="plus" data-size="lg"></button>
                         <button tabindex="-1" type="button" aria-label="decrement" data-sign="minus" data-size="lg"></button></span></label></section>
             <section data-sign="rule">
-                <h3>size</h3>
-                <label aria-label="value" data-group="inline">
+                <h3>Size</h3>
+                <label aria-label="value" data-union="inline">
                     <button tabindex="-1" type="button" aria-label="decrement" data-sign="minus" data-size="xs"></button>
                     <input inputmode="numeric" pattern="[0-9]*" role="spinbutton" size="3" type="text" value="10" aria-label="value" data-size="xs">
                     <button tabindex="-1" type="button" aria-label="increment" data-sign="plus" data-size="xs"></button></label>
-                <label aria-label="value" data-group="inline">
+                <label aria-label="value" data-union="inline">
                     <button tabindex="-1" type="button" aria-label="decrement" data-sign="minus" data-size="sm"></button>
                     <input inputmode="numeric" pattern="[0-9]*" role="spinbutton" size="3" type="text" value="10" aria-label="value" data-size="sm">
                     <button tabindex="-1" type="button" aria-label="increment" data-sign="plus" data-size="sm"></button></label>
-                <label aria-label="value" data-group="inline">
+                <label aria-label="value" data-union="inline">
                     <button tabindex="-1" type="button" aria-label="decrement" data-sign="minus" data-size="md"></button>
                     <input inputmode="numeric" pattern="[0-9]*" role="spinbutton" size="3" type="text" value="10" aria-label="value" data-size="md">
                     <button tabindex="-1" type="button" aria-label="increment" data-sign="plus" data-size="md"></button></label>
-                <label aria-label="value" data-group="inline">
+                <label aria-label="value" data-union="inline">
                     <button tabindex="-1" type="button" aria-label="decrement" data-sign="minus" data-size="lg"></button>
                     <input inputmode="numeric" pattern="[0-9]*" role="spinbutton" size="3" type="text" value="10" aria-label="value" data-size="lg">
                     <button tabindex="-1" type="button" aria-label="increment" data-sign="plus" data-size="lg"></button></label>
-                <label aria-label="value" data-group="inline">
+                <label aria-label="value" data-union="inline">
                     <button tabindex="-1" type="button" aria-label="decrement" data-sign="minus" data-size="xl"></button>
                     <input inputmode="numeric" pattern="[0-9]*" role="spinbutton" size="3" type="text" value="10" aria-label="value" data-size="xl">
                     <button tabindex="-1" type="button" aria-label="increment" data-sign="plus" data-size="xl"></button></label>
-                <label aria-label="value" data-group="inline">
+                <label aria-label="value" data-union="inline">
                     <button tabindex="-1" type="button" aria-label="decrement" data-sign="minus" data-size="2xl"></button>
                     <input inputmode="numeric" pattern="[0-9]*" role="spinbutton" size="3" type="text" value="10" aria-label="value" data-size="2xl">
                     <button tabindex="-1" type="button" aria-label="increment" data-sign="plus" data-size="2xl"></button></label></section>
             <section data-sign="rule">
                 <h3>[data-surround="outline"]</h3>
-                <label aria-label="value" data-group="inline">
+                <label aria-label="value" data-union="inline">
                     <button tabindex="-1" type="button" aria-label="decrement" data-sign="minus" data-surround="outline"></button>
                     <input inputmode="numeric" pattern="[0-9]*" role="spinbutton" size="4" type="text" value="10" aria-label="value">
                     <button tabindex="-1" type="button" aria-label="increment" data-sign="plus" data-surround="outline"></button></label></section>
             <section data-sign="rule">
                 <h3>:user-invalid, [aria-invalid="true"]</h3>
-                <label aria-label="value" data-group="inline">
+                <label aria-label="value" data-union="inline">
                     <button tabindex="-1" type="button" aria-label="decrement" data-sign="minus"></button>
                     <input inputmode="numeric" pattern="[0-9]*" role="spinbutton" size="4" type="text" value="10" aria-invalid="true" aria-label="value">
                     <button tabindex="-1" type="button" aria-label="increment" data-sign="plus"></button></label></section>
             <section data-sign="rule">
                 <h3>:disabled, [aria-disabled="true"]</h3>
-                <label aria-label="value" data-group="inline">
+                <label aria-label="value" data-union="inline">
                     <button disabled tabindex="-1" type="button" aria-label="decrement" data-sign="minus"></button>
                     <input disabled inputmode="numeric" pattern="[0-9]*" role="spinbutton" size="4" type="text" value="10" aria-label="value">
                     <button disabled tabindex="-1" type="button" aria-label="increment" data-sign="plus"></button></label>
-                <label aria-label="value" data-group="inline">
+                <label aria-label="value" data-union="inline">
                     <button tabindex="-1" type="button" aria-disabled="true" aria-label="decrement" data-sign="minus"></button>
                     <input inputmode="numeric" pattern="[0-9]*" role="spinbutton" size="4" type="text" value="10" aria-disabled="true" aria-label="value">
                     <button tabindex="-1" type="button" aria-disabled="true" aria-label="increment" data-sign="plus"></button></label></section></section>
@@ -664,7 +662,7 @@
                     <button type="submit">button</button></form></section>
 
             <section data-sign="rule">
-                <h3>size</h3>
+                <h3>Size</h3>
                 <label aria-label="xs">
                     <input type="search" data-size="xs"></label>
                 <label aria-label="sm">
@@ -904,7 +902,7 @@
                             <td>Cell</td></tr></tbody></table></section>
 
                 <section data-sign="rule">
-                    <h3>size</h3>
+                    <h3>Size</h3>
                     <table data-size="xs">
                         <caption>data-size="xs"</caption>
                         <thead>
@@ -1018,6 +1016,13 @@
             <button id="toast_button" hidden data-sign="x" data-size="2xl" data-surround="outline" onclick="js_fn.hide_toast(this.closest('button'))">
                 <span id="toast_button_span">span:</span>
                 <p id="toast_button_p">data-surround="outline", 2xl</p></button></section>
+                
+        <section>
+            <h2>Blockquote</h2>
+            <figure data-sign="rule">
+                <blockquote>
+                    <p>"I will cast the dark shadows of human life over you without reserve. But you must not be afraid."</p></blockquote>
+                <figcaption>Soseki Natsume. 1914. <cite lang="en">Kokoro</cite>. Iwanami Shoten, Tokyo, Japan. Translated by Andyou, 2026.</figcaption></figure></section>
     </main>
 
 </body></html>

@@ -167,7 +167,7 @@ table {
         max-inline-size: 100%;
     }
 
-    fieldset[data-group="inline"] {
+    fieldset[data-union="inline"] {
         display:     block flow;
         white-space: normal;
     }

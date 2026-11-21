@@ -46,10 +46,6 @@
         position: relative;
     }
 
-    :where(search, form[role="search"]) > span {
-        margin-inline-end: 0.5rem;
-    }
-
     label:has(> input[type="search"])::before,
     label:has(> input[type="search"])::after {
         color:          var(--color-ink-mix);

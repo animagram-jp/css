@@ -15,6 +15,10 @@
         display: revert;
     }
 
+    legend {
+        display: contents;
+    }
+
     /* Preferred box-sizing value */
     *,
     *::before,
