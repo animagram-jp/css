@@ -40,7 +40,6 @@
             <input type="search"></label>
         <button type="submit"></button></form>
 */
-
 @layer css.search {
     label:has(> input[type="search"]) {
         position: relative;

@@ -9,7 +9,6 @@
         <span>inline</span>
         <input type="checkbox" role="switch"></label>
 */
-
 @layer css.toggle {
 
     /* === color, layout === */

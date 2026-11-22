@@ -19,7 +19,6 @@
             <span></span>
             <input type="checkbox"></label></fieldset>
 */
-
 @layer css.checkbox {
 
     input[type="checkbox"]:not([role="switch"]):not([data-sign]):not([data-facet]):where(:checked, :indeterminate) {
