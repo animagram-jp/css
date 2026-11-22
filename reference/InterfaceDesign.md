@@ -3,7 +3,7 @@ lang: ja
 translations: none
 ---
 
-本プロジェクトで体系化の対象とするインターフェース装置を、以下の2種類の機能のどちらかを持つ、または両者を統合した装置と定義する。
+本書は、以下の2種類の機能のどちらかを持つ、または両者を統合した装置をインターフェース装置と定義して、体系化を行う。
 
 (a) 構成機能
 システムが受け付けられる命令を構成する。
@@ -15,7 +15,7 @@ translations: none
 
 ---
 
-This project provides a general systematization of interface devices.
+This document provides a general systematization of interface devices.
 An interface device is a device having either of the following two functions, or one that combines both.
 
 (a) Determining a request
@@ -26,18 +26,14 @@ From the person's behavior, it determines one request among those the device can
 It brings about a phenomenon from which the person can gain information.
 From the information the system needs to convey to the person, it determines one phenomenon among those it is capable of bringing about, with the goal that the person can interpret it appropriately.
 
----
-
-## 本プロジェクトについて
+# 本プロジェクトについて
 
 インターフェース装置の設計には、設計時には知り得ない個人と、コンピューターアルゴリズムが干渉しあう。
 UD(個人や状況に依らず機能する)の網羅性の程度も、機能品質の程度も、決して100%を達成することはない。
 本プロジェクトの成果物は、インターフェース装置を形成する各要素が、自然言語による定義とCSS実装で構成されたライブラリ形式を想定する。
 インターフェース装置は、CSSで表すことのできるより遥かに広い組み合わせ空間を持つため、本プロジェクトの要素群は、体系を網羅することはできない。要素の体系は、自然言語によるインターフェース装置の取り得る空間内の整理、HTMLとCSSによる具体的な実装の、トップダウンとボトムアップからそれぞれ行い、この2つの語彙を整合することで行う。
 
----
-
-## 共通手続き段階
+# 共通手続き段階
 
 人間の単一の意図表明に始まる、インターフェース装置と人間、システムの間に発生する手続きを以下に定義する。
 
@@ -50,17 +46,24 @@ UD(個人や状況に依らず機能する)の網羅性の程度も、機能品�
 7. 人間の所作と装置の構成機能: 執行命令 (P3)
 8. 装置の信号機能: 結果信号 (P3')
 
-- reference: JIS C 0447:1997 (IEC60447:1993) Man-machine-interface (MMI) - Actuating principles
+Reference: JIS C 0447:1997 (IEC60447:1993) Man-machine-interface (MMI) - Actuating principles
 
----
+# 規則化
 
-## 所作 (draft)
+個別の要素に習熟を要さないために、構成要素・信号要素に共通して、規則を適用する。
+
+| Rule | Example |
+|-|-|
+| Boundary | divider(Material 3), 区画枠(JIS C 0447 4.1.8) |
+| Neutral position | 停止位置規則(JIS 5.2) |
+| P1 Grouping | toolbar(ARIA APG), 機能・順序・頻度・優先順位によるグループ化(JIS C 0447 4.1.8) |
+| P' Identification sign | 図記号・色・文字による識別(JIS C 0447 6) |
+| P2 Direction mapping | 操作方向と結果の対応(JIS 表A)  |
+
+# 所作 (draft)
 
 十分容易な運動によって、要求する1つの所作を定義する。運動には、代替を想定する。
-例として、ディスプレイに触れる手指の運動で実現する時、それは
-tap と long press のうち個々の人間にとってより容易な片方の運動によって実現できるように、
-tap ==  long press → (show context menu) → option 1 long press
-の2つを代替関係とする。
+例えば、ディスプレイに触れる手指の運動で実現する時、tapとlong pressのうち個々の人間にとってより容易な片方の運動によって実現できるように、tapとlong press(show context menu) → option 1 long pressの2つで同じ操作を可能にする。
 
 - pointer down, move, up (touch, mouse)
     - tap
@@ -71,14 +74,13 @@ tap ==  long press → (show context menu) → option 1 long press
 - keyboard
     - enter
     - space
+    - tab
     - arrow (↑→↓←)
 
----
-
-## 状態属性による信号操作 (draft)
+# 状態属性による信号操作 (draft)
 
 フォーカス・ホバーの相互作用状態と別に、信号機能の実装機構としての一般的な状態属性を以下に挙げる。
-適用には、各状態に対応する差分を設計してある必要がある。
+適用には、各状態に対応する差分が設計される必要がある。
 
 | Variant | Meaning |
 |-|-|
@@ -89,25 +91,9 @@ tap ==  long press → (show context menu) → option 1 long press
 | invalid, out-of-range | 検証済み(受け入れ不可) |
 | busy | not ready |
 
-- reference: XForms 1.1, W3C Recommendation 20 October 2009 - 6 4.4 model item property
+Reference: XForms 1.1, W3C Recommendation 20 October 2009 - 6 4.4 model item property
 
----
-
-## 規則化要素 (draft)
-
-個別の要素に習熟を要さないために、構成要素・信号要素に共通して、規則を適用する。
-
-| 名前 | 既存例 | 構成 |
-|-|-|-|
-| control grouping | toolbar(ARIA APG), 機能・順序・頻度・優先順位によるグループ化(JIS C 0447 4.1.8) | P1要素の配列規則。 |
-| group boundary | divider(Material 3), 区画枠(JIS C 0447 4.1.8) | 表示(囲み)によるcontrol groupingの視覚表現。 |
-| identification mark | Avatar(Ant Design), 図記号・色・文字による識別(JIS C 0447 6)  | 信号要素の識別規則 |
-| direction mapping | 操作方向と結果の対応(JIS 表A)  | P2要素のジェスチャ方向の符号化規則 |
-| neutral position | 停止位置規則(JIS 5.2) | 中立・停止状態の空間的定位規則 |
-
----
-
-## P1~P3' Pattern Examples (draft)
+# P1~P3' Pattern Examples (draft)
 
 - 表中「タップ」はショートクリック・ショートタップ(ポインターダウンからポインターアップまで)を指す。
 - 長押し時・ドラッグ時の挙動については、定義を別途必要とする行がある。
@@ -183,9 +169,7 @@ tap ==  long press → (show context menu) → option 1 long press
 | sound feedback | 聴覚信号(JIS C 0447 3.4.2, 6.2) | |
 | haptic feedback | 触覚信号(JIS C 0447 3.4.3, 6.3) | |
 
----
-
-## Sign (draft)
+# Sign (draft)
 
 Sign (符号)は、その幾何学的性質を利用して、なるべく依存する文脈を少なく理解できるのが望ましい。
 また、同じ場所にあり続け、試行できるインタラクティブ要素を表すとき、記号は変化せず、今現在の様子の信号とセットで使うべきである(例: toggle button)。
@@ -214,59 +198,7 @@ Sign (符号)は、その幾何学的性質を利用して、なるべく依存�
 ⌞ (U+231E BOTTOM LEFT CORNER)
 ⌟ (U+231F BOTTOM RIGHT CORNER)
 ⧉ (U+29C9 TWO JOINED SQUARES)
-長短2直線/曲線の組み合わせ
 ```
-
----
-
-## forced-colors: active
-
-forced-colorで失われる要素は、使用しない。色要素で伝える情報は、形またはテキストを常に併用する。
-
-- [W3C: CSS Color Adjustment Module Level 1](https://www.w3.org/TR/css-color-adjust-1/)
-
-以下が強制的にSystem Color(CSS Color Level 4)またはnone, autoで上書きされる。
-
-- accent-color: auto;, background-color, border-color, caret-color, color, flood-color, fill, lighting-color, outline-color, rule-color, scrollbar-color: auto;, stop-color, stroke, text-decoration-color, text-emphasis-color, "box-shadow and text-shadow compute to none", "background-image computes to none"(但し、url()は例外的に除かれる), "color-scheme computes to light dark"
-
-### System color
-
-| キーワード | 用途 |
-|---|---|
-| `Canvas` | ページ/コンテンツの背景 |
-| `CanvasText` | 本文の文字色 |
-| `LinkText` | 未訪問リンク |
-| `VisitedText` | 訪問済みリンク |
-| `ActiveText` | アクティブ(押下中)リンク |
-| `ButtonFace` | ボタンの背景 |
-| `ButtonText` | ボタンの文字色 |
-| `ButtonBorder` | ボタンの枠線色 |
-| `Field` | テキスト入力欄などの背景 |
-| `FieldText` | 入力欄の文字色 |
-| `Mark` | `<mark>` 相当のハイライト背景 |
-| `MarkText` | `<mark>` 相当のハイライト文字色 |
-| `Highlight` | テキスト選択時などの背景(反転色) |
-| `HighlightText` | 選択された部分の文字色 |
-| `SelectedItem` | (新しめ)選択された項目の背景。`Highlight` の後継的位置づけ |
-| `SelectedItemText` | 選択された項目の文字色 |
-| `GrayText` | 無効化(disabled)要素の文字色 |
-| `AccentColor` | チェックボックス・ラジオなどのアクセント色(比較的新しい) |
-| `AccentColorText` | `AccentColor` 上に乗る文字色 |
-
----
-
-## prefers-reduced-motion
-
-- 全コンポーネントで、自動モーションはデフォルトの定義には適用せず、`@media (prefers-reduced-motion: no-preference)`で明示オプションとする。
-
----
-
-## prefers-contrast
-
-`@media (prefers-contrast)`(値なし) は、装飾グラデーション・背景画像・box-shadow を単色やsolid borderに置き換えるなど、視覚的な単純化の共通段階に留める。
-`@media (prefers-contrast: more | less) and (forced-colors: none)` と書く必要がある。
-
----
 
 ## Keyboard operation (draft)
 

@@ -18,6 +18,48 @@ curl -fsSL -H "Accept: application/vnd.github.raw+json" "https://api.github.com/
 - `css/`の各ファイル冒頭に、想定するhtml要素を`// Usage: `として記すこと。スタイリングに必要なタグ・属性以外は記述しないこと。
 - base.css以外の各ファイルで、個別の中間変数を定義してはならない。
 
+## prefers-reduced-motion
+
+自動モーションは必ず`@media (prefers-reduced-motion: no-preference)`で明示オプションとする。
+
+## prefers-contrast
+
+`@media (prefers-contrast)`(値なし) は、装飾グラデーション・背景画像・box-shadow を単色やsolid borderに置き換えるなど、視覚的な単純化の共通段階に留める。
+`@media (prefers-contrast: more | less) and (forced-colors: none)` と書く必要がある。
+
+## forced-color
+
+[W3C: CSS Color Adjustment Module Level 1](https://www.w3.org/TR/css-color-adjust-1/)
+forced-colorで失われる要素は、使用しない。色要素で伝える情報は、形またはテキストを常に併用する。
+
+以下が強制的にSystem Color(CSS Color Level 4)またはnone, autoで上書きされる。
+
+```
+accent-color: auto;, background-color, border-color, caret-color, color, flood-color, fill, lighting-color, outline-color, rule-color, scrollbar-color: auto;, stop-color, stroke, text-decoration-color, text-emphasis-color, "box-shadow and text-shadow compute to none", "background-image computes to none"(但し、url()は例外的に除かれる), "color-scheme computes to light dark"
+```
+
+| System color | Use |
+|-|-|
+| `Canvas` | ページ/コンテンツの背景 |
+| `CanvasText` | 本文の文字色 |
+| `LinkText` | 未訪問リンク |
+| `VisitedText` | 訪問済みリンク |
+| `ActiveText` | アクティブ(押下中)リンク |
+| `ButtonFace` | ボタンの背景 |
+| `ButtonText` | ボタンの文字色 |
+| `ButtonBorder` | ボタンの枠線色 |
+| `Field` | テキスト入力欄などの背景 |
+| `FieldText` | 入力欄の文字色 |
+| `Mark` | `<mark>` 相当のハイライト背景 |
+| `MarkText` | `<mark>` 相当のハイライト文字色 |
+| `Highlight` | テキスト選択時などの背景(反転色) |
+| `HighlightText` | 選択された部分の文字色 |
+| `SelectedItem` | (新しめ)選択された項目の背景。`Highlight` の後継的位置づけ |
+| `SelectedItemText` | 選択された項目の文字色 |
+| `GrayText` | 無効化(disabled)要素の文字色 |
+| `AccentColor` | チェックボックス・ラジオなどのアクセント色(比較的新しい) |
+| `AccentColorText` | `AccentColor` 上に乗る文字色 |
+
 ## data-sign
 
 data-signとdata-facetの疑似要素は、高さを--{size}-box-heightとする仮想のカンバスの重心に対して配置する。
