@@ -3,6 +3,7 @@ name: "CI"
 on:
     push:
         branches: ["main"]
+        tags: ["*.*.*"]
     pull_request:
     workflow_dispatch:
 
@@ -55,6 +56,18 @@ jobs:
             - name: "validate ./css against the css syntax definitions"
               working-directory: "reference"
               run: npm run validate
+
+    reuse:
+        if: github.ref_type == 'tag' || github.event_name == 'workflow_dispatch'
+        runs-on: ubuntu-latest
+        steps:
+            - name: "git checkout"
+              uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+              with:
+                  persist-credentials: false
+
+            - name: "reuse lint"
+              uses: fsfe/reuse-action@676e2d560c9a403aa252096d99fcab3e1132b0f5 # v6.0.0
 
     signoff:
         if: github.event_name == 'pull_request'

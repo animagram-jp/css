@@ -11,34 +11,48 @@ export const CHANNEL = {
 };
 
 export const FIXED_SOURCE = {
-    highlight: CHANNEL.accent_yellow,
     success: CHANNEL.accent_green,
     error: CHANNEL.accent_red,
     visited: CHANNEL.accent_purple,
 };
 
-// --- Scheme ink/paper. more-contrast is the sRGB maximum; less-contrast the derived threshold. ---
-export const FAMILY = {
-    light: {
-        "light": { ink: CHANNEL.black, paper: CHANNEL.white, ink_mix_percent: 60 },
-        "light-more-contrast": { ink: CHANNEL.black, paper: CHANNEL.white, ink_mix_percent: 66 },
-        "light-less-contrast": { ink: [43, 43, 43], paper: [243, 243, 243], collapse_mix: true },
-    },
-    dark: {
-        "dark": { ink: CHANNEL.white, paper: CHANNEL.black, ink_mix_percent: 60 },
-        "dark-more-contrast": { ink: CHANNEL.white, paper: CHANNEL.black, ink_mix_percent: 66 },
-        "dark-less-contrast": { ink: [243, 243, 243], paper: [43, 43, 43], collapse_mix: true },
-    },
-};
-
-export const SOURCE_LIGHTNESS = 0.65;
-
 const CONTRAST_ENHANCED = 7;
 const CONTRAST_MINIMUM = 4.5;
 const CONTRAST_GRAPHICAL = 3;
 
-// README "Distinctness".
-const EMPHASIS_DISTINCTNESS = 2;
+// --- Scheme ink/paper. more-contrast is the sRGB maximum; less-contrast the derived threshold. ---
+export const FAMILY = {
+    light: {
+        "light": {
+            ink: CHANNEL.black, paper: CHANNEL.white, ink_mix_percent: 41.8, text_contrast: CONTRAST_MINIMUM,
+            highlight_ink: mix_rgb(CHANNEL.accent_yellow, CHANNEL.black, 49.9), highlight_paper: CHANNEL.accent_yellow,
+        },
+        "light-more-contrast": {
+            ink: CHANNEL.black, paper: CHANNEL.white, ink_mix_percent: 41.8, text_contrast: CONTRAST_ENHANCED,
+            highlight_ink: mix_rgb(CHANNEL.accent_yellow, CHANNEL.black, 37.3), highlight_paper: CHANNEL.accent_yellow,
+        },
+        "light-less-contrast": {
+            ink: [43, 43, 43], paper: [243, 243, 243], ink_mix: [140, 140, 140], paper_mix: [198, 198, 198], text_contrast: CONTRAST_MINIMUM,
+            highlight_ink: mix_rgb(CHANNEL.accent_yellow, CHANNEL.black, 46.1), highlight_paper: CHANNEL.accent_yellow,
+        },
+    },
+    dark: {
+        "dark": {
+            ink: CHANNEL.white, paper: CHANNEL.black, ink_mix_percent: 35.1, text_contrast: CONTRAST_MINIMUM,
+            highlight_ink: CHANNEL.accent_yellow, highlight_paper: mix_rgb(CHANNEL.accent_yellow, CHANNEL.black, 40.8),
+        },
+        "dark-more-contrast": {
+            ink: CHANNEL.white, paper: CHANNEL.black, ink_mix_percent: 35.1, text_contrast: CONTRAST_ENHANCED,
+            highlight_ink: CHANNEL.accent_yellow, highlight_paper: mix_rgb(CHANNEL.accent_yellow, CHANNEL.black, 37.3),
+        },
+        "dark-less-contrast": {
+            ink: [243, 243, 243], paper: [43, 43, 43], ink_mix: [116, 116, 116], paper_mix: [111, 111, 111], text_contrast: CONTRAST_MINIMUM,
+            highlight_ink: CHANNEL.accent_yellow, highlight_paper: mix_rgb(CHANNEL.accent_yellow, CHANNEL.black, 40.8),
+        },
+    },
+};
+
+export const SOURCE_LIGHTNESS = 0.65;
 
 const PAPER_MIX_PERCENT = 16;
 const EMPHASIS_MIX_PERCENT = 50;
@@ -46,8 +60,6 @@ const EMPHASIS_MIX_PERCENT = 50;
 const GRID_RESOLUTION = 1000;
 const GRID_CHROMA_MAXIMUM = 0.4;
 const GAMUT_TOLERANCE = 1e-7;
-const SCORE_TOLERANCE = 0.02;
-const CHROMA_WEIGHT = 1000;
 const SOURCE_CHROMA_STEP = 0.002;
 
 export function calculate_relative_luminance(rgb) {
@@ -169,50 +181,22 @@ export function find_nearest_candidate(grid, accepts) {
     return nearest < 0 ? null : read_candidate(grid, nearest);
 }
 
-export function find_best_candidate(grid, accepts, score) {
-    let top = -Infinity;
-    for (let index = 0; index < grid.length; index += 1) {
-        if (accepts(grid.luminance[index])) top = Math.max(top, score(grid.luminance[index]));
-    }
-    let best = -1;
-    let best_distance = Infinity;
-    for (let index = 0; index < grid.length; index += 1) {
-        if (!accepts(grid.luminance[index]) || score(grid.luminance[index]) < top - SCORE_TOLERANCE) continue;
-        const distance = Math.abs(grid.chroma[index] - grid.chroma[0]) * CHROMA_WEIGHT + Math.abs(grid.lightness[index] - grid.lightness[0]);
-        if (distance < best_distance) {
-            best_distance = distance;
-            best = index;
-        }
-    }
-    return best < 0 ? null : read_candidate(grid, best);
-}
+export function solve_family(scheme_set, grid) {
+    const scheme_list = Object.values(scheme_set).map((scheme) => ({
+        text_contrast: scheme.text_contrast,
+        ink: calculate_relative_luminance(scheme.ink),
+        paper: calculate_relative_luminance(scheme.paper),
+        highlight_paper: calculate_relative_luminance(scheme.highlight_paper),
+    }));
+    const every = (accepts) => (luminance) => scheme_list.every((scheme) => accepts(luminance, scheme));
 
-export function solve_family(scheme_set, dark, grid) {
-    const scheme_list = Object.values(scheme_set);
-    const strictest_paper = scheme_list.map((scheme) => scheme.paper).reduce((first, second) => (dark === (calculate_relative_luminance(first) > calculate_relative_luminance(second)) ? first : second));
-    const strictest_ink = scheme_list.map((scheme) => scheme.ink).reduce((first, second) => (dark === (calculate_relative_luminance(first) < calculate_relative_luminance(second)) ? first : second));
-    const paper_luminance = calculate_relative_luminance(strictest_paper);
-    const ink_luminance = calculate_relative_luminance(strictest_ink);
-
-    const emphasis_ink = find_nearest_candidate(grid.emphasis, (luminance) => calculate_contrast(luminance, paper_luminance) >= CONTRAST_ENHANCED);
-    const emphasis_paper = emphasis_ink && (
-        find_nearest_candidate(grid.emphasis, (luminance) => calculate_contrast(luminance, paper_luminance) >= CONTRAST_GRAPHICAL
-            && calculate_contrast(luminance, ink_luminance) >= CONTRAST_MINIMUM
-            && calculate_contrast(luminance, emphasis_ink.luminance) >= EMPHASIS_DISTINCTNESS)
-        ?? find_best_candidate(
-            grid.emphasis,
-            (luminance) => calculate_contrast(luminance, ink_luminance) >= CONTRAST_MINIMUM
-                && calculate_contrast(luminance, emphasis_ink.luminance) >= EMPHASIS_DISTINCTNESS,
-            (luminance) => calculate_contrast(luminance, paper_luminance),
-        )
-    );
-    const highlight_ink = find_nearest_candidate(grid.highlight, (luminance) => calculate_contrast(luminance, paper_luminance) >= CONTRAST_MINIMUM);
-    const highlight_paper = emphasis_ink && find_nearest_candidate(grid.highlight, (luminance) => calculate_contrast(luminance, ink_luminance) >= CONTRAST_MINIMUM
-        && calculate_contrast(luminance, emphasis_ink.luminance) >= CONTRAST_GRAPHICAL);
-    const success = find_nearest_candidate(grid.success, (luminance) => calculate_contrast(luminance, paper_luminance) >= CONTRAST_GRAPHICAL);
-    const error = find_nearest_candidate(grid.error, (luminance) => calculate_contrast(luminance, paper_luminance) >= CONTRAST_GRAPHICAL);
-    const visited = find_nearest_candidate(grid.visited, (luminance) => calculate_contrast(luminance, paper_luminance) >= CONTRAST_ENHANCED);
-    return { emphasis_ink, emphasis_paper, highlight_ink, highlight_paper, success, error, visited };
+    const emphasis_ink = find_nearest_candidate(grid.emphasis, every((luminance, scheme) => calculate_contrast(luminance, scheme.paper) >= scheme.text_contrast
+        && calculate_contrast(luminance, scheme.highlight_paper) >= CONTRAST_GRAPHICAL));
+    const success = find_nearest_candidate(grid.success, every((luminance, scheme) => calculate_contrast(luminance, scheme.paper) >= CONTRAST_GRAPHICAL
+        && calculate_contrast(luminance, scheme.ink) >= CONTRAST_GRAPHICAL));
+    const error = find_nearest_candidate(grid.error, every((luminance, scheme) => calculate_contrast(luminance, scheme.paper) >= CONTRAST_GRAPHICAL));
+    const visited = find_nearest_candidate(grid.visited, every((luminance, scheme) => calculate_contrast(luminance, scheme.paper) >= scheme.text_contrast));
+    return { emphasis_ink, success, error, visited };
 }
 
 // Requirements that must hold in EVERY scheme of the family.
@@ -222,26 +206,31 @@ export function check_requirement(palette, scheme_set) {
 
     const failure = [];
     for (const [name, scheme] of Object.entries(scheme_set)) {
-        const ink_mix = scheme.collapse_mix ? scheme.ink : mix_rgb(scheme.ink, scheme.paper, scheme.ink_mix_percent);
-        const paper_mix = scheme.collapse_mix ? scheme.paper : mix_rgb(scheme.ink, scheme.paper, PAPER_MIX_PERCENT);
-        const emphasis_mix = scheme.collapse_mix ? palette.emphasis_ink.rgb : mix_rgb(palette.emphasis_ink.rgb, scheme.ink, EMPHASIS_MIX_PERCENT);
+        const ink_mix = scheme.ink_mix ?? mix_rgb(scheme.ink, scheme.paper, scheme.ink_mix_percent);
+        const paper_mix = scheme.paper_mix ?? mix_rgb(scheme.ink, scheme.paper, PAPER_MIX_PERCENT);
+        const emphasis_mix = mix_rgb(palette.emphasis_ink.rgb, scheme.ink, EMPHASIS_MIX_PERCENT);
+        const text = scheme.text_contrast;
         const row = [
-            ["ink vs paper", scheme.ink, scheme.paper, CONTRAST_ENHANCED],
-            ["ink-mix vs paper", ink_mix, scheme.paper, CONTRAST_MINIMUM],
-            ["paper-mix vs eMix", paper_mix, emphasis_mix, CONTRAST_ENHANCED],
-            ["emphasis-ink vs paper", palette.emphasis_ink.rgb, scheme.paper, CONTRAST_ENHANCED],
-            ["eMix vs paper", emphasis_mix, scheme.paper, CONTRAST_ENHANCED],
-            ["emphasis-paper vs paper", palette.emphasis_paper.rgb, scheme.paper, CONTRAST_GRAPHICAL],
-            ["emphasis-paper vs ink", palette.emphasis_paper.rgb, scheme.ink, CONTRAST_MINIMUM],
-            ["hl-ink vs its text", palette.highlight_ink.rgb, scheme.paper, CONTRAST_MINIMUM],
-            ["hl-ink vs paper fill", palette.highlight_ink.rgb, scheme.paper, CONTRAST_GRAPHICAL],
-            ["hl-ink vs paper-mix", palette.highlight_ink.rgb, paper_mix, CONTRAST_GRAPHICAL],
-            ["hl-paper vs its text", palette.highlight_paper.rgb, scheme.ink, CONTRAST_MINIMUM],
-            ["hl-paper vs emphasis-ink", palette.highlight_paper.rgb, palette.emphasis_ink.rgb, CONTRAST_GRAPHICAL],
-            ["hl-paper vs eMix", palette.highlight_paper.rgb, emphasis_mix, CONTRAST_GRAPHICAL],
-            ["success vs paper", palette.success.rgb, scheme.paper, CONTRAST_GRAPHICAL],
+            ["ink vs paper (text)", scheme.ink, scheme.paper, text],
+            ["ink vs paper-mix (text)", scheme.ink, paper_mix, text],
+            ["emphasis-ink vs paper (text)", palette.emphasis_ink.rgb, scheme.paper, text],
+            ["eMix vs paper (text)", emphasis_mix, scheme.paper, text],
+            ["hl-ink vs paper (text)", scheme.highlight_ink, scheme.paper, text],
+            ["hl-paper vs ink (text)", scheme.highlight_paper, scheme.ink, text],
+            ["visited vs paper (text)", palette.visited.rgb, scheme.paper, text],
+            ["ink vs paper", scheme.ink, scheme.paper, CONTRAST_GRAPHICAL],
+            ["ink vs paper-mix", scheme.ink, paper_mix, CONTRAST_GRAPHICAL],
+            ["ink-mix vs paper", ink_mix, scheme.paper, CONTRAST_GRAPHICAL],
+            ["emphasis-ink vs paper", palette.emphasis_ink.rgb, scheme.paper, CONTRAST_GRAPHICAL],
+            ["emphasis-ink vs hl-paper", palette.emphasis_ink.rgb, scheme.highlight_paper, CONTRAST_GRAPHICAL],
+            ["eMix vs paper", emphasis_mix, scheme.paper, CONTRAST_GRAPHICAL],
+            ["eMix vs hl-paper", emphasis_mix, scheme.highlight_paper, CONTRAST_GRAPHICAL],
+            ["hl-ink vs paper", scheme.highlight_ink, scheme.paper, CONTRAST_GRAPHICAL],
+            ["hl-ink vs paper-mix", scheme.highlight_ink, paper_mix, CONTRAST_GRAPHICAL],
             ["error vs paper", palette.error.rgb, scheme.paper, CONTRAST_GRAPHICAL],
-            ["visited vs paper", palette.visited.rgb, scheme.paper, CONTRAST_ENHANCED],
+            ["success vs paper", palette.success.rgb, scheme.paper, CONTRAST_GRAPHICAL],
+            ["success vs ink", palette.success.rgb, scheme.ink, CONTRAST_GRAPHICAL],
+            ["visited vs paper", palette.visited.rgb, scheme.paper, CONTRAST_GRAPHICAL],
         ];
         for (const [label, rgb, other_rgb, required] of row) {
             const contrast = calculate_contrast(calculate_relative_luminance(rgb), calculate_relative_luminance(other_rgb));
@@ -254,13 +243,13 @@ export function check_requirement(palette, scheme_set) {
 export function solve_every_family(scheme_table, emphasis_grid, fixed_grid) {
     const grid = { ...fixed_grid, emphasis: emphasis_grid };
     return Object.fromEntries(Object.entries(scheme_table).map(([name, scheme_set]) => {
-        const palette = solve_family(scheme_set, name === "dark", grid);
+        const palette = solve_family(scheme_set, grid);
         return [name, { palette, failure: check_requirement(palette, scheme_set) }];
     }));
 }
 
-export function format_color(candidate) {
+export function format_color(candidate, source) {
     return candidate.exact
-        ? `rgb(${candidate.rgb.join(" ")})`
-        : `oklch(${candidate.lightness.toFixed(3)} ${candidate.chroma.toFixed(3)} ${candidate.hue.toFixed(1)})`;
+        ? source
+        : `oklch(from ${source} ${candidate.lightness.toFixed(3)} ${candidate.chroma.toFixed(3)} h)`;
 }

@@ -1,6 +1,7 @@
 /*
  * SPDX-FileCopyrightText: 2026 Andyou <andyou@animagram.jp>
- * SPDX-License-Identifier: Apache-2.0
+ * SPDX-FileCopyrightText: 2019-2024 The Bootstrap Authors
+ * SPDX-License-Identifier: Apache-2.0 AND MIT
  */
 
 body > header {
@@ -167,7 +168,7 @@ table {
         max-inline-size: 100%;
     }
 
-    fieldset[data-group="inline"] {
+    fieldset[data-union="inline"] {
         display:     block flow;
         white-space: normal;
     }
