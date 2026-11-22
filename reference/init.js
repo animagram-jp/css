@@ -10,7 +10,7 @@ const ICON_BADGE = {
 const ICON_BADGE_RADIUS_RATIO = 5 / 32;
 const ICON_BADGE_STROKE_RATIO = 0.3; // stroke width against radius
 
-const EMPHASIS_ROLES = ["emphasis_ink", "emphasis_paper"];
+const EMPHASIS_ROLES = ["emphasis_ink"];
 
 const S = {
     root: document.documentElement,
@@ -134,12 +134,14 @@ function set_color_scheme(radio) {
 
 function apply_hue(hue) {
     if (!S.fixed_grid) return;
-    const emphasis_grid = build_grid(find_vivid_rgb(SOURCE_LIGHTNESS, hue));
+    const source_rgb = find_vivid_rgb(SOURCE_LIGHTNESS, hue);
+    const emphasis_grid = build_grid(source_rgb);
+    const source = `rgb(${source_rgb.join(" ")})`;
     const result = solve_every_family(FAMILY, emphasis_grid, S.fixed_grid);
     for (const role of EMPHASIS_ROLES) {
         const [light, dark] = [result.light.palette[role], result.dark.palette[role]];
         if (!light || !dark) return;
-        S.root.style.setProperty("--color-" + role.replace(/_/g, "-"), `light-dark(${format_color(light)}, ${format_color(dark)})`);
+        S.root.style.setProperty("--color-" + role.replace(/_/g, "-"), `light-dark(${format_color(light, source)}, ${format_color(dark, source)})`);
     }
 }
 

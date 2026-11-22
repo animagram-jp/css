@@ -26,16 +26,15 @@ From the person's behavior, it determines one request among those the device can
 It brings about a phenomenon from which the person can gain information.
 From the information the system needs to convey to the person, it determines one phenomenon among those it is capable of bringing about, with the goal that the person can interpret it appropriately.
 
-# 本プロジェクトについて
+# 体系化
 
-インターフェース装置の設計には、設計時には知り得ない個人と、コンピューターアルゴリズムが干渉しあう。
-UD(個人や状況に依らず機能する)の網羅性の程度も、機能品質の程度も、決して100%を達成することはない。
-本プロジェクトの成果物は、インターフェース装置を形成する各要素が、自然言語による定義とCSS実装で構成されたライブラリ形式を想定する。
-インターフェース装置は、CSSで表すことのできるより遥かに広い組み合わせ空間を持つため、本プロジェクトの要素群は、体系を網羅することはできない。要素の体系は、自然言語によるインターフェース装置の取り得る空間内の整理、HTMLとCSSによる具体的な実装の、トップダウンとボトムアップからそれぞれ行い、この2つの語彙を整合することで行う。
+インターフェース装置は、設計時には知り得ない個人と、コンピューターアルゴリズムとの相互作用を設計する。
+設計成果物の形式は、インターフェース装置を形成する各要素が、自然言語による定義と実装で構成されたライブラリとする。
+UD(個人や状況に依らず機能する)の網羅性の程度も、機能品質の程度も、体系に対する実装の網羅率も、決して100%を達成することはない。体系化は、自然言語によるインターフェース装置の取り得る空間内の整理、具体的な実装の、トップダウンとボトムアップからそれぞれ行い、この2つの語彙の整合の維持活動である。
 
 # 共通手続き段階
 
-人間の単一の意図表明に始まる、インターフェース装置と人間、システムの間に発生する手続きを以下に定義する。
+人間の単一の意図表明に始まる、インターフェース装置と人間、システムの間に発生する手続きを以下に定義する[^jis-c-0447]。
 
 1. 人間の所作と装置の構成機能: 操作意思表明 (P0)
 2. 装置の信号機能: システム状態信号 (P0')
@@ -46,11 +45,9 @@ UD(個人や状況に依らず機能する)の網羅性の程度も、機能品�
 7. 人間の所作と装置の構成機能: 執行命令 (P3)
 8. 装置の信号機能: 結果信号 (P3')
 
-Reference: JIS C 0447:1997 (IEC60447:1993) Man-machine-interface (MMI) - Actuating principles
+# 要素の規則化
 
-# 規則化
-
-個別の要素に習熟を要さないために、構成要素・信号要素に共通して、規則を適用する。
+体系内の要素が所作への習熟を要求しないために、構成要素・信号要素に共通して、規則を適用する。
 
 | Rule | Example |
 |-|-|
@@ -60,12 +57,12 @@ Reference: JIS C 0447:1997 (IEC60447:1993) Man-machine-interface (MMI) - Actuati
 | P' Identification sign | 図記号・色・文字による識別(JIS C 0447 6) |
 | P2 Direction mapping | 操作方向と結果の対応(JIS 表A)  |
 
-# 所作 (draft)
+# 所作
 
 十分容易な運動によって、要求する1つの所作を定義する。運動には、代替を想定する。
-例えば、ディスプレイに触れる手指の運動で実現する時、tapとlong pressのうち個々の人間にとってより容易な片方の運動によって実現できるように、tapとlong press(show context menu) → option 1 long pressの2つで同じ操作を可能にする。
+例えば、ディスプレイに触れる手指の運動で実現する時、tapとlong pressのうち個々の人間にとってより容易な片方の運動によって実現できるように、tapとlong press(show context menu) → long press(1st option)の2つで同じ操作を可能にする。
 
-- pointer down, move, up (touch, mouse)
+- touch, mouse(pointer down, move, up)
     - tap
     - long press
     - drag (& drop)
@@ -75,25 +72,22 @@ Reference: JIS C 0447:1997 (IEC60447:1993) Man-machine-interface (MMI) - Actuati
     - enter
     - space
     - tab
-    - arrow (↑→↓←)
+    - arrow(↑→↓←)
 
-# 状態属性による信号操作 (draft)
+# 信号機能の状態属性
 
-フォーカス・ホバーの相互作用状態と別に、信号機能の実装機構としての一般的な状態属性を以下に挙げる。
-適用には、各状態に対応する差分が設計される必要がある。
+所作に対応したものの他に、一般的に必要のある状態属性を以下に挙げる[^xforms]。
 
 | Variant | Meaning |
 |-|-|
 | hidden, disabled | irrelevant |
 | readonly | - |
 | required | - |
-| valid | 検証済み(受け入れ可) |
-| invalid, out-of-range | 検証済み(受け入れ不可) |
+| valid | validated (acceptable) |
+| invalid, out-of-range | validated (not acceptable) |
 | busy | not ready |
 
-Reference: XForms 1.1, W3C Recommendation 20 October 2009 - 6 4.4 model item property
-
-# P1~P3' Pattern Examples (draft)
+# P1~P3' Pattern Examples
 
 - 表中「タップ」はショートクリック・ショートタップ(ポインターダウンからポインターアップまで)を指す。
 - 長押し時・ドラッグ時の挙動については、定義を別途必要とする行がある。
@@ -104,7 +98,7 @@ Reference: XForms 1.1, W3C Recommendation 20 October 2009 - 6 4.4 model item pro
 - filter chip | filter chip(Material 3)
 - tabs | tabs(ARIA APG)
 
-| Name | Reference | P1 対象選択 | P1' 対象確認信号 | P2 コマンド構成 | P2' 構成確認信号 | P3 執行命令 | P3' 結果信号 |
+| Name | Example | P1 | P1' | P2 | P2' | P3 | P3' |
 |-|-|-|-|-|-|-|-|
 | drag and drop reordering | Drag and drop(Apple HIG) | pointer down | :active(grab) | pointer down + move | insert preview | pointer up, pointer down + move(out) | (default) |
 | toggle | Switch(ARIA APG) | hover, focus | label, :hover, :focus | - | label, :checked | enter, tap | (default), :checked |
@@ -214,6 +208,9 @@ Sign (符号)は、その幾何学的性質を利用して、なるべく依存�
 | Radio button, Slider | → / ← |
 
 - [ARIA APG: pattern](https://www.w3.org/WAI/ARIA/apg/patterns/)
-- [IBM Common User Guide]
+- IBM Common User Guide
 - [Microsoft: Shortcut Keys](https://learn.microsoft.com/en-us/previous-versions/windows/desktop/bb246441(v=vs.85)?redirectedfrom=MSDN)
 - [Microsoft: Keyboard Interface Summary](https://learn.microsoft.com/en-us/previous-versions/ms997427(v=msdn.10))
+
+[^jis-c-0447]: JIS C 0447:1997 (IEC60447:1993) Man-machine-interface (MMI) - Actuating principles
+[^xforms]: XForms 1.1, W3C Recommendation 20 October 2009 - 6 4.4 model item property

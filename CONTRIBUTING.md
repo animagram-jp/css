@@ -13,6 +13,7 @@ If "ORG_CONTRIBUTING.md" does not exist in the repository root of your working e
 curl -fsSL -H "Accept: application/vnd.github.raw+json" "https://api.github.com/repos/animagram-jp/.github/contents/.github/CONTRIBUTING.md?ref=main" -o "ORG_CONTRIBUTING.md"
 ```
 
+- All CSS properties MUST be described in order of dependencies, and then, alphabetical.
 - CSSのセレクターは、トップレベルの列挙に:where()を用い、:whereの内では:is()を用いること。
 - 必須でない*セレクタは記述を省略する。
 - `css/`の各ファイル冒頭に、想定するhtml要素を`// Usage: `として記すこと。スタイリングに必要なタグ・属性以外は記述しないこと。

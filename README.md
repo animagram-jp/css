@@ -1,18 +1,14 @@
-# css
-
 [![CI](https://github.com/animagram-jp/css/actions/workflows/ci.yml/badge.svg?branch=main)](https://github.com/animagram-jp/css/actions/workflows/ci.yml)
 [![OpenSSF Scorecard](https://api.scorecard.dev/projects/github.com/animagram-jp/css/badge)](https://scorecard.dev/viewer/?uri=github.com/animagram-jp/css)
 [![OpenSSF Best Practices](https://www.bestpractices.dev/projects/16852/badge)](https://www.bestpractices.dev/projects/16852)
 [![OpenSSF Baseline](https://www.bestpractices.dev/projects/16852/baseline)](https://www.bestpractices.dev/projects/16852)
 
-Interface design system and DOM implements.
+Universal Design (variants included) system and CSS implementations.
 
-- Universal Design (variants included) based on [digital government jp design system](https://github.com/digital-go-jp/design-system-example-components-html), [Color Universal Design Recommended Color Set ver.3](https://cudo.jp/wp-content/uploads/2016/07/CUD%E6%8E%A8%E5%A5%A8%E9%85%8D%E8%89%B2%E3%82%BB%E3%83%83%E3%83%88%E3%82%AC%E3%82%A4%E3%83%89%E3%83%96%E3%83%83%E3%82%AF.pdf), GOV.UK Design System, WCAG 2.2, ARIA APG, IEC60447:1993(Man-machine-interface Principle).
 - Requires to html only semantic and also structural tags and minimum anonymous elements.
 - Render correctly without JS.
-- All CSS properties are described in order of dependencies, and then, alphabetical.
 
-## Version
+# Version
 
 | Version | Status    | Date       | Description |
 |---------|-----------|------------|-------------|
@@ -20,40 +16,34 @@ Interface design system and DOM implements.
 
 This project adheres to [Semantic Versioning](https://semver.org/).
 
----
+# Browser support
 
-## Browser support
-
-Rendering requires Baseline 2024 features: `@layer`, `:has()`, `light-dark()`, `color-mix()`, popover and `:user-invalid`.
+Rendering requires Baseline 2024 features: `@layer`, `:has()`, `light-dark()`, `color-mix()`, relative color syntax, popover and `:user-invalid`.
 
 | Browser | Minimum |
 |-|-|
 | Chrome, Edge | 123 |
-| Firefox | 125 |
-| Safari | 17.5 |
+| Firefox | 128 |
+| Safari | 18 |
 
 `field-sizing`, `text-wrap: pretty` and `:open` are progressive enhancements and fall back without layout breakage.
 
----
-
-## Dependency layers
+# Layer structure
 
 [import.css](./css/import.css) declares the `@layer` order and imports every file below in that order. Link it alone, or link the files individually and declare the `@layer` order yourself.
+Common layer files are following: 
 
-- [reset.css(@layer css.reset)](./css/reset.css): 1st common layer to unset all.
-- [base.css(@layer css.base)](./css/base.css):   2nd common layer defining defaults of all custom parameters.
-- [data_style.css(@layer css.data_style)](./css/data_style.css): 3rd common layer defining data-style attribute.
-- [data_size.css(@layer css.data_size)](./css/data_size.css): 4th common layer defining data-size attribute.
-- [data_sign.css(@layer css.data_sign)](./css/data_sign.css): 5th common layer defining data-sign and data-facet attributes.
-- [data_union.css(@layer css.data_union)](./css/data_union.css): 6th common layer defining data-union attribute: removes the gap between adjacent controls and squares their shared corners.
+1. [reset.css(@layer css.reset)](./css/reset.css): 1st layer to unset all.
+2. [base.css(@layer css.base)](./css/base.css): 2nd layer defining defaults of all custom parameters.
+3. [data_style.css(@layer css.data_style)](./css/data_style.css): 3rd layer defining data-style attribute.
+4. [data_size.css(@layer css.data_size)](./css/data_size.css): 4th layer defining data-size attribute.
+5. [data_sign.css(@layer css.data_sign)](./css/data_sign.css): 5th layer defining data-sign and data-facet attributes.
+6. [data_union.css(@layer css.data_union)](./css/data_union.css): 6th layer defining data-union attribute: removes the gap between adjacent controls and squares their shared corners.
 
----
+# Color
 
-## Color
-
-Color custom properties are defined in [base.css](./css/base.css).
-Color custom styles are defined in [data_style.css](./css/data_style.css).
-Override the `--color-*` properties on any scope to restyle.
+Custom properties are defined in [base.css](./css/base.css).
+Override the `--color-*` properties on any scope to restyle in use.
 
 | Category | Name | Meaning |
 |-|-|-|
@@ -72,13 +62,12 @@ Override the `--color-*` properties on any scope to restyle.
 | | `--color-visited` | Default `a:visited` color to contrast with paper. |
 | | `--color-emphasis-ink` | Emphasis color to contrast with paper. |
 | | `--color-emphasis-ink-mix` | Emphasis mixed to contrast with paper. |
-| | `--color-emphasis-paper` | Emphasis color contrast with ink. |
 | scoped parameter | `color` | Text color in the scope. |
 | | `background-color` | Fill color in the scope. |
 | | `border-color` | Border color in the scope. |
 | | `outline-color` | Focus color in the scope. |
 
-Scoped colors:
+## Scoped colors
 
 ```
 ┌ (backdrop) ────────┐
@@ -96,63 +85,77 @@ Scoped colors:
 - :hover does not have any color difference in basic styles.
 - Empty cells mean as above.
 
-| Style | text | highlight | fill | border | backdrop | 
-|-|-|-|-|-|-|
-| - | color-ink | - | color-paper(-mix) | color-ink | color-paper |
-| | color-ink | - | color-emphasis-paper | - | | 
-| ::selection | color-paper | color-highlight-ink | color-paper(-mix) | | | 
-| `data-surround="transparent"` | color-ink | - | transparent | - | |
-| `data-surround="input"` | color-ink | - | color-paper | color-ink-mix | |
-| input::selection | color-paper | color-highlight-ink | | | |
-| input:disabled | color-ink-mix | - | | | |
-| input:disabled::selection | color-paper | color-highlight-ink | | | |
-| input:user-invalid | color-ink | - | | color-error | |
-| input:user-invalid::selection | color-paper | color-highlight-ink | | | |
-| `data-surround="fill"` | color-paper | - | color-emphasis-ink | transparent | |
-| fill::selection | color-ink | color-highlight-paper | color-emphasis-ink | | |
-| fill:disabled | color-paper | - | color-ink-mix | | |
-| fill:disabled::selection | color-ink | color-highlight-paper | color-ink-mix | | |
-| fill:active | color-paper | - | color-emphasis-ink-mix | | |
-| fill:active::selection | color-ink | color-highlight-paper | color-emphasis-ink-mix | | |
-| `data-surround="outline"` | color-emphasis-ink | - | color-paper | color-emphasis-ink | |
-| outline::selection | color-emphasis-paper | color-highlight-ink | | | |
-| outline:disabled | color-ink-mix | - | | color-ink-mix | |
-| outline:disabled::selection | color-paper | color-highlight-ink | | | |
-| outline:active | color-emphasis-ink-mix | - | | color-emphasis-ink-mix | |
-| outline:active::selection | color-emphasis-paper | color-highlight-ink | | | |
-| `data-style="underline"` | color-{emphasis}-ink | - | color-paper | - | |
-| underline::selection | color-paper | color-highlight-ink | | | |
-| underline:disabled | color-ink-mix | - | | | |
-| underline:disabled::selection | color-paper | color-highlight-ink | | | |
-| underline:active | color-emphasis-ink-mix | - | | | |
-| underline:active::selection | color-paper | color-highlight-ink | | | |
+| Style | Attribute | text | highlight | fill | border | backdrop | 
+|-|-|-|-|-|-|-|
+| - | - | color-ink | - | color-paper(-mix) | color-ink | color-paper |
+|  | `::selection` | color-paper | color-highlight-ink | color-paper(-mix) | | | 
+| `data-surround="transparent"` | | color-ink | - | transparent | - | |
+| | `:visited` | color-visited | - | | | |
+| `input[type=txt]` | | color-ink | - | color-paper | color-ink-mix | |
+| | `::selection` | color-paper | color-highlight-ink | | | |
+| | `:disabled` | color-ink-mix | - | | | |
+| | `:disabled::selection` | color-paper | color-highlight-ink | | | |
+| | `:user-invalid` | color-ink | - | | color-error | |
+| | `:user-invalid::selection` | color-paper | color-highlight-ink | | | |
+| `data-surround="fill"` | | color-paper | - | color-emphasis-ink | transparent | |
+| | `::selection` | color-ink | color-highlight-paper | color-emphasis-ink | | |
+| | `:disabled` | color-paper | - | color-ink-mix | | |
+| | `:disabled::selection` | color-ink | color-highlight-paper | color-ink-mix | | |
+| | `:active` | color-paper | - | color-emphasis-ink-mix | | |
+| | `:active::selection` | color-ink | color-highlight-paper | color-emphasis-ink-mix | | |
+| `data-surround="outline"` | | color-emphasis-ink | - | color-paper | color-emphasis-ink | |
+| | `::selection` | color-paper | color-highlight-ink | | | |
+| | `:disabled` | color-ink-mix | - | | color-ink-mix | |
+| | `:disabled::selection` | color-paper | color-highlight-ink | | | |
+| | `:active` | color-emphasis-ink-mix | - | | color-emphasis-ink-mix | |
+| | `:active::selection` | color-paper | color-highlight-ink | | | |
+| | `:visited` | color-visited | - | | color-visited | |
+| `data-style="underline"` | | color-{emphasis}-ink | - | color-paper | - | |
+| | `::selection` | color-paper | color-highlight-ink | | | |
+| | `:disabled` | color-ink-mix | - | | | |
+| | `:disabled::selection` | color-paper | color-highlight-ink | | | |
+| | `:active` | color-emphasis-ink-mix | - | | | |
+| | `:active::selection` | color-paper | color-highlight-ink | | | |
+| | `:visited` | color-visited | - | | | |
+| `input[type="checkbox"][role="switch"]` | | - | - | color-ink-mix | - | color-paper |
+| | `:checked` | - | - | color-success | | |
+| | `::after` | color-ink | - | color-paper | color-ink | color-ink-mix |
+| | `:checked::after` | | | | | color-success |
+| | `:disabled::after` | color-ink-mix | - | | color-ink-mix | color-ink-mix |
+| | `:checked:disabled::after` | | | | | color-success |
 
 ### Contrast requirements
 
 Requirements come from layer adjacency (text↔highlight↔fill, fill↔border↔backdrop) in the style table above. 
 
-Layers alternate polarity outward from the backdrop — `-paper` → `-ink` → `-paper` → … — so each
-layer contrasts with the one enclosing it. All 27 rows of the style table satisfy this.
+The required ratio depends on the scheme.
 
-Each row below holds per light or dark scheme.
+| Scheme | text | non-text |
+|-|-|-|
+| `*-more-contrast` | 7:1 (AAA 1.4.6) | 3:1 (AA 1.4.11) |
+| light, dark | 4.5:1 (AA 1.4.3) | 3:1 (AA 1.4.11) |
+| `*-less-contrast` | 4.5:1 (AA 1.4.3) | 3:1 (AA 1.4.11) |
+
+- Signs (icons, marks, carets) are non-text.
+- A pair of two `-mix` colors has no requirement.
+- The `toggle` (`input[type="checkbox"][role="switch"]`) thumb border against its track has no requirement when unchecked (`color-ink` / `color-ink-mix`) or disabled (`color-ink-mix` / `color-ink-mix`, `color-success`).
+- Each row below holds in every scheme at the ratio above.
+
 Emphasis colors are the injection point for a brand or per-scope users' color.
 The library default is the CUD accent purple. 
-`color-success` is a non-text fill: it carries no text and borders only `color-paper` or `color-ink`, never other non-text colors.
+`color-success` is a non-text fill: it carries no text.
 
-| Property | 7:1 text (AAA 1.4.6) | 4.5:1 text (AA 1.4.3) | 3:1 non-text (AA 1.4.11) |
-|-|-|-|-|
-| color-ink | color(-emphasis)-paper | color(-emphasis)-paper(-mix) | — |
-| color-ink-mix | — | color-paper | color-paper, color-paper-mix |
-| color-paper | — | color-ink-mix | emphasis-paper, color-error, color-success |
-| color-paper-mix | emphasis-ink-mix | — | color-ink-mix |
-| color-emphasis-ink | paper | — | — |
-| color-emphasis-ink-mix | paper | — | — |
-| color-emphasis-paper | — | — | paper |
-| color-highlight-ink | — | color-paper | color-paper, color-paper-mix |
-| color-highlight-paper | — | color-ink | color-emphasis-ink, color-emphasis-ink-mix |
-| color-error | — | — | paper |
-| color-success | — | — | paper |
-| color-visited | paper | — | — |
+| Property | text | non-text |
+|-|-|-|
+| color-ink | color-paper, color-paper-mix | color-paper, color-paper-mix |
+| color-ink-mix | color-paper | color-paper |
+| color-emphasis-ink | color-paper | color-paper, color-highlight-paper |
+| color-emphasis-ink-mix | color-paper | color-paper, color-highlight-paper |
+| color-highlight-ink | color-paper | color-paper, color-paper-mix |
+| color-highlight-paper | color-ink | color-ink-mix |
+| color-error | — | color-paper |
+| color-success | — | color-paper, color-ink |
+| color-visited | color-paper | color-paper |
 
 ## Size
 

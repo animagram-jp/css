@@ -1,10 +1,7 @@
-import { CHANNEL, FAMILY, FIXED_SOURCE, build_grid, solve_every_family } from "./palette.js";
+import { CHANNEL, FAMILY, FIXED_SOURCE, build_grid, format_color, solve_every_family } from "./palette.js";
 
 const ROLE_CHANNEL = {
     emphasis_ink: "emphasis",
-    emphasis_paper: "emphasis",
-    highlight_ink: "accent_yellow",
-    highlight_paper: "accent_yellow",
     success: "accent_green",
     error: "accent_red",
     visited: "accent_purple",
@@ -29,9 +26,7 @@ function format_family(name, result, emphasis_name) {
             line.push(`${property}: NO SOLUTION`);
             continue;
         }
-        const value = candidate.exact
-            ? format_channel(channel, emphasis_name)
-            : `oklch(from ${format_channel(channel, emphasis_name)} ${candidate.lightness.toFixed(3)} ${candidate.chroma.toFixed(3)} h)`;
+        const value = format_color(candidate, format_channel(channel, emphasis_name));
         line.push(`${property}: ${value};  -> rgb(${candidate.rgb})`);
     }
     line.push(result.failure.length ? result.failure.map((entry) => "  FAIL " + entry).join("\n") : "  all rows pass");
