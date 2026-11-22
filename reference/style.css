@@ -4,6 +4,14 @@
  * SPDX-License-Identifier: Apache-2.0 AND MIT
  */
 
+@media (forced-colors: none) {
+    :root {
+        --rgb-theme: 91 47 145;
+
+        --color-emphasis-ink: light-dark(rgb(var(--rgb-theme)), oklch(from rgb(var(--rgb-theme)) 0.780 0.113 h));
+    }
+}
+
 body > header {
     container-type: inline-size;
     margin-block:   1rem;
