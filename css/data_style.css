@@ -377,7 +377,24 @@
     ),
     [data-union] > label:where(:not([data-surround]), [data-surround="outline"]):has(> input:is([type="radio"], [type="checkbox"]):where(:disabled, [aria-disabled="true"])) {
         border-color: var(--color-ink-mix);
-        color:        var(--color-ink-mix);
+    }
+
+    :is(
+        :not(
+            [data-surround="fill"],
+            :is(
+                button,
+                [type="button"],
+                [type="submit"],
+                [type="reset"],
+                [data-type="toast"] > *
+            ):not([data-surround])
+    )):where(
+        :disabled,
+        [aria-disabled="true"]
+    ),
+    [data-union] > label:where(:not([data-surround]), [data-surround="outline"]):has(> input:is([type="radio"], [type="checkbox"]):where(:disabled, [aria-disabled="true"])) {
+        color: var(--color-ink-mix);
     }
 
     :is(
@@ -408,7 +425,13 @@
         ),
         [data-union] > label:has(> input:is([type="radio"], [type="checkbox"]):where(:disabled, [aria-disabled="true"])) {
             border-color: GrayText;
-            color:        GrayText;
+        }
+        :is(
+            :disabled,
+            [aria-disabled="true"]
+        ),
+        [data-union] > label:has(> input:is([type="radio"], [type="checkbox"]):where(:disabled, [aria-disabled="true"])) {
+            color: GrayText;
         }
     }
 }

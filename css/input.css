@@ -59,10 +59,6 @@
     ) {
         caret-color: var(--color-ink-mix);
         cursor:      text;
-
-        &::placeholder {
-            color: var(--color-ink-mix);        
-        }
     }
 
     :where(

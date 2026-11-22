@@ -24,30 +24,30 @@ const CONTRAST_GRAPHICAL = 3;
 export const FAMILY = {
     light: {
         "light": {
-            ink: CHANNEL.black, paper: CHANNEL.white, ink_mix_percent: 60, text_contrast: CONTRAST_MINIMUM,
+            ink: CHANNEL.black, paper: CHANNEL.white, ink_mix_percent: 41.8, text_contrast: CONTRAST_MINIMUM,
             highlight_ink: mix_rgb(CHANNEL.accent_yellow, CHANNEL.black, 49.9), highlight_paper: CHANNEL.accent_yellow,
         },
         "light-more-contrast": {
-            ink: CHANNEL.black, paper: CHANNEL.white, ink_mix_percent: 66, text_contrast: CONTRAST_ENHANCED,
+            ink: CHANNEL.black, paper: CHANNEL.white, ink_mix_percent: 41.8, text_contrast: CONTRAST_ENHANCED,
             highlight_ink: mix_rgb(CHANNEL.accent_yellow, CHANNEL.black, 37.3), highlight_paper: CHANNEL.accent_yellow,
         },
         "light-less-contrast": {
-            ink: [43, 43, 43], paper: [243, 243, 243], ink_mix: [111, 111, 111], paper_mix: [147, 147, 147], text_contrast: CONTRAST_MINIMUM,
-            highlight_ink: mix_rgb(CHANNEL.accent_yellow, CHANNEL.black, 46), highlight_paper: CHANNEL.accent_yellow,
+            ink: [43, 43, 43], paper: [243, 243, 243], ink_mix: [140, 140, 140], paper_mix: [198, 198, 198], text_contrast: CONTRAST_MINIMUM,
+            highlight_ink: mix_rgb(CHANNEL.accent_yellow, CHANNEL.black, 46.1), highlight_paper: CHANNEL.accent_yellow,
         },
     },
     dark: {
         "dark": {
-            ink: CHANNEL.white, paper: CHANNEL.black, ink_mix_percent: 60, text_contrast: CONTRAST_MINIMUM,
-            highlight_ink: CHANNEL.accent_yellow, highlight_paper: mix_rgb(CHANNEL.accent_yellow, CHANNEL.black, 32),
+            ink: CHANNEL.white, paper: CHANNEL.black, ink_mix_percent: 35.1, text_contrast: CONTRAST_MINIMUM,
+            highlight_ink: CHANNEL.accent_yellow, highlight_paper: mix_rgb(CHANNEL.accent_yellow, CHANNEL.black, 40.8),
         },
         "dark-more-contrast": {
-            ink: CHANNEL.white, paper: CHANNEL.black, ink_mix_percent: 66, text_contrast: CONTRAST_ENHANCED,
-            highlight_ink: CHANNEL.accent_yellow, highlight_paper: mix_rgb(CHANNEL.accent_yellow, CHANNEL.black, 36.9),
+            ink: CHANNEL.white, paper: CHANNEL.black, ink_mix_percent: 35.1, text_contrast: CONTRAST_ENHANCED,
+            highlight_ink: CHANNEL.accent_yellow, highlight_paper: mix_rgb(CHANNEL.accent_yellow, CHANNEL.black, 37.3),
         },
         "dark-less-contrast": {
-            ink: [243, 243, 243], paper: [43, 43, 43], ink_mix: [147, 147, 147], paper_mix: [111, 111, 111], text_contrast: CONTRAST_MINIMUM,
-            highlight_ink: CHANNEL.accent_yellow, highlight_paper: mix_rgb(CHANNEL.accent_yellow, CHANNEL.black, 41),
+            ink: [243, 243, 243], paper: [43, 43, 43], ink_mix: [116, 116, 116], paper_mix: [111, 111, 111], text_contrast: CONTRAST_MINIMUM,
+            highlight_ink: CHANNEL.accent_yellow, highlight_paper: mix_rgb(CHANNEL.accent_yellow, CHANNEL.black, 40.8),
         },
     },
 };
@@ -213,7 +213,6 @@ export function check_requirement(palette, scheme_set) {
         const row = [
             ["ink vs paper (text)", scheme.ink, scheme.paper, text],
             ["ink vs paper-mix (text)", scheme.ink, paper_mix, text],
-            ["ink-mix vs paper (text)", ink_mix, scheme.paper, text],
             ["emphasis-ink vs paper (text)", palette.emphasis_ink.rgb, scheme.paper, text],
             ["eMix vs paper (text)", emphasis_mix, scheme.paper, text],
             ["hl-ink vs paper (text)", scheme.highlight_ink, scheme.paper, text],
@@ -228,7 +227,6 @@ export function check_requirement(palette, scheme_set) {
             ["eMix vs hl-paper", emphasis_mix, scheme.highlight_paper, CONTRAST_GRAPHICAL],
             ["hl-ink vs paper", scheme.highlight_ink, scheme.paper, CONTRAST_GRAPHICAL],
             ["hl-ink vs paper-mix", scheme.highlight_ink, paper_mix, CONTRAST_GRAPHICAL],
-            ["hl-paper vs ink-mix", scheme.highlight_paper, ink_mix, CONTRAST_GRAPHICAL],
             ["error vs paper", palette.error.rgb, scheme.paper, CONTRAST_GRAPHICAL],
             ["success vs paper", palette.success.rgb, scheme.paper, CONTRAST_GRAPHICAL],
             ["success vs ink", palette.success.rgb, scheme.ink, CONTRAST_GRAPHICAL],

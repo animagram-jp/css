@@ -117,11 +117,13 @@ Override the `--color-*` properties on any scope to restyle in use.
 | | `:active` | color-emphasis-ink-mix | - | | | |
 | | `:active::selection` | color-paper | color-highlight-ink | | | |
 | | `:visited` | color-visited | - | | | |
-| `input[type="checkbox"][role="switch"]` | | - | - | color-ink-mix | - | color-paper |
-| | `:checked` | - | - | color-success | | |
-| | `::after` | color-ink | - | color-paper | color-ink | color-ink-mix |
+| `input[type="checkbox"][role="switch"]` | | - | - | color-ink-mix | color-ink-mix | color-paper |
+| | `:user-invalid` | - | - | | color-error | |
+| | `:disabled` | - | - | | color-ink-mix | |
+| | `:checked` | - | - | color-success | color-ink | |
+| | `::after` | color-ink | - | color-paper | - | color-ink-mix |
 | | `:checked::after` | | | | | color-success |
-| | `:disabled::after` | color-ink-mix | - | | color-ink-mix | color-ink-mix |
+| | `:disabled::after` | color-ink-mix | - | | | color-ink-mix |
 | | `:checked:disabled::after` | | | | | color-success |
 
 ### Contrast requirements
@@ -138,7 +140,8 @@ The required ratio depends on the scheme.
 
 - Signs (icons, marks, carets) are non-text.
 - A pair of two `-mix` colors has no requirement.
-- The `toggle` (`input[type="checkbox"][role="switch"]`) thumb border against its track has no requirement when unchecked (`color-ink` / `color-ink-mix`) or disabled (`color-ink-mix` / `color-ink-mix`, `color-success`).
+- Disabled states (`:disabled`, `[aria-disabled="true"]`) have no requirement.
+- The `toggle` (`input[type="checkbox"][role="switch"]`) has no error state: its `:user-invalid` and `[aria-invalid="true"]` styles have no requirement. Use a checkbox for a value that must be checked.
 - Each row below holds in every scheme at the ratio above.
 
 Emphasis colors are the injection point for a brand or per-scope users' color.
@@ -148,11 +151,11 @@ The library default is the CUD accent purple.
 | Property | text | non-text |
 |-|-|-|
 | color-ink | color-paper, color-paper-mix | color-paper, color-paper-mix |
-| color-ink-mix | color-paper | color-paper |
+| color-ink-mix | — | color-paper |
 | color-emphasis-ink | color-paper | color-paper, color-highlight-paper |
 | color-emphasis-ink-mix | color-paper | color-paper, color-highlight-paper |
 | color-highlight-ink | color-paper | color-paper, color-paper-mix |
-| color-highlight-paper | color-ink | color-ink-mix |
+| color-highlight-paper | color-ink | — |
 | color-error | — | color-paper |
 | color-success | — | color-paper, color-ink |
 | color-visited | color-paper | color-paper |

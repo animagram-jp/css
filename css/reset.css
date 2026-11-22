@@ -246,8 +246,9 @@
     }
 
     /* reset default text opacity of input placeholder. */
-    ::placeholder { /* per tailwind-preflight.css:283-289 */
-        opacity: 1;
+    ::placeholder {
+        color:   inherit;
+        opacity: 1; /* per tailwind-preflight.css:283-289 */
     }
 
     :-moz-ui-invalid { /* per tailwind-preflight.css:365-371 */
