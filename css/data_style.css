@@ -353,9 +353,23 @@
 
     /* --- disabled --- */
 
+    :where(:disabled, [aria-disabled="true"]),
+    label:has(> :is(input, select):is(:disabled, [aria-disabled="true"])) {
+        cursor: not-allowed;
+    }
+
     :where(:disabled, [aria-disabled="true"]) {
-        cursor:         not-allowed;
         pointer-events: none;
+    }
+
+    :where(input[type="checkbox"], input[type="radio"]):where(:disabled, [aria-disabled="true"]):not(:focus-visible) {
+        outline-style: none;
+    }
+
+    @media (hover: hover) {
+        [data-union] > label:has(> input:is([type="radio"], [type="checkbox"]):is(:disabled, [aria-disabled="true"])):hover {
+            text-decoration-line: none;
+        }
     }
 
     /* --- disabled, readonly --- */
