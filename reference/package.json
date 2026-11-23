@@ -4,7 +4,7 @@
   "type": "module",
   "scripts": {
     "setup": "npx --yes playwright@$(node -p \"require('playwright-core/package.json').version\") install --with-deps --only-shell chromium",
-    "audit": "node audit.mjs",
+    "test": "node test.mjs",
     "validate": "node validate.mjs"
   },
   "dependencies": {

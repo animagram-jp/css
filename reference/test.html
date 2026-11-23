@@ -75,8 +75,8 @@ const row = (cells) => {
     return tr;
 };
 
-const report = await fetch("./audit.json").then(r => {
-    if (!r.ok) throw new Error(`audit.json: ${r.status}`);
+const report = await fetch("./test.json").then(r => {
+    if (!r.ok) throw new Error(`test.json: ${r.status}`);
     return r.json();
 });
 

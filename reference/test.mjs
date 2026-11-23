@@ -7,7 +7,7 @@ import path from "node:path";
 const require = createRequire(import.meta.url);
 const ACE_PATH = require.resolve("accessibility-checker-engine/ace-window.js");
 const PAGE = path.resolve(import.meta.dirname, "..", "index.html");
-const OUT = path.resolve(import.meta.dirname, "audit.json");
+const OUT = path.resolve(import.meta.dirname, "test.json");
 
 const GUIDELINE = "WCAG_2_2";
 
@@ -194,6 +194,6 @@ writeFileSync(OUT, JSON.stringify({
 const total = (outcome) => results.reduce(
     (n, r) => n + r.findings.filter(f => f.outcome === outcome).length, 0);
 console.log(
-    `done: reference/audit.json (${results.length} scans, ` +
+    `done: reference/test.json (${results.length} scans, ` +
     `${total("FAIL")} failing, ${total("POTENTIAL")} needing review)`
 );

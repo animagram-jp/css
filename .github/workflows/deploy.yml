@@ -1,4 +1,4 @@
-name: "Audit"
+name: "Deploy"
 
 on:
     push:
@@ -9,7 +9,26 @@ permissions:
     contents: read
 
 jobs:
-    audit:
+    build:
+        runs-on: ubuntu-latest
+        permissions:
+            contents: read
+        steps:
+        - name: "git checkout"
+          uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+          with:
+            persist-credentials: false
+
+        - name: "build"
+          run: reference/build.sh
+
+        - name: "upload animagram_css artifact"
+          uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7.0.2
+          with:
+            name: "animagram_css"
+            path: "target/animagram_css.css"
+
+    test:
         timeout-minutes: 60
         runs-on: ubuntu-latest
         permissions:
@@ -38,18 +57,18 @@ jobs:
 
         - name: "run the accessibility engine over ./index.html"
           working-directory: "reference"
-          run: npm run audit
+          run: npm run test
 
         - name: "upload report artifact"
           uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7.0.2
           with:
-            name: "audit"
+            name: "test"
             path: |
-              reference/audit.html
-              reference/audit.json
+              reference/test.html
+              reference/test.json
 
-    deploy:
-        needs: audit
+    deploy-page:
+        needs: test
         runs-on: ubuntu-latest
         permissions:
             contents: read
@@ -68,10 +87,10 @@ jobs:
         - name: "setup Github Pages"
           uses: actions/configure-pages@45bfe0192ca1faeb007ade9deae92b16b8254a0d # v6.0.0
 
-        - name: "download audit artifact"
+        - name: "download test artifact"
           uses: actions/download-artifact@9000827ccba6bdab643e8b6fd33ac0654aef8333 # v8.0.2
           with:
-            name: "audit"
+            name: "test"
             path: "reference/"
 
         - name: "upload artifact as Github Pages"
@@ -82,3 +101,31 @@ jobs:
         - name: "deploy to GitHub Pages"
           id: "deployment"
           uses: actions/deploy-pages@368f82528645a54fb793d4d04e342629a3f51346 # v5.0.1
+
+    deploy-release:
+        needs: [build, test]
+        if: github.ref_type == 'tag'
+        runs-on: ubuntu-latest
+        permissions:
+            contents: write
+        steps:
+        - name: "download animagram_css artifact"
+          uses: actions/download-artifact@9000827ccba6bdab643e8b6fd33ac0654aef8333 # v8.0.2
+          with:
+            name: "animagram_css"
+
+        - name: "attach animagram_css.css to the draft release"
+          env:
+            GH_TOKEN: ${{ github.token }}
+            TAG: ${{ github.ref_name }}
+          run: |
+            draft="$(gh release view "$TAG" --repo "$GITHUB_REPOSITORY" --json isDraft --jq .isDraft 2>/dev/null || true)"
+            case "$draft" in
+                true)
+                    gh release upload "$TAG" animagram_css.css --clobber --repo "$GITHUB_REPOSITORY" ;;
+                false)
+                    echo "::error::release $TAG is already published"
+                    exit 1 ;;
+                *)
+                    gh release create "$TAG" animagram_css.css --draft --verify-tag --generate-notes --repo "$GITHUB_REPOSITORY" ;;
+            esac

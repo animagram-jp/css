@@ -195,8 +195,14 @@
         }
 
         @media (forced-colors: active) {
-            &:where(:user-invalid, [aria-invalid="true"]):where(:hover, :active) {
+            &:where(:user-invalid, [aria-invalid="true"]):active {
                 outline-color: Mark;
+            }
+
+            @media (hover: hover) {
+                &:where(:user-invalid, [aria-invalid="true"]):hover {
+                    outline-color: Mark;
+                }
             }
         }
     }
@@ -236,10 +242,7 @@
 
     *:focus-visible,
     [data-union] > label:has(> input:is([type="radio"], [type="checkbox"]):focus-visible),
-    :where(input[type="checkbox"], input[type="radio"]):where(
-        :hover,
-        :active
-    ) {
+    :where(input[type="checkbox"], input[type="radio"]):where(:active) {
         outline-color:  var(--color-focus);
         outline-offset: 0;
         outline-style:  solid;
@@ -263,6 +266,14 @@
     }
 
     @media (hover: hover) {
+        :where(input[type="checkbox"], input[type="radio"]):where(:hover) {
+            outline-color:  var(--color-focus);
+            outline-offset: 0;
+            outline-style:  solid;
+            outline-width:  0.25rem;
+            z-index:        1;
+        }
+
         :where(a, button, [type="button"], [type="submit"], [type="reset"], summary):hover,
         [data-union] > label:has(> input:is([type="radio"], [type="checkbox"])):hover {
             text-decoration-color:     currentColor;

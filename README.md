@@ -30,8 +30,14 @@ Rendering requires Baseline 2024 features: `@layer`, `:has()`, `light-dark()`, `
 
 # Layer structure
 
-[import.css](./css/import.css) declares the `@layer` order and imports every file below in that order. Link it alone, or link the files individually and declare the `@layer` order yourself.
-Common layer files are following: 
+[import.css](./css/import.css) declares the `@layer` order. Its `dependency` comments name the layers each layer requires before it.
+
+Use the library in either way:
+
+- Link `animagram_css.css` attached to each [release](https://github.com/animagram-jp/css/releases). It declares the `@layer` order first and contains every layer.
+- Link the files individually, and declare the `@layer` order of import.css yourself. Include the layers named in each `dependency` comment of the layers you use.
+
+Common layer files are following:
 
 1. [reset.css(@layer css.reset)](./css/reset.css): 1st layer to unset all.
 2. [base.css(@layer css.base)](./css/base.css): 2nd layer defining defaults of all custom parameters.

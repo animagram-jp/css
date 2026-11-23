@@ -77,12 +77,19 @@
 
     /* --- visited, hover, active --- */
 
-    section[data-type="error-summary"] > ul > li > a:where(:visited, :hover, :active) {
+    section[data-type="error-summary"] > ul > li > a:where(:visited, :active) {
         color: var(--color-ink);
     }
 
-    section[data-type="error-summary"] > ul > li > a:where(:hover, :active) {
+    section[data-type="error-summary"] > ul > li > a:where(:active) {
         text-decoration-thickness: 0.25rem;
+    }
+
+    @media (hover: hover) {
+        section[data-type="error-summary"] > ul > li > a:where(:hover) {
+            color:                     var(--color-ink);
+            text-decoration-thickness: 0.25rem;
+        }
     }
 
     /* === error message (p[data-type="error"]) === */
@@ -109,8 +116,7 @@
         section[data-type="error-summary"] {
             border-color: Mark;
         }
-        section[data-type="error-summary"] > ul > li > a,
-        section[data-type="error-summary"] > ul > li > a:where(:visited, :hover, :active) {
+        section[data-type="error-summary"] > ul > li > a {
             color: LinkText;
         }
     }

@@ -25,13 +25,29 @@
 
     /* --- visited --- */
 
-    a:visited:not([data-surround="fill"], :hover, :focus-visible, [aria-disabled="true"]) {
-        color: var(--color-visited);
+    @media (hover: hover) {
+        a:visited:not([data-surround="fill"], :hover, :focus-visible, [aria-disabled="true"]) {
+            color: var(--color-visited);
+        }
+    }
+
+    @media (hover: none) {
+        a:visited:not([data-surround="fill"], :focus-visible, [aria-disabled="true"]) {
+            color: var(--color-visited);
+        }
     }
 
     @media (forced-colors: active) {
-        a:visited:not([data-surround="fill"], :hover, :focus-visible, [aria-disabled="true"]) {
-            color: VisitedText;
+        @media (hover: hover) {
+            a:visited:not([data-surround="fill"], :hover, :focus-visible, [aria-disabled="true"]) {
+                color: VisitedText;
+            }
+        }
+
+        @media (hover: none) {
+            a:visited:not([data-surround="fill"], :focus-visible, [aria-disabled="true"]) {
+                color: VisitedText;
+            }
         }
     }
 

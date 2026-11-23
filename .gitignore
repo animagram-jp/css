@@ -4,6 +4,8 @@
 
 node_modules/
 
-reference/audit.json
+reference/test.json
 
 .claude/
+
+target/

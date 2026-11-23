@@ -123,7 +123,6 @@
         :disabled,
         [aria-disabled="true"]
     )):where(
-        :hover,
         :active,
         :focus-visible
     )::-webkit-slider-thumb {
@@ -134,12 +133,28 @@
         :disabled,
         [aria-disabled="true"]
     )):where(
-        :hover,
         :active,
         :focus-visible
     )::-moz-range-thumb {
         background-color: var(--color-emphasis-ink);
         border-color:     var(--color-emphasis-ink);
+    }
+
+    @media (hover: hover) {
+        input[type="range"]:not(:is(
+            :disabled,
+            [aria-disabled="true"]
+        )):where(:hover)::-webkit-slider-thumb {
+            background-color: var(--color-emphasis-ink);
+            border-color:     var(--color-emphasis-ink);
+        }
+        input[type="range"]:not(:is(
+            :disabled,
+            [aria-disabled="true"]
+        )):where(:hover)::-moz-range-thumb {
+            background-color: var(--color-emphasis-ink);
+            border-color:     var(--color-emphasis-ink);
+        }
     }
 
     input[type="range"]:not(:is(
@@ -229,7 +244,6 @@
             :disabled,
             [aria-disabled="true"]
         )):where(
-            :hover,
             :active,
             :focus-visible
         )::-webkit-slider-thumb {
@@ -240,12 +254,27 @@
             :disabled,
             [aria-disabled="true"]
         )):where(
-            :hover,
             :active,
             :focus-visible
         )::-moz-range-thumb {
             background-color: Highlight;
             border-color:     CanvasText;
+        }
+        @media (hover: hover) {
+            input[type="range"]:not(:is(
+                :disabled,
+                [aria-disabled="true"]
+            )):where(:hover)::-webkit-slider-thumb {
+                background-color: Highlight;
+                border-color:     CanvasText;
+            }
+            input[type="range"]:not(:is(
+                :disabled,
+                [aria-disabled="true"]
+            )):where(:hover)::-moz-range-thumb {
+                background-color: Highlight;
+                border-color:     CanvasText;
+            }
         }
         input[type="range"]:where(
             :user-invalid,
