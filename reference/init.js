@@ -206,8 +206,6 @@ function draw_icon_badge() {
     }
 }
 
-// === execute command ===
-
 function execute(command) {
     const [operation, id, ...operands] = command;
     const el = document.getElementById(id);
@@ -218,8 +216,6 @@ function execute(command) {
         case OPERATION_REMOVE_ATTRIBUTE: el.removeAttribute(operands[0]); break;
     }
 }
-
-// === report ===
 
 async function load_report() {
     let report;
