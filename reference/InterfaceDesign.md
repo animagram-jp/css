@@ -26,11 +26,11 @@ From the person's behavior, it determines one request among those the device can
 It brings about a phenomenon from which the person can gain information.
 From the information the system needs to convey to the person, it determines one phenomenon among those it is capable of bringing about, with the goal that the person can interpret it appropriately.
 
-# 体系化
+# Systematization
 
 インターフェース装置は、設計時には知り得ない個人と、コンピューターアルゴリズムとの相互作用を設計する。
 設計成果物の形式は、インターフェース装置を形成する各要素が、自然言語による定義と実装で構成されたライブラリとする。
-UD(個人や状況に依らず機能する)の網羅性の程度も、機能品質の程度も、体系に対する実装の網羅率も、決して100%を達成することはない。体系化は、自然言語によるインターフェース装置の取り得る空間内の整理、具体的な実装の、トップダウンとボトムアップからそれぞれ行い、この2つの語彙の整合の維持活動である。
+UD(個人や状況に依らず機能する)の網羅性の程度も、機能品質の程度も、体系に対する実装の網羅率も、決して100%を達成することはない。体系化は、自然言語によるインターフェース装置の取り得る空間内の整理、具体的な実装の、トップダウンとボトムアップからそれぞれ行い、この2つの語彙の整合を維持する活動から成る。
 
 # 共通手続き段階
 
@@ -87,18 +87,15 @@ UD(個人や状況に依らず機能する)の網羅性の程度も、機能品�
 | invalid, out-of-range | validated (not acceptable) |
 | busy | not ready |
 
-# P1~P3' Pattern Examples
+# P1~P3' patterns
 
 - 表中「タップ」はショートクリック・ショートタップ(ポインターダウンからポインターアップまで)を指す。
 - 長押し時・ドラッグ時の挙動については、定義を別途必要とする行がある。
 - P3' 結果信号については、エラー時の定義を別途必要とする行がある。
 - CSS表記(:hover等)で信号の差分を表記する。
-- toggle: 非常停止ボタン(JIS C 0447)のように、操作を1方向に制限する差分が存在する。
-- toggle (sort) | column sorter(Ant Design Table)
-- filter chip | filter chip(Material 3)
-- tabs | tabs(ARIA APG)
+- toggle: 非常停止ボタン(JIS C 0447)は、操作を一方向に制限した例と見なせる。
 
-| Name | Example | P1 | P1' | P2 | P2' | P3 | P3' |
+| Pattern | Example | P1 | P1' | P2 | P2' | P3 | P3' |
 |-|-|-|-|-|-|-|-|
 | drag and drop reordering | Drag and drop(Apple HIG) | pointer down | :active(grab) | pointer down + move | insert preview | pointer up, pointer down + move(out) | (default) |
 | toggle | Switch(ARIA APG) | hover, focus | label, :hover, :focus | - | label, :checked | enter, tap | (default), :checked |
@@ -113,57 +110,43 @@ UD(個人や状況に依らず機能する)の網羅性の程度も、機能品�
 | form | form(HTML Living Standard) | (P2 components) | label, boundary | (P2 components) | (confirm dialog) | enter, tap(submit button) | error summary, detail |
 | multi-step form | Steps+Form(Ant Design) | (P2 components) | label, boundary, step indicator | (P2 components), proceed & back button | label, bondary, step indicator, error summary, detail | enter, tap(submit button) | (success toast, error modal) |
 
-- dialog
-- button structure | breadcrumb(ARIA APG)
-- pagination | pagination(Bootstrap), Pagination(Ant Design)
-- disclosure | disclosure(ARIA APG), Collapse(Ant Design)
-- disclosure (tree view) | tree view(ARIA APG), Tree(Ant Design)
-- carousel | carousel(ARIA APG), carousel(Bootstrap)
-- window splitter | window splitter(ARIA APG), split view(Apple HIG)
-- scroll list | feed(ARIA APG)
+# P2 components
 
-## P2 Component examples
-
-- multi-select apply | Transfer(Ant Design)
-- :hover, :focus
-
-| Name | Reference | Parts |
+| Component | Example | Parts |
 |-|-|-|
-| checkbox | checkbox(ARIA APG), checkbox(Material 3) | 表示(ラベル, ボックス), 真偽値表現 |
+| checkbox | checkbox(ARIA APG) | 表示(ラベル, ボックス), 真偽値表現 |
 | radio button | radio group(ARIA APG), Radio(Ant Design) | 表示(ラベル, リスト(ラベル, ボタン)), 真偽値表現 |
-| input | textarea(HTML Living Standard) | 表示(ラベル, 入力枠), キャレット表現, (Enter時改行) |
+| text input | textarea(HTML Living Standard) | 表示(ラベル, 入力枠), キャレット表現, (Enter時改行) |
 | select | select(HTML Living Standard) | 表示(ラベル, オプションリスト, 無効オプション行ラベル, オプションボタン), 閉時の値表現 |
 | listbox | listbox(ARIA APG) | 表示(ラベル, 囲い, オプションリスト, オプションボタン), オプションの有効表現 |
 | slider | slider(ARIA APG) | 表示(ラベル, トラック, つまみ) |
-| date picker | date picker(Material 3) | 表示(ラベル, カレンダー) |
-| time picker | time picker(Material 3) | 表示(ラベル, 時間入力枠, 分数入力枠) |
 | file uploader | input type=file(HTML Living Standard), Upload(Ant Design) | 表示(ラベル, 実行ボタン) |
 | input chip | input chip(Material 3), Tag(Ant Design 入力用途) | 表示(ラベル, トラック, 左又は右アイコン) (Material 3: "The stroke color was softened to improve visual hierarchy between chips and buttons") |
 | enabling button | 許可装置(JIS C 0447 7.7.3) | |
 | step button | spinbutton(ARIA APG) | 表示(増方向ボタン, 減方向ボタン) (JIS 5.1: 増減ジェスチャの反対動作対) |
 
-## P3部品
+# P3 components
 
-| 名前 | 既存例 | 構成 |
+| Component | Example | Parts |
 |-|-|-|
-| submit button | button type=submit(HTML Living Standard), 実行専用操作部(JIS C 0447 7.7.5 図2 ステップ3) |  |
-| confirmation dialog | alert and message dialogs(ARIA APG), 2段操作インタロック(JIS C 0447 4.1.7) | 表示(ダイアログ, cancel button(HTML form: reset), confirm button(alertdialog内, ARIA APG)またはconfirm input) |
+| submit button | button type=submit(HTML Living Standard), 実行専用操作部(JIS C 0447 7.7.5 図2 ステップ3) | See immidate button. |
+| confirmation dialog | alert and message dialogs(ARIA APG), 2段操作インタロック(JIS C 0447 4.1.7) | 表示(ダイアログ, cancel button, confirm buttonまたはconfirm input) |
 | two-hand control | ツーハンド制御(JIS C 0447 7.7.3) | 複合キー操作（例: Ctrl+Enterでsubmit） |
 
-## 信号部品（P0'・P1'・P2'・P3'）
+# Signal components
 
-| 名前 | 既存例 | 構成 |
-|-|-|-|
-| status indicator | 状態表示ランプ(JIS C 0447 図1「ポンプ1停止中」), badge(Material 3), meter(ARIA APG) | 表示(トラック, テキスト) |
-| selection highlight | focus・hover(HTML Living Standard), 選択した機器の確認表示(JIS C 0447 図2) | 表示(フォーカスリング, ホバーハイライト) |
-| validation message | error text(Material 3), validation message(Fluent 2) | 表示(サマリー(囲み, テキスト)) |
-| staging preview | 入力プレビュー・差分表示(各実装), 選択コマンドの表示(JIS C 0447 図2) | |
-| progress indicator | progress indicators(Material 3), skeleton(Fluent 2) | |
-| result notice | alert(ARIA APG), 結果表示ランプ(JIS C 0447 図1「ポンプ1始動」) | |
-| sound feedback | 聴覚信号(JIS C 0447 3.4.2, 6.2) | |
-| haptic feedback | 触覚信号(JIS C 0447 3.4.3, 6.3) | |
+| Component | Phase | Example | Parts |
+|-|-|-|-|
+| haptic feedback | P1'~P3' | 触覚信号(JIS C 0447 3.4.3, 6.3) | - |
+| progress indicator | P2', P3' | progress indicators(Material 3) | - |
+| result notice | P3' | alert(ARIA APG), 結果表示ランプ(JIS C 0447 図1「ポンプ1始動」) | - |
+| sound feedback | P1'~P3' | 聴覚信号(JIS C 0447 3.4.2, 6.2) | - |
+| staging preview | P2' | 入力プレビュー・差分表示, 選択コマンドの表示(JIS C 0447 図2) | - |
+| status indicator | P0'~P3' | badge(Material 3), meter(ARIA APG), 状態表示ランプ(JIS C 0447 図1「ポンプ1停止中」) | - |
+| selection highlight | P1', P2' | hover, focus(HTML Living Standard), 選択した機器の確認表示(JIS C 0447 図2) | hover highlight, focus ring |
+| validation message | P2' | error summary, error message(Gov.UK DS) | - |
 
-# Sign (draft)
+# Sign
 
 Sign (符号)は、その幾何学的性質を利用して、なるべく依存する文脈を少なく理解できるのが望ましい。
 また、同じ場所にあり続け、試行できるインタラクティブ要素を表すとき、記号は変化せず、今現在の様子の信号とセットで使うべきである(例: toggle button)。
@@ -194,23 +177,41 @@ Sign (符号)は、その幾何学的性質を利用して、なるべく依存�
 ⧉ (U+29C9 TWO JOINED SQUARES)
 ```
 
-## Keyboard operation (draft)
+# Keyboard
 
-| Component | Key | Specification |
-|-|-|-|
-| Button, Link  | Enter, Space | Activates the button. |
-|               | Tab / Shift + Tab | Seque focus to /  |
-| Disclosure    | Enter, Space | (Dis)close a panel if focused |
-| Modal, Drawer | Escape | Closes the dialog. |
-| Link | Shift + F10 | Opens a context menu for the page or focused element. |
-| Textarea | Tab / Shift Tab | Indent if caret visible / unindent |
-| Dropdown, Spin button | ↓ / ↑ | |
-| Radio button, Slider | → / ← |
+アプリケーションの取る、全状態での各所作に割り当てた意味を一致させる。
+アプリケーションのホスト環境と不一致を極力起こさず、アプリケーションに固有の独自な割り当てを避ける。
 
-- [ARIA APG: pattern](https://www.w3.org/WAI/ARIA/apg/patterns/)
-- IBM Common User Guide
-- [Microsoft: Shortcut Keys](https://learn.microsoft.com/en-us/previous-versions/windows/desktop/bb246441(v=vs.85)?redirectedfrom=MSDN)
-- [Microsoft: Keyboard Interface Summary](https://learn.microsoft.com/en-us/previous-versions/ms997427(v=msdn.10))
+| Name | Meaning | Default key | Example |
+|-|-|-|-|
+| Move | フォーカス（カーソル）を次/前の要素へ移す。各ページ・モーダルで循環する。 | Tab / Shift+Tab（Ctrl+Tab でタブページ） | APG: move focus、MS: next field、CUA: Tab / Backtab |
+| Navigate | グループ内・値の範囲内を移動する | 矢印キー、Home(行頭) / End(行末)（Ctrl+ で大きい単位） | APG: 各パターンの矢印キー、MS: cursor movement、CUA: cursor keys |
+| Scroll | 1画面単位（値系コントロールでは大きなステップ）で移動する | Page Up / Page Down | MS: Page Up / Down、CUA: Backward / Forward |
+| Activate | 既定の操作を実行する | Enter | APG: activates、MS: Select / Default、CUA: Enter（パネルを処理する） |
+| Select | トグル・選択する | Space | APG: checks / toggles、MS: Select（クリック相当） |
+| Cancel | 現在のコンテキストを閉じ、1段戻る | Esc | APG: closes、MS: Cancel、CUA: Cancel（F12。ワークステーションでは Esc を推奨） |
+| Exit | 機能またはアプリケーション全体を終える | - | MS: Close（Alt+F4）、CUA: Exit（F3） |
+| Menu bar | メニューバーへ移る/抜ける | Alt | MS: menu bar mode、CUA: Switch to action bar（F10） |
+| Properties | 選択中の対象のプロパティを表示する | Alt+Enter | MS: property sheet |
+| Switch window | 次のウィンドウ（アプリ）へ切り替える | Alt+Tab | MS: next primary window |
+| Window menu | ウィンドウのショートカットメニューを開く | Alt+Space | MS: window shortcut menu |
+| Help | フォーカス位置に応じたヘルプを開く | F1 | MS: Help、CUA: Help |
+| Help mode | 対象をクリックして説明を表示するモードに入る | Shift+F1 | MS: What's This? |
+| Undo | 直前の操作を元に戻す | Ctrl+Z / Cmd+Z | APG・MS: Undo、CUA: Undo（F11） |
+| Select all | 編集可能領域の内容を全選択する | Ctrl+A / Cmd+A | APG・MS: Select All |
+| Copy | 選択範囲をクリップボードに複製する | Ctrl+C / Cmd+C | APG・MS: Copy、CUA: Copy |
+| Cut | 選択範囲をクリップボードに移す | Ctrl+X / Cmd+X | APG・MS: Cut、CUA: Cut |
+| Paste | クリップボードの内容を挿入する | Ctrl+V / Cmd+V | APG・MS: Paste、CUA: Paste |
+| Find | 検索を開始する | Ctrl+F | MS: Find |
+| Reload | 表示を現況に更新する。未保存の入力は破棄され得る | F5 | CUA: Refresh（F5） |
+| Context menu | 選択中の要素のメニューを開く | Shift+F10 / Application key | APG・MS: shortcut menu |
+
+- Cancel, Exit時は確認用モーダルを必要とする場合がある。
+- モーダルを開くとフォーカスを内部の最初の要素へ移し、閉じたら呼び出し元に戻す（APG: Dialog）。
+- Combobox: Down Arrow でポップアップ内へフォーカスを移し、Esc で閉じてコンボボックスへ戻す（APG）。
+- 排他選択グループ（Radio Group）: 矢印でフォーカスと選択を同時に移し、端で循環する。グループ全体をTab停止点1つとして扱う（APG）。
+- Access key（Alt+文字、UI内の任意コントロールに割当）と Shortcut key（Ctrl+文字・Fキー、コマンドの直接実行）は別概念（MS）。
+- OK / Cancel ボタンは Enter / Esc が既定で割り当たるため、Access key を別に割り当てない（MS）。
 
 [^jis-c-0447]: JIS C 0447:1997 (IEC60447:1993) Man-machine-interface (MMI) - Actuating principles
 [^xforms]: XForms 1.1, W3C Recommendation 20 October 2009 - 6 4.4 model item property

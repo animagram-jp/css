@@ -19,6 +19,10 @@ body > header {
     & > * {
         vertical-align: middle;
     }
+
+    & > nav {
+        display: block;
+    }
 }
 
 #header_button {
@@ -142,7 +146,9 @@ label:has(> input[aria-controls]) > input[type="password"] {
 
 /* tabpanel: show only the panel labelled by the checked tab. */
 body:has(#tab-1:checked) #tabpanel-1,
-body:has(#tab-2:checked) #tabpanel-2 {
+body:has(#tab-2:checked) #tabpanel-2,
+body:has(#tab-3:checked) #tabpanel-3,
+body:has(#tab-4:checked) #tabpanel-4 {
     display: block;
 }
 

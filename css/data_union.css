@@ -347,15 +347,9 @@
         search,
         form[role="search"]
     ) {
-        & > button:not(:where(:active, [aria-pressed="true"])),
+        & > button[data-surround="outline"]:not(:where(:active, [aria-pressed="true"], :user-invalid, [aria-invalid="true"])),
         & > label:where(:not([data-surround]), [data-surround="outline"]):has(> input:is([type="radio"], [type="checkbox"]):not(:checked, :user-invalid, [aria-invalid="true"])) {
             border-color: var(--color-ink-mix);
-        }
-
-        @media (forced-colors: active) {
-            & > button:not(:where(:active, [aria-pressed="true"])) {
-                border-color: ButtonBorder;
-            }
         }
     }
 }

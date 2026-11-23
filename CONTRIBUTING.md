@@ -14,10 +14,10 @@ curl -fsSL -H "Accept: application/vnd.github.raw+json" "https://api.github.com/
 ```
 
 - All CSS properties MUST be described in order of dependencies, and then, alphabetical.
-- CSSのセレクターは、トップレベルの列挙に:where()を用い、:whereの内では:is()を用いること。
+- CSSのセレクターは、トップレベルの列挙に:where()を用い、:whereの内では:is()を用いる。
 - 必須でない*セレクタは記述を省略する。
-- `css/`の各ファイル冒頭に、想定するhtml要素を`// Usage: `として記すこと。スタイリングに必要なタグ・属性以外は記述しないこと。
-- base.css以外の各ファイルで、個別の中間変数を定義してはならない。
+- `css/`の各ファイル冒頭に、想定するhtml要素を`// Usage: `として記す。スタイリングに必要なタグ・属性以外は記述しない。
+- base.css以外の各ファイルで、個別の中間変数を定義しない。
 
 ## prefers-reduced-motion
 
@@ -26,7 +26,7 @@ curl -fsSL -H "Accept: application/vnd.github.raw+json" "https://api.github.com/
 ## prefers-contrast
 
 `@media (prefers-contrast)`(値なし) は、装飾グラデーション・背景画像・box-shadow を単色やsolid borderに置き換えるなど、視覚的な単純化の共通段階に留める。
-`@media (prefers-contrast: more | less) and (forced-colors: none)` と書く必要がある。
+`@media (prefers-contrast: more | less) and (forced-colors: none)` と書く。
 
 ## forced-color
 
@@ -76,14 +76,14 @@ _signでは、inline方向はdata-inline-align="start|end|center"バリアント
 # Commands
 
 ```bash
+# Validate ./css against the CSS syntax definitions
+docker exec css-test npm run validate
+
 # Test by IBM Equal Access engine (WCAG 2.2 A+AA) with 6 color schemes 
 docker run -d --name css-test -v .:/work -v "$HOME/.cache/ms-playwright":/pw \
   -e PLAYWRIGHT_BROWSERS_PATH=/pw -w /work/reference node:lts-slim tail -f /dev/null
 docker exec css-test bash -lc "npm ci && npm run setup"
 docker exec css-test npm run test
-
-# Validate ./css against the CSS syntax definitions
-docker exec css-test npm run validate
 
 # Solve the emphasis palette for a color (default: accent-purple)
 docker run --rm -v "$PWD/reference":/w -w /w node:lts-slim node solve_palette.js [RRGGBB]
@@ -91,15 +91,17 @@ docker run --rm -v "$PWD/reference":/w -w /w node:lts-slim node solve_palette.js
 
 # References
 
-- [CUDO: Color Universal Design Recommended Color Set ver.3](https://cudo.jp/wp-content/uploads/2016/07/CUD%E6%8E%A8%E5%A5%A8%E9%85%8D%E8%89%B2%E3%82%BB%E3%83%83%E3%83%88%E3%82%AC%E3%82%A4%E3%83%89%E3%83%96%E3%83%83%E3%82%AF.pdf)
-- JIS C 0447:1997 (IEC60447:1993) Man-machine-interface (MMI) - Actuating principles
-- XForms 1.1, W3C Recommendation 20 October 2009
-- [Kelp CSS: Repository](https://github.com/cferdinandi/kelp)
-- [Pico CSS: Repository](https://github.com/picocss/pico)
-- [Gov UK Design System: Repository](https://github.com/alphagov/govuk-frontend)
-- [U.S. Web Design System (USWDS): Repository](https://github.com/uswds/uswds)
 - [Ant Design: Repository](https://github.com/ant-design/ant-design)
-- [ARIA Authoring Practices Guide (APG): Repository](https://github.com/w3c/aria-practices)
+- [ARIA Authoring Practices Guide (APG): pattern](https://www.w3.org/WAI/ARIA/apg/patterns/)
+- [ARIA APG: Developing a Keyboard Interface](https://www.w3.org/WAI/ARIA/apg/practices/keyboard-interface/)
+- [CUDO: Color Universal Design Recommended Color Set ver.3](https://cudo.jp/wp-content/uploads/2016/07/CUD%E6%8E%A8%E5%A5%A8%E9%85%8D%E8%89%B2%E3%82%BB%E3%83%83%E3%83%88%E3%82%AC%E3%82%A4%E3%83%89%E3%83%96%E3%83%83%E3%82%AF.pdf)
+- [Gov UK Design System: Repository](https://github.com/alphagov/govuk-frontend)
+- [IBM SAA CUA: Basic Interface Design Guide (SC26-4583-00, 1989)](https://archive.org/details/ibm-saa-cua-basic-interface-design-guide)
+- JIS C 0447:1997 (IEC60447:1993) Man-machine-interface (MMI) - Actuating principles
+- [Kelp CSS: Repository](https://github.com/cferdinandi/kelp)
+- [Microsoft: Shortcut Keys](https://learn.microsoft.com/en-us/previous-versions/windows/desktop/bb246441(v=vs.85)?redirectedfrom=MSDN)
+- [Microsoft: Keyboard Interface Summary](https://learn.microsoft.com/en-us/previous-versions/ms997427(v=msdn.10))
+- [Pico CSS: Repository](https://github.com/picocss/pico)
 - [React Suite: InlineEdit](https://www.rsuitejs.com/components/inline-edit/)
-- [shadcn Astro Track Landing Page (Free): Repository](https://github.com/shadcnstudio/shadcn-astro-track-landing-page-free)
-- [catnose99: use-chat-submit](https://github.com/catnose99/use-chat-submit)
+- [U.S. Web Design System (USWDS): Repository](https://github.com/uswds/uswds)
+- [XForms 1.1, W3C Recommendation 20 October 2009](https://www.w3.org/TR/2009/REC-xforms-20091020/)
