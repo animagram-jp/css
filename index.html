@@ -140,7 +140,28 @@
                     <a href="#dummy" data-surround="transparent">a</a>
                     <details>
                         <summary data-surround="transparent">summary</summary>
-                        <p>details > summary, p</p></details></section></section>
+                        <p>details > summary, p</p></details></section>
+
+                <section data-sign="rule">
+                    <h3>disabled, aria-disabled, aria-invalid, aria-pressed</h3>
+                    <section>
+                        <h4>data-surround="fill"</h4>
+                        <button disabled type="button">disabled</button>
+                        <a href="#dummy" aria-disabled="true" data-surround="fill">aria-disabled</a>
+                        <button type="button" aria-invalid="true">aria-invalid</button>
+                        <button type="button" aria-pressed="true">aria-pressed</button></section>
+                    <section>
+                        <h4>data-surround="outline"</h4>
+                        <button disabled type="button" data-surround="outline">disabled</button>
+                        <a href="#dummy" aria-disabled="true" data-surround="outline">aria-disabled</a>
+                        <button type="button" aria-invalid="true" data-surround="outline">aria-invalid</button>
+                        <button type="button" aria-pressed="true" data-surround="outline">aria-pressed</button></section>
+                    <section>
+                        <h4>data-surround="transparent"</h4>
+                        <button disabled type="button" data-surround="transparent">disabled</button>
+                        <a href="#dummy" aria-disabled="true" data-surround="transparent">aria-disabled</a>
+                        <button type="button" aria-invalid="true" data-surround="transparent">aria-invalid</button>
+                        <button type="button" aria-pressed="true" data-surround="transparent">aria-pressed</button></section></section></section>
 
             <section>
                 <h2>Underline</h2>
@@ -150,7 +171,14 @@
                     <a href="#dummy">a</a>
                     <details>
                         <summary>summary</summary>
-                        <p>details > summary, p</p></details></section></section>
+                        <p>details > summary, p</p></details></section>
+
+                <section data-sign="rule">
+                    <h3>disabled, aria-disabled, aria-invalid, aria-pressed</h3>
+                    <button disabled type="button" data-style="underline">disabled</button>
+                    <a href="#dummy" aria-disabled="true">aria-disabled</a>
+                    <button type="button" aria-invalid="true" data-style="underline">aria-invalid</button>
+                    <button type="button" aria-pressed="true" data-style="underline">aria-pressed</button></section></section>
 
             <section>
                 <h2>Size</h2>
