@@ -12,6 +12,14 @@ const ICON_BADGE_STROKE_RATIO = 0.3; // stroke width against radius
 
 const EMPHASIS_ROLES = ["emphasis_ink"];
 
+const REPORT_URL = "./reference/test.json";
+const REPORT_ROW_MAXIMUM = 32;
+const REPORT_CELL_COUNT = 7;
+
+const OPERATION_TEXT = 1;
+const OPERATION_SET_ATTRIBUTE = 3;
+const OPERATION_REMOVE_ATTRIBUTE = 4;
+
 const S = {
     root: document.documentElement,
     eruda: false,
@@ -79,6 +87,8 @@ function start() {
     document.addEventListener("focusin", (e) => {
         if (e.target.matches('input[inputmode="numeric"][maxlength]')) e.target.select();
     });
+
+    if (document.getElementById("tabpanel-4_table")) load_report();
 }
 
 function bind() {
@@ -194,6 +204,92 @@ function draw_icon_badge() {
         console.warn("icon-badge: canvas is tainted, skipping badge overlay.", err);
         link.href = href;
     }
+}
+
+function execute(command) {
+    const [operation, id, ...operands] = command;
+    const el = document.getElementById(id);
+    if (!el) return;
+    switch (operation) {
+        case OPERATION_TEXT:             el.textContent = operands[0] ?? ""; break;
+        case OPERATION_SET_ATTRIBUTE:    el.setAttribute(operands[0], operands[1] ?? ""); break;
+        case OPERATION_REMOVE_ATTRIBUTE: el.removeAttribute(operands[0]); break;
+    }
+}
+
+async function load_report() {
+    let report;
+    try {
+        const response = await fetch(REPORT_URL);
+        if (!response.ok) throw new Error(`${response.status}`);
+        report = await response.json();
+    } catch (err) {
+        execute([OPERATION_TEXT, "tabpanel-4_p", `${REPORT_URL}: ${err?.message ?? err}`]);
+        return;
+    }
+    for (const command of build_report_commands(report)) execute(command);
+}
+
+function build_report_commands(report) {
+    const groups = group_findings(report);
+    const failing = groups.filter((g) => g.outcome === "FAIL").length;
+    const shown = Math.min(groups.length, REPORT_ROW_MAXIMUM);
+    const commands = [
+        [OPERATION_TEXT, "tabpanel-4_p", `Generated: ${report.generated} — ${report.guideline} — ${report.schemes.length} schemes`],
+        [OPERATION_TEXT, "tabpanel-4_caption",
+            `${groups.length} findings across ${report.results.length} scans — ${failing} failing, ${groups.length - failing} needing review` +
+            (shown < groups.length ? ` — ${shown} shown` : "")],
+    ];
+    if (groups.length > 0) commands.push([OPERATION_REMOVE_ATTRIBUTE, "tabpanel-4_table", "hidden"]);
+
+    for (let index = 0; index < REPORT_ROW_MAXIMUM; index++) {
+        const row = `tabpanel-4_tr-${index + 1}`;
+        const g = groups[index];
+        if (!g) {
+            commands.push([OPERATION_SET_ATTRIBUTE, row, "hidden"]);
+            continue;
+        }
+        const cells = [
+            g.criterion.level,
+            g.criterion.name,
+            g.rule_id,
+            g.outcome,
+            g.state,
+            g.schemes.size === report.schemes.length ? "all" : [...g.schemes].join(", "),
+            String(g.paths.size),
+        ];
+        commands.push([OPERATION_TEXT, `${row}_th`, g.criterion.num]);
+        for (let cell = 0; cell < REPORT_CELL_COUNT; cell++) {
+            commands.push([OPERATION_TEXT, `${row}_td-${cell + 1}`, cells[cell]]);
+        }
+        commands.push([OPERATION_REMOVE_ATTRIBUTE, row, "hidden"]);
+    }
+    return commands;
+}
+
+function group_findings(report) {
+    const groups = new Map();
+    for (const result of report.results) {
+        for (const finding of result.findings) {
+            const criteria = finding.criteria.length ? finding.criteria : [{ num: "—", level: "", name: "Unmapped" }];
+            for (const criterion of criteria) {
+                const state = finding.state ?? "default";
+                const key = `${criterion.num}|${finding.ruleId}|${finding.reasonId}|${finding.outcome}|${state}`;
+                let g = groups.get(key);
+                if (!g) {
+                    g = { criterion, rule_id: finding.ruleId, outcome: finding.outcome, state, schemes: new Set(), paths: new Set() };
+                    groups.set(key, g);
+                }
+                g.schemes.add(result.scheme);
+                g.paths.add(finding.path);
+            }
+        }
+    }
+    const order = (num) => num.split(".").map((n) => n.padStart(3, "0")).join(".");
+    return [...groups.values()].sort((a, b) =>
+        order(a.criterion.num).localeCompare(order(b.criterion.num)) ||
+        (a.outcome === b.outcome ? 0 : a.outcome === "FAIL" ? -1 : 1) ||
+        b.paths.size - a.paths.size);
 }
 
 // === toast ===
