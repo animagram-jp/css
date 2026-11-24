@@ -15,7 +15,7 @@
             [type="submit"],
             [type="reset"],
             [data-type="toast"] > *
-        ):not([data-surround])
+        ):not([data-surround], [data-style="underline"])
     ) {
         background-color: var(--color-emphasis-ink);
         border-color:     transparent;
@@ -34,7 +34,7 @@
             [type="submit"],
             [type="reset"],
             [data-type="toast"] > *
-        ):not([data-surround])
+        ):not([data-surround], [data-style="underline"])
     ) > ::selection,
     :where(
         [data-surround="fill"],
@@ -44,7 +44,7 @@
             [type="submit"],
             [type="reset"],
             [data-type="toast"] > *
-        ):not([data-surround])
+        ):not([data-surround], [data-style="underline"])
     )::selection,
     :where(
         [data-surround="fill"],
@@ -54,7 +54,7 @@
             [type="submit"],
             [type="reset"],
             [data-type="toast"] > *
-        ):not([data-surround])
+        ):not([data-surround], [data-style="underline"])
     ) > mark {
         background-color: var(--color-highlight-paper);
         color:             var(--color-ink);
@@ -174,13 +174,9 @@
         :where([role="menu"], [role="listbox"]) > label:has(> input[role]:not(:disabled, [aria-disabled="true"])),
         [popovertarget]:not([data-surround])
     ) {
-        &:active {
+        &:where(:active, [aria-pressed="true"]) {
             outline-color: var(--color-focus);
             outline-style: solid;
-        }
-
-        &:where(:user-invalid, [aria-invalid="true"]):active {
-            outline-color: var(--color-error);
         }
 
         @media (hover: hover) {
@@ -188,21 +184,16 @@
                 outline-color: var(--color-focus);
                 outline-style: solid;
             }
+        }
 
-            &:where(:user-invalid, [aria-invalid="true"]):hover {
-                outline-color: var(--color-error);
-            }
+        &:is(:user-invalid, [aria-invalid="true"]) {
+            outline-color: var(--color-error);
+            outline-style: solid;
         }
 
         @media (forced-colors: active) {
-            &:where(:user-invalid, [aria-invalid="true"]):active {
+            &:is(:user-invalid, [aria-invalid="true"]) {
                 outline-color: Mark;
-            }
-
-            @media (hover: hover) {
-                &:where(:user-invalid, [aria-invalid="true"]):hover {
-                    outline-color: Mark;
-                }
             }
         }
     }
@@ -322,7 +313,7 @@
         [type="button"],
         [type="submit"],
         [type="reset"]
-    ):not([data-surround]):where(:active, [aria-pressed="true"]),
+    ):not([data-surround], [data-style="underline"]):where(:active, [aria-pressed="true"]),
     [data-union] > label[data-surround="fill"]:has(> input:is([type="radio"], [type="checkbox"]):checked) {
         background-color: var(--color-emphasis-ink-mix);
         border-color:     transparent;
@@ -339,10 +330,15 @@
     :where(
         a:any-link,
         summary
-    ):is(
-        [data-style="underline"],
-        :not([data-surround])
-    ):where(:active, [aria-pressed="true"]),
+    ):not([data-surround]):where(:active, [aria-pressed="true"]),
+    :where(
+        a:any-link,
+        button,
+        [type="button"],
+        [type="submit"],
+        [type="reset"],
+        summary
+    )[data-style="underline"]:where(:active, [aria-pressed="true"]),
     [data-union] > label:where(:not([data-surround]), [data-surround="outline"]):has(> input:is([type="radio"], [type="checkbox"]):checked) {
         border-color: var(--color-emphasis-ink-mix);
         color:        var(--color-emphasis-ink-mix);
@@ -394,7 +390,7 @@
                 [type="submit"],
                 [type="reset"],
                 [data-type="toast"] > *
-            ):not([data-surround])
+            ):not([data-surround], [data-style="underline"])
     )):where(
         :disabled,
         [aria-disabled="true"],
@@ -413,7 +409,7 @@
                 [type="submit"],
                 [type="reset"],
                 [data-type="toast"] > *
-            ):not([data-surround])
+            ):not([data-surround], [data-style="underline"])
     )):where(
         :disabled,
         [aria-disabled="true"]
@@ -430,7 +426,7 @@
             [type="submit"],
             [type="reset"],
             [data-type="toast"] > *
-        ):not([data-surround])
+        ):not([data-surround], [data-style="underline"])
     ):where(
         :disabled, 
         [aria-disabled="true"], 
