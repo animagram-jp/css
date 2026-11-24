@@ -17,8 +17,6 @@
         <tfoot>
             <tr>
                 <td></td></tr></tfoot></table>
-
-    (a sortable column header is in step.css)
 */
 @layer css.table {
     table {

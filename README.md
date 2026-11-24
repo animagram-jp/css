@@ -222,11 +222,21 @@ Without `data-union`, `[role="toolbar"]`, `[role="radiogroup"]` and `[role="tabl
 
 ## data-step
 
-Layout for the pair of controls a spinbutton or a sortable table header carries. Applied to the `span` wrapping the pair, not the `label`/`th` itself.
+Layout for the pair of controls a spinbutton carries. Applied to the `span` wrapping the pair, not the `label` itself.
 
 | Selector | Value | Applied by |
 |-|-|-|
 | `span` | `block` | [step.css](./css/step.css) |
+
+## data-cycle
+
+One control that steps through the radios of a group in order, back to the first after the last. Applied to the `span` wrapping the radios. Each click checks the radio after the checked one. Only the checked radio is shown, or the last one while none is checked. Each radio draws its own state, such as with `data-sign`.
+
+| Selector | Value | Applied by |
+|-|-|-|
+| `span` | (none) | [cycle.css](./css/cycle.css) |
+
+In a `th`, the three radios are descending, ascending and unsorted, drawn as ▼, ▲ and a hollow ▽ in `--color-ink-mix`. The radios of every column share one `name`, and an unchecked column shows unsorted.
 
 ## Tag unique attributes
 
