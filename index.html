@@ -59,15 +59,13 @@
             <section>
                 <h2>Input</h2>
                 <section data-sign="rule">
+                    <h3>input[type]</h3>
                     <label>
                         <span>input[type="text"]</span>
                         <input type="text"></label>
                     <label>
-                        <span>input[type="file"]</span>
-                        <input type="file" aria-label="file"></label>
-                    <label>
-                        <span>input[type="email"] required</span>
-                        <input required type="email"></label>
+                        <span>input[type="email"]</span>
+                        <input type="email"></label>
                     <label data-union="inline">
                         <span>input[type="password"]</span>
                         <input id="password" autocomplete="current-password" maxlength="20" type="password" value="password">
@@ -79,7 +77,13 @@
                         <input type="url"></label>
                     <label>
                         <span>input[type="tel"]</span>
-                        <input readonly type="tel" value="readonly"></label>
+                        <input type="tel"></label>
+                    <label>
+                        <span>input[type="file"]</span>
+                        <input type="file" aria-label="file"></label></section>
+
+                <section data-sign="rule">
+                    <h3>select, textarea</h3>
                     <label>
                         <span>select</span>
                         <select>
@@ -87,35 +91,30 @@
                             <option>option</option></select></label>
                     <label>
                         <span>textarea</span>
-                        <textarea></textarea></label>
+                        <textarea></textarea></label></section>
+
+                <section data-sign="rule">
+                    <h3>input[inputmode="numeric"][maxlength]</h3>
                     <fieldset>
-                        <legend><span>input[inputmode="numeric"][maxlength]</span></legend>
+                        <legend><span>date</span></legend>
                         <input inputmode="numeric" maxlength="4" pattern="[0-9]{4}" size="4" type="text" aria-label="year" value="2000">
                         <input inputmode="numeric" maxlength="2" pattern="0?[1-9]|1[0-2]" size="2" type="text" aria-label="month" value="1">
                         <input inputmode="numeric" maxlength="2" pattern="0?[1-9]|[12][0-9]|3[01]" size="2" type="text" aria-label="day" value="1"></fieldset></section>
 
                 <section data-sign="rule">
-                    <h3>Size</h3>
+                    <h3>required, readonly, disabled, aria-invalid</h3>
                     <label>
-                        <span>text</span>
-                        <input type="text" value="xs" data-size="xs"></label>
+                        <span>required</span>
+                        <input required type="text"></label>
                     <label>
-                        <span>text, aria-invalid</span>
-                        <input type="text" value="sm" aria-invalid="true" data-size="sm"></label>
+                        <span>readonly</span>
+                        <input readonly type="text" value="readonly"></label>
                     <label>
-                        <span>url, disabled</span>
-                        <input disabled type="url" value="(md)"></label>
+                        <span>disabled</span>
+                        <input disabled type="text" value="disabled"></label>
                     <label>
-                        <span>select</span>
-                        <select data-size="lg">
-                            <option checked>lg</option></select></label>
-                    <label>
-                        <span>select</span>
-                        <select data-size="xl">
-                            <option>xl</option></select></label>
-                    <label>
-                        <span>2xl</span>
-                        <textarea placeholder="2xl" type="text" data-size="2xl"></textarea></label></section></section>
+                        <span>aria-invalid</span>
+                        <input type="text" value="aria-invalid" aria-invalid="true"></label></section></section>
 
             <section>
                 <h2>Surround, underline</h2>
@@ -169,7 +168,31 @@
                             <input name="size-union-inline" type="radio"></label>
                         <label data-size="2xl">
                             <span>2xl</span>
-                            <input name="size-union-inline" type="radio"></label></fieldset></section></section>
+                            <input name="size-union-inline" type="radio"></label></fieldset></section>
+
+                <section data-sign="rule">
+                    <h3>fieldset</h3>
+                    <fieldset>
+                        <legend>
+                            <span>input[type="text"]</span></legend>
+                        <label>
+                            <span>xs</span>
+                            <input type="text" data-size="xs"></label>
+                        <label>
+                            <span>sm</span>
+                            <input type="text" data-size="sm"></label>
+                        <label>
+                            <span>(md)</span>
+                            <input type="text"></label>
+                        <label>
+                            <span>lg</span>
+                            <input type="text" data-size="lg"></label>
+                        <label>
+                            <span>xl</span>
+                            <input type="text" data-size="xl"></label>
+                        <label>
+                            <span>2xl</span>
+                            <input type="text" data-size="2xl"></label></fieldset></section></section>
     
             <section>
                 <h2>Sign</h2>
