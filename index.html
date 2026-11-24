@@ -729,7 +729,7 @@
                         <p>p</p></hgroup></section></section>
 
             <section>
-                <h2>Error message & summary</h2>
+                <h2>Status</h2>
                 <section data-sign="rule">
                     <h3>error summary</h3>
                     <section role="alert" aria-labelledby="error-summary-heading-1">
@@ -741,8 +741,14 @@
                 <section data-sign="rule">
                     <h3>error message</h3>
                     <label for="error-name">Name</label>
-                    <p id="error-name-message" data-sign="rule"><strong>Error:</strong> Enter your full name</p>
-                    <input id="error-name" type="text" aria-describedby="error-name-message" aria-invalid="true"></section></section>
+                    <p id="error-name-message" role="alert" data-sign="rule"><strong>Error:</strong> Enter your full name</p>
+                    <input id="error-name" type="text" aria-describedby="error-name-message" aria-invalid="true"></section>
+
+                <section data-sign="rule">
+                    <h3>success</h3>
+                    <section role="status" aria-labelledby="status-heading-1">
+                        <h2 id="status-heading-1">Success</h2>
+                        <p>Your application has been sent.</p></section></section></section>
 
             <section>
                 <h2>Table</h2>
@@ -1012,22 +1018,22 @@
                 <section data-sign="rule">
                     <h3>Error message</h3>
                     <label for="error-name-xs">xs</label>
-                    <p id="error-name-xs-message" data-sign="rule" data-size="xs"><strong>Error:</strong> Enter your full name</p>
+                    <p id="error-name-xs-message" role="alert" data-sign="rule" data-size="xs"><strong>Error:</strong> Enter your full name</p>
                     <input id="error-name-xs" type="text" aria-describedby="error-name-xs-message" aria-invalid="true" data-size="xs">
                     <label for="error-name-sm">sm</label>
-                    <p id="error-name-sm-message" data-sign="rule" data-size="sm"><strong>Error:</strong> Enter your full name</p>
+                    <p id="error-name-sm-message" role="alert" data-sign="rule" data-size="sm"><strong>Error:</strong> Enter your full name</p>
                     <input id="error-name-sm" type="text" aria-describedby="error-name-sm-message" aria-invalid="true" data-size="sm">
                     <label for="error-name-md">(md)</label>
-                    <p id="error-name-md-message" data-sign="rule"><strong>Error:</strong> Enter your full name</p>
+                    <p id="error-name-md-message" role="alert" data-sign="rule"><strong>Error:</strong> Enter your full name</p>
                     <input id="error-name-md" type="text" aria-describedby="error-name-md-message" aria-invalid="true">
                     <label for="error-name-lg">lg</label>
-                    <p id="error-name-lg-message" data-sign="rule" data-size="lg"><strong>Error:</strong> Enter your full name</p>
+                    <p id="error-name-lg-message" role="alert" data-sign="rule" data-size="lg"><strong>Error:</strong> Enter your full name</p>
                     <input id="error-name-lg" type="text" aria-describedby="error-name-lg-message" aria-invalid="true" data-size="lg">
                     <label for="error-name-xl">xl</label>
-                    <p id="error-name-xl-message" data-sign="rule" data-size="xl"><strong>Error:</strong> Enter your full name</p>
+                    <p id="error-name-xl-message" role="alert" data-sign="rule" data-size="xl"><strong>Error:</strong> Enter your full name</p>
                     <input id="error-name-xl" type="text" aria-describedby="error-name-xl-message" aria-invalid="true" data-size="xl">
                     <label for="error-name-2xl">2xl</label>
-                    <p id="error-name-2xl-message" data-sign="rule" data-size="2xl"><strong>Error:</strong> Enter your full name</p>
+                    <p id="error-name-2xl-message" role="alert" data-sign="rule" data-size="2xl"><strong>Error:</strong> Enter your full name</p>
                     <input id="error-name-2xl" type="text" aria-describedby="error-name-2xl-message" aria-invalid="true" data-size="2xl"></section>
 
                 <section data-sign="rule">

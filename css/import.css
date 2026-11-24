@@ -26,7 +26,7 @@
 
     css.popup,
     css.toast,
-    css.error; /* dependency: list */
+    css.status; /* dependency: list */
 
 @import url("reset.css");
 @import url("base.css");
@@ -50,4 +50,4 @@
 
 @import url("popup.css");
 @import url("toast.css");
-@import url("error.css");
+@import url("status.css");
