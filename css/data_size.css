@@ -3,6 +3,10 @@
  * SPDX-License-Identifier: Apache-2.0
  */
 
+/*  Usage:
+
+    <* data-size="xs | sm | md | lg | xl | 2xl"></*>
+*/
 @layer css.data_size {
 
     /* === size === */

@@ -3,6 +3,12 @@
  * SPDX-License-Identifier: Apache-2.0
  */
 
+/*  Usage:
+
+    <* data-surround="fill | outline | transparent"></*>
+
+    <* data-style="underline"></*>
+*/
 @layer css.data_style {
 
     /* === surround fill style === */

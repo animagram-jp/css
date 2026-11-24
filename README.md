@@ -5,14 +5,8 @@
 
 Universal Design (variants included) system and CSS implementations.
 
-- Requires to html only semantic and also structural tags and minimum anonymous elements.
+- Requires only semantic and structural HTML tags and a minimum of anonymous elements.
 - Render correctly without JS.
-
-# Version
-
-| Version | Status    | Date       | Description |
-|---------|-----------|------------|-------------|
-| 0.1.0   | Released  | 2026-09-28 | 1st release |
 
 This project adheres to [Semantic Versioning](https://semver.org/).
 
@@ -37,11 +31,11 @@ Use the library in either way:
 - Link `animagram_css.css` attached to each [release](https://github.com/animagram-jp/css/releases). It declares the `@layer` order first and contains every layer.
 - Link the files individually, and declare the `@layer` order of import.css yourself. Include the layers named in each `dependency` comment of the layers you use.
 
-Common layer files are following:
+Common layer files are as follows:
 
 1. [reset.css(@layer css.reset)](./css/reset.css): 1st layer to unset all.
 2. [base.css(@layer css.base)](./css/base.css): 2nd layer defining defaults of all custom parameters.
-3. [data_style.css(@layer css.data_style)](./css/data_style.css): 3rd layer defining data-style attribute.
+3. [data_style.css(@layer css.data_style)](./css/data_style.css): 3rd layer defining data-surround and data-style attributes.
 4. [data_size.css(@layer css.data_size)](./css/data_size.css): 4th layer defining data-size attribute.
 5. [data_sign.css(@layer css.data_sign)](./css/data_sign.css): 5th layer defining data-sign and data-facet attributes.
 6. [data_union.css(@layer css.data_union)](./css/data_union.css): 6th layer defining data-union attribute: removes the gap between adjacent controls and squares their shared corners.
@@ -54,12 +48,12 @@ Override the `--color-*` properties on any scope to restyle in use.
 | Category | Name | Meaning |
 |-|-|-|
 | channel | `--rgb-accent-red` | Default channel for `--color-error`. |
-| | `--rgb-accent-yellow` | Default color for `--color-highlight-paper`. |
-| | `--rgb-accent-green` | Default background for `--color-success`. |
+| | `--rgb-accent-yellow` | Default channel for `--color-highlight-*`. |
+| | `--rgb-accent-green` | Default channel for `--color-success`. |
 | | `--rgb-accent-purple` | Default channel for `--color-emphasis-*` and `--color-visited`. |
 | global parameter | `--color-ink` | Default text color in the scheme. |
 | | `--color-paper` | Default background color in the scheme. |
-| | `--color-ink-mix` | Default mixed to contrast with paper. |
+| | `--color-ink-mix` | Default mixed color to contrast with paper. |
 | | `--color-paper-mix` | Default mixed color to contrast with ink. |
 | | `--color-error` | Default color for `:user-invalid`. |
 | | `--color-highlight-ink` | Default for `::selection` to contrast with paper. |
@@ -67,7 +61,8 @@ Override the `--color-*` properties on any scope to restyle in use.
 | | `--color-success` | Default color for success/true states to contrast with paper. |
 | | `--color-visited` | Default `a:visited` color to contrast with paper. |
 | | `--color-emphasis-ink` | Emphasis color to contrast with paper. |
-| | `--color-emphasis-ink-mix` | Emphasis mixed to contrast with paper. |
+| | `--color-emphasis-ink-mix` | Emphasis mixed color to contrast with paper. |
+| | `--color-focus` | Default color for focus outline. |
 | scoped parameter | `color` | Text color in the scope. |
 | | `background-color` | Fill color in the scope. |
 | | `border-color` | Border color in the scope. |
@@ -87,22 +82,22 @@ Override the `--color-*` properties on any scope to restyle in use.
 └────────────────────┘
 ```
 
-- :focus outline's requirements is equal to border and it is not nessesary to differ with border.
+- :focus outline's requirement is equal to border and it is not necessary to differ from border.
 - :hover does not have any color difference in basic styles.
 - Empty cells mean as above.
 - `:disabled` includes `[aria-disabled="true"]`, `:user-invalid` includes `[aria-invalid="true"]`, and `:active` includes `[aria-pressed="true"]`.
 - `data-surround="transparent"` draws the border column with outline.
 
-| Style | Attribute | text | highlight | fill | border | backdrop | 
+| Style | Attribute | text | highlight | fill | border | backdrop |
 |-|-|-|-|-|-|-|
 | - | - | color-ink | - | color-paper(-mix) | color-ink | color-paper |
-|  | `::selection` | color-paper | color-highlight-ink | color-paper(-mix) | | | 
+|  | `::selection` | color-paper | color-highlight-ink | color-paper(-mix) | | |
 | `data-surround="transparent"` | | color-ink | - | transparent | - | |
 | | `:visited` | color-visited | - | | | |
 | | `:disabled` | color-ink-mix | - | | | |
 | | `:user-invalid` | color-ink | - | | color-error | |
 | | `:active` | color-ink | - | | color-emphasis-ink | |
-| `input[type=txt]` | | color-ink | - | color-paper | color-ink-mix | |
+| `input[type="text"]` | | color-ink | - | color-paper | color-ink-mix | |
 | | `::selection` | color-paper | color-highlight-ink | | | |
 | | `:disabled` | color-ink-mix | - | | | |
 | | `:disabled::selection` | color-paper | color-highlight-ink | | | |
@@ -141,7 +136,7 @@ Override the `--color-*` properties on any scope to restyle in use.
 
 ### Contrast requirements
 
-Requirements come from layer adjacency (text↔highlight↔fill, fill↔border↔backdrop) in the style table above. 
+Requirements come from layer adjacency (text↔highlight↔fill, fill↔border↔backdrop) in the style table above.
 
 The required ratio depends on the scheme.
 
@@ -158,7 +153,7 @@ The required ratio depends on the scheme.
 - Each row below holds in every scheme at the ratio above.
 
 Emphasis colors are the injection point for a brand or per-scope users' color.
-The library default is the CUD accent purple. 
+The library default is the CUD accent purple.
 `color-success` is a non-text fill: it carries no text.
 
 | Property | text | non-text |
@@ -173,11 +168,11 @@ The library default is the CUD accent purple.
 | color-success | — | color-paper, color-ink |
 | color-visited | color-paper | color-paper |
 
-## Size
+# Size
 
 - Default width is left unset (auto / content-driven) everywhere.
 - Default margin width is 0.
-- Padding-block is derived from `--{size}-box-height` and  `--{size}-line-height` and only when border is not none, `--{size}-border-width`.
+- Padding-block is derived from `--{size}-box-height` and `--{size}-line-height` and only when border is not none, `--{size}-border-width`.
 
 | Scoped parameter | Meaning |
 |-|-|
@@ -191,15 +186,15 @@ The library default is the CUD accent purple.
 | `data-size`   | heading | box-height | font-size | letter-spacing | line-height |
 |-|-|-|-|-|-|
 | `xs`          | - | 1.75rem  | 0.85rem | 0.02rem | 1.5rem   |
-| `sm`          | - | | | | |
+| `sm`          | - | 2.5rem  | 0.85rem | 0.02rem | 1.5rem   |
 | `md`(default) | h4~h6 | 3rem | 1rem    | 0       | 1.5rem   |
 | `lg`          | h3 | 3.5rem  | 1.15rem | 0       | 1.725rem |
 | `xl`          | h2 | 4rem    | 1.5rem  | 0       | 2.25rem  |
 | `2xl`         | h1 | 4.75rem | 2rem    | 0       | 3rem     |
 
-## Other custom attributes
+# Other custom attributes
 
-### data-axis
+## data-axis
 
 Direction in which a component lays its parts out. Both `block` and `inline` are accepted on every component below; omitting the attribute is the same as writing the default.
 
@@ -209,7 +204,7 @@ Direction in which a component lays its parts out. Both `block` and `inline` are
 | `fieldset` | `block` | [radio.css](./css/radio.css) |
 | `label` | `inline` | [toggle.css](./css/toggle.css) |
 
-### data-union
+## data-union
 
 - `inline`: a horizontal row.
 - `block`: a vertical stack. Every member is stretched to the same inline size.
@@ -225,7 +220,7 @@ A radio or checkbox member is its `label`, with the `input` transparent over it.
 
 Without `data-union`, `[role="toolbar"]`, `[role="radiogroup"]` and `[role="tablist"]` follow `aria-orientation` (horizontal by default).
 
-### data-step
+## data-step
 
 Layout for the pair of controls a spinbutton or a sortable table header carries. Applied to the `span` wrapping the pair, not the `label`/`th` itself.
 
@@ -233,7 +228,7 @@ Layout for the pair of controls a spinbutton or a sortable table header carries.
 |-|-|-|
 | `span` | `block` | [step.css](./css/step.css) |
 
-### Tag unique attributes
+## Tag unique attributes
 
 | Selector | Attribute | Description |
 |-|-|-|
