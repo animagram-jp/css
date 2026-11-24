@@ -117,61 +117,45 @@
                         <input type="text" value="aria-invalid" aria-invalid="true"></label></section></section>
 
             <section>
-                <h2>Surround, underline</h2>
+                <h2>Surround</h2>
                 <section data-sign="rule">
-                    <button type="button">button (data-surround="fill")</button>
-                    <a href="#dummy">a (data-style="underline")</a>
+                    <h3>data-surround="fill"</h3>
+                    <button type="button">button</button>
+                    <a href="#dummy" data-surround="fill">a</a>
                     <details>
-                        <summary>summary (data-style="underline")</summary>
-                        <p>details > summary, p</p></details>
-                    <button type="button" data-surround="outline">button data-surround="outline"</button>
-                    <a href="#dummy" data-surround="outline">a data-surround="outline"</a>
-                    <details>
-                        <summary data-surround="outline">summary (data-surround="outline")</summary>
+                        <summary data-surround="fill">summary</summary>
                         <p>details > summary, p</p></details></section>
+
                 <section data-sign="rule">
-                    <h3>Size</h3>
-                    <button data-size="xs">xs</button>
-                    <a href="#anchor" data-size="xs">xs</a>
-                    <button data-size="sm">sm</button>
-                    <a href="#anchor" data-size="sm">sm</a>
-                    <button data-size="md">(md)</button>
-                    <a href="#anchor" data-size="md">(md)</a>
-                    <button data-size="lg">lg</button>
-                    <a href="#anchor" data-size="lg">lg</a>
-                    <button data-size="xl">xl</button>
-                    <a href="#anchor" data-size="xl">xl</a>
-                    <button disabled data-size="2xl">2xl, disabled</button>
-                    <a href="#anchor" aria-disabled="true" data-size="2xl">2xl, aria-disabled="true"</a></section></section>
+                    <h3>data-surround="outline"</h3>
+                    <button type="button" data-surround="outline">button</button>
+                    <a href="#dummy" data-surround="outline">a</a>
+                    <details>
+                        <summary data-surround="outline">summary</summary>
+                        <p>details > summary, p</p></details></section>
+
+                <section data-sign="rule">
+                    <h3>data-surround="transparent"</h3>
+                    <button type="button" data-surround="transparent">button</button>
+                    <a href="#dummy" data-surround="transparent">a</a>
+                    <details>
+                        <summary data-surround="transparent">summary</summary>
+                        <p>details > summary, p</p></details></section></section>
+
+            <section>
+                <h2>Underline</h2>
+                <section data-sign="rule">
+                    <h3>data-style="underline"</h3>
+                    <button type="button" data-style="underline">button</button>
+                    <a href="#dummy">a</a>
+                    <details>
+                        <summary>summary</summary>
+                        <p>details > summary, p</p></details></section></section>
 
             <section>
                 <h2>Size</h2>
                 <section data-sign="rule">
-                    <h3>data-union="inline"</h3>
-                    <fieldset data-union="inline">
-                        <legend>
-                            <span>radio</span></legend>
-                        <label data-size="xs">
-                            <span>xs</span>
-                            <input name="size-union-inline" type="radio"></label>
-                        <label data-size="sm">
-                            <span>sm</span>
-                            <input name="size-union-inline" type="radio"></label>
-                        <label>
-                            <span>(md)</span>
-                            <input name="size-union-inline" type="radio" checked></label>
-                        <label data-size="lg">
-                            <span>lg</span>
-                            <input name="size-union-inline" type="radio"></label>
-                        <label data-size="xl">
-                            <span>xl</span>
-                            <input name="size-union-inline" type="radio"></label>
-                        <label data-size="2xl">
-                            <span>2xl</span>
-                            <input name="size-union-inline" type="radio"></label></fieldset></section>
-
-                <section data-sign="rule">
-                    <h3>fieldset</h3>
+                    <h3>Input</h3>
                     <fieldset>
                         <legend>
                             <span>input[type="text"]</span></legend>
@@ -192,8 +176,50 @@
                             <input type="text" data-size="xl"></label>
                         <label>
                             <span>2xl</span>
-                            <input type="text" data-size="2xl"></label></fieldset></section></section>
-    
+                            <input type="text" data-size="2xl"></label></fieldset></section>
+
+                <section data-sign="rule">
+                    <h3>Surround</h3>
+                    <button type="button" data-size="xs">xs</button>
+                    <button type="button" data-size="sm">sm</button>
+                    <button type="button">(md)</button>
+                    <button type="button" data-size="lg">lg</button>
+                    <button type="button" data-size="xl">xl</button>
+                    <button type="button" data-size="2xl">2xl</button></section>
+
+                <section data-sign="rule">
+                    <h3>Underline</h3>
+                    <a href="#dummy" data-size="xs">xs</a>
+                    <a href="#dummy" data-size="sm">sm</a>
+                    <a href="#dummy">(md)</a>
+                    <a href="#dummy" data-size="lg">lg</a>
+                    <a href="#dummy" data-size="xl">xl</a>
+                    <a href="#dummy" data-size="2xl">2xl</a></section>
+
+                <section data-sign="rule">
+                    <h3>Union</h3>
+                    <fieldset data-union="inline">
+                        <legend>
+                            <span>radio</span></legend>
+                        <label data-size="xs">
+                            <span>xs</span>
+                            <input name="size-union-inline" type="radio"></label>
+                        <label data-size="sm">
+                            <span>sm</span>
+                            <input name="size-union-inline" type="radio"></label>
+                        <label>
+                            <span>(md)</span>
+                            <input name="size-union-inline" type="radio" checked></label>
+                        <label data-size="lg">
+                            <span>lg</span>
+                            <input name="size-union-inline" type="radio"></label>
+                        <label data-size="xl">
+                            <span>xl</span>
+                            <input name="size-union-inline" type="radio"></label>
+                        <label data-size="2xl">
+                            <span>2xl</span>
+                            <input name="size-union-inline" type="radio"></label></fieldset></section></section>
+
             <section>
                 <h2>Sign</h2>
                 <section data-sign="rule">
