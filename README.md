@@ -90,6 +90,8 @@ Override the `--color-*` properties on any scope to restyle in use.
 - :focus outline's requirements is equal to border and it is not nessesary to differ with border.
 - :hover does not have any color difference in basic styles.
 - Empty cells mean as above.
+- `:disabled` includes `[aria-disabled="true"]`, `:user-invalid` includes `[aria-invalid="true"]`, and `:active` includes `[aria-pressed="true"]`.
+- `data-surround="transparent"` draws the border column with outline.
 
 | Style | Attribute | text | highlight | fill | border | backdrop | 
 |-|-|-|-|-|-|-|
@@ -97,6 +99,9 @@ Override the `--color-*` properties on any scope to restyle in use.
 |  | `::selection` | color-paper | color-highlight-ink | color-paper(-mix) | | | 
 | `data-surround="transparent"` | | color-ink | - | transparent | - | |
 | | `:visited` | color-visited | - | | | |
+| | `:disabled` | color-ink-mix | - | | | |
+| | `:user-invalid` | color-ink | - | | color-error | |
+| | `:active` | color-ink | - | | color-emphasis-ink | |
 | `input[type=txt]` | | color-ink | - | color-paper | color-ink-mix | |
 | | `::selection` | color-paper | color-highlight-ink | | | |
 | | `:disabled` | color-ink-mix | - | | | |
@@ -107,12 +112,14 @@ Override the `--color-*` properties on any scope to restyle in use.
 | | `::selection` | color-ink | color-highlight-paper | color-emphasis-ink | | |
 | | `:disabled` | color-paper | - | color-ink-mix | | |
 | | `:disabled::selection` | color-ink | color-highlight-paper | color-ink-mix | | |
+| | `:user-invalid` | color-paper | - | color-emphasis-ink | color-error | |
 | | `:active` | color-paper | - | color-emphasis-ink-mix | | |
 | | `:active::selection` | color-ink | color-highlight-paper | color-emphasis-ink-mix | | |
 | `data-surround="outline"` | | color-emphasis-ink | - | color-paper | color-emphasis-ink | |
 | | `::selection` | color-paper | color-highlight-ink | | | |
 | | `:disabled` | color-ink-mix | - | | color-ink-mix | |
 | | `:disabled::selection` | color-paper | color-highlight-ink | | | |
+| | `:user-invalid` | color-emphasis-ink | - | | color-error | |
 | | `:active` | color-emphasis-ink-mix | - | | color-emphasis-ink-mix | |
 | | `:active::selection` | color-paper | color-highlight-ink | | | |
 | | `:visited` | color-visited | - | | color-visited | |
