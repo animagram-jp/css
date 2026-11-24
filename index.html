@@ -144,6 +144,32 @@
                     <a href="#anchor" data-size="xl">xl</a>
                     <button disabled data-size="2xl">2xl, disabled</button>
                     <a href="#anchor" aria-disabled="true" data-size="2xl">2xl, aria-disabled="true"</a></section></section>
+
+            <section>
+                <h2>Size</h2>
+                <section data-sign="rule">
+                    <h3>data-union="inline"</h3>
+                    <fieldset data-union="inline">
+                        <legend>
+                            <span>radio</span></legend>
+                        <label data-size="xs">
+                            <span>xs</span>
+                            <input name="size-union-inline" type="radio"></label>
+                        <label data-size="sm">
+                            <span>sm</span>
+                            <input name="size-union-inline" type="radio"></label>
+                        <label>
+                            <span>(md)</span>
+                            <input name="size-union-inline" type="radio" checked></label>
+                        <label data-size="lg">
+                            <span>lg</span>
+                            <input name="size-union-inline" type="radio"></label>
+                        <label data-size="xl">
+                            <span>xl</span>
+                            <input name="size-union-inline" type="radio"></label>
+                        <label data-size="2xl">
+                            <span>2xl</span>
+                            <input name="size-union-inline" type="radio"></label></fieldset></section></section>
     
             <section>
                 <h2>Sign</h2>
@@ -217,150 +243,161 @@
 
                 <section data-sign="rule">
                     <h3>data-union="inline"</h3>
-                    <fieldset data-union="inline">
-                        <legend>
-                            <span>checkbox xs fill</span></legend>
-                        <label data-size="xs" data-surround="fill">
-                            <span>(none)</span>
-                            <input name="union-inline-xs" type="checkbox"></label>
-                        <label data-size="xs" data-surround="fill">
-                            <span>checked</span>
-                            <input name="union-inline-xs" type="checkbox" checked></label>
-                        <label data-size="xs" data-surround="fill">
-                            <span>disabled</span>
-                            <input name="union-inline-xs" type="checkbox" disabled></label>
-                        <label data-size="xs" data-surround="fill">
-                            <span>aria-invalid</span>
-                            <input name="union-inline-xs" type="checkbox" aria-invalid="true"></label></fieldset>
-                    <div role="group" aria-labelledby="union-inline-sm" data-union="inline">
-                        <span id="union-inline-sm">button[aria-pressed] sm outline</span>
-                        <button type="button" aria-pressed="false" data-size="sm" data-surround="outline">(none)</button>
-                        <button type="button" aria-pressed="true" data-size="sm" data-surround="outline">pressed</button>
-                        <button disabled type="button" aria-pressed="false" data-size="sm" data-surround="outline">disabled</button>
-                        <button type="button" aria-invalid="true" aria-pressed="false" data-size="sm" data-surround="outline">aria-invalid</button></div>
-                    <fieldset data-union="inline">
-                        <legend>
-                            <span>radio (md, icon badge)</span></legend>
-                        <label>
-                            <span>none</span>
-                            <input checked name="icon-badge" type="radio" value="none"></label>
-                        <label>
-                            <span>green</span>
-                            <input name="icon-badge" type="radio" value="active"></label>
-                        <label>
-                            <span>grey</span>
-                            <input name="icon-badge" type="radio" value="information"></label></fieldset>
-                    <fieldset data-union="inline">
-                        <legend>
-                            <span>checkbox lg (outline)</span></legend>
-                        <label data-size="lg">
-                            <span>(none)</span>
-                            <input name="union-inline-lg" type="checkbox"></label>
-                        <label data-size="lg">
-                            <span>checked</span>
-                            <input name="union-inline-lg" type="checkbox" checked></label>
-                        <label data-size="lg">
-                            <span>disabled</span>
-                            <input name="union-inline-lg" type="checkbox" disabled></label>
-                        <label data-size="lg">
-                            <span>aria-invalid</span>
-                            <input name="union-inline-lg" type="checkbox" aria-invalid="true"></label></fieldset>
-                    <div role="group" aria-labelledby="union-inline-xl" data-union="inline">
-                        <span id="union-inline-xl">button[aria-pressed] xl (fill)</span>
-                        <button type="button" aria-pressed="false" data-size="xl">(none)</button>
-                        <button type="button" aria-pressed="true" data-size="xl">pressed</button>
-                        <button disabled type="button" aria-pressed="false" data-size="xl">disabled</button>
-                        <button type="button" aria-invalid="true" aria-pressed="false" data-size="xl">aria-invalid</button></div>
-                    <fieldset data-union="inline">
-                        <legend>
-                            <span>radio 2xl fill</span></legend>
-                        <label data-size="2xl" data-surround="fill">
-                            <span>(none)</span>
-                            <input name="union-inline-2xl" type="radio"></label>
-                        <label data-size="2xl" data-surround="fill">
-                            <span>checked</span>
-                            <input name="union-inline-2xl" type="radio" checked></label>
-                        <label data-size="2xl" data-surround="fill">
-                            <span>disabled</span>
-                            <input name="union-inline-2xl" type="radio" disabled></label>
-                        <label data-size="2xl" data-surround="fill">
-                            <span>aria-invalid</span>
-                            <input name="union-inline-2xl" type="radio" aria-invalid="true"></label></fieldset></section>
+                    <section>
+                        <h4>data-surround="fill"</h4>
+                        <fieldset data-union="inline">
+                            <legend>
+                                <span>radio</span></legend>
+                            <label data-surround="fill">
+                                <span>(none)</span>
+                                <input name="union-inline-fill-radio" type="radio"></label>
+                            <label data-surround="fill">
+                                <span>checked</span>
+                                <input name="union-inline-fill-radio" type="radio" checked></label>
+                            <label data-surround="fill">
+                                <span>disabled</span>
+                                <input name="union-inline-fill-radio" type="radio" disabled></label>
+                            <label data-surround="fill">
+                                <span>aria-invalid</span>
+                                <input name="union-inline-fill-radio" type="radio" aria-invalid="true"></label></fieldset>
+                        <fieldset data-union="inline">
+                            <legend>
+                                <span>checkbox</span></legend>
+                            <label data-surround="fill">
+                                <span>(none)</span>
+                                <input name="union-inline-fill-checkbox" type="checkbox"></label>
+                            <label data-surround="fill">
+                                <span>checked</span>
+                                <input name="union-inline-fill-checkbox" type="checkbox" checked></label>
+                            <label data-surround="fill">
+                                <span>disabled</span>
+                                <input name="union-inline-fill-checkbox" type="checkbox" disabled></label>
+                            <label data-surround="fill">
+                                <span>aria-invalid</span>
+                                <input name="union-inline-fill-checkbox" type="checkbox" aria-invalid="true"></label></fieldset>
+                        <div role="group" aria-labelledby="union-inline-fill" data-union="inline">
+                            <span id="union-inline-fill">button[aria-pressed]</span>
+                            <button type="button" aria-pressed="false">(none)</button>
+                            <button type="button" aria-pressed="true">pressed</button>
+                            <button disabled type="button" aria-pressed="false">disabled</button>
+                            <button type="button" aria-invalid="true" aria-pressed="false">aria-invalid</button></div></section>
+                    <section>
+                        <h4>data-surround="outline"</h4>
+                        <fieldset data-union="inline">
+                            <legend>
+                                <span>radio</span></legend>
+                            <label>
+                                <span>(none)</span>
+                                <input name="union-inline-outline-radio" type="radio"></label>
+                            <label>
+                                <span>checked</span>
+                                <input name="union-inline-outline-radio" type="radio" checked></label>
+                            <label>
+                                <span>disabled</span>
+                                <input name="union-inline-outline-radio" type="radio" disabled></label>
+                            <label>
+                                <span>aria-invalid</span>
+                                <input name="union-inline-outline-radio" type="radio" aria-invalid="true"></label></fieldset>
+                        <fieldset data-union="inline">
+                            <legend>
+                                <span>checkbox</span></legend>
+                            <label>
+                                <span>(none)</span>
+                                <input name="union-inline-outline-checkbox" type="checkbox"></label>
+                            <label>
+                                <span>checked</span>
+                                <input name="union-inline-outline-checkbox" type="checkbox" checked></label>
+                            <label>
+                                <span>disabled</span>
+                                <input name="union-inline-outline-checkbox" type="checkbox" disabled></label>
+                            <label>
+                                <span>aria-invalid</span>
+                                <input name="union-inline-outline-checkbox" type="checkbox" aria-invalid="true"></label></fieldset>
+                        <div role="group" aria-labelledby="union-inline-outline" data-union="inline">
+                            <span id="union-inline-outline">button[aria-pressed]</span>
+                            <button type="button" aria-pressed="false" data-surround="outline">(none)</button>
+                            <button type="button" aria-pressed="true" data-surround="outline">pressed</button>
+                            <button disabled type="button" aria-pressed="false" data-surround="outline">disabled</button>
+                            <button type="button" aria-invalid="true" aria-pressed="false" data-surround="outline">aria-invalid</button></div></section></section>
 
                 <section data-sign="rule">
                     <h3>data-union="block"</h3>
-                    <fieldset data-union="block">
-                        <legend>
-                            <span>radio xs fill</span></legend>
-                        <label data-size="xs" data-surround="fill">
-                            <span>(none)</span>
-                            <input name="union-block-xs" type="radio"></label>
-                        <label data-size="xs" data-surround="fill">
-                            <span>checked</span>
-                            <input name="union-block-xs" type="radio" checked></label>
-                        <label data-size="xs" data-surround="fill">
-                            <span>disabled</span>
-                            <input name="union-block-xs" type="radio" disabled></label>
-                        <label data-size="xs" data-surround="fill">
-                            <span>aria-invalid</span>
-                            <input name="union-block-xs" type="radio" aria-invalid="true"></label></fieldset>
-                    <fieldset data-union="block">
-                        <legend>
-                            <span>checkbox sm (outline)</span></legend>
-                        <label data-size="sm">
-                            <span>(none)</span>
-                            <input name="union-block-sm" type="checkbox"></label>
-                        <label data-size="sm">
-                            <span>checked</span>
-                            <input name="union-block-sm" type="checkbox" checked></label>
-                        <label data-size="sm">
-                            <span>disabled</span>
-                            <input name="union-block-sm" type="checkbox" disabled></label>
-                        <label data-size="sm">
-                            <span>aria-invalid</span>
-                            <input name="union-block-sm" type="checkbox" aria-invalid="true"></label></fieldset>
-                    <div role="group" aria-labelledby="union-block-md" data-union="block">
-                        <span id="union-block-md">button[aria-pressed] (md) (fill)</span>
-                        <button type="button" aria-pressed="false" data-size="md">(none)</button>
-                        <button type="button" aria-pressed="true" data-size="md">pressed</button>
-                        <button disabled type="button" aria-pressed="false" data-size="md">disabled</button>
-                        <button type="button" aria-invalid="true" aria-pressed="false" data-size="md">aria-invalid</button></div>
-                    <fieldset data-union="block">
-                        <legend>
-                            <span>radio lg (outline)</span></legend>
-                        <label data-size="lg">
-                            <span>(none)</span>
-                            <input name="union-block-lg" type="radio"></label>
-                        <label data-size="lg">
-                            <span>checked</span>
-                            <input name="union-block-lg" type="radio" checked></label>
-                        <label data-size="lg">
-                            <span>disabled</span>
-                            <input name="union-block-lg" type="radio" disabled></label>
-                        <label data-size="lg">
-                            <span>aria-invalid</span>
-                            <input name="union-block-lg" type="radio" aria-invalid="true"></label></fieldset>
-                    <fieldset data-union="block">
-                        <legend>
-                            <span>checkbox xl fill</span></legend>
-                        <label data-size="xl" data-surround="fill">
-                            <span>(none)</span>
-                            <input name="union-block-xl" type="checkbox"></label>
-                        <label data-size="xl" data-surround="fill">
-                            <span>checked</span>
-                            <input name="union-block-xl" type="checkbox" checked></label>
-                        <label data-size="xl" data-surround="fill">
-                            <span>disabled</span>
-                            <input name="union-block-xl" type="checkbox" disabled></label>
-                        <label data-size="xl" data-surround="fill">
-                            <span>aria-invalid</span>
-                            <input name="union-block-xl" type="checkbox" aria-invalid="true"></label></fieldset>
-                    <div role="group" aria-labelledby="union-block-2xl" data-union="block">
-                        <span id="union-block-2xl">button[aria-pressed] 2xl outline</span>
-                        <button type="button" aria-pressed="false" data-size="2xl" data-surround="outline">(none)</button>
-                        <button type="button" aria-pressed="true" data-size="2xl" data-surround="outline">pressed</button>
-                        <button disabled type="button" aria-pressed="false" data-size="2xl" data-surround="outline">disabled</button>
-                        <button type="button" aria-invalid="true" aria-pressed="false" data-size="2xl" data-surround="outline">aria-invalid</button></div></section></section></section>
+                    <section>
+                        <h4>data-surround="fill"</h4>
+                        <fieldset data-union="block">
+                            <legend>
+                                <span>radio</span></legend>
+                            <label data-surround="fill">
+                                <span>(none)</span>
+                                <input name="union-block-fill-radio" type="radio"></label>
+                            <label data-surround="fill">
+                                <span>checked</span>
+                                <input name="union-block-fill-radio" type="radio" checked></label>
+                            <label data-surround="fill">
+                                <span>disabled</span>
+                                <input name="union-block-fill-radio" type="radio" disabled></label>
+                            <label data-surround="fill">
+                                <span>aria-invalid</span>
+                                <input name="union-block-fill-radio" type="radio" aria-invalid="true"></label></fieldset>
+                        <fieldset data-union="block">
+                            <legend>
+                                <span>checkbox</span></legend>
+                            <label data-surround="fill">
+                                <span>(none)</span>
+                                <input name="union-block-fill-checkbox" type="checkbox"></label>
+                            <label data-surround="fill">
+                                <span>checked</span>
+                                <input name="union-block-fill-checkbox" type="checkbox" checked></label>
+                            <label data-surround="fill">
+                                <span>disabled</span>
+                                <input name="union-block-fill-checkbox" type="checkbox" disabled></label>
+                            <label data-surround="fill">
+                                <span>aria-invalid</span>
+                                <input name="union-block-fill-checkbox" type="checkbox" aria-invalid="true"></label></fieldset>
+                        <div role="group" aria-labelledby="union-block-fill" data-union="block">
+                            <span id="union-block-fill">button[aria-pressed]</span>
+                            <button type="button" aria-pressed="false">(none)</button>
+                            <button type="button" aria-pressed="true">pressed</button>
+                            <button disabled type="button" aria-pressed="false">disabled</button>
+                            <button type="button" aria-invalid="true" aria-pressed="false">aria-invalid</button></div></section>
+                    <section>
+                        <h4>data-surround="outline"</h4>
+                        <fieldset data-union="block">
+                            <legend>
+                                <span>radio</span></legend>
+                            <label>
+                                <span>(none)</span>
+                                <input name="union-block-outline-radio" type="radio"></label>
+                            <label>
+                                <span>checked</span>
+                                <input name="union-block-outline-radio" type="radio" checked></label>
+                            <label>
+                                <span>disabled</span>
+                                <input name="union-block-outline-radio" type="radio" disabled></label>
+                            <label>
+                                <span>aria-invalid</span>
+                                <input name="union-block-outline-radio" type="radio" aria-invalid="true"></label></fieldset>
+                        <fieldset data-union="block">
+                            <legend>
+                                <span>checkbox</span></legend>
+                            <label>
+                                <span>(none)</span>
+                                <input name="union-block-outline-checkbox" type="checkbox"></label>
+                            <label>
+                                <span>checked</span>
+                                <input name="union-block-outline-checkbox" type="checkbox" checked></label>
+                            <label>
+                                <span>disabled</span>
+                                <input name="union-block-outline-checkbox" type="checkbox" disabled></label>
+                            <label>
+                                <span>aria-invalid</span>
+                                <input name="union-block-outline-checkbox" type="checkbox" aria-invalid="true"></label></fieldset>
+                        <div role="group" aria-labelledby="union-block-outline" data-union="block">
+                            <span id="union-block-outline">button[aria-pressed]</span>
+                            <button type="button" aria-pressed="false" data-surround="outline">(none)</button>
+                            <button type="button" aria-pressed="true" data-surround="outline">pressed</button>
+                            <button disabled type="button" aria-pressed="false" data-surround="outline">disabled</button>
+                            <button type="button" aria-invalid="true" aria-pressed="false" data-surround="outline">aria-invalid</button></div></section></section></section></section>
 
         <section id="tabpanel-2" role="tabpanel" aria-labelledby="tab-2">
             <section>
@@ -1086,7 +1123,23 @@
                 <figure data-sign="rule">
                     <blockquote>
                         <p>"I will cast the dark shadows of human life over you without reserve. But you must not be afraid."</p></blockquote>
-                    <figcaption>Soseki Natsume. 1914. <cite lang="en">Kokoro</cite>. Iwanami Shoten, Tokyo, Japan. Translated by Andyou, 2026.</figcaption></figure></section></section>
+                    <figcaption>Soseki Natsume. 1914. <cite lang="en">Kokoro</cite>. Iwanami Shoten, Tokyo, Japan. Translated by Andyou, 2026.</figcaption></figure></section>
+
+            <section>
+                <h2>Icon badge</h2>
+                <section data-sign="rule">
+                    <fieldset data-union="inline">
+                        <legend>
+                            <span>badge</span></legend>
+                        <label>
+                            <span>none</span>
+                            <input checked name="icon-badge" type="radio" value="none"></label>
+                        <label>
+                            <span>green</span>
+                            <input name="icon-badge" type="radio" value="active"></label>
+                        <label>
+                            <span>grey</span>
+                            <input name="icon-badge" type="radio" value="information"></label></fieldset></section></section></section>
 
         <section id="tabpanel-4" role="tabpanel" aria-labelledby="tab-4">
             <p id="tabpanel-4_p"></p>
