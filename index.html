@@ -251,42 +251,87 @@
             <section>
                 <h2>Sign</h2>
                 <section data-sign="rule">
-                    <label aria-label="check"><button data-sign="check"></button></label>
+                    <h3>data-sign="check"</h3>
+                    <label aria-label="check"><button type="button" data-sign="check"></button></label>
                     <label aria-label="check"><input type="checkbox" data-sign="check"></label>
-                    <label aria-label="check"><input type="checkbox" data-sign="check" data-surround="transparent"></label>
-                    <label aria-label="copy"><button data-sign="copy"></button></label>
-                    <label aria-label="copy"><input type="checkbox" data-sign="copy"></label>
-                    <label aria-label="file"><button data-sign="file"></button></label>
-                    <label aria-label="file"><input type="checkbox" data-sign="file"></label>
-                    <label aria-label="folder"><button data-sign="folder"></button></label>
-                    <label aria-label="folder"><input type="checkbox" data-sign="folder"></label>
-                    <label aria-label="hatch"><button data-sign="hatch"></button></label>
-                    <label aria-label="hatch"><input type="checkbox" data-sign="hatch"></label>
-                    <label aria-label="minus"><button data-sign="minus"></button></label>
-                    <label aria-label="minus"><input type="checkbox" data-sign="minus"></label>
-                    <label aria-label="plus"><button data-sign="plus"></button></label>
-                    <label aria-label="plus"><input type="checkbox" data-sign="plus"></label>
-                    <label aria-label="x"><button data-sign="x"></button></label>
-                    <label aria-label="x"><input type="checkbox" data-sign="x"></label>
-                    <label aria-label="x"><button data-sign="x"></button></label>
-                    <label aria-label="x"><input type="checkbox" data-sign="x"></label>
-                    <label aria-label="chevron"><button data-facet="chevron" data-inline-align="center"></button></label>
+                    <label aria-label="check"><input checked type="checkbox" data-sign="check"></label>
+                    <label aria-label="check"><input checked type="checkbox" data-sign="check" data-surround="transparent"></label></section>
+
+                <section data-sign="rule">
+                    <h3>data-sign="copy"</h3>
+                    <label aria-label="copy"><button type="button" data-sign="copy"></button></label>
+                    <label aria-label="copy"><input type="checkbox" data-sign="copy"></label></section>
+
+                <section data-sign="rule">
+                    <h3>data-sign="file"</h3>
+                    <label aria-label="file"><button type="button" data-sign="file"></button></label>
+                    <label aria-label="file"><input type="checkbox" data-sign="file"></label></section>
+
+                <section data-sign="rule">
+                    <h3>data-sign="folder"</h3>
+                    <label aria-label="folder"><button type="button" data-sign="folder"></button></label>
+                    <label aria-label="folder"><input type="checkbox" data-sign="folder"></label></section>
+
+                <section data-sign="rule">
+                    <h3>data-sign="hatch"</h3>
+                    <label aria-label="hatch"><button type="button" data-sign="hatch"></button></label>
+                    <label aria-label="hatch"><input type="checkbox" data-sign="hatch"></label></section>
+
+                <section data-sign="rule">
+                    <h3>data-sign="minus"</h3>
+                    <label aria-label="minus"><button type="button" data-sign="minus"></button></label>
+                    <label aria-label="minus"><input type="checkbox" data-sign="minus"></label></section>
+
+                <section data-sign="rule">
+                    <h3>data-sign="plus"</h3>
+                    <label aria-label="plus"><button type="button" data-sign="plus"></button></label>
+                    <label aria-label="plus"><input type="checkbox" data-sign="plus"></label></section>
+
+                <section data-sign="rule">
+                    <h3>data-sign="rule"</h3>
+                    <p data-sign="rule">p</p></section>
+
+                <section data-sign="rule">
+                    <h3>data-sign="x"</h3>
+                    <label aria-label="x"><button type="button" data-sign="x"></button></label>
+                    <label aria-label="x"><input type="checkbox" data-sign="x"></label></section></section>
+
+            <section>
+                <h2>Facet</h2>
+                <section data-sign="rule">
+                    <h3>data-facet="chevron"</h3>
+                    <label aria-label="chevron"><button type="button" data-facet="chevron" data-inline-align="center"></button></label>
                     <label aria-label="chevron"><input type="checkbox" data-facet="chevron" data-inline-align="center"></label>
-                    <label aria-label="reload"><button data-facet="reload"></button></label>
-                    <label aria-label="reload"><input type="checkbox" data-facet="reload"></label>
-                    <label aria-label="reload"><button data-facet="reload" aria-busy="true"></button></label>
-                    <label aria-label="reload"><input type="checkbox" data-facet="reload" checked></label>
-                    <label aria-label="sync"><button data-facet="sync"></button></label>
-                    <label aria-label="sync"><input type="checkbox" data-facet="sync"></label>
-                    <label aria-label="sync"><button data-facet="sync" aria-busy="true"></button></label>
-                    <label aria-label="sync"><input type="checkbox" data-facet="sync" checked></label>
-                    <label aria-label="eye"><button data-facet="eye"></button></label>
-                    <label aria-label="eye"><input type="checkbox" data-facet="eye"></label>
+                    <label aria-label="chevron"><input checked type="checkbox" data-facet="chevron" data-inline-align="center"></label>
                     <fieldset data-axis="inline">
                         <legend>
-                            <span>chevron</span></legend>
-                        <label aria-label="chevron"><input checked name="sign-radio" type="radio" data-facet="chevron"></label>
-                        <label aria-label="chevron"><input name="sign-radio" type="radio" data-facet="chevron"></label></fieldset></section>
+                            <span>radio</span></legend>
+                        <label aria-label="chevron"><input checked name="facet-chevron" type="radio" data-facet="chevron"></label>
+                        <label aria-label="chevron"><input name="facet-chevron" type="radio" data-facet="chevron"></label></fieldset></section>
+
+                <section data-sign="rule">
+                    <h3>data-facet="eye"</h3>
+                    <label aria-label="eye"><button type="button" data-facet="eye"></button></label>
+                    <label aria-label="eye"><button type="button" aria-pressed="true" data-facet="eye"></button></label>
+                    <label aria-label="eye"><input type="checkbox" data-facet="eye"></label>
+                    <label aria-label="eye"><input checked type="checkbox" data-facet="eye"></label></section>
+
+                <section data-sign="rule">
+                    <h3>data-facet="reload"</h3>
+                    <label aria-label="reload"><button type="button" data-facet="reload"></button></label>
+                    <label aria-label="reload"><button type="button" aria-busy="true" data-facet="reload"></button></label>
+                    <label aria-label="reload"><input type="checkbox" data-facet="reload"></label>
+                    <label aria-label="reload"><input checked type="checkbox" data-facet="reload"></label></section>
+
+                <section data-sign="rule">
+                    <h3>data-facet="sync"</h3>
+                    <label aria-label="sync"><button type="button" data-facet="sync"></button></label>
+                    <label aria-label="sync"><button type="button" aria-busy="true" data-facet="sync"></button></label>
+                    <label aria-label="sync"><input type="checkbox" data-facet="sync"></label>
+                    <label aria-label="sync"><input checked type="checkbox" data-facet="sync"></label></section></section>
+
+            <section>
+                <h2>Inline align</h2>
                 <section data-sign="rule">
                     <h3>data-inline-align</h3>
                     <button data-sign="check" data-inline-align="start">start</button>
