@@ -210,8 +210,8 @@
     }
 
     body {
-        color: var(--color-ink);
         background: var(--color-paper);
+        color: var(--color-ink);
     }
 
     ::selection, mark {
@@ -226,10 +226,10 @@
         [inputmode="numeric"]
     ) {
         font-family: var(--font-family-monospace);
-        font-style: normal;
         font-feature-settings: initial; /* per kiso.css:193 */
-        font-variation-settings: initial; /* per kiso.css:194 */
+        font-style: normal;
         font-variant-ligatures: none; /* per kiso.css:203 */
+        font-variation-settings: initial; /* per kiso.css:194 */
     }
 
     /* --- forced-color --- */

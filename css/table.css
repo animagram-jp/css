@@ -17,6 +17,18 @@
         <tfoot>
             <tr>
                 <td></td></tr></tfoot></table>
+
+    <table data-print>
+        <thead>
+            <tr>
+                <th scope="col"></th></tr></thead>
+        <tbody>
+            <tr>
+                <th scope="row"></th>
+                <td></td></tr></tbody>
+        <tfoot>
+            <tr>
+                <td></td></tr></tfoot></table>
 */
 @layer css.table {
     table {
@@ -30,7 +42,7 @@
 
     /* --- size --- */
 
-    table :where(td, th) {
+    table:where(:not([data-print])) :where(td, th) {
         padding-block:  calc((var(--box-height) - var(--line-height)) / 2);
         padding-inline: var(--border-radius);
     }
@@ -40,72 +52,127 @@
 
     /* === data-border === */
 
-    table:where(:not([data-border]), [data-border="sectioned"]) thead tr:last-of-type :where(td, th) {
-        border-block-end:  var(--md-border-width) solid var(--color-ink);
-        padding-block-end: calc(((var(--md-box-height) - var(--md-line-height)) / 2) - var(--md-border-width));
+    table:where(:not([data-print])):where(:not([data-border]), [data-border="sectioned"]) thead tr:last-of-type :where(td, th) {
+        border-block-end:  var(--border-width) solid var(--color-ink);
+        padding-block-end: calc(((var(--box-height) - var(--line-height)) / 2) - var(--border-width));
     }
 
-    table:where(:not([data-border]), [data-border="sectioned"]) tbody th[scope="row"] {
-        border-inline-end: var(--md-border-width) solid var(--color-ink);
+    table:where(:not([data-print])):where(:not([data-border]), [data-border="sectioned"]) tbody th[scope="row"] {
+        border-inline-end: var(--border-width) solid var(--color-ink);
     }
 
-    table:where(:not([data-border]), [data-border="sectioned"]) tfoot tr:first-of-type :where(td, th) {
-        border-block-start:  var(--md-border-width) solid var(--color-ink);
-        padding-block-start: calc(((var(--md-box-height) - var(--md-line-height)) / 2) - var(--md-border-width));
+    table:where(:not([data-print])):where(:not([data-border]), [data-border="sectioned"]) tfoot tr:first-of-type :where(td, th) {
+        border-block-start:  var(--border-width) solid var(--color-ink);
+        padding-block-start: calc(((var(--box-height) - var(--line-height)) / 2) - var(--border-width));
     }
 
-    table[data-border="grid"] {
-        border-block-start:  var(--md-border-width) solid var(--color-ink);
-        border-inline-start: var(--md-border-width) solid var(--color-ink);
+    table:where(:not([data-print]))[data-border="grid"] {
+        border-block-start:  var(--border-width) solid var(--color-ink);
+        border-inline-start: var(--border-width) solid var(--color-ink);
     }
-    table[data-border="grid"] :where(td, th) {
-        border-block-end:  var(--md-border-width) solid var(--color-ink-mix);
-        border-inline-end: var(--md-border-width) solid var(--color-ink-mix);
-        padding-block-end: calc(((var(--md-box-height) - var(--md-line-height)) / 2) - var(--md-border-width));
+    table:where(:not([data-print]))[data-border="grid"] :where(td, th) {
+        border-block-end:  var(--border-width) solid var(--color-ink-mix);
+        border-inline-end: var(--border-width) solid var(--color-ink-mix);
+        padding-block-end: calc(((var(--box-height) - var(--line-height)) / 2) - var(--border-width));
     }
-    table[data-border="grid"] tr:last-child :where(td, th) {
+    table:where(:not([data-print]))[data-border="grid"] tr:last-child :where(td, th) {
         border-block-end-color: var(--color-ink);
     }
-    table[data-border="grid"] :where(td, th):last-child {
+    table:where(:not([data-print]))[data-border="grid"] :where(td, th):last-child {
         border-inline-end-color: var(--color-ink);
     }
 
-    table[data-border="booktabs"] {
-        border-block: var(--md-border-width) solid var(--color-ink);
+    table:where(:not([data-print]))[data-border="booktabs"] {
+        border-block: var(--border-width) solid var(--color-ink);
     }
-    table:where([data-border="booktabs"]) thead tr:last-of-type :where(td, th) {
-        border-block-end:  var(--md-border-width) solid var(--color-ink);
-        padding-block-end: calc(((var(--md-box-height) - var(--md-line-height)) / 2) - var(--md-border-width));
+    table:where(:not([data-print])):where([data-border="booktabs"]) thead tr:last-of-type :where(td, th) {
+        border-block-end:  var(--border-width) solid var(--color-ink);
+        padding-block-end: calc(((var(--box-height) - var(--line-height)) / 2) - var(--border-width));
     }
 
-    /* --- size --- */
+    /* === data-print === */
 
-    table:where([data-size]):where(:not([data-border]), [data-border="sectioned"], [data-border="booktabs"]) thead tr:last-of-type :where(td, th) {
-        border-block-end-width: var(--border-width);
-        padding-block-end:      calc(((var(--box-height) - var(--line-height)) / 2) - var(--border-width));
+    table[data-print] {
+        background-image:
+            linear-gradient(var(--color-ink), var(--color-ink)),
+            linear-gradient(var(--color-ink), var(--color-ink)),
+            linear-gradient(var(--color-ink), var(--color-ink)),
+            linear-gradient(var(--color-ink), var(--color-ink));
+        background-position-x: 0, 100%, 0, 0;
+        background-position-y: 0, 0, 0, 100%;
+        background-repeat:     no-repeat;
+        background-size:
+            var(--border-width) 100%,
+            var(--border-width) 100%,
+            100% var(--border-width),
+            100% var(--border-width);
+        border-style:          none;
+        display:               grid;
+        padding:               var(--border-width);
     }
-    table:where([data-size]):where(:not([data-border]), [data-border="sectioned"]) tbody th[scope="row"] {
-        border-inline-end-width: var(--border-width);
+    table[data-print]:where(:not([data-border]), [data-border="sectioned"]) {
+        background-image: none;
+        padding:          0;
     }
-    table:where([data-size]):where(:not([data-border]), [data-border="sectioned"]) tfoot tr:first-of-type :where(td, th) {
-        border-block-start-width: var(--border-width);
-        padding-block-start:      calc(((var(--box-height) - var(--line-height)) / 2) - var(--border-width));
+    table[data-print]:where([data-border="booktabs"]) {
+        background-size:
+            0 100%,
+            0 100%,
+            100% var(--border-width),
+            100% var(--border-width);
+        padding-inline: 0;
     }
-    table:where([data-size])[data-border="grid"] {
-        border-block-start-width:  var(--border-width);
-        border-inline-start-width: var(--border-width);
+
+    table[data-print] :where(thead, tbody, tfoot, tr) {
+        display: contents;
     }
-    table:where([data-size])[data-border="grid"] :where(td, th) {
-        border-block-end-width:  var(--border-width);
-        border-inline-end-width: var(--border-width);
-        padding-block-end:       calc(((var(--box-height) - var(--line-height)) / 2) - var(--border-width));
+    table[data-print] > caption {
+        grid-column-end:   -1;
+        grid-column-start: 1;
     }
-    table:where([data-size])[data-border="booktabs"] {
-        border-block-width: var(--border-width);
+    table[data-print] :where(td, th) {
+        border-style:   none;
+        padding-block:  calc((var(--box-height) - var(--line-height)) / 2);
+        padding-inline: var(--border-radius);
+        position:       relative;
+    }
+
+    table[data-print]:where([data-border="grid"]) :where(td, th):not(table > :last-child > tr:last-child > *)::after,
+    table[data-print]:where(:not([data-border]), [data-border="sectioned"], [data-border="booktabs"]) :where(thead > tr:last-child > :is(td, th))::after,
+    table[data-print]:where(:not([data-border]), [data-border="sectioned"]) :where(tbody:has(+ tfoot) > tr:last-child > :is(td, th))::after {
+        content:            "";
+        inset-block-end:    0;
+        inset-inline-end:   0;
+        inset-inline-start: 0;
+        position:           absolute;
+    }
+    table[data-print]:where([data-border="grid"]) :where(td, th):not(:last-child)::before,
+    table[data-print]:where(:not([data-border]), [data-border="sectioned"]) :where(tbody > tr > th[scope="row"])::before {
+        content:           "";
+        inset-block-end:   0;
+        inset-block-start: 0;
+        inset-inline-end:  0;
+        position:          absolute;
+    }
+
+    table[data-print] :where(td, th)::after {
+        background-color: var(--color-ink);
+        block-size:       var(--border-width);
+    }
+    table[data-print] :where(td, th)::before {
+        background-color: var(--color-ink);
+        inline-size:      var(--border-width);
+    }
+    table[data-print][data-border="grid"] :where(td, th)::after,
+    table[data-print][data-border="grid"] :where(td, th)::before {
+        background-color: var(--color-ink-mix);
     }
 
     /* === data-stripe === */
     table[data-stripe] tbody tr:nth-child(even) {
+        background-color: var(--color-paper-mix);
+    }
+    table[data-print][data-stripe] tbody tr:nth-child(even) > :where(td, th) {
         background-color: var(--color-paper-mix);
     }
 
@@ -113,7 +180,29 @@
     table[data-selectable] tbody tr:has(:checked) {
         outline-color: var(--color-emphasis-ink);
         outline-style: solid;
-        outline-width: var(--md-border-width);
+        outline-width: var(--border-width);
+    }
+    table[data-print][data-selectable] tbody tr:has(:checked) > :where(td, th)::after {
+        background-color:   transparent;
+        block-size:         auto;
+        border-block:       var(--border-width) solid var(--color-emphasis-ink);
+        content:            "";
+        inset-block-end:    0;
+        inset-block-start:  calc(var(--border-width) * -1);
+        inset-inline-end:   0;
+        inset-inline-start: 0;
+        position:           absolute;
+    }
+    table[data-print][data-selectable] tbody tr:has(:checked) > :where(td, th):first-child::after {
+        border-inline-start: var(--border-width) solid var(--color-emphasis-ink);
+        inset-inline-start:  calc(var(--border-width) * -1);
+    }
+    table[data-print][data-selectable] tbody tr:has(:checked) > :where(td, th):last-child::after {
+        border-inline-end: var(--border-width) solid var(--color-emphasis-ink);
+        inset-inline-end:  calc(var(--border-width) * -1);
+    }
+    table[data-print][data-selectable] > tbody:last-child > tr:last-child:has(:checked) > :where(td, th)::after {
+        inset-block-end: calc(var(--border-width) * -1);
     }
 
     @media (forced-colors: active) {
@@ -123,9 +212,6 @@
         table[data-selectable] tbody tr:has(:checked) {
             outline-color: Highlight;
         }
-    }
-
-    @media (forced-colors: active) {
         :where(table, table :is(td, th)) {
             border-color: CanvasText;
         }

@@ -73,9 +73,6 @@
 
     label > input[inputmode="numeric"]:has(+ span[data-step="block"]) {
         border-inline-end-width:   0;
-        border-inline-start-width: var(--md-border-width);
-    }
-    label > input[inputmode="numeric"]:has(+ span[data-step="block"]) {
         border-inline-start-width: var(--border-width);
     }
 

@@ -23,13 +23,11 @@
         display: inline flow-root;
     }
     label:has(> input[type="checkbox"][role="switch"])[data-axis="block"] > *:first-child {
-        display:    block;
-        text-align: center;
-    }
-    label:has(> input[type="checkbox"][role="switch"])[data-axis="block"] > *:first-child:not([data-size]) {
-        border-radius:  var(--md-border-radius);
-        border-width:   var(--md-border-width);
-        padding-bottom: calc(((var(--md-box-height) - var(--md-line-height)) / 2) - var(--md-border-width));
+        display:        block;
+        border-radius:  var(--border-radius);
+        border-width:   var(--border-width);
+        padding-bottom: calc(((var(--box-height) - var(--line-height)) / 2) - var(--border-width));
+        text-align:     center;
     }
 
     label > input[type="checkbox"][role="switch"] {
@@ -115,8 +113,8 @@
             border-width:       var(--border-width);
             font-size:          inherit;
             block-size:         calc(var(--box-height) - var(--border-width) * 4);
-            inset-inline-start: var(--border-width);
             inline-size:        calc(var(--box-height) - var(--border-width) * 4);
+            inset-inline-start: var(--border-width);
         }
 
         &:checked::after {

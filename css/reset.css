@@ -34,16 +34,16 @@
 
     /* Fix mobile Safari increase font-size on landscape mode */
     html, :host { /* per tailwind-preflight.css:28-51 */
+        line-break: strict; /* per kiso.css:36 */
+        line-height: var(--md-line-height); /* per tailwind-preflight.css:28-51 */
+        overflow-wrap: anywhere; /* per kiso.css:39 */
+        tab-size: 4; /* per tailwind-preflight.css:28-51 */
+        -webkit-tap-highlight-color: transparent; /* per kiso.css:55 */
+        text-autospace: normal; /* per kiso.css:33 */
         -moz-text-size-adjust: none;
         -webkit-text-size-adjust: none;
         text-size-adjust: none;
-        line-height: var(--md-line-height); /* per tailwind-preflight.css:28-51 */
-        tab-size: 4; /* per tailwind-preflight.css:28-51 */
         text-spacing-trim: trim-start; /* per kiso.css:30 */
-        text-autospace: normal; /* per kiso.css:33 */
-        line-break: strict; /* per kiso.css:36 */
-        overflow-wrap: anywhere; /* per kiso.css:39 */
-        -webkit-tap-highlight-color: transparent; /* per kiso.css:55 */
     }
 
     html:focus-within { /* per modern-reset.css */
@@ -84,8 +84,8 @@
     }
 
     hr { /* per tailwind-preflight.css:53-63 */
-        border-block-start-width: 1px;
         border-block-start-style: solid;
+        border-block-start-width: 1px;
         height: 0;
     }
 
@@ -174,8 +174,8 @@
     /* removes spacing between cells in tables */
     table {
         border-collapse: collapse;
-        text-indent: 0; /* per tailwind-preflight.css:162-172 */
         border-color: inherit; /* per tailwind-preflight.css:162-172 */
+        text-indent: 0; /* per tailwind-preflight.css:162-172 */
     }
 
     /* Safari - solving issue when using user-select:none on the <body> text input doesn't working */
@@ -203,8 +203,8 @@
 
     /* revert the 'white-space' property for textarea elements on Safari */
     textarea {
-        white-space: revert;
         resize: block; /* per kiso.css:381 */
+        white-space: revert;
     }
 
     input:not([type="button"], [type="submit"], [type="reset"]), textarea, [contenteditable] { /* per kiso.css:384-391 */
@@ -212,12 +212,12 @@
     }
 
     ::file-selector-button { /* per tailwind-preflight.css:236-257 */
+        background-color: unset; /* per kiso.css:393-400 */
         color: inherit;
         font: inherit;
         font-feature-settings: inherit;
         font-variation-settings: inherit;
         letter-spacing: inherit;
-        background-color: unset; /* per kiso.css:393-400 */
     }
 
     :where(
@@ -257,8 +257,8 @@
 
     ::-webkit-inner-spin-button,
     ::-webkit-outer-spin-button { /* per tailwind-preflight.css:383-390 */
-        height: auto;
         appearance: none;
+        height: auto;
         margin: 0;
     }
 
@@ -266,10 +266,10 @@
        - fix for the content editable attribute will work properly.
        - webkit-user-select: auto; added for Safari in case of using user-select:none on wrapper element*/
     :where([contenteditable]:not([contenteditable="false"])) {
+        -webkit-line-break: after-white-space;
+        overflow-wrap: break-word;
         -moz-user-modify: read-write;
         -webkit-user-modify: read-write;
-        overflow-wrap: break-word;
-        -webkit-line-break: after-white-space;
         -webkit-user-select: auto;
     }
 

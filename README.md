@@ -244,3 +244,4 @@ In a `th`, the three radios are descending, ascending and unsorted, drawn as ▼
 |-|-|-|
 | `table` | `data-border` | `sectioned` (default) / `grid` / `booktabs`; rule style ([table.css](./css/table.css)) |
 | `table` | `data-stripe`, `data-selectable` | boolean; zebra striping, row selection ([table.css](./css/table.css)) |
+| `table` | `data-print` | boolean; grid layout whose rules take no layout space, for print forms. Set `grid-template-columns` in use ([table.css](./css/table.css)) |

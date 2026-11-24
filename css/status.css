@@ -30,13 +30,13 @@
 
     /* === color, layout === */
 
-    :where(:is([role="alert"], [role="status"]):not([data-surround], [data-style], [data-type="toast"] > *)) {
-        border-style:     solid;
+    :where(:is([role="alert"], [role="status"]):not([data-surround], [data-style], [data-type="toast"] > *, [data-sign])) {
         border-radius:    0;
+        border-style:     solid;
         margin-block-end: var(--border-width);
     }
 
-    :where([role="alert"]:not([data-surround], [data-style], [data-type="toast"] > *)) {
+    :where([role="alert"]:not([data-surround], [data-style], [data-type="toast"] > *, [data-sign])) {
         border-color: var(--color-error);
     }
     :where([role="alert"]:not([data-surround], [data-style], [data-type="toast"] > *)):where([data-inline-align="start"])::before,
@@ -44,7 +44,7 @@
         background-color: var(--color-error);
     }
 
-    :where([role="status"]:not([data-surround], [data-style], [data-type="toast"] > *)) {
+    :where([role="status"]:not([data-surround], [data-style], [data-type="toast"] > *, [data-sign])) {
         border-color: var(--color-success);
     }
     :where([role="status"]:not([data-surround], [data-style], [data-type="toast"] > *)):where([data-inline-align="start"])::before,
