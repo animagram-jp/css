@@ -3,6 +3,12 @@
  * SPDX-License-Identifier: Apache-2.0
  */
 
+/*  Usage:
+
+    <* data-surround="fill | outline | transparent"></*>
+
+    <* data-style="underline"></*>
+*/
 @layer css.data_style {
 
     /* === surround fill style === */
@@ -15,7 +21,7 @@
             [type="submit"],
             [type="reset"],
             [data-type="toast"] > *
-        ):not([data-surround])
+        ):not([data-surround], [data-style="underline"])
     ) {
         background-color: var(--color-emphasis-ink);
         border-color:     transparent;
@@ -34,7 +40,7 @@
             [type="submit"],
             [type="reset"],
             [data-type="toast"] > *
-        ):not([data-surround])
+        ):not([data-surround], [data-style="underline"])
     ) > ::selection,
     :where(
         [data-surround="fill"],
@@ -44,7 +50,7 @@
             [type="submit"],
             [type="reset"],
             [data-type="toast"] > *
-        ):not([data-surround])
+        ):not([data-surround], [data-style="underline"])
     )::selection,
     :where(
         [data-surround="fill"],
@@ -54,7 +60,7 @@
             [type="submit"],
             [type="reset"],
             [data-type="toast"] > *
-        ):not([data-surround])
+        ):not([data-surround], [data-style="underline"])
     ) > mark {
         background-color: var(--color-highlight-paper);
         color:             var(--color-ink);
@@ -174,13 +180,9 @@
         :where([role="menu"], [role="listbox"]) > label:has(> input[role]:not(:disabled, [aria-disabled="true"])),
         [popovertarget]:not([data-surround])
     ) {
-        &:active {
+        &:where(:active, [aria-pressed="true"]) {
             outline-color: var(--color-focus);
             outline-style: solid;
-        }
-
-        &:where(:user-invalid, [aria-invalid="true"]):active {
-            outline-color: var(--color-error);
         }
 
         @media (hover: hover) {
@@ -188,14 +190,15 @@
                 outline-color: var(--color-focus);
                 outline-style: solid;
             }
+        }
 
-            &:where(:user-invalid, [aria-invalid="true"]):hover {
-                outline-color: var(--color-error);
-            }
+        &:is(:user-invalid, [aria-invalid="true"]) {
+            outline-color: var(--color-error);
+            outline-style: solid;
         }
 
         @media (forced-colors: active) {
-            &:where(:user-invalid, [aria-invalid="true"]):where(:hover, :active) {
+            &:is(:user-invalid, [aria-invalid="true"]) {
                 outline-color: Mark;
             }
         }
@@ -236,10 +239,7 @@
 
     *:focus-visible,
     [data-union] > label:has(> input:is([type="radio"], [type="checkbox"]):focus-visible),
-    :where(input[type="checkbox"], input[type="radio"]):where(
-        :hover,
-        :active
-    ) {
+    :where(input[type="checkbox"], input[type="radio"]):where(:active) {
         outline-color:  var(--color-focus);
         outline-offset: 0;
         outline-style:  solid;
@@ -263,6 +263,14 @@
     }
 
     @media (hover: hover) {
+        :where(input[type="checkbox"], input[type="radio"]):where(:hover) {
+            outline-color:  var(--color-focus);
+            outline-offset: 0;
+            outline-style:  solid;
+            outline-width:  0.25rem;
+            z-index:        1;
+        }
+
         :where(a, button, [type="button"], [type="submit"], [type="reset"], summary):hover,
         [data-union] > label:has(> input:is([type="radio"], [type="checkbox"])):hover {
             text-decoration-color:     currentColor;
@@ -311,7 +319,7 @@
         [type="button"],
         [type="submit"],
         [type="reset"]
-    ):not([data-surround]):where(:active, [aria-pressed="true"]),
+    ):not([data-surround], [data-style="underline"]):where(:active, [aria-pressed="true"]),
     [data-union] > label[data-surround="fill"]:has(> input:is([type="radio"], [type="checkbox"]):checked) {
         background-color: var(--color-emphasis-ink-mix);
         border-color:     transparent;
@@ -328,10 +336,15 @@
     :where(
         a:any-link,
         summary
-    ):is(
-        [data-style="underline"],
-        :not([data-surround])
-    ):where(:active, [aria-pressed="true"]),
+    ):not([data-surround]):where(:active, [aria-pressed="true"]),
+    :where(
+        a:any-link,
+        button,
+        [type="button"],
+        [type="submit"],
+        [type="reset"],
+        summary
+    )[data-style="underline"]:where(:active, [aria-pressed="true"]),
     [data-union] > label:where(:not([data-surround]), [data-surround="outline"]):has(> input:is([type="radio"], [type="checkbox"]):checked) {
         border-color: var(--color-emphasis-ink-mix);
         color:        var(--color-emphasis-ink-mix);
@@ -383,7 +396,7 @@
                 [type="submit"],
                 [type="reset"],
                 [data-type="toast"] > *
-            ):not([data-surround])
+            ):not([data-surround], [data-style="underline"])
     )):where(
         :disabled,
         [aria-disabled="true"],
@@ -402,7 +415,7 @@
                 [type="submit"],
                 [type="reset"],
                 [data-type="toast"] > *
-            ):not([data-surround])
+            ):not([data-surround], [data-style="underline"])
     )):where(
         :disabled,
         [aria-disabled="true"]
@@ -419,7 +432,7 @@
             [type="submit"],
             [type="reset"],
             [data-type="toast"] > *
-        ):not([data-surround])
+        ):not([data-surround], [data-style="underline"])
     ):where(
         :disabled, 
         [aria-disabled="true"], 

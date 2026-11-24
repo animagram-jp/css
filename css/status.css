@@ -1,0 +1,85 @@
+/*
+ * SPDX-FileCopyrightText: 2026 Andyou <andyou@animagram.jp>
+ * SPDX-License-Identifier: Apache-2.0
+ */
+
+/*  Usage:
+
+    <* role="alert | status"></*>
+
+    <label></label>
+    <p role="alert"><strong>Error:</strong></p>
+    <input type="text" aria-invalid="true">
+
+    <label>
+        <p role="alert"><strong>Error:</strong></p>
+        <input type="text" aria-invalid="true"></label>
+
+    <section role="alert">
+        <h2>There is a problem</h2>
+        <p>optional description</p>
+        <ul>
+            <li><a>Enter your name</a></li>
+            <li><a>Date of birth must be a real date</a></li></ul></section>
+
+    <section role="status">
+        <h2>Success</h2>
+        <p>optional description</p></section>
+ */
+@layer css.status {
+
+    /* === color, layout === */
+
+    :where(:is([role="alert"], [role="status"]):not([data-surround], [data-style], [data-type="toast"] > *)) {
+        border-style:     solid;
+        border-radius:    0;
+        margin-block-end: var(--border-width);
+    }
+
+    :where([role="alert"]:not([data-surround], [data-style], [data-type="toast"] > *)) {
+        border-color: var(--color-error);
+    }
+    :where([role="alert"]:not([data-surround], [data-style], [data-type="toast"] > *)):where([data-inline-align="start"])::before,
+    :where([role="alert"]:not([data-surround], [data-style], [data-type="toast"] > *)):not([data-inline-align="start"])::after {
+        background-color: var(--color-error);
+    }
+
+    :where([role="status"]:not([data-surround], [data-style], [data-type="toast"] > *)) {
+        border-color: var(--color-success);
+    }
+    :where([role="status"]:not([data-surround], [data-style], [data-type="toast"] > *)):where([data-inline-align="start"])::before,
+    :where([role="status"]:not([data-surround], [data-style], [data-type="toast"] > *)):not([data-inline-align="start"])::after {
+        background-color: var(--color-success);
+    }
+
+    :where(:is([role="alert"], [role="status"]):not([data-surround], [data-style], [data-type="toast"] > *)) > ul {
+        list-style: none;
+    }
+
+    :where(:is([role="alert"], [role="status"]):not([data-surround], [data-style], [data-type="toast"] > *)) > ul > li > a {
+        color:       var(--color-ink);
+        font-weight: bold;
+    }
+
+    /* --- focus --- */
+
+    /* --- visited, hover, active --- */
+
+    :where(:is([role="alert"], [role="status"]):not([data-surround], [data-style], [data-type="toast"] > *)) > ul > li > a:where(:visited, :active) {
+        color: var(--color-ink);
+    }
+
+    @media (hover: hover) {
+        :where(:is([role="alert"], [role="status"]):not([data-surround], [data-style], [data-type="toast"] > *)) > ul > li > a:where(:hover) {
+            color: var(--color-ink);
+        }
+    }
+
+    /* === forced-colors === */
+
+    @media (forced-colors: active) {
+        :where(:is([role="alert"], [role="status"]):not([data-surround], [data-style], [data-type="toast"] > *)) > ul > li > a {
+            color: LinkText;
+        }
+    }
+}

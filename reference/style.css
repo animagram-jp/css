@@ -4,12 +4,24 @@
  * SPDX-License-Identifier: Apache-2.0 AND MIT
  */
 
+@media (forced-colors: none) {
+    :root {
+        --rgb-animagram: 91 47 145;
+
+        --color-emphasis-ink: light-dark(rgb(var(--rgb-animagram)), oklch(from rgb(var(--rgb-animagram)) 0.780 0.113 h));
+    }
+}
+
 body > header {
     container-type: inline-size;
     margin-block:   1rem;
 
     & > * {
         vertical-align: middle;
+    }
+
+    & > nav {
+        display: block;
     }
 }
 
@@ -134,7 +146,9 @@ label:has(> input[aria-controls]) > input[type="password"] {
 
 /* tabpanel: show only the panel labelled by the checked tab. */
 body:has(#tab-1:checked) #tabpanel-1,
-body:has(#tab-2:checked) #tabpanel-2 {
+body:has(#tab-2:checked) #tabpanel-2,
+body:has(#tab-3:checked) #tabpanel-3,
+body:has(#tab-4:checked) #tabpanel-4 {
     display: block;
 }
 
