@@ -39,6 +39,5 @@
     hgroup[data-axis="inline"] > p {
         display:        inline flow-root;
         vertical-align: baseline;
-        white-space:    pre-wrap;
     }
 }

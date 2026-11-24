@@ -107,8 +107,8 @@ UD(個人や状況に依らず機能する)の網羅性の程度も、機能品�
 | immediate select (search) | Combobox(ARIA APG) | hover, focus, tap (track) | :hover, :focus | key input, arrow key | highlight (option) | enter, tap(option) | - |
 | immediate slider | - | hover / focus, pointer down | label, :hover / :focus, :active | arrow key, pointer move | track & knob | - | - |
 | immediate slider (rate) | Rate(Ant Design) | hover, focus | label, :hover, :focus | arrow key, pointer move | :hover (preview) | enter, tap | fill / outline elements |
-| form | form(HTML Living Standard) | (P2 components) | label, boundary | (P2 components) | (confirm dialog) | enter, tap(submit button) | error summary, detail |
-| multi-step form | Steps+Form(Ant Design) | (P2 components) | label, boundary, step indicator | (P2 components), proceed & back button | label, boundary, step indicator, error summary, detail | enter, tap(submit button) | (success toast, error modal) |
+| form | form(HTML Living Standard) | (P2 components) | label, boundary | (P2 components) | (confirm dialog) | enter, tap(submit button) | error summary, error message |
+| multi-step form | Steps+Form(Ant Design) | (P2 components) | label, boundary, step indicator | (P2 components), proceed & back button | label, boundary, step indicator, error summary, error message | enter, tap(submit button) | (success toast, error modal) |
 
 # P2 components
 

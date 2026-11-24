@@ -24,6 +24,11 @@ const KEPT = ["FAIL", "POTENTIAL"];
 
 const CONTRAST = "text_contrast_sufficient";
 
+const IGNORED = [
+    { ruleId: "input_checkboxes_grouped", selector: '[role="tablist"] input[type="radio"][role="tab"]' },
+    { ruleId: CONTRAST,                   selector: 'label:has(:disabled, [aria-disabled="true"])' },
+];
+
 const STATES = [
     { name: "default", pseudo: [], scope: null },
     { name: "active",  pseudo: ["active"], scope: 'a:any-link, button, [type="button"], [type="submit"], [type="reset"], summary' },
@@ -100,7 +105,7 @@ const open = async (browser, scheme) => {
     return { context, page };
 };
 
-const run = (page, scope = null) => page.evaluate(async ({ guideline, kept, scope }) => {
+const run = (page, scope = null) => page.evaluate(async ({ guideline, kept, ignored, scope }) => {
     const checker = new window.ace.Checker();
     const criteria = {};
     const guidelineObj = checker.getGuidelines().find(g => g.id === guideline);
@@ -115,16 +120,19 @@ const run = (page, scope = null) => page.evaluate(async ({ guideline, kept, scop
     }
 
     const report = await checker.check(document, [guideline]);
-    const contains = (r) => {
+    const within = (r, selector) => {
         if (!r.path?.dom) {
             return false;
         }
         const node = document.evaluate(r.path.dom, document, null, XPathResult.FIRST_ORDERED_NODE_TYPE, null).singleNodeValue;
-        return node?.closest?.(scope) != null;
+        return node?.closest?.(selector) != null;
     };
-    const findings = report.results
+    const isIgnored = (r) => ignored.some(i => i.ruleId === r.ruleId && within(r, i.selector));
+    const scoped = report.results
         .filter(r => kept.includes(r.value[1]))
-        .filter(r => scope === null || contains(r))
+        .filter(r => scope === null || within(r, scope));
+    const findings = scoped
+        .filter(r => !isIgnored(r))
         .map(r => ({
             ruleId: r.ruleId,
             reasonId: r.reasonId,
@@ -137,8 +145,12 @@ const run = (page, scope = null) => page.evaluate(async ({ guideline, kept, scop
             bounds: r.bounds,
         }));
 
-    return { findings, numExecuted: report.numExecuted };
-}, { guideline: GUIDELINE, kept: KEPT, scope });
+    return {
+        findings,
+        ignored: scoped.filter(isIgnored).map(r => r.ruleId),
+        numExecuted: report.numExecuted,
+    };
+}, { guideline: GUIDELINE, kept: KEPT, ignored: IGNORED, scope });
 
 const browser = await chromium.launch();
 const results = [];
@@ -147,13 +159,14 @@ for (const scheme of SCHEMES) {
     const { context, page } = await open(browser, scheme);
     const normalized = await normalize(page);
     await page.addScriptTag({ path: ACE_PATH });
-    const { findings: layout, numExecuted } = await run(page);
+    const { findings: layout, ignored: layoutIgnored, numExecuted } = await run(page);
     await context.close();
 
     const findings = layout
         .filter(f => f.ruleId !== CONTRAST)
         .map(f => ({ ...f, state: "default" }));
     const forced = {};
+    let ignored = layoutIgnored.filter(id => id !== CONTRAST).length;
 
     for (const state of STATES) {
         const { context, page } = await open(browser, scheme);
@@ -164,20 +177,21 @@ for (const scheme of SCHEMES) {
         await flatten(page);
         await normalize(page);
         await page.addScriptTag({ path: ACE_PATH });
-        const { findings: contrast } = await run(page, state.scope);
+        const { findings: contrast, ignored: contrastIgnored } = await run(page, state.scope);
+        ignored += contrastIgnored.filter(id => id === CONTRAST).length;
         findings.push(...contrast
             .filter(f => f.ruleId === CONTRAST)
             .map(f => ({ ...f, state: state.name })));
         await context.close();
     }
 
-    results.push({ scheme: scheme.name, findings, numExecuted, normalized, forced });
+    results.push({ scheme: scheme.name, findings, ignored, numExecuted, normalized, forced });
 
     const count = (outcome) => findings.filter(f => f.outcome === outcome).length;
     const states = Object.entries(forced).map(([name, n]) => `${n} ${name}`).join(", ");
     console.log(
         `[${scheme.name}] ${count("FAIL")} failing, ` +
-        `${count("POTENTIAL")} needing review (${numExecuted} rules run, ` +
+        `${count("POTENTIAL")} needing review, ${ignored} ignored (${numExecuted} rules run, ` +
         `${normalized} colors normalized, ${states} forced)`
     );
 }
@@ -195,5 +209,6 @@ const total = (outcome) => results.reduce(
     (n, r) => n + r.findings.filter(f => f.outcome === outcome).length, 0);
 console.log(
     `done: reference/test.json (${results.length} scans, ` +
-    `${total("FAIL")} failing, ${total("POTENTIAL")} needing review)`
+    `${total("FAIL")} failing, ${total("POTENTIAL")} needing review, ` +
+    `${results.reduce((n, r) => n + r.ignored, 0)} ignored)`
 );

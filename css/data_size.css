@@ -136,8 +136,8 @@
             summary,
             textarea,
             [data-type="toast"] > *,
-            section[data-type="error-summary"],
-            p[data-type="error"]
+            section[role="alert"],
+            p:has(+ :where(:user-invalid, [aria-invalid="true"]))
         ):not([data-surround])
     ) {
         border-radius:  var(--border-radius);

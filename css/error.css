@@ -5,118 +5,72 @@
 
 /*  Usage:
 
-    <section data-type="error-summary">
+    <label></label>
+    <p><strong>Error:</strong></p>
+    <input type="text" aria-invalid="true">
+
+    <label>
+        <p><strong>Error:</strong></p>
+        <input type="text" aria-invalid="true"></label>
+
+    <section role="alert">
         <h2>There is a problem</h2>
         <p>optional description</p>
         <ul>
             <li><a>Enter your name</a></li>
             <li><a>Date of birth must be a real date</a></li></ul></section>
-
-    <label></label>
-    <p data-type="error"><strong>Error:</strong></p>
-    <input type="text" aria-invalid="true">
-
-    <label>
-        <p data-type="error"><strong>Error:</strong></p>
-        <input type="text" aria-invalid="true"></label>
  */
 @layer css.error {
 
-    /* === error summary (section[data-type="error-summary"]) === */
+    /* === error message === */
 
     /* === color, layout === */
 
-    section[data-type="error-summary"] {
+    p:has(+ :where(:user-invalid, [aria-invalid="true"])) {
+        margin-block-end: var(--border-width);
+    }
+    p:has(+ :where(:user-invalid, [aria-invalid="true"])):where([data-inline-align="start"])::before,
+    p:has(+ :where(:user-invalid, [aria-invalid="true"])):not([data-inline-align="start"])::after {
+        background-color: var(--color-error);
+    }
+
+    /* === error summary === */
+
+    /* === color, layout === */
+
+    section[role="alert"] {
         border-color:  var(--color-error);
         border-style:  solid;
         border-radius: 0;
-        color:         var(--color-ink);
-        margin:        0;
     }
 
-    section[data-type="error-summary"] > h2 {
-        font-size:      var(--lg-font-size);
-        font-weight:    bold;
-        letter-spacing: var(--lg-letter-spacing);
-        line-height:    var(--lg-line-height);
-        margin-block:   0 1rem;
+    section[role="alert"] > ul {
+        list-style: none;
     }
 
-    section[data-type="error-summary"] > p {
-        margin-block: 0 1rem;
-    }
-
-    section[data-type="error-summary"] > ul {
-        list-style:   none;
-        margin-block: 0;
-        padding:      0;
-    }
-
-    section[data-type="error-summary"] > ul > li {
-        padding-block-end: 0.25rem; /* = outline-width */
-    }
-
-    section[data-type="error-summary"] > ul > li + li {
-        padding-block-start: 0.25rem; /* = outline-width *2 */
-    }
-
-    section[data-type="error-summary"] > *:last-child {
-        margin-block-end: 0;
-    }
-
-    section[data-type="error-summary"] > ul > li > a {
-        color:                     var(--color-ink);
-        font-weight:               bold;
-        text-decoration-color:     currentColor;
-        text-decoration-line:      underline;
-        text-decoration-thickness: 0.125rem;
-        text-underline-offset:     0.3em;
+    section[role="alert"] > ul > li > a {
+        color:       var(--color-ink);
+        font-weight: bold;
     }
 
     /* --- focus --- */
 
     /* --- visited, hover, active --- */
 
-    section[data-type="error-summary"] > ul > li > a:where(:visited, :active) {
+    section[role="alert"] > ul > li > a:where(:visited, :active) {
         color: var(--color-ink);
     }
 
-    section[data-type="error-summary"] > ul > li > a:where(:active) {
-        text-decoration-thickness: 0.25rem;
-    }
-
     @media (hover: hover) {
-        section[data-type="error-summary"] > ul > li > a:where(:hover) {
-            color:                     var(--color-ink);
-            text-decoration-thickness: 0.25rem;
+        section[role="alert"] > ul > li > a:where(:hover) {
+            color: var(--color-ink);
         }
-    }
-
-    /* === error message (p[data-type="error"]) === */
-
-    /* === color, layout === */
-
-    p[data-type="error"] {
-        clear:       both; /* per govuk: stay clear of a floated hint */
-        color:       var(--color-ink);
-        font-weight: bold;
-        margin:      0 0 0.5rem 0;
-    }
-    p[data-type="error"]:where([data-inline-align="start"])::before,
-    p[data-type="error"]:not([data-inline-align="start"])::after {
-        background-color: var(--color-error);
     }
 
     /* === forced-colors === */
 
     @media (forced-colors: active) {
-        p[data-type="error"] {
-            color: CanvasText;
-        }
-        section[data-type="error-summary"] {
-            border-color: Mark;
-        }
-        section[data-type="error-summary"] > ul > li > a {
+        section[role="alert"] > ul > li > a {
             color: LinkText;
         }
     }
