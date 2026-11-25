@@ -6,11 +6,13 @@
 /*  Usage:
 
     <label>
+        <span></span>
         <button type="button" data-sign="minus"></button>
         <input type="text" inputmode="numeric" role="spinbutton">
         <button type="button" data-sign="plus"></button></label>
 
     <label>
+        <span></span>
         <input type="text" inputmode="numeric" role="spinbutton">
         <span data-step="block">
             <button type="button" data-sign="plus"></button>

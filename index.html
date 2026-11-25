@@ -623,17 +623,20 @@
             <section>
                 <h2>Step</h2>
                 <section data-sign="rule">
-                    <label aria-label="value" data-union="inline">
+                    <label data-union="inline">
+                        <span>inline</span>
                         <button tabindex="-1" type="button" aria-label="decrement" data-sign="minus"></button>
-                        <input inputmode="numeric" pattern="[0-9]*" role="spinbutton" size="4" type="text" value="10" aria-label="value">
+                        <input inputmode="numeric" pattern="[0-9]*" role="spinbutton" size="4" type="text" value="10">
                         <button tabindex="-1" type="button" aria-label="increment" data-sign="plus"></button></label>
-                    <label aria-label="value" data-union="inline">
-                        <input inputmode="numeric" pattern="[0-9]*" role="spinbutton" size="4" type="text" value="10" aria-label="value">
+                    <label data-union="inline">
+                        <span>block</span>
+                        <input inputmode="numeric" pattern="[0-9]*" role="spinbutton" size="4" type="text" value="10">
                         <span data-step="block">
                             <button tabindex="-1" type="button" aria-label="increment" data-sign="plus"></button>
                             <button tabindex="-1" type="button" aria-label="decrement" data-sign="minus"></button></span></label>
-                    <label aria-label="value" data-union="inline">
-                        <input inputmode="numeric" pattern="[0-9]*" role="spinbutton" size="4" type="text" value="10" aria-label="value" data-size="lg">
+                    <label data-union="inline">
+                        <span>block lg</span>
+                        <input inputmode="numeric" pattern="[0-9]*" role="spinbutton" size="4" type="text" value="10" data-size="lg">
                         <span data-step="block">
                             <button tabindex="-1" type="button" aria-label="increment" data-sign="plus" data-size="lg"></button>
                             <button tabindex="-1" type="button" aria-label="decrement" data-sign="minus" data-size="lg"></button></span></label></section>
