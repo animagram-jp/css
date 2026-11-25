@@ -17,21 +17,20 @@
     size:   A4;
 }
 
-@media screen {
+@media screen and (min-width: 210mm) {
     :root[data-print] {
         --page-margin-block: 15mm;
 
         & body {
-            inline-size:    210mm;
-            margin-inline:  auto;
-            padding-inline: 15mm;
+            margin-inline:   auto;
+            max-inline-size: 210mm;
+            padding-inline:  15mm;
         }
     }
 }
 
 body > header {
     container-type: inline-size;
-    margin-block:   1rem;
 
     & > * {
         vertical-align: middle;
