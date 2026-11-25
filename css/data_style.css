@@ -180,27 +180,27 @@
         :where([role="menu"], [role="listbox"]) > label:has(> input[role]:not(:disabled, [aria-disabled="true"])),
         [popovertarget]:not([data-surround])
     ) {
-        &:where(:active, [aria-pressed="true"]) {
-            outline-color: var(--color-focus);
-            outline-style: solid;
-        }
-
         @media (hover: hover) {
-            &:hover {
+            &:where(:hover) {
                 outline-color: var(--color-focus);
                 outline-style: solid;
             }
         }
 
-        &:is(:user-invalid, [aria-invalid="true"]) {
+        &:where(:user-invalid, [aria-invalid="true"]) {
             outline-color: var(--color-error);
             outline-style: solid;
         }
 
         @media (forced-colors: active) {
-            &:is(:user-invalid, [aria-invalid="true"]) {
+            &:where(:user-invalid, [aria-invalid="true"]) {
                 outline-color: Mark;
             }
+        }
+
+        &:where(:active, [aria-pressed="true"]) {
+            outline-color: var(--color-focus);
+            outline-style: solid;
         }
     }
 
