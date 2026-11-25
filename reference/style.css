@@ -12,6 +12,23 @@
     }
 }
 
+@page {
+    margin: 15mm;
+    size:   A4;
+}
+
+@media screen {
+    :root[data-print] {
+        --page-margin-block: 15mm;
+
+        & body {
+            inline-size:    210mm;
+            margin-inline:  auto;
+            padding-inline: 15mm;
+        }
+    }
+}
+
 body > header {
     container-type: inline-size;
     margin-block:   1rem;
