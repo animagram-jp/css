@@ -1,0 +1,108 @@
+/*
+ * SPDX-FileCopyrightText: 2026 Andyou <andyou@animagram.jp>
+ * SPDX-License-Identifier: Apache-2.0
+ */
+
+/*  Usage:
+
+    <span data-cycle>
+        <input name="" type="radio" aria-label="" data-sign="">
+        <input name="" type="radio" aria-label="" data-sign="">
+        <input name="" type="radio" aria-label="" data-sign=""></span>
+
+    <th>
+        <span data-cycle>
+            <input name="" type="radio" value="" aria-label="">
+            <input name="" type="radio" value="" aria-label="">
+            <input name="" type="radio" value="" aria-label=""></span></th>
+*/
+@layer css.cycle {
+
+    [data-cycle] {
+        border-radius:  var(--border-radius);
+        display:        inline grid;
+        vertical-align: middle;
+    }
+
+    [data-cycle] > input[type="radio"] {
+        grid-area:     1 / 1;
+        opacity:       0;
+        outline-style: none;
+        z-index:       0;
+    }
+
+    [data-cycle] > input[type="radio"]:checked,
+    [data-cycle]:not(:has(> input[type="radio"]:checked)) > input[type="radio"]:last-child {
+        opacity: 1;
+    }
+
+    [data-cycle] > input[type="radio"]:checked + input[type="radio"],
+    [data-cycle]:not(:has(> input[type="radio"]:checked:not(:last-child))) > input[type="radio"]:first-child {
+        z-index: 1;
+    }
+
+    [data-cycle]:has(> input[type="radio"]:focus-visible) {
+        outline-color:  var(--color-focus);
+        outline-offset: 0;
+        outline-style:  solid;
+        outline-width:  0.25rem;
+    }
+
+    @media (hover: hover) {
+        [data-cycle]:hover {
+            outline-color:  var(--color-focus);
+            outline-offset: 0;
+            outline-style:  solid;
+            outline-width:  0.25rem;
+        }
+    }
+
+    th:has(> [data-cycle]) {
+        white-space: nowrap;
+    }
+
+    th > [data-cycle] {
+        margin-block:        calc((var(--line-height) - var(--box-height)) / 2);
+        margin-inline-start: calc(var(--border-radius) / 2);
+        vertical-align:      top;
+    }
+
+    th > [data-cycle] > input[type="radio"] {
+        background-color: transparent;
+        block-size:       var(--box-height);
+        border:           0;
+        border-radius:    0;
+        inline-size:      var(--box-height);
+    }
+
+    th > [data-cycle] > input[type="radio"]:last-child {
+        color: var(--color-ink-mix);
+    }
+
+    th > [data-cycle] > input[type="radio"]::after {
+        background-color: currentColor;
+        block-size:       calc(var(--box-height) * sqrt(3) / 4);
+        border-radius:    0;
+        content:          "";
+        inline-size:      calc(var(--box-height) / 2);
+        inset:            0;
+        margin:           auto;
+        position:         absolute;
+    }
+
+    th > [data-cycle] > input[type="radio"]:first-child::after {
+        clip-path: polygon(0 0, 100% 0, 50% 100%);
+    }
+    th > [data-cycle] > input[type="radio"]:nth-child(2)::after {
+        clip-path: polygon(50% 0, 100% 100%, 0 100%);
+    }
+    th > [data-cycle] > input[type="radio"]:last-child::after {
+        clip-path: polygon(evenodd, 0 0, 100% 0, 50% 100%, 0 0, 15% 10%, 50% 80%, 85% 10%, 15% 10%);
+    }
+
+    @media (forced-colors: active) {
+        th > [data-cycle] > input[type="radio"]::after {
+            background-color: ButtonText;
+        }
+    }
+}

@@ -47,8 +47,8 @@
 */
 @layer css.radio {
     fieldset:has(> label > input[type="radio"]):not([data-union]) {
-        display: grid;
         border:  none;
+        display: grid;
         gap:     0.5rem;
     }
 
@@ -87,8 +87,8 @@
 
     fieldset:has(> label > input[type="radio"]) > *:not(legend, label) {
         grid-column:     1 / -1;
-        min-inline-size: 0;
         margin:          0;
+        min-inline-size: 0;
     }
 
     fieldset:has(> label > input[type="radio"]):where([data-axis="block"], :not([data-axis])):not([data-union]) > legend > *,
@@ -100,17 +100,17 @@
 
     fieldset:has(> label > input[type="radio"])[data-axis="inline"] > legend > *,
     fieldset:has(> label > input[type="radio"])[data-axis="inline"] > *:not(legend, label) {
+        align-self:  center;
         grid-column: 1;
         grid-row:    1 / -1;
-        align-self:  center;
     }
 
     fieldset:has(> label > input[type="radio"]) > label {
         display:         inline-flex;
-        justify-content: space-between;
         align-items:     center;
         gap:             0.5rem;
         inline-size:     100%;
+        justify-content: space-between;
     }
     fieldset:has(> label > input[type="radio"]) > label > input[type="radio"] {
         flex-shrink: 0;

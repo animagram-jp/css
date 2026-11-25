@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-print>
 <head>
     <meta charset="UTF-8">
     <meta content="width=device-width,initial-scale=1" name="viewport">
@@ -814,6 +814,66 @@
                             <tr>
                                 <th scope="row">Row</th>
                                 <td>Cell</td>
+                                <td>Cell</td></tr></tbody></table></section>
+                <section data-sign="rule">
+                    <table style="grid-template-columns: repeat(3, auto);" data-print>
+                        <thead>
+                            <tr>
+                                <th scope="col">Head</th>
+                                <th scope="col">Head</th>
+                                <th scope="col">Head</th></tr></thead>
+                        <tbody>
+                            <tr>
+                                <th scope="row">Row</th>
+                                <td>Cell</td>
+                                <td>Cell</td></tr>
+                            <tr>
+                                <th scope="row">Row</th>
+                                <td>Cell</td>
+                                <td>Cell</td></tr>
+                            <tr>
+                                <th scope="row">Row</th>
+                                <td>Cell</td>
+                                <td>Cell</td></tr></tbody></table>
+                    <table style="grid-template-columns: repeat(3, auto);" data-border="grid" data-selectable data-print>
+                        <thead>
+                            <tr>
+                                <th scope="col">
+                                    <label aria-label="Select all">
+                                        <input type="checkbox" data-size="sm"></label></th>
+                                <th scope="col">Head</th>
+                                <th scope="col">Head</th></tr></thead>
+                        <tbody>
+                            <tr>
+                                <td>
+                                    <label aria-label="Select row">
+                                        <input checked type="checkbox" data-size="sm"></label></td>
+                                <td>Cell</td>
+                                <td>Cell</td></tr>
+                            <tr>
+                                <td>
+                                    <label aria-label="Select row">
+                                        <input type="checkbox" data-size="sm"></label></td>
+                                <td>Cell</td>
+                                <td>Cell</td></tr></tbody></table>
+                    <table style="grid-template-columns: repeat(3, auto);" data-border="booktabs" data-stripe data-print>
+                        <thead>
+                            <tr>
+                                <th scope="col">Head</th>
+                                <th scope="col">Head</th>
+                                <th scope="col">Head</th></tr></thead>
+                        <tbody>
+                            <tr>
+                                <th scope="row">Row</th>
+                                <td>Cell</td>
+                                <td>Cell</td></tr>
+                            <tr>
+                                <th scope="row">Row</th>
+                                <td>Cell</td>
+                                <td>Cell</td></tr>
+                            <tr>
+                                <th scope="row">Row</th>
+                                <td>Cell</td>
                                 <td>Cell</td></tr></tbody></table></section></section>
 
             <section>
@@ -1241,18 +1301,16 @@
                                 <th scope="col">Head</th>
                                 <th scope="col" aria-sort="ascending">
                                     Head
-                                    <span data-step="block">
-                                        <label aria-label="Sort ascending">
-                                            <input checked name="sort-1" type="radio" value="a-asc"></label>
-                                        <label aria-label="Sort descending">
-                                            <input name="sort-1" type="radio" value="a-desc"></label></span></th>
+                                    <span data-cycle>
+                                        <input name="sort-1" type="radio" value="a-desc" aria-label="Sort descending">
+                                        <input checked name="sort-1" type="radio" value="a-asc" aria-label="Sort ascending">
+                                        <input name="sort-1" type="radio" value="none" aria-label="Unsorted"></span></th>
                                 <th scope="col" aria-sort="none">
                                     Head
-                                    <span data-step="block">
-                                        <label aria-label="Sort ascending">
-                                            <input name="sort-1" type="radio" value="b-asc"></label>
-                                        <label aria-label="Sort descending">
-                                            <input name="sort-1" type="radio" value="b-desc"></label></span></th></tr></thead>
+                                    <span data-cycle>
+                                        <input name="sort-1" type="radio" value="b-desc" aria-label="Sort descending">
+                                        <input name="sort-1" type="radio" value="b-asc" aria-label="Sort ascending">
+                                        <input name="sort-1" type="radio" value="none" aria-label="Unsorted"></span></th></tr></thead>
                         <tbody>
                             <tr>
                                 <th scope="row">Row</th>

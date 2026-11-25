@@ -12,11 +12,11 @@ This project adheres to [Semantic Versioning](https://semver.org/).
 
 # Browser support
 
-Rendering requires Baseline 2024 features: `@layer`, `:has()`, `light-dark()`, `color-mix()`, relative color syntax, popover and `:user-invalid`.
+Rendering requires Baseline 2024 features: `@layer`, `:has()`, `light-dark()`, `color-mix()`, relative color syntax, popover, `:user-invalid` and `round()`.
 
 | Browser | Minimum |
 |-|-|
-| Chrome, Edge | 123 |
+| Chrome, Edge | 125 |
 | Firefox | 128 |
 | Safari | 18 |
 
@@ -173,6 +173,7 @@ The library default is the CUD accent purple.
 - Default width is left unset (auto / content-driven) everywhere.
 - Default margin width is 0.
 - Padding-block is derived from `--{size}-box-height` and `--{size}-line-height` and only when border is not none, `--{size}-border-width`.
+- `--pt` and `--mm` are 1pt and 1mm in print, where the `html` font size is 14pt.
 
 | Scoped parameter | Meaning |
 |-|-|
@@ -222,11 +223,21 @@ Without `data-union`, `[role="toolbar"]`, `[role="radiogroup"]` and `[role="tabl
 
 ## data-step
 
-Layout for the pair of controls a spinbutton or a sortable table header carries. Applied to the `span` wrapping the pair, not the `label`/`th` itself.
+Layout for the pair of controls a spinbutton carries. Applied to the `span` wrapping the pair, not the `label` itself.
 
 | Selector | Value | Applied by |
 |-|-|-|
 | `span` | `block` | [step.css](./css/step.css) |
+
+## data-cycle
+
+One control that steps through the radios of a group in order, back to the first after the last. Applied to the `span` wrapping the radios. Each click checks the radio after the checked one. Only the checked radio is shown, or the last one while none is checked. Each radio draws its own state, such as with `data-sign`.
+
+| Selector | Value | Applied by |
+|-|-|-|
+| `span` | (none) | [cycle.css](./css/cycle.css) |
+
+In a `th`, the three radios are descending, ascending and unsorted, drawn as ▼, ▲ and a hollow ▽ in `--color-ink-mix`. The radios of every column share one `name`, and an unchecked column shows unsorted.
 
 ## Tag unique attributes
 
@@ -234,3 +245,5 @@ Layout for the pair of controls a spinbutton or a sortable table header carries.
 |-|-|-|
 | `table` | `data-border` | `sectioned` (default) / `grid` / `booktabs`; rule style ([table.css](./css/table.css)) |
 | `table` | `data-stripe`, `data-selectable` | boolean; zebra striping, row selection ([table.css](./css/table.css)) |
+| `table` | `data-print` | boolean; grid layout whose rules take no layout space, for print forms. Set `grid-template-columns` in use ([table.css](./css/table.css)) |
+| `html` | `data-print` | boolean; print document. Border widths in `--pt`, rounded to device pixels on screen; `body` previewed with `--page-margin-block` on screen ([base.css](./css/base.css)) |

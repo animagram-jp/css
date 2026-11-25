@@ -200,6 +200,12 @@
         --font-family-serif:      ui-serif, serif;
         --font-family-monospace:  ui-monospace, monospace;
 
+        --pt:           calc(1rem / 14);
+        --mm:           calc(72 / 25.4 * var(--pt));
+        --device-pixel: 1px;
+
+        --page-margin-block: 0;
+
         font-family: var(--font-family-sans-serif);
     }
 
@@ -209,9 +215,35 @@
         }
     }
 
+    /* --- :root[data-print] --- */
+
+    :root[data-print] {
+        --xs-border-width:  calc(0.875 * var(--pt));
+        --sm-border-width:  calc(1.75 * var(--pt));
+        --md-border-width:  calc(1.75 * var(--pt));
+        --lg-border-width:  calc(1.75 * var(--pt));
+        --xl-border-width:  calc(1.75 * var(--pt));
+        --2xl-border-width: calc(1.75 * var(--pt));
+    }
+
+    @media screen {
+        :root[data-print] {
+            --xs-border-width:  max(var(--device-pixel), round(nearest, calc(0.875 * var(--pt)), var(--device-pixel)));
+            --sm-border-width:  max(var(--device-pixel), round(nearest, calc(1.75 * var(--pt)), var(--device-pixel)));
+            --md-border-width:  max(var(--device-pixel), round(nearest, calc(1.75 * var(--pt)), var(--device-pixel)));
+            --lg-border-width:  max(var(--device-pixel), round(nearest, calc(1.75 * var(--pt)), var(--device-pixel)));
+            --xl-border-width:  max(var(--device-pixel), round(nearest, calc(1.75 * var(--pt)), var(--device-pixel)));
+            --2xl-border-width: max(var(--device-pixel), round(nearest, calc(1.75 * var(--pt)), var(--device-pixel)));
+        }
+
+        :root[data-print] body {
+            padding-block:    var(--page-margin-block);
+        }
+    }
+
     body {
-        color: var(--color-ink);
         background: var(--color-paper);
+        color: var(--color-ink);
     }
 
     ::selection, mark {
@@ -226,10 +258,10 @@
         [inputmode="numeric"]
     ) {
         font-family: var(--font-family-monospace);
-        font-style: normal;
         font-feature-settings: initial; /* per kiso.css:193 */
-        font-variation-settings: initial; /* per kiso.css:194 */
+        font-style: normal;
         font-variant-ligatures: none; /* per kiso.css:203 */
+        font-variation-settings: initial; /* per kiso.css:194 */
     }
 
     /* --- forced-color --- */

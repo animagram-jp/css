@@ -78,11 +78,11 @@
     :where([role="menu"], [role="listbox"]) {
         background-color: var(--color-paper);
         border-color:     var(--color-ink-mix);
+        border-radius:    var(--border-radius);
         border-style:     solid;
-        border-width:     var(--md-border-width);
-        border-radius:    var(--md-border-radius);
+        border-width:     var(--border-width);
         color:            var(--color-ink);
-        max-height:       calc(var(--md-border-width) * 0.2 + var(--md-box-height) * 6.5);
+        max-height:       calc(var(--border-width) * 0.2 + var(--box-height) * 6.5);
         overflow-y:       auto;
         padding-inline:   0.25rem;
         width:            max-content;
@@ -111,17 +111,17 @@
     }
 
     :where([role="menu"], [role="listbox"]) > label > input[role] {
-        block-size:  var(--md-line-height);
+        block-size:  var(--line-height);
         cursor:      pointer;
-        inline-size: var(--md-line-height);
+        inline-size: var(--line-height);
     }
 
     dialog {
         background-color: var(--color-paper);
         border-color:     var(--color-ink-mix);
+        border-radius:    var(--border-radius);
         border-style:     solid;
-        border-width:     var(--md-border-width);
-        border-radius:    var(--md-border-radius);
+        border-width:     var(--border-width);
         color:            var(--color-ink);
     }
 

@@ -105,7 +105,8 @@
     :where(
         [data-surround="transparent"],
         :where([role="menu"], [role="listbox"]) > *,
-        :where(dl, dl > div) > :where(dt, dd)
+        :where(dl, dl > div) > :where(dt, dd),
+        :is([role="alert"], [role="status"])[data-sign]:not([data-surround], [data-type="toast"] > *)
     ) {
         min-height:     var(--box-height);
         padding-block:  calc((var(--box-height) - var(--line-height)) / 2);
@@ -136,8 +137,8 @@
             summary,
             textarea,
             [data-type="toast"] > *,
-            [role="alert"],
-            [role="status"]
+            [role="alert"]:not([data-sign]),
+            [role="status"]:not([data-sign])
         ):not([data-surround])
     ) {
         border-radius:  var(--border-radius);

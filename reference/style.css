@@ -152,8 +152,11 @@ body:has(#tab-4:checked) #tabpanel-4 {
     display: block;
 }
 
-table {
+table:not([data-print]) {
     display: inline-table;
+}
+table[data-print] {
+    display: inline-grid;
 }
 
 @container (inline-size < 48rem) {
@@ -207,7 +210,7 @@ table {
         }
     }
 
-    table {
+    table:not([data-print]) {
         display: table;
     }
 }

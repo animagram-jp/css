@@ -23,6 +23,7 @@
     css.slider,
     css.search,
     css.step, /* dependency: input, radio */
+    css.cycle,
 
     css.popup,
     css.toast,
@@ -47,6 +48,7 @@
 @import url("slider.css");
 @import url("search.css");
 @import url("step.css");
+@import url("cycle.css");
 
 @import url("popup.css");
 @import url("toast.css");
