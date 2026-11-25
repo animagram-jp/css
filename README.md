@@ -8,8 +8,6 @@ Universal Design (variants included) system and CSS implementations.
 - Requires only semantic and structural HTML tags and a minimum of anonymous elements.
 - Render correctly without JS.
 
-This project adheres to [Semantic Versioning](https://semver.org/).
-
 # Browser support
 
 Rendering requires Baseline 2024 features: `@layer`, `:has()`, `light-dark()`, `color-mix()`, relative color syntax, popover, `:user-invalid` and `round()`.

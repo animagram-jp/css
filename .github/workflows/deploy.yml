@@ -59,16 +59,34 @@ jobs:
           working-directory: "reference"
           run: npm run test
 
-        - name: "upload report artifact"
+        - name: "upload test artifact"
           uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7.0.2
           with:
             name: "test"
-            path: |
-              reference/test.html
-              reference/test.json
+            path: "reference/test.json"
 
-    deploy-page:
+    build-pages:
         needs: test
+        runs-on: ubuntu-latest
+        permissions:
+            contents: read
+        steps:
+        - name: "git checkout"
+          uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+
+        - name: "download test artifact"
+          uses: actions/download-artifact@9000827ccba6bdab643e8b6fd33ac0654aef8333 # v8.0.2
+          with:
+            name: "test"
+            path: "reference/"
+
+        - name: "upload GitHub Pages artifact"
+          uses: actions/upload-pages-artifact@fc324d3547104276b827a68afc52ff2a11cc49c9 # v5.0.0
+          with:
+            path: "."
+
+    deploy-pages:
+        needs: build-pages
         runs-on: ubuntu-latest
         permissions:
             contents: read
@@ -81,22 +99,8 @@ jobs:
             name: "github-pages"
             url: ${{ steps.deployment.outputs.page_url }}
         steps:
-        - name: "git checkout"
-          uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
-
-        - name: "setup Github Pages"
+        - name: "setup GitHub Pages"
           uses: actions/configure-pages@45bfe0192ca1faeb007ade9deae92b16b8254a0d # v6.0.0
-
-        - name: "download test artifact"
-          uses: actions/download-artifact@9000827ccba6bdab643e8b6fd33ac0654aef8333 # v8.0.2
-          with:
-            name: "test"
-            path: "reference/"
-
-        - name: "upload artifact as Github Pages"
-          uses: actions/upload-pages-artifact@fc324d3547104276b827a68afc52ff2a11cc49c9 # v5.0.0
-          with:
-            path: "."
 
         - name: "deploy to GitHub Pages"
           id: "deployment"
