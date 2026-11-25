@@ -155,7 +155,6 @@
     /* === data-union === */
 
     [data-union]:has(> label > input[type="radio"]) > label {
-        display:     inline flow-root;
         inline-size: auto;
         position:    relative;
     }
