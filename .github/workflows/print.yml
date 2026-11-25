@@ -1,0 +1,48 @@
+name: "print"
+
+on:
+    workflow_dispatch:
+
+permissions:
+    contents: read
+
+jobs:
+    safari:
+        timeout-minutes: 30
+        runs-on: macos-latest
+        steps:
+            - name: "git checkout"
+              uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+              with:
+                  persist-credentials: false
+
+            - name: "setup uv"
+              uses: astral-sh/setup-uv@1db35dd8eee11c5894872e0b383ae6c406cf738d # v10.4.0
+
+            - name: "enable safaridriver"
+              run: sudo safaridriver --enable
+
+            - name: "compare screen, pdf and viewer"
+              run: |
+                  uv run --with numpy --with pillow --with pypdfium2 --with scipy python - <<'EOF'
+                  import json
+                  import sys
+                  from pathlib import Path
+
+                  sys.path.insert(0, "reference")
+                  import compare
+
+                  out = Path("target/print")
+                  reports = compare.compare(Path("."), ["index.html"], out, "safari")
+                  compare.write_index(out, reports)
+                  (out / "compare_result.json").write_text(json.dumps(reports, ensure_ascii=False, indent=2))
+                  sys.exit(1 if any(report["issues"] for report in reports) else 0)
+                  EOF
+
+            - name: "upload report"
+              if: ${{ always() }}
+              uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7.0.2
+              with:
+                  name: "print"
+                  path: "target/print/"
+                  if-no-files-found: warn

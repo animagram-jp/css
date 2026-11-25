@@ -12,9 +12,25 @@
     }
 }
 
+@page {
+    margin: 15mm;
+    size:   A4;
+}
+
+@media screen and (min-width: 210mm) {
+    :root[data-print] {
+        --page-margin-block: 15mm;
+
+        & body {
+            margin-inline:   auto;
+            max-inline-size: 210mm;
+            padding-inline:  15mm;
+        }
+    }
+}
+
 body > header {
     container-type: inline-size;
-    margin-block:   1rem;
 
     & > * {
         vertical-align: middle;
@@ -121,11 +137,6 @@ section[data-sign="rule"] {
     container-type: inline-size;
 }
 
-label:has(> input[aria-controls]) > input[type="password"] {
-    field-sizing: fixed;
-    inline-size:  15rem;
-}
-
 /* listbox: each trigger/listbox pair needs its own anchor-name. */
 #listbox-1-trigger {anchor-name: --listbox-1-trigger;}
 #listbox-1         {position-anchor: --listbox-1-trigger;}
@@ -160,7 +171,7 @@ table[data-print] {
 }
 
 @container (inline-size < 48rem) {
-    fieldset[data-axis="inline"]:has(> label > input[type="radio"]) {
+    fieldset[data-axis="inline"]:has(> label > input:is([type="radio"], [type="checkbox"]:not([role="switch"], [aria-controls]))) {
         grid-template-columns: none;
 
         & > legend > *,

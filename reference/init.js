@@ -27,11 +27,13 @@ const S = {
     icon_badge: null,
     passwords: new Map(),
     steps: new Map(),
+    step_buttons: new Map(),
     fixed_grid: null,
 };
 
 function start() {
-    S.eruda = new URLSearchParams(location.search).has("eruda");
+    const params = new URLSearchParams(location.search);
+    S.eruda = params.has("eruda");
     if (S.eruda) {
         const s = document.createElement("script");
         s.src = "https://cdn.jsdelivr.net/npm/eruda@3.4.3/eruda.js";
@@ -40,6 +42,16 @@ function start() {
         s.onload = () => eruda.init();
         document.body.appendChild(s);
     }
+
+    // Restore the tab from the ?tab= query on load, and mirror the checked tab back to it.
+    const tab = document.getElementById(params.get("tab") ?? "");
+    if (tab?.matches('input[type="radio"][role="tab"]')) tab.checked = true;
+    document.addEventListener("change", (e) => {
+        if (!e.target.matches('input[type="radio"][role="tab"]')) return;
+        const url = new URL(location.href);
+        url.searchParams.set("tab", e.target.id);
+        history.replaceState(null, "", url);
+    });
 
     for (const input of document.querySelectorAll('input[type="checkbox"][data-indeterminate]')) {
         input.indeterminate = true;
@@ -69,14 +81,15 @@ function start() {
         S.passwords.set(button, input);
     }
 
-    for (const input of document.querySelectorAll('input[role="spinbutton"]')) {
-        const label = input.closest("label");
-        if (!label) continue;
+    for (const input of document.querySelectorAll('input[inputmode="numeric"]:not([aria-disabled="true"])')) {
         const step = Number(input.step) || 1;
         const min = input.min === "" ? -Infinity : Number(input.min);
         const max = input.max === "" ? Infinity : Number(input.max);
-        for (const button of label.querySelectorAll(":scope > button[data-sign]")) {
-            S.steps.set(button, { input, step, min, max, sign: button.dataset.sign === "plus" ? 1 : -1 });
+        S.steps.set(input, { step, min, max });
+        const label = input.closest("label");
+        if (!label) continue;
+        for (const button of label.querySelectorAll("button[data-sign]")) {
+            S.step_buttons.set(button, { input, sign: button.dataset.sign === "plus" ? 1 : -1 });
         }
     }
 
@@ -94,6 +107,7 @@ function start() {
 function bind() {
     document.addEventListener("change", on_change);
     document.addEventListener("click", on_click);
+    document.addEventListener("keydown", on_keydown);
     document.addEventListener("submit", on_submit);
 
     if (S.icon_badge) {
@@ -119,11 +133,24 @@ function on_change(e) {
 }
 
 function on_click(e) {
-    const step = S.steps.get(e.target.closest("button[data-sign]"));
-    if (!step) return;
-    const next = (Number(step.input.value) || 0) + step.sign * step.step;
-    step.input.value = Math.min(step.max, Math.max(step.min, next));
-    step.input.dispatchEvent(new Event("input", { bubbles: true }));
+    const button = S.step_buttons.get(e.target.closest("button[data-sign]"));
+    if (!button) return;
+    step_value(button.input, button.sign);
+}
+
+function on_keydown(e) {
+    if (!S.steps.has(e.target)) return;
+    const sign = e.key === "ArrowUp" ? 1 : e.key === "ArrowDown" ? -1 : 0;
+    if (!sign) return;
+    e.preventDefault();
+    step_value(e.target, sign);
+}
+
+function step_value(input, sign) {
+    const { step, min, max } = S.steps.get(input);
+    const next = (Number(input.value) || 0) + sign * step;
+    input.value = Math.min(max, Math.max(min, next));
+    input.dispatchEvent(new Event("input", { bubbles: true }));
 }
 
 function on_submit(e) {
