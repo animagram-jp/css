@@ -202,7 +202,7 @@ Direction in which a component lays its parts out. Both `block` and `inline` are
 | Selector | Default | Applied by |
 |-|-|-|
 | `hgroup` | `block` | [heading.css](./css/heading.css) |
-| `fieldset` | `block` | [radio.css](./css/radio.css) |
+| `fieldset` (with `label > input[type="radio"]` or `label > input[type="checkbox"]`) | `block` | [input.css](./css/input.css) |
 | `label` | `inline` | [toggle.css](./css/toggle.css) |
 
 ## data-union
@@ -213,7 +213,7 @@ Direction in which a component lays its parts out. Both `block` and `inline` are
 | Selector | Value | Applied by |
 |-|-|-|
 | `*` | `inline`, `block` | [data_union.css](./css/data_union.css) |
-| `*` (with `label > input[type="radio"]` or `label > input[type="checkbox"]`) | `inline`, `block` | [radio.css](./css/radio.css), [checkbox.css](./css/checkbox.css), [data_style.css](./css/data_style.css), [data_size.css](./css/data_size.css) |
+| `*` (with `label > input[type="radio"]` or `label > input[type="checkbox"]`) | `inline`, `block` | [input.css](./css/input.css), [radio.css](./css/radio.css), [checkbox.css](./css/checkbox.css), [data_style.css](./css/data_style.css), [data_size.css](./css/data_size.css) |
 
 `search` and `form[role="search"]` are joined the same way as `inline` without `data-union`.
 

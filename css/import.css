@@ -17,12 +17,12 @@
 
     css.input,
     css.button,
-    css.checkbox,
+    css.checkbox, /* dependency: input */
     css.toggle,
     css.radio, /* dependency: input */
     css.slider,
     css.search,
-    css.step, /* dependency: input, radio */
+    css.step, /* dependency: input */
     css.cycle,
 
     css.popup,
