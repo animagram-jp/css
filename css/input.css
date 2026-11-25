@@ -40,9 +40,12 @@
         select,
         textarea
     ) {
-        field-sizing:     content;
-        max-inline-size:  100%;
-        min-inline-size:  7ch; /* per https://developer.chrome.com/docs/css-ui/css-field-sizing */
+        max-inline-size: 100%;
+    }
+
+    :where(textarea) {
+        field-sizing:    content;
+        min-inline-size: 7ch; /* per https://developer.chrome.com/docs/css-ui/css-field-sizing */
     }
 
     :where(
@@ -78,11 +81,6 @@
 
     input[inputmode="numeric"] {
         text-align: right;
-    }
-
-    input[inputmode="numeric"][maxlength] {
-        field-sizing:    fixed;
-        min-inline-size: 0;
     }
 
     /* === password === */

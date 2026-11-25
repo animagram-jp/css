@@ -137,11 +137,6 @@ section[data-sign="rule"] {
     container-type: inline-size;
 }
 
-label:has(> input[aria-controls]) > input[type="password"] {
-    field-sizing: fixed;
-    inline-size:  15rem;
-}
-
 /* listbox: each trigger/listbox pair needs its own anchor-name. */
 #listbox-1-trigger {anchor-name: --listbox-1-trigger;}
 #listbox-1         {position-anchor: --listbox-1-trigger;}

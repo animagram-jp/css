@@ -34,13 +34,6 @@
 
     /* === input === */
 
-    label:has(> input[inputmode="numeric"]) > input[inputmode="numeric"] {
-        /*  a spinbutton is read and corrected digit by digit, so the field does
-            not grow with its content the way a text input does. */
-        field-sizing:    fixed;
-        min-inline-size: 0;
-    }
-
     [data-step="block"] {
         display:            inline grid;
         grid-template-rows: 1fr 1fr;
