@@ -282,13 +282,21 @@ def print_firefox(driver, page_mm, margin_mm):
 
 def print_safari(url, path, delay, paper):
     path.unlink(missing_ok=True)
+    start = time.time()
     subprocess.run(
         ["osascript", str(SAFARI_PRINT), url, str(path.resolve()), str(delay), paper],
         check=True,
         timeout=180,
     )
-    if not wait(lambda: path.exists() and path.stat().st_size > 0, 60):
-        raise RuntimeError(f"Safari did not write {path}")
+    if wait(lambda: path.exists() and path.stat().st_size > 0, 20):
+        return
+    folders = [path.parent, Path.home() / "Documents", Path.home() / "Desktop", Path.home() / "Downloads"]
+    written = [pdf for folder in folders for pdf in folder.glob("*.pdf") if pdf.stat().st_mtime >= start and pdf.stat().st_size > 0]
+    if written:
+        max(written, key=lambda pdf: pdf.stat().st_mtime).rename(path)
+        return
+    subprocess.run(["screencapture", "-x", str(path.with_name("print-error.png"))])
+    raise RuntimeError(f"Safari did not write {path}")
 
 
 def detect_pages(shot, aspect):
