@@ -357,6 +357,13 @@ def trim(image, limit=12):
 
 def capture_viewer(driver, url, aspect):
     driver.navigate(url)
+    pointer = {"type": "pointer", "id": "mouse", "parameters": {"pointerType": "mouse"}}
+    pointer["actions"] = [{"type": "pointerMove", "origin": "viewport", "x": 0, "y": 0, "duration": 0}]
+    try:
+        driver.command("POST", "/actions", {"actions": [pointer]})
+    except RuntimeError:
+        pass
+    time.sleep(4)
     previous = None
 
     def settled():
