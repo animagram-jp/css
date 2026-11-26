@@ -280,10 +280,10 @@ def print_firefox(driver, page_mm, margin_mm):
     return base64.b64decode(data)
 
 
-def print_safari(url, path, delay):
+def print_safari(url, path, delay, paper):
     path.unlink(missing_ok=True)
     subprocess.run(
-        ["osascript", str(SAFARI_PRINT), url, str(path), str(delay)],
+        ["osascript", str(SAFARI_PRINT), url, str(path.resolve()), str(delay), paper],
         check=True,
         timeout=180,
     )
@@ -625,16 +625,18 @@ def img(base, file):
     return f'<a href="{base}/{file}"><img src="{base}/{file}" alt=""></a>' if file else "<p>missing</p>"
 
 
-def compare(root, targets, out, browser, threshold=64, tolerance=0.002, safari_delay=5):
+def compare(root, targets, out, browser, threshold=64, tolerance=0.002, safari_delay=5, safari_paper="A4"):
     Path(out).mkdir(parents=True, exist_ok=True)
     server = Server(root)
     if browser == "safari":
         for target in targets:
             print(f"[safari] print {target}", flush=True)
             try:
-                print_safari(server.url(target), output(out, target, "safari") / "output.pdf", safari_delay)
+                print_safari(server.url(target), output(out, target, "safari") / "output.pdf", safari_delay, safari_paper)
             except Exception as error:
                 print(f"  error: {error}", flush=True)
+        subprocess.run(["pkill", "-x", "Safari"])
+        time.sleep(3)
     process, driver = start_driver(browser)
     reports = []
     try:
