@@ -182,14 +182,27 @@ The library default is the CUD accent purple.
 | `--{xs/sm/md/lg/xl/2xl}-letter-spacing` | Letter spacing for the scope. |
 | `--{xs/sm/md/lg/xl/2xl}-line-height` | Line height for the scope. |
 
-| `data-size`   | heading | box-height | font-size | letter-spacing | line-height |
-|-|-|-|-|-|-|
-| `xs`          | - | 1.75rem  | 0.85rem | 0.02rem | 1.5rem   |
-| `sm`          | - | 2.5rem  | 0.85rem | 0.02rem | 1.5rem   |
-| `md`(default) | h4~h6 | 3rem | 1rem    | 0       | 1.5rem   |
-| `lg`          | h3 | 3.5rem  | 1.15rem | 0       | 1.725rem |
-| `xl`          | h2 | 4rem    | 1.5rem  | 0       | 2.25rem  |
-| `2xl`         | h1 | 4.75rem | 2rem    | 0       | 3rem     |
+| `data-size`   | heading | border-radius | border-width | box-height | font-size | letter-spacing | line-height |
+|-|-|-|-|-|-|-|-|
+| `xs`          | -     | 0.325rem | 0.0625rem | 1.75rem | 0.85rem | 0.02rem | 1.5rem   |
+| `sm`          | -     | 0.325rem | 0.125rem  | 2.5rem  | 0.85rem | 0.02rem | 1.5rem   |
+| `md`(default) | h4~h6 | 0.325rem | 0.125rem  | 3rem    | 1rem    | 0       | 1.5rem   |
+| `lg`          | h3    | 0.325rem | 0.125rem  | 3.5rem  | 1.15rem | 0       | 1.725rem |
+| `xl`          | h2    | 0.325rem | 0.125rem  | 4rem    | 1.5rem  | 0       | 2.25rem  |
+| `2xl`         | h1    | 0.325rem | 0.125rem  | 4.75rem | 2rem    | 0       | 3rem     |
+
+## data-print
+
+`html[data-print]` sets the border widths in `--pt`. On screen, each is rounded to the nearest device pixel, at least 1 device pixel ([base.css](./css/base.css)).
+
+| `data-size`   | border-width |
+|-|-|
+| `xs`          | 0.875pt |
+| `sm`          | 1.75pt  |
+| `md`(default) | 1.75pt  |
+| `lg`          | 1.75pt  |
+| `xl`          | 1.75pt  |
+| `2xl`         | 1.75pt  |
 
 # Other custom attributes
 
