@@ -134,7 +134,7 @@
         padding-inline-end: var(--border-radius);
     }
 
-    select:not([data-facet]):not(label > select) {
+    select:not([data-facet]):not(label > select, :is(td, th) > select[data-surround="transparent"]) {
         appearance: auto;
     }
 
