@@ -37,7 +37,7 @@ compare.pyは関数定義のみを持つ。
 
 | 関数 | 内容 |
 |-|-|
-| `compare(root, targets, out, browser, threshold=64, tolerance=0.002, safari_delay=5)` | rootを配信し、targets(rootからの相対パス)をbrowser(`firefox`または`safari`)で比較して、ターゲットごとのレポートのリストを返す。画像はoutに置く。 |
+| `compare(root, targets, out, browser, threshold=64, tolerance=0.002, safari_delay=5, safari_paper="A4")` | rootを配信し、targets(rootからの相対パス)をbrowser(`firefox`または`safari`)で比較して、ターゲットごとのレポートのリストを返す。画像はoutに置く。 |
 | `write_index(out, reports)` | outに、全ターゲットの画像と差分を並べたindex.htmlを書く。 |
 
 HTTPサーバーとWebDriverは空きポートで起動する。依存はnumpy, pillow, pypdfium2, scipy。
@@ -46,7 +46,7 @@ HTTPサーバーとWebDriverは空きポートで起動する。依存はnumpy, 
 uv run --with numpy --with pillow --with pypdfium2 --with scipy python -c 'import sys; from pathlib import Path; sys.path.insert(0, "reference"); import compare; print(compare.compare(Path("."), ["index.html"], Path("target/print"), "firefox"))'
 ```
 
-CIは.github/workflows/print.yml(手動実行)。index.htmlをSafariで比較し、target/print/にcompare_result.json、index.htmlと画像を出力する。差異を検知した場合は失敗する。index.htmlのページはreference/style.cssの`@page`で定める。
+CIは.github/workflows/print.yml(手動実行)。index.htmlをSafariで比較し、target/print/にcompare_result.json、index.htmlと画像を出力する。index.htmlのページはreference/style.cssの`@page`で定める。
 
 ## 前提
 
