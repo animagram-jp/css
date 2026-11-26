@@ -72,18 +72,23 @@ end findPdfButton
 
 on findElement(parentElement, roleName, attributeName, attributeText, depth)
 	tell application "System Events"
-		repeat with kid in (UI elements of parentElement)
-			set kid to contents of kid
+		try
+			set kids to UI elements of parentElement
+		on error
+			return missing value
+		end try
+		repeat with kid in kids
 			try
+				set kid to contents of kid
 				if role of kid is roleName then
 					if attributeName is "description" and description of kid is attributeText then return kid
 					if attributeName is "name" and name of kid is attributeText then return kid
 				end if
+				if depth > 0 then
+					set found to my findElement(kid, roleName, attributeName, attributeText, depth - 1)
+					if found is not missing value then return found
+				end if
 			end try
-			if depth > 0 then
-				set found to my findElement(kid, roleName, attributeName, attributeText, depth - 1)
-				if found is not missing value then return found
-			end if
 		end repeat
 	end tell
 	return missing value
@@ -103,15 +108,20 @@ end waitForSavePanel
 
 on findPaperPopup(parentElement, depth)
 	tell application "System Events"
-		repeat with kid in (UI elements of parentElement)
-			set kid to contents of kid
+		try
+			set kids to UI elements of parentElement
+		on error
+			return missing value
+		end try
+		repeat with kid in kids
 			try
+				set kid to contents of kid
 				if role of kid is "AXGroup" and (exists static text "Paper Size" of kid) then return pop up button 1 of kid
+				if depth > 0 then
+					set found to my findPaperPopup(kid, depth - 1)
+					if found is not missing value then return found
+				end if
 			end try
-			if depth > 0 then
-				set found to my findPaperPopup(kid, depth - 1)
-				if found is not missing value then return found
-			end if
 		end repeat
 	end tell
 	return missing value
