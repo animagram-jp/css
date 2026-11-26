@@ -4,7 +4,7 @@ on run argv
 	set loadDelay to (item 3 of argv) as number
 	set paperName to item 4 of argv
 	set outputFolder to do shell script "dirname " & quoted form of outputPath
-	set outputName to do shell script "basename " & quoted form of outputPath
+	set outputName to do shell script "basename " & quoted form of outputPath & " .pdf"
 
 	tell application "Safari"
 		activate
