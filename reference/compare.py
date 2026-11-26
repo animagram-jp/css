@@ -514,9 +514,9 @@ def run_target(driver, server, browser, target, out, threshold, tolerance):
     pdfs, pdf_sizes = rasterize(pdf_path, scale)
 
     page_height = max(page.height for page in pdfs) / scale if pdfs else 0
-    driver.command("POST", "/window/rect", {"width": 1280, "height": round(len(pdfs) * (page_height + 16) + 200)})
+    driver.command("POST", "/window/rect", {"x": 0, "y": 0, "width": 1280, "height": round(len(pdfs) * (page_height + 16) + 200)})
     viewers = capture_viewer(driver, server.url(pdf_path) + "#zoom=100", page_mm[0] / page_mm[1])
-    driver.command("POST", "/window/rect", {"width": 1280, "height": 1200})
+    driver.command("POST", "/window/rect", {"x": 0, "y": 0, "width": 1280, "height": 1200})
 
     viewers = [register(image, pdfs[index] if index < len(pdfs) else None) for index, image in enumerate(viewers)]
     sources = {"screen": screens, "pdf": pdfs, "viewer": viewers}
@@ -648,7 +648,7 @@ def compare(root, targets, out, browser, threshold=64, tolerance=0.002, safari_d
     process, driver = start_driver(browser)
     reports = []
     try:
-        driver.command("POST", "/window/rect", {"width": 1280, "height": 1200})
+        driver.command("POST", "/window/rect", {"x": 0, "y": 0, "width": 1280, "height": 1200})
         for target in targets:
             print(f"[{browser}] {target}", flush=True)
             try:
