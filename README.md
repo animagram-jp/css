@@ -18,7 +18,7 @@ Rendering requires Baseline 2024 features: `@layer`, `:has()`, `light-dark()`, `
 | Firefox | 128 |
 | Safari | 18 |
 
-`field-sizing`, `text-wrap: pretty` and `:open` are progressive enhancements and fall back without layout breakage.
+`field-sizing`, `text-wrap: pretty`, `:open`, `position-area` and `position-try-fallbacks` are progressive enhancements and fall back without layout breakage.
 
 # Layer structure
 
