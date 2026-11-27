@@ -214,6 +214,24 @@ def page_size_in_mm(size):
     return width, height
 
 
+MARKER_SCRIPT = """
+const marker = document.createElement("div");
+marker.id = "compare-marker";
+marker.style.cssText = `position: absolute; left: ${arguments[0]}px; top: ${arguments[1]}px; inline-size: 4px; block-size: 4px; margin: 0; padding: 0; border: 0; background: #ff00ff; z-index: 2147483647`;
+document.documentElement.append(marker);
+return new Promise((resolve) => requestAnimationFrame(() => requestAnimationFrame(resolve)));
+"""
+
+
+def marker_row(shot, scale):
+    pixels = np.asarray(shot.crop((0, 0, max(1, round(4 * scale)), shot.height))).astype(np.int16)
+    magenta = (pixels[..., 0] > 200) & (pixels[..., 1] < 60) & (pixels[..., 2] > 200)
+    rows = np.flatnonzero(magenta.mean(axis=1) > 0.5)
+    if not len(rows):
+        return None
+    return (rows[0] + rows[-1] + 1) / 2 - 2 * scale
+
+
 def capture(driver, rect):
     x, y, width, height = rect
     view_width, view_height = driver.execute("return [innerWidth, innerHeight]")
@@ -226,19 +244,23 @@ def capture(driver, rect):
             max(0, x - 8),
             top,
         )
+        driver.execute(MARKER_SCRIPT, scroll_x, top)
         shot = driver.screenshot()
+        driver.execute("document.getElementById('compare-marker').remove()")
         scale = shot.width / view_width
         if canvas is None:
             canvas = Image.new("RGB", (round(width * scale), round(height * scale)), "white")
-        bottom = min(y + height, scroll_y + view_height)
+        origin = marker_row(shot, scale)
+        origin = (top - scroll_y) * scale if origin is None else origin
+        bottom = min(y + height, top + (shot.height - origin) / scale)
         if bottom <= top:
             raise RuntimeError("viewport does not reach the requested rect")
         piece = shot.crop(
             (
                 round((x - scroll_x) * scale),
-                round((top - scroll_y) * scale),
+                round(origin),
                 round((x + width - scroll_x) * scale),
-                round((bottom - scroll_y) * scale),
+                round(origin + (bottom - top) * scale),
             )
         )
         canvas.paste(piece, (0, round((top - y) * scale)))
@@ -280,15 +302,23 @@ def print_firefox(driver, page_mm, margin_mm):
     return base64.b64decode(data)
 
 
-def print_safari(url, path, delay):
+def print_safari(url, path, delay, paper):
     path.unlink(missing_ok=True)
+    start = time.time()
     subprocess.run(
-        ["osascript", str(SAFARI_PRINT), url, str(path), str(delay)],
+        ["osascript", str(SAFARI_PRINT), url, str(path.resolve()), str(delay), paper],
         check=True,
         timeout=180,
     )
-    if not wait(lambda: path.exists() and path.stat().st_size > 0, 60):
-        raise RuntimeError(f"Safari did not write {path}")
+    if wait(lambda: path.exists() and path.stat().st_size > 0, 20):
+        return
+    folders = [path.parent, Path.home() / "Documents", Path.home() / "Desktop", Path.home() / "Downloads"]
+    written = [pdf for folder in folders for pdf in folder.glob("*.pdf") if pdf.stat().st_mtime >= start and pdf.stat().st_size > 0]
+    if written:
+        max(written, key=lambda pdf: pdf.stat().st_mtime).rename(path)
+        return
+    subprocess.run(["screencapture", "-x", str(path.with_name("print-error.png"))])
+    raise RuntimeError(f"Safari did not write {path}")
 
 
 def detect_pages(shot, aspect):
@@ -327,6 +357,13 @@ def trim(image, limit=12):
 
 def capture_viewer(driver, url, aspect):
     driver.navigate(url)
+    pointer = {"type": "pointer", "id": "mouse", "parameters": {"pointerType": "mouse"}}
+    pointer["actions"] = [{"type": "pointerMove", "origin": "viewport", "x": 0, "y": 0, "duration": 0}]
+    try:
+        driver.command("POST", "/actions", {"actions": [pointer]})
+    except RuntimeError:
+        pass
+    time.sleep(4)
     previous = None
 
     def settled():
@@ -506,9 +543,9 @@ def run_target(driver, server, browser, target, out, threshold, tolerance):
     pdfs, pdf_sizes = rasterize(pdf_path, scale)
 
     page_height = max(page.height for page in pdfs) / scale if pdfs else 0
-    driver.command("POST", "/window/rect", {"width": 1280, "height": round(len(pdfs) * (page_height + 16) + 200)})
+    driver.command("POST", "/window/rect", {"x": 0, "y": 0, "width": 1280, "height": round(len(pdfs) * (page_height + 16) + 200)})
     viewers = capture_viewer(driver, server.url(pdf_path) + "#zoom=100", page_mm[0] / page_mm[1])
-    driver.command("POST", "/window/rect", {"width": 1280, "height": 1200})
+    driver.command("POST", "/window/rect", {"x": 0, "y": 0, "width": 1280, "height": 1200})
 
     viewers = [register(image, pdfs[index] if index < len(pdfs) else None) for index, image in enumerate(viewers)]
     sources = {"screen": screens, "pdf": pdfs, "viewer": viewers}
@@ -625,20 +662,22 @@ def img(base, file):
     return f'<a href="{base}/{file}"><img src="{base}/{file}" alt=""></a>' if file else "<p>missing</p>"
 
 
-def compare(root, targets, out, browser, threshold=64, tolerance=0.002, safari_delay=5):
+def compare(root, targets, out, browser, threshold=64, tolerance=0.002, safari_delay=5, safari_paper="A4"):
     Path(out).mkdir(parents=True, exist_ok=True)
     server = Server(root)
     if browser == "safari":
         for target in targets:
             print(f"[safari] print {target}", flush=True)
             try:
-                print_safari(server.url(target), output(out, target, "safari") / "output.pdf", safari_delay)
+                print_safari(server.url(target), output(out, target, "safari") / "output.pdf", safari_delay, safari_paper)
             except Exception as error:
                 print(f"  error: {error}", flush=True)
+        subprocess.run(["pkill", "-x", "Safari"])
+        time.sleep(3)
     process, driver = start_driver(browser)
     reports = []
     try:
-        driver.command("POST", "/window/rect", {"width": 1280, "height": 1200})
+        driver.command("POST", "/window/rect", {"x": 0, "y": 0, "width": 1280, "height": 1200})
         for target in targets:
             print(f"[{browser}] {target}", flush=True)
             try:

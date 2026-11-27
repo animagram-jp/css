@@ -46,6 +46,38 @@
         padding-block:  calc((var(--box-height) - var(--line-height)) / 2);
         padding-inline: var(--border-radius);
     }
+    table :where(td, th):has(> :is(
+        input:is(
+            [type="text"],
+            [type="email"],
+            [type="password"],
+            [type="search"],
+            [type="url"],
+            [type="tel"],
+            [type="number"]
+        ),
+        select,
+        textarea
+    )[data-surround="transparent"]) {
+        padding: 0;
+    }
+    table :where(td, th) > :where(
+        input:is(
+            [type="text"],
+            [type="email"],
+            [type="password"],
+            [type="search"],
+            [type="url"],
+            [type="tel"],
+            [type="number"]
+        ),
+        select,
+        textarea
+    )[data-surround="transparent"] {
+        display:     block;
+        inline-size: 100%;
+        min-height:  0;
+    }
     table:where([data-size]) caption {
         font-size: var(--font-size);
     }
@@ -55,6 +87,22 @@
     table:where(:not([data-print])):where(:not([data-border]), [data-border="sectioned"]) thead tr:last-of-type :where(td, th) {
         border-block-end:  var(--border-width) solid var(--color-ink);
         padding-block-end: calc(((var(--box-height) - var(--line-height)) / 2) - var(--border-width));
+
+        & > :where(
+            input:is(
+                [type="text"],
+                [type="email"],
+                [type="password"],
+                [type="search"],
+                [type="url"],
+                [type="tel"],
+                [type="number"]
+            ),
+            select,
+            textarea
+        )[data-surround="transparent"] {
+            padding-block-end: calc(((var(--box-height) - var(--line-height)) / 2) - var(--border-width));
+        }
     }
 
     table:where(:not([data-print])):where(:not([data-border]), [data-border="sectioned"]) tbody th[scope="row"] {
@@ -64,6 +112,22 @@
     table:where(:not([data-print])):where(:not([data-border]), [data-border="sectioned"]) tfoot tr:first-of-type :where(td, th) {
         border-block-start:  var(--border-width) solid var(--color-ink);
         padding-block-start: calc(((var(--box-height) - var(--line-height)) / 2) - var(--border-width));
+
+        & > :where(
+            input:is(
+                [type="text"],
+                [type="email"],
+                [type="password"],
+                [type="search"],
+                [type="url"],
+                [type="tel"],
+                [type="number"]
+            ),
+            select,
+            textarea
+        )[data-surround="transparent"] {
+            padding-block-start: calc(((var(--box-height) - var(--line-height)) / 2) - var(--border-width));
+        }
     }
 
     table:where(:not([data-print]))[data-border="grid"] {
@@ -74,6 +138,22 @@
         border-block-end:  var(--border-width) solid var(--color-ink-mix);
         border-inline-end: var(--border-width) solid var(--color-ink-mix);
         padding-block-end: calc(((var(--box-height) - var(--line-height)) / 2) - var(--border-width));
+
+        & > :where(
+            input:is(
+                [type="text"],
+                [type="email"],
+                [type="password"],
+                [type="search"],
+                [type="url"],
+                [type="tel"],
+                [type="number"]
+            ),
+            select,
+            textarea
+        )[data-surround="transparent"] {
+            padding-block-end: calc(((var(--box-height) - var(--line-height)) / 2) - var(--border-width));
+        }
     }
     table:where(:not([data-print]))[data-border="grid"] tr:last-child :where(td, th) {
         border-block-end-color: var(--color-ink);
@@ -88,6 +168,22 @@
     table:where(:not([data-print])):where([data-border="booktabs"]) thead tr:last-of-type :where(td, th) {
         border-block-end:  var(--border-width) solid var(--color-ink);
         padding-block-end: calc(((var(--box-height) - var(--line-height)) / 2) - var(--border-width));
+
+        & > :where(
+            input:is(
+                [type="text"],
+                [type="email"],
+                [type="password"],
+                [type="search"],
+                [type="url"],
+                [type="tel"],
+                [type="number"]
+            ),
+            select,
+            textarea
+        )[data-surround="transparent"] {
+            padding-block-end: calc(((var(--box-height) - var(--line-height)) / 2) - var(--border-width));
+        }
     }
 
     /* === data-print === */
